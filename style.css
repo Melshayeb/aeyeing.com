@@ -36,20 +36,34 @@ header.hero::before {
     background: rgba(30, 58, 138, 0.7);
 }
 
+header.hero .title-container {
+    position: relative;
+    text-align: center;
+}
+
 header.hero .logo {
-    width: 100px;
+    width: 200px; /* Increased logo size */
     height: auto;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+}
+
+header.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+header.hero .subtitle.top {
+    margin-bottom: -0.5rem; /* Adjust to bring text closer to logo */
+}
+
+header.hero .subtitle.bottom {
+    margin-top: -0.5rem; /* Adjust to bring text closer to logo */
 }
 
 header.hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-header.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 /* About Section */
@@ -144,12 +158,16 @@ footer {
         min-height: 300px;
     }
 
-    header.hero h1 {
-        font-size: 2rem;
+    header.hero .logo {
+        width: 150px; /* Reduced logo size on mobile */
     }
 
-    header.hero p {
-        font-size: 1rem;
+    header.hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    header.hero h1 {
+        font-size: 2rem;
     }
 
     .about, .connect {
