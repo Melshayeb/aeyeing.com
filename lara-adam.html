@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lara & Adam's Innovation Lab | Aeyeing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-kids.css?v=1">
+</head>
+<body>
+    <!-- Floating particles background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="kids-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="back-link">← Back to Aeyeing</a>
+            <span class="lab-title">🚀 Innovation Lab</span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="kids-hero">
+        <h1 class="glitch-text" data-text="LARA & ADAM">LARA & ADAM</h1>
+        <p class="tagline">Future Innovators • Creators • Dreamers</p>
+        <div class="floating-emojis">
+            <span>🤖</span><span>🎨</span><span>🚀</span><span>💡</span><span>🎮</span>
+        </div>
+    </header>
+
+    <!-- Lara's Section -->
+    <section class="kid-section lara" id="lara">
+        <div class="section-header">
+            <div class="avatar">👩‍💻</div>
+            <h2>Lara's Corner</h2>
+            <p class="age">Age 13 • Grade 7 • GWSC</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-project="art">
+                <div class="card-icon">🎨</div>
+                <h3>My Art Gallery</h3>
+                <p>Digital art, drawings, and creative projects</p>
+                <div class="card-tags">
+                    <span class="tag">Art</span>
+                    <span class="tag">Design</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="coding">
+                <div class="card-icon">💻</div>
+                <h3>Code Experiments</h3>
+                <p>Games, animations, and coding projects</p>
+                <div class="card-tags">
+                    <span class="tag">Code</span>
+                    <span class="tag">Games</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="writing">
+                <div class="card-icon">✍️</div>
+                <h3>Stories & Poems</h3>
+                <p>Creative writing and thoughts</p>
+                <div class="card-tags">
+                    <span class="tag">Writing</span>
+                    <span class="tag">Poetry</span>
+                </div>
+            </div>
+            
+            <div class="project-card add-new" id="laraAdd">
+                <div class="card-icon">➕</div>
+                <h3>Add New Project</h3>
+                <p>What did you create today?</p>
+            </div>
+        </div>
+        
+        <!-- Hidden upload form -->
+        <div class="upload-modal" id="laraModal">
+            <div class="modal-content">
+                <button class="close-btn">×</button>
+                <h3>🚀 Share Your Creation</h3>
+                <input type="text" placeholder="Project Title" class="input-field">
+                <textarea placeholder="Tell us about it..." class="input-field" rows="4"></textarea>
+                <div class="upload-area">
+                    <span>📁 Drop files or click to upload</span>
+                </div>
+                <button class="submit-btn">Launch! 🚀</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adam's Section -->
+    <section class="kid-section adam" id="adam">
+        <div class="section-header">
+            <div class="avatar">👦‍💻</div>
+            <h2>Adam's Zone</h2>
+            <p class="age">Age 8 • Grade 3 • KGPS</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-project="lego">
+                <div class="card-icon">🧱</div>
+                <h3>LEGO Builds</h3>
+                <p>Cool creations and inventions</p>
+                <div class="card-tags">
+                    <span class="tag">LEGO</span>
+                    <span class="tag">Build</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="games">
+                <div class="card-icon">🎮</div>
+                <h3>Game Design</h3>
+                <p>My own games and levels</p>
+                <div class="card-tags">
+                    <span class="tag">Games</span>
+                    <span class="tag">Fun</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="nature">
+                <div class="card-icon">🌿</div>
+                <h3>Nature Explorer</h3>
+                <p>Photos and facts about nature</p>
+                <div class="card-tags">
+                    <span class="tag">Nature</span>
+                    <span class="tag">Science</span>
+                </div>
+            </div>
+            
+            <div class="project-card add-new" id="adamAdd">
+                <div class="card-icon">➕</div>
+                <h3>Add New Project</h3>
+                <p>What did you build today?</p>
+            </div>
+        </div>
+        
+        <!-- Hidden upload form -->
+        <div class="upload-modal" id="adamModal">
+            <div class="modal-content">
+                <button class="close-btn">×</button>
+                <h3>🚀 Share Your Creation</h3>
+                <input type="text" placeholder="Project Title" class="input-field">
+                <textarea placeholder="Tell us about it..." class="input-field" rows="4"></textarea>
+                <div class="upload-area">
+                    <span>📁 Drop files or click to upload</span>
+                </div>
+                <button class="submit-btn">Launch! 🚀</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Wall -->
+    <section class="shared-wall">
+        <h2>🌟 The Innovation Wall</h2>
+        <p>Latest creations from both labs</p>
+        
+        <div class="wall-grid" id="wallGrid">
+            <!-- Items will be dynamically added here -->
+            <div class="wall-item lara-item">
+                <div class="item-preview">🎨</div>
+                <div class="item-info">
+                    <span class="creator">Lara</span>
+                    <span class="time">2 days ago</span>
+                </div>
+                <p>My first digital painting!</p>
+            </div>
+            
+            <div class="wall-item adam-item">
+                <div class="item-preview">🧱</div>
+                <div class="item-info">
+                    <span class="creator">Adam</span>
+                    <span class="time">3 days ago</span>
+                </div>
+                <p>LEGO spaceship with wings</p>
+            </div>
+            
+            <div class="wall-item lara-item">
+                <div class="item-preview">💻</div>
+                <div class="item-info">
+                    <span class="creator">Lara</span>
+                    <span class="time">1 week ago</span>
+                </div>
+                <p>Python game I made at school</p>
+            </div>
+            
+            <div class="wall-item adam-item">
+                <div class="item-preview">🌿</div>
+                <div class="item-info">
+                    <span class="creator">Adam</span>
+                    <span class="time">1 week ago</span>
+                </div>
+                <p>Found a cool bug in the garden</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitor Reactions -->
+    <section class="reactions">
+        <h2>🎉 Visitor Reactions</h2>
+        <div class="reaction-wall" id="reactionWall">
+            <div class="reaction-bubble">
+                <span class="reaction-emoji">🔥</span>
+                <span class="reaction-text">This is awesome!</span>
+                <span class="reaction-from">- Friend</span>
+            </div>
+        </div>
+        <div class="add-reaction">
+            <input type="text" id="reactionInput" placeholder="Leave a reaction..." maxlength="100">
+            <div class="emoji-picker">
+                <button data-emoji="🔥">🔥</button>
+                <button data-emoji="❤️">❤️</button>
+                <button data-emoji="🤯">🤯</button>
+                <button data-emoji="🎉">🎉</button>
+                <button data-emoji="👏">👏</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="kids-footer">
+        <p>Made with ❤️ by OzMo | Lara & Adam's Innovation Lab</p>
+        <p class="footer-note">Share your creations • Inspire others • Dream big</p>
+    </footer>
+
+    <script>
+    // Create floating particles
+    const particlesContainer = document.getElementById('particles');
+    for(let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 20 + 's';
+        p.style.animationDuration = (15 + Math.random() * 20) + 's';
+        particlesContainer.appendChild(p);
+    }
+
+    // Modal handling
+    ['lara', 'adam'].forEach(kid => {
+        const addBtn = document.getElementById(kid + 'Add');
+        const modal = document.getElementById(kid + 'Modal');
+        const closeBtn = modal.querySelector('.close-btn');
+        
+        addBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) modal.classList.remove('active');
+        });
+    });
+
+    // Emoji reactions
+    const reactionInput = document.getElementById('reactionInput');
+    const reactionWall = document.getElementById('reactionWall');
+    
+    document.querySelectorAll('.emoji-picker button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const emoji = btn.dataset.emoji;
+            addReaction(emoji, reactionInput.value || 'Awesome!');
+            reactionInput.value = '';
+        });
+    });
+    
+    reactionInput.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' && reactionInput.value.trim()) {
+            addReaction('💬', reactionInput.value.trim());
+            reactionInput.value = '';
+        }
+    });
+    
+    function addReaction(emoji, text) {
+        const bubble = document.createElement('div');
+        bubble.className = 'reaction-bubble new';
+        bubble.innerHTML = `
+            <span class="reaction-emoji">${emoji}</span>
+            <span class="reaction-text">${text}</span>
+            <span class="reaction-from">- Visitor</span>
+        `;
+        reactionWall.insertBefore(bubble, reactionWall.firstChild);
+        
+        // Remove 'new' class after animation
+        setTimeout(() => bubble.classList.remove('new'), 500);
+        
+        // Keep only last 20 reactions
+        while(reactionWall.children.length > 20) {
+            reactionWall.removeChild(reactionWall.lastChild);
+        }
+    }
+
+    // Card hover effects
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
+</body>
+</html>
