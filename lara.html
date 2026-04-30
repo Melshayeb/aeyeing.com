@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lara's Innovation Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-kids.css?v=2">
+    <style>
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #C44569;
+            --accent: #FF8EAB;
+            --bg-card: rgba(255,107,157,0.08);
+        }
+        .kid-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .lab-header {
+            text-align: center;
+            padding: 5rem 2rem 2rem;
+        }
+        .lab-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #FF6B9D, #FF8EAB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .lab-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+        }
+        .upload-btn {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B9D, #C44569);
+            color: #fff;
+            font-size: 2rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255,107,157,0.4);
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+        .upload-btn:hover { transform: scale(1.1); }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(255,107,157,0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255,107,157,0.2);
+        }
+        .project-card .preview {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .project-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        .project-card .date {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .add-card {
+            border: 2px dashed rgba(255,107,157,0.4);
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+        }
+        .add-card:hover {
+            background: rgba(255,107,157,0.05);
+        }
+        .add-card .plus {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Upload Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+        
+        .modal-box {
+            background: #1a1a2e;
+            border: 1px solid rgba(255,107,157,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+        .modal-box h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .modal-box input, .modal-box textarea, .modal-box select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+        .modal-box input:focus, .modal-box textarea:focus, .modal-box select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .modal-box input::placeholder, .modal-box textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        .drop-zone {
+            border: 2px dashed rgba(255,107,157,0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .drop-zone:hover {
+            border-color: var(--primary);
+            background: rgba(255,107,157,0.05);
+        }
+        .drop-zone span {
+            color: rgba(255,255,255,0.6);
+        }
+        .modal-box button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #FF6B9D, #C44569);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .no-download {
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <nav class="kids-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="back-link">← Back to Aeyeing</a>
+            <span class="lab-title">🎨 Lara's Lab</span>
+        </div>
+    </nav>
+
+    <header class="lab-header">
+        <h1>LARA'S LAB</h1>
+        <p>My creative space for art, code, and stories</p>
+    </header>
+
+    <section class="kid-section">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Art Projects -->
+            <a href="project.html?id=lara-art-1&kid=lara" class="project-card">
+                <div class="preview">🎨</div>
+                <h3>Sunset Dreams</h3>
+                <p>Digital painting of my favorite sunset</p>
+                <div class="date">April 2026</div>
+            </a>
+            
+            <a href="project.html?id=lara-code-1&kid=lara" class="project-card">
+                <div class="preview">💻</div>
+                <h3>My First Python Game</h3>
+                <p>A number guessing game I made at school</p>
+                <div class="date">March 2026</div>
+            </a>
+            
+            <a href="project.html?id=lara-story-1&kid=lara" class="project-card">
+                <div class="preview">📖</div>
+                <h3>The Robot Who Learned to Dream</h3>
+                <p>Short story about AI finding creativity</p>
+                <div class="date">February 2026</div>
+            </a>
+            
+            <a href="project.html?id=lara-art-2&kid=lara" class="project-card">
+                <div class="preview">🖌️</div>
+                <h3>Abstract Thoughts</h3>
+                <p>Experiment with shapes and colors</p>
+                <div class="date">January 2026</div>
+            </a>
+            
+            <!-- Add New -->
+            <div class="project-card add-card" id="addBtn">
+                <div class="plus">➕</div>
+                <h3>Add New Project</h3>
+                <p>Share something new!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Modal -->
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">×</button>
+            <h2>🚀 New Project</h2>
+            <form id="uploadForm">
+                <input type="text" placeholder="Project Title" required>
+                <select required>
+                    <option value="">Select Category</option>
+                    <option value="art">🎨 Art</option>
+                    <option value="code">💻 Code</option>
+                    <option value="writing">✍️ Writing</option>
+                    <option value="other">🌟 Other</option>
+                </select>
+                <textarea placeholder="Tell us about your project..." rows="3" required></textarea>
+                <div class="drop-zone" id="dropZone">
+                    <span>📁 Drop your files here or click to browse</span>
+                    <input type="file" id="fileInput" multiple style="display:none">
+                </div>
+                <button type="submit">🚀 Launch Project</button>
+            </form>
+            <p class="no-download">🔒 Only you can view your uploads</p>
+        </div>
+    </div>
+
+    <button class="upload-btn" id="fabBtn">+</button>
+
+    <footer class="kids-footer">
+        <p>Lara's Innovation Lab | Part of Aeyeing</p>
+    </footer>
+
+    <script>
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for(let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.animationDuration = (15 + Math.random() * 20) + 's';
+            p.style.background = ['#FF6B9D', '#FF8EAB', '#C44569'][Math.floor(Math.random()*3)];
+            particlesContainer.appendChild(p);
+        }
+
+        // Modal
+        const modal = document.getElementById('uploadModal');
+        const addBtn = document.getElementById('addBtn');
+        const fabBtn = document.getElementById('fabBtn');
+        const closeBtn = document.getElementById('modalClose');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        function openModal() { modal.classList.add('active'); }
+        function closeModal() { modal.classList.remove('active'); }
+
+        addBtn.addEventListener('click', openModal);
+        fabBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeModal();
+        });
+
+        // Drop zone
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#FF6B9D';
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '';
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '';
+            dropZone.querySelector('span').textContent = `📁 ${e.dataTransfer.files.length} file(s) selected`;
+        });
+        fileInput.addEventListener('change', () => {
+            dropZone.querySelector('span').textContent = `📁 ${fileInput.files.length} file(s) selected`;
+        });
+
+        // Form submit
+        document.getElementById('uploadForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🚀 Project uploaded! (Demo mode - backend needed for real uploads)');
+            closeModal();
+        });
+    </script>
+</body>
+</html>
