@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project View | Aeyeing Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-kids.css?v=2">
+    <link rel="stylesheet" href="style-kids.css?v=3">
     <style>
         :root {
             --lara-primary: #FF6B9D;
@@ -193,122 +193,70 @@
     </div>
 
     <script>
-        // Demo project data
-        const projects = {
-            'lara-art-1': {
-                kid: 'lara',
-                title: 'Sunset Dreams',
-                icon: '🎨',
-                category: 'Art',
-                date: 'April 2026',
-                description: 'This is my first digital painting. I used Procreate on my iPad to create this sunset landscape. The colors represent hope and dreams - the pink sky reminds me that every day ends beautifully no matter what happened.',
-                gallery: ['🖼️', '🌅'],
-                reactions: ['❤️', '🎨', '🔥']
-            },
-            'lara-code-1': {
-                kid: 'lara',
-                title: 'My First Python Game',
-                icon: '💻',
-                category: 'Code',
-                date: 'March 2026',
-                description: 'I created a number guessing game in Python! The computer picks a random number between 1 and 100, and you have to guess it. It tells you if your guess is too high or too low. I learned about loops, conditionals, and random numbers.',
-                gallery: ['💻', '🎮'],
-                reactions: ['🤯', '💻', '👏']
-            },
-            'lara-story-1': {
-                kid: 'lara',
-                title: 'The Robot Who Learned to Dream',
-                icon: '📖',
-                category: 'Writing',
-                date: 'February 2026',
-                description: 'A short story about a robot named Z-9 who discovers art and creativity. The robot was built to build cars but accidentally finds a paintbrush and realizes there is more to life than following instructions.',
-                gallery: ['📖', '🤖'],
-                reactions: ['❤️', '📖', '🤖']
-            },
-            'lara-art-2': {
-                kid: 'lara',
-                title: 'Abstract Thoughts',
-                icon: '🖌️',
-                category: 'Art',
-                date: 'January 2026',
-                description: 'An experiment with geometric shapes and bold colors. I wanted to express emotions without drawing recognizable objects. Each shape represents a different feeling.',
-                gallery: ['🎨', '🖌️'],
-                reactions: ['🎨', '🔥']
-            },
-            'adam-lego-1': {
-                kid: 'adam',
-                title: 'LEGO Mars Rover',
-                icon: '🚀',
-                category: 'LEGO',
-                date: 'April 2026',
-                description: 'I built a Mars rover that has wheels that can go over any surface! It has a camera arm, solar panels, and a little astronaut inside. I used 847 pieces and it took me 3 days.',
-                gallery: ['🧱', '🚀'],
-                reactions: ['🚀', '🔥', '👏']
-            },
-            'adam-game-1': {
-                kid: 'adam',
-                title: 'My Racing Game',
-                icon: '🎮',
-                category: 'Games',
-                date: 'March 2026',
-                description: 'I made a racing game where you drive a car and avoid obstacles. I designed 5 levels and each one gets harder. My friends think level 4 is really hard!',
-                gallery: ['🎮', '🏎️'],
-                reactions: ['🎮', '🔥']
-            },
-            'adam-nature-1': {
-                kid: 'adam',
-                title: 'Butterfly Collection',
-                icon: '🦋',
-                category: 'Nature',
-                date: 'February 2026',
-                description: 'I found 12 different butterflies in our garden and took photos of all of them. I looked up their names and wrote down what flowers they like. My favorite is the Monarch butterfly because it is orange and black.',
-                gallery: ['🦋', '🌿'],
-                reactions: ['🦋', '❤️', '🌿']
-            },
-            'adam-lego-2': {
-                kid: 'adam',
-                title: 'LEGO Castle',
-                icon: '🏰',
-                category: 'LEGO',
-                date: 'January 2026',
-                description: 'A big castle with 4 towers, a drawbridge that actually goes up and down, and a king and queen inside. There is even a dragon that guards the treasure room! It has 1200 pieces.',
-                gallery: ['🏰', '🐉'],
-                reactions: ['🏰', '👏']
-            }
+        const categoryIcons = {
+            art: '🎨', code: '💻', writing: '✍️',
+            lego: '🧱', games: '🎮', nature: '🌿',
+            other: '🌟'
         };
-        
-        // Load project
+
+        // Load projects from localStorage
+        function loadProject(kid, id) {
+            const key = kid + 'Projects';
+            const stored = localStorage.getItem(key);
+            if (!stored) return null;
+            const projects = JSON.parse(stored);
+            return projects.find(p => p.id === id);
+        }
+
+        // Load project from URL params
         const params = new URLSearchParams(window.location.search);
-        const projectId = params.get('id') || 'lara-art-1';
-        const project = projects[projectId] || projects['lara-art-1'];
-        const kid = project.kid;
+        const projectId = params.get('id') || 'lara-1';
+        const kid = params.get('kid') || (projectId.startsWith('lara') ? 'lara' : 'adam');
         
+        let project = loadProject(kid, projectId);
+        
+        // Fallback to demo data if not in localStorage
+        if (!project) {
+            const demos = {
+                'lara-1': { id: 'lara-1', title: 'Sunset Dreams', category: 'art', desc: 'Digital painting of my favorite sunset. The colors represent hope and dreams - the pink sky reminds me that every day ends beautifully no matter what happened.', date: 'April 2026' },
+                'lara-2': { id: 'lara-2', title: 'My First Python Game', category: 'code', desc: 'I created a number guessing game in Python! The computer picks a random number between 1 and 100, and you have to guess it. It tells you if your guess is too high or too low.', date: 'March 2026' },
+                'lara-3': { id: 'lara-3', title: 'The Robot Who Learned to Dream', category: 'writing', desc: 'A short story about a robot named Z-9 who discovers art and creativity. The robot was built to build cars but accidentally finds a paintbrush.', date: 'February 2026' },
+                'lara-4': { id: 'lara-4', title: 'Abstract Thoughts', category: 'art', desc: 'An experiment with geometric shapes and bold colors. I wanted to express emotions without drawing recognizable objects.', date: 'January 2026' },
+                'adam-1': { id: 'adam-1', title: 'LEGO Mars Rover', category: 'lego', desc: 'I built a Mars rover that has wheels that can go over any surface! It has a camera arm, solar panels, and a little astronaut inside.', date: 'April 2026' },
+                'adam-2': { id: 'adam-2', title: 'My Racing Game', category: 'games', desc: 'I made a racing game where you drive a car and avoid obstacles. I designed 5 levels and each one gets harder.', date: 'March 2026' },
+                'adam-3': { id: 'adam-3', title: 'Butterfly Collection', category: 'nature', desc: 'I found 12 different butterflies in our garden and took photos of all of them. My favorite is the Monarch butterfly.', date: 'February 2026' },
+                'adam-4': { id: 'adam-4', title: 'LEGO Castle', category: 'lego', desc: 'A big castle with 4 towers, a drawbridge that actually goes up and down, and a king and queen inside.', date: 'January 2026' }
+            };
+            project = demos[projectId] || demos['lara-1'];
+        }
+
         const page = document.getElementById('projectPage');
         page.className = `project-page ${kid}`;
         
         const backUrl = kid === 'lara' ? 'lara.html' : 'adam.html';
+        const kidLabel = kid === 'lara' ? '👧 Lara' : '👦 Adam';
+        const kidColor = kid === 'lara' ? '#FF6B9D' : '#4FACFE';
         
         page.innerHTML = `
             <div class="back-bar">
                 <a href="${backUrl}" class="back-link">← Back to Lab</a>
-                <span class="creator-badge">${kid === 'lara' ? '👧 Lara' : '👦 Adam'}'s Project</span>
+                <span class="creator-badge">${kidLabel}'s Project</span>
             </div>
             
             <div class="project-hero">
-                <div class="project-icon">${project.icon}</div>
+                <div class="project-icon">${categoryIcons[project.category] || '🌟'}</div>
                 <h1 class="project-title">${project.title}</h1>
-                <div class="project-meta">${project.category} • ${project.date}</div>
+                <div class="project-meta">${project.category.charAt(0).toUpperCase() + project.category.slice(1)} • ${project.date}</div>
             </div>
             
             <div class="project-content">
                 <h3>About This Project</h3>
-                <p>${project.description}</p>
+                <p>${project.desc}</p>
             </div>
             
             <div class="project-gallery">
-                ${project.gallery.map(item => `
-                    <div class="gallery-item">${item}</div>
-                `).join('')}
+                <div class="gallery-item">${categoryIcons[project.category] || '🌟'}</div>
+                <div class="gallery-item">🖼️</div>
             </div>
             
             <div class="view-only-banner">
@@ -344,7 +292,6 @@
                 bubble.innerHTML = `<span>${emoji}</span> <span style="font-size:0.8rem;color:rgba(255,255,255,0.6)">Visitor</span>`;
                 visitorReactions.appendChild(bubble);
                 
-                // Keep only last 20
                 while(visitorReactions.children.length > 20) {
                     visitorReactions.removeChild(visitorReactions.firstChild);
                 }

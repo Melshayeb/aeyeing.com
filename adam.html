@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam's Innovation Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-kids.css?v=2">
+    <link rel="stylesheet" href="style-kids.css?v=3">
     <style>
         :root {
             --primary: #4FACFE;
@@ -63,11 +63,38 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            position: relative;
         }
         .project-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(79,172,254,0.2);
+        }
+        .project-card .card-actions {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-card:hover .card-actions {
+            opacity: 1;
+        }
+        .card-actions button {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .card-actions button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
         }
         .project-card .preview {
             background: rgba(0,0,0,0.3);
@@ -83,6 +110,7 @@
             font-size: 1.2rem;
             color: var(--primary);
             margin-bottom: 0.3rem;
+            padding-right: 70px;
         }
         .project-card p {
             color: rgba(255,255,255,0.7);
@@ -112,7 +140,7 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Upload Modal */
+        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -186,6 +214,10 @@
             cursor: pointer;
             font-family: 'Nunito', sans-serif;
         }
+        .modal-box .delete-btn {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            margin-top: 0.5rem;
+        }
         .modal-close {
             position: absolute;
             top: 1rem; right: 1rem;
@@ -194,6 +226,37 @@
             color: rgba(255,255,255,0.6);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+        
+        .confirm-modal {
+            text-align: center;
+        }
+        .confirm-modal p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .confirm-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .confirm-buttons button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+        }
+        .confirm-yes {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #fff;
+        }
+        .confirm-no {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
         }
         
         .no-download {
@@ -221,66 +284,46 @@
 
     <section class="kid-section">
         <div class="projects-grid" id="projectsGrid">
-            <!-- LEGO Projects -->
-            <a href="project.html?id=adam-lego-1&kid=adam" class="project-card">
-                <div class="preview">🚀</div>
-                <h3>LEGO Mars Rover</h3>
-                <p>Spaceship that can drive on any surface</p>
-                <div class="date">April 2026</div>
-            </a>
-            
-            <a href="project.html?id=adam-game-1&kid=adam" class="project-card">
-                <div class="preview">🎮</div>
-                <h3>My Racing Game</h3>
-                <p>Car game I designed with obstacles</p>
-                <div class="date">March 2026</div>
-            </a>
-            
-            <a href="project.html?id=adam-nature-1&kid=adam" class="project-card">
-                <div class="preview">🦋</div>
-                <h3>Butterfly Collection</h3>
-                <p>Photos and facts about butterflies I found</p>
-                <div class="date">February 2026</div>
-            </a>
-            
-            <a href="project.html?id=adam-lego-2&kid=adam" class="project-card">
-                <div class="preview">🏰</div>
-                <h3>LEGO Castle</h3>
-                <p>Big castle with towers and a drawbridge</p>
-                <div class="date">January 2026</div>
-            </a>
-            
-            <!-- Add New -->
-            <div class="project-card add-card" id="addBtn">
-                <div class="plus">➕</div>
-                <h3>Add New Project</h3>
-                <p>Share something new!</p>
-            </div>
+            <!-- Projects loaded by JS -->
         </div>
     </section>
 
-    <!-- Upload Modal -->
-    <div class="modal-overlay" id="uploadModal">
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="projectModal">
         <div class="modal-box">
             <button class="modal-close" id="modalClose">×</button>
-            <h2>🚀 New Project</h2>
-            <form id="uploadForm">
-                <input type="text" placeholder="Project Title" required>
-                <select required>
+            <h2 id="modalTitle">🚀 New Project</h2>
+            <form id="projectForm">
+                <input type="hidden" id="projectId">
+                <input type="text" id="projectTitle" placeholder="Project Title" required>
+                <select id="projectCategory" required>
                     <option value="">Select Category</option>
                     <option value="lego">🧱 LEGO</option>
                     <option value="games">🎮 Games</option>
                     <option value="nature">🌿 Nature</option>
                     <option value="other">🌟 Other</option>
                 </select>
-                <textarea placeholder="Tell us about your project..." rows="3" required></textarea>
+                <textarea id="projectDesc" placeholder="Tell us about your project..." rows="3" required></textarea>
                 <div class="drop-zone" id="dropZone">
                     <span>📁 Drop your files here or click to browse</span>
                     <input type="file" id="fileInput" multiple style="display:none">
                 </div>
-                <button type="submit">🚀 Launch Project</button>
+                <button type="submit" id="submitBtn">🚀 Launch Project</button>
+                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Project</button>
             </form>
             <p class="no-download">🔒 Only you can view your uploads</p>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box confirm-modal">
+            <h2>🗑️ Delete Project?</h2>
+            <p>Are you sure? This cannot be undone!</p>
+            <div class="confirm-buttons">
+                <button class="confirm-no" id="confirmNo">Keep It</button>
+                <button class="confirm-yes" id="confirmYes">Delete Forever</button>
+            </div>
         </div>
     </div>
 
@@ -291,38 +334,178 @@
     </footer>
 
     <script>
-        // Particles
-        const particlesContainer = document.getElementById('particles');
-        for(let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top = Math.random() * 100 + '%';
-            p.style.animationDelay = Math.random() * 20 + 's';
-            p.style.animationDuration = (15 + Math.random() * 20) + 's';
-            p.style.background = ['#4FACFE', '#00F2FE', '#43CBFF'][Math.floor(Math.random()*3)];
-            particlesContainer.appendChild(p);
+        // Icons for categories
+        const categoryIcons = {
+            lego: '🧱', games: '🎮', nature: '🌿', other: '🌟'
+        };
+
+        // Default projects
+        const defaultProjects = [
+            { id: 'adam-1', title: 'LEGO Mars Rover', category: 'lego', desc: 'Spaceship that can drive on any surface', date: 'April 2026' },
+            { id: 'adam-2', title: 'My Racing Game', category: 'games', desc: 'Car game I designed with obstacles', date: 'March 2026' },
+            { id: 'adam-3', title: 'Butterfly Collection', category: 'nature', desc: 'Photos and facts about butterflies I found', date: 'February 2026' },
+            { id: 'adam-4', title: 'LEGO Castle', category: 'lego', desc: 'Big castle with towers and a drawbridge', date: 'January 2026' }
+        ];
+
+        // Load from localStorage or use defaults
+        function loadProjects() {
+            const stored = localStorage.getItem('adamProjects');
+            if (stored) return JSON.parse(stored);
+            localStorage.setItem('adamProjects', JSON.stringify(defaultProjects));
+            return defaultProjects;
         }
 
-        // Modal
-        const modal = document.getElementById('uploadModal');
-        const addBtn = document.getElementById('addBtn');
+        function saveProjects(projects) {
+            localStorage.setItem('adamProjects', JSON.stringify(projects));
+        }
+
+        let projects = loadProjects();
+        let editingId = null;
+        let deletingId = null;
+
+        // Render projects
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = projects.map(p => `
+                <div class="project-card" data-id="${p.id}">
+                    <div class="card-actions">
+                        <button onclick="event.stopPropagation(); editProject('${p.id}')" title="Edit">✏️</button>
+                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
+                    </div>
+                    <a href="project.html?id=${p.id}&kid=adam" style="text-decoration:none;color:inherit;display:block;">
+                        <div class="preview">${categoryIcons[p.category] || '🌟'}</div>
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <div class="date">${p.date}</div>
+                    </a>
+                </div>
+            `).join('');
+
+            // Add "Add New" card
+            const addCard = document.createElement('div');
+            addCard.className = 'project-card add-card';
+            addCard.id = 'addBtn';
+            addCard.innerHTML = `
+                <div class="plus">➕</div>
+                <h3>Add New Project</h3>
+                <p>Share something new!</p>
+            `;
+            grid.appendChild(addCard);
+
+            // Re-attach event
+            document.getElementById('addBtn').addEventListener('click', () => openModal());
+        }
+
+        // Modal handling
+        const modal = document.getElementById('projectModal');
+        const confirmModal = document.getElementById('confirmModal');
+        const modalClose = document.getElementById('modalClose');
         const fabBtn = document.getElementById('fabBtn');
-        const closeBtn = document.getElementById('modalClose');
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
+        const form = document.getElementById('projectForm');
+        const deleteBtn = document.getElementById('deleteBtn');
 
-        function openModal() { modal.classList.add('active'); }
-        function closeModal() { modal.classList.remove('active'); }
+        function openModal(editId = null) {
+            editingId = editId;
+            const title = document.getElementById('modalTitle');
+            const submitBtn = document.getElementById('submitBtn');
 
-        addBtn.addEventListener('click', openModal);
-        fabBtn.addEventListener('click', openModal);
-        closeBtn.addEventListener('click', closeModal);
+            if (editId) {
+                const p = projects.find(x => x.id === editId);
+                document.getElementById('projectId').value = p.id;
+                document.getElementById('projectTitle').value = p.title;
+                document.getElementById('projectCategory').value = p.category;
+                document.getElementById('projectDesc').value = p.desc;
+                title.textContent = '✏️ Edit Project';
+                submitBtn.textContent = '💾 Save Changes';
+                deleteBtn.style.display = 'block';
+            } else {
+                form.reset();
+                document.getElementById('projectId').value = '';
+                title.textContent = '🚀 New Project';
+                submitBtn.textContent = '🚀 Launch Project';
+                deleteBtn.style.display = 'none';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeModalFn() {
+            modal.classList.remove('active');
+            editingId = null;
+        }
+
+        modalClose.addEventListener('click', closeModalFn);
+        fabBtn.addEventListener('click', () => openModal());
         modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
+            if(e.target === modal) closeModalFn();
+        });
+
+        // Edit
+        window.editProject = function(id) {
+            openModal(id);
+        };
+
+        // Delete
+        window.confirmDelete = function(id) {
+            deletingId = id;
+            confirmModal.classList.add('active');
+        };
+
+        document.getElementById('confirmNo').addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+            deletingId = null;
+        });
+
+        document.getElementById('confirmYes').addEventListener('click', () => {
+            if (deletingId) {
+                projects = projects.filter(p => p.id !== deletingId);
+                saveProjects(projects);
+                renderProjects();
+                deletingId = null;
+            }
+            confirmModal.classList.remove('active');
+            closeModalFn();
+        });
+
+        confirmModal.addEventListener('click', (e) => {
+            if(e.target === confirmModal) confirmModal.classList.remove('active');
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            if (editingId) {
+                confirmModal.classList.add('active');
+                deletingId = editingId;
+            }
+        });
+
+        // Form submit
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('projectTitle').value;
+            const category = document.getElementById('projectCategory').value;
+            const desc = document.getElementById('projectDesc').value;
+
+            if (editingId) {
+                const idx = projects.findIndex(p => p.id === editingId);
+                projects[idx] = { ...projects[idx], title, category, desc };
+            } else {
+                const id = 'adam-' + Date.now();
+                projects.unshift({
+                    id, title, category, desc,
+                    date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+                });
+            }
+
+            saveProjects(projects);
+            renderProjects();
+            closeModalFn();
         });
 
         // Drop zone
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -340,12 +523,21 @@
             dropZone.querySelector('span').textContent = `📁 ${fileInput.files.length} file(s) selected`;
         });
 
-        // Form submit
-        document.getElementById('uploadForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('🚀 Project uploaded! (Demo mode - backend needed for real uploads)');
-            closeModal();
-        });
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for(let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.animationDuration = (15 + Math.random() * 20) + 's';
+            p.style.background = ['#4FACFE', '#00F2FE', '#43CBFF'][Math.floor(Math.random()*3)];
+            particlesContainer.appendChild(p);
+        }
+
+        // Initial render
+        renderProjects();
     </script>
 </body>
 </html>
