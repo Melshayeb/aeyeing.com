@@ -1,0 +1,56 @@
+﻿diff --git a/index.html b/index.html
+index 36457a8..d43cbd8 100644
+--- a/index.html
++++ b/index.html
+@@ -648,24 +648,20 @@
+                     currentColorIndex = 0;
+                     ball.color = colors[0];
+                 }
+-                
+-                // Don't update ball during victory
+-                return;
+-            }
+-            
+-            // Text glow
+-            const centerX = canvas.width / 2;
+-            const textZoneWidth = isMobile ? 150 : 300;
+-            if(Math.abs(ball.x - centerX) < textZoneWidth / 2) {
+-                subtitle.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
+-                subtitle.style.color = ball.color;
+-                h1.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
+-                h1.style.color = ball.color;
+             } else {
+-                subtitle.style.textShadow = '';
+-                subtitle.style.color = '';
+-                h1.style.textShadow = '';
+-                h1.style.color = '';
++                const centerX = canvas.width / 2;
++                const textZoneWidth = isMobile ? 150 : 300;
++                if(Math.abs(ball.x - centerX) < textZoneWidth / 2) {
++                    subtitle.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
++                    subtitle.style.color = ball.color;
++                    h1.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
++                    h1.style.color = ball.color;
++                } else {
++                    subtitle.style.textShadow = '';
++                    subtitle.style.color = '';
++                    h1.style.textShadow = '';
++                    h1.style.color = '';
++                }
+             }
+         }
+         
+@@ -698,6 +694,13 @@
+             ctx.globalAlpha = 1;
+             
+             drawAIEye(ball.x, ball.y, config.ballSize, blinkState);
++            
++            // Draw victory overlay on top of everything
++            if(victoryActive) {
++                updateParticles();
++                drawParticles();
++                drawVictoryQuote();
++            }
+         }
+         
+         function gameLoop(timestamp) {
