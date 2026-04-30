@@ -14,22 +14,23 @@ body {
 }
 
 /* ============================
-   NAVIGATION
+   NAVIGATION - AI THEMED
    ============================ */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(30, 58, 138, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(20, 184, 166, 0.2);
     z-index: 1000;
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(30, 58, 138, 1);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(15, 23, 42, 0.98);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.15);
 }
 
 .nav-container {
@@ -45,18 +46,30 @@ body {
 .nav-logo-text {
     color: #FFFFFF;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #14B8A6, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
 }
 
-.nav-logo-text:hover {
-    color: #14B8A6;
+.nav-logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #14B8A6, #3B82F6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
-/* Hide old logo styles */
-.nav-logo, .nav-logo-img {
-    display: none;
+.nav-logo-text:hover::after {
+    transform: scaleX(1);
 }
 
 .nav-menu {
@@ -66,22 +79,23 @@ body {
 }
 
 .nav-link {
-    color: #FFFFFF;
+    color: #CBD5E1;
     text-decoration: none;
     font-weight: 400;
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: all 0.3s;
     position: relative;
+    padding: 0.5rem 0;
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background: #14B8A6;
+    background: linear-gradient(90deg, #14B8A6, #3B82F6);
     transition: width 0.3s;
 }
 
@@ -91,6 +105,15 @@ body {
 
 .nav-link:hover {
     color: #14B8A6;
+}
+
+/* Active link state */
+.nav-link.active {
+    color: #14B8A6;
+}
+
+.nav-link.active::after {
+    width: 100%;
 }
 
 /* Mobile Hamburger */
@@ -129,7 +152,7 @@ body {
    HEADER (HERO) - ORIGINAL BACKGROUND KEPT
    ============================ */
 header.hero {
-    background: url('https://source.unsplash.com/random/1600x900?technology') no-repeat center/cover;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #0f766e 60%, #14b8a6 100%);
     height: 60vh;
     min-height: 400px;
     display: flex;
@@ -139,8 +162,10 @@ header.hero {
     text-align: center;
     color: #FFFFFF;
     position: relative;
+    overflow: hidden;
 }
 
+/* Animated grid overlay for AI tech feel */
 header.hero::before {
     content: '';
     position: absolute;
@@ -148,7 +173,28 @@ header.hero::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(30, 58, 138, 0.7);
+    background-image: 
+        linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 184, 166, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Floating particles effect */
+header.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.2) 0%, transparent 50%);
 }
 
 header.hero .title-container {
@@ -290,19 +336,21 @@ footer {
     .nav-menu {
         position: fixed;
         top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(30, 58, 138, 0.98);
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 60px);
+        background: rgba(15, 23, 42, 0.98);
+        border-left: 1px solid rgba(20, 184, 166, 0.2);
         flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
+        align-items: flex-start;
+        padding: 2rem;
         gap: 1.5rem;
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
+        transition: right 0.3s ease;
+        backdrop-filter: blur(12px);
     }
     
     .nav-menu.active {
-        transform: translateY(0);
+        right: 0;
     }
     
     .nav-link {
