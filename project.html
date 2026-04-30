@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project View | Aeyeing Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-kids.css?v=3">
+    <link rel="stylesheet" href="style-kids.css?v=4">
     <style>
         :root {
             --lara-primary: #FF6B9D;
@@ -13,27 +13,27 @@
             --adam-primary: #4FACFE;
             --adam-secondary: #00F2FE;
         }
-        
+
         body {
             background: #0f0f23;
             color: #fff;
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
         }
-        
+
         .project-page {
             max-width: 900px;
             margin: 0 auto;
             padding: 5rem 2rem 2rem;
         }
-        
+
         .back-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
         }
-        
+
         .back-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
@@ -41,7 +41,7 @@
             transition: color 0.3s;
         }
         .back-link:hover { color: #fff; }
-        
+
         .creator-badge {
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -50,7 +50,7 @@
         }
         .lara .creator-badge { background: rgba(255,107,157,0.2); color: #FF6B9D; }
         .adam .creator-badge { background: rgba(79,172,254,0.2); color: #4FACFE; }
-        
+
         .project-hero {
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
@@ -59,26 +59,34 @@
             margin-bottom: 2rem;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        
+
+        .project-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
         .project-icon {
             font-size: 5rem;
             margin-bottom: 1rem;
         }
-        
+
         .project-title {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
         }
-        
+
         .lara .project-title { color: var(--lara-primary); }
         .adam .project-title { color: var(--adam-primary); }
-        
+
         .project-meta {
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
-        
+
         .project-content {
             background: rgba(255,255,255,0.03);
             border-radius: 16px;
@@ -86,26 +94,26 @@
             margin-bottom: 2rem;
             border: 1px solid rgba(255,255,255,0.08);
         }
-        
+
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: rgba(255,255,255,0.9);
         }
-        
+
         .project-content p {
             color: rgba(255,255,255,0.7);
             line-height: 1.8;
             font-size: 1.05rem;
         }
-        
+
         .project-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
         }
-        
+
         .gallery-item {
             background: rgba(0,0,0,0.3);
             border-radius: 12px;
@@ -115,8 +123,13 @@
             justify-content: center;
             font-size: 3rem;
             border: 2px solid rgba(255,255,255,0.1);
+            overflow: hidden;
         }
-        
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
         .view-only-banner {
             background: rgba(255,255,255,0.05);
             border: 1px dashed rgba(255,255,255,0.2);
@@ -125,24 +138,24 @@
             text-align: center;
             margin-bottom: 2rem;
         }
-        
+
         .view-only-banner p {
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
-        
+
         .view-only-banner .lock {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .reactions {
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
             margin-top: 2rem;
         }
-        
+
         .reaction-btn {
             background: rgba(255,255,255,0.1);
             border: none;
@@ -156,13 +169,13 @@
             transform: scale(1.2);
             background: rgba(255,255,255,0.2);
         }
-        
+
         .visitor-reactions {
             margin-top: 1.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .reaction-bubble {
             display: inline-flex;
             align-items: center;
@@ -173,13 +186,13 @@
             margin: 0.3rem;
             animation: popIn 0.3s ease;
         }
-        
+
         @keyframes popIn {
             0% { transform: scale(0); }
             80% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
-        
+
         @media (max-width: 768px) {
             .project-hero { padding: 2rem 1.5rem; }
             .project-title { font-size: 1.8rem; }
@@ -199,7 +212,6 @@
             other: '🌟'
         };
 
-        // Load projects from localStorage
         function loadProject(kid, id) {
             const key = kid + 'Projects';
             const stored = localStorage.getItem(key);
@@ -208,62 +220,63 @@
             return projects.find(p => p.id === id);
         }
 
-        // Load project from URL params
         const params = new URLSearchParams(window.location.search);
         const projectId = params.get('id') || 'lara-1';
         const kid = params.get('kid') || (projectId.startsWith('lara') ? 'lara' : 'adam');
-        
+
         let project = loadProject(kid, projectId);
-        
-        // Fallback to demo data if not in localStorage
+
         if (!project) {
             const demos = {
-                'lara-1': { id: 'lara-1', title: 'Sunset Dreams', category: 'art', desc: 'Digital painting of my favorite sunset. The colors represent hope and dreams - the pink sky reminds me that every day ends beautifully no matter what happened.', date: 'April 2026' },
-                'lara-2': { id: 'lara-2', title: 'My First Python Game', category: 'code', desc: 'I created a number guessing game in Python! The computer picks a random number between 1 and 100, and you have to guess it. It tells you if your guess is too high or too low.', date: 'March 2026' },
-                'lara-3': { id: 'lara-3', title: 'The Robot Who Learned to Dream', category: 'writing', desc: 'A short story about a robot named Z-9 who discovers art and creativity. The robot was built to build cars but accidentally finds a paintbrush.', date: 'February 2026' },
-                'lara-4': { id: 'lara-4', title: 'Abstract Thoughts', category: 'art', desc: 'An experiment with geometric shapes and bold colors. I wanted to express emotions without drawing recognizable objects.', date: 'January 2026' },
-                'adam-1': { id: 'adam-1', title: 'LEGO Mars Rover', category: 'lego', desc: 'I built a Mars rover that has wheels that can go over any surface! It has a camera arm, solar panels, and a little astronaut inside.', date: 'April 2026' },
-                'adam-2': { id: 'adam-2', title: 'My Racing Game', category: 'games', desc: 'I made a racing game where you drive a car and avoid obstacles. I designed 5 levels and each one gets harder.', date: 'March 2026' },
-                'adam-3': { id: 'adam-3', title: 'Butterfly Collection', category: 'nature', desc: 'I found 12 different butterflies in our garden and took photos of all of them. My favorite is the Monarch butterfly.', date: 'February 2026' },
-                'adam-4': { id: 'adam-4', title: 'LEGO Castle', category: 'lego', desc: 'A big castle with 4 towers, a drawbridge that actually goes up and down, and a king and queen inside.', date: 'January 2026' }
+                'lara-1': { id: 'lara-1', title: 'Sunset Dreams', category: 'art', desc: 'Digital painting of my favorite sunset. The colors represent hope and dreams - the pink sky reminds me that every day ends beautifully no matter what happened.', date: 'April 2026', image: null },
+                'lara-2': { id: 'lara-2', title: 'My First Python Game', category: 'code', desc: 'I created a number guessing game in Python! The computer picks a random number between 1 and 100, and you have to guess it.', date: 'March 2026', image: null },
+                'lara-3': { id: 'lara-3', title: 'The Robot Who Learned to Dream', category: 'writing', desc: 'A short story about a robot named Z-9 who discovers art and creativity.', date: 'February 2026', image: null },
+                'lara-4': { id: 'lara-4', title: 'Abstract Thoughts', category: 'art', desc: 'An experiment with geometric shapes and bold colors.', date: 'January 2026', image: null },
+                'adam-1': { id: 'adam-1', title: 'LEGO Mars Rover', category: 'lego', desc: 'I built a Mars rover that has wheels that can go over any surface!', date: 'April 2026', image: null },
+                'adam-2': { id: 'adam-2', title: 'My Racing Game', category: 'games', desc: 'I made a racing game where you drive a car and avoid obstacles.', date: 'March 2026', image: null },
+                'adam-3': { id: 'adam-3', title: 'Butterfly Collection', category: 'nature', desc: 'I found 12 different butterflies in our garden!', date: 'February 2026', image: null },
+                'adam-4': { id: 'adam-4', title: 'LEGO Castle', category: 'lego', desc: 'A big castle with 4 towers, a drawbridge that actually goes up and down!', date: 'January 2026', image: null }
             };
             project = demos[projectId] || demos['lara-1'];
         }
 
         const page = document.getElementById('projectPage');
         page.className = `project-page ${kid}`;
-        
+
         const backUrl = kid === 'lara' ? 'lara.html' : 'adam.html';
         const kidLabel = kid === 'lara' ? '👧 Lara' : '👦 Adam';
-        const kidColor = kid === 'lara' ? '#FF6B9D' : '#4FACFE';
-        
+
+        const imageHtml = project.image
+            ? `<img src="${project.image}" alt="${project.title}" class="project-image">`
+            : `<div class="project-icon">${categoryIcons[project.category] || '🌟'}</div>`;
+
         page.innerHTML = `
             <div class="back-bar">
                 <a href="${backUrl}" class="back-link">← Back to Lab</a>
                 <span class="creator-badge">${kidLabel}'s Project</span>
             </div>
-            
+
             <div class="project-hero">
-                <div class="project-icon">${categoryIcons[project.category] || '🌟'}</div>
+                ${imageHtml}
                 <h1 class="project-title">${project.title}</h1>
                 <div class="project-meta">${project.category.charAt(0).toUpperCase() + project.category.slice(1)} • ${project.date}</div>
             </div>
-            
+
             <div class="project-content">
                 <h3>About This Project</h3>
                 <p>${project.desc}</p>
             </div>
-            
+
             <div class="project-gallery">
-                <div class="gallery-item">${categoryIcons[project.category] || '🌟'}</div>
+                <div class="gallery-item">${project.image ? `<img src="${project.image}" alt="${project.title}">` : (categoryIcons[project.category] || '🌟')}</div>
                 <div class="gallery-item">🖼️</div>
             </div>
-            
+
             <div class="view-only-banner">
                 <div class="lock">🔒</div>
                 <p>This project is for viewing only. Downloads are disabled to protect the creator's work.</p>
             </div>
-            
+
             <div class="project-content">
                 <h3>Leave a Reaction</h3>
                 <div class="reactions" id="reactionButtons">
@@ -274,16 +287,15 @@
                     <button class="reaction-btn" data-emoji="🤯">🤯</button>
                     <button class="reaction-btn" data-emoji="💯">💯</button>
                 </div>
-                
+
                 <div class="visitor-reactions" id="visitorReactions">
                     <!-- Visitor reactions appear here -->
                 </div>
             </div>
         `;
-        
-        // Handle reactions
+
         const visitorReactions = document.getElementById('visitorReactions');
-        
+
         document.querySelectorAll('.reaction-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const emoji = btn.dataset.emoji;
@@ -291,7 +303,7 @@
                 bubble.className = 'reaction-bubble';
                 bubble.innerHTML = `<span>${emoji}</span> <span style="font-size:0.8rem;color:rgba(255,255,255,0.6)">Visitor</span>`;
                 visitorReactions.appendChild(bubble);
-                
+
                 while(visitorReactions.children.length > 20) {
                     visitorReactions.removeChild(visitorReactions.firstChild);
                 }

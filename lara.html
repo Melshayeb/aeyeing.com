@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lara's Innovation Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-kids.css?v=3">
+    <link rel="stylesheet" href="style-kids.css?v=4">
     <style>
         :root {
             --primary: #FF6B9D;
@@ -45,14 +45,78 @@
             transition: transform 0.3s;
         }
         .upload-btn:hover { transform: scale(1.1); }
-        
+
+        /* Pin button */
+        .pin-btn {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            opacity: 0;
+        }
+        .project-card:hover .pin-btn {
+            opacity: 1;
+        }
+        .pin-btn.pinned {
+            opacity: 1 !important;
+            background: var(--primary);
+            color: #fff;
+        }
+        .project-card.pinned {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255,107,157,0.3);
+            order: -1;
+        }
+
+        /* Drag handle */
+        .drag-handle {
+            position: absolute;
+            top: 50%; left: 0.5rem;
+            transform: translateY(-50%);
+            width: 20px; height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+            cursor: grab;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-card:hover .drag-handle {
+            opacity: 0.5;
+        }
+        .drag-handle span {
+            width: 12px; height: 2px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 1px;
+        }
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        .project-card.dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+        .project-card.drag-over {
+            border-color: var(--primary);
+            transform: translateY(5px);
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
             padding: 2rem 0;
         }
-        
+
         .project-card {
             background: var(--bg-card);
             border: 2px solid rgba(255,107,157,0.2);
@@ -105,12 +169,19 @@
             justify-content: center;
             font-size: 4rem;
             margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .project-card .preview img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
         .project-card h3 {
             font-size: 1.2rem;
             color: var(--primary);
             margin-bottom: 0.3rem;
             padding-right: 70px;
+            padding-left: 20px;
         }
         .project-card p {
             color: rgba(255,255,255,0.7);
@@ -121,7 +192,7 @@
             font-size: 0.8rem;
             margin-top: 0.5rem;
         }
-        
+
         .add-card {
             border: 2px dashed rgba(255,107,157,0.4);
             background: transparent;
@@ -139,7 +210,7 @@
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-        
+
         /* Modal */
         .modal-overlay {
             position: fixed;
@@ -153,7 +224,7 @@
             padding: 1rem;
         }
         .modal-overlay.active { display: flex; }
-        
+
         .modal-box {
             background: #1a1a2e;
             border: 1px solid rgba(255,107,157,0.3);
@@ -202,6 +273,18 @@
         .drop-zone span {
             color: rgba(255,255,255,0.6);
         }
+        .drop-zone.has-image {
+            padding: 0;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .drop-zone.has-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
         .modal-box button[type="submit"] {
             width: 100%;
             padding: 1rem;
@@ -227,7 +310,7 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         .confirm-modal {
             text-align: center;
         }
@@ -258,7 +341,7 @@
             background: rgba(255,255,255,0.1);
             color: #fff;
         }
-        
+
         .no-download {
             text-align: center;
             color: rgba(255,255,255,0.5);
@@ -269,7 +352,7 @@
 </head>
 <body>
     <div class="particles" id="particles"></div>
-    
+
     <nav class="kids-nav">
         <div class="nav-inner">
             <a href="index.html" class="back-link">← Back to Aeyeing</a>
@@ -305,8 +388,9 @@
                 </select>
                 <textarea id="projectDesc" placeholder="Tell us about your project..." rows="3" required></textarea>
                 <div class="drop-zone" id="dropZone">
-                    <span>📁 Drop your files here or click to browse</span>
-                    <input type="file" id="fileInput" multiple style="display:none">
+                    <span id="dropText">📁 Drop your files here or click to browse</span>
+                    <img id="dropPreview" style="display:none">
+                    <input type="file" id="fileInput" accept="image/*" style="display:none">
                 </div>
                 <button type="submit" id="submitBtn">🚀 Launch Project</button>
                 <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Project</button>
@@ -334,20 +418,17 @@
     </footer>
 
     <script>
-        // Icons for categories
         const categoryIcons = {
             art: '🎨', code: '💻', writing: '✍️', other: '🌟'
         };
 
-        // Default projects
         const defaultProjects = [
-            { id: 'lara-1', title: 'Sunset Dreams', category: 'art', desc: 'Digital painting of my favorite sunset', date: 'April 2026' },
-            { id: 'lara-2', title: 'My First Python Game', category: 'code', desc: 'A number guessing game I made at school', date: 'March 2026' },
-            { id: 'lara-3', title: 'The Robot Who Learned to Dream', category: 'writing', desc: 'Short story about AI finding creativity', date: 'February 2026' },
-            { id: 'lara-4', title: 'Abstract Thoughts', category: 'art', desc: 'Experiment with shapes and colors', date: 'January 2026' }
+            { id: 'lara-1', title: 'Sunset Dreams', category: 'art', desc: 'Digital painting of my favorite sunset', date: 'April 2026', pinned: true, image: null },
+            { id: 'lara-2', title: 'My First Python Game', category: 'code', desc: 'A number guessing game I made at school', date: 'March 2026', pinned: false, image: null },
+            { id: 'lara-3', title: 'The Robot Who Learned to Dream', category: 'writing', desc: 'Short story about AI finding creativity', date: 'February 2026', pinned: false, image: null },
+            { id: 'lara-4', title: 'Abstract Thoughts', category: 'art', desc: 'Experiment with shapes and colors', date: 'January 2026', pinned: false, image: null }
         ];
 
-        // Load from localStorage or use defaults
         function loadProjects() {
             const stored = localStorage.getItem('laraProjects');
             if (stored) return JSON.parse(stored);
@@ -362,18 +443,34 @@
         let projects = loadProjects();
         let editingId = null;
         let deletingId = null;
+        let draggedItem = null;
+        let currentImage = null;
 
-        // Render projects
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map(p => `
-                <div class="project-card" data-id="${p.id}">
+            // Sort: pinned first, then by original order
+            const sorted = [...projects].sort((a, b) => {
+                if (a.pinned && !b.pinned) return -1;
+                if (!a.pinned && b.pinned) return 1;
+                return 0;
+            });
+
+            grid.innerHTML = sorted.map((p, index) => `
+                <div class="project-card ${p.pinned ? 'pinned' : ''}" data-id="${p.id}" draggable="true">
+                    <button class="pin-btn ${p.pinned ? 'pinned' : ''}" onclick="event.stopPropagation(); togglePin('${p.id}')" title="${p.pinned ? 'Unpin' : 'Pin to top'}">
+                        ${p.pinned ? '📌' : '📍'}
+                    </button>
+                    <div class="drag-handle" title="Drag to reorder">
+                        <span></span><span></span><span></span>
+                    </div>
                     <div class="card-actions">
                         <button onclick="event.stopPropagation(); editProject('${p.id}')" title="Edit">✏️</button>
                         <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
                     </div>
                     <a href="project.html?id=${p.id}&kid=lara" style="text-decoration:none;color:inherit;display:block;">
-                        <div class="preview">${categoryIcons[p.category] || '🌟'}</div>
+                        <div class="preview">
+                            ${p.image ? `<img src="${p.image}" alt="${p.title}">` : (categoryIcons[p.category] || '🌟')}
+                        </div>
                         <h3>${p.title}</h3>
                         <p>${p.desc}</p>
                         <div class="date">${p.date}</div>
@@ -391,12 +488,82 @@
                 <p>Share something new!</p>
             `;
             grid.appendChild(addCard);
-
-            // Re-attach event
             document.getElementById('addBtn').addEventListener('click', () => openModal());
+
+            // Setup drag and drop
+            setupDragAndDrop();
         }
 
-        // Modal handling
+        function setupDragAndDrop() {
+            const cards = document.querySelectorAll('.project-card[data-id]');
+            cards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('drop', handleDrop);
+                card.addEventListener('dragenter', handleDragEnter);
+                card.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedItem = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('drag-over'));
+            draggedItem = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDragEnter(e) {
+            if (this !== draggedItem && this.dataset.id) {
+                this.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+
+            if (this === draggedItem || !this.dataset.id || !draggedItem) return;
+
+            const draggedId = draggedItem.dataset.id;
+            const targetId = this.dataset.id;
+
+            const draggedIndex = projects.findIndex(p => p.id === draggedId);
+            const targetIndex = projects.findIndex(p => p.id === targetId);
+
+            if (draggedIndex > -1 && targetIndex > -1) {
+                const [removed] = projects.splice(draggedIndex, 1);
+                projects.splice(targetIndex, 0, removed);
+                saveProjects(projects);
+                renderProjects();
+            }
+        }
+
+        // Pin toggle
+        window.togglePin = function(id) {
+            const idx = projects.findIndex(p => p.id === id);
+            if (idx > -1) {
+                projects[idx].pinned = !projects[idx].pinned;
+                saveProjects(projects);
+                renderProjects();
+            }
+        };
+
+        // Modal
         const modal = document.getElementById('projectModal');
         const confirmModal = document.getElementById('confirmModal');
         const modalClose = document.getElementById('modalClose');
@@ -406,8 +573,17 @@
 
         function openModal(editId = null) {
             editingId = editId;
+            currentImage = null;
             const title = document.getElementById('modalTitle');
             const submitBtn = document.getElementById('submitBtn');
+            const dropZone = document.getElementById('dropZone');
+            const dropText = document.getElementById('dropText');
+            const dropPreview = document.getElementById('dropPreview');
+
+            dropZone.classList.remove('has-image');
+            dropText.style.display = 'block';
+            dropPreview.style.display = 'none';
+            dropPreview.src = '';
 
             if (editId) {
                 const p = projects.find(x => x.id === editId);
@@ -415,6 +591,13 @@
                 document.getElementById('projectTitle').value = p.title;
                 document.getElementById('projectCategory').value = p.category;
                 document.getElementById('projectDesc').value = p.desc;
+                if (p.image) {
+                    currentImage = p.image;
+                    dropZone.classList.add('has-image');
+                    dropText.style.display = 'none';
+                    dropPreview.style.display = 'block';
+                    dropPreview.src = p.image;
+                }
                 title.textContent = '✏️ Edit Project';
                 submitBtn.textContent = '💾 Save Changes';
                 deleteBtn.style.display = 'block';
@@ -432,6 +615,7 @@
         function closeModalFn() {
             modal.classList.remove('active');
             editingId = null;
+            currentImage = null;
         }
 
         modalClose.addEventListener('click', closeModalFn);
@@ -440,12 +624,10 @@
             if(e.target === modal) closeModalFn();
         });
 
-        // Edit
         window.editProject = function(id) {
             openModal(id);
         };
 
-        // Delete
         window.confirmDelete = function(id) {
             deletingId = id;
             confirmModal.classList.add('active');
@@ -478,33 +660,24 @@
             }
         });
 
-        // Form submit
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const title = document.getElementById('projectTitle').value;
-            const category = document.getElementById('projectCategory').value;
-            const desc = document.getElementById('projectDesc').value;
-
-            if (editingId) {
-                const idx = projects.findIndex(p => p.id === editingId);
-                projects[idx] = { ...projects[idx], title, category, desc };
-            } else {
-                const id = 'lara-' + Date.now();
-                projects.unshift({
-                    id, title, category, desc,
-                    date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-                });
-            }
-
-            saveProjects(projects);
-            renderProjects();
-            closeModalFn();
-        });
-
-        // Drop zone
+        // Image upload handling
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
+        const dropText = document.getElementById('dropText');
+        const dropPreview = document.getElementById('dropPreview');
+
+        function handleImageFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                currentImage = e.target.result;
+                dropZone.classList.add('has-image');
+                dropText.style.display = 'none';
+                dropPreview.style.display = 'block';
+                dropPreview.src = currentImage;
+            };
+            reader.readAsDataURL(file);
+        }
 
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (e) => {
@@ -517,10 +690,44 @@
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             dropZone.style.borderColor = '';
-            dropZone.querySelector('span').textContent = `📁 ${e.dataTransfer.files.length} file(s) selected`;
+            if (e.dataTransfer.files.length) {
+                handleImageFile(e.dataTransfer.files[0]);
+            }
         });
         fileInput.addEventListener('change', () => {
-            dropZone.querySelector('span').textContent = `📁 ${fileInput.files.length} file(s) selected`;
+            if (fileInput.files.length) {
+                handleImageFile(fileInput.files[0]);
+            }
+        });
+
+        // Form submit
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('projectTitle').value;
+            const category = document.getElementById('projectCategory').value;
+            const desc = document.getElementById('projectDesc').value;
+
+            if (editingId) {
+                const idx = projects.findIndex(p => p.id === editingId);
+                projects[idx] = {
+                    ...projects[idx],
+                    title, category, desc,
+                    image: currentImage || projects[idx].image
+                };
+            } else {
+                const id = 'lara-' + Date.now();
+                projects.unshift({
+                    id, title, category, desc,
+                    image: currentImage,
+                    date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+                    pinned: false
+                });
+            }
+
+            saveProjects(projects);
+            renderProjects();
+            closeModalFn();
         });
 
         // Particles
