@@ -674,20 +674,18 @@
             
             drawPaddle();
             
-            if(!victoryActive) {
-                bricks.forEach(brick => {
-                    if(brick.visible) {
-                        ctx.fillStyle = brick.color;
-                        ctx.shadowColor = brick.color;
-                        ctx.shadowBlur = isMobile ? 4 : 8;
-                        ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
-                        ctx.shadowBlur = 0;
-                        
-                        ctx.fillStyle = 'rgba(255,255,255,0.25)';
-                        ctx.fillRect(brick.x, brick.y, brick.w, 2);
-                    }
-                });
-            }
+            bricks.forEach(brick => {
+                if(brick.visible) {
+                    ctx.fillStyle = brick.color;
+                    ctx.shadowColor = brick.color;
+                    ctx.shadowBlur = isMobile ? 4 : 8;
+                    ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+                    ctx.shadowBlur = 0;
+                    
+                    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+                    ctx.fillRect(brick.x, brick.y, brick.w, 2);
+                }
+            });
             
             // Trail
             for(let i = 3; i > 0; i--) {
@@ -705,14 +703,6 @@
         function gameLoop(timestamp) {
             update(timestamp);
             draw();
-            
-            // Draw victory overlay on top
-            if(victoryActive) {
-                updateParticles();
-                drawParticles();
-                drawVictoryQuote();
-            }
-            
             animationId = requestAnimationFrame(gameLoop);
         }
         
