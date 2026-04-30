@@ -2,133 +2,47 @@
    Aeyeing Website Styles
    ============================ */
 
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-}
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
-    width: 100%;
-}
+body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; width: 100%; }
 
-a {
-    color: #14B8A6;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
+a { color: #14B8A6; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 /* ============================
    NAVBAR
    ============================ */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 0 1rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+    z-index: 1000; padding: 0 1rem; height: 60px;
+    display: flex; align-items: center;
     border-bottom: 1px solid rgba(20, 184, 166, 0.2);
 }
 
-.nav-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-container { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 
 .nav-logo-text {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.5rem; font-weight: 600;
     background: linear-gradient(90deg, #14B8A6, #3B82F6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-decoration: none;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; text-decoration: none;
 }
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
 
-.nav-link {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s;
-    font-size: 1rem;
-}
+.nav-link { color: #FFFFFF; text-decoration: none; font-weight: 400; transition: color 0.3s; font-size: 1rem; }
+.nav-link:hover, .nav-link.active { color: #14B8A6; }
 
-.nav-link:hover,
-.nav-link.active {
-    color: #14B8A6;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.nav-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #FFFFFF;
-    border-radius: 3px;
-    transition: all 0.3s;
-}
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+.nav-toggle span { display: block; width: 25px; height: 3px; background: #FFFFFF; border-radius: 3px; transition: all 0.3s; }
 
 @media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: calc(100vh - 60px);
-        background: rgba(15, 23, 42, 0.98);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        transition: right 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
+    .nav-toggle { display: flex; }
+    .nav-menu { position: fixed; top: 60px; right: -100%; width: 70%; max-width: 300px; height: calc(100vh - 60px); background: rgba(15, 23, 42, 0.98); flex-direction: column; padding: 2rem; gap: 1.5rem; transition: right 0.3s ease; }
+    .nav-menu.active { right: 0; }
 }
 
 /* ============================
@@ -137,269 +51,115 @@ a:hover {
 header.hero {
     margin-top: 60px;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #0f766e 60%, #14b8a6 100%);
-    min-height: 400px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #FFFFFF;
-    position: relative;
-    overflow: hidden;
+    min-height: 400px; height: auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; color: #FFFFFF; position: relative; overflow: hidden;
     padding: 2rem 1rem;
 }
 
 .hero-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: auto;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; pointer-events: auto;
 }
 
-.game-ui {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    text-align: center;
-    pointer-events: none;
+.game-ui-left {
+    position: absolute; bottom: 15px; left: 15px;
+    z-index: 3; text-align: left; pointer-events: none;
 }
 
 .speed-indicator {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #14B8A6;
-    text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
-    letter-spacing: 2px;
-    opacity: 0.7;
+    font-size: 0.8rem; font-weight: 700; color: #14B8A6;
+    text-shadow: 0 0 8px rgba(20, 184, 166, 0.5);
+    letter-spacing: 1px; opacity: 0.7;
     transition: all 0.3s;
 }
 
 .click-hint {
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.55rem; color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase; letter-spacing: 0.5px;
 }
 
 .title-container {
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-    max-width: 100%;
-    padding: 0 1rem;
+    position: relative; z-index: 2; pointer-events: none;
+    max-width: 100%; padding: 0 1rem;
 }
 
 .subtitle {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: #FFFFFF;
-    transition: color 0.3s, text-shadow 0.3s;
-    word-wrap: break-word;
+    font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem;
+    color: #FFFFFF; transition: color 0.3s, text-shadow 0.3s; word-wrap: break-word;
 }
 
 .logo {
-    width: 150px;
-    height: auto;
-    margin: 1rem 0;
-    animation: floatLogo 3s ease-in-out infinite;
-    max-width: 100%;
+    width: 150px; height: auto; margin: 1rem 0;
+    animation: floatLogo 3s ease-in-out infinite; max-width: 100%;
 }
 
-@keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+@keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 header.hero h1 {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-top: 1rem;
-    color: #FFFFFF;
-    transition: color 0.3s, text-shadow 0.3s;
-    word-wrap: break-word;
+    font-size: 1.2rem; font-weight: 300; margin-top: 1rem;
+    color: #FFFFFF; transition: color 0.3s, text-shadow 0.3s; word-wrap: break-word;
 }
 
 /* Mobile hero adjustments */
 @media (max-width: 768px) {
-    header.hero {
-        min-height: 300px;
-        padding: 1.5rem 0.5rem;
-    }
-    
-    .subtitle {
-        font-size: 1.5rem;
-    }
-    
-    .logo {
-        width: 100px;
-    }
-    
-    header.hero h1 {
-        font-size: 0.9rem;
-    }
-    
-    .speed-indicator {
-        font-size: 0.9rem;
-    }
-    
-    .click-hint {
-        font-size: 0.6rem;
-    }
+    header.hero { min-height: 300px; padding: 1.5rem 0.5rem; }
+    .subtitle { font-size: 1.5rem; }
+    .logo { width: 100px; }
+    header.hero h1 { font-size: 0.9rem; }
+    .speed-indicator { font-size: 0.65rem; }
+    .click-hint { font-size: 0.45rem; }
+    .game-ui-left { bottom: 10px; left: 10px; }
 }
 
 @media (max-width: 480px) {
-    header.hero {
-        min-height: 250px;
-    }
-    
-    .subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .logo {
-        width: 80px;
-    }
-    
-    header.hero h1 {
-        font-size: 0.8rem;
-    }
+    header.hero { min-height: 250px; }
+    .subtitle { font-size: 1.2rem; }
+    .logo { width: 80px; }
+    header.hero h1 { font-size: 0.8rem; }
 }
 
 /* ============================
    SECTIONS
    ============================ */
-section {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
 
-.about {
-    background-color: #F9FAFB;
-    border-radius: 10px;
-    padding: 3rem;
-    margin: 2rem auto;
-}
+.about { background-color: #F9FAFB; border-radius: 10px; padding: 3rem; margin: 2rem auto; }
 
-.about h2,
-.focus-areas h2,
-.connect h2 {
-    font-size: 2.5rem;
-    color: #1E3A8A;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
+.about h2, .focus-areas h2, .connect h2 { font-size: 2.5rem; color: #1E3A8A; margin-bottom: 1.5rem; text-align: center; }
 
-.focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
+.focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
 
-.focus-item {
-    background: #FFFFFF;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
+.focus-item { background: #FFFFFF; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
+.focus-item:hover { transform: translateY(-5px); }
+.focus-item span { font-size: 3rem; display: block; margin-bottom: 1rem; }
 
-.focus-item:hover {
-    transform: translateY(-5px);
-}
+.connect { text-align: center; }
 
-.focus-item span {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.connect {
-    text-align: center;
-}
-
-/* Mobile section adjustments */
 @media (max-width: 768px) {
-    section {
-        padding: 2rem 1rem;
-    }
-    
-    .about {
-        padding: 2rem 1.5rem;
-        margin: 1rem;
-    }
-    
-    .about h2,
-    .focus-areas h2,
-    .connect h2 {
-        font-size: 1.8rem;
-    }
-    
-    .focus-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .focus-item {
-        padding: 1.5rem;
-    }
-    
-    .focus-item span {
-        font-size: 2.5rem;
-    }
-    
-    .focus-item h3 {
-        font-size: 1.2rem;
-    }
-    
-    .focus-item p {
-        font-size: 0.9rem;
-    }
+    section { padding: 2rem 1rem; }
+    .about { padding: 2rem 1.5rem; margin: 1rem; }
+    .about h2, .focus-areas h2, .connect h2 { font-size: 1.8rem; }
+    .focus-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .focus-item { padding: 1.5rem; }
+    .focus-item span { font-size: 2.5rem; }
+    .focus-item h3 { font-size: 1.2rem; }
+    .focus-item p { font-size: 0.9rem; }
 }
 
 /* ============================
    FOOTER
    ============================ */
-footer {
-    background: #0f172a;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 2rem;
-}
+footer { background: #0f172a; color: #FFFFFF; text-align: center; padding: 2rem; }
 
 @media (max-width: 768px) {
-    footer {
-        padding: 1.5rem;
-        font-size: 0.85rem;
-    }
+    footer { padding: 1.5rem; font-size: 0.85rem; }
 }
 
 /* ============================
    SCROLLBAR
    ============================ */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #0f172a;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #14B8A6;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0f766e;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #14B8A6; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0f766e; }

@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="images/logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
     <!-- Navigation -->
@@ -46,9 +46,9 @@
     <!-- Hero -->
     <header class="hero">
         <canvas id="gameCanvas" class="hero-canvas"></canvas>
-        <div class="game-ui">
-            <div class="speed-indicator" id="speedIndicator">MEDIUM</div>
-            <div class="click-hint">Click to change speed</div>
+        <div class="game-ui-left">
+            <div class="speed-indicator" id="speedIndicator">MED</div>
+            <div class="click-hint">click=change</div>
         </div>
         <div class="title-container">
             <p class="subtitle">Welcome to Aeyeing</p>
@@ -112,24 +112,30 @@
         let blinkState = 0;
         let blinkTimer = 0;
         let mouseY = 0;
+        let isMobile = window.innerWidth < 768;
         
         // Speed levels
         const speeds = { slow: 2, medium: 4, fast: 7 };
-        const speedNames = ['SLOW', 'MEDIUM', 'FAST'];
-        let currentSpeedIndex = 1; // Start with medium
+        const speedNames = ['SLW', 'MED', 'FST'];
+        let currentSpeedIndex = 1;
         
-        // Game config
-        const config = {
-            ballSize: 14,
-            ballSpeed: speeds.medium,
-            paddleWidth: 12,
-            paddleHeight: 80,
-            brickRows: 6,
-            brickCols: 3,
-            brickWidth: 40,
-            brickHeight: 12,
-            brickPadding: 6
-        };
+        // Game config - responsive
+        let config = getConfig();
+        
+        function getConfig() {
+            const mobile = window.innerWidth < 768;
+            return {
+                ballSize: mobile ? 8 : 14,
+                ballSpeed: speeds.medium,
+                paddleWidth: mobile ? 8 : 12,
+                paddleHeight: mobile ? 45 : 80,
+                brickRows: mobile ? 4 : 6,
+                brickCols: mobile ? 2 : 3,
+                brickWidth: mobile ? 22 : 40,
+                brickHeight: mobile ? 7 : 12,
+                brickPadding: mobile ? 3 : 6
+            };
+        }
         
         const colors = ['#14B8A6', '#3B82F6', '#A78BFA', '#F472B6', '#FBBF24', '#34D399'];
         let currentColorIndex = 0;
@@ -143,7 +149,7 @@
         
         // Paddle (left side) - A shape
         const paddle = {
-            x: 20,
+            x: isMobile ? 10 : 20,
             y: 0,
             w: config.paddleWidth,
             h: config.paddleHeight
@@ -168,7 +174,7 @@
         
         function initBricks() {
             bricks = [];
-            const startX = canvas.width - config.brickCols * (config.brickWidth + config.brickPadding) - 20;
+            const startX = canvas.width - config.brickCols * (config.brickWidth + config.brickPadding) - (isMobile ? 10 : 20);
             const startY = (canvas.height - (config.brickRows * (config.brickHeight + config.brickPadding))) / 2;
             
             for(let r = 0; r < config.brickRows; r++) {
@@ -189,6 +195,11 @@
             const hero = document.querySelector('header.hero');
             canvas.width = hero.offsetWidth;
             canvas.height = hero.offsetHeight;
+            isMobile = window.innerWidth < 768;
+            config = getConfig();
+            paddle.x = isMobile ? 10 : 20;
+            paddle.w = config.paddleWidth;
+            paddle.h = config.paddleHeight;
             initBricks();
             updateLogoRect();
         }
@@ -210,11 +221,10 @@
         canvas.addEventListener('click', () => {
             currentSpeedIndex = (currentSpeedIndex + 1) % 3;
             const speedName = speedNames[currentSpeedIndex];
-            const speedValue = speeds[speedName.toLowerCase()];
+            const speedValue = [speeds.slow, speeds.medium, speeds.fast][currentSpeedIndex];
             
             config.ballSpeed = speedValue;
             
-            // Maintain direction but change magnitude
             const angle = Math.atan2(ball.dy, ball.dx);
             ball.dx = Math.cos(angle) * speedValue;
             ball.dy = Math.sin(angle) * speedValue;
@@ -232,14 +242,12 @@
             ctx.save();
             ctx.translate(paddle.x + paddle.w / 2, paddle.y + paddle.h / 2);
             
-            // Glow effect
             ctx.shadowColor = '#14B8A6';
-            ctx.shadowBlur = 20;
+            ctx.shadowBlur = isMobile ? 8 : 15;
             
-            // Draw letter A
             ctx.strokeStyle = '#14B8A6';
             ctx.fillStyle = 'rgba(20, 184, 166, 0.3)';
-            ctx.lineWidth = 4;
+            ctx.lineWidth = isMobile ? 2 : 3;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             
@@ -247,109 +255,121 @@
             const h = paddle.h;
             
             ctx.beginPath();
-            // Left diagonal
             ctx.moveTo(-w/2, h/2);
             ctx.lineTo(0, -h/2);
-            // Right diagonal
             ctx.lineTo(w/2, h/2);
             ctx.stroke();
             
-            // Crossbar
             ctx.beginPath();
             ctx.moveTo(-w/4, 0);
             ctx.lineTo(w/4, 0);
             ctx.stroke();
             
-            // Inner glow
-            ctx.shadowBlur = 5;
+            ctx.shadowBlur = 3;
             ctx.strokeStyle = '#FFFFFF';
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(-w/2 + 2, h/2 - 2);
-            ctx.lineTo(0, -h/2 + 2);
-            ctx.lineTo(w/2 - 2, h/2 - 2);
+            ctx.moveTo(-w/2 + 1, h/2 - 1);
+            ctx.lineTo(0, -h/2 + 1);
+            ctx.lineTo(w/2 - 1, h/2 - 1);
             ctx.stroke();
             
             ctx.restore();
+        }
+        
+        function hexToRgb(hex) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `${r},${g},${b}`;
         }
         
         function drawAIEye(x, y, size, blink) {
             ctx.save();
             ctx.translate(x, y);
             
-            // Outer hexagon (AI tech style)
             if(!blink) {
+                // Outer ring
                 ctx.beginPath();
-                for(let i = 0; i < 6; i++) {
-                    const angle = (i * Math.PI) / 3;
-                    const px = Math.cos(angle) * size * 1.2;
-                    const py = Math.sin(angle) * size * 1.2;
-                    if(i === 0) ctx.moveTo(px, py);
-                    else ctx.lineTo(px, py);
-                }
-                ctx.closePath();
-                ctx.strokeStyle = ball.color;
-                ctx.lineWidth = 2;
-                ctx.shadowColor = ball.color;
-                ctx.shadowBlur = 15;
-                ctx.stroke();
-                
-                // Rotating ring
-                const time = Date.now() / 1000;
-                ctx.beginPath();
-                for(let i = 0; i < 6; i++) {
-                    const angle = (i * Math.PI) / 3 + time;
-                    const px = Math.cos(angle) * size * 0.9;
-                    const py = Math.sin(angle) * size * 0.9;
-                    if(i === 0) ctx.moveTo(px, py);
-                    else ctx.lineTo(px, py);
-                }
-                ctx.closePath();
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.arc(0, 0, size * 1.2, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${hexToRgb(ball.color)}, 0.25)`;
                 ctx.lineWidth = 1;
                 ctx.stroke();
                 
-                // Inner eye
+                // Corner brackets
+                const corner = size * 0.7;
+                const bracketLen = size * 0.25;
+                ctx.strokeStyle = ball.color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.moveTo(-corner, -corner + bracketLen); ctx.lineTo(-corner, -corner); ctx.lineTo(-corner + bracketLen, -corner); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(corner - bracketLen, -corner); ctx.lineTo(corner, -corner); ctx.lineTo(corner, -corner + bracketLen); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(-corner, corner - bracketLen); ctx.lineTo(-corner, corner); ctx.lineTo(-corner + bracketLen, corner); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(corner - bracketLen, corner); ctx.lineTo(corner, corner); ctx.lineTo(corner, corner - bracketLen); ctx.stroke();
+                
+                // Main eye
                 ctx.beginPath();
-                ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
-                ctx.fillStyle = '#000000';
+                ctx.arc(0, 0, size, 0, Math.PI * 2);
+                ctx.fillStyle = '#0f172a';
                 ctx.fill();
                 ctx.strokeStyle = ball.color;
                 ctx.lineWidth = 2;
+                ctx.shadowColor = ball.color;
+                ctx.shadowBlur = isMobile ? 6 : 10;
                 ctx.stroke();
+                ctx.shadowBlur = 0;
+                
+                // Dashed inner ring
+                ctx.beginPath();
+                ctx.arc(0, 0, size * 0.65, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${hexToRgb(ball.color)}, 0.4)`;
+                ctx.lineWidth = 1;
+                ctx.setLineDash([2, 3]);
+                ctx.stroke();
+                ctx.setLineDash([]);
                 
                 // AI core
-                const irisOffsetX = (ball.dx / config.ballSpeed) * size * 0.15;
-                const irisOffsetY = (ball.dy / config.ballSpeed) * size * 0.15;
+                const irisX = (ball.dx / config.ballSpeed) * size * 0.15;
+                const irisY = (ball.dy / config.ballSpeed) * size * 0.15;
                 
+                ctx.shadowColor = ball.color;
+                ctx.shadowBlur = isMobile ? 8 : 12;
                 ctx.beginPath();
-                ctx.arc(irisOffsetX, irisOffsetY, size * 0.25, 0, Math.PI * 2);
+                ctx.arc(irisX, irisY, size * 0.3, 0, Math.PI * 2);
                 ctx.fillStyle = ball.color;
                 ctx.fill();
+                ctx.shadowBlur = 0;
                 
-                // Digital pupil
                 ctx.beginPath();
-                ctx.arc(irisOffsetX, irisOffsetY, size * 0.12, 0, Math.PI * 2);
+                ctx.arc(irisX, irisY, size * 0.15, 0, Math.PI * 2);
+                ctx.fillStyle = '#000000';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(irisX - size * 0.06, irisY - size * 0.06, size * 0.06, 0, Math.PI * 2);
                 ctx.fillStyle = '#FFFFFF';
                 ctx.fill();
                 
-                // Scan line
-                const scanY = (Date.now() % 1000) / 1000 * size - size/2;
-                ctx.beginPath();
-                ctx.moveTo(-size/2, scanY);
-                ctx.lineTo(size/2, scanY);
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.lineWidth = 1;
-                ctx.stroke();
+                // Orbiting dots
+                if(!isMobile) {
+                    for(let i = 0; i < 6; i++) {
+                        const angle = (i / 6) * Math.PI * 2 + Date.now() / 3000;
+                        const dotR = size * 1.4;
+                        const dotX = Math.cos(angle) * dotR;
+                        const dotY = Math.sin(angle) * dotR;
+                        ctx.beginPath();
+                        ctx.arc(dotX, dotY, 1.5, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(${hexToRgb(ball.color)}, ${0.2 + (i % 3) * 0.15})`;
+                        ctx.fill();
+                    }
+                }
             } else {
-                // Closed eye - horizontal line
                 ctx.beginPath();
-                ctx.moveTo(-size, 0);
-                ctx.lineTo(size, 0);
+                ctx.moveTo(-size * 0.7, 0);
+                ctx.lineTo(size * 0.7, 0);
                 ctx.strokeStyle = ball.color;
-                ctx.lineWidth = 3;
+                ctx.lineWidth = 2;
                 ctx.shadowColor = ball.color;
-                ctx.shadowBlur = 10;
+                ctx.shadowBlur = 8;
                 ctx.stroke();
             }
             
@@ -357,7 +377,6 @@
         }
         
         function update(timestamp) {
-            // Blink
             blinkTimer += 16;
             if(blinkTimer > 2500) {
                 blinkState = 1;
@@ -367,34 +386,28 @@
                 }
             }
             
-            // Update logo rect
             updateLogoRect();
             
-            // Move paddle to follow mouse
             paddle.y = mouseY - paddle.h / 2;
             paddle.y = Math.max(0, Math.min(canvas.height - paddle.h, paddle.y));
             
-            // Move ball
             ball.x += ball.dx;
             ball.y += ball.dy;
             
-            // Wall collisions (top/bottom)
             if(ball.y - config.ballSize < 0 || ball.y + config.ballSize > canvas.height) {
                 ball.dy = -ball.dy;
             }
             
-            // Right wall - respawn
             if(ball.x + config.ballSize > canvas.width) {
                 ball.dx = -Math.abs(ball.dx);
             }
             
-            // Logo collision (center obstacle)
+            // Logo collision
             if(ball.x + config.ballSize > logoRect.x &&
                ball.x - config.ballSize < logoRect.x + logoRect.w &&
                ball.y + config.ballSize > logoRect.y &&
                ball.y - config.ballSize < logoRect.y + logoRect.h) {
                 
-                // Bounce off logo
                 const centerX = logoRect.x + logoRect.w / 2;
                 const centerY = logoRect.y + logoRect.h / 2;
                 
@@ -404,12 +417,8 @@
                     ball.dy = -ball.dy;
                 }
                 
-                // Push ball out of logo
-                if(ball.x < centerX) {
-                    ball.x = logoRect.x - config.ballSize;
-                } else {
-                    ball.x = logoRect.x + logoRect.w + config.ballSize;
-                }
+                if(ball.x < centerX) ball.x = logoRect.x - config.ballSize;
+                else ball.x = logoRect.x + logoRect.w + config.ballSize;
                 
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
                 ball.color = colors[currentColorIndex];
@@ -422,7 +431,6 @@
                ball.y < paddle.y + paddle.h) {
                 
                 ball.dx = Math.abs(ball.dx);
-                // Add angle based on hit position on paddle
                 const hitPos = (ball.y - paddle.y) / paddle.h;
                 ball.dy = (hitPos - 0.5) * 6;
                 
@@ -430,7 +438,7 @@
                 ball.color = colors[currentColorIndex];
             }
             
-            // Reset if goes past paddle
+            // Reset if past paddle
             if(ball.x + config.ballSize < 0) {
                 ball.x = canvas.width / 2;
                 ball.y = canvas.height / 2;
@@ -450,7 +458,6 @@
                     brick.visible = false;
                     hitBrick = true;
                     
-                    // Determine bounce direction
                     const overlapLeft = (ball.x + config.ballSize) - brick.x;
                     const overlapRight = (brick.x + brick.w) - (ball.x - config.ballSize);
                     const overlapTop = (ball.y + config.ballSize) - brick.y;
@@ -469,18 +476,17 @@
                 }
             });
             
-            // Respawn all bricks when all destroyed
             if(bricks.every(b => !b.visible)) {
                 setTimeout(initBricks, 500);
             }
             
-            // Text glow when ball passes through center area
+            // Text glow
             const centerX = canvas.width / 2;
-            const textZoneWidth = 300;
+            const textZoneWidth = isMobile ? 150 : 300;
             if(Math.abs(ball.x - centerX) < textZoneWidth / 2) {
-                subtitle.style.textShadow = `0 0 ${20 + Math.random() * 15}px ${ball.color}`;
+                subtitle.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
                 subtitle.style.color = ball.color;
-                h1.style.textShadow = `0 0 ${20 + Math.random() * 15}px ${ball.color}`;
+                h1.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
                 h1.style.color = ball.color;
             } else {
                 subtitle.style.textShadow = '';
@@ -493,15 +499,13 @@
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Draw paddle (A shape)
             drawPaddle();
             
-            // Draw bricks
             bricks.forEach(brick => {
                 if(brick.visible) {
                     ctx.fillStyle = brick.color;
                     ctx.shadowColor = brick.color;
-                    ctx.shadowBlur = 8;
+                    ctx.shadowBlur = isMobile ? 4 : 8;
                     ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
                     ctx.shadowBlur = 0;
                     
@@ -510,17 +514,16 @@
                 }
             });
             
-            // Draw trail
+            // Trail
             for(let i = 3; i > 0; i--) {
                 ctx.fillStyle = ball.color;
-                ctx.globalAlpha = 0.1 * i;
+                ctx.globalAlpha = 0.08 * i;
                 ctx.beginPath();
-                ctx.arc(ball.x - ball.dx * i * 2, ball.y - ball.dy * i * 2, config.ballSize * (0.3 + i * 0.1), 0, Math.PI * 2);
+                ctx.arc(ball.x - ball.dx * i * 2, ball.y - ball.dy * i * 2, config.ballSize * (0.25 + i * 0.08), 0, Math.PI * 2);
                 ctx.fill();
             }
             ctx.globalAlpha = 1;
             
-            // Draw AI eye ball
             drawAIEye(ball.x, ball.y, config.ballSize, blinkState);
         }
         
@@ -536,9 +539,7 @@
         ball.y = canvas.height / 2;
         gameLoop(0);
         
-        window.addEventListener('resize', () => {
-            resize();
-        });
+        window.addEventListener('resize', resize);
         
         document.addEventListener('visibilitychange', () => {
             if(document.hidden) {
