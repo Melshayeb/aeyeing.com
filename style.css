@@ -42,16 +42,21 @@ body {
     height: 60px;
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
+.nav-logo-text {
+    color: #FFFFFF;
     text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-.nav-logo-img {
-    height: 40px;
-    width: auto;
-    filter: brightness(0) invert(1);
+.nav-logo-text:hover {
+    color: #14B8A6;
+}
+
+/* Hide old logo styles */
+.nav-logo, .nav-logo-img {
+    display: none;
 }
 
 .nav-menu {
