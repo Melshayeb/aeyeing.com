@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Prints & Orders | Aeyeing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-kids.css?v=5">
+    <style>
+        :root {
+            --primary: #14B8A6;
+            --secondary: #0D9488;
+            --accent: #2DD4BF;
+            --bg-card: rgba(20,184,166,0.08);
+        }
+        body {
+            background: #0f0f23;
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+        }
+        .print-lab {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 2rem;
+        }
+        .lab-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .lab-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #14B8A6, #2DD4BF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .lab-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+        }
+        .printer-info {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(20,184,166,0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .printer-icon {
+            font-size: 3rem;
+        }
+        .printer-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .printer-details p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .prints-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .print-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(20,184,166,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .print-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(20,184,166,0.2);
+        }
+        .print-image {
+            height: 220px;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .print-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .print-info {
+            padding: 1.5rem;
+        }
+        .print-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .print-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .print-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .print-tag {
+            background: rgba(20,184,166,0.15);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .order-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            transition: transform 0.3s;
+        }
+        .order-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Order Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: #1a1a2e;
+            border: 1px solid rgba(20,184,166,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-box h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .modal-box input, .modal-box textarea, .modal-box select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+        .modal-box input:focus, .modal-box textarea:focus, .modal-box select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .modal-box input::placeholder, .modal-box textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        .color-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .color-option {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .color-option:hover, .color-option.selected {
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+        .modal-box button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .order-process {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .order-process h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .step {
+            text-align: center;
+            padding: 1rem;
+        }
+        .step-number {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+        .step h4 {
+            margin-bottom: 0.5rem;
+        }
+        .step p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .contact-note {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20,184,166,0.05);
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        .contact-note p {
+            color: rgba(255,255,255,0.7);
+        }
+        .contact-note a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .lab-header h1 { font-size: 2rem; }
+            .printer-info { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <nav class="kids-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="back-link">← Back to Aeyeing</a>
+            <span class="lab-title">🖨️ 3D Prints</span>
+        </div>
+    </nav>
+
+    <div class="print-lab">
+        <header class="lab-header">
+            <h1>3D PRINT STUDIO</h1>
+            <p>Custom prints by OzMo | Bambu A1 Mini</p>
+        </header>
+
+        <div class="printer-info">
+            <div class="printer-icon">🖨️</div>
+            <div class="printer-details">
+                <h3>Bambu Lab A1 Mini</h3>
+                <p>High-quality FDM prints up to 180×180×180mm | PLA/PETG/TPU | 0.2-0.6mm nozzles</p>
+            </div>
+        </div>
+
+        <div class="prints-grid" id="printsGrid">
+            <!-- Demo prints -->
+            <div class="print-card">
+                <div class="print-image">🦖</div>
+                <div class="print-info">
+                    <h3>Articulated Dragon</h3>
+                    <p>Flexible articulated dragon that moves like a real one. Great fidget toy!</p>
+                    <div class="print-tags">
+                        <span class="print-tag">🎨 Multiple Colors</span>
+                        <span class="print-tag">📐 25cm</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Articulated Dragon')">🛒 Order This Print</button>
+                </div>
+            </div>
+
+            <div class="print-card">
+                <div class="print-image">🏠</div>
+                <div class="print-info">
+                    <h3>Miniature House</h3>
+                    <p>Detailed miniature house with removable roof. Perfect for display!</p>
+                    <div class="print-tags">
+                        <span class="print-tag">🏠 Decorative</span>
+                        <span class="print-tag">📐 12cm</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Miniature House')">🛒 Order This Print</button>
+                </div>
+            </div>
+
+            <div class="print-card">
+                <div class="print-image">🔧</div>
+                <div class="print-info">
+                    <h3>Tool Organizer</h3>
+                    <p>Customizable desk organizer for tools, pens, and small items.</p>
+                    <div class="print-tags">
+                        <span class="print-tag">🔧 Functional</span>
+                        <span class="print-tag">📐 20cm</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Tool Organizer')">🛒 Order This Print</button>
+                </div>
+            </div>
+
+            <div class="print-card">
+                <div class="print-image">🌱</div>
+                <div class="print-info">
+                    <h3>Self-Watering Planter</h3>
+                    <p>Smart planter with water reservoir. Keeps plants happy for days!</p>
+                    <div class="print-tags">
+                        <span class="print-tag">🌱 Functional</span>
+                        <span class="print-tag">📐 15cm</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Self-Watering Planter')">🛒 Order This Print</button>
+                </div>
+            </div>
+
+            <div class="print-card">
+                <div class="print-image">🎮</div>
+                <div class="print-info">
+                    <h3>Phone Stand + Controller</h3>
+                    <p>Gaming phone stand with built-in controller grips. Great for mobile gaming!</p>
+                    <div class="print-tags">
+                        <span class="print-tag">🎮 Gaming</span>
+                        <span class="print-tag">📐 Universal</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Phone Stand + Controller')">🛒 Order This Print</button>
+                </div>
+            </div>
+
+            <div class="print-card">
+                <div class="print-image">✏️</div>
+                <div class="print-info">
+                    <h3>Custom Name Tag</h3>
+                    <p>Personalized name tag with custom text. Great for desks, doors, gifts!</p>
+                    <div class="print-tags">
+                        <span class="print-tag">✏️ Custom Text</span>
+                        <span class="print-tag">📐 10cm</span>
+                    </div>
+                    <button class="order-btn" onclick="openOrder('Custom Name Tag')">🛒 Order This Print</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-process">
+            <h2>📦 How to Order</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Choose a Model</h4>
+                    <p>Pick from our catalog or request a custom design</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Customize</h4>
+                    <p>Select color, size, and add personal engravings</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Submit Order</h4>
+                    <p>We'll review and confirm via email within 24h</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Print & Ship</h4>
+                    <p>Your custom print ships within 3-5 business days</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-note">
+            <p>📧 Questions? Special requests? Email us at <a href="mailto:elshayeb@gmail.com">elshayeb@gmail.com</a></p>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeOrder()">×</button>
+            <h2>🛒 Order Print</h2>
+            <form id="orderForm" action="https://formsubmit.co/elshayeb@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin-bottom:0.5rem">Selected Model:</label>
+                <input type="text" name="model" id="orderModel" readonly style="background:rgba(255,255,255,0.1)">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Your Name:</label>
+                <input type="text" name="name" placeholder="John Doe" required>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Email:</label>
+                <input type="email" name="email" placeholder="john@example.com" required>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Choose Color:</label>
+                <div class="color-options">
+                    <div class="color-option selected" style="background:#fff" data-color="White" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#000;border:1px solid #333" data-color="Black" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#ff0000" data-color="Red" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#00ff00" data-color="Green" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#0066ff" data-color="Blue" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#ffff00" data-color="Yellow" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#ff6600" data-color="Orange" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#ff00ff" data-color="Pink" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#800080" data-color="Purple" onclick="selectColor(this)"></div>
+                    <div class="color-option" style="background:#00ffff" data-color="Cyan" onclick="selectColor(this)"></div>
+                </div>
+                <input type="hidden" name="color" id="selectedColor" value="White">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Custom Text / Engraving (Optional):</label>
+                <input type="text" name="engraving" placeholder="Text to engrave on the print...">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Quantity:</label>
+                <select name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10+</option>
+                </select>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
+                <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
+
+                <button type="submit">📧 Send Order Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="kids-footer">
+        <p>🖨️ 3D Print Studio | Aeyeing</p>
+    </footer>
+
+    <script>
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for(let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.animationDuration = (15 + Math.random() * 20) + 's';
+            p.style.background = ['#14B8A6', '#0D9488', '#2DD4BF'][Math.floor(Math.random()*3)];
+            particlesContainer.appendChild(p);
+        }
+
+        // Order modal
+        const orderModal = document.getElementById('orderModal');
+
+        function openOrder(modelName) {
+            document.getElementById('orderModel').value = modelName;
+            orderModal.classList.add('active');
+        }
+
+        function closeOrder() {
+            orderModal.classList.remove('active');
+        }
+
+        orderModal.addEventListener('click', (e) => {
+            if(e.target === orderModal) closeOrder();
+        });
+
+        // Color selection
+        function selectColor(el) {
+            document.querySelectorAll('.color-option').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('selectedColor').value = el.dataset.color;
+        }
+
+        // Show confirmation if ordered
+        if (window.location.search.includes('ordered=true')) {
+            alert('✅ Order submitted! We\'ll review your request and email you within 24 hours.');
+            // Clean URL
+            window.history.replaceState({}, document.title, 'prints.html');
+        }
+    </script>
+</body>
+</html>
