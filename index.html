@@ -4,10 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aeyeing - Blending AI & Human Intelligence</title>
+    <meta name="description" content="Aeyeing explores the intersection of AI and human intelligence, sharing insights, projects, and innovations that shape the future.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Aeyeing - Blending AI & Human Intelligence">
+    <meta property="og:description" content="Exploring the intersection of AI and human intelligence">
+    <meta property="og:image" content="https://aeyeing.com/images/logo.png">
+    <meta property="og:url" content="https://aeyeing.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aeyeing - Blending AI & Human Intelligence">
+    <meta name="twitter:description" content="Exploring the intersection of AI and human intelligence">
+    <meta name="twitter:image" content="https://aeyeing.com/images/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="images/logo.png" alt="Aeyeing" class="nav-logo-img">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#focus" class="nav-link">Focus Areas</a></li>
+                <li><a href="#connect" class="nav-link">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero -->
     <header class="hero">
         <div class="title-container">
@@ -18,35 +55,73 @@
     </header>
 
     <!-- About -->
-    <section class="about">
+    <section id="about" class="about">
         <h2>About</h2>
         <p>Aeyeing explores the intersection of AI and human intelligence, sharing insights, projects, and innovations that shape the future.</p>
     </section>
 
+    <!-- Focus Areas -->
     <section id="focus" class="focus-areas">
-        <h2>Focus Areas</h2>
-        <div class="focus-item">
-            <span>🤖</span>
-            <h3>Artificial Intelligence</h3>
-            <p>Advancing AI technologies for smarter solutions.</p>
+        <div class="focus-header">
+            <h2>Focus Areas</h2>
         </div>
-        <div class="focus-item">
-            <span>🧠</span>
-            <h3>Human Psychology</h3>
-            <p>Understanding the human mind to enhance AI interactions.</p>
-        </div>
-        <div class="focus-item">
-            <span>🌍</span>
-            <h3>Future Innovations</h3>
-            <p>Shaping the future with groundbreaking ideas.</p>
+        <div class="focus-grid">
+            <div class="focus-item">
+                <span>🤖</span>
+                <h3>Artificial Intelligence</h3>
+                <p>Advancing AI technologies for smarter solutions.</p>
+            </div>
+            <div class="focus-item">
+                <span>🧠</span>
+                <h3>Human Psychology</h3>
+                <p>Understanding the human mind to enhance AI interactions.</p>
+            </div>
+            <div class="focus-item">
+                <span>🌍</span>
+                <h3>Future Innovations</h3>
+                <p>Shaping the future with groundbreaking ideas.</p>
+            </div>
         </div>
     </section>
 
+    <!-- Connect -->
     <section id="connect" class="connect">
         <h2>Let’s Connect</h2>
         <p><a href="mailto:elshayeb@gmail.com">Email Me</a> | <a href="https://www.linkedin.com/in/mohamed-elshayeb-3b0ab89/">Connect on LinkedIn</a></p>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Aeyeing | Updated by OzMo AI Assistant | All rights reserved.</p>
-    </footer> 
+    </footer>
+
+    <!-- Mobile Nav Toggle Script -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
