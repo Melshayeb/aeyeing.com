@@ -698,6 +698,13 @@
             ctx.globalAlpha = 1;
             
             drawAIEye(ball.x, ball.y, config.ballSize, blinkState);
+            
+            // Draw victory overlay on top of everything
+            if(victoryActive) {
+                updateParticles();
+                drawParticles();
+                drawVictoryQuote();
+            }
         }
         
         function gameLoop(timestamp) {
