@@ -63,6 +63,26 @@
             font-size: 0.95rem;
         }
 
+        .add-print-btn {
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            margin: 1rem 0 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s;
+        }
+        .add-print-btn:hover {
+            transform: scale(1.05);
+        }
+
         .prints-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -75,11 +95,39 @@
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s;
+            position: relative;
         }
         .print-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(20,184,166,0.2);
+        }
+        .print-card .card-actions {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .print-card:hover .card-actions {
+            opacity: 1;
+        }
+        .card-actions button {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .card-actions button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
         }
         .print-image {
             height: 220px;
@@ -139,7 +187,7 @@
             transform: scale(1.02);
         }
 
-        /* Order Modal */
+        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -186,22 +234,35 @@
         .modal-box input::placeholder, .modal-box textarea::placeholder {
             color: rgba(255,255,255,0.4);
         }
-        .color-options {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+        .drop-zone {
+            border: 2px dashed rgba(20,184,166,0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
             margin-bottom: 1rem;
-        }
-        .color-option {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            border: 3px solid transparent;
             cursor: pointer;
             transition: all 0.3s;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .color-option:hover, .color-option.selected {
-            border-color: #fff;
-            transform: scale(1.1);
+        .drop-zone:hover {
+            border-color: var(--primary);
+            background: rgba(20,184,166,0.05);
+        }
+        .drop-zone span {
+            color: rgba(255,255,255,0.6);
+        }
+        .drop-zone.has-image {
+            padding: 0;
+            min-height: 150px;
+            overflow: hidden;
+        }
+        .drop-zone.has-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .modal-box button[type="submit"] {
             width: 100%;
@@ -215,6 +276,10 @@
             cursor: pointer;
             font-family: 'Nunito', sans-serif;
         }
+        .modal-box .delete-btn {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            margin-top: 0.5rem;
+        }
         .modal-close {
             position: absolute;
             top: 1rem; right: 1rem;
@@ -223,6 +288,37 @@
             color: rgba(255,255,255,0.6);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        .confirm-modal {
+            text-align: center;
+        }
+        .confirm-modal p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .confirm-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .confirm-buttons button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+        }
+        .confirm-yes {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #fff;
+        }
+        .confirm-no {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
         }
 
         .order-process {
@@ -283,6 +379,7 @@
         @media (max-width: 768px) {
             .lab-header h1 { font-size: 2rem; }
             .printer-info { text-align: center; justify-content: center; }
+            .card-actions { opacity: 1 !important; }
         }
     </style>
 </head>
@@ -310,85 +407,12 @@
             </div>
         </div>
 
+        <button class="add-print-btn" id="addPrintBtn">
+            <span>➕</span> Add New Print
+        </button>
+
         <div class="prints-grid" id="printsGrid">
-            <!-- Demo prints -->
-            <div class="print-card">
-                <div class="print-image">🦖</div>
-                <div class="print-info">
-                    <h3>Articulated Dragon</h3>
-                    <p>Flexible articulated dragon that moves like a real one. Great fidget toy!</p>
-                    <div class="print-tags">
-                        <span class="print-tag">🎨 Multiple Colors</span>
-                        <span class="print-tag">📐 25cm</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Articulated Dragon')">🛒 Order This Print</button>
-                </div>
-            </div>
-
-            <div class="print-card">
-                <div class="print-image">🏠</div>
-                <div class="print-info">
-                    <h3>Miniature House</h3>
-                    <p>Detailed miniature house with removable roof. Perfect for display!</p>
-                    <div class="print-tags">
-                        <span class="print-tag">🏠 Decorative</span>
-                        <span class="print-tag">📐 12cm</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Miniature House')">🛒 Order This Print</button>
-                </div>
-            </div>
-
-            <div class="print-card">
-                <div class="print-image">🔧</div>
-                <div class="print-info">
-                    <h3>Tool Organizer</h3>
-                    <p>Customizable desk organizer for tools, pens, and small items.</p>
-                    <div class="print-tags">
-                        <span class="print-tag">🔧 Functional</span>
-                        <span class="print-tag">📐 20cm</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Tool Organizer')">🛒 Order This Print</button>
-                </div>
-            </div>
-
-            <div class="print-card">
-                <div class="print-image">🌱</div>
-                <div class="print-info">
-                    <h3>Self-Watering Planter</h3>
-                    <p>Smart planter with water reservoir. Keeps plants happy for days!</p>
-                    <div class="print-tags">
-                        <span class="print-tag">🌱 Functional</span>
-                        <span class="print-tag">📐 15cm</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Self-Watering Planter')">🛒 Order This Print</button>
-                </div>
-            </div>
-
-            <div class="print-card">
-                <div class="print-image">🎮</div>
-                <div class="print-info">
-                    <h3>Phone Stand + Controller</h3>
-                    <p>Gaming phone stand with built-in controller grips. Great for mobile gaming!</p>
-                    <div class="print-tags">
-                        <span class="print-tag">🎮 Gaming</span>
-                        <span class="print-tag">📐 Universal</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Phone Stand + Controller')">🛒 Order This Print</button>
-                </div>
-            </div>
-
-            <div class="print-card">
-                <div class="print-image">✏️</div>
-                <div class="print-info">
-                    <h3>Custom Name Tag</h3>
-                    <p>Personalized name tag with custom text. Great for desks, doors, gifts!</p>
-                    <div class="print-tags">
-                        <span class="print-tag">✏️ Custom Text</span>
-                        <span class="print-tag">📐 10cm</span>
-                    </div>
-                    <button class="order-btn" onclick="openOrder('Custom Name Tag')">🛒 Order This Print</button>
-                </div>
-            </div>
+            <!-- Loaded from localStorage -->
         </div>
 
         <div class="order-process">
@@ -418,7 +442,41 @@
         </div>
 
         <div class="contact-note">
-            <p>📧 Questions? Special requests? Email us at <a href="mailto:elshayeb@gmail.com">elshayeb@gmail.com</a></p>
+            <p>📧 Questions? Special requests? Email us at <a href="mailto:ozmo@aeyeing.com">ozmo@aeyeing.com</a></p>
+        </div>
+    </div>
+
+    <!-- Add/Edit Print Modal -->
+    <div class="modal-overlay" id="printModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">×</button>
+            <h2 id="modalTitle">➕ Add New Print</h2>
+            <form id="printForm">
+                <input type="hidden" id="printId">
+                <input type="text" id="printTitle" placeholder="Print Name" required>
+                <input type="text" id="printCategory" placeholder="Category (e.g., Toys, Functional, Decor)" required>
+                <textarea id="printDesc" placeholder="Description..." rows="3" required></textarea>
+                <input type="text" id="printSize" placeholder="Size (e.g., 15cm)">
+                <div class="drop-zone" id="dropZone">
+                    <span id="dropText">📁 Drop photo here or click to browse</span>
+                    <img id="dropPreview" style="display:none">
+                    <input type="file" id="fileInput" accept="image/*" style="display:none">
+                </div>
+                <button type="submit" id="submitBtn">💾 Save Print</button>
+                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Print</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box confirm-modal">
+            <h2>🗑️ Delete Print?</h2>
+            <p>Are you sure? This cannot be undone!</p>
+            <div class="confirm-buttons">
+                <button class="confirm-no" id="confirmNo">Keep It</button>
+                <button class="confirm-yes" id="confirmYes">Delete Forever</button>
+            </div>
         </div>
     </div>
 
@@ -427,7 +485,7 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeOrder()">×</button>
             <h2>🛒 Order Print</h2>
-            <form id="orderForm" action="https://formsubmit.co/elshayeb@gmail.com" method="POST">
+            <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
                 <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
@@ -442,19 +500,19 @@
                 <input type="email" name="email" placeholder="john@example.com" required>
 
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Choose Color:</label>
-                <div class="color-options">
-                    <div class="color-option selected" style="background:#fff" data-color="White" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#000;border:1px solid #333" data-color="Black" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#ff0000" data-color="Red" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#00ff00" data-color="Green" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#0066ff" data-color="Blue" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#ffff00" data-color="Yellow" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#ff6600" data-color="Orange" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#ff00ff" data-color="Pink" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#800080" data-color="Purple" onclick="selectColor(this)"></div>
-                    <div class="color-option" style="background:#00ffff" data-color="Cyan" onclick="selectColor(this)"></div>
-                </div>
-                <input type="hidden" name="color" id="selectedColor" value="White">
+                <select name="color" required>
+                    <option value="">Select a color...</option>
+                    <option value="White">⚪ White</option>
+                    <option value="Black">⚫ Black</option>
+                    <option value="Red">🔴 Red</option>
+                    <option value="Green">🟢 Green</option>
+                    <option value="Blue">🔵 Blue</option>
+                    <option value="Yellow">🟡 Yellow</option>
+                    <option value="Orange">🟠 Orange</option>
+                    <option value="Pink">💖 Pink</option>
+                    <option value="Purple">🟣 Purple</option>
+                    <option value="Cyan">🔷 Cyan</option>
+                </select>
 
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Custom Text / Engraving (Optional):</label>
                 <input type="text" name="engraving" placeholder="Text to engrave on the print...">
@@ -494,7 +552,223 @@
             particlesContainer.appendChild(p);
         }
 
-        // Order modal
+        // Default prints
+        const defaultPrints = [
+            { id: 'print-1', title: 'Articulated Dragon', category: 'Toys', desc: 'Flexible articulated dragon that moves like a real one. Great fidget toy!', size: '25cm', image: null },
+            { id: 'print-2', title: 'Miniature House', category: 'Decor', desc: 'Detailed miniature house with removable roof. Perfect for display!', size: '12cm', image: null },
+            { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
+            { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
+            { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
+            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null }
+        ];
+
+        function loadPrints() {
+            const stored = localStorage.getItem('aeyeingPrints');
+            if (stored) return JSON.parse(stored);
+            localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+            return defaultPrints;
+        }
+
+        function savePrints(prints) {
+            localStorage.setItem('aeyeingPrints', JSON.stringify(prints));
+        }
+
+        let prints = loadPrints();
+        let editingId = null;
+        let deletingId = null;
+        let currentImage = null;
+
+        function renderPrints() {
+            const grid = document.getElementById('printsGrid');
+            grid.innerHTML = prints.map(p => `
+                <div class="print-card" data-id="${p.id}">
+                    <div class="card-actions">
+                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">✏️</button>
+                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
+                    </div>
+                    <div class="print-image">
+                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
+                    </div>
+                    <div class="print-info">
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <div class="print-tags">
+                            <span class="print-tag">${p.category}</span>
+                            <span class="print-tag">📐 ${p.size}</span>
+                        </div>
+                        <button class="order-btn" onclick="openOrder('${p.title}')">🛒 Order This Print</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Print Modal
+        const printModal = document.getElementById('printModal');
+        const confirmModal = document.getElementById('confirmModal');
+        const modalClose = document.getElementById('modalClose');
+        const addPrintBtn = document.getElementById('addPrintBtn');
+        const printForm = document.getElementById('printForm');
+        const deleteBtn = document.getElementById('deleteBtn');
+
+        function openPrintModal(editId = null) {
+            editingId = editId;
+            currentImage = null;
+            const title = document.getElementById('modalTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const dropZone = document.getElementById('dropZone');
+            const dropText = document.getElementById('dropText');
+            const dropPreview = document.getElementById('dropPreview');
+
+            dropZone.classList.remove('has-image');
+            dropText.style.display = 'block';
+            dropPreview.style.display = 'none';
+            dropPreview.src = '';
+
+            if (editId) {
+                const p = prints.find(x => x.id === editId);
+                document.getElementById('printId').value = p.id;
+                document.getElementById('printTitle').value = p.title;
+                document.getElementById('printCategory').value = p.category;
+                document.getElementById('printDesc').value = p.desc;
+                document.getElementById('printSize').value = p.size || '';
+                if (p.image) {
+                    currentImage = p.image;
+                    dropZone.classList.add('has-image');
+                    dropText.style.display = 'none';
+                    dropPreview.style.display = 'block';
+                    dropPreview.src = p.image;
+                }
+                title.textContent = '✏️ Edit Print';
+                submitBtn.textContent = '💾 Save Changes';
+                deleteBtn.style.display = 'block';
+            } else {
+                printForm.reset();
+                document.getElementById('printId').value = '';
+                title.textContent = '➕ Add New Print';
+                submitBtn.textContent = '💾 Save Print';
+                deleteBtn.style.display = 'none';
+            }
+
+            printModal.classList.add('active');
+        }
+
+        function closePrintModal() {
+            printModal.classList.remove('active');
+            editingId = null;
+            currentImage = null;
+        }
+
+        modalClose.addEventListener('click', closePrintModal);
+        addPrintBtn.addEventListener('click', () => openPrintModal());
+        printModal.addEventListener('click', (e) => {
+            if(e.target === printModal) closePrintModal();
+        });
+
+        window.editPrint = function(id) {
+            openPrintModal(id);
+        };
+
+        window.confirmDelete = function(id) {
+            deletingId = id;
+            confirmModal.classList.add('active');
+        };
+
+        document.getElementById('confirmNo').addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+            deletingId = null;
+        });
+
+        document.getElementById('confirmYes').addEventListener('click', () => {
+            if (deletingId) {
+                prints = prints.filter(p => p.id !== deletingId);
+                savePrints(prints);
+                renderPrints();
+                deletingId = null;
+            }
+            confirmModal.classList.remove('active');
+            closePrintModal();
+        });
+
+        confirmModal.addEventListener('click', (e) => {
+            if(e.target === confirmModal) confirmModal.classList.remove('active');
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            if (editingId) {
+                confirmModal.classList.add('active');
+                deletingId = editingId;
+            }
+        });
+
+        // Image upload
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const dropText = document.getElementById('dropText');
+        const dropPreview = document.getElementById('dropPreview');
+
+        function handleImageFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                currentImage = e.target.result;
+                dropZone.classList.add('has-image');
+                dropText.style.display = 'none';
+                dropPreview.style.display = 'block';
+                dropPreview.src = currentImage;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#14B8A6';
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '';
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '';
+            if (e.dataTransfer.files.length) {
+                handleImageFile(e.dataTransfer.files[0]);
+            }
+        });
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                handleImageFile(fileInput.files[0]);
+            }
+        });
+
+        printForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('printTitle').value;
+            const category = document.getElementById('printCategory').value;
+            const desc = document.getElementById('printDesc').value;
+            const size = document.getElementById('printSize').value;
+
+            if (editingId) {
+                const idx = prints.findIndex(p => p.id === editingId);
+                prints[idx] = {
+                    ...prints[idx],
+                    title, category, desc, size,
+                    image: currentImage || prints[idx].image
+                };
+            } else {
+                const id = 'print-' + Date.now();
+                prints.push({
+                    id, title, category, desc, size,
+                    image: currentImage
+                });
+            }
+
+            savePrints(prints);
+            renderPrints();
+            closePrintModal();
+        });
+
+        // Order Modal
         const orderModal = document.getElementById('orderModal');
 
         function openOrder(modelName) {
@@ -510,19 +784,14 @@
             if(e.target === orderModal) closeOrder();
         });
 
-        // Color selection
-        function selectColor(el) {
-            document.querySelectorAll('.color-option').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            document.getElementById('selectedColor').value = el.dataset.color;
-        }
-
-        // Show confirmation if ordered
+        // Show confirmation
         if (window.location.search.includes('ordered=true')) {
             alert('✅ Order submitted! We\'ll review your request and email you within 24 hours.');
-            // Clean URL
             window.history.replaceState({}, document.title, 'prints.html');
         }
+
+        // Initial render
+        renderPrints();
     </script>
 </body>
 </html>
