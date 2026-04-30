@@ -708,6 +708,7 @@
         }
         
         function gameLoop(timestamp) {
+            resize();
             update(timestamp);
             draw();
             animationId = requestAnimationFrame(gameLoop);
