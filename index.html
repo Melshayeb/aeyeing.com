@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="images/logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
     <!-- Navigation -->
@@ -85,7 +85,7 @@
 
     <!-- Connect -->
     <section id="connect" class="connect">
-        <h2>Let’s Connect</h2>
+        <h2>Let's Connect</h2>
         <p><a href="mailto:elshayeb@gmail.com">Email Me</a> | <a href="https://www.linkedin.com/in/mohamed-elshayeb-3b0ab89/">Connect on LinkedIn</a></p>
     </section>
 
@@ -99,49 +99,58 @@
     (function() {
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        const logo = document.getElementById('heroLogo');
         const subtitle = document.querySelector('.subtitle');
         const h1 = document.querySelector('header.hero h1');
         
         let animationId;
-        let lastTime = 0;
         let blinkState = 0;
         let blinkTimer = 0;
+        let mouseY = 0;
         
         // Game config
         const config = {
-            ballSize: 18,
-            ballSpeed: 3,
-            brickRows: 5,
-            brickCols: 4,
-            brickWidth: 50,
-            brickHeight: 15,
-            brickPadding: 8,
-            brickOffsetTop: 80,
-            brickOffsetLeft: 30
+            ballSize: 14,
+            ballSpeed: 4,
+            paddleWidth: 12,
+            paddleHeight: 80,
+            brickRows: 6,
+            brickCols: 3,
+            brickWidth: 40,
+            brickHeight: 12,
+            brickPadding: 6
         };
         
-        // Colors that cycle
         const colors = ['#14B8A6', '#3B82F6', '#A78BFA', '#F472B6', '#FBBF24', '#34D399'];
         let currentColorIndex = 0;
         
-        // Ball state
+        // Ball
         const ball = {
             x: 0, y: 0,
             dx: config.ballSpeed, dy: config.ballSpeed,
             color: colors[0]
         };
         
-        // Bricks
+        // Paddle (left side)
+        const paddle = {
+            x: 20,
+            y: 0,
+            w: config.paddleWidth,
+            h: config.paddleHeight
+        };
+        
+        // Bricks (right side)
         let bricks = [];
         
         function initBricks() {
             bricks = [];
+            const startX = canvas.width - config.brickCols * (config.brickWidth + config.brickPadding) - 20;
+            const startY = (canvas.height - (config.brickRows * (config.brickHeight + config.brickPadding))) / 2;
+            
             for(let r = 0; r < config.brickRows; r++) {
                 for(let c = 0; c < config.brickCols; c++) {
                     bricks.push({
-                        x: config.brickOffsetLeft + c * (config.brickWidth + config.brickPadding),
-                        y: config.brickOffsetTop + r * (config.brickHeight + config.brickPadding),
+                        x: startX + c * (config.brickWidth + config.brickPadding),
+                        y: startY + r * (config.brickHeight + config.brickPadding),
                         w: config.brickWidth,
                         h: config.brickHeight,
                         visible: true,
@@ -155,72 +164,59 @@
             const hero = document.querySelector('header.hero');
             canvas.width = hero.offsetWidth;
             canvas.height = hero.offsetHeight;
-            
-            // Reset ball to center if out of bounds
-            if(ball.x > canvas.width || ball.y > canvas.height) {
-                ball.x = canvas.width / 2;
-                ball.y = canvas.height / 2;
-            }
+            initBricks();
         }
         
-        function getLogoRect() {
-            const logoRect = logo.getBoundingClientRect();
-            const heroRect = canvas.getBoundingClientRect();
-            return {
-                x: logoRect.left - heroRect.left,
-                y: logoRect.top - heroRect.top,
-                w: logoRect.width,
-                h: logoRect.height
-            };
-        }
+        // Mouse tracking for paddle
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseY = e.clientY - rect.top;
+        });
         
-        function getTextRects() {
-            const heroRect = canvas.getBoundingClientRect();
-            const subRect = subtitle.getBoundingClientRect();
-            const h1Rect = h1.getBoundingClientRect();
-            return [
-                { x: subRect.left - heroRect.left, y: subRect.top - heroRect.top, w: subRect.width, h: subRect.height },
-                { x: h1Rect.left - heroRect.left, y: h1Rect.top - heroRect.top, w: h1Rect.width, h: h1Rect.height }
-            ];
-        }
+        // Touch tracking
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            mouseY = e.touches[0].clientY - rect.top;
+        }, { passive: false });
         
         function drawEye(x, y, size, blink) {
             ctx.save();
             ctx.translate(x, y);
             
-            // Eye shape (white part)
+            // Outer eye
             ctx.beginPath();
-            ctx.ellipse(0, 0, size, size * 0.6, 0, 0, Math.PI * 2);
+            ctx.ellipse(0, 0, size, size * 0.65, 0, 0, Math.PI * 2);
             ctx.fillStyle = '#FFFFFF';
             ctx.fill();
-            ctx.strokeStyle = '#14B8A6';
+            ctx.strokeStyle = ball.color;
             ctx.lineWidth = 2;
             ctx.stroke();
             
-            // Iris
             if(!blink) {
+                // Iris follows movement direction slightly
+                const irisOffsetX = (ball.dx / config.ballSpeed) * size * 0.15;
+                const irisOffsetY = (ball.dy / config.ballSpeed) * size * 0.15;
+                
                 ctx.beginPath();
-                ctx.arc(0, 0, size * 0.35, 0, Math.PI * 2);
+                ctx.arc(irisOffsetX, irisOffsetY, size * 0.4, 0, Math.PI * 2);
                 ctx.fillStyle = ball.color;
                 ctx.fill();
                 
-                // Pupil
                 ctx.beginPath();
-                ctx.arc(0, 0, size * 0.18, 0, Math.PI * 2);
+                ctx.arc(irisOffsetX, irisOffsetY, size * 0.2, 0, Math.PI * 2);
                 ctx.fillStyle = '#000000';
                 ctx.fill();
                 
-                // Highlight
                 ctx.beginPath();
-                ctx.arc(-size * 0.1, -size * 0.1, size * 0.08, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                ctx.arc(irisOffsetX - size * 0.1, irisOffsetY - size * 0.1, size * 0.1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
                 ctx.fill();
             } else {
-                // Closed eye line
                 ctx.beginPath();
                 ctx.moveTo(-size * 0.7, 0);
-                ctx.quadraticCurveTo(0, size * 0.3, size * 0.7, 0);
-                ctx.strokeStyle = '#14B8A6';
+                ctx.quadraticCurveTo(0, size * 0.25, size * 0.7, 0);
+                ctx.strokeStyle = ball.color;
                 ctx.lineWidth = 3;
                 ctx.stroke();
             }
@@ -229,135 +225,149 @@
         }
         
         function update(timestamp) {
-            const deltaTime = timestamp - lastTime;
-            lastTime = timestamp;
-            
-            // Blink logic
-            blinkTimer += deltaTime;
-            if(blinkTimer > 3000) { // Blink every 3 seconds
+            // Blink
+            blinkTimer += 16;
+            if(blinkTimer > 2500) {
                 blinkState = 1;
-                if(blinkTimer > 3200) {
+                if(blinkTimer > 2700) {
                     blinkState = 0;
                     blinkTimer = 0;
                 }
             }
             
+            // Move paddle to follow mouse
+            paddle.y = mouseY - paddle.h / 2;
+            paddle.y = Math.max(0, Math.min(canvas.height - paddle.h, paddle.y));
+            
             // Move ball
             ball.x += ball.dx;
             ball.y += ball.dy;
             
-            // Wall collisions
-            if(ball.x + config.ballSize > canvas.width || ball.x - config.ballSize < 0) {
-                ball.dx = -ball.dx;
-                currentColorIndex = (currentColorIndex + 1) % colors.length;
-                ball.color = colors[currentColorIndex];
-            }
-            if(ball.y + config.ballSize > canvas.height || ball.y - config.ballSize < 0) {
+            // Wall collisions (top/bottom only, left is paddle zone)
+            if(ball.y - config.ballSize < 0 || ball.y + config.ballSize > canvas.height) {
                 ball.dy = -ball.dy;
-                currentColorIndex = (currentColorIndex + 1) % colors.length;
-                ball.color = colors[currentColorIndex];
             }
             
-            // Logo collision (the "paddle")
-            const logoRect = getLogoRect();
-            if(ball.x + config.ballSize > logoRect.x && 
-               ball.x - config.ballSize < logoRect.x + logoRect.w &&
-               ball.y + config.ballSize > logoRect.y &&
-               ball.y - config.ballSize < logoRect.y + logoRect.h) {
+            // Right wall - respawn
+            if(ball.x + config.ballSize > canvas.width) {
+                ball.dx = -Math.abs(ball.dx);
+            }
+            
+            // Paddle collision
+            if(ball.x - config.ballSize < paddle.x + paddle.w &&
+               ball.x + config.ballSize > paddle.x &&
+               ball.y > paddle.y &&
+               ball.y < paddle.y + paddle.h) {
                 
-                // Determine which side hit
-                const centerX = logoRect.x + logoRect.w / 2;
-                const centerY = logoRect.y + logoRect.h / 2;
-                
-                if(Math.abs(ball.x - centerX) > Math.abs(ball.y - centerY)) {
-                    ball.dx = -ball.dx;
-                } else {
-                    ball.dy = -ball.dy;
-                }
-                
-                // Speed up slightly on hit
-                ball.dx *= 1.02;
-                ball.dy *= 1.02;
+                ball.dx = Math.abs(ball.dx);
+                // Add angle based on hit position on paddle
+                const hitPos = (ball.y - paddle.y) / paddle.h;
+                ball.dy = (hitPos - 0.5) * 6;
                 
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
                 ball.color = colors[currentColorIndex];
             }
             
-            // Text collision (change color when passing through)
-            const textRects = getTextRects();
-            textRects.forEach(rect => {
-                if(ball.x > rect.x && ball.x < rect.x + rect.w &&
-                   ball.y > rect.y && ball.y < rect.y + rect.h) {
-                    // Change text color temporarily
-                    if(rect.y < canvas.height / 2) {
-                        subtitle.style.color = ball.color;
-                        subtitle.style.textShadow = `0 0 20px ${ball.color}`;
-                        setTimeout(() => {
-                            subtitle.style.color = '';
-                            subtitle.style.textShadow = '';
-                        }, 500);
-                    } else {
-                        h1.style.color = ball.color;
-                        h1.style.textShadow = `0 0 20px ${ball.color}`;
-                        setTimeout(() => {
-                            h1.style.color = '';
-                            h1.style.textShadow = '';
-                        }, 500);
-                    }
-                }
-            });
+            // Reset if goes past paddle
+            if(ball.x + config.ballSize < 0) {
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
+                ball.dx = Math.abs(config.ballSpeed);
+                ball.dy = (Math.random() - 0.5) * config.ballSpeed * 2;
+            }
             
             // Brick collisions
+            let hitBrick = false;
             bricks.forEach(brick => {
-                if(brick.visible &&
+                if(brick.visible && !hitBrick &&
                    ball.x + config.ballSize > brick.x &&
                    ball.x - config.ballSize < brick.x + brick.w &&
                    ball.y + config.ballSize > brick.y &&
                    ball.y - config.ballSize < brick.y + brick.h) {
                     
                     brick.visible = false;
-                    ball.dy = -ball.dy;
+                    hitBrick = true;
                     
-                    // Respawn bricks after all destroyed
-                    if(bricks.every(b => !b.visible)) {
-                        setTimeout(initBricks, 1000);
+                    // Determine bounce direction
+                    const overlapLeft = (ball.x + config.ballSize) - brick.x;
+                    const overlapRight = (brick.x + brick.w) - (ball.x - config.ballSize);
+                    const overlapTop = (ball.y + config.ballSize) - brick.y;
+                    const overlapBottom = (brick.y + brick.h) - (ball.y - config.ballSize);
+                    
+                    const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
+                    
+                    if(minOverlap === overlapLeft || minOverlap === overlapRight) {
+                        ball.dx = -ball.dx;
+                    } else {
+                        ball.dy = -ball.dy;
                     }
+                    
+                    currentColorIndex = (currentColorIndex + 1) % colors.length;
+                    ball.color = colors[currentColorIndex];
                 }
             });
             
-            // Keep ball in bounds
-            ball.x = Math.max(config.ballSize, Math.min(canvas.width - config.ballSize, ball.x));
-            ball.y = Math.max(config.ballSize, Math.min(canvas.height - config.ballSize, ball.y));
+            // Respawn all bricks when all destroyed
+            if(bricks.every(b => !b.visible)) {
+                setTimeout(initBricks, 500);
+            }
+            
+            // Text glow when ball passes through center area
+            const centerX = canvas.width / 2;
+            const textZoneWidth = 300;
+            if(Math.abs(ball.x - centerX) < textZoneWidth / 2) {
+                subtitle.style.textShadow = `0 0 ${20 + Math.random() * 15}px ${ball.color}`;
+                subtitle.style.color = ball.color;
+                h1.style.textShadow = `0 0 ${20 + Math.random() * 15}px ${ball.color}`;
+                h1.style.color = ball.color;
+            } else {
+                subtitle.style.textShadow = '';
+                subtitle.style.color = '';
+                h1.style.textShadow = '';
+                h1.style.color = '';
+            }
         }
         
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw paddle
+            ctx.fillStyle = 'rgba(20, 184, 166, 0.8)';
+            ctx.shadowColor = '#14B8A6';
+            ctx.shadowBlur = 15;
+            ctx.fillRect(paddle.x, paddle.y, paddle.w, paddle.h);
+            ctx.shadowBlur = 0;
+            
+            // Paddle highlight
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
+            ctx.fillRect(paddle.x, paddle.y, paddle.w, 3);
             
             // Draw bricks
             bricks.forEach(brick => {
                 if(brick.visible) {
                     ctx.fillStyle = brick.color;
                     ctx.shadowColor = brick.color;
-                    ctx.shadowBlur = 10;
+                    ctx.shadowBlur = 8;
                     ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
                     ctx.shadowBlur = 0;
                     
-                    // Brick highlight
-                    ctx.fillStyle = 'rgba(255,255,255,0.2)';
-                    ctx.fillRect(brick.x, brick.y, brick.w, 3);
+                    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+                    ctx.fillRect(brick.x, brick.y, brick.w, 2);
                 }
             });
             
+            // Draw trail
+            for(let i = 3; i > 0; i--) {
+                ctx.fillStyle = ball.color;
+                ctx.globalAlpha = 0.1 * i;
+                ctx.beginPath();
+                ctx.arc(ball.x - ball.dx * i * 2, ball.y - ball.dy * i * 2, config.ballSize * (0.3 + i * 0.1), 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+            
             // Draw eye ball
             drawEye(ball.x, ball.y, config.ballSize, blinkState);
-            
-            // Trail effect
-            ctx.fillStyle = ball.color;
-            ctx.globalAlpha = 0.1;
-            ctx.beginPath();
-            ctx.arc(ball.x - ball.dx * 2, ball.y - ball.dy * 2, config.ballSize * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalAlpha = 1;
         }
         
         function gameLoop(timestamp) {
@@ -368,15 +378,12 @@
         
         // Init
         resize();
-        initBricks();
         ball.x = canvas.width / 2;
         ball.y = canvas.height / 2;
         gameLoop(0);
         
-        // Handle resize
         window.addEventListener('resize', resize);
         
-        // Cleanup on page hide
         document.addEventListener('visibilitychange', () => {
             if(document.hidden) {
                 cancelAnimationFrame(animationId);
@@ -386,6 +393,9 @@
         });
     })();
     </script>
+    
+    <!-- Mobile Nav Toggle Script -->
+    <script>
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
         
@@ -394,7 +404,6 @@
             navToggle.classList.toggle('active');
         });
         
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -402,7 +411,6 @@
             });
         });
         
-        // Navbar scroll effect + active link highlighting
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -411,7 +419,6 @@
                 navbar.classList.remove('scrolled');
             }
             
-            // Highlight active section
             const sections = document.querySelectorAll('section[id], header[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             
