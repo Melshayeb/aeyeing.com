@@ -222,24 +222,18 @@ header.hero .subtitle {
     font-size: 3rem;
     font-weight: 400;
     margin-bottom: 1rem;
-    background: linear-gradient(90deg, #14B8A6, #FFFFFF, #3B82F6, #14B8A6);
+    background: linear-gradient(90deg, #14B8A6, #A78BFA, #3B82F6, #14B8A6);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradientShift 4s ease infinite, glowPulse 2s ease-in-out infinite alternate;
-    text-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
+    animation: gradientShift 3s ease infinite;
 }
 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-@keyframes glowPulse {
-    0% { filter: brightness(1) drop-shadow(0 0 10px rgba(20, 184, 166, 0.3)); }
-    100% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(20, 184, 166, 0.6)); }
 }
 
 header.hero h1 {
