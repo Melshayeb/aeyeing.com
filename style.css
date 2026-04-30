@@ -75,15 +75,28 @@ a:hover { text-decoration: underline; }
 @media (max-width: 768px) {
     .dropdown-menu {
         position: static;
-        opacity: 1;
-        visibility: visible;
+        opacity: 0;
+        visibility: hidden;
         transform: none;
         border: none;
         background: transparent;
         padding-left: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        padding: 0 0 0 1rem;
+    }
+    .dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: 200px;
+        padding: 0.5rem 0 0.5rem 1rem;
     }
     .dropdown-menu li a {
         padding: 0.5rem 1rem;
+    }
+    .dropdown-toggle::after {
+        content: '';
     }
 }
 
