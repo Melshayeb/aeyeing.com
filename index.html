@@ -633,24 +633,9 @@
             }
             
             if(victoryActive) {
-                updateParticles();
-                drawParticles();
-                drawVictoryQuote();
-                
-                if(Date.now() - victoryStartTime >= 3000) {
-                    victoryActive = false;
-                    particles = [];
-                    initBricks();
-                    ball.x = canvas.width / 2;
-                    ball.y = canvas.height / 2;
-                    ball.dx = Math.abs(config.ballSpeed);
-                    ball.dy = (Math.random() - 0.5) * config.ballSpeed * 2;
-                    currentColorIndex = 0;
-                    ball.color = colors[0];
-                }
-                
-                // Don't update ball during victory
-                return;
+                // During victory, just keep ball in center (don't update movement)
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
             }
             
             // Text glow
@@ -671,6 +656,28 @@
         
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if(victoryActive) {
+                // Draw static background elements during victory
+                drawPaddle();
+                drawAIEye(ball.x, ball.y, config.ballSize, blinkState);
+                updateParticles();
+                drawParticles();
+                drawVictoryQuote();
+                
+                if(Date.now() - victoryStartTime >= 3000) {
+                    victoryActive = false;
+                    particles = [];
+                    initBricks();
+                    ball.x = canvas.width / 2;
+                    ball.y = canvas.height / 2;
+                    ball.dx = Math.abs(config.ballSpeed);
+                    ball.dy = (Math.random() - 0.5) * config.ballSpeed * 2;
+                    currentColorIndex = 0;
+                    ball.color = colors[0];
+                }
+                return;
+            }
             
             drawPaddle();
             
