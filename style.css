@@ -156,8 +156,8 @@ body {
 header.hero {
     margin-top: 70px;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #0f766e 60%, #14b8a6 100%);
-    height: calc(60vh - 70px);
-    min-height: 330px;
+    height: 60vh;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -223,13 +223,13 @@ header.hero .subtitle {
     font-weight: 400;
     margin-bottom: 1rem;
     color: #FFFFFF;
-    text-shadow: 0 0 20px rgba(20, 184, 166, 0.5), 0 0 40px rgba(20, 184, 166, 0.3);
-    animation: subtitleGlow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5);
+    animation: subtitleGlow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes subtitleGlow {
-    0% { text-shadow: 0 0 20px rgba(20, 184, 166, 0.5), 0 0 40px rgba(20, 184, 166, 0.3); }
-    100% { text-shadow: 0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5), 0 0 90px rgba(59, 130, 246, 0.3); }
+    0% { text-shadow: 0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5); }
+    100% { text-shadow: 0 0 50px rgba(20, 184, 166, 1), 0 0 100px rgba(20, 184, 166, 0.8), 0 0 150px rgba(59, 130, 246, 0.5); }
 }
 
 header.hero h1 {
