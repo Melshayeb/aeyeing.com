@@ -463,10 +463,7 @@
                     <div class="drag-handle" title="Drag to reorder">
                         <span></span><span></span><span></span>
                     </div>
-                    <div class="card-actions">
-                        <button onclick="event.stopPropagation(); editProject('${p.id}')" title="Edit">✏️</button>
-                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
-                    </div>
+                    
                     <a href="project.html?id=${p.id}&kid=lara" style="text-decoration:none;color:inherit;display:block;">
                         <div class="preview">
                             ${p.image ? `<img src="${p.image}" alt="${p.title}">` : (categoryIcons[p.category] || '🌟')}
