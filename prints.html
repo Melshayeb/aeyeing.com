@@ -483,57 +483,7 @@
     </div>
 
     <!-- Order Modal -->
-    <div class="modal-overlay" id="orderModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeOrder()">×</button>
-            <h2>🛒 Order Print</h2>
-            <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
-                <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin-bottom:0.5rem">Selected Model:</label>
-                <input type="text" name="model" id="orderModel" readonly style="background:rgba(255,255,255,0.1)">
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Your Name:</label>
-                <input type="text" name="name" placeholder="John Doe" required>
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Email:</label>
-                <input type="email" name="email" placeholder="john@example.com" required>
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Choose Color:</label>
-                <select name="color" required>
-                    <option value="">Select a color...</option>
-                    <option value="White">⚪ White</option>
-                    <option value="Black">⚫ Black</option>
-                    <option value="Red">🔴 Red</option>
-                    <option value="Green">🟢 Green</option>
-                    <option value="Blue">🔵 Blue</option>
-                    <option value="Yellow">🟡 Yellow</option>
-                    <option value="Orange">🟠 Orange</option>
-                    <option value="Pink">💖 Pink</option>
-                    <option value="Purple">🟣 Purple</option>
-                    <option value="Cyan">🔷 Cyan</option>
-                </select>
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Custom Text / Engraving (Optional):</label>
-                <input type="text" name="engraving" placeholder="Text to engrave on the print...">
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Quantity:</label>
-                <select name="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="5">5</option>
-                    <option value="10">10+</option>
-                </select>
-
-                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
-                <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
-
-                <button type="submit">📧 Send Order Request</button>
-            </form>
-        </div>
+    
     </div>
 
     <footer class="kids-footer">
@@ -802,6 +752,16 @@
         // Initial render
         renderPrints();
     </script>
-</body>
+
+    <div style="text-align: center; padding: 3rem 2rem; background: rgba(20,184,166,0.05); margin-top: 2rem;">
+        <h2 style="color: #14b8a6; margin-bottom: 1rem;">📧 How to Order</h2>
+        <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+            To order any print, simply email us with the model name and your preferences.
+        </p>
+        <a href="mailto:aeyeingserver@gmail.com?subject=New 3D Print Order" 
+           style="display: inline-block; background: #14b8a6; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+            📧 aeyeingserver@gmail.com
+        </a>
+    </div></body>
 </html>
 
