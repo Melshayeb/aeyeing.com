@@ -63,22 +63,7 @@
             font-size: 0.95rem;
         }
 
-        .add-print-btn {
-            background: linear-gradient(135deg, #14B8A6, #0D9488);
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            margin: 1rem 0 2rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s;
-        }
+        
         .add-print-btn:hover {
             transform: scale(1.05);
         }
@@ -96,23 +81,13 @@
             overflow: hidden;
             transition: all 0.3s;
             position: relative;
-            cursor: pointer;
         }
         .print-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(20,184,166,0.2);
         }
-        .print-card .card-actions {
-            position: absolute;
-            top: 0.8rem;
-            right: 0.8rem;
-            display: flex;
-            gap: 0.5rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 10;
-        }
+        .print-card 
         .print-card:hover .card-actions {
             opacity: 1;
         }
@@ -132,7 +107,7 @@
         }
         .print-image {
             height: 220px;
-            background: rgba(0,0,0,0.3);
+            background: #0f0f23;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -389,8 +364,8 @@
 
     <nav class="kids-nav">
         <div class="nav-inner">
-            <a href="index.html" class="back-link">&#8592; Back to Aeyeing</a>
-            <span class="lab-title">&#128424; 3D Prints</span>
+            <a href="index.html" class="back-link">← Back to Aeyeing</a>
+            <span class="lab-title">🖨️ 3D Prints</span>
         </div>
     </nav>
 
@@ -401,21 +376,23 @@
         </header>
 
         <div class="printer-info">
-            <div class="printer-icon">&#128424;</div>
+            <div class="printer-icon">🖨️</div>
             <div class="printer-details">
                 <h3>Bambu Lab A1 Mini</h3>
                 <p>High-quality FDM prints up to 180×180×180mm | PLA/PETG/TPU | 0.2-0.6mm nozzles</p>
             </div>
         </div>
 
-        
+        <button class="add-print-btn" id="addPrintBtn">
+            <span>➕</span> Add New Print
+        </button>
 
         <div class="prints-grid" id="printsGrid">
             <!-- Loaded from localStorage -->
         </div>
 
         <div class="order-process">
-            <h2>&#128230; How to Order</h2>
+            <h2>📦 How to Order</h2>
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -441,7 +418,7 @@
         </div>
 
         <div class="contact-note">
-            <p>&#128231; Questions? Special requests? Email us at <a href="mailto:aeyeingserver@gmail.com">aeyeingserver@gmail.com</a></p>
+            <p>📧 Questions? Special requests? Email us at <a href="mailto:aeyeingserver@gmail.com">aeyeingserver@gmail.com</a></p>
         </div>
     </div>
 
@@ -449,7 +426,7 @@
     <div class="modal-overlay" id="printModal">
         <div class="modal-box">
             <button class="modal-close" id="modalClose">×</button>
-            <h2 id="modalTitle">&#10133; Add New Print</h2>
+            <h2 id="modalTitle">➕ Add New Print</h2>
             <form id="printForm">
                 <input type="hidden" id="printId">
                 <input type="text" id="printTitle" placeholder="Print Name" required>
@@ -462,7 +439,7 @@
                     <input type="file" id="fileInput" accept="image/*" style="display:none">
                 </div>
                 <button type="submit" id="submitBtn">💾 Save Print</button>
-                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">&#128465; Delete Print</button>
+                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Print</button>
             </form>
         </div>
     </div>
@@ -470,7 +447,7 @@
     <!-- Confirm Delete Modal -->
     <div class="modal-overlay" id="confirmModal">
         <div class="modal-box confirm-modal">
-            <h2>&#128465; Delete Print?</h2>
+            <h2>🗑️ Delete Print?</h2>
             <p>Are you sure? This cannot be undone!</p>
             <div class="confirm-buttons">
                 <button class="confirm-no" id="confirmNo">Keep It</button>
@@ -483,7 +460,7 @@
     <div class="modal-overlay" id="orderModal">
         <div class="modal-box">
             <button class="modal-close" onclick="closeOrder()">×</button>
-            <h2>&#128722; Order Print</h2>
+            <h2>🛒 Order Print</h2>
             <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
                 <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
                 <input type="hidden" name="_template" value="table">
@@ -528,13 +505,13 @@
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
                 <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
 
-                <button type="submit">&#128231; Send Order Request</button>
+                <button type="submit">📧 Send Order Request</button>
             </form>
         </div>
     </div>
 
     <footer class="kids-footer">
-        <p>&#128424; 3D Print Studio | Aeyeing</p>
+        <p>🖨️ 3D Print Studio | Aeyeing</p>
     </footer>
 
     <script>
@@ -568,13 +545,10 @@
             { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }
         ];
 
-        const PRINTS_VERSION = '2026-05-02-v1';
         function loadPrints() {
             const stored = localStorage.getItem('aeyeingPrints');
-            const storedVersion = localStorage.getItem('aeyeingPrintsVersion');
-            if (stored && storedVersion === PRINTS_VERSION) return JSON.parse(stored);
+            if (stored) return JSON.parse(stored);
             localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
-            localStorage.setItem('aeyeingPrintsVersion', PRINTS_VERSION);
             return defaultPrints;
         }
 
@@ -591,18 +565,21 @@
             const grid = document.getElementById('printsGrid');
             grid.innerHTML = prints.map(p => `
                 <div class="print-card" data-id="${p.id}">
-                    
+                    <div class="card-actions">
+                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">✏️</button>
+                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
+                    </div>
                     <div class="print-image">
-                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '&#128306;'}
+                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
                     </div>
                     <div class="print-info">
                         <h3>${p.title}</h3>
                         <p>${p.desc}</p>
                         <div class="print-tags">
                             <span class="print-tag">${p.category}</span>
-                            <span class="print-tag">&#128208; ${p.size}</span>
+                            <span class="print-tag">📐 ${p.size}</span>
                         </div>
-                        <button class="order-btn" onclick="openOrder('${p.title}')">&#128722; Order This Print</button>
+                        <button class="order-btn" onclick="openOrder('${p.title}')">🛒 Order This Print</button>
                     </div>
                 </div>
             `).join('');
@@ -644,13 +621,13 @@
                     dropPreview.style.display = 'block';
                     dropPreview.src = p.image;
                 }
-                title.textContent = '&#9999; Edit Print';
+                title.textContent = '✏️ Edit Print';
                 submitBtn.textContent = '💾 Save Changes';
                 deleteBtn.style.display = 'block';
             } else {
                 printForm.reset();
                 document.getElementById('printId').value = '';
-                title.textContent = '&#10133; Add New Print';
+                title.textContent = '➕ Add New Print';
                 submitBtn.textContent = '💾 Save Print';
                 deleteBtn.style.display = 'none';
             }
@@ -792,7 +769,7 @@
 
         // Show confirmation
         if (window.location.search.includes('ordered=true')) {
-            alert('&#9989; Order submitted! We\'ll review your request and email you within 24 hours.');
+            alert('✅ Order submitted! We\'ll review your request and email you within 24 hours.');
             window.history.replaceState({}, document.title, 'prints.html');
         }
 
@@ -801,3 +778,4 @@
     </script>
 </body>
 </html>
+
