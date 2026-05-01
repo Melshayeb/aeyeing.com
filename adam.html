@@ -368,10 +368,7 @@
             const grid = document.getElementById('projectsGrid');
             grid.innerHTML = projects.map(p => `
                 <div class="project-card" data-id="${p.id}">
-                    <div class="card-actions">
-                        <button onclick="event.stopPropagation(); editProject('${p.id}')" title="Edit">✏️</button>
-                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
-                    </div>
+                    
                     <a href="project.html?id=${p.id}&kid=adam" style="text-decoration:none;color:inherit;display:block;">
                         <div class="preview">${categoryIcons[p.category] || '🌟'}</div>
                         <h3>${p.title}</h3>
