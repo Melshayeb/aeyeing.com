@@ -529,7 +529,7 @@
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
                 <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
 
-                <button type="submit">📧 Send Order Request</button>
+                <button type="button" onclick="processOrder()">📧 Send Order Request</button>
             </form>
         </div>
     </div>
@@ -834,7 +834,43 @@
             
             // Close modal
             document.getElementById('orderModal').classList.remove('active');
-        });</script>
+        });        // Process order
+        function processOrder() {
+            const form = document.getElementById('orderForm');
+            const model = document.getElementById('orderModel').value;
+            const name = form.querySelector('[name="name"]').value;
+            const email = form.querySelector('[name="email"]').value;
+            const color = form.querySelector('[name="color"]').value;
+            const engraving = form.querySelector('[name="engraving"]').value || 'None';
+            const quantity = form.querySelector('[name="quantity"]').value;
+            const notes = form.querySelector('[name="notes"]').value || 'None';
+            
+            if (!name || !email || !color) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const subject = encodeURIComponent('New 3D Print Order - ' + model);
+            const body = encodeURIComponent(
+                'Model: ' + model + '\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Color: ' + color + '\n' +
+                'Quantity: ' + quantity + '\n' +
+                'Engraving: ' + engraving + '\n' +
+                'Notes: ' + notes + '\n\n' +
+                'Please reply to confirm the order and provide payment details.'
+            );
+            
+            // Show confirmation
+            alert('Thank you for your order! Click OK to open your email client with the order details.');
+            
+            // Open email client
+            window.location.href = 'mailto:aeyeingserver@gmail.com?subject=' + subject + '&body=' + body;
+            
+            // Close modal
+            document.getElementById('orderModal').classList.remove('active');
+        }</script>
 </body>
 </html>
 
