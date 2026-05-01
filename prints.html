@@ -488,10 +488,10 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeOrder()">×</button>
             <h2>🛒 Order Print</h2>
-            <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
-                <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
+            <form id="orderForm" action="mailto:aeyeingserver@gmail.com" method="POST" enctype="text/plain">
+                
+                
+                
 
                 <label style="color:rgba(255,255,255,0.7);display:block;margin-bottom:0.5rem">Selected Model:</label>
                 <input type="text" name="model" id="orderModel" readonly style="background:rgba(255,255,255,0.1)">
@@ -532,7 +532,7 @@
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
                 <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
 
-                <button type="submit">📧 Send Order Request</button>
+                <button type="submit">📧 Send Order Request</button>\n                <!-- Form will open email client with order details -->
             </form>
         </div>
     </div>
