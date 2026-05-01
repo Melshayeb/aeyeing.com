@@ -569,10 +569,13 @@
             { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }mage: null }
         ];
 
+        const PRINTS_VERSION = '2026-05-02-v1';
         function loadPrints() {
             const stored = localStorage.getItem('aeyeingPrints');
-            if (stored) return JSON.parse(stored);
+            const storedVersion = localStorage.getItem('aeyeingPrintsVersion');
+            if (stored && storedVersion === PRINTS_VERSION) return JSON.parse(stored);
             localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+            localStorage.setItem('aeyeingPrintsVersion', PRINTS_VERSION);
             return defaultPrints;
         }
 
