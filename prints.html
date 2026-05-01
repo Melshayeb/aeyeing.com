@@ -568,11 +568,15 @@
             { id: 'conan-6', title: 'Conan the Barbarian - Classic Pose', category: 'Collectibles', desc: 'Classic heroic pose. The iconic barbarian in all his glory!', size: '15cm', price: '', image: 'images/conan/conan-6.jpeg' },
             { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' },];
 
-        function loadPrints() {
+        const PRINTS_VERSION = '2026-05-01-v2'; function loadPrints() {
             const stored = localStorage.getItem('aeyeingPrints');
-            if (stored) return JSON.parse(stored);
-            localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
-            return defaultPrints;
+            const storedVersion = localStorage.getItem('aeyeingPrintsVersion');
+            if (!stored || storedVersion !== PRINTS_VERSION) {
+                localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+                localStorage.setItem('aeyeingPrintsVersion', PRINTS_VERSION);
+                return defaultPrints;
+            }
+            return JSON.parse(stored);
         }
 
         function savePrints(prints) {
