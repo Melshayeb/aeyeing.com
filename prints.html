@@ -63,8 +63,25 @@
             font-size: 0.95rem;
         }
 
-        
-        
+        .add-print-btn {
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            margin: 1rem 0 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s;
+        }
+        .add-print-btn:hover {
+            transform: scale(1.05);
+        }
 
         .prints-grid {
             display: grid;
@@ -85,7 +102,16 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(20,184,166,0.2);
         }
-        .print-card 
+        .print-card .card-actions {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
         .print-card:hover .card-actions {
             opacity: 1;
         }
@@ -105,7 +131,7 @@
         }
         .print-image {
             height: 220px;
-            background: #0f0f23;
+            background: rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,7 +142,7 @@
         .print-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
         .print-info {
             padding: 1.5rem;
@@ -236,7 +262,7 @@
         .drop-zone.has-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
         .modal-box button[type="submit"] {
             width: 100%;
@@ -533,14 +559,7 @@
             { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
             { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
             { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
-            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null },
-            { id: 'conan-1', title: 'Conan the Barbarian - Savage Blade', category: 'Collectibles', desc: 'Detailed Conan the Barbarian with savage blade. Perfect for collectors and fantasy fans!', size: '15cm', price: '', image: 'images/conan/conan-1.jpeg' },
-            { id: 'conan-2', title: 'Conan the Barbarian - Orio Marble Edition', category: 'Collectibles', desc: 'Premium Orio Marble filament edition. Unique marble texture finish!', size: '15cm', price: '', image: 'images/conan/conan-2.jpeg' },
-            { id: 'conan-3', title: 'Conan the Barbarian - Black Edition', category: 'Collectibles', desc: 'Sleek black edition. Bold and powerful look for any display!', size: '15cm', price: '', image: 'images/conan/conan-3.jpeg' },
-            { id: 'conan-4', title: 'Conan the King - Throne', category: 'Collectibles', desc: 'Majestic Conan on throne. Intricate details and regal pose!', size: '18cm', price: '', image: 'images/conan/conan-4.jpeg' },
-            { id: 'conan-5', title: 'Conan the Barbarian - Battle Ready', category: 'Collectibles', desc: 'Battle-ready stance with detailed armor and weapons!', size: '15cm', price: '', image: 'images/conan/conan-5.jpeg' },
-            { id: 'conan-6', title: 'Conan the Barbarian - Classic Pose', category: 'Collectibles', desc: 'Classic heroic pose. The iconic barbarian in all his glory!', size: '15cm', price: '', image: 'images/conan/conan-6.jpeg' },
-            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }
+            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null }
         ];
 
         function loadPrints() {
