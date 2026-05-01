@@ -485,10 +485,10 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeOrder()">×</button>
             <h2>🛒 Order Print</h2>
-            <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
-                <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
+            <form id="orderForm">
+                
+                
+                
 
                 <label style="color:rgba(255,255,255,0.7);display:block;margin-bottom:0.5rem">Selected Model:</label>
                 <input type="text" name="model" id="orderModel" readonly style="background:rgba(255,255,255,0.1)">
@@ -802,7 +802,39 @@
 
         // Initial render
         renderPrints();
-    </script>
+            // Handle order form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const model = document.getElementById('orderModel').value;
+            const name = form.querySelector('[name="name"]').value;
+            const email = form.querySelector('[name="email"]').value;
+            const color = form.querySelector('[name="color"]').value;
+            const engraving = form.querySelector('[name="engraving"]').value || 'None';
+            const quantity = form.querySelector('[name="quantity"]').value;
+            const notes = form.querySelector('[name="notes"]').value || 'None';
+            
+            const subject = encodeURIComponent('New 3D Print Order - ' + model);
+            const body = encodeURIComponent(
+                'Model: ' + model + '\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Color: ' + color + '\n' +
+                'Quantity: ' + quantity + '\n' +
+                'Engraving: ' + engraving + '\n' +
+                'Notes: ' + notes + '\n\n' +
+                'Please reply to confirm the order and provide payment details.'
+            );
+            
+            // Show confirmation
+            alert('Thank you for your order! Click OK to open your email client with the order details.');
+            
+            // Open email client
+            window.location.href = 'mailto:aeyeingserver@gmail.com?subject=' + subject + '&body=' + body;
+            
+            // Close modal
+            document.getElementById('orderModal').classList.remove('active');
+        });</script>
 </body>
 </html>
 
