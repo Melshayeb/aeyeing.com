@@ -388,8 +388,8 @@
 
     <nav class="kids-nav">
         <div class="nav-inner">
-            <a href="index.html" class="back-link">← Back to Aeyeing</a>
-            <span class="lab-title">🖨️ 3D Prints</span>
+            <a href="index.html" class="back-link">â† Back to Aeyeing</a>
+            <span class="lab-title">ðŸ–¨ï¸ 3D Prints</span>
         </div>
     </nav>
 
@@ -400,15 +400,15 @@
         </header>
 
         <div class="printer-info">
-            <div class="printer-icon">🖨️</div>
+            <div class="printer-icon">ðŸ–¨ï¸</div>
             <div class="printer-details">
                 <h3>Bambu Lab A1 Mini</h3>
-                <p>High-quality FDM prints up to 180×180×180mm | PLA/PETG/TPU | 0.2-0.6mm nozzles</p>
+                <p>High-quality FDM prints up to 180Ã—180Ã—180mm | PLA/PETG/TPU | 0.2-0.6mm nozzles</p>
             </div>
         </div>
 
         <button class="add-print-btn" id="addPrintBtn">
-            <span>➕</span> Add New Print
+            <span>âž•</span> Add New Print
         </button>
 
         <div class="prints-grid" id="printsGrid">
@@ -416,7 +416,7 @@
         </div>
 
         <div class="order-process">
-            <h2>📦 How to Order</h2>
+            <h2>ðŸ“¦ How to Order</h2>
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -442,15 +442,15 @@
         </div>
 
         <div class="contact-note">
-            <p>📧 Questions? Special requests? Email us at <a href="mailto:aeyeingserver@gmail.com">aeyeingserver@gmail.com</a></p>
+            <p>ðŸ“§ Questions? Special requests? Email us at <a href="mailto:aeyeingserver@gmail.com">aeyeingserver@gmail.com</a></p>
         </div>
     </div>
 
     <!-- Add/Edit Print Modal -->
     <div class="modal-overlay" id="printModal">
         <div class="modal-box">
-            <button class="modal-close" id="modalClose">×</button>
-            <h2 id="modalTitle">➕ Add New Print</h2>
+            <button class="modal-close" id="modalClose">Ã—</button>
+            <h2 id="modalTitle">âž• Add New Print</h2>
             <form id="printForm">
                 <input type="hidden" id="printId">
                 <input type="text" id="printTitle" placeholder="Print Name" required>
@@ -458,12 +458,12 @@
                 <textarea id="printDesc" placeholder="Description..." rows="3" required></textarea>
                 <input type="text" id="printSize" placeholder="Size (e.g., 15cm)">
                 <div class="drop-zone" id="dropZone">
-                    <span id="dropText">📁 Drop photo here or click to browse</span>
+                    <span id="dropText">ðŸ“ Drop photo here or click to browse</span>
                     <img id="dropPreview" style="display:none">
                     <input type="file" id="fileInput" accept="image/*" style="display:none">
                 </div>
-                <button type="submit" id="submitBtn">💾 Save Print</button>
-                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Print</button>
+                <button type="submit" id="submitBtn">ðŸ’¾ Save Print</button>
+                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">ðŸ—‘ï¸ Delete Print</button>
             </form>
         </div>
     </div>
@@ -471,7 +471,7 @@
     <!-- Confirm Delete Modal -->
     <div class="modal-overlay" id="confirmModal">
         <div class="modal-box confirm-modal">
-            <h2>🗑️ Delete Print?</h2>
+            <h2>ðŸ—‘ï¸ Delete Print?</h2>
             <p>Are you sure? This cannot be undone!</p>
             <div class="confirm-buttons">
                 <button class="confirm-no" id="confirmNo">Keep It</button>
@@ -483,8 +483,8 @@
     <!-- Order Modal -->
     <div class="modal-overlay" id="orderModal">
         <div class="modal-box">
-            <button class="modal-close" onclick="closeOrder()">×</button>
-            <h2>🛒 Order Print</h2>
+            <button class="modal-close" onclick="closeOrder()">Ã—</button>
+            <h2>ðŸ›’ Order Print</h2>
             <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
                 <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
                 <input type="hidden" name="_template" value="table">
@@ -502,16 +502,16 @@
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Choose Color:</label>
                 <select name="color" required>
                     <option value="">Select a color...</option>
-                    <option value="White">⚪ White</option>
-                    <option value="Black">⚫ Black</option>
-                    <option value="Red">🔴 Red</option>
-                    <option value="Green">🟢 Green</option>
-                    <option value="Blue">🔵 Blue</option>
-                    <option value="Yellow">🟡 Yellow</option>
-                    <option value="Orange">🟠 Orange</option>
-                    <option value="Pink">💖 Pink</option>
-                    <option value="Purple">🟣 Purple</option>
-                    <option value="Cyan">🔷 Cyan</option>
+                    <option value="White">âšª White</option>
+                    <option value="Black">âš« Black</option>
+                    <option value="Red">ðŸ”´ Red</option>
+                    <option value="Green">ðŸŸ¢ Green</option>
+                    <option value="Blue">ðŸ”µ Blue</option>
+                    <option value="Yellow">ðŸŸ¡ Yellow</option>
+                    <option value="Orange">ðŸŸ  Orange</option>
+                    <option value="Pink">ðŸ’– Pink</option>
+                    <option value="Purple">ðŸŸ£ Purple</option>
+                    <option value="Cyan">ðŸ”· Cyan</option>
                 </select>
 
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Custom Text / Engraving (Optional):</label>
@@ -529,13 +529,13 @@
                 <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
                 <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
 
-                <button type="submit">📧 Send Order Request</button>
+                <button type="submit">ðŸ“§ Send Order Request</button>
             </form>
         </div>
     </div>
 
     <footer class="kids-footer">
-        <p>🖨️ 3D Print Studio | Aeyeing</p>
+        <p>ðŸ–¨ï¸ 3D Print Studio | Aeyeing</p>
     </footer>
 
     <script>
@@ -559,24 +559,21 @@
             { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
             { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
             { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
-            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null }
-                    { id: 'conan-1', title: 'Conan the Barbarian - Savage Blade', category: 'Collectibles', desc: 'Detailed Conan the Barbarian with savage blade. Perfect for collectors and fantasy fans!', size: '15cm', price: '', image: 'images/conan/conan-1.jpeg' },
+            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null },
+            { id: 'conan-1', title: 'Conan the Barbarian - Savage Blade', category: 'Collectibles', desc: 'Detailed Conan the Barbarian with savage blade. Perfect for collectors and fantasy fans!', size: '15cm', price: '', image: 'images/conan/conan-1.jpeg' },
             { id: 'conan-2', title: 'Conan the Barbarian - Orio Marble Edition', category: 'Collectibles', desc: 'Premium Orio Marble filament edition. Unique marble texture finish!', size: '15cm', price: '', image: 'images/conan/conan-2.jpeg' },
             { id: 'conan-3', title: 'Conan the Barbarian - Black Edition', category: 'Collectibles', desc: 'Sleek black edition. Bold and powerful look for any display!', size: '15cm', price: '', image: 'images/conan/conan-3.jpeg' },
             { id: 'conan-4', title: 'Conan the King - Throne', category: 'Collectibles', desc: 'Majestic Conan on throne. Intricate details and regal pose!', size: '18cm', price: '', image: 'images/conan/conan-4.jpeg' },
             { id: 'conan-5', title: 'Conan the Barbarian - Battle Ready', category: 'Collectibles', desc: 'Battle-ready stance with detailed armor and weapons!', size: '15cm', price: '', image: 'images/conan/conan-5.jpeg' },
             { id: 'conan-6', title: 'Conan the Barbarian - Classic Pose', category: 'Collectibles', desc: 'Classic heroic pose. The iconic barbarian in all his glory!', size: '15cm', price: '', image: 'images/conan/conan-6.jpeg' },
-            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }];
+            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }
+        ];
 
-        const PRINTS_VERSION = '2026-05-01-v2'; function loadPrints() {
+        function loadPrints() {
             const stored = localStorage.getItem('aeyeingPrints');
-            const storedVersion = localStorage.getItem('aeyeingPrintsVersion');
-            if (!stored || storedVersion !== PRINTS_VERSION) {
-                localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
-                localStorage.setItem('aeyeingPrintsVersion', PRINTS_VERSION);
-                return defaultPrints;
-            }
-            return JSON.parse(stored);
+            if (stored) return JSON.parse(stored);
+            localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+            return defaultPrints;
         }
 
         function savePrints(prints) {
@@ -593,20 +590,20 @@
             grid.innerHTML = prints.map(p => `
                 <div class="print-card" data-id="${p.id}">
                     <div class="card-actions">
-                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">✏️</button>
-                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
+                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">âœï¸</button>
+                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">ðŸ—‘ï¸</button>
                     </div>
                     <div class="print-image">
-                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
+                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : 'ðŸ”²'}
                     </div>
                     <div class="print-info">
                         <h3>${p.title}</h3>
                         <p>${p.desc}</p>
                         <div class="print-tags">
                             <span class="print-tag">${p.category}</span>
-                            <span class="print-tag">📐 ${p.size}</span>
+                            <span class="print-tag">ðŸ“ ${p.size}</span>
                         </div>
-                        <button class="order-btn" onclick="openOrder('${p.title}')">🛒 Order This Print</button>
+                        <button class="order-btn" onclick="openOrder('${p.title}')">ðŸ›’ Order This Print</button>
                     </div>
                 </div>
             `).join('');
@@ -648,14 +645,14 @@
                     dropPreview.style.display = 'block';
                     dropPreview.src = p.image;
                 }
-                title.textContent = '✏️ Edit Print';
-                submitBtn.textContent = '💾 Save Changes';
+                title.textContent = 'âœï¸ Edit Print';
+                submitBtn.textContent = 'ðŸ’¾ Save Changes';
                 deleteBtn.style.display = 'block';
             } else {
                 printForm.reset();
                 document.getElementById('printId').value = '';
-                title.textContent = '➕ Add New Print';
-                submitBtn.textContent = '💾 Save Print';
+                title.textContent = 'âž• Add New Print';
+                submitBtn.textContent = 'ðŸ’¾ Save Print';
                 deleteBtn.style.display = 'none';
             }
 
@@ -796,7 +793,7 @@
 
         // Show confirmation
         if (window.location.search.includes('ordered=true')) {
-            alert('✅ Order submitted! We\'ll review your request and email you within 24 hours.');
+            alert('âœ… Order submitted! We\'ll review your request and email you within 24 hours.');
             window.history.replaceState({}, document.title, 'prints.html');
         }
 
@@ -805,3 +802,4 @@
     </script>
 </body>
 </html>
+
