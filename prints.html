@@ -830,21 +830,35 @@
             
             var subject = encodeURIComponent('New 3D Print Order - ' + model);
             var body = encodeURIComponent(
-                'Model: ' + model + '\n' +
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n' +
-                'Color: ' + color + '\n' +
-                'Quantity: ' + quantity + '\n' +
-                'Engraving: ' + engraving + '\n' +
-                'Notes: ' + notes + '\n\n' +
+                'Model: ' + model + '
+' +
+                'Name: ' + name + '
+' +
+                'Email: ' + email + '
+' +
+                'Color: ' + color + '
+' +
+                'Quantity: ' + quantity + '
+' +
+                'Engraving: ' + engraving + '
+' +
+                'Notes: ' + notes + '
+
+' +
                 'Please reply to confirm the order and provide payment details.'
             );
             
-            alert('Thank you for your order! Your email client will open with the order details.');
-            
-            window.location.href = 'mailto:aeyeingserver@gmail.com?subject=' + subject + '&body=' + body;
+            // Use temporary link to open email without blank page
+            var tempLink = document.createElement('a');
+            tempLink.href = 'mailto:aeyeingserver@gmail.com?subject=' + subject + '&body=' + body;
+            tempLink.style.display = 'none';
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
             
             document.getElementById('orderModal').classList.remove('active');
+            
+            alert('Thank you for your order! Please check your email client.');
             
             return false;
         }
