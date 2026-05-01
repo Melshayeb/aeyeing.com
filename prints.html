@@ -385,7 +385,13 @@
         /* Hide edit/delete buttons for public view */
         .card-actions { display: none !important; }
         .add-print-btn { display: none !important; }</style>
-</head>
+
+    <script>
+        // Redirect HTTP to HTTPS
+        if (window.location.protocol === 'http:') {
+            window.location.href = window.location.href.replace('http:', 'https:');
+        }
+    </script></head>
 <body>
     <div class="particles" id="particles"></div>
 
