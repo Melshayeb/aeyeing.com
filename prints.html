@@ -407,9 +407,7 @@
             </div>
         </div>
 
-        <button class="add-print-btn" id="addPrintBtn">
-            <span>➕</span> Add New Print
-        </button>
+        
 
         <div class="prints-grid" id="printsGrid">
             <!-- Loaded from localStorage -->
@@ -582,10 +580,7 @@
             const grid = document.getElementById('printsGrid');
             grid.innerHTML = prints.map(p => `
                 <div class="print-card" data-id="${p.id}">
-                    <div class="card-actions">
-                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">✏️</button>
-                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
-                    </div>
+                    
                     <div class="print-image">
                         ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
                     </div>
