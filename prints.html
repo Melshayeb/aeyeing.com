@@ -597,7 +597,7 @@
                         <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
                     </div>
                     <div class="print-image">
-                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
+                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : `<div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.4);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:0.8rem;">Photo coming soon</span></div>`}
                     </div>
                     <div class="print-info">
                         <h3>${p.title}</h3>
