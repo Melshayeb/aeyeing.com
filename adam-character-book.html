@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam & Lucas — Character Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&family=Kalam:wght@400;700&family=Permanent+Marker&family=Press+Start+2P&family=Rock+Salt&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #fdfcf5;
+    --ink: #2a2a2a;
+    --accent: #ff6b6b;
+    --accent2: #4ecdc4;
+    --accent3: #ffe66d;
+    --shadow: rgba(0,0,0,0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Kalam', cursive;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    background: linear-gradient(135deg, #fdfcf5 0%, #f5f0e1 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    padding: 8px 24px;
+    border-radius: 50px;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 #c44;
+    animation: badgePulse 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes badgePulse {
+    0%, 100% { transform: rotate(-3deg) scale(1); }
+    50% { transform: rotate(-3deg) scale(1.05); }
+  }
+  .hero h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 3px;
+    margin: 25px 0 10px;
+    text-shadow: 4px 4px 0 var(--accent3), 6px 6px 0 rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+    animation: titleBounce 1s ease-out;
+  }
+  @keyframes titleBounce {
+    0% { opacity: 0; transform: translateY(-50px); }
+    60% { transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .hero-authors {
+    font-family: 'Rock Salt', cursive;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #666;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s 0.3s both;
+  }
+  .hero-desc {
+    font-family: 'Kalam', cursive;
+    font-size: 1.1rem;
+    color: #888;
+    margin-top: 15px;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s 0.5s both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounceDown 1.5s infinite;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .scroll-hint svg { width: 40px; height: 40px; }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(12px); }
+  }
+
+  /* ===== CHARACTERS SECTION ===== */
+  .characters-section {
+    padding: 60px 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    border-radius: 3px;
+    transform: rotate(-1deg);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 35px;
+  }
+
+  /* ===== CHARACTER CARD ===== */
+  .char-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid transparent;
+  }
+  .char-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: var(--accent);
+  }
+  .char-card:nth-child(2):hover { border-color: #ffd93d; }
+  .char-card:nth-child(3):hover { border-color: #a855f7; }
+  .char-card:nth-child(4):hover { border-color: #84cc16; }
+  .char-card:nth-child(5):hover { border-color: #3b82f6; }
+  .char-card:nth-child(6):hover { border-color: #f43f5e; }
+  .char-card:nth-child(7):hover { border-color: #06b6d4; }
+  .char-card:nth-child(8):hover { border-color: #78716c; }
+
+  .char-card-inner {
+    padding: 24px;
+  }
+
+  .char-number {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: rgba(0,0,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .char-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .char-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  }
+  .char-info h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.7rem;
+    line-height: 1.1;
+    letter-spacing: 1px;
+  }
+  .char-info .tagline {
+    font-family: 'Kalam', cursive;
+    font-size: 0.95rem;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* ===== SVG DRAWING AREA ===== */
+  .char-canvas {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(180deg, #fafaf5 0%, #f5f2e8 100%);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .char-canvas svg {
+    max-width: 90%;
+    max-height: 90%;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .char-card:hover .char-canvas svg {
+    transform: scale(1.08) translateY(-5px);
+  }
+
+  /* ===== CARD BODY ===== */
+  .char-quote {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.15rem;
+    color: #555;
+    padding: 12px 16px;
+    background: #fffbeb;
+    border-left: 4px solid var(--accent3);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    transition: all 0.3s;
+  }
+  .char-card:hover .char-quote {
+    background: #fff5d6;
+    border-left-width: 6px;
+  }
+  .char-desc {
+    font-family: 'Kalam', cursive;
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* ===== INTERACTIVE DETAILS (hidden by default) ===== */
+  .char-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s;
+    opacity: 0;
+  }
+  .char-card.expanded .char-details {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 12px;
+  }
+  .char-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .stat-box {
+    text-align: center;
+    padding: 10px 6px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  .stat-box:hover { transform: scale(1.08); }
+  .stat-val {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-family: 'Kalam', cursive;
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .expand-btn {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    background: transparent;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.1rem;
+    color: #999;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+  .expand-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,107,107,0.05);
+  }
+
+  /* ===== ANIMATED ENTRANCE ===== */
+  .char-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  .char-card.visible,
+  .char-card.no-js {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #2a2a2a;
+    color: #aaa;
+    font-family: 'Kalam', cursive;
+  }
+  .footer a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ===== SVG ANIMATIONS ===== */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+  }
+  @keyframes blink {
+    0%, 90%, 100% { opacity: 1; }
+    95% { opacity: 0.3; }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { filter: drop-shadow(0 0 0px currentColor); }
+    50% { filter: drop-shadow(0 0 6px currentColor); }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .anim-float { animation: float 3s ease-in-out infinite; }
+  .anim-wiggle { animation: wiggle 2s ease-in-out infinite; }
+  .anim-blink { animation: blink 4s infinite; }
+  .anim-pulse { animation: pulseGlow 2s ease-in-out infinite; }
+  .anim-spin { animation: spinSlow 8s linear infinite; }
+
+  /* Character-specific SVG animation classes */
+  .azure-hat { transform-origin: center bottom; animation: wiggle 3s ease-in-out infinite; }
+  .azure-arms { transform-origin: center; animation: float 2.5s ease-in-out infinite; }
+  .dough-toque { transform-origin: center bottom; animation: float 2s ease-in-out infinite; }
+  .null-star { transform-origin: center; animation: spinSlow 6s linear infinite; }
+  .null-hair { animation: wiggle 1.5s ease-in-out infinite; }
+  .doe-scribble { animation: wiggle 0.8s ease-in-out infinite; }
+  .rook-crown { transform-origin: center bottom; animation: wiggle 2s ease-in-out infinite; }
+  .rook-speed { animation: float 1s ease-in-out infinite; }
+  .coolkid-body { animation: float 2.2s ease-in-out infinite; }
+  .bluedude-face { transform-origin: center; animation: float 3s ease-in-out infinite; }
+  .bluedude-grin { animation: wiggle 2s ease-in-out infinite; }
+  .mafioso-hat { transform-origin: center bottom; animation: wiggle 2.5s ease-in-out infinite; }
+  .mafioso-eyes { animation: blink 3s infinite; }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .char-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+    .char-canvas { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-badge">ORIGINAL ART</div>
+  <h1>Adam's Character Book</h1>
+  <p class="hero-authors">By Adam E & Lucas T</p>
+  <p class="hero-desc">A collection of 8 original characters drawn at school, brought to life in digital form!</p>
+  <div class="scroll-hint" onclick="document.getElementById('characters').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters-section" id="characters">
+  <div class="section-title">Meet the Crew!</div>
+  <div class="char-grid" id="charGrid">
+
+    <!-- ========== AZURE ========== -->
+    <div class="char-card" data-index="1" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">01</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#9333ea;">Az</div>
+          <div class="char-info">
+            <h2>AZURE</h2>
+            <p class="tagline">The Forsaken Wizard</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <g class="azure-hat">
+              <polygon points="80,70 100,15 105,25 100,45 108,35 105,70" fill="#666" stroke="#444" stroke-width="2"/>
+              <ellipse cx="98" cy="28" rx="3" ry="2" fill="#e879f9"/>
+              <ellipse cx="103" cy="33" rx="2" ry="1.5" fill="#a855f7"/>
+            </g>
+            <rect x="75" y="72" width="50" height="38" rx="3" fill="#a855f7" stroke="#581c87" stroke-width="2.5"/>
+            <line x1="85" y1="82" x2="95" y2="92" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+            <line x1="115" y1="82" x2="105" y2="92" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+            <rect x="88" y="96" width="24" height="14" rx="2" fill="#222"/>
+            <line x1="93" y1="96" x2="93" y2="110" stroke="#fff" stroke-width="1"/>
+            <line x1="100" y1="96" x2="100" y2="110" stroke="#fff" stroke-width="1"/>
+            <line x1="107" y1="96" x2="107" y2="110" stroke="#fff" stroke-width="1"/>
+            <line x1="88" y1="103" x2="112" y2="103" stroke="#fff" stroke-width="1"/>
+            <g class="azure-arms">
+              <polygon points="60,78 40,65 38,78 55,85" fill="#999" stroke="#666" stroke-width="1.5"/>
+              <polygon points="60,72 42,55 35,68 55,75" fill="#999" stroke="#666" stroke-width="1.5"/>
+              <polygon points="140,72 158,55 165,68 145,75" fill="#999" stroke="#666" stroke-width="1.5"/>
+              <polygon points="140,88 158,95 158,108 142,102" fill="#999" stroke="#666" stroke-width="1.5"/>
+              <polygon points="62,95 45,105 42,118 58,110" fill="#999" stroke="#666" stroke-width="1.5"/>
+            </g>
+            <rect x="80" y="112" width="40" height="52" rx="3" fill="#ddd" stroke="#888" stroke-width="2"/>
+            <rect x="90" y="120" width="20" height="22" rx="2" fill="none" stroke="#f472b6" stroke-width="3"/>
+            <ellipse cx="100" cy="131" rx="8" ry="6" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+            <ellipse cx="100" cy="131" rx="4" ry="5" fill="#581c87"/>
+            <rect x="82" y="166" width="15" height="30" fill="#777"/>
+            <rect x="103" y="166" width="15" height="30" fill="#777"/>
+            <rect x="80" y="194" width="19" height="5" fill="#333" rx="1"/>
+            <rect x="101" y="194" width="19" height="5" fill="#333" rx="1"/>
+          </svg>
+        </div>
+        <div class="char-quote">"Chase Theme To: Dunice — Azure enemies with Two Time"</div>
+        <div class="char-desc">Pointed wizard hat with pink marks. Sharp diagonal eyes, gritted teeth, 5 spider-like arms, and a mysterious magenta chest portal.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Creepy</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Power</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Speed</div></div>
+            <div class="stat-box"><div class="stat-val">3</div><div class="stat-label">Friendly</div></div>
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Arms</div></div>
+            <div class="stat-box"><div class="stat-val">5</div><div class="stat-label">Hat Size</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== JOHN DOUGH ========== -->
+    <div class="char-card" data-index="2" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">02</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#fbbf24; color:#333;">Jd</div>
+          <div class="char-info">
+            <h2>JOHN DOUGH</h2>
+            <p class="tagline">The Baker Chef</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <g class="dough-toque">
+              <polygon points="70,65 75,35 85,25 100,18 115,25 125,35 130,65 115,70 100,68 85,70" fill="#fff" stroke="#ccc" stroke-width="2"/>
+            </g>
+            <rect x="82" y="70" width="36" height="30" rx="4" fill="#ffe4e1" stroke="#d4a5a5" stroke-width="1.5"/>
+            <rect x="90" y="78" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="104" y="78" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="88" y="98" width="10" height="5" rx="2" fill="#ff6b6b"/>
+            <rect x="72" y="102" width="56" height="45" rx="3" fill="#fff" stroke="#ddd" stroke-width="2"/>
+            <polygon points="100,110 108,122 100,134 92,122" fill="#ff6b6b" stroke="#e11d48" stroke-width="1.5"/>
+            <rect x="48" y="105" width="22" height="10" rx="2" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+            <rect x="48" y="105" width="7" height="10" rx="1" fill="#fbbf24"/>
+            <rect x="38" y="85" width="8" height="30" rx="2" fill="#bbb" stroke="#999" stroke-width="1.5"/>
+            <rect x="36" y="112" width="12" height="5" rx="1" fill="#8b4513"/>
+            <rect x="130" y="105" width="22" height="10" rx="2" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+            <rect x="145" y="105" width="7" height="10" rx="1" fill="#fbbf24"/>
+            <text x="138" y="112" font-family="monospace" font-size="8" fill="#888">3</text>
+            <path d="M155 95 Q165 90 160 100" fill="none" stroke="#333" stroke-width="1.5"/>
+            <path d="M160 92 Q170 87 165 97" fill="none" stroke="#333" stroke-width="1.5"/>
+            <rect x="85" y="150" width="14" height="30" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+            <rect x="101" y="150" width="14" height="30" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+            <rect x="83" y="178" width="18" height="6" rx="2" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+            <rect x="99" y="178" width="18" height="6" rx="2" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="char-quote">"John dough — chase . moss the mp. down"</div>
+        <div class="char-desc">A master baker with a heart-shaped toque, a rolling pin ready for action, and a mysterious "3" on his sleeve.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Baking</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Speed</div></div>
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Taste</div></div>
+            <div class="stat-box"><div class="stat-val">6</div><div class="stat-label">Rolling</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Hat Height</div></div>
+            <div class="stat-box"><div class="stat-val">5</div><div class="stat-label">Stealth</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== NULL ========== -->
+    <div class="char-card" data-index="3" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">03</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#a855f7;">Nu</div>
+          <div class="char-info">
+            <h2>NULL</h2>
+            <p class="tagline">The Half-Corrupted Avatar</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <rect x="85" y="45" width="30" height="28" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1.5"/>
+            <rect x="85" y="45" width="15" height="28" rx="3" fill="#a855f7"/>
+            <ellipse cx="91" cy="55" rx="4" ry="5" fill="#581c87"/>
+            <g class="null-hair">
+              <line x1="87" y1="42" x2="80" y2="30" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="92" y1="42" x2="85" y2="28" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="97" y1="42" x2="92" y2="30" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="102" y1="42" x2="108" y2="30" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="107" y1="42" x2="114" y2="30" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+            <rect x="75" y="76" width="50" height="42" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1.5"/>
+            <rect x="75" y="76" width="25" height="42" rx="3" fill="#a855f7"/>
+            <rect x="55" y="80" width="18" height="30" rx="2" fill="#a855f7" stroke="#7e22ce" stroke-width="1.5"/>
+            <rect x="125" y="72" width="12" height="32" rx="2" fill="#ddd" stroke="#bbb" stroke-width="1.5"/>
+            <g class="null-star" transform="translate(138, 60)">
+              <polygon points="0,-10 3,-3 10,-3 5,2 7,9 0,5 -7,9 -5,2 -10,-3 -3,-3" fill="#a855f7" stroke="#7e22ce" stroke-width="1.5"/>
+            </g>
+            <rect x="85" y="120" width="12" height="28" rx="2" fill="#a855f7" stroke="#7e22ce" stroke-width="1.5"/>
+            <rect x="103" y="120" width="12" height="28" rx="2" fill="#ddd" stroke="#bbb" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="char-quote">"Chase . Null — half purple, half empty..."</div>
+        <div class="char-desc">A split-soul Roblox avatar. Left side fully corrupted in purple, right side blank and gray. Holds a glowing purple star.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">6</div><div class="stat-label">Balance</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Mystery</div></div>
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Star Power</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Complete</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Hair Mess</div></div>
+            <div class="stat-box"><div class="stat-val">5</div><div class="stat-label">Luck</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== JOHN DOE ========== -->
+    <div class="char-card" data-index="4" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">04</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#84cc16; color:#333;">J#</div>
+          <div class="char-info">
+            <h2>JOHN DOE</h2>
+            <p class="tagline">The Corrupted Noob</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <rect x="20" y="40" width="160" height="150" rx="4" fill="none" stroke="#bbb" stroke-width="1.5" stroke-dasharray="4,2"/>
+            <rect x="90" y="55" width="20" height="18" rx="2" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <rect x="94" y="60" width="12" height="12" rx="1" fill="#333"/>
+            <rect x="78" y="76" width="44" height="40" rx="3" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <ellipse cx="90" cy="84" rx="5" ry="7" fill="#8b3a3a" opacity="0.6"/>
+            <ellipse cx="104" cy="86" rx="3" ry="5" fill="#8b3a3a" opacity="0.5"/>
+            <rect x="52" y="80" width="24" height="22" rx="2" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <g class="doe-scribble">
+              <line x1="58" y1="76" x2="72" y2="88" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+              <line x1="62" y1="82" x2="76" y2="94" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+              <line x1="60" y1="90" x2="74" y2="102" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+              <line x1="66" y1="78" x2="80" y2="92" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+              <line x1="64" y1="98" x2="78" y2="108" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <rect x="122" y="84" width="20" height="12" rx="2" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <rect x="142" y="82" width="12" height="16" rx="2" fill="#aaa" stroke="#888" stroke-width="1.5"/>
+            <rect x="144" y="84" width="8" height="6" rx="1" fill="#d4c964"/>
+            <rect x="84" y="118" width="12" height="32" rx="2" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <rect x="104" y="118" width="12" height="32" rx="2" fill="#c8d964" stroke="#9db044" stroke-width="1.5"/>
+            <rect x="82" y="148" width="16" height="8" rx="2" fill="#444" stroke="#333" stroke-width="1"/>
+            <rect x="102" y="148" width="16" height="8" rx="2" fill="#444" stroke="#333" stroke-width="1"/>
+            <ellipse cx="48" cy="105" rx="8" ry="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="2,1"/>
+            <path d="M44 115 Q48 118 52 115" fill="none" stroke="#ccc" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="char-quote">"seems, You — heme viral infection — WANT TO IS"</div>
+        <div class="char-desc">The legendary Roblox creepypasta come to life. Yellow-green body, one dark scribble eye, and a spooky ghost outline lurking nearby.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Creepy</div></div>
+            <div class="stat-box"><div class="stat-val">3</div><div class="stat-label">Sanity</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Viral</div></div>
+            <div class="stat-box"><div class="stat-val">2</div><div class="stat-label">Visible</div></div>
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Mystery</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Friendly</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FUSIONER ROOK ========== -->
+    <div class="char-card" data-index="5" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">05</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#3b82f6;">FR</div>
+          <div class="char-info">
+            <h2>FUSIONER ROOK</h2>
+            <p class="tagline">The Armored Chess Monster</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <polygon points="25,30 175,30 185,50 175,65 25,65 15,50" fill="none" stroke="#777" stroke-width="2"/>
+            <text x="45" y="52" font-family="'Bangers', cursive" font-size="16" fill="#555" letter-spacing="2">FUSIONER ROOK</text>
+            <rect x="85" y="72" width="30" height="28" rx="2" fill="#7a8fa8" stroke="#4a5568" stroke-width="1.8"/>
+            <g class="rook-crown">
+              <polygon points="82,72 85,55 90,62 95,55 100,62 105,55 110,62 115,55 118,72" fill="#4ade80" stroke="#16a34a" stroke-width="1.5"/>
+            </g>
+            <rect x="85" y="78" width="30" height="12" rx="1" fill="#1e3a8a" stroke="#1e3a5f" stroke-width="1.5"/>
+            <line x1="88" y1="82" x2="112" y2="82" stroke="#3b82f6" stroke-width="0.8"/>
+            <line x1="88" y1="86" x2="112" y2="86" stroke="#3b82f6" stroke-width="0.8"/>
+            <rect x="70" y="102" width="60" height="48" rx="3" fill="#5c7aea" stroke="#3b49c4" stroke-width="2"/>
+            <line x1="70" y1="114" x2="130" y2="114" stroke="#3b49c4" stroke-width="1.2"/>
+            <line x1="70" y1="126" x2="130" y2="126" stroke="#3b49c4" stroke-width="1.2"/>
+            <line x1="70" y1="138" x2="130" y2="138" stroke="#3b49c4" stroke-width="1.2"/>
+            <line x1="100" y1="102" x2="100" y2="146" stroke="#3b49c4" stroke-width="0.6"/>
+            <rect x="52" y="108" width="18" height="34" rx="2" fill="#1e3a8a" stroke="#0f1e4a" stroke-width="1.5"/>
+            <rect x="130" y="108" width="18" height="34" rx="2" fill="#1e3a8a" stroke="#0f1e4a" stroke-width="1.5"/>
+            <g class="rook-speed">
+              <line x1="42" y1="95" x2="65" y2="112" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+              <line x1="38" y1="102" x2="62" y2="118" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+              <line x1="35" y1="110" x2="58" y2="125" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+              <line x1="158" y1="95" x2="135" y2="112" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+              <line x1="162" y1="102" x2="138" y2="118" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+              <line x1="165" y1="110" x2="142" y2="125" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
+            </g>
+            <rect x="88" y="152" width="12" height="30" rx="2" fill="#1e3a8a" stroke="#0f1e4a" stroke-width="1.5"/>
+            <rect x="100" y="152" width="12" height="30" rx="2" fill="#1e3a8a" stroke="#0f1e4a" stroke-width="1.5"/>
+            <rect x="86" y="180" width="16" height="6" rx="1" fill="#444" stroke="#333" stroke-width="1"/>
+            <rect x="98" y="180" width="16" height="6" rx="1" fill="#444" stroke="#333" stroke-width="1"/>
+            <rect x="168" y="170" width="14" height="14" rx="2" fill="none" stroke="#aaa" stroke-width="1"/>
+            <line x1="182" y1="174" x2="190" y2="174" stroke="#8b4513" stroke-width="1.2"/>
+            <rect x="188" y1="168" width="5" height="6" rx="1" fill="#d4a574"/>
+          </svg>
+        </div>
+        <div class="char-quote">"keep u / pason — FUSIONER ROOK rises!"</div>
+        <div class="char-desc">A blue armored chess beast with a green spiky crown. Speed lines crackle behind his massive dark arms. Don't forget the tea cup!</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Armor</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Speed</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Power</div></div>
+            <div class="stat-box"><div class="stat-val">6</div><div class="stat-label">Tea Skill</div></div>
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Spikes</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Stealth</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== COOLKID ========== -->
+    <div class="char-card" data-index="6" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">06</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#f43f5e;">Ck</div>
+          <div class="char-info">
+            <h2>COOLKID</h2>
+            <p class="tagline">The Legendary Gamer</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <rect x="30" y="35" width="140" height="140" rx="4" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <rect x="85" y="55" width="30" height="22" rx="3" fill="#f5e6c8" stroke="#d4c5a9" stroke-width="1.2"/>
+            <path d="M92 70 Q100 74 108 70" fill="none" stroke="#666" stroke-width="1.2" stroke-linecap="round"/>
+            <g class="coolkid-body">
+              <rect x="75" y="80" width="50" height="42" rx="3" fill="#f43f5e" stroke="#e11d48" stroke-width="2"/>
+              <line x1="82" y1="86" x2="118" y2="114" stroke="#e11d48" stroke-width="0.8" opacity="0.5"/>
+              <line x1="118" y1="86" x2="82" y2="114" stroke="#e11d48" stroke-width="0.8" opacity="0.5"/>
+              <line x1="88" y1="90" x2="112" y2="108" stroke="#e11d48" stroke-width="0.8" opacity="0.5"/>
+              <line x1="112" y1="90" x2="88" y2="108" stroke="#e11d48" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <rect x="52" y="82" width="22" height="10" rx="2" fill="#f43f5e" stroke="#e11d48" stroke-width="1.5"/>
+            <rect x="126" y="82" width="22" height="10" rx="2" fill="#f43f5e" stroke="#e11d48" stroke-width="1.5"/>
+            <rect x="84" y="124" width="12" height="28" rx="2" fill="#f43f5e" stroke="#e11d48" stroke-width="1.5"/>
+            <rect x="104" y="124" width="12" height="28" rx="2" fill="#f43f5e" stroke="#e11d48" stroke-width="1.5"/>
+            <text x="80" y="48" font-family="'Gochi Hand', cursive" font-size="12" fill="#888">coolkid</text>
+            <text x="78" y="160" font-family="'Gochi Hand', cursive" font-size="10" fill="#888">has a legend</text>
+            <text x="76" y="168" font-family="'Gochi Hand', cursive" font-size="10" fill="#888">coolkid's gaming</text>
+          </svg>
+        </div>
+        <div class="char-quote">"coolkid has a legend — coolkid's gaming"</div>
+        <div class="char-desc">The ultimate gamer noob in a hand-drawn frame. Pink crayon scribbles cover his torso. YouTube thumbnail energy!</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Gaming</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Coolness</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Study</div></div>
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Legend</div></div>
+            <div class="stat-box"><div class="stat-val">6</div><div class="stat-label">Frame</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Vibes</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BLUE DUDE ========== -->
+    <div class="char-card" data-index="7" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">07</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#06b6d4;">Bd</div>
+          <div class="char-info">
+            <h2>BLUE DUDE</h2>
+            <p class="tagline">The Masked Grinner</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <g class="bluedude-face">
+              <ellipse cx="100" cy="65" rx="38" ry="34" fill="#e0e0e0" stroke="#bbb" stroke-width="1.5"/>
+              <ellipse cx="100" cy="66" rx="32" ry="35" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+              <g class="bluedude-grin">
+                <path d="M68 75 Q100 115 132 75" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+                <path d="M72 80 Q100 108 128 80" fill="none" stroke="#666" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+              </g>
+              <ellipse cx="85" cy="55" rx="3" ry="2.5" fill="#333"/>
+              <ellipse cx="115" cy="55" rx="3" ry="2.5" fill="#333"/>
+            </g>
+            <line x1="62" y1="48" x2="58" y2="35" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+            <line x1="58" y1="35" x2="54" y2="40" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+            <line x1="64" y1="52" x2="60" y2="38" stroke="#f43f5e" stroke-width="3" stroke-linecap="round"/>
+            <line x1="60" y1="38" x2="56" y2="44" stroke="#f43f5e" stroke-width="3" stroke-linecap="round"/>
+            <line x1="66" y1="56" x2="62" y2="48" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+            <line x1="62" y1="48" x2="58" y2="52" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+            <rect x="62" y="102" width="76" height="52" rx="4" fill="#7dd3fc" stroke="#38bdf8" stroke-width="2"/>
+            <text x="72" y="120" font-family="monospace" font-size="9" fill="#333">Temm bludud</text>
+            <text x="75" y="132" font-family="monospace" font-size="9" fill="#333">gett inn naw</text>
+            <rect x="48" y="106" width="16" height="8" rx="2" fill="#7dd3fc" stroke="#38bdf8" stroke-width="1.5"/>
+            <rect x="136" y="106" width="16" height="8" rx="2" fill="#7dd3fc" stroke="#38bdf8" stroke-width="1.5"/>
+            <rect x="84" y="156" width="14" height="36" rx="2" fill="#7dd3fc" stroke="#38bdf8" stroke-width="1.5"/>
+            <rect x="102" y="156" width="14" height="36" rx="2" fill="#7dd3fc" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="25" y="55" font-family="'Gochi Hand', cursive" font-size="10" fill="#aaa">chase?</text>
+            <text x="25" y="65" font-family="'Gochi Hand', cursive" font-size="10" fill="#aaa">My theme</text>
+            <text x="25" y="75" font-family="'Gochi Hand', cursive" font-size="10" fill="#aaa">true tune</text>
+          </svg>
+        </div>
+        <div class="char-quote">"Temm bludud gett inn naw — just grin and roll with it!"</div>
+        <div class="char-desc">The biggest smile in the book! A giant white mask face with an enormous crescent grin, blue body, and rainbow hair streaks peeking out.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Smile</div></div>
+            <div class="stat-box"><div class="stat-val">4</div><div class="stat-label">Vision</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Joy</div></div>
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Hair Color</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Blue-ness</div></div>
+            <div class="stat-box"><div class="stat-val">6</div><div class="stat-label">Mystery</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== MAFIOSO ========== -->
+    <div class="char-card" data-index="8" onclick="toggleCard(this)">
+      <div class="char-card-inner">
+        <div class="char-number">08</div>
+        <div class="char-header">
+          <div class="char-avatar" style="background:#444;">Mf</div>
+          <div class="char-info">
+            <h2>MAFIOSO</h2>
+            <p class="tagline">The Gangster</p>
+          </div>
+        </div>
+        <div class="char-canvas">
+          <svg viewBox="0 0 200 200" width="180" height="180">
+            <g class="mafioso-hat">
+              <ellipse cx="100" cy="52" rx="30" ry="5" fill="#4a4a4a" stroke="#333" stroke-width="1.5"/>
+              <polygon points="75,52 75,30 100,24 125,30 125,52" fill="#4a4a4a" stroke="#333" stroke-width="1.5"/>
+              <line x1="78" y1="38" x2="122" y2="38" stroke="#333" stroke-width="2"/>
+            </g>
+            <rect x="78" y="56" width="44" height="32" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1.2"/>
+            <g class="mafioso-eyes">
+              <rect x="78" y="60" width="44" height="14" rx="1" fill="#222"/>
+            </g>
+            <path d="M86 85 Q100 95 114 85" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="95" y="90" width="10" height="6" rx="2" fill="#e8d5d5" stroke="#c4a5a5" stroke-width="1"/>
+            <line x1="100" y1="96" x2="100" y2="104" stroke="#8b0000" stroke-width="2"/>
+            <polygon points="65,105 135,105 145,165 130,175 125,165 115,165 100,165 85,165 75,165 70,175 55,165" fill="#6b6b6b" stroke="#444" stroke-width="1.5"/>
+            <line x1="72" y1="105" x2="82" y1="128" stroke="#444" stroke-width="1.2"/>
+            <line x1="82" y1="128" x2="80" y2="155" stroke="#444" stroke-width="1.2"/>
+            <line x1="128" y1="105" x2="118" y2="128" stroke="#444" stroke-width="1.2"/>
+            <line x1="118" y1="128" x2="120" y2="155" stroke="#444" stroke-width="1.2"/>
+            <polygon points="82,105 100,120 118,105" fill="#555" stroke="#444" stroke-width="1"/>
+            <circle cx="100" cy="130" r="2" fill="#333"/>
+            <circle cx="100" cy="140" r="2" fill="#333"/>
+            <circle cx="100" cy="150" r="2" fill="#333"/>
+            <circle cx="100" cy="160" r="2" fill="#333"/>
+            <rect x="58" y="112" width="16" height="8" rx="2" fill="#6b6b6b" stroke="#444" stroke-width="1.5"/>
+            <rect x="58" y="124" width="6" height="6" rx="1" fill="#555"/>
+            <rect x="126" y="112" width="16" height="8" rx="2" fill="#6b6b6b" stroke="#444" stroke-width="1.5"/>
+            <rect x="136" y="124" width="6" height="6" rx="1" fill="#555"/>
+            <rect x="88" y="170" width="10" height="28" rx="2" fill="#555" stroke="#444" stroke-width="1.2"/>
+            <rect x="102" y="170" width="10" height="28" rx="2" fill="#555" stroke="#444" stroke-width="1.2"/>
+            <rect x="86" y="196" width="14" height="5" rx="1" fill="#222" stroke="#111" stroke-width="1"/>
+            <rect x="100" y="196" width="14" height="5" rx="1" fill="#222" stroke="#111" stroke-width="1"/>
+            <text x="35" y="75" font-family="'Bangers', cursive" font-size="16" fill="#555" transform="rotate(-8 35 75)">Mafioso</text>
+          </svg>
+        </div>
+        <div class="char-quote">"Mafioso — classy criminal, no eyes needed."</div>
+        <div class="char-desc">Fedora, trench coat, and a thick black bar where eyes should be. Dot buttons down the front. The smoothest gangster in the notebook.</div>
+        <button class="expand-btn">Click for Stats!</button>
+        <div class="char-details">
+          <div class="char-stats">
+            <div class="stat-box"><div class="stat-val">9</div><div class="stat-label">Style</div></div>
+            <div class="stat-box"><div class="stat-val">2</div><div class="stat-label">Vision</div></div>
+            <div class="stat-box"><div class="stat-val">8</div><div class="stat-label">Mystery</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-label">Smooth</div></div>
+            <div class="stat-box"><div class="stat-val">10</div><div class="stat-label">Hat Game</div></div>
+            <div class="stat-box"><div class="stat-val">5</div><div class="stat-label">Friendly</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Made with love by Adam E & Lucas T</p>
+  <p style="margin-top:8px; font-size:0.9rem;">Published on <a href="https://aeyeing.com">aeyeing.com</a></p>
+</footer>
+
+<script>
+  // ===== SCROLL REVEAL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '50px' });
+
+  document.querySelectorAll('.char-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.1}s`;
+    observer.observe(card);
+  });
+
+  // Fallback: force visible after DOM ready + small delay
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.char-card').forEach(card => {
+      card.classList.add('visible');
+    });
+  });
+
+  // ===== EXPAND/COLLAPSE =====
+  function toggleCard(card) {
+    // Don't toggle if clicking inside details that are already open
+    const details = card.querySelector('.char-details');
+    const isExpanded = card.classList.contains('expanded');
+    
+    // Close all others
+    document.querySelectorAll('.char-card.expanded').forEach(c => {
+      if (c !== card) c.classList.remove('expanded');
+    });
+    
+    card.classList.toggle('expanded');
+    
+    const btn = card.querySelector('.expand-btn');
+    btn.textContent = card.classList.contains('expanded') ? 'Hide Stats' : 'Click for Stats!';
+  }
+
+  // ===== PARALLAX HERO =====
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero');
+    if (hero && scrolled < window.innerHeight) {
+      hero.style.backgroundPositionY = `${scrolled * 0.3}px`;
+    }
+  });
+
+  // ===== MOUSE FOLLOW FOR EYES (simple) =====
+  document.addEventListener('mousemove', (e) => {
+    const cards = document.querySelectorAll('.char-card:hover .char-canvas svg');
+    cards.forEach(svg => {
+      const rect = svg.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / 30;
+      const dy = (e.clientY - cy) / 30;
+      svg.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+  });
+</script>
+
+</body>
+</html>

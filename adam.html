@@ -341,6 +341,7 @@
 
         // Default projects
         const defaultProjects = [
+            { id: 'adam-0', title: 'Adam \u0026 Lucas Character Book', category: 'other', desc: '8 original hand-drawn characters brought to life digitally', date: 'June 2026' },
             { id: 'adam-1', title: 'LEGO Mars Rover', category: 'lego', desc: 'Spaceship that can drive on any surface', date: 'April 2026' },
             { id: 'adam-2', title: 'My Racing Game', category: 'games', desc: 'Car game I designed with obstacles', date: 'March 2026' },
             { id: 'adam-3', title: 'Butterfly Collection', category: 'nature', desc: 'Photos and facts about butterflies I found', date: 'February 2026' },
@@ -366,20 +367,23 @@
         // Render projects
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map(p => `
+            grid.innerHTML = projects.map(p => {
+                const isCharBook = p.id === 'adam-0';
+                const link = isCharBook ? 'adam-character-book.html' : `project.html?id=${p.id}&kid=adam`;
+                return `
                 <div class="project-card" data-id="${p.id}">
                     <div class="card-actions">
                         <button onclick="event.stopPropagation(); editProject('${p.id}')" title="Edit">✏️</button>
                         <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
                     </div>
-                    <a href="project.html?id=${p.id}&kid=adam" style="text-decoration:none;color:inherit;display:block;">
+                    <a href="${link}" style="text-decoration:none;color:inherit;display:block;">
                         <div class="preview">${categoryIcons[p.category] || '🌟'}</div>
                         <h3>${p.title}</h3>
                         <p>${p.desc}</p>
                         <div class="date">${p.date}</div>
                     </a>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
 
             // Add "Add New" card
             const addCard = document.createElement('div');
