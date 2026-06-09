@@ -131,7 +131,7 @@
         }
         .print-image {
             height: 220px;
-            background: rgba(0,0,0,0.3);
+            background: #0f0f23;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -142,7 +142,15 @@
         .print-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        /* Safari fix */
+        @supports (-webkit-touch-callout: none) {
+            .print-image img {
+                min-height: 220px;
+            }
         }
         .print-info {
             padding: 1.5rem;
@@ -262,7 +270,7 @@
         .drop-zone.has-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
         .modal-box button[type="submit"] {
             width: 100%;
@@ -381,7 +389,10 @@
             .printer-info { text-align: center; justify-content: center; }
             .card-actions { opacity: 1 !important; }
         }
-    </style>
+    
+        /* Hide edit/delete buttons for public view */
+        .card-actions { display: none !important; }
+        .add-print-btn { display: none !important; }</style>
 </head>
 <body>
     <div class="particles" id="particles"></div>
@@ -559,7 +570,14 @@
             { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
             { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
             { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
-            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null }
+            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null },
+            { id: 'conan-1', title: 'Conan the Barbarian - Savage Blade', category: 'Collectibles', desc: 'Detailed Conan the Barbarian with savage blade. Perfect for collectors and fantasy fans!', size: '15cm', price: '', image: 'images/conan/conan-1.jpeg' },
+            { id: 'conan-2', title: 'Conan the Barbarian - Orio Marble Edition', category: 'Collectibles', desc: 'Premium Orio Marble filament edition. Unique marble texture finish!', size: '15cm', price: '', image: 'images/conan/conan-2.jpeg' },
+            { id: 'conan-3', title: 'Conan the Barbarian - Black Edition', category: 'Collectibles', desc: 'Sleek black edition. Bold and powerful look for any display!', size: '15cm', price: '', image: 'images/conan/conan-3.jpeg' },
+            { id: 'conan-4', title: 'Conan the King - Throne', category: 'Collectibles', desc: 'Majestic Conan on throne. Intricate details and regal pose!', size: '18cm', price: '', image: 'images/conan/conan-4.jpeg' },
+            { id: 'conan-5', title: 'Conan the Barbarian - Battle Ready', category: 'Collectibles', desc: 'Battle-ready stance with detailed armor and weapons!', size: '15cm', price: '', image: 'images/conan/conan-5.jpeg' },
+            { id: 'conan-6', title: 'Conan the Barbarian - Classic Pose', category: 'Collectibles', desc: 'Classic heroic pose. The iconic barbarian in all his glory!', size: '15cm', price: '', image: 'images/conan/conan-6.jpeg' },
+            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }
         ];
 
         function loadPrints() {
@@ -587,7 +605,7 @@
                         <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
                     </div>
                     <div class="print-image">
-                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
+                        ${p.image ? `<img src="${p.image}?v=2" alt="${p.title}" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.innerHTML='\u003cdiv style=\\'display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.4);\\'\u003e\u003csvg width=\\'48\\' height=\\'48\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'\u003e\u003cpath d=\\'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\\'/\u003e\u003c/svg\u003e\u003cspan style=\\'font-size:0.8rem;\\'\u003ePhoto loading...\u003c/span\u003e\u003c/div\u003e'" loading="lazy">` : `<div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.4);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:0.8rem;">Photo coming soon</span></div>`}
                     </div>
                     <div class="print-info">
                         <h3>${p.title}</h3>
@@ -795,3 +813,4 @@
     </script>
 </body>
 </html>
+
