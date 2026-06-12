@@ -442,7 +442,7 @@
     </header>
     
     <!-- Telegram Channel CTA -->
-    <a href="https://t.me/" class="telegram-cta" target="_blank" rel="noopener" title="Join OzMoEg Money Maker Telegram Channel">
+    <a href="https://t.me/+c92A0PlqVBg2ZTdl" class="telegram-cta" target="_blank" rel="noopener" title="Join OzMoEg Money Maker Telegram Channel">
         <div class="telegram-icon">✈️</div>
         <div class="telegram-text">
             <div class="title">Join OzMoEg Money Maker on Telegram</div>
@@ -698,13 +698,13 @@
                     </div>
                     <div class="perf-box">
                         <div class="label">Current Price</div>
-                        <div class="value" id="current-price">$17.45</div>
-                        <div class="sub">+1.04% from entry</div>
+                        <div class="value" id="current-price">$17.27</div>
+                        <div class="sub">0.00% from entry</div>
                     </div>
                     <div class="perf-box">
                         <div class="label">P&L if Executed</div>
-                        <div class="value green" id="pnl-value">+$1.04</div>
-                        <div class="sub">+1.04% on $100</div>
+                        <div class="value" id="pnl-value">$0.00</div>
+                        <div class="sub">0.00% on $100</div>
                     </div>
                     <div class="perf-box">
                         <div class="label">Max Potential</div>
@@ -760,13 +760,13 @@
         updateDateTime();
         setInterval(updateDateTime, 1000);
         
-        let currentPrice = 17.45;
+        // Static price display — real scan data (no fake animation)
         const entryPrice = 17.27;
+        const currentPrice = 17.27;  // FAC last price from scan
         const investment = 100;
         
         function updatePrice() {
-            const change = (Math.random() - 0.48) * 0.05;
-            currentPrice = Math.max(16.80, Math.min(18.50, currentPrice + change));
+            // Calculate real P&L from scan data
             const pct = ((currentPrice - entryPrice) / entryPrice) * 100;
             const pnl = (pct / 100) * investment;
             
@@ -782,7 +782,7 @@
             priceEl.nextElementSibling.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% from entry';
             pnlEl.nextElementSibling.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% on $' + investment;
         }
-        setInterval(updatePrice, 3000);
+        updatePrice(); // Set once on load — no interval
     </script>
 </body>
 </html>
