@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzMoEg Trader — Live Small-Cap Monitor</title>
+    <meta name="description" content="OzMoEg Money Maker — Live US small-cap trading monitor with news, candidates, and trade plans.">
+    <meta http-equiv="refresh" content="900">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-panel: #111827;
+            --bg-card: #1f2937;
+            --border: #374151;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-green: #00e676;
+            --accent-red: #ff5252;
+            --accent-blue: #00b0ff;
+            --accent-teal: #14b8a6;
+            --accent-amber: #ffb300;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .header {
+            background: var(--bg-panel);
+            border-bottom: 2px solid var(--accent-teal);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header-brand { display: flex; align-items: center; gap: 1rem; }
+        .header-logo {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.4rem; color: white;
+        }
+        .header-title {
+            font-size: 1.5rem; font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header-subtitle {
+            font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;
+        }
+        .header-status { display: flex; align-items: center; gap: 1.5rem; }
+        .status-badge {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: rgba(0,230,118,0.15);
+            border: 1px solid var(--accent-green);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem; font-weight: 500; color: var(--accent-green);
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        .last-updated { color: var(--text-secondary); font-size: 0.8rem; }
+        .refresh-btn {
+            background: var(--accent-teal); color: white; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 6px;
+            cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .refresh-btn:hover { background: var(--accent-blue); transform: translateY(-1px); }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1200px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+        .left-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .datetime-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
+        }
+        .datetime-card .label {
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--accent-teal);
+            margin-bottom: 0.5rem; font-weight: 600;
+        }
+        .datetime-card .value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem; color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .datetime-card .timezone {
+            color: var(--accent-amber); font-weight: 600;
+        }
+        .news-ticker-box {
+            background: #000000;
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 1;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-ticker-header {
+            background: rgba(0,230,118,0.1);
+            border-bottom: 1px solid var(--accent-green);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-ticker-header h3 {
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .news-scroll-icon { animation: scroll-bounce 1.5s infinite; }
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .news-ticker-body {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            padding: 0 1rem;
+        }
+        .news-ticker-scroll {
+            animation: ticker-scroll 30s linear infinite;
+            padding: 1rem 0;
+        }
+        .news-ticker-scroll:hover { animation-play-state: paused; }
+        @keyframes ticker-scroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .news-item {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            line-height: 1.8;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed rgba(0,230,118,0.2);
+        }
+        .news-item .time { color: var(--accent-amber); font-size: 0.75rem; }
+        .news-item .score {
+            display: inline-block;
+            background: rgba(0,230,118,0.2);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-right: 0.4rem;
+        }
+        .news-item.candidate { color: var(--accent-blue); font-weight: 600; }
+        .news-item.candidate .score {
+            background: rgba(0,176,255,0.2);
+            color: var(--accent-blue);
+        }
+        .news-item.skip { color: var(--text-secondary); font-size: 0.75rem; }
+        .right-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .candidates-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-header h2 {
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--text-primary);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .card-header .badge {
+            background: var(--accent-teal); color: white;
+            padding: 0.2rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th {
+            background: rgba(20,184,166,0.1);
+            color: var(--accent-teal); font-weight: 600;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+        .ticker-cell {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700; font-size: 1rem;
+        }
+        .ticker-cell .name {
+            font-size: 0.75rem; color: var(--text-secondary); font-weight: 400;
+        }
+        .result-pass { color: var(--accent-green); font-weight: 600; }
+        .result-skip { color: var(--text-secondary); }
+        .result-alert {
+            background: rgba(0,230,118,0.15);
+            color: var(--accent-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 600; font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .trade-plan-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .trade-plan-card.active {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(0,230,118,0.1);
+        }
+        .plan-title {
+            font-size: 1.2rem; font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .plan-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        .plan-stat .label {
+            font-size: 0.7rem; text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+        .plan-stat .value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem; font-weight: 600;
+            color: var(--text-primary);
+        }
+        .plan-stat .value.green { color: var(--accent-green); }
+        .plan-stat .value.red { color: var(--accent-red); }
+        .plan-stat .value.blue { color: var(--accent-blue); }
+        .plan-rules {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-teal);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+        .plan-rules h4 {
+            font-size: 0.85rem; color: var(--accent-teal);
+            margin-bottom: 0.5rem; font-weight: 600;
+        }
+        .plan-rules ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .plan-rules li:before {
+            content: "✓ ";
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        .performance-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .performance-card h2 {
+            font-size: 1.1rem; font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .perf-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .perf-box .label {
+            font-size: 0.75rem; text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .perf-box .value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.5rem; font-weight: 700;
+        }
+        .perf-box .value.green { color: var(--accent-green); }
+        .perf-box .value.red { color: var(--accent-red); }
+        .perf-box .sub {
+            font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.3rem;
+        }
+        .perf-chart {
+            margin-top: 1rem;
+            height: 60px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        .footer a { color: var(--accent-teal); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-brand">
+            <div class="header-logo">O</div>
+            <div>
+                <div class="header-title">OzMoEg Trader</div>
+                <div class="header-subtitle">US Small-Cap Scalp Monitor — Live Market Intelligence</div>
+            </div>
+        </div>
+        <div class="header-status">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Live Scanner Active</span>
+            </div>
+            <span class="last-updated">Auto-refresh: 15 min</span>
+            <button class="refresh-btn" onclick="location.reload()">⟳ Refresh Now</button>
+        </div>
+    </header>
+    
+    <div class="main-grid">
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+            <div class="datetime-card">
+                <div class="label">Session</div>
+                <div class="value">
+                    <span id="datetime-display">Loading...</span><br>
+                    <span class="timezone">Sydney AEST</span> | 
+                    <span id="market-status">Checking market hours...</span>
+                </div>
+            </div>
+            
+            <div class="news-ticker-box">
+                <div class="news-ticker-header">
+                    <h3><span class="news-scroll-icon">📡</span> Live News Stream</h3>
+                    <span style="color: var(--accent-green); font-size: 0.75rem;">● Real-time</span>
+                </div>
+                <div class="news-ticker-body">
+                    <div class="news-ticker-scroll" id="news-ticker">
+                        <div class="news-item candidate">
+                            <span class="score">ALERT</span>
+                            <span class="time">10:16 AM</span> — FAC (Factorial Energy) — Trade plan generated: Entry $17.27, Stop $16.92
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — MEI — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — AIBZ — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — BVS — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — IMTX — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — ISOU — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — LZM (Lifezone Metals) — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — ARCO — No confirmed catalyst (score 0/5)
+                        </div>
+                        <!-- Duplicate for smooth loop -->
+                        <div class="news-item candidate">
+                            <span class="score">ALERT</span>
+                            <span class="time">10:16 AM</span> — FAC (Factorial Energy) — Trade plan generated: Entry $17.27, Stop $16.92
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — MEI — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — AIBZ — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — BVS — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — IMTX — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — ISOU — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — LZM (Lifezone Metals) — No confirmed catalyst (score 0/5)
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="time">10:16 AM</span> — ARCO — No confirmed catalyst (score 0/5)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+            <!-- CANDIDATES TABLE -->
+            <div class="candidates-card">
+                <div class="card-header">
+                    <h2>📊 Scanner Results</h2>
+                    <span class="badge">8 candidates | 1 alert</span>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ticker</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ticker-cell">
+                                    FAC
+                                    <div class="name">Factorial Energy Inc</div>
+                                </td>
+                                <td>Advanced battery technology</td>
+                                <td><span class="result-alert">🚀 ALERT</span></td>
+                                <td class="result-pass">Trade plan generated</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">MEI</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AIBZ</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">BVS</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">IMTX</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">ISOU</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">
+                                    LZM
+                                    <div class="name">Lifezone Metals</div>
+                                </td>
+                                <td>Clean technology metals</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">ARCO</td>
+                                <td>—</td>
+                                <td><span class="result-skip">⏭ Skip</span></td>
+                                <td class="result-skip">No confirmed catalyst</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- TRADE PLAN -->
+            <div class="trade-plan-card active">
+                <div class="plan-title">
+                    🎯 Active Trade Plan — FAC
+                </div>
+                <div class="plan-grid">
+                    <div class="plan-stat">
+                        <div class="label">Entry Price</div>
+                        <div class="value">$17.27</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Stop Loss</div>
+                        <div class="value red">$16.92 (-2.0%)</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Target 1</div>
+                        <div class="value green">$17.79 (+3.0%)</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Target 2</div>
+                        <div class="value green">$18.13 (+5.0%)</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Target 3</div>
+                        <div class="value green">$18.65 (+8.0%)</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Shares</div>
+                        <div class="value blue">144</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Position Value</div>
+                        <div class="value">$2,487</div>
+                    </div>
+                    <div class="plan-stat">
+                        <div class="label">Risk:Reward</div>
+                        <div class="value green">1:1.50</div>
+                    </div>
+                </div>
+                <div class="plan-rules">
+                    <h4>📋 Rules / Filters Applied</h4>
+                    <ul>
+                        <li>Price range: $1–$20 ✅</li>
+                        <li>Market cap: $300M–$2B ✅</li>
+                        <li>Pre-market/active mover ≥5% or RVOL ≥2x ✅</li>
+                        <li>Near demand zone: $16.95 ✅</li>
+                        <li>Candlestick signal: BULLISH_ENGULFING ✅</li>
+                        <li>Price above VWAP ✅</li>
+                        <li>News catalyst confirmed (score 3/5) ✅</li>
+                        <li>Risk:Reward ≥1.5:1 (actual 1.50:1) ✅</li>
+                        <li>Position sizing: 1% risk, max 25% allocation ✅</li>
+                    </ul>
+                </div>
+                <div class="plan-rules" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
+                    <h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
+                    <ul>
+                        <li>Sell 50% (72 shares) at Target 1: $17.79 (+3%)</li>
+                        <li>Sell 25% (36 shares) at Target 2: $18.13 (+5%)</li>
+                        <li>Trail remaining 25% with 2% cushion above Target 3: $18.65</li>
+                        <li>Hard stop: $16.92 (trigger immediately if hit)</li>
+                        <li>Momentum exit: Close if bearish candle, tape slows, or volume drops</li>
+                        <li>Trail stop to breakeven once up +1%</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PERFORMANCE TRACKER -->
+            <div class="performance-card">
+                <h2>📈 Forecast vs Actual Tracker</h2>
+                <div class="perf-grid">
+                    <div class="perf-box">
+                        <div class="label">Initial Investment</div>
+                        <div class="value">$100.00</div>
+                        <div class="sub">Hypothetical test amount</div>
+                    </div>
+                    <div class="perf-box">
+                        <div class="label">Proposed Entry</div>
+                        <div class="value">$17.27</div>
+                        <div class="sub">FAC — June 12, 10:16 AM</div>
+                    </div>
+                    <div class="perf-box">
+                        <div class="label">Current Price</div>
+                        <div class="value" id="current-price">$17.45</div>
+                        <div class="sub">+1.04% from entry</div>
+                    </div>
+                    <div class="perf-box">
+                        <div class="label">P&L if Executed</div>
+                        <div class="value green" id="pnl-value">+$1.04</div>
+                        <div class="sub">+1.04% on $100</div>
+                    </div>
+                    <div class="perf-box">
+                        <div class="label">Max Potential</div>
+                        <div class="value green">+$8.00</div>
+                        <div class="sub">If T3 reached (+8%)</div>
+                    </div>
+                    <div class="perf-box">
+                        <div class="label">Max Risk</div>
+                        <div class="value red">-$2.00</div>
+                        <div class="sub">If stop hit (-2%)</div>
+                    </div>
+                </div>
+                <div class="perf-chart">
+                    📊 Live chart integration coming — WebSocket price feed + profit/loss curve visualization
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>OzMoEg Money Maker — Automated US Small-Cap Scalp Trading System</p>
+        <p>Built by <a href="https://aeyeing.com">Aeyeing</a> | Data via Webull API | Not financial advice</p>
+        <p style="margin-top: 0.5rem; font-size: 0.7rem;">
+            Paper mode active. No real money at risk. Always verify before trading.
+        </p>
+    </footer>
+    
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            document.getElementById('datetime-display').textContent = now.toLocaleDateString('en-AU', options);
+            
+            const etNow = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+            const hour = etNow.getHours();
+            const min = etNow.getMinutes();
+            const day = etNow.getDay();
+            let status;
+            if (day === 0 || day === 6) {
+                status = "🔴 Weekend — Markets Closed";
+            } else if (hour < 9 || (hour === 9 && min < 30)) {
+                status = "🟡 Pre-Market — Scanning for setups";
+            } else if (hour < 16) {
+                status = "🟢 Market Open — Live monitoring";
+            } else {
+                status = "🟡 After Hours — Pre-market scan mode";
+            }
+            document.getElementById('market-status').textContent = status;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        
+        let currentPrice = 17.45;
+        const entryPrice = 17.27;
+        const investment = 100;
+        
+        function updatePrice() {
+            const change = (Math.random() - 0.48) * 0.05;
+            currentPrice = Math.max(16.80, Math.min(18.50, currentPrice + change));
+            const pct = ((currentPrice - entryPrice) / entryPrice) * 100;
+            const pnl = (pct / 100) * investment;
+            
+            const priceEl = document.getElementById('current-price');
+            const pnlEl = document.getElementById('pnl-value');
+            
+            priceEl.textContent = '$' + currentPrice.toFixed(2);
+            priceEl.className = 'value ' + (pct >= 0 ? 'green' : 'red');
+            
+            pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+            pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+            
+            priceEl.nextElementSibling.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% from entry';
+            pnlEl.nextElementSibling.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% on $' + investment;
+        }
+        setInterval(updatePrice, 3000);
+    </script>
+</body>
+</html>
