@@ -328,6 +328,46 @@
             color: var(--accent-green);
             font-weight: 700;
         }
+        .trade-plan-card.expired {
+            border-color: var(--border);
+            opacity: 0.7;
+        }
+        .trade-plan-card.expired .plan-title {
+            color: var(--text-secondary);
+        }
+        .trade-plan-card.expired .expired-banner {
+            background: rgba(255,82,82,0.15);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .performance-card.expired {
+            opacity: 0.7;
+        }
+        .performance-card .expired-banner {
+            background: rgba(255,82,82,0.15);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(0,230,118,0.1);
+        }
         .trade-plan-card.active {
             border-color: var(--accent-green);
             box-shadow: 0 0 20px rgba(0,230,118,0.1);
@@ -546,11 +586,11 @@
                     <div class="news-ticker-scroll" id="news-ticker">
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">06:31 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
+                            <span class="time">06:36 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">06:31 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
+                            <span class="time">06:36 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
                         </div>
                     </div>
                 </div>
@@ -588,7 +628,7 @@
             </div>
             
             <!-- TRADE PLAN -->
-            <div class="trade-plan-card active">
+            <div class="trade-plan-card expired">
                 <div class="plan-title">
                     🎯 Active Trade Plan — FAC
                 </div>
@@ -654,7 +694,7 @@
             </div>
             
             <!-- PERFORMANCE TRACKER -->
-            <div class="performance-card">
+            <div class="performance-card expired">
                 <h2>📈 Forecast vs Actual Tracker</h2>
                 <div class="perf-grid">
                     <div class="perf-box">
