@@ -292,6 +292,48 @@
             justify-content: space-between;
             margin-bottom: 1rem;
         }
+        
+        .news-catalyst-card .news-ticker-line {
+            background: rgba(0, 230, 118, 0.08);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .news-catalyst-card .news-ticker-line strong {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+        }
+        .news-catalyst-card .news-scan-time {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .news-catalyst-card .news-list a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .news-catalyst-card .news-list a:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .news-catalyst-card .news-list .news-meta {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            margin-left: 3.5rem;
+        }
         .news-catalyst-card .news-header h2 {
             margin: 0;
             font-size: 1.1rem;
@@ -586,11 +628,11 @@
                     <div class="news-ticker-scroll" id="news-ticker">
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">06:46 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
+                            <span class="time">06:54 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">06:46 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
+                            <span class="time">06:54 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
                         </div>
                     </div>
                 </div>
@@ -747,15 +789,16 @@
     <div class="news-catalyst-card" id="news-catalyst-section">
         <div class="news-header">
             <h2>📰 Latest Catalyst &amp; News</h2>
-            <span class="impact-badge" id="impact-score">Score: 5/5</span>
+            <span class="impact-badge" id="impact-score">—</span>
         </div>
-        <div class="catalyst-title" id="catalyst-headline">Shareholders Approve Merger, Paving Way for Factorial Listing</div>
+        <!-- Ticker attribution line -->
+        <div class="news-ticker-line" id="news-ticker-line">
+            🎯 <strong id="news-ticker-symbol">—</strong> — No active alert<span class="news-scan-time" id="news-scan-time">No recent scan</span>
+        </div>
+        
+        <div class="catalyst-title" id="catalyst-headline">No active catalyst — waiting for next alert</div>
         <ul class="news-list" id="news-list">
-            <li><span class="score">[5/5]</span> Shareholders Approve Merger, Paving Way for Factorial Listing</li>
-            <li><span class="score">[5/5]</span> Cartesian Growth III amends Factorial merger financing terms</li>
-            <li><span class="score">[0/5]</span> Factorial Energy: Another Too Expensive SPAC</li>
-            <li><span class="score">[0/5]</span> Why Factorial Energy Stock Is Falling After Stellantis Battery Milestone</li>
-            <li><span class="score">[0/5]</span> Stellantis and Factorial Integrate FAC's Advanced FEST Solid-State Battery Technology Into A Dodge Charger Daytona Development Vehicle</li>
+            <li><span class="score">[-]</span> No news available — scanner will update when the next alert triggers</li>
         </ul>
     </div>
     
