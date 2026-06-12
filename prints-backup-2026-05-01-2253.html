@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Prints & Orders | Aeyeing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-kids.css?v=5">
+    <style>
+        :root {
+            --primary: #14B8A6;
+            --secondary: #0D9488;
+            --accent: #2DD4BF;
+            --bg-card: rgba(20,184,166,0.08);
+        }
+        body {
+            background: #0f0f23;
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+        }
+        .print-lab {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 2rem;
+        }
+        .lab-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .lab-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #14B8A6, #2DD4BF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .lab-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+        }
+        .printer-info {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(20,184,166,0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .printer-icon {
+            font-size: 3rem;
+        }
+        .printer-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .printer-details p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .add-print-btn {
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            margin: 1rem 0 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s;
+        }
+        .add-print-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .prints-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .print-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(20,184,166,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .print-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(20,184,166,0.2);
+        }
+        .print-card .card-actions {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .print-card:hover .card-actions {
+            opacity: 1;
+        }
+        .card-actions button {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .card-actions button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        .print-image {
+            height: 220px;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .print-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .print-info {
+            padding: 1.5rem;
+        }
+        .print-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .print-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .print-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .print-tag {
+            background: rgba(20,184,166,0.15);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .order-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            transition: transform 0.3s;
+        }
+        .order-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: #1a1a2e;
+            border: 1px solid rgba(20,184,166,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-box h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .modal-box input, .modal-box textarea, .modal-box select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+        .modal-box input:focus, .modal-box textarea:focus, .modal-box select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .modal-box input::placeholder, .modal-box textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        .drop-zone {
+            border: 2px dashed rgba(20,184,166,0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .drop-zone:hover {
+            border-color: var(--primary);
+            background: rgba(20,184,166,0.05);
+        }
+        .drop-zone span {
+            color: rgba(255,255,255,0.6);
+        }
+        .drop-zone.has-image {
+            padding: 0;
+            min-height: 150px;
+            overflow: hidden;
+        }
+        .drop-zone.has-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .modal-box button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+        .modal-box .delete-btn {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            margin-top: 0.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .confirm-modal {
+            text-align: center;
+        }
+        .confirm-modal p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .confirm-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .confirm-buttons button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+        }
+        .confirm-yes {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #fff;
+        }
+        .confirm-no {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .order-process {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .order-process h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .step {
+            text-align: center;
+            padding: 1rem;
+        }
+        .step-number {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+        .step h4 {
+            margin-bottom: 0.5rem;
+        }
+        .step p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .contact-note {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20,184,166,0.05);
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        .contact-note p {
+            color: rgba(255,255,255,0.7);
+        }
+        .contact-note a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .lab-header h1 { font-size: 2rem; }
+            .printer-info { text-align: center; justify-content: center; }
+            .card-actions { opacity: 1 !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <nav class="kids-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="back-link">← Back to Aeyeing</a>
+            <span class="lab-title">🖨️ 3D Prints</span>
+        </div>
+    </nav>
+
+    <div class="print-lab">
+        <header class="lab-header">
+            <h1>3D PRINT STUDIO</h1>
+            <p>Custom prints by OzMo | Bambu A1 Mini</p>
+        </header>
+
+        <div class="printer-info">
+            <div class="printer-icon">🖨️</div>
+            <div class="printer-details">
+                <h3>Bambu Lab A1 Mini</h3>
+                <p>High-quality FDM prints up to 180×180×180mm | PLA/PETG/TPU | 0.2-0.6mm nozzles</p>
+            </div>
+        </div>
+
+        <button class="add-print-btn" id="addPrintBtn">
+            <span>➕</span> Add New Print
+        </button>
+
+        <div class="prints-grid" id="printsGrid">
+            <!-- Loaded from localStorage -->
+        </div>
+
+        <div class="order-process">
+            <h2>📦 How to Order</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Choose a Model</h4>
+                    <p>Pick from our catalog or request a custom design</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Customize</h4>
+                    <p>Select color, size, and add personal engravings</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Submit Order</h4>
+                    <p>We'll review and confirm via email within 24h</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Print & Ship</h4>
+                    <p>Your custom print ships within 3-5 business days</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-note">
+            <p>📧 Questions? Special requests? Email us at <a href="mailto:aeyeingserver@gmail.com">aeyeingserver@gmail.com</a></p>
+        </div>
+    </div>
+
+    <!-- Add/Edit Print Modal -->
+    <div class="modal-overlay" id="printModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">×</button>
+            <h2 id="modalTitle">➕ Add New Print</h2>
+            <form id="printForm">
+                <input type="hidden" id="printId">
+                <input type="text" id="printTitle" placeholder="Print Name" required>
+                <input type="text" id="printCategory" placeholder="Category (e.g., Toys, Functional, Decor)" required>
+                <textarea id="printDesc" placeholder="Description..." rows="3" required></textarea>
+                <input type="text" id="printSize" placeholder="Size (e.g., 15cm)">
+                <div class="drop-zone" id="dropZone">
+                    <span id="dropText">📁 Drop photo here or click to browse</span>
+                    <img id="dropPreview" style="display:none">
+                    <input type="file" id="fileInput" accept="image/*" style="display:none">
+                </div>
+                <button type="submit" id="submitBtn">💾 Save Print</button>
+                <button type="button" class="delete-btn" id="deleteBtn" style="display:none">🗑️ Delete Print</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box confirm-modal">
+            <h2>🗑️ Delete Print?</h2>
+            <p>Are you sure? This cannot be undone!</p>
+            <div class="confirm-buttons">
+                <button class="confirm-no" id="confirmNo">Keep It</button>
+                <button class="confirm-yes" id="confirmYes">Delete Forever</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeOrder()">×</button>
+            <h2>🛒 Order Print</h2>
+            <form id="orderForm" action="https://formsubmit.co/ozmo@aeyeing.com" method="POST">
+                <input type="hidden" name="_subject" value="New 3D Print Order - Aeyeing">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://aeyeing.com/prints.html?ordered=true">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin-bottom:0.5rem">Selected Model:</label>
+                <input type="text" name="model" id="orderModel" readonly style="background:rgba(255,255,255,0.1)">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Your Name:</label>
+                <input type="text" name="name" placeholder="John Doe" required>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Email:</label>
+                <input type="email" name="email" placeholder="john@example.com" required>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Choose Color:</label>
+                <select name="color" required>
+                    <option value="">Select a color...</option>
+                    <option value="White">⚪ White</option>
+                    <option value="Black">⚫ Black</option>
+                    <option value="Red">🔴 Red</option>
+                    <option value="Green">🟢 Green</option>
+                    <option value="Blue">🔵 Blue</option>
+                    <option value="Yellow">🟡 Yellow</option>
+                    <option value="Orange">🟠 Orange</option>
+                    <option value="Pink">💖 Pink</option>
+                    <option value="Purple">🟣 Purple</option>
+                    <option value="Cyan">🔷 Cyan</option>
+                </select>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Custom Text / Engraving (Optional):</label>
+                <input type="text" name="engraving" placeholder="Text to engrave on the print...">
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Quantity:</label>
+                <select name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10+</option>
+                </select>
+
+                <label style="color:rgba(255,255,255,0.7);display:block;margin:1rem 0 0.5rem">Special Requests:</label>
+                <textarea name="notes" rows="3" placeholder="Any special requests, custom dimensions, or questions..."></textarea>
+
+                <button type="submit">📧 Send Order Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="kids-footer">
+        <p>🖨️ 3D Print Studio | Aeyeing</p>
+    </footer>
+
+    <script>
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for(let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.animationDuration = (15 + Math.random() * 20) + 's';
+            p.style.background = ['#14B8A6', '#0D9488', '#2DD4BF'][Math.floor(Math.random()*3)];
+            particlesContainer.appendChild(p);
+        }
+
+        // Default prints
+        const defaultPrints = [
+            { id: 'print-1', title: 'Articulated Dragon', category: 'Toys', desc: 'Flexible articulated dragon that moves like a real one. Great fidget toy!', size: '25cm', image: null },
+            { id: 'print-2', title: 'Miniature House', category: 'Decor', desc: 'Detailed miniature house with removable roof. Perfect for display!', size: '12cm', image: null },
+            { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
+            { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
+            { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
+            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null }
+        ];
+
+        function loadPrints() {
+            const stored = localStorage.getItem('aeyeingPrints');
+            if (stored) return JSON.parse(stored);
+            localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+            return defaultPrints;
+        }
+
+        function savePrints(prints) {
+            localStorage.setItem('aeyeingPrints', JSON.stringify(prints));
+        }
+
+        let prints = loadPrints();
+        let editingId = null;
+        let deletingId = null;
+        let currentImage = null;
+
+        function renderPrints() {
+            const grid = document.getElementById('printsGrid');
+            grid.innerHTML = prints.map(p => `
+                <div class="print-card" data-id="${p.id}">
+                    <div class="card-actions">
+                        <button onclick="event.stopPropagation(); editPrint('${p.id}')" title="Edit">✏️</button>
+                        <button onclick="event.stopPropagation(); confirmDelete('${p.id}')" title="Delete">🗑️</button>
+                    </div>
+                    <div class="print-image">
+                        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : '🔲'}
+                    </div>
+                    <div class="print-info">
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <div class="print-tags">
+                            <span class="print-tag">${p.category}</span>
+                            <span class="print-tag">📐 ${p.size}</span>
+                        </div>
+                        <button class="order-btn" onclick="openOrder('${p.title}')">🛒 Order This Print</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Print Modal
+        const printModal = document.getElementById('printModal');
+        const confirmModal = document.getElementById('confirmModal');
+        const modalClose = document.getElementById('modalClose');
+        const addPrintBtn = document.getElementById('addPrintBtn');
+        const printForm = document.getElementById('printForm');
+        const deleteBtn = document.getElementById('deleteBtn');
+
+        function openPrintModal(editId = null) {
+            editingId = editId;
+            currentImage = null;
+            const title = document.getElementById('modalTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const dropZone = document.getElementById('dropZone');
+            const dropText = document.getElementById('dropText');
+            const dropPreview = document.getElementById('dropPreview');
+
+            dropZone.classList.remove('has-image');
+            dropText.style.display = 'block';
+            dropPreview.style.display = 'none';
+            dropPreview.src = '';
+
+            if (editId) {
+                const p = prints.find(x => x.id === editId);
+                document.getElementById('printId').value = p.id;
+                document.getElementById('printTitle').value = p.title;
+                document.getElementById('printCategory').value = p.category;
+                document.getElementById('printDesc').value = p.desc;
+                document.getElementById('printSize').value = p.size || '';
+                if (p.image) {
+                    currentImage = p.image;
+                    dropZone.classList.add('has-image');
+                    dropText.style.display = 'none';
+                    dropPreview.style.display = 'block';
+                    dropPreview.src = p.image;
+                }
+                title.textContent = '✏️ Edit Print';
+                submitBtn.textContent = '💾 Save Changes';
+                deleteBtn.style.display = 'block';
+            } else {
+                printForm.reset();
+                document.getElementById('printId').value = '';
+                title.textContent = '➕ Add New Print';
+                submitBtn.textContent = '💾 Save Print';
+                deleteBtn.style.display = 'none';
+            }
+
+            printModal.classList.add('active');
+        }
+
+        function closePrintModal() {
+            printModal.classList.remove('active');
+            editingId = null;
+            currentImage = null;
+        }
+
+        modalClose.addEventListener('click', closePrintModal);
+        addPrintBtn.addEventListener('click', () => openPrintModal());
+        printModal.addEventListener('click', (e) => {
+            if(e.target === printModal) closePrintModal();
+        });
+
+        window.editPrint = function(id) {
+            openPrintModal(id);
+        };
+
+        window.confirmDelete = function(id) {
+            deletingId = id;
+            confirmModal.classList.add('active');
+        };
+
+        document.getElementById('confirmNo').addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+            deletingId = null;
+        });
+
+        document.getElementById('confirmYes').addEventListener('click', () => {
+            if (deletingId) {
+                prints = prints.filter(p => p.id !== deletingId);
+                savePrints(prints);
+                renderPrints();
+                deletingId = null;
+            }
+            confirmModal.classList.remove('active');
+            closePrintModal();
+        });
+
+        confirmModal.addEventListener('click', (e) => {
+            if(e.target === confirmModal) confirmModal.classList.remove('active');
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            if (editingId) {
+                confirmModal.classList.add('active');
+                deletingId = editingId;
+            }
+        });
+
+        // Image upload
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const dropText = document.getElementById('dropText');
+        const dropPreview = document.getElementById('dropPreview');
+
+        function handleImageFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                currentImage = e.target.result;
+                dropZone.classList.add('has-image');
+                dropText.style.display = 'none';
+                dropPreview.style.display = 'block';
+                dropPreview.src = currentImage;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#14B8A6';
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '';
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '';
+            if (e.dataTransfer.files.length) {
+                handleImageFile(e.dataTransfer.files[0]);
+            }
+        });
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                handleImageFile(fileInput.files[0]);
+            }
+        });
+
+        printForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('printTitle').value;
+            const category = document.getElementById('printCategory').value;
+            const desc = document.getElementById('printDesc').value;
+            const size = document.getElementById('printSize').value;
+
+            if (editingId) {
+                const idx = prints.findIndex(p => p.id === editingId);
+                prints[idx] = {
+                    ...prints[idx],
+                    title, category, desc, size,
+                    image: currentImage || prints[idx].image
+                };
+            } else {
+                const id = 'print-' + Date.now();
+                prints.push({
+                    id, title, category, desc, size,
+                    image: currentImage
+                });
+            }
+
+            savePrints(prints);
+            renderPrints();
+            closePrintModal();
+        });
+
+        // Order Modal
+        const orderModal = document.getElementById('orderModal');
+
+        function openOrder(modelName) {
+            document.getElementById('orderModel').value = modelName;
+            orderModal.classList.add('active');
+        }
+
+        function closeOrder() {
+            orderModal.classList.remove('active');
+        }
+
+        orderModal.addEventListener('click', (e) => {
+            if(e.target === orderModal) closeOrder();
+        });
+
+        // Show confirmation
+        if (window.location.search.includes('ordered=true')) {
+            alert('✅ Order submitted! We\'ll review your request and email you within 24 hours.');
+            window.history.replaceState({}, document.title, 'prints.html');
+        }
+
+        // Initial render
+        renderPrints();
+    </script>
+</body>
+</html>
+

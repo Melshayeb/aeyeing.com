@@ -369,6 +369,57 @@
             margin-top: 2rem;
         }
         .footer a { color: var(--accent-teal); }
+        
+        /* Telegram CTA */
+        .telegram-cta {
+            background: linear-gradient(135deg, #1a1f2e, #0f1419);
+            border: 1px solid #0088cc;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1rem auto;
+            max-width: 600px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .telegram-cta:hover {
+            border-color: #00b0ff;
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.2);
+            transform: translateY(-2px);
+        }
+        .telegram-icon {
+            width: 36px; height: 36px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .telegram-text {
+            text-align: left;
+        }
+        .telegram-text .title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #00b0ff;
+            margin-bottom: 0.2rem;
+        }
+        .telegram-text .desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .telegram-arrow {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: #0088cc;
+        }
     </style>
 </head>
 <body>
@@ -390,7 +441,15 @@
         </div>
     </header>
     
-    <div class="main-grid">
+    <!-- Telegram Channel CTA -->
+    <a href="https://t.me/" class="telegram-cta" target="_blank" rel="noopener" title="Join OzMoEg Money Maker Telegram Channel">
+        <div class="telegram-icon">✈️</div>
+        <div class="telegram-text">
+            <div class="title">Join OzMoEg Money Maker on Telegram</div>
+            <div class="desc">Live US small-cap scalp alerts &amp; trade plans — delivered instantly</div>
+        </div>
+        <div class="telegram-arrow">→</div>
+    </a><div class="main-grid">
         <!-- LEFT PANEL -->
         <div class="left-panel">
             <div class="datetime-card">
