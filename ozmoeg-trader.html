@@ -821,7 +821,7 @@
             // Detect if Sydney is in DST (AEDT) or standard (AEST)
             const janOffset = new Date(now.getFullYear(), 0, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
             const julOffset = new Date(now.getFullYear(), 6, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
-            const isDst = now.toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'}) !== janOffset;
+            const isDst = now.toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'}) === janOffset;
             const tzLabel = isDst ? 'Sydney AEDT' : 'Sydney AEST';
             document.querySelector('.timezone').textContent = tzLabel;
             
