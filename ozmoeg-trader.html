@@ -851,110 +851,132 @@
         setInterval(updateDateTime, 1000);
         
         // US Market Countdown (Sydney-time based)
+        let marketOpenTarget = null;
+        let marketCloseTarget = null;
+        let lastStatus = '';
+        
+        function findNextMarketOpen(fromTime) {
+            // Walk forward minute-by-minute from fromTime until ET shows Mon-Fri 9:30
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 10080) { // Max 1 week
+                probe.setMinutes(probe.getMinutes() + 1);
+                const pp = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(probe);
+                const ph = parseInt(pp.find(p => p.type === 'hour').value);
+                const pm = parseInt(pp.find(p => p.type === 'minute').value);
+                const pw = pp.find(p => p.type === 'weekday').value;
+                const pwn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[pw];
+                if (pwn >= 1 && pwn <= 5 && ph === 9 && pm === 30) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+        
+        function findNextMarketClose(fromTime) {
+            // Walk forward minute-by-minute from fromTime until ET shows Mon-Fri 16:00
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 480) { // Max 8 hours
+                probe.setMinutes(probe.getMinutes() + 1);
+                const pp = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(probe);
+                const ph = parseInt(pp.find(p => p.type === 'hour').value);
+                const pm = parseInt(pp.find(p => p.type === 'minute').value);
+                const pw = pp.find(p => p.type === 'weekday').value;
+                const pwn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[pw];
+                if (pwn >= 1 && pwn <= 5 && ph === 16 && pm === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+        
         function updateCountdown() {
             const now = new Date(); // Browser local time = Sydney time
             
-            // Get current ET components using Intl API
+            // Get current ET components using Intl API (cheap: no search)
             const etParts = new Intl.DateTimeFormat('en-US', {
                 timeZone: 'America/New_York',
-                year: 'numeric', month: '2-digit', day: '2-digit',
                 hour: '2-digit', minute: '2-digit', second: '2-digit',
                 hour12: false, weekday: 'long'
             }).formatToParts(now);
-            const getEt = (type) => parseInt(etParts.find(p => p.type === type).value);
-            const getEtStr = (type) => etParts.find(p => p.type === type).value;
-            
-            const etHour = getEt('hour');
-            const etMinute = getEt('minute');
-            const etSecond = getEt('second');
-            const etWeekday = getEtStr('weekday');
+            const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
+            const etMinute = parseInt(etParts.find(p => p.type === 'minute').value);
+            const etSecond = parseInt(etParts.find(p => p.type === 'second').value);
+            const etWeekday = etParts.find(p => p.type === 'weekday').value;
             const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
             
-            // Check if market is currently open (Mon-Fri, 9:30-16:00 ET)
             const isMarketOpen = etWeekdayNum >= 1 && etWeekdayNum <= 5 
                 && (etHour > 9 || (etHour === 9 && etMinute >= 30)) 
                 && etHour < 16;
             
             if (isMarketOpen) {
-                // Countdown to 16:00 ET close
-                const minutesToClose = (16 - etHour) * 60 - etMinute;
-                const msToClose = minutesToClose * 60 * 1000 - (etSecond * 1000);
-                
-                const h = Math.floor(msToClose / (1000 * 60 * 60));
-                const m = Math.floor((msToClose % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((msToClose % (1000 * 60)) / 1000);
+                // Market is OPEN — countdown to close
+                if (!marketCloseTarget || marketCloseTarget <= now || lastStatus !== 'open') {
+                    marketCloseTarget = findNextMarketClose(now);
+                    lastStatus = 'open';
+                }
+                const diff = marketCloseTarget - now;
+                const h = Math.floor(diff / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
                 
                 document.getElementById('countdown-status').textContent = "🟢 Market OPEN — Closing in";
                 document.getElementById('countdown-timer').textContent = 
                     `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
                 document.getElementById('countdown-timer').className = 'countdown-timer open';
                 
-                const closeSydney = new Date(now.getTime() + msToClose);
-                const closeStr = closeSydney.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+                const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                 document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
                 return;
             }
             
-            // Market is CLOSED — determine next open day in ET
-            let daysToAdd = 0;
-            let statusText = '';
+            // Market is CLOSED
+            if (!marketOpenTarget || marketOpenTarget <= now || lastStatus === 'open') {
+                marketOpenTarget = findNextMarketOpen(now);
+                marketCloseTarget = null;
+                lastStatus = 'closed';
+            }
             
-            if (etWeekdayNum === 0) { // Sunday ET → Monday open
-                daysToAdd = 1;
+            // Determine status text
+            let statusText = '';
+            if (etWeekdayNum === 0) {
                 statusText = "🔴 Weekend — Opens Monday";
-            } else if (etWeekdayNum === 6) { // Saturday ET → Monday open
-                daysToAdd = 2;
+            } else if (etWeekdayNum === 6) {
                 statusText = "🔴 Weekend — Opens Monday";
-            } else if (etHour >= 16) { // After hours weekday
+            } else if (etHour >= 16) {
                 const tomorrowWeekday = (etWeekdayNum + 1) % 7;
-                if (tomorrowWeekday === 0 || tomorrowWeekday === 6) { // Fri after hours
-                    daysToAdd = (etWeekdayNum === 5) ? 3 : 2;
+                if (tomorrowWeekday === 0 || tomorrowWeekday === 6) {
                     statusText = "🟡 After Hours — Opens Monday";
                 } else {
-                    daysToAdd = 1;
                     statusText = "🟡 After Hours — Opens Tomorrow";
                 }
-            } else { // Pre-market same ET day
-                daysToAdd = 0;
+            } else {
                 statusText = "🟡 Pre-Market — Opens Today";
             }
             
-            // Find the exact Sydney time of the next US market open
-            // Walk forward minute-by-minute from now until ET shows Mon-Fri 9:30
-            let targetOpen = new Date(now);
-            let searchSafety = 0;
-            while (searchSafety++ < 10080) { // Max 1 week
-                targetOpen.setMinutes(targetOpen.getMinutes() + 1);
-                const probeParts = new Intl.DateTimeFormat('en-US', {
-                    timeZone: 'America/New_York',
-                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
-                }).formatToParts(targetOpen);
-                const probeHour = parseInt(probeParts.find(p => p.type === 'hour').value);
-                const probeMin = parseInt(probeParts.find(p => p.type === 'minute').value);
-                const probeWeekday = probeParts.find(p => p.type === 'weekday').value;
-                const probeWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[probeWeekday];
-                
-                if (probeWeekdayNum >= 1 && probeWeekdayNum <= 5 && probeHour === 9 && probeMin === 30) {
-                    break;
-                }
-            }
-            
-            // Calculate countdown from now (Sydney) to targetOpen (Sydney)
-            const diff = targetOpen - now;
+            // Simple countdown: targetOpen - now (both in Sydney time)
+            const diff = marketOpenTarget - now;
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
             
-            let timerStr = d > 0 
+            const timerStr = d > 0 
                 ? `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
                 : `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
             
             // Format next open in Sydney local time
             const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            const sydneyDay = dayNames[targetOpen.getDay()];
-            const sydneyTime = targetOpen.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
-            const sydneyDate = targetOpen.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
+            const sydneyDay = dayNames[marketOpenTarget.getDay()];
+            const sydneyTime = marketOpenTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+            const sydneyDate = marketOpenTarget.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
             
             document.getElementById('countdown-status').textContent = statusText;
             document.getElementById('countdown-timer').textContent = timerStr;
