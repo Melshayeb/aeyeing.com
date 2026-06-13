@@ -919,24 +919,24 @@
                 statusText = "🟡 Pre-Market — Opens Today";
             }
             
-            // Find the Sydney time when ET hits 9:30 AM on the target day
-            // Start from midnight Sydney on the target day
-            const targetDay = new Date(now);
-            targetDay.setDate(targetDay.getDate() + daysToAdd);
-            targetDay.setHours(0, 0, 0, 0);
-            
-            // Walk forward in 1-minute increments until ET shows 9:30
-            let targetOpen = new Date(targetDay);
-            let safety = 0;
-            while (safety++ < 1440) { // Max 24 hours
-                const checkParts = new Intl.DateTimeFormat('en-US', {
-                    timeZone: 'America/New_York',
-                    hour: '2-digit', minute: '2-digit', hour12: false
-                }).formatToParts(targetOpen);
-                const checkHour = parseInt(checkParts.find(p => p.type === 'hour').value);
-                const checkMin = parseInt(checkParts.find(p => p.type === 'minute').value);
-                if (checkHour === 9 && checkMin === 30) break;
+            // Find the exact Sydney time of the next US market open
+            // Walk forward minute-by-minute from now until ET shows Mon-Fri 9:30
+            let targetOpen = new Date(now);
+            let searchSafety = 0;
+            while (searchSafety++ < 10080) { // Max 1 week
                 targetOpen.setMinutes(targetOpen.getMinutes() + 1);
+                const probeParts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(targetOpen);
+                const probeHour = parseInt(probeParts.find(p => p.type === 'hour').value);
+                const probeMin = parseInt(probeParts.find(p => p.type === 'minute').value);
+                const probeWeekday = probeParts.find(p => p.type === 'weekday').value;
+                const probeWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[probeWeekday];
+                
+                if (probeWeekdayNum >= 1 && probeWeekdayNum <= 5 && probeHour === 9 && probeMin === 30) {
+                    break;
+                }
             }
             
             // Calculate countdown from now (Sydney) to targetOpen (Sydney)
