@@ -577,6 +577,22 @@
             font-size: 1.2rem;
             color: #0088cc;
         }
+        /* Ticker badges */
+        .ticker-badge {
+            background: rgba(0,230,118,0.15);
+            color: var(--accent-green);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        .trade-plan-card.expired .ticker-badge,
+        .performance-card.expired .ticker-badge {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -626,22 +642,16 @@
                 </div>
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
+                        <!-- NEWS_TICKER_ITEMS -->
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">07:16 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
+                            <span class="time">01:05 PM</span> — GOTU (Gaotu Techedu Inc) — No confirmed catalyst (score 0/5)
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="time">07:16 PM</span> — SIDU (Sidus Space Inc) — Error: sequence item 0: expected str instance, dict found
+                            <span class="time">01:05 PM</span> — BKKT (Bakkt Inc) — No confirmed catalyst (score 0/5)
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="time">07:16 PM</span> — SPCE (Virgin Galactic Holdings Inc) — No confirmed catalyst
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="time">07:16 PM</span> — SIDU (Sidus Space Inc) — Error: sequence item 0: expected str instance, dict found
-                        </div>
+                    <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
                 </div>
             </div>
@@ -653,7 +663,9 @@
             <div class="candidates-card">
                 <div class="card-header">
                     <h2>📊 Scanner Results</h2>
-                    <span class="badge">1 candidates | 0 alerts</span>
+                    <span class="badge"><!-- SCANNER_BADGE -->
+🟡 PRE-MARKET 11:05 PM ET | Scanned: 50 | 2 candidates | 0 alerts
+                    <!-- END_SCANNER_BADGE --></span>
                 </div>
                 <div class="table-wrap">
                     <table>
@@ -666,18 +678,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- SCANNER_TABLE_BODY -->
                             <tr>
-                                <td class="ticker-cell">SPCE</td>
-                                <td>Virgin Galactic Holdings Inc</td>
+                                <td class="ticker-cell">GOTU</td>
+                                <td>Gaotu Techedu Inc</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
                                 <td>No confirmed catalyst (score 0/5)</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">SIDU</td>
-                                <td>Sidus Space Inc</td>
+                                <td class="ticker-cell">BKKT</td>
+                                <td>Bakkt Inc</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Error: sequence item 0: expected str instance, dict found</td>
+                                <td>No confirmed catalyst (score 0/5)</td>
                             </tr>
+                    <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
                     </table>
                 </div>
@@ -685,121 +699,41 @@
             
             <!-- TRADE PLAN -->
             <div class="trade-plan-card expired" id="trade-plan-card">
-                <div class="plan-title" id="plan-title">
-                    🎯 Active Trade Plan — FAC
-                </div>
-                <div class="expired-banner">
-                    ⏰ No active trade plan — last alert expired<br>
-                    <span style="font-size: 0.8rem; font-weight: 400;">Scan continues every 15 min during market hours. New alerts appear here automatically.</span>
-                </div>
-                <div class="plan-grid">
-                    <div class="plan-stat">
-                        <div class="label">Entry Price</div>
-                        <div class="value">$17.27</div>
+                    <div class="plan-title" id="plan-title">
+                        🎯 Active Trade Plan <span class="ticker-badge">—</span>
                     </div>
-                    <div class="plan-stat">
-                        <div class="label">Stop Loss</div>
-                        <div class="value red">$16.92 (-2.0%)</div>
+                    <div class="expired-banner">
+                        ⏰ No active trade plan — last alert expired<br>
+                        <span style="font-size: 0.8rem; font-weight: 400;">Scan continues every 15 min during market hours. New alerts appear here automatically.</span>
                     </div>
-                    <div class="plan-stat">
-                        <div class="label">Target 1</div>
-                        <div class="value green">$17.79 (+3.0%)</div>
-                    </div>
-                    <div class="plan-stat">
-                        <div class="label">Target 2</div>
-                        <div class="value green">$18.13 (+5.0%)</div>
-                    </div>
-                    <div class="plan-stat">
-                        <div class="label">Target 3</div>
-                        <div class="value green">$18.65 (+8.0%)</div>
-                    </div>
-                    <div class="plan-stat">
-                        <div class="label">Shares</div>
-                        <div class="value blue">144</div>
-                    </div>
-                    <div class="plan-stat">
-                        <div class="label">Position Value</div>
-                        <div class="value">$2,487</div>
-                    </div>
-                    <div class="plan-stat">
-                        <div class="label">Risk:Reward</div>
-                        <div class="value green">1:1.50</div>
+                    <div class="plan-grid">
+                        <div class="plan-stat"><div class="label">Entry Price</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Stop Loss</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 1</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 2</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 3</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Shares</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Position Value</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Risk:Reward</div><div class="value">—</div></div>
                     </div>
                 </div>
-                <div class="plan-rules">
-                    <h4>📋 Rules / Filters Applied</h4>
-                    <ul>
-                        <li>Price range: $1–$20 ✅</li>
-                        <li>Market cap: $300M–$2B ✅</li>
-                        <li>Pre-market/active mover ≥5% or RVOL ≥2x ✅</li>
-                        <li>Near demand zone: $16.95 ✅</li>
-                        <li>Candlestick signal: BULLISH_ENGULFING ✅</li>
-                        <li>Price above VWAP ✅</li>
-                        <li>News catalyst confirmed (score 3/5) ✅</li>
-                        <li>Risk:Reward ≥1.5:1 (actual 1.50:1) ✅</li>
-                        <li>Position sizing: 1% risk, max 25% allocation ✅</li>
-                    </ul>
-                </div>
-                <div class="plan-rules" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
-                    <h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
-                    <ul>
-                        <li>Sell 50% (72 shares) at Target 1: $17.79 (+3%)</li>
-                        <li>Sell 25% (36 shares) at Target 2: $18.13 (+5%)</li>
-                        <li>Trail remaining 25% with 2% cushion above Target 3: $18.65</li>
-                        <li>Hard stop: $16.92 (trigger immediately if hit)</li>
-                        <li>Momentum exit: Close if bearish candle, tape slows, or volume drops</li>
-                        <li>Trail stop to breakeven once up +1%</li>
-                    </ul>
-                </div>
-            </div>
-            
             <!-- PERFORMANCE TRACKER -->
-            <div class="performance-card">
-            <div class="expired-banner">
-                ⏰ Tracker paused — no active trade plan<br>
-                <span style="font-size: 0.8rem; font-weight: 400;">                Performance data will resume when the next alert triggers.                </span>
-            </div>
-                <h2>📈 Forecast vs Actual Tracker</h2>
-                <div class="perf-grid">
-                    <div class="perf-box">
-                        <div class="label">Initial Investment</div>
-                        <div class="value">$100.00</div>
-                        <div class="sub">Hypothetical test amount</div>
+            <div class="performance-card expired">
+                    <div class="expired-banner">
+                        ⏰ Tracker paused — no active trade plan<br>
+                        <span style="font-size: 0.8rem; font-weight: 400;">Performance data will resume when the next alert triggers.</span>
                     </div>
-                    <div class="perf-box">
-                        <div class="label">Proposed Entry</div>
-                        <div class="value">$17.27</div>
-                        <div class="sub">FAC — June 12, 10:16 AM</div>
-                    </div>
-                    <div class="perf-box">
-                        <div class="label">Current Price</div>
-                        <div class="value" id="current-price">$17.27</div>
-                        <div class="sub">0.00% from entry</div>
-                    </div>
-                    <div class="perf-box">
-                        <div class="label">P&L if Executed</div>
-                        <div class="value" id="pnl-value">$0.00</div>
-                        <div class="sub">0.00% on $100</div>
-                    </div>
-                    <div class="perf-box">
-                        <div class="label">Max Potential</div>
-                        <div class="value green">+$8.00</div>
-                        <div class="sub">If T3 reached (+8%)</div>
-                    </div>
-                    <div class="perf-box">
-                        <div class="label">Max Risk</div>
-                        <div class="value red">-$2.00</div>
-                        <div class="sub">If stop hit (-2%)</div>
+                    <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge">—</span></h2>
+                    <div class="perf-grid">
+                        <div class="perf-box"><div class="label">Initial Investment</div><div class="value">—</div><div class="sub">Waiting for next alert</div></div>
+                        <div class="perf-box"><div class="label">Proposed Entry</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Current Price</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">P&L if Executed</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Max Potential</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Max Risk</div><div class="value">—</div></div>
                     </div>
                 </div>
-                <div class="perf-chart">
-                    📊 Live chart integration coming — WebSocket price feed + profit/loss curve visualization
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- NEWS & CATALYST SECTION (spans full width) -->
+            <!-- NEWS & CATALYST SECTION (spans full width) -->
     <div class="news-catalyst-card" id="news-catalyst-section">
         <div class="news-header">
             <h2>📰 Latest Catalyst &amp; News</h2>
