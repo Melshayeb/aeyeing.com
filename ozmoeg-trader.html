@@ -140,6 +140,45 @@
         .datetime-card .timezone {
             color: var(--accent-amber); font-weight: 600;
         }
+        /* Countdown Card */
+        .countdown-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .countdown-card .countdown-label {
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--accent-teal);
+            margin-bottom: 0.3rem; font-weight: 600;
+        }
+        .countdown-card .countdown-status {
+            font-size: 0.85rem; color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .countdown-card .countdown-timer {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: 2px;
+            margin: 0.5rem 0;
+        }
+        .countdown-card .countdown-timer.open {
+            color: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+        .countdown-card .countdown-timer.closed {
+            color: var(--text-secondary);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .countdown-card .countdown-next {
+            font-size: 0.75rem; color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
         .news-ticker-box {
             background: #000000;
             border: 2px solid var(--accent-green);
@@ -635,6 +674,14 @@
                 </div>
             </div>
             
+            <!-- MARKET COUNTDOWN -->
+            <div class="countdown-card">
+                <div class="countdown-label">🇺🇸 US Market</div>
+                <div class="countdown-status" id="countdown-status">Checking next open...</div>
+                <div class="countdown-timer" id="countdown-timer">--:--:--</div>
+                <div class="countdown-next" id="countdown-next">--</div>
+            </div>
+            
             <div class="news-ticker-box">
                 <div class="news-ticker-header">
                     <h3><span class="news-scroll-icon">📡</span> Live News Stream</h3>
@@ -785,6 +832,101 @@
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
+        
+        // US Market Countdown
+        function updateCountdown() {
+            const now = new Date();
+            const etNow = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+            const etHour = etNow.getHours();
+            const etMin = etNow.getMinutes();
+            const etDay = etNow.getDay(); // 0=Sun, 6=Sat
+            const etSec = etNow.getSeconds();
+            
+            let targetDate;
+            let statusText;
+            let timerClass = 'closed';
+            
+            // Check if market is currently open (Mon-Fri, 9:30-16:00 ET)
+            if (etDay >= 1 && etDay <= 5 && (etHour > 9 || (etHour === 9 && etMin >= 30)) && etHour < 16) {
+                // Market is OPEN
+                const closeTime = new Date(etNow);
+                closeTime.setHours(16, 0, 0, 0);
+                const diff = closeTime - etNow;
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdown-status').textContent = "🟢 Market OPEN — Closing in";
+                document.getElementById('countdown-timer').textContent = 
+                    `${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+                document.getElementById('countdown-timer').className = 'countdown-timer open';
+                document.getElementById('countdown-next').textContent = `Closes at 4:00 PM ET today`;
+                return;
+            }
+            
+            // Market is CLOSED — find next open
+            if (etDay === 0) {
+                // Sunday → Monday
+                targetDate = new Date(etNow);
+                targetDate.setDate(targetDate.getDate() + 1);
+                targetDate.setHours(9, 30, 0, 0);
+                statusText = "🔴 Weekend — Opens Monday";
+            } else if (etDay === 6) {
+                // Saturday → Monday
+                targetDate = new Date(etNow);
+                targetDate.setDate(targetDate.getDate() + 2);
+                targetDate.setHours(9, 30, 0, 0);
+                statusText = "🔴 Weekend — Opens Monday";
+            } else if (etHour >= 16) {
+                // After hours same weekday → next day
+                targetDate = new Date(etNow);
+                targetDate.setDate(targetDate.getDate() + 1);
+                targetDate.setHours(9, 30, 0, 0);
+                if (targetDate.getDay() === 6) {
+                    targetDate.setDate(targetDate.getDate() + 2);
+                    statusText = "🟡 After Hours — Opens Monday";
+                } else if (targetDate.getDay() === 0) {
+                    targetDate.setDate(targetDate.getDate() + 1);
+                    statusText = "🟡 After Hours — Opens Monday";
+                } else {
+                    statusText = "🟡 After Hours — Opens Tomorrow";
+                }
+            } else {
+                // Pre-market same day
+                targetDate = new Date(etNow);
+                targetDate.setHours(9, 30, 0, 0);
+                statusText = "🟡 Pre-Market — Opens Today";
+            }
+            
+            const diff = targetDate - etNow;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Format timer string
+            let timerStr;
+            if (days > 0) {
+                timerStr = `${days}d ${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            } else {
+                timerStr = `${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            }
+            
+            // Format next open text in AEST
+            const nextOpenAest = new Date(targetDate.toLocaleString("en-US", {timeZone: "Australia/Sydney"}));
+            const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            const nextDayName = dayNames[nextOpenAest.getDay()];
+            const nextTimeStr = nextOpenAest.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+            const nextDateStr = nextOpenAest.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
+            
+            document.getElementById('countdown-status').textContent = statusText;
+            document.getElementById('countdown-timer').textContent = timerStr;
+            document.getElementById('countdown-timer').className = 'countdown-timer closed';
+            document.getElementById('countdown-next').textContent = 
+                `Next open: ${nextDayName} ${nextDateStr} at ${nextTimeStr} AEST`;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
         
         // Static price display — real scan data (no fake animation)
         const entryPrice = 17.27;
