@@ -1111,8 +1111,8 @@
             <div class="candidates-card">
                 <div class="card-header">
                     <h2>📊 Scanner Results</h2>
-                    <span class="badge"><!-- SCANNER_BADGE -->
-🟢 OPEN 12:23 PM ET | Scanned: 50 | 9 candidates | 0 alerts
+                    <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
+🟢 OPEN 12:15 PM ET | Scanned: 50 | 8 candidates | 0 alerts
                     <!-- END_SCANNER_BADGE --></span>
                 </div>
                 <div class="table-wrap">
@@ -1186,7 +1186,7 @@
                     </table>
                 </div>
                 <!-- SCANNED_GAINERS_TABLE -->
-                        <details class="scanned-details">
+                <details class="scanned-details" id="scanned-all-details">
                             <summary>🔍 Show all 50 scanned tickers with filter reasons</summary>
                             <div class="table-wrap">
                                 <table class="scanned-table">
@@ -2019,6 +2019,84 @@
             pnlEl.nextElementSibling.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% on $' + investment;
         }
         updatePrice(); // Set once on load — no interval
+
+        // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 60s
+        // This bypasses GitHub Pages HTML cache so updates appear immediately.
+        async function loadLiveData() {
+            try {
+                const ts = Date.now();
+                const res = await fetch('ozmoeg-latest.json?_=' + ts, { cache: 'no-store' });
+                if (!res.ok) return;
+                const data = await res.json();
+                const results = data.scan_results || [];
+                const allGainers = data.all_gainers || [];
+                const stats = data.scan_stats || {};
+                const lastUpdated = new Date(data.last_updated || Date.now());
+
+                // Update badge
+                const alerts = results.filter(r => r.status === 'ALERT').length;
+                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
+                const marketStatus = stats.market_status || 'OPEN';
+                const marketTime = stats.market_time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true, timeZone:'America/New_York' }) + ' ET';
+                const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴' }[marketStatus] || '⚪';
+                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
+
+                // Update scanner table
+                const tbody = document.querySelector('#scanner-table tbody');
+                if (tbody && results.length) {
+                    tbody.innerHTML = results.map(r => {
+                        const statusClass = r.status === 'ALERT' ? 'result-alert' : 'result-skip';
+                        const emoji = r.status === 'ALERT' ? '🚨' : '⏭️';
+                        const escaped = (r.result || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                        return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span></td><td>${escaped}</td></tr>`;
+                    }).join('');
+                }
+
+                // Update news ticker (duplicate for loop)
+                const ticker = document.getElementById('news-ticker');
+                if (ticker && results.length) {
+                    const items = results.map(r => {
+                        const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
+                        const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
+                        return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span><span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${r.result || ''}</div>`;
+                    }).join('');
+                    ticker.innerHTML = items + '\n' + items;
+                }
+
+                // Update all-scanned details if expanded
+                const scannedDetails = document.querySelector('#scanned-all-details');
+                if (scannedDetails && allGainers.length) {
+                    // keep summary, rebuild table body
+                    const table = scannedDetails.querySelector('table tbody');
+                    if (table) {
+                        table.innerHTML = allGainers.map(stock => {
+                            const t = stock.ticker || stock;
+                            const v = stock.values || {};
+                            const symbol = t.symbol || '';
+                            const name = t.name || symbol;
+                            const price = parseFloat(v.price || t.pprice || t.close || 0);
+                            const close = parseFloat(t.close || 0);
+                            const changeRatio = parseFloat(t.changeRatio || 0);
+                            let changePct = 0;
+                            if (close && price) changePct = (price - close) / close * 100;
+                            else changePct = (changeRatio - 1) * 100 || 0;
+                            const volume = parseInt(t.volume || 0);
+                            const mktCap = parseFloat(t.marketValue || 0);
+                            const rvol = parseFloat(t.rvol || 0);
+                            const passed = stock._scan_passed;
+                            const badgeClass = passed ? 'scan-pass' : 'scan-skip';
+                            const badgeText = passed ? 'PASS' : 'SKIP';
+                            const reason = stock._scan_reason || '';
+                            return `<tr><td class="ticker-cell">${symbol}</td><td>${name}</td><td>$${price.toFixed(2)}</td><td>${changePct >= 0 ? '+' : ''}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${reason}</td></tr>`;
+                        }).join('');
+                    }
+                }
+            } catch (e) {
+                console.error('Live data refresh failed:', e);
+            }
+        }
+        loadLiveData();
+        setInterval(loadLiveData, 60000);
     </script>
 </body>
 </html>
