@@ -973,7 +973,14 @@
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
                         <!-- NEWS_TICKER_ITEMS -->
-                        <div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — No candidates passed filter criteria — Scan continues every 15 min</div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="date">June 15</span> <span class="time">09:30 PM</span> — TRIP (Tripadvisor) — No demand zone or candlestick signal
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="date">June 15</span> <span class="time">09:30 PM</span> — PURR (Hyperliquid Strategies Inc) — No confirmed catalyst (score 0/5)
+                        </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
                 </div>
@@ -987,7 +994,7 @@
                 <div class="card-header">
                     <h2>📊 Scanner Results</h2>
                     <span class="badge"><!-- SCANNER_BADGE -->
-🟡 PRE-MARKET 07:05 AM ET | Scanned: 50 | 0 candidates | 0 alerts
+🟡 PRE-MARKET 07:30 AM ET | Scanned: 50 | 2 candidates | 0 alerts
                     <!-- END_SCANNER_BADGE --></span>
                 </div>
                 <div class="table-wrap">
@@ -1002,7 +1009,18 @@
                         </thead>
                         <tbody>
                             <!-- SCANNER_TABLE_BODY -->
-                            <tr><td colspan="4" style="text-align: center; color: var(--text-secondary);">No candidates found in latest scan</td></tr>
+                            <tr>
+                                <td class="ticker-cell">TRIP</td>
+                                <td>Tripadvisor</td>
+                                <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td>No demand zone or candlestick signal</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">PURR</td>
+                                <td>Hyperliquid Strategies Inc</td>
+                                <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td>No confirmed catalyst (score 0/5)</td>
+                            </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
                     </table>
