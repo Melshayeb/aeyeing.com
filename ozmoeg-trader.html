@@ -153,6 +153,14 @@
         }
         @media (max-width: 1200px) {
             .main-grid { grid-template-columns: 1fr; }
+            .alert-selector {
+                max-width: 100%;
+                flex: 1 1 100%;
+                margin-top: 0.3rem;
+            }
+            .plan-title {
+                gap: 0.5rem;
+            }
         }
         /* ===== ALL NON-DESKTOP: tablets, phones, narrow screens ===== */
         @media (max-width: 1200px) {
@@ -973,8 +981,13 @@
                 font-size: 0.65rem;
             }
 
-            .telegram-banner {
+            .telegram-banner,
+            .telegram-cta {
                 padding: 0.6rem 0.8rem;
+                width: 100%;
+                max-width: none;
+                margin-left: 0;
+                margin-right: 0;
             }
             .telegram-icon {
                 font-size: 1.2rem;
@@ -1093,125 +1106,125 @@
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
                         <!-- NEWS_TICKER_ITEMS -->
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — TD1 (TALI DIGITAL LIMITED) — AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — VSME (VS MEDIA Holdings) — Entry $3.25, Stop $3.185, T1 $3.3475
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — HE8 (HELIOS ENERGY LTD) — AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — PRFX (PRF Technologies Ltd.) — Poor R:R (0.66)
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — RDS (REDSTONE RESOURCES) — AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — GPUS (Hyperscale Data Inc.) — Entry $0.2713, Stop $0.2659, T1 $0.2794
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — CRR (CRITICAL RESOURCES) — AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.2, Stop $2.156, T1 $2.266
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — DXN (DXN LIMITED) — AU candidate (data limited): Entry $0.190, Stop $0.189, T1 $0.196
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Entry $1.93, Stop $1.8914, T1 $1.9879
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — ALY (ALCHEMY RESOURCE LTD) — AU candidate (data limited): Entry $0.008, Stop $0.008, T1 $0.008
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — HUBC (Hub Cyber Security Israel Ltd) — Entry $1.68, Stop $1.6464, T1 $1.7304
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — GGE (GRAND GULF ENERGY) — AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — MTEN (Mingteng International) — Red flags: offering:Mingteng International Raises $2.26 Million in Registered Direct Offering; offering:MINGTENG INTERNATIONAL CORPORATION INC. ANNOUNCES CLOSING OF $2.26 MILLION REGISTERED DIRECT OFFERING; offering:Mingteng International Prices ~$2.26M Offering Of 1.13M Class A Ordinary Shares At $2/Share Exercise Price; offering:MINGTENG INTERNATIONAL - OFFERING EXPECTED TO RAISE GROSS PROCEEDS OF $2.26 MLN; offering:Mingteng International Corporation Inc. Announces Pricing of $2.26 Million Registered Direct Offering
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — LIB (LIBERTY METALS) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — GLXG (Galaxy Payroll Group Ltd) — Entry $1.88, Stop $1.8424, T1 $1.9364
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — NES (NELSON RESOURCES.) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — WLDS (Wearable Devices Ltd.) — Entry $0.987, Stop $0.9673, T1 $1.0166
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — ADO (ANTEOTECH LTD) — AU candidate (data limited): Entry $0.032, Stop $0.032, T1 $0.033
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — CYPH (Cypherpunk Technologies Inc) — Entry $0.8128, Stop $0.7965, T1 $0.8372
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — T3D (333D LIMITED) — AU candidate (data limited): Entry $0.061, Stop $0.061, T1 $0.063
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — QUCY (Quantum Cyber N.V.) — Entry $2.12, Stop $2.0776, T1 $2.1836
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — 14D (1414 DEGREES LIMITED) — AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — FAMI (Farmmi Inc) — Entry $1.36, Stop $1.3328, T1 $1.4008
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — AM3 (AMARA MINERALS LTD) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — BGM (BGM Group) — Entry $0.459, Stop $0.4498, T1 $0.4728
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — SMM (SOMERSET MINERALS) — AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — VIDA (VIDA Global Inc.) — Entry $4.67, Stop $4.5766, T1 $4.8101
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — FTI (FORTIFAI LTD) — AU candidate (data limited): Entry $0.955, Stop $0.949, T1 $0.984
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — TD1 (TALI DIGITAL LIMITED) — AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — VSME (VS MEDIA Holdings) — Entry $3.25, Stop $3.185, T1 $3.3475
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — HE8 (HELIOS ENERGY LTD) — AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:15 PM</span> — PRFX (PRF Technologies Ltd.) — Poor R:R (0.66)
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — RDS (REDSTONE RESOURCES) — AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — GPUS (Hyperscale Data Inc.) — Entry $0.2713, Stop $0.2659, T1 $0.2794
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — CRR (CRITICAL RESOURCES) — AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.2, Stop $2.156, T1 $2.266
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — DXN (DXN LIMITED) — AU candidate (data limited): Entry $0.190, Stop $0.189, T1 $0.196
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Entry $1.93, Stop $1.8914, T1 $1.9879
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — ALY (ALCHEMY RESOURCE LTD) — AU candidate (data limited): Entry $0.008, Stop $0.008, T1 $0.008
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — HUBC (Hub Cyber Security Israel Ltd) — Entry $1.68, Stop $1.6464, T1 $1.7304
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — GGE (GRAND GULF ENERGY) — AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — MTEN (Mingteng International) — Red flags: offering:Mingteng International Raises $2.26 Million in Registered Direct Offering; offering:MINGTENG INTERNATIONAL CORPORATION INC. ANNOUNCES CLOSING OF $2.26 MILLION REGISTERED DIRECT OFFERING; offering:Mingteng International Prices ~$2.26M Offering Of 1.13M Class A Ordinary Shares At $2/Share Exercise Price; offering:MINGTENG INTERNATIONAL - OFFERING EXPECTED TO RAISE GROSS PROCEEDS OF $2.26 MLN; offering:Mingteng International Corporation Inc. Announces Pricing of $2.26 Million Registered Direct Offering
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — LIB (LIBERTY METALS) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — GLXG (Galaxy Payroll Group Ltd) — Entry $1.88, Stop $1.8424, T1 $1.9364
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — NES (NELSON RESOURCES.) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — WLDS (Wearable Devices Ltd.) — Entry $0.987, Stop $0.9673, T1 $1.0166
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — ADO (ANTEOTECH LTD) — AU candidate (data limited): Entry $0.032, Stop $0.032, T1 $0.033
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — CYPH (Cypherpunk Technologies Inc) — Entry $0.8128, Stop $0.7965, T1 $0.8372
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — T3D (333D LIMITED) — AU candidate (data limited): Entry $0.061, Stop $0.061, T1 $0.063
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — QUCY (Quantum Cyber N.V.) — Entry $2.12, Stop $2.0776, T1 $2.1836
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — 14D (1414 DEGREES LIMITED) — AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — FAMI (Farmmi Inc) — Entry $1.36, Stop $1.3328, T1 $1.4008
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — AM3 (AMARA MINERALS LTD) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — BGM (BGM Group) — Entry $0.459, Stop $0.4498, T1 $0.4728
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — SMM (SOMERSET MINERALS) — AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010
                         </div>
-                        <div class="news-item alert">
-                            <span class="score">ALERT</span>
-                            <span class="date">June 16</span> <span class="time">05:16 PM</span> — VIDA (VIDA Global Inc.) — Entry $4.67, Stop $4.5766, T1 $4.8101
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 16</span> <span class="time">05:21 PM</span> — FTI (FORTIFAI LTD) — AU candidate (data limited): Entry $0.955, Stop $0.949, T1 $0.984
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1226,7 +1239,7 @@
                 <div class="card-header">
                     <h2>📊 Scanner Results</h2>
                     <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 03:16 AM ET | Scanned: 50 | 15 candidates | 12 alerts
+🔴 AUS CLOSED 05:21 PM AEST/AEDT | Scanned: 50 | 15 candidates | 0 alerts
                     <!-- END_SCANNER_BADGE --></span>
                 </div>
                 <div class="table-wrap">
@@ -1242,94 +1255,94 @@
                         <tbody>
                             <!-- SCANNER_TABLE_BODY -->
                             <tr>
-                                <td class="ticker-cell">CAST</td>
-                                <td>Freecast Inc</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING</td>
+                                <td class="ticker-cell">TD1</td>
+                                <td>TALI DIGITAL LIMITED</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">VSME</td>
-                                <td>VS MEDIA Holdings</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $3.25, Stop $3.185, T1 $3.3475</td>
+                                <td class="ticker-cell">HE8</td>
+                                <td>HELIOS ENERGY LTD</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">PRFX</td>
-                                <td>PRF Technologies Ltd.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (0.66)</td>
+                                <td class="ticker-cell">RDS</td>
+                                <td>REDSTONE RESOURCES</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">GPUS</td>
-                                <td>Hyperscale Data Inc.</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $0.2713, Stop $0.2659, T1 $0.2794</td>
+                                <td class="ticker-cell">CRR</td>
+                                <td>CRITICAL RESOURCES</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">QTEX</td>
-                                <td>QTREX Quantum Ltd.</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $2.2, Stop $2.156, T1 $2.266</td>
+                                <td class="ticker-cell">DXN</td>
+                                <td>DXN LIMITED</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.190, Stop $0.189, T1 $0.196</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">AHMA</td>
-                                <td>AMBITIONS ENTERPRISE MANAGE</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $1.93, Stop $1.8914, T1 $1.9879</td>
+                                <td class="ticker-cell">ALY</td>
+                                <td>ALCHEMY RESOURCE LTD</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.008, Stop $0.008, T1 $0.008</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">HUBC</td>
-                                <td>Hub Cyber Security Israel Ltd</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $1.68, Stop $1.6464, T1 $1.7304</td>
+                                <td class="ticker-cell">GGE</td>
+                                <td>GRAND GULF ENERGY</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">MTEN</td>
-                                <td>Mingteng International</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Red flags: offering:Mingteng International Raises $2.26 Million in Registered Direct Offering; offering:MINGTENG INTERNATIONAL CORPORATION INC. ANNOUNCES CLOSING OF $2.26 MILLION REGISTERED DIRECT OFFERING; offering:Mingteng International Prices ~$2.26M Offering Of 1.13M Class A Ordinary Shares At $2/Share Exercise Price; offering:MINGTENG INTERNATIONAL - OFFERING EXPECTED TO RAISE GROSS PROCEEDS OF $2.26 MLN; offering:Mingteng International Corporation Inc. Announces Pricing of $2.26 Million Registered Direct Offering</td>
+                                <td class="ticker-cell">LIB</td>
+                                <td>LIBERTY METALS</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">GLXG</td>
-                                <td>Galaxy Payroll Group Ltd</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $1.88, Stop $1.8424, T1 $1.9364</td>
+                                <td class="ticker-cell">NES</td>
+                                <td>NELSON RESOURCES.</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">WLDS</td>
-                                <td>Wearable Devices Ltd.</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $0.987, Stop $0.9673, T1 $1.0166</td>
+                                <td class="ticker-cell">ADO</td>
+                                <td>ANTEOTECH LTD</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.032, Stop $0.032, T1 $0.033</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CYPH</td>
-                                <td>Cypherpunk Technologies Inc</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $0.8128, Stop $0.7965, T1 $0.8372</td>
+                                <td class="ticker-cell">T3D</td>
+                                <td>333D LIMITED</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.061, Stop $0.061, T1 $0.063</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">QUCY</td>
-                                <td>Quantum Cyber N.V.</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $2.12, Stop $2.0776, T1 $2.1836</td>
+                                <td class="ticker-cell">14D</td>
+                                <td>1414 DEGREES LIMITED</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.115, Stop $0.114, T1 $0.118</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">FAMI</td>
-                                <td>Farmmi Inc</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $1.36, Stop $1.3328, T1 $1.4008</td>
+                                <td class="ticker-cell">AM3</td>
+                                <td>AMARA MINERALS LTD</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">BGM</td>
-                                <td>BGM Group</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $0.459, Stop $0.4498, T1 $0.4728</td>
+                                <td class="ticker-cell">SMM</td>
+                                <td>SOMERSET MINERALS</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.010, Stop $0.010, T1 $0.010</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">VIDA</td>
-                                <td>VIDA Global Inc.</td>
-                                <td><span class="result-alert">🚨 ALERT</span></td>
-                                <td>Entry $4.67, Stop $4.5766, T1 $4.8101</td>
+                                <td class="ticker-cell">FTI</td>
+                                <td>FORTIFAI LTD</td>
+                                <td><span class="result-skip">⏭️ CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.955, Stop $0.949, T1 $0.984</td>
                             </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
@@ -1347,554 +1360,554 @@
                                     </thead>
                                     <tbody>
                             <tr>
-                                <td class="ticker-cell">RGNT</td>
-                                <td>Regentis Biomaterials Ltd</td>
-                                <td>$9.40</td>
+                                <td class="ticker-cell">MSG</td>
+                                <td>MCS SERVICES LIMITED</td>
+                                <td>$0.01</td>
                                 <td>+0.0%</td>
-                                <td>186,534,167</td>
+                                <td>4,418,188</td>
                                 <td>0.0x</td>
-                                <td>$48.7M</td>
+                                <td>$1.0M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $9.400</td>
+                                <td>Filtered: mktcap $1.0M</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CAST</td>
-                                <td>Freecast Inc</td>
-                                <td>$3.75</td>
+                                <td class="ticker-cell">TD1</td>
+                                <td>TALI DIGITAL LIMITED</td>
+                                <td>$0.12</td>
                                 <td>+0.0%</td>
-                                <td>158,152,614</td>
+                                <td>917,258</td>
                                 <td>0.0x</td>
-                                <td>$155.0M</td>
+                                <td>$5.4M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CUPR</td>
-                                <td>Cuprina Holdings (Cayman) Limited</td>
-                                <td>$8.41</td>
+                                <td class="ticker-cell">HE8</td>
+                                <td>HELIOS ENERGY LTD</td>
+                                <td>$0.00</td>
                                 <td>+0.0%</td>
-                                <td>48,556,179</td>
+                                <td>378,223</td>
                                 <td>0.0x</td>
-                                <td>$22.5M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $8.410</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">VSME</td>
-                                <td>VS MEDIA Holdings</td>
-                                <td>$3.25</td>
-                                <td>+0.0%</td>
-                                <td>64,723,569</td>
-                                <td>0.0x</td>
-                                <td>$9.0M</td>
+                                <td>$10.0M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">PRFX</td>
-                                <td>PRF Technologies Ltd.</td>
-                                <td>$2.49</td>
+                                <td class="ticker-cell">RDS</td>
+                                <td>REDSTONE RESOURCES</td>
+                                <td>$0.00</td>
                                 <td>+0.0%</td>
-                                <td>47,331,211</td>
+                                <td>830,000</td>
                                 <td>0.0x</td>
-                                <td>$2.2M</td>
+                                <td>$3.7M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">GPUS</td>
-                                <td>Hyperscale Data Inc.</td>
-                                <td>$0.27</td>
-                                <td>-0.1%</td>
-                                <td>710,020,289</td>
+                                <td class="ticker-cell">CRR</td>
+                                <td>CRITICAL RESOURCES</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>44,891,485</td>
                                 <td>0.0x</td>
-                                <td>$131.7M</td>
+                                <td>$31.9M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">QTEX</td>
-                                <td>QTREX Quantum Ltd.</td>
-                                <td>$2.20</td>
+                                <td class="ticker-cell">DXN</td>
+                                <td>DXN LIMITED</td>
+                                <td>$0.19</td>
                                 <td>+0.0%</td>
-                                <td>122,263,013</td>
+                                <td>28,957,979</td>
                                 <td>0.0x</td>
-                                <td>$108.1M</td>
+                                <td>$69.9M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">HQ</td>
-                                <td>HORIZON QUANTUM HOLDINGS LTD</td>
-                                <td>$17.82</td>
+                                <td class="ticker-cell">ALY</td>
+                                <td>ALCHEMY RESOURCE LTD</td>
+                                <td>$0.01</td>
                                 <td>+0.0%</td>
-                                <td>6,244,363</td>
+                                <td>2,223,059</td>
                                 <td>0.0x</td>
-                                <td>$919.1M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $17.820</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SDOT</td>
-                                <td>Sadot Group</td>
-                                <td>$23.47</td>
-                                <td>+0.0%</td>
-                                <td>1,022,766</td>
-                                <td>0.0x</td>
-                                <td>$17.5M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $23.470</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">RTB</td>
-                                <td>RTB Digital, Inc.</td>
-                                <td>$6.67</td>
-                                <td>+0.0%</td>
-                                <td>292,760</td>
-                                <td>0.0x</td>
-                                <td>$38.5M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $6.670</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AHMA</td>
-                                <td>AMBITIONS ENTERPRISE MANAGE</td>
-                                <td>$1.93</td>
-                                <td>+0.0%</td>
-                                <td>49,683,660</td>
-                                <td>0.0x</td>
-                                <td>$57.4M</td>
+                                <td>$9.5M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">HUBC</td>
-                                <td>Hub Cyber Security Israel Ltd</td>
-                                <td>$1.68</td>
+                                <td class="ticker-cell">GGE</td>
+                                <td>GRAND GULF ENERGY</td>
+                                <td>$0.00</td>
                                 <td>+0.0%</td>
-                                <td>49,368,251</td>
+                                <td>224,575</td>
                                 <td>0.0x</td>
-                                <td>$5.6M</td>
+                                <td>$6.2M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">MTEN</td>
-                                <td>Mingteng International</td>
-                                <td>$3.39</td>
+                                <td class="ticker-cell">LIB</td>
+                                <td>LIBERTY METALS</td>
+                                <td>$0.00</td>
                                 <td>+0.0%</td>
-                                <td>36,041,226</td>
+                                <td>10,625,000</td>
                                 <td>0.0x</td>
-                                <td>$20.9M</td>
+                                <td>$32.8M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">ARQQ</td>
-                                <td>Arqit Quantum Inc</td>
-                                <td>$17.92</td>
+                                <td class="ticker-cell">NES</td>
+                                <td>NELSON RESOURCES.</td>
+                                <td>$0.00</td>
                                 <td>+0.0%</td>
-                                <td>3,048,939</td>
-                                <td>0.0x</td>
-                                <td>$311.9M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $17.920</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">GLXG</td>
-                                <td>Galaxy Payroll Group Ltd</td>
-                                <td>$1.88</td>
-                                <td>+0.0%</td>
-                                <td>54,768,412</td>
-                                <td>0.0x</td>
-                                <td>$11.2M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BTQ</td>
-                                <td>Btq Technologies Corp</td>
-                                <td>$5.35</td>
-                                <td>+0.0%</td>
-                                <td>12,880,742</td>
-                                <td>0.0x</td>
-                                <td>$756.3M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $5.350</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SLMT</td>
-                                <td>Brera Holdings</td>
-                                <td>$5.60</td>
-                                <td>+0.0%</td>
-                                <td>527,994</td>
-                                <td>0.0x</td>
-                                <td>$59.8M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $5.600</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">WLDS</td>
-                                <td>Wearable Devices Ltd.</td>
-                                <td>$0.99</td>
-                                <td>+0.0%</td>
-                                <td>23,814,016</td>
-                                <td>0.0x</td>
-                                <td>$6.5M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">CYPH</td>
-                                <td>Cypherpunk Technologies Inc</td>
-                                <td>$0.81</td>
-                                <td>+0.0%</td>
-                                <td>15,727,867</td>
-                                <td>0.0x</td>
-                                <td>$86.5M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">UBXG</td>
-                                <td>U-BX Technology Ltd.</td>
-                                <td>$9.70</td>
-                                <td>+0.0%</td>
-                                <td>3,532,957</td>
-                                <td>0.0x</td>
-                                <td>$17.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $9.700</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">NTLA</td>
-                                <td>Intellia Therape</td>
-                                <td>$14.92</td>
-                                <td>+0.0%</td>
-                                <td>16,409,533</td>
-                                <td>0.0x</td>
-                                <td>$2084.7M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $14.920, mktcap $2084.7M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">QUCY</td>
-                                <td>Quantum Cyber N.V.</td>
-                                <td>$2.12</td>
-                                <td>+0.0%</td>
-                                <td>11,542,219</td>
-                                <td>0.0x</td>
-                                <td>$48.3M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">FAMI</td>
-                                <td>Farmmi Inc</td>
-                                <td>$1.36</td>
-                                <td>+0.0%</td>
-                                <td>237,358</td>
-                                <td>0.0x</td>
-                                <td>$18.9M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BGM</td>
-                                <td>BGM Group</td>
-                                <td>$0.46</td>
-                                <td>+0.0%</td>
-                                <td>1,476,625</td>
-                                <td>0.0x</td>
-                                <td>$183.9M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">VIDA</td>
-                                <td>VIDA Global Inc.</td>
-                                <td>$4.67</td>
-                                <td>+0.0%</td>
-                                <td>340,747</td>
-                                <td>0.0x</td>
-                                <td>$66.6M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">WYFI</td>
-                                <td>WHITEFIBER INC</td>
-                                <td>$29.98</td>
-                                <td>+0.0%</td>
-                                <td>1,976,212</td>
-                                <td>0.0x</td>
-                                <td>$1157.7M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $29.980</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BRUN</td>
-                                <td>BOOST RUN INC</td>
-                                <td>$37.46</td>
-                                <td>+0.0%</td>
-                                <td>2,510,026</td>
-                                <td>0.0x</td>
-                                <td>$2301.1M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $37.460, mktcap $2301.1M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">ELVR</td>
-                                <td>Elevra Lithium</td>
-                                <td>$102.33</td>
-                                <td>+0.0%</td>
-                                <td>615,314</td>
-                                <td>0.0x</td>
-                                <td>$1733.2M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $102.330</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">RDGT</td>
-                                <td>RIDGETECH Inc</td>
-                                <td>$1.73</td>
-                                <td>+0.0%</td>
-                                <td>1,944,347</td>
-                                <td>0.0x</td>
-                                <td>$1.6M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">LUD</td>
-                                <td>Luda Technology Group</td>
-                                <td>$5.25</td>
-                                <td>+0.0%</td>
-                                <td>221,459</td>
-                                <td>0.0x</td>
-                                <td>$119.1M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $5.250</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">MMA</td>
-                                <td>Mixed Martial</td>
-                                <td>$0.53</td>
-                                <td>+0.0%</td>
-                                <td>3,723,812</td>
-                                <td>0.0x</td>
-                                <td>$14.0M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AQMS</td>
-                                <td>Aqua Metals Inc</td>
-                                <td>$3.30</td>
-                                <td>+0.0%</td>
-                                <td>416,190</td>
+                                <td>35,842,542</td>
                                 <td>0.0x</td>
                                 <td>$11.1M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">SMWB</td>
-                                <td>Similarweb Ltd</td>
-                                <td>$5.25</td>
+                                <td class="ticker-cell">ADO</td>
+                                <td>ANTEOTECH LTD</td>
+                                <td>$0.03</td>
                                 <td>+0.0%</td>
-                                <td>2,592,293</td>
+                                <td>47,290,107</td>
                                 <td>0.0x</td>
-                                <td>$459.9M</td>
+                                <td>$104.3M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">T3D</td>
+                                <td>333D LIMITED</td>
+                                <td>$0.06</td>
+                                <td>+0.0%</td>
+                                <td>5,942,642</td>
+                                <td>0.0x</td>
+                                <td>$12.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">14D</td>
+                                <td>1414 DEGREES LIMITED</td>
+                                <td>$0.12</td>
+                                <td>+0.0%</td>
+                                <td>98,629,555</td>
+                                <td>0.0x</td>
+                                <td>$69.8M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AM3</td>
+                                <td>AMARA MINERALS LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>5,743,724</td>
+                                <td>0.0x</td>
+                                <td>$13.3M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">SMM</td>
+                                <td>SOMERSET MINERALS</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>12,964,944</td>
+                                <td>0.0x</td>
+                                <td>$12.1M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">FTI</td>
+                                <td>FORTIFAI LTD</td>
+                                <td>$0.95</td>
+                                <td>+0.0%</td>
+                                <td>2,371,878</td>
+                                <td>0.0x</td>
+                                <td>$327.7M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">NTI</td>
+                                <td>NEUROTECH INTL</td>
+                                <td>$0.02</td>
+                                <td>+0.0%</td>
+                                <td>4,070,640</td>
+                                <td>0.0x</td>
+                                <td>$21.1M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">ANR</td>
+                                <td>ANATARA LS LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>1,795,136</td>
+                                <td>0.0x</td>
+                                <td>$3.4M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">NGX</td>
+                                <td>NGXLIMITED</td>
+                                <td>$0.11</td>
+                                <td>+0.0%</td>
+                                <td>9,104</td>
+                                <td>0.0x</td>
+                                <td>$10.0M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $5.250</td>
+                                <td>Filtered: vol 9,104</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">SPCX</td>
-                                <td>Space Exploration Technologies Corp</td>
-                                <td>$192.50</td>
+                                <td class="ticker-cell">SVG</td>
+                                <td>SAVANNAH GOLDFIELDS</td>
+                                <td>$0.01</td>
                                 <td>+0.0%</td>
-                                <td>256,226,632</td>
+                                <td>7,849,696</td>
                                 <td>0.0x</td>
-                                <td>$2517104.0M</td>
+                                <td>$24.7M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">UNT</td>
+                                <td>UNITH LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>10,778,754</td>
+                                <td>0.0x</td>
+                                <td>$16.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">WCN</td>
+                                <td>WHITE CLIFF MIN LTD</td>
+                                <td>$0.02</td>
+                                <td>+0.0%</td>
+                                <td>69,401,842</td>
+                                <td>0.0x</td>
+                                <td>$60.2M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">DXB</td>
+                                <td>DIMERIX LTD</td>
+                                <td>$0.20</td>
+                                <td>+0.0%</td>
+                                <td>29,413,885</td>
+                                <td>0.0x</td>
+                                <td>$120.1M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">CUL</td>
+                                <td>CULLEN RESOURCES</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>59,665</td>
+                                <td>0.0x</td>
+                                <td>$4.2M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $192.500, mktcap $2517104.0M</td>
+                                <td>Filtered: vol 59,665</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">ORBS</td>
-                                <td>Eightco Holdings Ord Shs</td>
-                                <td>$1.05</td>
+                                <td class="ticker-cell">KNG</td>
+                                <td>KINGSLAND MINERALS</td>
+                                <td>$0.07</td>
                                 <td>+0.0%</td>
-                                <td>32,452,912</td>
-                                <td>0.0x</td>
-                                <td>$394.6M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">UPXI</td>
-                                <td>Upexi Inc</td>
-                                <td>$1.08</td>
-                                <td>+0.0%</td>
-                                <td>3,510,873</td>
-                                <td>0.0x</td>
-                                <td>$75.9M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">DXST</td>
-                                <td>Decent Holding Inc.</td>
-                                <td>$2.70</td>
-                                <td>+0.0%</td>
-                                <td>7,367,090</td>
-                                <td>0.0x</td>
-                                <td>$4.9M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">XNDU</td>
-                                <td>XANADU QUANTUM TECHNOLOGIES</td>
-                                <td>$13.94</td>
-                                <td>+0.0%</td>
-                                <td>7,057,451</td>
-                                <td>0.0x</td>
-                                <td>$4162.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $13.940, mktcap $4162.6M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">NVNI</td>
-                                <td>Nvni Group Limited</td>
-                                <td>$0.96</td>
-                                <td>+0.0%</td>
-                                <td>878,685</td>
-                                <td>0.0x</td>
-                                <td>$11.2M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">HTCO</td>
-                                <td>High-Trend International Group</td>
-                                <td>$4.68</td>
-                                <td>+0.0%</td>
-                                <td>1,409,751</td>
-                                <td>0.0x</td>
-                                <td>$42.4M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AIB</td>
-                                <td>Blockchain Digital</td>
-                                <td>$1.88</td>
-                                <td>+0.0%</td>
-                                <td>2,245,569</td>
-                                <td>0.0x</td>
-                                <td>$70.8M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">MYO</td>
-                                <td>Myomo</td>
-                                <td>$1.35</td>
-                                <td>+0.0%</td>
-                                <td>1,344,383</td>
-                                <td>0.0x</td>
-                                <td>$52.2M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">GELS</td>
-                                <td>Gelteq Limited</td>
-                                <td>$1.16</td>
-                                <td>+0.0%</td>
-                                <td>60,616,147</td>
-                                <td>0.0x</td>
-                                <td>$12.4M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SABS</td>
-                                <td>SAB BIOTHERAPEUTICS INC</td>
-                                <td>$3.90</td>
-                                <td>+0.0%</td>
-                                <td>5,977,055</td>
-                                <td>0.0x</td>
-                                <td>$298.2M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">WTO</td>
-                                <td>Utime Ltd</td>
-                                <td>$0.98</td>
-                                <td>-0.0%</td>
-                                <td>1,579,152</td>
-                                <td>0.0x</td>
-                                <td>$51.1M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">ZSQR</td>
-                                <td>Z Squared Inc.</td>
-                                <td>$12.77</td>
-                                <td>+0.0%</td>
-                                <td>345,295</td>
-                                <td>0.0x</td>
-                                <td>$656.8M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $12.770</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BGLC</td>
-                                <td>Bionexus Gene La</td>
-                                <td>$2.50</td>
-                                <td>+0.0%</td>
-                                <td>124,490</td>
+                                <td>174,463</td>
                                 <td>0.0x</td>
                                 <td>$6.0M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">DYAI</td>
-                                <td>Dyadic Intl Inc Del</td>
-                                <td>$0.80</td>
+                                <td class="ticker-cell">SXE</td>
+                                <td>STH CRS ELECT ENGNR</td>
+                                <td>$4.82</td>
                                 <td>+0.0%</td>
-                                <td>263,544</td>
+                                <td>10,462,448</td>
                                 <td>0.0x</td>
-                                <td>$29.0M</td>
+                                <td>$1282.4M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">GLBS</td>
-                                <td>Globus Maritime Limited</td>
-                                <td>$2.74</td>
+                                <td class="ticker-cell">KRR</td>
+                                <td>KING RIVER RESOURCES</td>
+                                <td>$0.03</td>
                                 <td>+0.0%</td>
-                                <td>671,257</td>
+                                <td>2,259,057</td>
                                 <td>0.0x</td>
-                                <td>$59.1M</td>
+                                <td>$45.7M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">WDC</td>
-                                <td>Western Digital</td>
-                                <td>$653.53</td>
+                                <td class="ticker-cell">YOJ</td>
+                                <td>YOJEE LIMITED</td>
+                                <td>$0.32</td>
                                 <td>+0.0%</td>
-                                <td>9,522,884</td>
+                                <td>108,916</td>
                                 <td>0.0x</td>
-                                <td>$225260.1M</td>
+                                <td>$113.7M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">RR1</td>
+                                <td>REACH RESOURCES LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>10,236,582</td>
+                                <td>0.0x</td>
+                                <td>$13.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">KAL</td>
+                                <td>KALGOORLIEGOLDMINING</td>
+                                <td>$0.03</td>
+                                <td>+0.0%</td>
+                                <td>643,863</td>
+                                <td>0.0x</td>
+                                <td>$15.5M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">WMG</td>
+                                <td>WESTERN MINES</td>
+                                <td>$0.20</td>
+                                <td>+0.0%</td>
+                                <td>280,661</td>
+                                <td>0.0x</td>
+                                <td>$23.3M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">NVU</td>
+                                <td>NANOVEU LIMITED</td>
+                                <td>$0.06</td>
+                                <td>+0.0%</td>
+                                <td>9,865,256</td>
+                                <td>0.0x</td>
+                                <td>$59.4M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AN1</td>
+                                <td>ANAGENICS LIMITED</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>3,473,982</td>
+                                <td>0.0x</td>
+                                <td>$6.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">EXT</td>
+                                <td>EXCITE TECHNOLOGY</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>1,225,835</td>
+                                <td>0.0x</td>
+                                <td>$14.6M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">FEL</td>
+                                <td>FORTE ENERGY LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>14,837</td>
+                                <td>0.0x</td>
+                                <td>$6.1M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $653.530, mktcap $225260.1M</td>
+                                <td>Filtered: vol 14,837</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">GLL</td>
+                                <td>GALILEE ENERGY LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>1,169,689</td>
+                                <td>0.0x</td>
+                                <td>$12.7M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">HFR</td>
+                                <td>HIGHFIELD RES LTD</td>
+                                <td>$0.04</td>
+                                <td>+0.0%</td>
+                                <td>1,534,978</td>
+                                <td>0.0x</td>
+                                <td>$19.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">PLY</td>
+                                <td>PLAYSIDE STUDIOS</td>
+                                <td>$0.14</td>
+                                <td>+0.0%</td>
+                                <td>1,194,698</td>
+                                <td>0.0x</td>
+                                <td>$63.2M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">TKM</td>
+                                <td>TREK METALS LTD</td>
+                                <td>$0.21</td>
+                                <td>+0.0%</td>
+                                <td>4,634,661</td>
+                                <td>0.0x</td>
+                                <td>$152.8M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">TMS</td>
+                                <td>TENNANT MINERALS LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>2,880,207</td>
+                                <td>0.0x</td>
+                                <td>$9.3M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AIV</td>
+                                <td>ACTIVEX LIMITED</td>
+                                <td>$0.02</td>
+                                <td>+0.0%</td>
+                                <td>9,000</td>
+                                <td>0.0x</td>
+                                <td>$6.9M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 9,000</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">TZN</td>
+                                <td>TERRAMIN AUSTRALIA.</td>
+                                <td>$0.02</td>
+                                <td>+0.0%</td>
+                                <td>2,257,878</td>
+                                <td>0.0x</td>
+                                <td>$52.5M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">ENR</td>
+                                <td>ENCOUNTER RESOURCES</td>
+                                <td>$0.29</td>
+                                <td>+0.0%</td>
+                                <td>339,637</td>
+                                <td>0.0x</td>
+                                <td>$165.0M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">DTR</td>
+                                <td>DATELINE RESOURCES</td>
+                                <td>$0.15</td>
+                                <td>+0.0%</td>
+                                <td>61,593,075</td>
+                                <td>0.0x</td>
+                                <td>$574.0M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">HIO</td>
+                                <td>HAWSONS IRON LTD</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>5,698,374</td>
+                                <td>0.0x</td>
+                                <td>$19.0M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">IGN</td>
+                                <td>IGNITE LTD</td>
+                                <td>$0.68</td>
+                                <td>+0.0%</td>
+                                <td>2,342</td>
+                                <td>0.0x</td>
+                                <td>$11.2M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 2,342</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">HT8</td>
+                                <td>HARRIS TECHNOLOGY GL</td>
+                                <td>$0.02</td>
+                                <td>+0.0%</td>
+                                <td>1,369,481</td>
+                                <td>0.0x</td>
+                                <td>$7.6M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AJX</td>
+                                <td>ALEXIUM INT GROUP</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>1,854,921</td>
+                                <td>0.0x</td>
+                                <td>$25.0M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">WSR</td>
+                                <td>WESTAR RESOURCES</td>
+                                <td>$0.01</td>
+                                <td>+0.0%</td>
+                                <td>1,327,250</td>
+                                <td>0.0x</td>
+                                <td>$6.5M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">SRL</td>
+                                <td>SUNRISE</td>
+                                <td>$16.87</td>
+                                <td>+0.0%</td>
+                                <td>709,823</td>
+                                <td>0.0x</td>
+                                <td>$2594.4M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $16.870, mktcap $2594.4M</td>
                             </tr>
                                     </tbody>
                                 </table>
@@ -1904,56 +1917,39 @@
             </div>
             
             <!-- TRADE PLAN -->
-            <div class="trade-plan-card active">
-                    <div class="plan-title">
-                        🎯 Active Trade Plan <span class="ticker-badge">VIDA</span>
+            <div class="trade-plan-card expired" id="trade-plan-card">
+                    <div class="plan-title" id="plan-title">
+                        🎯 Active Trade Plan <span class="ticker-badge">—</span>
+                    </div>
+                    <div class="expired-banner">
+                        ⏰ No active trade plan — last alert expired<br>
+                        <span style="font-size: 0.8rem; font-weight: 400;">Scan continues every 15 min during market hours. New alerts appear here automatically.</span>
                     </div>
                     <div class="plan-grid">
-                        <div class="plan-stat"><div class="label">Entry Price</div><div class="value">$4.67</div></div>
-                        <div class="plan-stat"><div class="label">Stop Loss</div><div class="value red">$4.58 (-2.0%)</div></div>
-                        <div class="plan-stat"><div class="label">Target 1</div><div class="value green">$4.81 (+3.0%)</div></div>
-                        <div class="plan-stat"><div class="label">Target 2</div><div class="value green">$4.90 (+5.0%)</div></div>
-                        <div class="plan-stat"><div class="label">Target 3</div><div class="value green">$5.04 (+8.0%)</div></div>
-                        <div class="plan-stat"><div class="label">Shares</div><div class="value blue">535</div></div>
-                        <div class="plan-stat"><div class="label">Position Value</div><div class="value">$2,498</div></div>
-                        <div class="plan-stat"><div class="label">Risk:Reward</div><div class="value green">1:1.50</div></div>
-                    </div>
-                    <div class="plan-rules">
-                        <h4>📋 Rules / Filters Applied</h4>
-                        <ul>
-                            <li>Price range: $1–$20 ✅</li>
-                            <li>Market cap: $300M–$2B ✅</li>
-                            <li>Pre-market/active mover ≥5% or RVOL ≥2x ✅</li>
-                            <li>Near demand zone ✅</li>
-                            <li>Candlestick signal confirmed ✅</li>
-                            <li>Price above VWAP ✅</li>
-                            <li>News catalyst confirmed ✅</li>
-                            <li>Risk:Reward ≥1.5:1 ✅</li>
-                            <li>Position sizing: 1% risk, max 25% allocation ✅</li>
-                        </ul>
-                    </div>
-                    <div class="plan-rules" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
-                        <h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
-                        <ul>
-                            <li>Sell 50% (267 shares) at Target 1: $4.81 (+3.0%)</li>
-                            <li>Sell 25% (133 shares) at Target 2: $4.90 (+5.0%)</li>
-                            <li>Trail remaining 25% with 2% cushion above Target 3: $5.04</li>
-                            <li>Hard stop: $4.58 (trigger immediately if hit)</li>
-                            <li>Move stop to breakeven once up +1%</li>
-                            <li>Exit if bearish engulfing or volume drops below 1.5x average</li>
-                        </ul>
+                        <div class="plan-stat"><div class="label">Entry Price</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Stop Loss</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 1</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 2</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Target 3</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Shares</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Position Value</div><div class="value">—</div></div>
+                        <div class="plan-stat"><div class="label">Risk:Reward</div><div class="value">—</div></div>
                     </div>
                 </div>
             <!-- PERFORMANCE TRACKER -->
-            <div class="performance-card">
-                    <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge">VIDA</span></h2>
+            <div class="performance-card expired">
+                    <div class="expired-banner">
+                        ⏰ Tracker paused — no active trade plan<br>
+                        <span style="font-size: 0.8rem; font-weight: 400;">Performance data will resume when the next alert triggers.</span>
+                    </div>
+                    <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge">—</span></h2>
                     <div class="perf-grid">
-                        <div class="perf-box"><div class="label">Initial Investment</div><div class="value">$2,498</div><div class="sub">Based on entry</div></div>
-                        <div class="perf-box"><div class="label">Proposed Entry</div><div class="value">$4.67</div><div class="sub">VIDA — June 16, 05:16 PM</div></div>
-                        <div class="perf-box"><div class="label">Current Price</div><div class="value">$4.67</div><div class="sub">Just alerted</div></div>
-                        <div class="perf-box"><div class="label">P&L if Executed</div><div class="value green">$0</div><div class="sub">Entry hit</div></div>
-                        <div class="perf-box"><div class="label">Max Potential</div><div class="value green">+$75</div><div class="sub">At T1: $4.81</div></div>
-                        <div class="perf-box"><div class="label">Max Risk</div><div class="value red">-$50</div><div class="sub">At stop: $4.58</div></div>
+                        <div class="perf-box"><div class="label">Initial Investment</div><div class="value">—</div><div class="sub">Waiting for next alert</div></div>
+                        <div class="perf-box"><div class="label">Proposed Entry</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Current Price</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">P&L if Executed</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Max Potential</div><div class="value">—</div></div>
+                        <div class="perf-box"><div class="label">Max Risk</div><div class="value">—</div></div>
                     </div>
                 </div>
             <!-- NEWS & CATALYST SECTION (spans full width) -->
@@ -2493,8 +2489,12 @@
         async function loadLiveData() {
             try {
                 const ts = Date.now();
-                const res = await fetch('ozmoeg-latest.json?_=' + ts, { cache: 'no-store' });
-                if (!res.ok) return;
+                const jsonFile = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+                const res = await fetch(jsonFile + '?_=' + ts, { cache: 'no-store' });
+                if (!res.ok) {
+                    console.warn('Could not load', jsonFile, res.status);
+                    return;
+                }
                 const data = await res.json();
                 const results = data.scan_results || [];
                 const allGainers = data.all_gainers || [];
