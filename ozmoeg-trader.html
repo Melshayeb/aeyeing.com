@@ -238,13 +238,17 @@
                         overflow-x: auto;
                         -webkit-overflow-scrolling: touch;
                     }
-                    table {
-                        font-size: 0.85rem;
+                    #scanner-table {
                         min-width: 480px;
                     }
-                    th, td {
+                    #scanner-table th,
+                    #scanner-table td {
                         padding: 0.6rem 0.8rem;
                         white-space: nowrap;
+                    }
+                    #scanner-table td:last-child {
+                        white-space: normal;
+                        max-width: 220px;
                     }
 
                     /* Plan grid - single column stacked */
@@ -1241,7 +1245,7 @@
                     </div>
                 </div>
                 <div class="table-wrap">
-                    <table>
+                    <table id="scanner-table">
                         <thead>
                             <tr>
                                 <th>Ticker</th>
