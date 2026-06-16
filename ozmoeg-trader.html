@@ -144,186 +144,179 @@
         }
 
         .main-grid {
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 1rem;
-            padding: 1rem;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        @media (max-width: 1200px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .alert-selector {
-                max-width: 100%;
-                flex: 1 1 100%;
-                margin-top: 0.3rem;
-            }
-            .plan-title {
-                gap: 0.5rem;
-            }
-        }
-        /* ===== ALL NON-DESKTOP: tablets, phones, narrow screens ===== */
-        @media (max-width: 1200px) {
-            html { font-size: 15px; }
-            .header {
-                padding: 0.8rem 1rem;
-                gap: 0.5rem;
-                width: 100%;
-                max-width: none;
-            }
-            .header-title {
-                font-size: 1.2rem;
-            }
-            .header-subtitle {
-                font-size: 0.7rem;
-            }
-            .header-status {
-                font-size: 0.7rem;
-                padding: 0.3rem 0.6rem;
-                width: 100%;
-                justify-content: space-between;
-                flex-wrap: wrap;
-            }
-            .telegram-banner,
-            .telegram-cta {
-                width: 100%;
-                max-width: none;
-                padding: 0.8rem 1rem;
-                gap: 0.6rem;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .telegram-text .title {
-                font-size: 0.9rem;
-            }
-            .telegram-text .desc {
-                font-size: 0.75rem;
-            }
+                    display: grid;
+                    grid-template-columns: 380px 1fr;
+                    gap: 1rem;
+                    padding: 1rem;
+                    max-width: 1600px;
+                    margin: 0 auto;
+                }
+                /* ===== ALL NON-DESKTOP: tablets, phones, narrow screens ===== */
+                @media (max-width: 1200px) {
+                    html { font-size: 15px; }
+                    .main-grid { grid-template-columns: 1fr; padding: 0.75rem; gap: 0.75rem; }
+                    .alert-selector {
+                        max-width: 100%;
+                        flex: 1 1 100%;
+                        margin-top: 0.3rem;
+                    }
+                    .plan-title {
+                        gap: 0.5rem;
+                    }
+                    .header {
+                        padding: 0.8rem 1rem;
+                        gap: 0.5rem;
+                        width: 100%;
+                        max-width: none;
+                    }
+                    .header-title {
+                        font-size: 1.2rem;
+                    }
+                    .header-subtitle {
+                        font-size: 0.7rem;
+                    }
+                    .header-status {
+                        font-size: 0.7rem;
+                        padding: 0.3rem 0.6rem;
+                        width: 100%;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                    }
+                    .telegram-banner,
+                    .telegram-cta {
+                        width: 100%;
+                        max-width: none;
+                        padding: 0.8rem 1rem;
+                        gap: 0.6rem;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .telegram-text .title {
+                        font-size: 0.9rem;
+                    }
+                    .telegram-text .desc {
+                        font-size: 0.75rem;
+                    }
 
-            .main-grid {
-                padding: 0.75rem;
-                gap: 0.75rem;
-            }
+                    /* Cards stack full-width */
+                    .datetime-card,
+                    .countdown-card,
+                    .candidates-card,
+                    .trade-plan-card,
+                    .performance-card,
+                    .news-catalyst-card {
+                        padding: 1rem;
+                        border-radius: 10px;
+                    }
 
-            /* Cards stack full-width */
-            .datetime-card,
-            .countdown-card,
-            .candidates-card,
-            .trade-plan-card,
-            .performance-card,
-            .news-catalyst-card {
-                padding: 1rem;
-                border-radius: 10px;
-            }
+                    /* Countdown - still prominent but smaller */
+                    .countdown-card .countdown-timer {
+                        font-size: 1.4rem;
+                        letter-spacing: 1px;
+                    }
+                    .countdown-card .countdown-next {
+                        font-size: 0.7rem;
+                    }
 
-            /* Countdown - still prominent but smaller */
-            .countdown-card .countdown-timer {
-                font-size: 1.4rem;
-                letter-spacing: 1px;
-            }
-            .countdown-card .countdown-next {
-                font-size: 0.7rem;
-            }
+                    /* News ticker */
+                    .news-ticker-box {
+                        min-height: 320px;
+                    }
+                    .news-ticker-header {
+                        padding: 0.6rem 0.8rem;
+                    }
+                    .news-ticker-body {
+                        padding: 0 0.8rem;
+                    }
+                    .news-item {
+                        font-size: 0.85rem;
+                        line-height: 1.7;
+                    }
 
-            /* News ticker */
-            .news-ticker-box {
-                min-height: 320px;
-            }
-            .news-ticker-header {
-                padding: 0.6rem 0.8rem;
-            }
-            .news-ticker-body {
-                padding: 0 0.8rem;
-            }
-            .news-item {
-                font-size: 0.85rem;
-                line-height: 1.7;
-            }
+                    /* Table - horizontal scroll */
+                    .table-wrap {
+                        overflow-x: auto;
+                        -webkit-overflow-scrolling: touch;
+                    }
+                    table {
+                        font-size: 0.85rem;
+                        min-width: 480px;
+                    }
+                    th, td {
+                        padding: 0.6rem 0.8rem;
+                        white-space: nowrap;
+                    }
 
-            /* Table - horizontal scroll */
-            .table-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            table {
-                font-size: 0.85rem;
-                min-width: 480px;
-            }
-            th, td {
-                padding: 0.6rem 0.8rem;
-                white-space: nowrap;
-            }
+                    /* Plan grid - single column stacked */
+                    .trade-plan-card .plan-grid,
+                    .plan-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 0.5rem !important;
+                    }
+                    .plan-stat .label {
+                        font-size: 0.7rem;
+                    }
+                    .plan-stat .value {
+                        font-size: 1.1rem;
+                    }
 
-            /* Plan grid - single column stacked */
-            .trade-plan-card .plan-grid,
-            .plan-grid {
-                grid-template-columns: 1fr !important;
-                gap: 0.5rem !important;
-            }
-            .plan-stat .label {
-                font-size: 0.7rem;
-            }
-            .plan-stat .value {
-                font-size: 1.1rem;
-            }
+                    /* Performance grid - single column stacked */
+                    .performance-card .perf-grid,
+                    .perf-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 0.5rem !important;
+                    }
+                    .perf-box {
+                        padding: 0.8rem;
+                    }
+                    .perf-box .value {
+                        font-size: 1.1rem;
+                    }
 
-            /* Performance grid - single column stacked */
-            .performance-card .perf-grid,
-            .perf-grid {
-                grid-template-columns: 1fr !important;
-                gap: 0.5rem !important;
-            }
-            .perf-box {
-                padding: 0.8rem;
-            }
-            .perf-box .value {
-                font-size: 1.1rem;
-            }
+                    .scanned-details summary {
+                        font-size: 0.85rem;
+                        padding: 0.7rem 0.8rem;
+                    }
+                    .scanned-table { font-size: 0.7rem; }
+                    .scanned-table th,
+                    .scanned-table td {
+                        padding: 0.35rem 0.4rem;
+                    }
+                    /* News catalyst section */
+                    .news-header {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                    }
+                    .impact-badge {
+                        font-size: 0.75rem;
+                        padding: 0.3rem 0.6rem;
+                    }
+                    .catalyst-title {
+                        font-size: 1rem;
+                    }
+                    .catalyst-list {
+                        font-size: 0.85rem;
+                    }
 
-            .scanned-details summary {
-                font-size: 0.85rem;
-                padding: 0.7rem 0.8rem;
-            }
-            .scanned-table { font-size: 0.7rem; }
-            .scanned-table th,
-            .scanned-table td {
-                padding: 0.35rem 0.4rem;
-            }
-            /* News catalyst section */
-            .news-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .impact-badge {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.6rem;
-            }
-            .catalyst-title {
-                font-size: 1rem;
-            }
-            .catalyst-list {
-                font-size: 0.85rem;
-            }
+                    /* Back button bigger for touch */
+                    .back-btn {
+                        padding: 0.6rem 1rem;
+                        font-size: 0.9rem;
+                    }
 
-            /* Back button bigger for touch */
-            .back-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
+                    /* Footer */
+                    .footer {
+                        padding: 1.5rem 1rem;
+                        font-size: 0.75rem;
+                    }
 
-            /* Footer */
-            .footer {
-                padding: 1.5rem 1rem;
-                font-size: 0.75rem;
-            }
-
-            /* Expired banner */
-            .expired-banner {
-                padding: 0.5rem;
-                font-size: 0.7rem;
-            }
-        }
+                    /* Expired banner */
+                    .expired-banner {
+                        padding: 0.5rem;
+                        font-size: 0.7rem;
+                    }
+                }
 
         /* ===== SMALL PHONES (≤480px) ===== */
         @media (max-width: 480px) {
@@ -1236,11 +1229,16 @@
         <div class="right-panel">
             <!-- CANDIDATES TABLE -->
             <div class="candidates-card">
-                <div class="card-header">
+                <div class="card-header" style="flex-wrap: wrap; gap: 0.75rem;">
                     <h2>📊 Scanner Results</h2>
-                    <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                        <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
 🟡 US PRE-MARKET 03:31 AM ET | Scanned: 50 | 15 candidates | 12 alerts
-                    <!-- END_SCANNER_BADGE --></span>
+                        <!-- END_SCANNER_BADGE --></span>
+                        <select id="alert-selector" class="alert-selector">
+                            <option value="">Select an alert…</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="table-wrap">
                     <table>
@@ -1917,41 +1915,54 @@
             </div>
             
             <!-- TRADE PLAN -->
-            <div class="trade-plan-card expired" id="trade-plan-card">
-                    <div class="plan-title" id="plan-title">
-                        🎯 Active Trade Plan <span class="ticker-badge">—</span>
-                    </div>
-                    <div class="expired-banner">
-                        ⏰ No active trade plan — last alert expired<br>
-                        <span style="font-size: 0.8rem; font-weight: 400;">Scan continues every 15 min during market hours. New alerts appear here automatically.</span>
-                    </div>
-                    <div class="plan-grid">
-                        <div class="plan-stat"><div class="label">Entry Price</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Stop Loss</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Target 1</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Target 2</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Target 3</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Shares</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Position Value</div><div class="value">—</div></div>
-                        <div class="plan-stat"><div class="label">Risk:Reward</div><div class="value">—</div></div>
-                    </div>
+            <div class="trade-plan-card active" id="trade-plan-card">
+                <div class="plan-title" id="plan-title">
+                    🎯 Active Trade Plan <span class="ticker-badge" id="plan-ticker">—</span>
                 </div>
+                <div class="plan-grid">
+                    <div class="plan-stat"><div class="label">Entry Price</div><div class="value" id="plan-entry">—</div></div>
+                    <div class="plan-stat"><div class="label">Stop Loss</div><div class="value red" id="plan-stop">—</div></div>
+                    <div class="plan-stat"><div class="label">Target 1</div><div class="value green" id="plan-t1">—</div></div>
+                    <div class="plan-stat"><div class="label">Target 2</div><div class="value green" id="plan-t2">—</div></div>
+                    <div class="plan-stat"><div class="label">Target 3</div><div class="value green" id="plan-t3">—</div></div>
+                    <div class="plan-stat"><div class="label">Shares</div><div class="value blue" id="plan-shares">—</div></div>
+                    <div class="plan-stat"><div class="label">Position Value</div><div class="value" id="plan-position">—</div></div>
+                    <div class="plan-stat"><div class="label">Risk:Reward</div><div class="value green" id="plan-rr">—</div></div>
+                </div>
+                <div class="plan-rules">
+                    <h4>📋 Rules / Filters Applied</h4>
+                    <ul>
+                        <li>Price range: $1–$20 ✅</li>
+                        <li>Market cap: $300M–$2B ✅</li>
+                        <li>Pre-market/active mover ≥5% or RVOL ≥2x ✅</li>
+                        <li>Near demand zone ✅</li>
+                        <li>Candlestick signal confirmed ✅</li>
+                        <li>Price above VWAP ✅</li>
+                        <li>News catalyst confirmed ✅</li>
+                        <li>Risk:Reward ≥1.5:1 ✅</li>
+                        <li>Position sizing: 1% risk, max 25% allocation ✅</li>
+                    </ul>
+                </div>
+                <div class="plan-rules" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
+                    <h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
+                    <ul id="plan-exit-rules">
+                        <li>Select an alert to see exit rules.</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- PERFORMANCE TRACKER -->
-            <div class="performance-card expired">
-                    <div class="expired-banner">
-                        ⏰ Tracker paused — no active trade plan<br>
-                        <span style="font-size: 0.8rem; font-weight: 400;">Performance data will resume when the next alert triggers.</span>
-                    </div>
-                    <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge">—</span></h2>
-                    <div class="perf-grid">
-                        <div class="perf-box"><div class="label">Initial Investment</div><div class="value">—</div><div class="sub">Waiting for next alert</div></div>
-                        <div class="perf-box"><div class="label">Proposed Entry</div><div class="value">—</div></div>
-                        <div class="perf-box"><div class="label">Current Price</div><div class="value">—</div></div>
-                        <div class="perf-box"><div class="label">P&L if Executed</div><div class="value">—</div></div>
-                        <div class="perf-box"><div class="label">Max Potential</div><div class="value">—</div></div>
-                        <div class="perf-box"><div class="label">Max Risk</div><div class="value">—</div></div>
-                    </div>
+            <div class="performance-card" id="performance-card">
+                <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge" id="perf-ticker">—</span></h2>
+                <div class="perf-grid">
+                    <div class="perf-box"><div class="label">Initial Investment</div><div class="value" id="perf-investment">—</div><div class="sub" id="perf-investment-sub">Based on entry</div></div>
+                    <div class="perf-box"><div class="label">Proposed Entry</div><div class="value" id="perf-entry">—</div><div class="sub" id="perf-entry-sub">—</div></div>
+                    <div class="perf-box"><div class="label">Current Price</div><div class="value" id="perf-current">—</div><div class="sub" id="perf-current-sub">—</div></div>
+                    <div class="perf-box"><div class="label">P&L if Executed</div><div class="value" id="perf-pnl">—</div><div class="sub" id="perf-pnl-sub">—</div></div>
+                    <div class="perf-box"><div class="label">Max Potential</div><div class="value green" id="perf-potential">—</div><div class="sub" id="perf-potential-sub">—</div></div>
+                    <div class="perf-box"><div class="label">Max Risk</div><div class="value red" id="perf-risk">—</div><div class="sub" id="perf-risk-sub">—</div></div>
                 </div>
+            </div>
             <!-- NEWS & CATALYST SECTION (spans full width) -->
             <div class="news-catalyst-card" id="news-catalyst-section">
                 <div class="news-header">
