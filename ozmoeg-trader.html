@@ -598,6 +598,17 @@
             align-items: center;
             gap: 0.3rem;
         }
+        .impact-mini {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid;
+            margin-left: 0.3rem;
+        }
+        .impact-mini.impact-high { color: var(--accent-red); border-color: var(--accent-red); background: rgba(255,82,82,0.08); }
+        .impact-mini.impact-medium { color: var(--accent-amber); border-color: var(--accent-amber); background: rgba(255,171,0,0.08); }
+        .impact-mini.impact-low { color: var(--accent-green); border-color: var(--accent-green); background: rgba(0,230,118,0.08); }
         /* Scanned all-tickers detail table */
         .scanned-details {
             margin-top: 1rem;
@@ -710,13 +721,16 @@
             color: var(--text-primary);
         }
         .news-catalyst-card .impact-badge {
-            background: var(--accent-green);
-            color: #000;
-            padding: 0.2rem 0.6rem;
+            background: transparent;
+            padding: 0.25rem 0.7rem;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 700;
+            border: 1.5px solid;
         }
+        .news-catalyst-card .impact-badge.impact-high { color: var(--accent-red); border-color: var(--accent-red); }
+        .news-catalyst-card .impact-badge.impact-medium { color: var(--accent-amber); border-color: var(--accent-amber); }
+        .news-catalyst-card .impact-badge.impact-low { color: var(--accent-green); border-color: var(--accent-green); }
         .news-catalyst-card .catalyst-title {
             color: var(--accent-teal);
             font-weight: 600;
@@ -739,7 +753,14 @@
         .news-catalyst-card .news-list .score {
             color: var(--accent-green);
             font-weight: 700;
+            min-width: 2.4rem;
+            display: inline-block;
+            text-align: center;
+            margin-right: 0.3rem;
         }
+        .news-catalyst-card .news-list .score.impact-high { color: var(--accent-red); }
+        .news-catalyst-card .news-list .score.impact-medium { color: var(--accent-amber); }
+        .news-catalyst-card .news-list .score.impact-low { color: var(--accent-green); }
         .trade-plan-card.expired {
             border-color: var(--border);
             opacity: 0.7;
@@ -2337,6 +2358,16 @@
             return '$' + parseFloat(n).toFixed((parseFloat(n) % 1 === 0) ? 2 : 4).replace(/\.?0+$/, '');
         }
 
+        function impactLabel(score) {
+            if (score >= 4) return { text: `🔥 High (${score})`, cls: 'impact-high' };
+            if (score >= 2) return { text: `⚡ Medium (${score})`, cls: 'impact-medium' };
+            return { text: `🌱 Low (${score})`, cls: 'impact-low' };
+        }
+        function getAlertMaxScore(r) {
+            const news = r.news || {};
+            return news.max_score !== undefined ? news.max_score : (news.headlines || []).reduce((m, h) => Math.max(m, h.score || 0), 0);
+        }
+
         function fmtPct(base, val) {
             if (!base || !val) return '';
             const pct = ((val - base) / base) * 100;
@@ -2352,7 +2383,10 @@
             if (!sel) return;
             const previousTicker = sel.value;
             sel.innerHTML = '';
-            const selectable = entries.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            let selectable = entries.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            selectable.forEach(r => { r._maxScore = getAlertMaxScore(r); });
+            // Sort High impact (≥4) first, then Medium (≥2), then Low
+            selectable.sort((a, b) => b._maxScore - a._maxScore);
             if (!selectable.length) {
                 sel.innerHTML = '<option value="">No alerts yet</option>';
                 renderSelectedAlert();
@@ -2365,17 +2399,18 @@
             selectable.forEach(r => {
                 const opt = document.createElement('option');
                 opt.value = r.ticker;
-                opt.textContent = `${r.ticker} — ${r.name}${r.status === 'CANDIDATE' ? ' (candidate)' : ''}`;
+                const imp = impactLabel(r._maxScore);
+                opt.textContent = `${r.ticker} — ${imp.text}${r.status === 'CANDIDATE' ? ' (candidate)' : ''}`;
                 sel.appendChild(opt);
             });
-            // Prefer previously-selected ticker (from localStorage or prior selection), otherwise latest alert.
+            // Prefer previously-selected ticker (from localStorage or prior selection), otherwise top sorted alert.
             const storedTicker = localStorage.getItem('ozmoeg-selected-alert');
             if (storedTicker && selectable.some(a => a.ticker === storedTicker)) {
                 sel.value = storedTicker;
             } else if (previousTicker && selectable.some(a => a.ticker === previousTicker)) {
                 sel.value = previousTicker;
             } else {
-                sel.value = selectable[selectable.length - 1].ticker;
+                sel.value = selectable[0].ticker;
             }
             renderSelectedAlert();
         }
@@ -2476,11 +2511,11 @@
 
             // News & catalyst
             const news = r.news || {};
-            const maxScore = news.max_score !== undefined ? news.max_score : (news.headlines || []).reduce((m, h) => Math.max(m, h.score || 0), 0);
+            const maxScore = getAlertMaxScore(r);
+            const imp = impactLabel(maxScore);
             const impactBadge = document.getElementById('impact-score');
-            if (maxScore >= 4) { impactBadge.textContent = `🔥 High impact (${maxScore})`; impactBadge.style.color = 'var(--accent-red)'; impactBadge.style.borderColor = 'var(--accent-red)'; }
-            else if (maxScore >= 2) { impactBadge.textContent = `⚡ Medium impact (${maxScore})`; impactBadge.style.color = 'var(--accent-amber)'; impactBadge.style.borderColor = 'var(--accent-amber)'; }
-            else { impactBadge.textContent = `🌱 Low impact (${maxScore})`; impactBadge.style.color = 'var(--accent-green)'; impactBadge.style.borderColor = 'var(--accent-green)'; }
+            impactBadge.textContent = imp.text;
+            impactBadge.className = 'impact-badge ' + imp.cls;
 
             document.getElementById('news-ticker-symbol').textContent = p.ticker;
             document.getElementById('news-ticker-status').textContent = news.catalyst || 'Alert active';
@@ -2491,8 +2526,9 @@
             const headlines = news.headlines || [];
             if (headlines.length) {
                 list.innerHTML = headlines.map(h => {
-                    const scoreClass = (h.score || 0) >= 2 ? 'medium' : ((h.score || 0) >= 4 ? 'high' : 'low');
-                    return `<li><span class="score ${scoreClass}">[${h.score || 0}]</span> <a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a> <em>${escapeHtml(h.source || '')}</em></li>`;
+                    const s = h.score || 0;
+                    const scoreClass = s >= 4 ? 'impact-high' : (s >= 2 ? 'impact-medium' : 'impact-low');
+                    return `<li><span class="score ${scoreClass}">[${s}]</span> <a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a> <em>${escapeHtml(h.source || '')}</em></li>`;
                 }).join('');
             } else {
                 list.innerHTML = '<li><span class="score">[-]</span> No headlines returned for this alert.</li>';
@@ -2544,14 +2580,23 @@
                 // Update scanner table
                 const tbody = document.querySelector('#scanner-table tbody');
                 if (tbody) {
-                    if (results.length) {
-                        tbody.innerHTML = results.map(r => {
+                    // Sort results: ALERTS first, then by impact score desc within ALERT, then candidates/others
+                    const sorted = [...results].sort((a, b) => {
+                        const aAlert = a.status === 'ALERT' ? 1 : 0;
+                        const bAlert = b.status === 'ALERT' ? 1 : 0;
+                        if (aAlert !== bAlert) return bAlert - aAlert;
+                        if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
+                        return 0;
+                    });
+                    if (sorted.length) {
+                        tbody.innerHTML = sorted.map(r => {
                             let statusClass = 'result-skip';
                             let emoji = '⏭️';
                             if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
                             else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
+                            const imp = impactLabel(getAlertMaxScore(r));
                             const escaped = (r.result || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span></td><td>${escaped}</td></tr>`;
+                            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${r.status === 'ALERT' ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td>${escaped}</td></tr>`;
                         }).join('');
                     } else {
                         tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No scan results available.</td></tr>`;
@@ -2564,7 +2609,9 @@
                     const items = results.map(r => {
                         const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
                         const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
-                        return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span><span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${r.result || ''}</div>`;
+                        const imp = impactLabel(getAlertMaxScore(r));
+                        const impactTag = r.status === 'ALERT' ? ` <span class="impact-mini ${imp.cls}">${imp.text}</span>` : '';
+                        return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${r.result || ''}</div>`;
                     }).join('');
                     ticker.innerHTML = items + '\n' + items;
                 }
