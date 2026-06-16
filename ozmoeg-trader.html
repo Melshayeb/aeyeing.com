@@ -308,6 +308,16 @@
                     .impact-badge {
                         font-size: 0.75rem;
                         padding: 0.3rem 0.6rem;
+                        white-space: nowrap;
+                    }
+                    .result-alert,
+                    .impact-mini {
+                        white-space: nowrap;
+                        flex-shrink: 0;
+                    }
+                    #scanner-table td:nth-child(3) {
+                        white-space: nowrap;
+                        min-width: fit-content;
                     }
                     .catalyst-title {
                         font-size: 1rem;
@@ -597,6 +607,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .impact-mini {
             font-size: 0.7rem;
@@ -605,6 +617,11 @@
             border-radius: 4px;
             border: 1px solid;
             margin-left: 0.3rem;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            min-width: fit-content;
         }
         .impact-mini.impact-high { color: var(--accent-red); border-color: var(--accent-red); background: rgba(255,82,82,0.08); }
         .impact-mini.impact-medium { color: var(--accent-amber); border-color: var(--accent-amber); background: rgba(255,171,0,0.08); }
