@@ -2302,9 +2302,15 @@
                 const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
                 const marketStatus = stats.market_status || 'OPEN';
                 const marketTime = stats.market_time || '';
+                const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
-                const marketLabel = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
+                const marketLabel = marketFromData;
                 document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
+
+                // Sync page market toggle/subtitle to the scan data
+                if (marketFromData !== currentMarket) {
+                    switchMarket(marketFromData);
+                }
 
                 // Update scanner table
                 const tbody = document.querySelector('#scanner-table tbody');
