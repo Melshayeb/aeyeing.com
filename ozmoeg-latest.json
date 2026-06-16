@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-16T15:33:03.987689",
+  "last_updated": "2026-06-16T15:36:43.324186",
   "scan_results": [
     {
       "ticker": "CAST",
@@ -7,62 +7,402 @@
       "status": "SKIP",
       "result": "Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING",
       "detail": "Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING",
-      "time": "03:31 PM",
+      "time": "03:34 PM",
       "date": "June 16"
     },
     {
       "ticker": "VSME",
       "name": "VS MEDIA Holdings",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:31 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $3.25, Stop $3.185, T1 $3.3475",
+      "detail": "Trade plan: Entry $3.25, Stop $3.185, T1 $3.3475",
+      "time": "03:34 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "VSME",
+        "catalyst": "11 Communication Services Stocks Moving In Monday's Intraday Session",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:34:26 ",
+        "headlines": [
+          {
+            "title": "11 Communication Services Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VSME+11+Communication+Services+Stocks+Moving+In+Monday's+Intraday+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Communication Services Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VSME+12+Communication+Services+Stocks+Moving+In+Monday's+Pre-Mark+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at VSME last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VSME+Weekly+Report:+what+happened+at+VSME+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Why Tower Semiconductor Shares Are Trading Higher By Around 5%; Here Are 20 Stocks Moving Premarket",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VSME+Why+Tower+Semiconductor+Shares+Are+Trading+Higher+By+Around++stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "VS Media Gains As AI Smart Living Plans And Debt Deal Resurface",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VSME+VS+Media+Gains+As+AI+Smart+Living+Plans+And+Debt+Deal+Resurf+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "VSME",
+        "entry": 3.25,
+        "stop": 3.185,
+        "targets": {
+          "t1": 3.3475,
+          "t2": 3.4125,
+          "t3": 3.51
+        },
+        "risk_per_share": 0.065,
+        "risk_amount": 100.0,
+        "shares": 769,
+        "position_value": 2499.25,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.185"
+        }
+      }
     },
     {
       "ticker": "PRFX",
       "name": "PRF Technologies Ltd.",
       "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:31 PM",
+      "result": "Poor R:R (0.66)",
+      "detail": "Poor R:R (0.66)",
+      "time": "03:34 PM",
       "date": "June 16"
     },
     {
       "ticker": "GPUS",
       "name": "Hyperscale Data Inc.",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $0.2713, Stop $0.2659, T1 $0.2794",
+      "detail": "Trade plan: Entry $0.2713, Stop $0.2659, T1 $0.2794",
+      "time": "03:34 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "GPUS",
+        "catalyst": "Hyperscale Data Sees Strong Interest In Its Michigan Data Center Campus; Expansion To 52MW May Result In Total Valuation Of $2.5B+",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:34:44 ",
+        "headlines": [
+          {
+            "title": "Hyperscale Data Sees Strong Interest In Its Michigan Data Center Campus; Expansion To 52MW May Result In Total Valuation Of $2.5B+",
+            "score": 2,
+            "url": "https://www.google.com/search?q=GPUS+Hyperscale+Data+Sees+Strong+Interest+In+Its+Michigan+Data+Ce+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Hyperscale Data Secures Yorkville Financing to Support Expansion",
+            "score": 2,
+            "url": "https://www.google.com/search?q=GPUS+Hyperscale+Data+Secures+Yorkville+Financing+to+Support+Expan+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Hyperscale Data Advances Major AI Colocation Deal in Michigan",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GPUS+Hyperscale+Data+Advances+Major+AI+Colocation+Deal+in+Michiga+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "11 Industrials Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GPUS+11+Industrials+Stocks+Moving+In+Monday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Why Is Hyperscale Data Stock Gaining Monday?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GPUS+Why+Is+Hyperscale+Data+Stock+Gaining+Monday?+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "GPUS",
+        "entry": 0.2713,
+        "stop": 0.2659,
+        "targets": {
+          "t1": 0.2794,
+          "t2": 0.2849,
+          "t3": 0.293
+        },
+        "risk_per_share": 0.0054,
+        "risk_amount": 100.0,
+        "shares": 9214,
+        "position_value": 2499.76,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.2659"
+        }
+      }
     },
     {
       "ticker": "QTEX",
       "name": "QTREX Quantum Ltd.",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $2.2, Stop $2.156, T1 $2.266",
+      "detail": "Trade plan: Entry $2.2, Stop $2.156, T1 $2.266",
+      "time": "03:34 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "QTEX",
+        "catalyst": "QTREX Quantum stock rallies as its AME system enters commercial production",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:34:50 ",
+        "headlines": [
+          {
+            "title": "QTREX Quantum stock rallies as its AME system enters commercial production",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QTEX+QTREX+Quantum+stock+rallies+as+its+AME+system+enters+commerc+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Qtrex Quantum announces AME system achieves 97% yield validation",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QTEX+Qtrex+Quantum+announces+AME+system+achieves+97%+yield+valida+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at QTEX last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QTEX+Weekly+Report:+what+happened+at+QTEX+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Qtrex Quantum Regains Full Nasdaq Compliance on Bid Price and Market Value",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QTEX+Qtrex+Quantum+Regains+Full+Nasdaq+Compliance+on+Bid+Price+an+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "QTREX Quantum regains Nasdaq compliance on minimum bid price rule",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QTEX+QTREX+Quantum+regains+Nasdaq+compliance+on+minimum+bid+price+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "QTEX",
+        "entry": 2.2,
+        "stop": 2.156,
+        "targets": {
+          "t1": 2.266,
+          "t2": 2.31,
+          "t3": 2.376
+        },
+        "risk_per_share": 0.044,
+        "risk_amount": 100.0,
+        "shares": 1136,
+        "position_value": 2499.2,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.156"
+        }
+      }
     },
     {
       "ticker": "AHMA",
       "name": "AMBITIONS ENTERPRISE MANAGE",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $1.93, Stop $1.8914, T1 $1.9879",
+      "detail": "Trade plan: Entry $1.93, Stop $1.8914, T1 $1.9879",
+      "time": "03:35 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "AHMA",
+        "catalyst": "11 Communication Services Stocks Moving In Monday's Intraday Session",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:35:02 ",
+        "headlines": [
+          {
+            "title": "11 Communication Services Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=AHMA+11+Communication+Services+Stocks+Moving+In+Monday's+Intraday+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Communication Services Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=AHMA+12+Communication+Services+Stocks+Moving+In+Monday's+Pre-Mark+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at AHMA last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=AHMA+Weekly+Report:+what+happened+at+AHMA+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Nasdaq Gains 1%; United Natural Foods Earnings Miss Views",
+            "score": 0,
+            "url": "https://www.google.com/search?q=AHMA+Nasdaq+Gains+1%;+United+Natural+Foods+Earnings+Miss+Views+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "NASDAQ TRADE HALT <AHMA.O> VOLATILITY TRADING PAUSE AT 09:30 AM",
+            "score": 0,
+            "url": "https://www.google.com/search?q=AHMA+NASDAQ+TRADE+HALT+<AHMA.O>+VOLATILITY+TRADING+PAUSE+AT+09:30+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "AHMA",
+        "entry": 1.93,
+        "stop": 1.8914,
+        "targets": {
+          "t1": 1.9879,
+          "t2": 2.0265,
+          "t3": 2.0844
+        },
+        "risk_per_share": 0.0386,
+        "risk_amount": 100.0,
+        "shares": 1295,
+        "position_value": 2499.35,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.8914"
+        }
+      }
     },
     {
       "ticker": "HUBC",
       "name": "Hub Cyber Security Israel Ltd",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $1.68, Stop $1.6464, T1 $1.7304",
+      "detail": "Trade plan: Entry $1.68, Stop $1.6464, T1 $1.7304",
+      "time": "03:35 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "HUBC",
+        "catalyst": "HRT Financial reports acquisition of 341,196 Hub Cyber Security common shares for $70,286.38",
+        "max_score": 5,
+        "scan_time": "2026-06-16 15:35:14 ",
+        "headlines": [
+          {
+            "title": "HRT Financial reports acquisition of 341,196 Hub Cyber Security common shares for $70,286.38",
+            "score": 5,
+            "url": "https://www.google.com/search?q=HUBC+HRT+Financial+reports+acquisition+of+341,196+Hub+Cyber+Secur+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "11 Information Technology Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=HUBC+11+Information+Technology+Stocks+Moving+In+Monday's+Pre-Mark+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at HUBC last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=HUBC+Weekly+Report:+what+happened+at+HUBC+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Major Hub Shareholder Makes a Big Move With Surprise Stock Sale",
+            "score": 0,
+            "url": "https://www.google.com/search?q=HUBC+Major+Hub+Shareholder+Makes+a+Big+Move+With+Surprise+Stock+S+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "HRT Financial disposes of 143,772 HUB Cyber Security shares worth $293,297",
+            "score": 0,
+            "url": "https://www.google.com/search?q=HUBC+HRT+Financial+disposes+of+143,772+HUB+Cyber+Security+shares++stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "HUBC",
+        "entry": 1.68,
+        "stop": 1.6464,
+        "targets": {
+          "t1": 1.7304,
+          "t2": 1.764,
+          "t3": 1.8144
+        },
+        "risk_per_share": 0.0336,
+        "risk_amount": 100.0,
+        "shares": 1488,
+        "position_value": 2499.84,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.6464"
+        }
+      }
     },
     {
       "ticker": "MTEN",
@@ -70,76 +410,575 @@
       "status": "SKIP",
       "result": "Red flags: offering:Mingteng International Raises $2.26 Million in Registered Direct Offering; offering:MINGTENG INTERNATIONAL CORPORATION INC. ANNOUNCES CLOSING OF $2.26 MILLION REGISTERED DIRECT OFFERING; offering:Mingteng International Prices ~$2.26M Offering Of 1.13M Class A Ordinary Shares At $2/Share Exercise Price; offering:MINGTENG INTERNATIONAL - OFFERING EXPECTED TO RAISE GROSS PROCEEDS OF $2.26 MLN; offering:Mingteng International Corporation Inc. Announces Pricing of $2.26 Million Registered Direct Offering",
       "detail": "Red flags: offering:Mingteng International Raises $2.26 Million in Registered Direct Offering; offering:MINGTENG INTERNATIONAL CORPORATION INC. ANNOUNCES CLOSING OF $2.26 MILLION REGISTERED DIRECT OFFERING; offering:Mingteng International Prices ~$2.26M Offering Of 1.13M Class A Ordinary Shares At $2/Share Exercise Price; offering:MINGTENG INTERNATIONAL - OFFERING EXPECTED TO RAISE GROSS PROCEEDS OF $2.26 MLN; offering:Mingteng International Corporation Inc. Announces Pricing of $2.26 Million Registered Direct Offering",
-      "time": "03:32 PM",
+      "time": "03:35 PM",
       "date": "June 16"
     },
     {
       "ticker": "GLXG",
       "name": "Galaxy Payroll Group Ltd",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $1.88, Stop $1.8424, T1 $1.9364",
+      "detail": "Trade plan: Entry $1.88, Stop $1.8424, T1 $1.9364",
+      "time": "03:35 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "GLXG",
+        "catalyst": "11 Industrials Stocks Moving In Monday's Intraday Session",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:35:30 ",
+        "headlines": [
+          {
+            "title": "11 Industrials Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GLXG+11+Industrials+Stocks+Moving+In+Monday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GLXG+12+Industrials+Stocks+Moving+In+Monday's+Pre-Market+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at GLXG last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GLXG+Weekly+Report:+what+happened+at+GLXG+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GLXG+12+Industrials+Stocks+Moving+In+Friday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=GLXG+12+Industrials+Stocks+Moving+In+Friday's+Pre-Market+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "GLXG",
+        "entry": 1.88,
+        "stop": 1.8424,
+        "targets": {
+          "t1": 1.9364,
+          "t2": 1.974,
+          "t3": 2.0304
+        },
+        "risk_per_share": 0.0376,
+        "risk_amount": 100.0,
+        "shares": 1329,
+        "position_value": 2498.52,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.8424"
+        }
+      }
     },
     {
       "ticker": "WLDS",
       "name": "Wearable Devices Ltd.",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $0.987, Stop $0.9673, T1 $1.0166",
+      "detail": "Trade plan: Entry $0.987, Stop $0.9673, T1 $1.0166",
+      "time": "03:35 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "WLDS",
+        "catalyst": "12 Information Technology Stocks Moving In Monday's After-Market Session",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:35:43 ",
+        "headlines": [
+          {
+            "title": "12 Information Technology Stocks Moving In Monday's After-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=WLDS+12+Information+Technology+Stocks+Moving+In+Monday's+After-Ma+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Wearable Devices to showcase GenAI-powered neural input platform at Augmented World Expo 2026",
+            "score": 0,
+            "url": "https://www.google.com/search?q=WLDS+Wearable+Devices+to+showcase+GenAI-powered+neural+input+plat+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at WLDS last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=WLDS+Weekly+Report:+what+happened+at+WLDS+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Wearable Devices to Unveil GenAI-Powered Intent-Based Interface Platform and Next-Gen Mudra Pro Flagship at AWE 2026",
+            "score": 0,
+            "url": "https://www.google.com/search?q=WLDS+Wearable+Devices+to+Unveil+GenAI-Powered+Intent-Based+Interf+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Wednesday's After-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=WLDS+12+Information+Technology+Stocks+Moving+In+Wednesday's+After+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "WLDS",
+        "entry": 0.987,
+        "stop": 0.9673,
+        "targets": {
+          "t1": 1.0166,
+          "t2": 1.0364,
+          "t3": 1.066
+        },
+        "risk_per_share": 0.0197,
+        "risk_amount": 100.0,
+        "shares": 2532,
+        "position_value": 2499.08,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.9673"
+        }
+      }
     },
     {
       "ticker": "CYPH",
       "name": "Cypherpunk Technologies Inc",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $0.8128, Stop $0.7965, T1 $0.8372",
+      "detail": "Trade plan: Entry $0.8128, Stop $0.7965, T1 $0.8372",
+      "time": "03:35 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "CYPH",
+        "catalyst": "12 Health Care Stocks Moving In Monday's Intraday Session",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:35:55 ",
+        "headlines": [
+          {
+            "title": "12 Health Care Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=CYPH+12+Health+Care+Stocks+Moving+In+Monday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "10 Health Care Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=CYPH+10+Health+Care+Stocks+Moving+In+Monday's+Pre-Market+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at CYPH last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=CYPH+Weekly+Report:+what+happened+at+CYPH+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=CYPH+12+Health+Care+Stocks+Moving+In+Monday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=CYPH+12+Health+Care+Stocks+Moving+In+Monday's+Pre-Market+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "CYPH",
+        "entry": 0.8128,
+        "stop": 0.7965,
+        "targets": {
+          "t1": 0.8372,
+          "t2": 0.8534,
+          "t3": 0.8778
+        },
+        "risk_per_share": 0.0163,
+        "risk_amount": 100.0,
+        "shares": 3075,
+        "position_value": 2499.36,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.7965"
+        }
+      }
     },
     {
       "ticker": "QUCY",
       "name": "Quantum Cyber N.V.",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $2.12, Stop $2.0776, T1 $2.1836",
+      "detail": "Trade plan: Entry $2.12, Stop $2.0776, T1 $2.1836",
+      "time": "03:36 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "QUCY",
+        "catalyst": "Quantum Cyber signs licensing agreement with Project LightShift",
+        "max_score": 4,
+        "scan_time": "2026-06-16 15:36:06 ",
+        "headlines": [
+          {
+            "title": "Quantum Cyber signs licensing agreement with Project LightShift",
+            "score": 4,
+            "url": "https://www.google.com/search?q=QUCY+Quantum+Cyber+signs+licensing+agreement+with+Project+LightSh+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Quantum Cyber signs letter of intent to buy Connecticut plant for $3.2M",
+            "score": 1,
+            "url": "https://www.google.com/search?q=QUCY+Quantum+Cyber+signs+letter+of+intent+to+buy+Connecticut+plan+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Quantum Cyber Licenses Quantum Photonic Tech for Defense Drones",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QUCY+Quantum+Cyber+Licenses+Quantum+Photonic+Tech+for+Defense+Dro+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Quantum Cyber Locks Up Quantum Antenna Technology for Next-Generation Drones (NASDAQ: QUCY)",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QUCY+Quantum+Cyber+Locks+Up+Quantum+Antenna+Technology+for+Next-G+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "10 Health Care Stocks Moving In Monday's Pre-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=QUCY+10+Health+Care+Stocks+Moving+In+Monday's+Pre-Market+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "QUCY",
+        "entry": 2.12,
+        "stop": 2.0776,
+        "targets": {
+          "t1": 2.1836,
+          "t2": 2.226,
+          "t3": 2.2896
+        },
+        "risk_per_share": 0.0424,
+        "risk_amount": 100.0,
+        "shares": 1179,
+        "position_value": 2499.48,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.0776"
+        }
+      }
     },
     {
       "ticker": "FAMI",
       "name": "Farmmi Inc",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $1.36, Stop $1.3328, T1 $1.4008",
+      "detail": "Trade plan: Entry $1.36, Stop $1.3328, T1 $1.4008",
+      "time": "03:36 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "FAMI",
+        "catalyst": "Weekly Report: what happened at FAMI last week (0608-0612)?",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:36:12 ",
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at FAMI last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=FAMI+Weekly+Report:+what+happened+at+FAMI+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at FAMI last week (0601-0605)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=FAMI+Weekly+Report:+what+happened+at+FAMI+last+week+(0601-0605)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at FAMI last week (0525-0529)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=FAMI+Weekly+Report:+what+happened+at+FAMI+last+week+(0525-0529)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Farmmi shareholders approve share consolidation range, board to set final ratio and timing",
+            "score": 0,
+            "url": "https://www.google.com/search?q=FAMI+Farmmi+shareholders+approve+share+consolidation+range,+board+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at FAMI last week (0518-0522)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=FAMI+Weekly+Report:+what+happened+at+FAMI+last+week+(0518-0522)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "FAMI",
+        "entry": 1.36,
+        "stop": 1.3328,
+        "targets": {
+          "t1": 1.4008,
+          "t2": 1.428,
+          "t3": 1.4688
+        },
+        "risk_per_share": 0.0272,
+        "risk_amount": 100.0,
+        "shares": 1838,
+        "position_value": 2499.68,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.3328"
+        }
+      }
     },
     {
       "ticker": "BGM",
       "name": "BGM Group",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:32 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $0.459, Stop $0.4498, T1 $0.4728",
+      "detail": "Trade plan: Entry $0.459, Stop $0.4498, T1 $0.4728",
+      "time": "03:36 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "BGM",
+        "catalyst": "Weekly Report: what happened at BGM last week (0608-0612)?",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:36:25 ",
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at BGM last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=BGM+Weekly+Report:+what+happened+at+BGM+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=BGM+12+Health+Care+Stocks+Moving+In+Thursday's+Intraday+Session+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's After-Market Session",
+            "score": 0,
+            "url": "https://www.google.com/search?q=BGM+12+Health+Care+Stocks+Moving+In+Wednesday's+After-Market+Ses+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "BGM Group Raises $12 Million in June 8 Private Placement of Shares and Warrants",
+            "score": 0,
+            "url": "https://www.google.com/search?q=BGM+BGM+Group+Raises+$12+Million+in+June+8+Private+Placement+of++stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "BGM Group closes US$12 million private placement of 200,000,000 Class A shares at US$0.06 each",
+            "score": 0,
+            "url": "https://www.google.com/search?q=BGM+BGM+Group+closes+US$12+million+private+placement+of+200,000,+stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "BGM",
+        "entry": 0.459,
+        "stop": 0.4498,
+        "targets": {
+          "t1": 0.4728,
+          "t2": 0.482,
+          "t3": 0.4957
+        },
+        "risk_per_share": 0.0092,
+        "risk_amount": 100.0,
+        "shares": 5446,
+        "position_value": 2499.71,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.4498"
+        }
+      }
     },
     {
       "ticker": "VIDA",
       "name": "VIDA Global Inc.",
-      "status": "SKIP",
-      "result": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "detail": "Error: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().",
-      "time": "03:33 PM",
-      "date": "June 16"
+      "status": "ALERT",
+      "result": "Entry $4.67, Stop $4.5766, T1 $4.8101",
+      "detail": "Trade plan: Entry $4.67, Stop $4.5766, T1 $4.8101",
+      "time": "03:36 PM",
+      "date": "June 16",
+      "news": {
+        "ticker": "VIDA",
+        "catalyst": "Weekly Report: what happened at VIDA last week (0608-0612)?",
+        "max_score": 2,
+        "scan_time": "2026-06-16 15:36:37 ",
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at VIDA last week (0608-0612)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VIDA+Weekly+Report:+what+happened+at+VIDA+last+week+(0608-0612)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Jenne selects Vida to bring AI agent tech to reseller network",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VIDA+Jenne+selects+Vida+to+bring+AI+agent+tech+to+reseller+networ+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Opening Day: Quantinuum among strong IPO debuts",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VIDA+Opening+Day:+Quantinuum+among+strong+IPO+debuts+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Weekly Report: what happened at VIDA last week (0601-0605)?",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VIDA+Weekly+Report:+what+happened+at+VIDA+last+week+(0601-0605)?+stock+news",
+            "time": "",
+            "source": "Webull"
+          },
+          {
+            "title": "Vida Global Honored with 2026 MSP Today Product of the Year Award",
+            "score": 0,
+            "url": "https://www.google.com/search?q=VIDA+Vida+Global+Honored+with+2026+MSP+Today+Product+of+the+Year++stock+news",
+            "time": "",
+            "source": "Webull"
+          }
+        ],
+        "headline_count": 5
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "VIDA",
+        "entry": 4.67,
+        "stop": 4.5766,
+        "targets": {
+          "t1": 4.8101,
+          "t2": 4.9035,
+          "t3": 5.0436
+        },
+        "risk_per_share": 0.0934,
+        "risk_amount": 100.0,
+        "shares": 535,
+        "position_value": 2498.45,
+        "risk_reward": 1.5,
+        "confidence": "LOW",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$4.5766"
+        }
+      }
     }
   ],
-  "active_plan": null,
+  "active_plan": {
+    "valid": true,
+    "ticker": "VIDA",
+    "entry": 4.67,
+    "stop": 4.5766,
+    "targets": {
+      "t1": 4.8101,
+      "t2": 4.9035,
+      "t3": 5.0436
+    },
+    "risk_per_share": 0.0934,
+    "risk_amount": 100.0,
+    "shares": 535,
+    "position_value": 2498.45,
+    "risk_reward": 1.5,
+    "confidence": "LOW",
+    "strategy": "Demand zone + candlestick confirmation scalp",
+    "exit_rules": {
+      "momentum_based": true,
+      "time_based": false,
+      "trail_breakeven_at": "+1%",
+      "hard_stop": "$4.5766"
+    }
+  },
   "total_candidates": 15,
-  "alerts_generated": 0,
+  "alerts_generated": 12,
   "all_gainers": [
     {
       "ticker": {
@@ -2957,7 +3796,7 @@
   "scan_stats": {
     "gainers_scanned": 50,
     "market_status": "PRE-MARKET",
-    "market_time": "01:33 AM ET",
+    "market_time": "01:36 AM ET",
     "market": "us"
   }
 }
