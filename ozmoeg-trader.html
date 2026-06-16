@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OzMoEg Trader — Live Small-Cap Monitor</title>
-    <meta name="description" content="OzMoEg Money Maker — Live US small-cap trading monitor with news, candidates, and trade plans.">
+    <meta name="description" content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans.">
     <meta http-equiv="refresh" content="900">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -112,6 +112,37 @@
             transition: all 0.3s;
         }
         .refresh-btn:hover { background: var(--accent-blue); transform: translateY(-1px); }
+
+        /* Market toggle switch */
+        .market-toggle {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 3px;
+            gap: 3px;
+            cursor: pointer;
+        }
+        .market-toggle button {
+            background: transparent;
+            border: none;
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .market-toggle button.active {
+            background: var(--accent-teal);
+            color: #000;
+        }
+        .market-toggle button:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
         .main-grid {
             display: grid;
             grid-template-columns: 380px 1fr;
@@ -120,7 +151,7 @@
             max-width: 1600px;
             margin: 0 auto;
         }
-        @media (max-width: 1200px) {
+
             .main-grid { grid-template-columns: 1fr; }
         }
         /* ===== ALL NON-DESKTOP: tablets, phones, narrow screens ===== */
@@ -977,11 +1008,15 @@
             <div class="header-logo">O</div>
             <div>
                 <div class="header-title">OzMoEg Trader</div>
-                <div class="header-subtitle">US Small-Cap Scalp Monitor — Live Market Intelligence</div>
+                <div class="header-subtitle" id="header-subtitle">US Small-Cap Scalp Monitor — Live Market Intelligence</div>
             </div>
         </div>
         <div class="header-status">
             <a href="index.html" class="back-btn" title="← Back to Aeyeing Home">← Home</a>
+            <div class="market-toggle" id="market-toggle" title="Switch market region">
+                <button data-market="US" class="active">🇺🇸 US</button>
+                <button data-market="AUS">🇦🇺 AUS</button>
+            </div>
             <div class="status-badge">
                 <span class="status-dot"></span>
                 <span>Live Scanner Active</span>
@@ -996,7 +1031,7 @@
         <div class="telegram-icon">✈️</div>
         <div class="telegram-text">
             <div class="title">Join OzMoEg Money Maker on Telegram</div>
-            <div class="desc">Live US small-cap scalp alerts &amp; trade plans — delivered instantly</div>
+            <div class="desc">Live small-cap scalp alerts &amp; trade plans — delivered instantly</div>
         </div>
         <div class="telegram-arrow">→</div>
     </a><div class="main-grid">
@@ -1013,7 +1048,7 @@
             
             <!-- MARKET COUNTDOWN -->
             <div class="countdown-card">
-                <div class="countdown-label">🇺🇸 US Market</div>
+                <div class="countdown-label" id="countdown-label">🇺🇸 US Market</div>
                 <div class="countdown-status" id="countdown-status">Checking next open...</div>
                 <div class="countdown-timer" id="countdown-timer">--:--:--</div>
                 <div class="countdown-next" id="countdown-next">--</div>
@@ -1835,7 +1870,7 @@
     </div>
     
     <footer class="footer">
-        <p>OzMoEg Money Maker — Automated US Small-Cap Scalp Trading System</p>
+        <p>OzMoEg Money Maker — Automated Small-Cap Scalp Trading System (US • AUS)</p>
         <p>Built by <a href="https://aeyeing.com">Aeyeing</a> | Data via Webull API | Not financial advice</p>
         <p style="margin-top: 0.5rem; font-size: 0.7rem;">
             Paper mode active. No real money at risk. Always verify before trading.
@@ -1843,6 +1878,87 @@
     </footer>
     
     <script>
+        // ── Market region toggle (US / AUS) ─────────────────────────────
+        let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
+
+        function setMarketButtons() {
+            document.querySelectorAll('#market-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.market === currentMarket);
+            });
+        }
+
+        function switchMarket(market) {
+            currentMarket = market;
+            localStorage.setItem('ozmoeg-market', market);
+            setMarketButtons();
+            updateHeaderText();
+            updateDateTime();
+            updateCountdown();
+            loadLiveData();
+        }
+
+        document.addEventListener('click', e => {
+            const btn = e.target.closest('#market-toggle button');
+            if (btn && btn.dataset.market && btn.dataset.market !== currentMarket) {
+                switchMarket(btn.dataset.market);
+            }
+        });
+
+        function updateHeaderText() {
+            const sub = document.getElementById('header-subtitle');
+            const label = document.getElementById('countdown-label');
+            if (!sub || !label) return;
+            if (currentMarket === 'AUS') {
+                sub.textContent = 'ASX Small-Cap Monitor — Live Market Intelligence';
+                label.textContent = '🇦🇺 AUS / ASX Market';
+            } else {
+                sub.textContent = 'US Small-Cap Scalp Monitor — Live Market Intelligence';
+                label.textContent = '🇺🇸 US Market';
+            }
+        }
+
+        // ASX is 10:00–16:00 AEST/AEDT Monday–Friday, no pre/after market.
+        function getSydneyParts(date) {
+            const parts = new Intl.DateTimeFormat('en-AU', {
+                timeZone: 'Australia/Sydney',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: false, weekday: 'long'
+            }).formatToParts(date);
+            return {
+                hour: parseInt(parts.find(p => p.type === 'hour').value),
+                minute: parseInt(parts.find(p => p.type === 'minute').value),
+                second: parseInt(parts.find(p => p.type === 'second').value),
+                weekday: parts.find(p => p.type === 'weekday').value,
+                weekdayNum: {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[parts.find(p => p.type === 'weekday').value]
+            };
+        }
+
+        function findNextASXOpen(fromTime) {
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 10080) {
+                probe.setMinutes(probe.getMinutes() + 1);
+                const p = getSydneyParts(probe);
+                if (p.weekdayNum >= 1 && p.weekdayNum <= 5 && p.hour === 10 && p.minute === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+
+        function findNextASXClose(fromTime) {
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 480) {
+                probe.setMinutes(probe.getMinutes() + 1);
+                const p = getSydneyParts(probe);
+                if (p.weekdayNum >= 1 && p.weekdayNum <= 5 && p.hour === 16 && p.minute === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+
         function updateDateTime() {
             const now = new Date();
             
@@ -1862,25 +1978,35 @@
             const tzLabel = isDst ? 'Sydney AEDT' : 'Sydney AEST';
             document.querySelector('.timezone').textContent = tzLabel;
             
-            // Market status based on ET hours
-            const etParts = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/New_York',
-                hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
-            }).formatToParts(now);
-            const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
-            const etMin = parseInt(etParts.find(p => p.type === 'minute').value);
-            const etWeekday = etParts.find(p => p.type === 'weekday').value;
-            const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
-            
+            // Market status based on selected region
             let status;
-            if (etWeekdayNum === 0 || etWeekdayNum === 6) {
-                status = "🔴 Weekend — Markets Closed";
-            } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
-                status = "🟡 Pre-Market — Scanning for setups";
-            } else if (etHour < 16) {
-                status = "🟢 Market Open — Live monitoring";
+            if (currentMarket === 'AUS') {
+                const syd = getSydneyParts(now);
+                if (syd.weekdayNum === 0 || syd.weekdayNum === 6) {
+                    status = "🔴 Weekend — ASX Closed";
+                } else if (syd.hour >= 10 && syd.hour < 16) {
+                    status = "🟢 ASX Open — Live monitoring";
+                } else {
+                    status = "🔴 ASX Closed — Next session at 10:00 Sydney";
+                }
             } else {
-                status = "🟡 After Hours — Pre-market scan mode";
+                const etParts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(now);
+                const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
+                const etMin = parseInt(etParts.find(p => p.type === 'minute').value);
+                const etWeekday = etParts.find(p => p.type === 'weekday').value;
+                const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
+                if (etWeekdayNum === 0 || etWeekdayNum === 6) {
+                    status = "🔴 Weekend — Markets Closed";
+                } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
+                    status = "🟡 Pre-Market — Scanning for setups";
+                } else if (etHour < 16) {
+                    status = "🟢 Market Open — Live monitoring";
+                } else {
+                    status = "🟡 After Hours — Pre-market scan mode";
+                }
             }
             document.getElementById('market-status').textContent = status;
         }
@@ -1936,27 +2062,39 @@
         
         function updateCountdown() {
             const now = new Date(); // Browser local time = Sydney time
-            
-            // Get current ET components using Intl API (cheap: no search)
-            const etParts = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/New_York',
-                hour: '2-digit', minute: '2-digit', second: '2-digit',
-                hour12: false, weekday: 'long'
-            }).formatToParts(now);
-            const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
-            const etMinute = parseInt(etParts.find(p => p.type === 'minute').value);
-            const etSecond = parseInt(etParts.find(p => p.type === 'second').value);
-            const etWeekday = etParts.find(p => p.type === 'weekday').value;
-            const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
-            
-            const isMarketOpen = etWeekdayNum >= 1 && etWeekdayNum <= 5 
-                && (etHour > 9 || (etHour === 9 && etMinute >= 30)) 
-                && etHour < 16;
+
+            let isMarketOpen, findNextOpen, findNextClose, tzLocale, regionLabel;
+            if (currentMarket === 'AUS') {
+                const syd = getSydneyParts(now);
+                isMarketOpen = syd.weekdayNum >= 1 && syd.weekdayNum <= 5 && syd.hour >= 10 && syd.hour < 16;
+                findNextOpen = findNextASXOpen;
+                findNextClose = findNextASXClose;
+                tzLocale = 'en-AU';
+                regionLabel = 'ASX';
+            } else {
+                const etParts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit',
+                    hour12: false, weekday: 'long'
+                }).formatToParts(now);
+                const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
+                const etMinute = parseInt(etParts.find(p => p.type === 'minute').value);
+                const etSecond = parseInt(etParts.find(p => p.type === 'second').value);
+                const etWeekday = etParts.find(p => p.type === 'weekday').value;
+                const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
+                isMarketOpen = etWeekdayNum >= 1 && etWeekdayNum <= 5
+                    && (etHour > 9 || (etHour === 9 && etMinute >= 30))
+                    && etHour < 16;
+                findNextOpen = findNextMarketOpen;
+                findNextClose = findNextMarketClose;
+                tzLocale = 'en-AU';
+                regionLabel = 'US market';
+            }
             
             if (isMarketOpen) {
                 // Market is OPEN — countdown to close
                 if (!marketCloseTarget || marketCloseTarget <= now || lastStatus !== 'open') {
-                    marketCloseTarget = findNextMarketClose(now);
+                    marketCloseTarget = findNextClose(now);
                     lastStatus = 'open';
                 }
                 const diff = marketCloseTarget - now;
@@ -1964,38 +2102,61 @@
                 const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const s = Math.floor((diff % (1000 * 60)) / 1000);
                 
-                document.getElementById('countdown-status').textContent = "🟢 Market OPEN — Closing in";
+                document.getElementById('countdown-status').textContent = `🟢 ${regionLabel} OPEN — Closing in`;
                 document.getElementById('countdown-timer').textContent = 
                     `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
                 document.getElementById('countdown-timer').className = 'countdown-timer open';
                 
-                const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+                const closeStr = marketCloseTarget.toLocaleTimeString(tzLocale, {hour: '2-digit', minute:'2-digit'});
                 document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
                 return;
             }
             
             // Market is CLOSED
             if (!marketOpenTarget || marketOpenTarget <= now || lastStatus === 'open') {
-                marketOpenTarget = findNextMarketOpen(now);
+                marketOpenTarget = findNextOpen(now);
                 marketCloseTarget = null;
                 lastStatus = 'closed';
             }
             
             // Determine status text
             let statusText = '';
-            if (etWeekdayNum === 0) {
-                statusText = "🔴 Weekend — Opens Monday";
-            } else if (etWeekdayNum === 6) {
-                statusText = "🔴 Weekend — Opens Monday";
-            } else if (etHour >= 16) {
-                const tomorrowWeekday = (etWeekdayNum + 1) % 7;
-                if (tomorrowWeekday === 0 || tomorrowWeekday === 6) {
-                    statusText = "🟡 After Hours — Opens Monday";
+            if (currentMarket === 'AUS') {
+                const syd = getSydneyParts(now);
+                if (syd.weekdayNum === 0 || syd.weekdayNum === 6) {
+                    statusText = "🔴 Weekend — ASX Opens Monday";
+                } else if (syd.hour >= 16) {
+                    const tomorrowWeekday = (syd.weekdayNum + 1) % 7;
+                    if (tomorrowWeekday === 0 || tomorrowWeekday === 6) {
+                        statusText = "🔴 ASX Closed — Opens Monday";
+                    } else {
+                        statusText = "🔴 ASX Closed — Opens Tomorrow 10:00";
+                    }
                 } else {
-                    statusText = "🟡 After Hours — Opens Tomorrow";
+                    statusText = "🔴 ASX Closed — Opens Today 10:00";
                 }
             } else {
-                statusText = "🟡 Pre-Market — Opens Today";
+                const etParts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(now);
+                const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
+                const etWeekday = etParts.find(p => p.type === 'weekday').value;
+                const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
+                if (etWeekdayNum === 0) {
+                    statusText = "🔴 Weekend — Opens Monday";
+                } else if (etWeekdayNum === 6) {
+                    statusText = "🔴 Weekend — Opens Monday";
+                } else if (etHour >= 16) {
+                    const tomorrowWeekday = (etWeekdayNum + 1) % 7;
+                    if (tomorrowWeekday === 0 || tomorrowWeekday === 6) {
+                        statusText = "🟡 After Hours — Opens Monday";
+                    } else {
+                        statusText = "🟡 After Hours — Opens Tomorrow";
+                    }
+                } else {
+                    statusText = "🟡 Pre-Market — Opens Today";
+                }
             }
             
             // Simple countdown: targetOpen - now (both in Sydney time)
@@ -2021,9 +2182,11 @@
             document.getElementById('countdown-next').textContent = 
                 `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
         }
+        updateHeaderText();
+        setMarketButtons();
         updateCountdown();
         setInterval(updateCountdown, 1000);
-        
+
         // Static price display — real scan data (no fake animation)
         const entryPrice = 17.27;
         const currentPrice = 17.27;  // FAC last price from scan
@@ -2067,28 +2230,41 @@
                 const marketStatus = stats.market_status || 'OPEN';
                 const marketTime = stats.market_time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true, timeZone:'America/New_York' }) + ' ET';
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴' }[marketStatus] || '⚪';
-                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
+                if (currentMarket === 'AUS') {
+                    document.getElementById('scanner-badge').textContent = `🔴 AUS Mode | ASX data feed not connected | 0 candidates | 0 alerts`;
+                } else {
+                    document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
+                }
 
                 // Update scanner table
                 const tbody = document.querySelector('#scanner-table tbody');
-                if (tbody && results.length) {
-                    tbody.innerHTML = results.map(r => {
-                        const statusClass = r.status === 'ALERT' ? 'result-alert' : 'result-skip';
-                        const emoji = r.status === 'ALERT' ? '🚨' : '⏭️';
-                        const escaped = (r.result || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                        return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span></td><td>${escaped}</td></tr>`;
-                    }).join('');
+                if (tbody) {
+                    if (currentMarket === 'AUS') {
+                        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">🇦🇺 ASX feed not connected. Toggle back to 🇺🇸 US for live scanner results.</td></tr>`;
+                    } else if (results.length) {
+                        tbody.innerHTML = results.map(r => {
+                            const statusClass = r.status === 'ALERT' ? 'result-alert' : 'result-skip';
+                            const emoji = r.status === 'ALERT' ? '🚨' : '⏭️';
+                            const escaped = (r.result || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span></td><td>${escaped}</td></tr>`;
+                        }).join('');
+                    }
                 }
 
                 // Update news ticker (duplicate for loop)
                 const ticker = document.getElementById('news-ticker');
-                if (ticker && results.length) {
-                    const items = results.map(r => {
-                        const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
-                        const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
-                        return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span><span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${r.result || ''}</div>`;
-                    }).join('');
-                    ticker.innerHTML = items + '\n' + items;
+                if (ticker) {
+                    if (currentMarket === 'AUS') {
+                        const msg = `<div class="news-item skip"><span class="score">INFO</span><span class="date">ASX</span> <span class="time">Now</span> — ASX news feed not connected — switch to US mode for live stream</div>`;
+                        ticker.innerHTML = msg + '\n' + msg;
+                    } else if (results.length) {
+                        const items = results.map(r => {
+                            const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
+                            const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span><span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${r.result || ''}</div>`;
+                        }).join('');
+                        ticker.innerHTML = items + '\n' + items;
+                    }
                 }
 
                 // Update all-scanned details if expanded
