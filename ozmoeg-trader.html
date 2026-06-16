@@ -2118,7 +2118,13 @@
         let marketOpenTarget = null;
         let marketCloseTarget = null;
         let lastStatus = '';
-        
+        let lastMarket = '';
+
+        function setMarketLoading(market, isLoading) {
+            // No dedicated spinner currently exists; this prevents loadLiveData from crashing.
+            // Future: toggle a loading class on the header/status badge if desired.
+        }
+
         function findNextMarketOpen(fromTime) {
             // Walk forward minute-by-minute from fromTime until ET shows Mon-Fri 9:30
             let probe = new Date(fromTime);
