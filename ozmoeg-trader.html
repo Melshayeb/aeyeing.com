@@ -2192,6 +2192,14 @@
         function updateCountdown() {
             const now = new Date(); // Browser local time = Sydney time
 
+            // If the market mode changed since the last tick, reset cached targets immediately.
+            if (lastMarket !== currentMarket) {
+                marketOpenTarget = null;
+                marketCloseTarget = null;
+                lastStatus = '';
+                lastMarket = currentMarket;
+            }
+
             let isMarketOpen, findNextOpen, findNextClose, tzLocale, regionLabel;
             if (currentMarket === 'AUS') {
                 const syd = getSydneyParts(now);
@@ -2304,12 +2312,15 @@
             const sydneyDay = dayNames[marketOpenTarget.getDay()];
             const sydneyTime = marketOpenTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
             const sydneyDate = marketOpenTarget.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
-            
+            const etTime = marketOpenTarget.toLocaleTimeString('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute:'2-digit'});
+
             document.getElementById('countdown-status').textContent = statusText;
             document.getElementById('countdown-timer').textContent = timerStr;
             document.getElementById('countdown-timer').className = 'countdown-timer closed';
-            document.getElementById('countdown-next').textContent = 
-                `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
+            document.getElementById('countdown-next').textContent =
+                currentMarket === 'AUS'
+                ? `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`
+                : `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} Sydney / ${etTime} ET`;
         }
         updateHeaderText();
         setMarketButtons();
@@ -2519,11 +2530,13 @@
 
         async function loadLiveData() {
             try {
+                setMarketLoading(currentMarket, true);
                 const ts = Date.now();
                 const jsonFile = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const res = await fetch(jsonFile + '?_=' + ts, { cache: 'no-store' });
                 if (!res.ok) {
                     console.warn('Could not load', jsonFile, res.status);
+                    setMarketLoading(currentMarket, false);
                     return;
                 }
                 const data = await res.json();
@@ -2612,6 +2625,8 @@
                 }
             } catch (e) {
                 console.error('Live data refresh failed:', e);
+            } finally {
+                setMarketLoading(currentMarket, false);
             }
         }
         loadLiveData();
