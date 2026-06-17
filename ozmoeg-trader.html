@@ -2090,6 +2090,8 @@
             toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             const liveBtn = toggle.querySelector('button[data-view="live"]');
             if (liveBtn) liveBtn.classList.add('active');
+            userSelectedScannerView = 'live';
+            saveScannerViewPreference('live');
         }
 
         function switchMarket(market) {
@@ -2101,9 +2103,9 @@
             updateCountdown();
             // clear cached selection so the new market's top alert is selected
             localStorage.removeItem('ozmoeg-selected-alert');
-            // Scanner view defaults to Live on every market switch; loadLiveData will auto-switch
-            // to Pre/After for US if the current status is PRE-MARKET or AFTER-HOURS.
-            resetScannerToggleToLive();
+            // Reset scanner first-load flag so the correct default view is applied for the new market
+            scannerFirstLoadDone = false;
+            userSelectedScannerView = null;
             loadLiveData();
         }
 
@@ -2114,10 +2116,9 @@
             }
             const scannerBtn = e.target.closest('#scanner-toggle button');
             if (scannerBtn && !scannerBtn.classList.contains('active')) {
-                document.querySelectorAll('#scanner-toggle button').forEach(b => b.classList.remove('active'));
-                scannerBtn.classList.add('active');
-                saveScannerViewPreference(scannerBtn.dataset.view);
-                renderScannerView();
+                const view = scannerBtn.dataset.view;
+                setScannerToggleActive(view);
+                loadLiveData();
             }
         });
 
@@ -2127,6 +2128,8 @@
             toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             const target = toggle.querySelector(`button[data-view="${view}"]`);
             if (target) target.classList.add('active');
+            userSelectedScannerView = view;
+            saveScannerViewPreference(view);
         }
 
         const alertSelector = document.getElementById('alert-selector');
@@ -2791,23 +2794,19 @@
                 window._lastLiveResults = results;
                 window._lastScanTimestamp = lastUpdated;
 
-                // Auto-switch scanner toggle to the view matching the current market state, but only on first load
-                // or if the user has not manually picked a view. Respect manual choice across refreshes.
+                // Auto-switch scanner toggle to the view matching the current market state ONLY on first load.
+                // After that, the user's manual toggle choice is preserved across auto-refreshes and market switches.
                 const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
                 if (!scannerFirstLoadDone) {
-                    if (isUsExtendedHours) {
+                    const savedView = loadScannerViewPreference();
+                    if (savedView === 'live' || savedView === 'premarket') {
+                        setScannerToggleActive(savedView);
+                    } else if (isUsExtendedHours) {
                         setScannerToggleActive('premarket');
                     } else {
                         setScannerToggleActive('live');
                     }
                     scannerFirstLoadDone = true;
-                } else if (!userSelectedScannerView) {
-                    // No manual selection yet; keep following market state
-                    if (isUsExtendedHours) {
-                        setScannerToggleActive('premarket');
-                    } else {
-                        setScannerToggleActive('live');
-                    }
                 }
 
                 // Re-render current view according to active toggle
