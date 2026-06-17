@@ -2115,7 +2115,7 @@
                 switchMarket(marketBtn.dataset.market);
             }
             const scannerBtn = e.target.closest('#scanner-toggle button');
-            if (scannerBtn && !scannerBtn.classList.contains('active')) {
+            if (scannerBtn && !scannerBtn.classList.contains('active') && !scannerBtn.disabled) {
                 const view = scannerBtn.dataset.view;
                 setScannerToggleActive(view);
                 loadLiveData();
@@ -2793,13 +2793,19 @@
                 window._lastLiveResults = results;
                 window._lastScanTimestamp = lastUpdated;
 
-                // Auto-switch scanner toggle to the view matching the current market state ONLY on first load.
-                // Hide the Pre/After toggle when it is not meaningful (US pre-market, AUS, or regular US hours without a saved watchlist).
-                const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
+                // Determine whether the Pre/After toggle is meaningful:
+                // - US AFTER-HOURS: yes (shows after-hours watchlist while Live is empty)
+                // - US OPEN: yes, if we have a saved pre-market watchlist to compare against live scan
+                // - US PRE-MARKET: no — the current pre-market scan IS the live scan, so only Live is shown
+                // - AUS: no pre/after market
+                const isUsAfterHours = currentMarket !== 'AUS' && marketStatus === 'AFTER-HOURS';
                 const hasSavedWatchlist = preMarketResults && preMarketResults.length > 0;
-                const showPreAfterToggle = isUsExtendedHours || hasSavedWatchlist;
+                const showPreAfterToggle = isUsAfterHours || (marketStatus === 'OPEN' && hasSavedWatchlist);
                 const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
-                if (preBtn) preBtn.style.display = showPreAfterToggle ? '' : 'none';
+                if (preBtn) {
+                    preBtn.style.display = showPreAfterToggle ? '' : 'none';
+                    preBtn.disabled = !showPreAfterToggle;
+                }
                 if (!scannerFirstLoadDone) {
                     const savedView = loadScannerViewPreference();
                     if (savedView === 'premarket' && showPreAfterToggle) {
