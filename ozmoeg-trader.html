@@ -1141,8 +1141,8 @@
                 <span class="status-dot"></span>
                 <span>Live Scanner Active</span>
             </div>
-            <span class="last-updated">Auto-refresh: 15 min</span>
-            <button class="refresh-btn" onclick="location.reload()">⟳ Refresh Now</button>
+            <span class="last-updated">Auto-refresh: 1 min</span>
+            <button class="refresh-btn" onclick="loadLiveData()">⟳ Refresh Now</button>
         </div>
     </header>
     
@@ -2786,7 +2786,8 @@
                 const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
                 const marketLabel = marketFromData;
-                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
+                const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
+                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
 
                 // Update alert selector + active plan + tracker + catalyst
                 liveResults = results;
@@ -2874,7 +2875,7 @@
         }
         resetScannerToggleToLive();
         loadLiveData();
-        setInterval(loadLiveData, 900000);
+        setInterval(loadLiveData, 60000);
     </script>
 </body>
 </html>
