@@ -2603,9 +2603,26 @@
                     tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
                 }
             } else {
-                // Live view: always show the latest live scan results, regardless of market phase.
-                // During pre-market the live scan itself captures pre-market setups; during regular hours it captures regular-hours setups.
-                if (rows.length) {
+                // Live view: only meaningful during regular hours.
+                // During pre/after-market the "Live" toggle intentionally shows an empty state
+                // so users do not confuse it with the saved Pre/After watchlist.
+                const isExtendedHours = currentMarket !== 'AUS' && (currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS');
+                const isClosed = currentMarketStatus === 'CLOSED' || currentMarketStatus === 'WEEKEND';
+                if (isExtendedHours || isClosed) {
+                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : (currentMarketStatus === 'AFTER-HOURS' ? 'after-hours' : 'closed');
+                    let msg;
+                    if (currentMarket === 'AUS') {
+                        msg = `The ASX is currently ${marketLabel}. Live scan results will resume when the market opens.`;
+                    } else if (isExtendedHours) {
+                        msg = `The US market is currently ${marketLabel}. Live regular-hours scan will resume at market open. Switch to 🌅 Pre/After to view the extended-hours watchlist.`;
+                    } else {
+                        msg = `The US market is currently ${marketLabel}. Live scan results will resume when the market opens.`;
+                    }
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
+                    populateAlertSelector([]);
+                    renderSelectedAlert();
+                    if (tsEl) tsEl.textContent = '';
+                } else if (rows.length) {
                     const sorted = [...rows].sort((a, b) => {
                         const aAlert = a.status === 'ALERT' ? 1 : 0;
                         const bAlert = b.status === 'ALERT' ? 1 : 0;
@@ -2621,11 +2638,7 @@
                         tsEl.textContent = ts ? `Updated ${ts}` : '';
                     }
                 } else {
-                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : (currentMarketStatus === 'AFTER-HOURS' ? 'after-hours' : 'closed');
-                    const closedMsg = currentMarketStatus === 'CLOSED' || currentMarketStatus === 'WEEKEND'
-                        ? `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. Live scan results will resume when the market opens.`
-                        : `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. No live scan results are available yet. Switch to 🌅 Pre/After to view the extended-hours watchlist.`;
-                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${closedMsg}</td></tr>`;
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No live scan results available yet.</td></tr>';
                     populateAlertSelector([]);
                     renderSelectedAlert();
                     if (tsEl) tsEl.textContent = '';
@@ -2672,19 +2685,15 @@
                 window._lastLiveResults = results;
                 window._lastScanTimestamp = lastUpdated;
 
-                // Show Pre/After toggle for US markets (pre-market, regular hours, after-hours all have an extended-hours watchlist).
-                // Hide it for AUS because ASX has no pre/after session.
+                // Show Pre/After toggle only for US markets (ASX has no extended session).
                 const showPreAfterToggle = currentMarket !== 'AUS';
                 const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
                 if (preBtn) {
                     preBtn.style.display = showPreAfterToggle ? 'inline-flex' : 'none';
                 }
                 if (!scannerFirstLoadDone) {
-                    const savedView = loadScannerViewPreference();
                     const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
-                    if (savedView === 'premarket' && showPreAfterToggle) {
-                        setScannerToggleActive('premarket');
-                    } else if (isUsExtendedHours) {
+                    if (isUsExtendedHours) {
                         setScannerToggleActive('premarket');
                     } else {
                         setScannerToggleActive('live');
