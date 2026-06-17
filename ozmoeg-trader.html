@@ -2129,6 +2129,14 @@
             if (target) target.classList.add('active');
         }
 
+        const alertSelector = document.getElementById('alert-selector');
+        if (alertSelector) {
+            alertSelector.addEventListener('change', function() {
+                localStorage.setItem('ozmoeg-selected-alert', this.value);
+                renderSelectedAlert();
+            });
+        }
+
         // Persist scanner view preference
         function saveScannerViewPreference(view) {
             localStorage.setItem('ozmoeg-scanner-view', view);
@@ -2462,6 +2470,7 @@
         // This bypasses GitHub Pages HTML cache so updates appear immediately.
 
         let liveResults = [];
+        let displayedResults = [];
         let liveLastUpdated = new Date();
 
         function fmtCurrency(n) {
@@ -2684,6 +2693,7 @@
             const view = getActiveScannerView();
             const isPre = view === 'premarket';
             const rows = isPre ? (window._lastPreMarketResults || []) : (window._lastLiveResults || []);
+            displayedResults = rows;
             const tsEl = document.getElementById('scanner-timestamp');
             const tbody = document.querySelector('#scanner-table tbody');
             if (!tbody) return;
@@ -2696,15 +2706,12 @@
                     return 0;
                 });
                 tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
-                // Re-bind the alert selector after any table re-render; the selector itself is static,
-                // but ensure it reflects the current view's top alert if no user selection is stored.
-                const sel = document.getElementById('alert-selector');
-                if (sel && !localStorage.getItem('ozmoeg-selected-alert') && sorted.length) {
-                    sel.value = sorted[0].ticker;
-                    renderSelectedAlert();
-                }
+                populateAlertSelector(displayedResults);
+                renderSelectedAlert();
             } else {
                 tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${isPre ? 'No pre-market/after-hours watchlist saved yet.' : 'No scan results available.'}</td></tr>`;
+                populateAlertSelector([]);
+                renderSelectedAlert();
             }
             if (tsEl) {
                 const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
@@ -2747,8 +2754,6 @@
                 // Update alert selector + active plan + tracker + catalyst
                 liveResults = results;
                 liveLastUpdated = lastUpdated;
-                populateAlertSelector(results);
-
                 // Preserve pre-market/after-hours watchlist for US; rendered via the same scanner table when toggled.
                 window._lastPreMarketResults = preMarketResults;
                 window._lastLiveResults = results;
