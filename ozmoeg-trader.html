@@ -2764,7 +2764,8 @@
                 setMarketLoading(currentMarket, true);
                 const ts = Date.now();
                 const jsonFile = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-                const res = await fetch(jsonFile + '?_=' + ts, { cache: 'no-store' });
+                const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+                const res = await fetch(baseUrl + jsonFile + '?_=' + ts, { cache: 'no-store' });
                 if (!res.ok) {
                     console.warn('Could not load', jsonFile, res.status);
                     setMarketLoading(currentMarket, false);
