@@ -2471,6 +2471,8 @@
 
         let liveResults = [];
         let displayedResults = [];
+        let userSelectedScannerView = null;
+        let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
         let currentMarketStatus = 'OPEN';
 
@@ -2789,12 +2791,23 @@
                 window._lastLiveResults = results;
                 window._lastScanTimestamp = lastUpdated;
 
-                // Auto-switch scanner toggle to the view matching the current market state
+                // Auto-switch scanner toggle to the view matching the current market state, but only on first load
+                // or if the user has not manually picked a view. Respect manual choice across refreshes.
                 const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
-                if (isUsExtendedHours) {
-                    setScannerToggleActive('premarket');
-                } else {
-                    setScannerToggleActive('live');
+                if (!scannerFirstLoadDone) {
+                    if (isUsExtendedHours) {
+                        setScannerToggleActive('premarket');
+                    } else {
+                        setScannerToggleActive('live');
+                    }
+                    scannerFirstLoadDone = true;
+                } else if (!userSelectedScannerView) {
+                    // No manual selection yet; keep following market state
+                    if (isUsExtendedHours) {
+                        setScannerToggleActive('premarket');
+                    } else {
+                        setScannerToggleActive('live');
+                    }
                 }
 
                 // Re-render current view according to active toggle
@@ -2852,7 +2865,7 @@
         }
         resetScannerToggleToLive();
         loadLiveData();
-        setInterval(loadLiveData, 60000);
+        setInterval(loadLiveData, 900000);
     </script>
 </body>
 </html>
