@@ -1102,6 +1102,21 @@
                 font-size: 0.8rem;
             }
         }
+
+        .scanner-toggle { display: inline-flex; gap: 0.4rem; align-items: center; }
+        .scanner-toggle button {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .scanner-toggle button:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+        .scanner-toggle button.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
+        #scanner-timestamp { font-size: 0.7rem; color: var(--text-secondary); white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -1164,125 +1179,125 @@
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
                         <!-- NEWS_TICKER_ITEMS -->
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:15 PM</span> — OBAI (Our Bond, Inc.) — Poor R:R (1.00)
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — OBAI (Our Bond, Inc.) — Entry $1.11, Stop $1.0878, T1 $1.1433
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:15 PM</span> — CCTG (CCSC Technology International Holdings Limited) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — CCTG (CCSC Technology International Holdings Limited) — Poor R:R (1.35)
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — CRVO (CervoMed) — Entry $4.52, Stop $4.4296, T1 $4.6556
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — NMRA (Neumora Therapeutics Inc) — Entry $1.56, Stop $1.5288, T1 $1.6068
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — IVDA (Iveda Solutions) — Entry $0.515, Stop $0.5047, T1 $0.5304
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — LPRO (Open Lending Corporation) — Entry $3.11, Stop $3.0478, T1 $3.2033
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — FTHM (Fathom Holdings Inc) — Entry $0.633, Stop $0.6203, T1 $0.652
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — WBX (Wallbox Nv) — Entry $3.95, Stop $3.871, T1 $4.0685
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Entry $2.69, Stop $2.6362, T1 $2.7707
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — TRNR (Interactive Strength Inc.) — Entry $0.7222, Stop $0.7078, T1 $0.7439
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — OTLK (Outlook Therapeutics Inc) — Entry $1.57, Stop $1.5386, T1 $1.6171
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — CRVO (CervoMed) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — SUGP (SU Group Holdings Limited) — Red flags: offering:SU Group signs GEZE distributorship deal to expand smart building safety technology offering; offering:Su Group Files Prospectus For Offering Up To 38.317M Class A Ordinary Shares On Behalf Of Selling Shareholders
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — NMRA (Neumora Therapeutics Inc) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — FLZH (Flash Sports & Media Holdings, Inc.) — Red flags: delisting:Eleven new option listings and one option delisting on June 16th
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — LICN (Lichen International) — Entry $3.42, Stop $3.3516, T1 $3.5226
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — SRXH (SRX Health Solutions Inc) — Entry $0.19, Stop $0.1862, T1 $0.1957
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — OBAI (Our Bond, Inc.) — Entry $1.11, Stop $1.0878, T1 $1.1433
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — IVDA (Iveda Solutions) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — CCTG (CCSC Technology International Holdings Limited) — Poor R:R (1.35)
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — CRVO (CervoMed) — Entry $4.52, Stop $4.4296, T1 $4.6556
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — NMRA (Neumora Therapeutics Inc) — Entry $1.56, Stop $1.5288, T1 $1.6068
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — IVDA (Iveda Solutions) — Entry $0.515, Stop $0.5047, T1 $0.5304
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — LPRO (Open Lending Corporation) — Entry $3.11, Stop $3.0478, T1 $3.2033
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:19 PM</span> — FTHM (Fathom Holdings Inc) — Entry $0.633, Stop $0.6203, T1 $0.652
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — WBX (Wallbox Nv) — Entry $3.95, Stop $3.871, T1 $4.0685
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Entry $2.69, Stop $2.6362, T1 $2.7707
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — TRNR (Interactive Strength Inc.) — Entry $0.7222, Stop $0.7078, T1 $0.7439
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — OTLK (Outlook Therapeutics Inc) — Entry $1.57, Stop $1.5386, T1 $1.6171
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — LPRO (Open Lending Corporation) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — SUGP (SU Group Holdings Limited) — Red flags: offering:SU Group signs GEZE distributorship deal to expand smart building safety technology offering; offering:Su Group Files Prospectus For Offering Up To 38.317M Class A Ordinary Shares On Behalf Of Selling Shareholders
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — FTHM (Fathom Holdings Inc) — Poor R:R (1.00)
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — FLZH (Flash Sports & Media Holdings, Inc.) — Red flags: delisting:Eleven new option listings and one option delisting on June 16th
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — WBX (Wallbox Nv) — Poor R:R (1.00)
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — LICN (Lichen International) — Entry $3.42, Stop $3.3516, T1 $3.5226
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — TRNR (Interactive Strength Inc.) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — OTLK (Outlook Therapeutics Inc) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — SUGP (SU Group Holdings Limited) — Red flags: offering:SU Group signs GEZE distributorship deal to expand smart building safety technology offering; offering:Su Group Files Prospectus For Offering Up To 38.317M Class A Ordinary Shares On Behalf Of Selling Shareholders
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — FLZH (Flash Sports & Media Holdings, Inc.) — Red flags: delisting:Eleven new option listings and one option delisting on June 16th
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — LICN (Lichen International) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — SRXH (SRX Health Solutions Inc) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:15 PM</span> — OBAI (Our Bond, Inc.) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:15 PM</span> — CCTG (CCSC Technology International Holdings Limited) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — CRVO (CervoMed) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — NMRA (Neumora Therapeutics Inc) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — IVDA (Iveda Solutions) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — LPRO (Open Lending Corporation) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — FTHM (Fathom Holdings Inc) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — WBX (Wallbox Nv) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — AHMA (AMBITIONS ENTERPRISE MANAGE) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — TRNR (Interactive Strength Inc.) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — OTLK (Outlook Therapeutics Inc) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:16 PM</span> — SUGP (SU Group Holdings Limited) — Red flags: offering:SU Group signs GEZE distributorship deal to expand smart building safety technology offering; offering:Su Group Files Prospectus For Offering Up To 38.317M Class A Ordinary Shares On Behalf Of Selling Shareholders
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — FLZH (Flash Sports & Media Holdings, Inc.) — Red flags: delisting:Eleven new option listings and one option delisting on June 16th
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — LICN (Lichen International) — Poor R:R (1.00)
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 17</span> <span class="time">04:17 PM</span> — SRXH (SRX Health Solutions Inc) — Poor R:R (1.00)
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 17</span> <span class="time">04:20 PM</span> — SRXH (SRX Health Solutions Inc) — Entry $0.19, Stop $0.1862, T1 $0.1957
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1297,8 +1312,13 @@
                 <div class="card-header" style="flex-wrap: wrap; gap: 0.75rem;">
                     <h2>📊 Scanner Results</h2>
                     <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                        <div class="scanner-toggle" id="scanner-toggle">
+                            <button class="active" data-view="live" title="Current market scan">📊 Live</button>
+                            <button data-view="premarket" title="Saved pre-market/after-hours watchlist">🌅 Pre/After</button>
+                        </div>
+                        <span id="scanner-timestamp"></span>
                         <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 02:17 AM ET | Scanned: 50 | 15 candidates | 0 alerts
+🟡 US PRE-MARKET 02:20 AM ET | Scanned: 50 | 15 candidates | 12 alerts
                     <!-- END_SCANNER_BADGE --></span>
                         <select id="alert-selector" class="alert-selector">
                             <option value="">Select an alert…</option>
@@ -1320,68 +1340,68 @@
                             <tr>
                                 <td class="ticker-cell">OBAI</td>
                                 <td>Our Bond, Inc.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $1.11, Stop $1.0878, T1 $1.1433</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CCTG</td>
                                 <td>CCSC Technology International Holdings Limited</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td>Poor R:R (1.35)</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CRVO</td>
                                 <td>CervoMed</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $4.52, Stop $4.4296, T1 $4.6556</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">NMRA</td>
                                 <td>Neumora Therapeutics Inc</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $1.56, Stop $1.5288, T1 $1.6068</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">IVDA</td>
                                 <td>Iveda Solutions</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $0.515, Stop $0.5047, T1 $0.5304</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LPRO</td>
                                 <td>Open Lending Corporation</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $3.11, Stop $3.0478, T1 $3.2033</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">FTHM</td>
                                 <td>Fathom Holdings Inc</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $0.633, Stop $0.6203, T1 $0.652</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">WBX</td>
                                 <td>Wallbox Nv</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $3.95, Stop $3.871, T1 $4.0685</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">AHMA</td>
                                 <td>AMBITIONS ENTERPRISE MANAGE</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $2.69, Stop $2.6362, T1 $2.7707</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">TRNR</td>
                                 <td>Interactive Strength Inc.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $0.7222, Stop $0.7078, T1 $0.7439</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">OTLK</td>
                                 <td>Outlook Therapeutics Inc</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $1.57, Stop $1.5386, T1 $1.6171</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">SUGP</td>
@@ -1398,20 +1418,19 @@
                             <tr>
                                 <td class="ticker-cell">LICN</td>
                                 <td>Lichen International</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $3.42, Stop $3.3516, T1 $3.5226</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">SRXH</td>
                                 <td>SRX Health Solutions Inc</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>Poor R:R (1.00)</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $0.19, Stop $0.1862, T1 $0.1957</td>
                             </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
                     </table>
                 </div>
-                <div id="pre-market-container" class="pre-market-card" style="display:none;"></div>
                 <!-- SCANNED_GAINERS_TABLE -->
                         <details class="scanned-details">
                             <summary>🔍 Show all 50 scanned tickers with filter reasons</summary>
@@ -2078,9 +2097,15 @@
         }
 
         document.addEventListener('click', e => {
-            const btn = e.target.closest('#market-toggle button');
-            if (btn && btn.dataset.market && btn.dataset.market !== currentMarket) {
-                switchMarket(btn.dataset.market);
+            const marketBtn = e.target.closest('#market-toggle button');
+            if (marketBtn && marketBtn.dataset.market && marketBtn.dataset.market !== currentMarket) {
+                switchMarket(marketBtn.dataset.market);
+            }
+            const scannerBtn = e.target.closest('#scanner-toggle button');
+            if (scannerBtn && !scannerBtn.classList.contains('active')) {
+                document.querySelectorAll('#scanner-toggle button').forEach(b => b.classList.remove('active'));
+                scannerBtn.classList.add('active');
+                renderScannerView();
             }
         });
 
@@ -2620,6 +2645,42 @@
             return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${r.status === 'ALERT' ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td>${escaped}</td></tr>`;
         }
 
+        function getActiveScannerView() {
+            const toggle = document.getElementById('scanner-toggle');
+            if (!toggle) return 'live';
+            const active = toggle.querySelector('button.active');
+            return active?.dataset.view || 'live';
+        }
+
+        function renderScannerView() {
+            const view = getActiveScannerView();
+            const isPre = view === 'premarket';
+            const rows = isPre ? (window._lastPreMarketResults || []) : (window._lastLiveResults || []);
+            const tsEl = document.getElementById('scanner-timestamp');
+            const tbody = document.querySelector('#scanner-table tbody');
+            if (!tbody) return;
+            if (rows.length) {
+                const sorted = [...rows].sort((a, b) => {
+                    const aAlert = a.status === 'ALERT' ? 1 : 0;
+                    const bAlert = b.status === 'ALERT' ? 1 : 0;
+                    if (aAlert !== bAlert) return bAlert - aAlert;
+                    if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
+                    return 0;
+                });
+                tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
+            } else {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${isPre ? 'No pre-market/after-hours watchlist saved yet.' : 'No scan results available.'}</td></tr>`;
+            }
+            if (tsEl) {
+                const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                if (isPre) {
+                    tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
+                } else {
+                    tsEl.textContent = ts ? `Updated ${ts}` : '';
+                }
+            }
+        }
+
         async function loadLiveData() {
             try {
                 setMarketLoading(currentMarket, true);
@@ -2653,41 +2714,17 @@
                 liveLastUpdated = lastUpdated;
                 populateAlertSelector(results);
 
-                // Update scanner table
-                const tbody = document.querySelector('#scanner-table tbody');
-                if (tbody) {
-                    const sorted = [...results].sort((a, b) => {
-                        const aAlert = a.status === 'ALERT' ? 1 : 0;
-                        const bAlert = b.status === 'ALERT' ? 1 : 0;
-                        if (aAlert !== bAlert) return bAlert - aAlert;
-                        if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
-                        return 0;
-                    });
-                    if (sorted.length) {
-                        tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
-                    } else {
-                        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No scan results available.</td></tr>`;
-                    }
+                // Preserve pre-market/after-hours watchlist for US; rendered via the same scanner table when toggled.
+                window._lastPreMarketResults = preMarketResults;
+                window._lastLiveResults = results;
+                window._lastScanTimestamp = lastUpdated;
+                const scannerTimestamp = document.getElementById('scanner-timestamp');
+                if (scannerTimestamp) {
+                    const ts = lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+                    scannerTimestamp.textContent = preMarketResults.length ? `${preMarketResults.length} saved rows from ${ts}` : '';
                 }
-
-                // Update preserved pre-market watchlist (US only, survives switch to OPEN)
-                const preMarketContainer = document.getElementById('pre-market-container');
-                if (preMarketContainer && currentMarket !== 'AUS') {
-                    if (preMarketResults.length) {
-                        preMarketContainer.innerHTML = `
-                            <h3 style="margin-bottom:0.75rem;color:var(--accent-amber);">🌅 Pre-Market Watchlist</h3>
-                            <div class="table-wrap">
-                                <table class="pre-market-table">
-                                    <thead><tr><th>Ticker</th><th>Name</th><th>Status</th><th>Result</th></tr></thead>
-                                    <tbody>${preMarketResults.map(r => renderScannerRow(r)).join('')}</tbody>
-                                </table>
-                            </div>`;
-                        preMarketContainer.style.display = 'block';
-                    } else {
-                        preMarketContainer.style.display = 'none';
-                        preMarketContainer.innerHTML = '';
-                    }
-                }
+                // Re-render current view according to active toggle
+                renderScannerView();
 
                 // Update news ticker
                 const ticker = document.getElementById('news-ticker');
