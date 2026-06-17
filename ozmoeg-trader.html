@@ -2726,14 +2726,9 @@
                     tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
                 }
             } else {
-                // Live view: regular-hours results. During extended hours, explain that live regular-hours data is not available yet.
-                if (isExtendedHours) {
-                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : 'after-hours';
-                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);"><div style="font-weight:600; color: var(--text-primary); margin-bottom: 0.4rem;">US market is currently ${marketLabel}</div><div>Live regular-hours scan will resume when the market opens. Switch to <span style="color: var(--accent-blue);">🌅 Pre/After</span> to see the extended-hours watchlist.</div></td></tr>`;
-                    populateAlertSelector([]);
-                    renderSelectedAlert();
-                    if (tsEl) tsEl.textContent = '';
-                } else if (rows.length) {
+                // Live view: always show the latest live scan results, regardless of market phase.
+                // During pre-market the live scan itself captures pre-market setups; during regular hours it captures regular-hours setups.
+                if (rows.length) {
                     const sorted = [...rows].sort((a, b) => {
                         const aAlert = a.status === 'ALERT' ? 1 : 0;
                         const bAlert = b.status === 'ALERT' ? 1 : 0;
@@ -2749,7 +2744,11 @@
                         tsEl.textContent = ts ? `Updated ${ts}` : '';
                     }
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No scan results available.</td></tr>';
+                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : (currentMarketStatus === 'AFTER-HOURS' ? 'after-hours' : 'closed');
+                    const closedMsg = currentMarketStatus === 'CLOSED' || currentMarketStatus === 'WEEKEND'
+                        ? `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. Live scan results will resume when the market opens.`
+                        : `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. No live scan results are available yet.`;
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${closedMsg}</td></tr>`;
                     populateAlertSelector([]);
                     renderSelectedAlert();
                     if (tsEl) tsEl.textContent = '';
