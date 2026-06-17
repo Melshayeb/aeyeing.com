@@ -547,6 +547,15 @@
         }
         .news-item.skip { color: var(--text-secondary); font-size: 0.75rem; }
         .right-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .pre-market-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-amber);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .pre-market-card h3 { margin: 0 0 0.75rem 0; font-size: 1rem; }
+        .pre-market-table th { background: rgba(255,179,0,0.1); color: var(--accent-amber); }
         .candidates-card {
             background: var(--bg-panel);
             border: 1px solid var(--border);
@@ -1401,6 +1410,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div id="pre-market-container" class="pre-market-card" style="display:none;"></div>
                 <!-- PRE_MARKET_TABLE -->
                 <!-- END_PRE_MARKET_TABLE -->
                 <!-- SCANNED_GAINERS_TABLE -->
@@ -2580,16 +2590,19 @@
                     return `<li><span class="score ${scoreClass}">[${s}]</span> <a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a> <em>${escapeHtml(h.source || '')}</em></li>`;
                 }).join('');
             } else {
-                list.innerHTML = '<li><span class="score">[-]</span> No headlines returned for this alert.</li>';
+                list.innerHTML = '<li><span class="score">[-]</span> No qualifying news headlines found for this alert.</li>';
             }
         }
 
-        document.addEventListener('change', e => {
-            if (e.target.id === 'alert-selector') {
-                localStorage.setItem('ozmoeg-selected-alert', e.target.value);
-                renderSelectedAlert();
-            }
-        });
+        function renderScannerRow(r) {
+            let statusClass = 'result-skip';
+            let emoji = '⏭️';
+            if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
+            else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
+            const imp = impactLabel(getAlertMaxScore(r));
+            const escaped = escapeHtml(r.result || '');
+            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${r.status === 'ALERT' ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td>${escaped}</td></tr>`;
+        }
 
         async function loadLiveData() {
             try {
@@ -2604,6 +2617,7 @@
                 }
                 const data = await res.json();
                 const results = data.scan_results || [];
+                const preMarketResults = data.pre_market_results || [];
                 const allGainers = data.all_gainers || [];
                 const stats = data.scan_stats || {};
                 const lastUpdated = new Date(data.last_updated || Date.now());
@@ -2618,9 +2632,6 @@
                 const marketLabel = marketFromData;
                 document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts`;
 
-                // Respect user's market toggle choice; only update badge label to reflect data source.
-                // (Do NOT auto-switch currentMarket here — that causes the toggle to bounce back.)
-
                 // Update alert selector + active plan + tracker + catalyst
                 liveResults = results;
                 liveLastUpdated = lastUpdated;
@@ -2629,7 +2640,6 @@
                 // Update scanner table
                 const tbody = document.querySelector('#scanner-table tbody');
                 if (tbody) {
-                    // Sort results: ALERTS first, then by impact score desc within ALERT, then candidates/others
                     const sorted = [...results].sort((a, b) => {
                         const aAlert = a.status === 'ALERT' ? 1 : 0;
                         const bAlert = b.status === 'ALERT' ? 1 : 0;
@@ -2638,17 +2648,28 @@
                         return 0;
                     });
                     if (sorted.length) {
-                        tbody.innerHTML = sorted.map(r => {
-                            let statusClass = 'result-skip';
-                            let emoji = '⏭️';
-                            if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
-                            else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
-                            const imp = impactLabel(getAlertMaxScore(r));
-                            const escaped = (r.result || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${r.status === 'ALERT' ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td>${escaped}</td></tr>`;
-                        }).join('');
+                        tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
                     } else {
                         tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No scan results available.</td></tr>`;
+                    }
+                }
+
+                // Update preserved pre-market watchlist (US only, survives switch to OPEN)
+                const preMarketContainer = document.getElementById('pre-market-container');
+                if (preMarketContainer && currentMarket !== 'AUS') {
+                    if (preMarketResults.length) {
+                        preMarketContainer.innerHTML = `
+                            <h3 style="margin-bottom:0.75rem;color:var(--accent-amber);">🌅 Pre-Market Watchlist</h3>
+                            <div class="table-wrap">
+                                <table class="pre-market-table">
+                                    <thead><tr><th>Ticker</th><th>Name</th><th>Status</th><th>Result</th></tr></thead>
+                                    <tbody>${preMarketResults.map(r => renderScannerRow(r)).join('')}</tbody>
+                                </table>
+                            </div>`;
+                        preMarketContainer.style.display = 'block';
+                    } else {
+                        preMarketContainer.style.display = 'none';
+                        preMarketContainer.innerHTML = '';
                     }
                 }
 
@@ -2669,7 +2690,6 @@
                 const scannedDetails = document.querySelector('#scanned-all-details');
                 const isAu = (stats.market || 'us').toLowerCase() === 'au';
                 if (scannedDetails && allGainers.length) {
-                    // keep summary, rebuild table body
                     const table = scannedDetails.querySelector('table tbody');
                     if (table) {
                         table.innerHTML = allGainers.map(stock => {
