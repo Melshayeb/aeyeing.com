@@ -2472,6 +2472,7 @@
         let liveResults = [];
         let displayedResults = [];
         let liveLastUpdated = new Date();
+        let currentMarketStatus = 'OPEN';
 
         function fmtCurrency(n) {
             if (n === undefined || n === null || isNaN(n)) return '—';
@@ -2692,12 +2693,13 @@
         function renderScannerView() {
             const view = getActiveScannerView();
             const isPre = view === 'premarket';
+            const isExtendedHours = currentMarket !== 'AUS' && (currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS');
             const rows = isPre ? (window._lastPreMarketResults || []) : (window._lastLiveResults || []);
             displayedResults = rows;
             const tsEl = document.getElementById('scanner-timestamp');
             const tbody = document.querySelector('#scanner-table tbody');
             if (!tbody) return;
-            if (rows.length) {
+            if (isPre) {
                 const sorted = [...rows].sort((a, b) => {
                     const aAlert = a.status === 'ALERT' ? 1 : 0;
                     const bAlert = b.status === 'ALERT' ? 1 : 0;
@@ -2705,20 +2707,47 @@
                     if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
                     return 0;
                 });
-                tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
-                populateAlertSelector(displayedResults);
-                renderSelectedAlert();
-            } else {
-                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${isPre ? 'No pre-market/after-hours watchlist saved yet.' : 'No scan results available.'}</td></tr>`;
-                populateAlertSelector([]);
-                renderSelectedAlert();
-            }
-            if (tsEl) {
-                const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
-                if (isPre) {
-                    tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
+                if (rows.length) {
+                    tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
+                    populateAlertSelector(displayedResults);
+                    renderSelectedAlert();
                 } else {
-                    tsEl.textContent = ts ? `Updated ${ts}` : '';
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No pre-market/after-hours watchlist saved yet.</td></tr>';
+                    populateAlertSelector([]);
+                    renderSelectedAlert();
+                }
+                if (tsEl) {
+                    const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                    tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
+                }
+            } else {
+                // Live view: regular-hours results. During extended hours, explain that live regular-hours data is not available yet.
+                if (isExtendedHours) {
+                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : 'after-hours';
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);"><div style="font-weight:600; color: var(--text-primary); margin-bottom: 0.4rem;">US market is currently ${marketLabel}</div><div>Live regular-hours scan will resume when the market opens. Switch to <span style="color: var(--accent-blue);">🌅 Pre/After</span> to see the extended-hours watchlist.</div></td></tr>`;
+                    populateAlertSelector([]);
+                    renderSelectedAlert();
+                    if (tsEl) tsEl.textContent = '';
+                } else if (rows.length) {
+                    const sorted = [...rows].sort((a, b) => {
+                        const aAlert = a.status === 'ALERT' ? 1 : 0;
+                        const bAlert = b.status === 'ALERT' ? 1 : 0;
+                        if (aAlert !== bAlert) return bAlert - aAlert;
+                        if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
+                        return 0;
+                    });
+                    tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
+                    populateAlertSelector(displayedResults);
+                    renderSelectedAlert();
+                    if (tsEl) {
+                        const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                        tsEl.textContent = ts ? `Updated ${ts}` : '';
+                    }
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No scan results available.</td></tr>';
+                    populateAlertSelector([]);
+                    renderSelectedAlert();
+                    if (tsEl) tsEl.textContent = '';
                 }
             }
         }
@@ -2745,6 +2774,7 @@
                 const alerts = results.filter(r => r.status === 'ALERT').length;
                 const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
                 const marketStatus = stats.market_status || 'OPEN';
+                currentMarketStatus = marketStatus;
                 const marketTime = stats.market_time || '';
                 const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
