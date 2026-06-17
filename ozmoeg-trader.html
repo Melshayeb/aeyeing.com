@@ -2797,22 +2797,19 @@
                 window._lastLiveResults = results;
                 window._lastScanTimestamp = lastUpdated;
 
-                // Determine whether the Pre/After toggle is meaningful:
-                // - US AFTER-HOURS: yes (shows after-hours watchlist while Live is empty)
-                // - US OPEN: yes, if we have a saved pre-market watchlist to compare against live scan
-                // - US PRE-MARKET: no — the current pre-market scan IS the live scan, so only Live is shown
-                // - AUS: no pre/after market
-                const isUs = currentMarket !== 'AUS';
-                const hasSavedWatchlist = preMarketResults && preMarketResults.length > 0;
-                const showPreAfterToggle = isUs && (marketStatus === 'AFTER-HOURS' || (marketStatus === 'OPEN' && hasSavedWatchlist));
+                // Show Pre/After toggle for US markets (pre-market, regular hours, after-hours all have an extended-hours watchlist).
+                // Hide it for AUS because ASX has no pre/after session.
+                const showPreAfterToggle = currentMarket !== 'AUS';
                 const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
                 if (preBtn) {
                     preBtn.style.display = showPreAfterToggle ? 'inline-flex' : 'none';
-                    preBtn.disabled = !showPreAfterToggle;
                 }
                 if (!scannerFirstLoadDone) {
                     const savedView = loadScannerViewPreference();
+                    const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
                     if (savedView === 'premarket' && showPreAfterToggle) {
+                        setScannerToggleActive('premarket');
+                    } else if (isUsExtendedHours) {
                         setScannerToggleActive('premarket');
                     } else {
                         setScannerToggleActive('live');
