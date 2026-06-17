@@ -2747,7 +2747,7 @@
                     const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : (currentMarketStatus === 'AFTER-HOURS' ? 'after-hours' : 'closed');
                     const closedMsg = currentMarketStatus === 'CLOSED' || currentMarketStatus === 'WEEKEND'
                         ? `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. Live scan results will resume when the market opens.`
-                        : `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. No live scan results are available yet.`;
+                        : `The ${currentMarket === 'AUS' ? 'ASX' : 'US'} market is currently ${marketLabel}. No live scan results are available yet. Switch to 🌅 Pre/After to view the extended-hours watchlist.`;
                     tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${closedMsg}</td></tr>`;
                     populateAlertSelector([]);
                     renderSelectedAlert();
@@ -2794,13 +2794,15 @@
                 window._lastScanTimestamp = lastUpdated;
 
                 // Auto-switch scanner toggle to the view matching the current market state ONLY on first load.
-                // After that, the user's manual toggle choice is preserved across auto-refreshes and market switches.
+                // Hide the Pre/After toggle when it is not meaningful (US pre-market, AUS, or regular US hours without a saved watchlist).
                 const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
+                const hasSavedWatchlist = preMarketResults && preMarketResults.length > 0;
+                const showPreAfterToggle = isUsExtendedHours || hasSavedWatchlist;
+                const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
+                if (preBtn) preBtn.style.display = showPreAfterToggle ? '' : 'none';
                 if (!scannerFirstLoadDone) {
                     const savedView = loadScannerViewPreference();
-                    if (savedView === 'live' || savedView === 'premarket') {
-                        setScannerToggleActive(savedView);
-                    } else if (isUsExtendedHours) {
+                    if (savedView === 'premarket' && showPreAfterToggle) {
                         setScannerToggleActive('premarket');
                     } else {
                         setScannerToggleActive('live');
