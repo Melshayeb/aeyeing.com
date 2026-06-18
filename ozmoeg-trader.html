@@ -1187,13 +1187,21 @@
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
                         <!-- NEWS_TICKER_ITEMS -->
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 18</span> <span class="time">06:01 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 18</span> <span class="time">06:02 PM</span> — LPA (Logistic Properties) — Entry $3.14, Stop $3.1086, T1 $3.2342
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 18</span> <span class="time">06:01 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                            <span class="date">June 18</span> <span class="time">06:02 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                        </div>
+                        <div class="news-item alert">
+                            <span class="score">ALERT</span>
+                            <span class="date">June 18</span> <span class="time">06:02 PM</span> — LPA (Logistic Properties) — Entry $3.14, Stop $3.1086, T1 $3.2342
+                        </div>
+                        <div class="news-item skip">
+                            <span class="score">SKIP</span>
+                            <span class="date">June 18</span> <span class="time">06:02 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1214,7 +1222,7 @@
                         </div>
                         <span id="scanner-timestamp"></span>
                         <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 04:01 AM ET | Scanned: 50 | 1 candidates | 0 alerts
+🟡 US PRE-MARKET 04:02 AM ET | Scanned: 50 | 2 candidates | 1 alerts
                     <!-- END_SCANNER_BADGE --></span>
                         <select id="alert-selector" class="alert-selector">
                             <option value="">Select an alert…</option>
@@ -1233,6 +1241,12 @@
                         </thead>
                         <tbody>
                             <!-- SCANNER_TABLE_BODY -->
+                            <tr>
+                                <td class="ticker-cell">LPA</td>
+                                <td>Logistic Properties</td>
+                                <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td>Entry $3.14, Stop $3.1086, T1 $3.2342</td>
+                            </tr>
                             <tr>
                                 <td class="ticker-cell">CAST</td>
                                 <td>Freecast Inc</td>
@@ -1258,144 +1272,155 @@
                                 <td class="ticker-cell">ADTX</td>
                                 <td>Aditxt Inc</td>
                                 <td>$0.01</td>
-                                <td>+181.8%</td>
-                                <td>11,753,411</td>
+                                <td>+115.9%</td>
+                                <td>27,318,192</td>
                                 <td>0.0x</td>
                                 <td>$0.0M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.012, mktcap $0.0M</td>
+                                <td>Filtered: price $0.009, mktcap $0.0M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LPA</td>
                                 <td>Logistic Properties</td>
-                                <td>$6.84</td>
-                                <td>+117.8%</td>
-                                <td>82,999</td>
-                                <td>0.0x</td>
+                                <td>$6.70</td>
+                                <td>+113.4%</td>
+                                <td>123,428</td>
+                                <td>0.1x</td>
                                 <td>$99.3M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 82,999</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">LNKS</td>
-                                <td>Linkers</td>
-                                <td>$2.77</td>
-                                <td>+72.8%</td>
-                                <td>37,395</td>
-                                <td>0.0x</td>
-                                <td>$2.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $2.6M, vol 37,395</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BYAH</td>
                                 <td>PARK HA BIOLOGICAL TECHNOLOGY</td>
-                                <td>$1.93</td>
-                                <td>+60.8%</td>
-                                <td>268,261</td>
+                                <td>$2.11</td>
+                                <td>+75.8%</td>
+                                <td>382,217</td>
                                 <td>0.0x</td>
                                 <td>$7.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: mktcap $7.3M</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">LNKS</td>
+                                <td>Linkers</td>
+                                <td>$2.40</td>
+                                <td>+49.9%</td>
+                                <td>104,683</td>
+                                <td>0.1x</td>
+                                <td>$2.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $2.6M</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">CAST</td>
                                 <td>Freecast Inc</td>
-                                <td>$7.80</td>
-                                <td>+51.5%</td>
-                                <td>164,151</td>
+                                <td>$7.18</td>
+                                <td>+39.4%</td>
+                                <td>235,370</td>
                                 <td>0.0x</td>
                                 <td>$212.9M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">CDTG</td>
+                                <td>CDT Environmental Technology Investment Holdings Ltd</td>
+                                <td>$2.39</td>
+                                <td>+39.8%</td>
+                                <td>7,862</td>
+                                <td>0.0x</td>
+                                <td>$5.2M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $5.2M, vol 7,862</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">NWGL</td>
                                 <td>CL Workshop Group</td>
                                 <td>$0.32</td>
-                                <td>+22.1%</td>
-                                <td>8,400</td>
+                                <td>+24.0%</td>
+                                <td>70,228</td>
                                 <td>0.0x</td>
                                 <td>$4.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.319, mktcap $4.3M, vol 8,400</td>
+                                <td>Filtered: price $0.324, mktcap $4.3M, vol 70,228</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">RUM</td>
-                                <td>Rumble Inc</td>
-                                <td>$8.64</td>
-                                <td>+18.5%</td>
-                                <td>4,276</td>
+                                <td class="ticker-cell">BGDE</td>
+                                <td>Big Digital Energy Inc</td>
+                                <td>$11.67</td>
+                                <td>+20.3%</td>
+                                <td>2,027</td>
                                 <td>0.0x</td>
-                                <td>$3172.8M</td>
+                                <td>$53.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 4,276</td>
+                                <td>Filtered: vol 2,027</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">SPRO</td>
+                                <td>Spero Therapeuti</td>
+                                <td>$2.49</td>
+                                <td>+18.0%</td>
+                                <td>18,244</td>
+                                <td>0.0x</td>
+                                <td>$122.2M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 18,244</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CLDI</td>
                                 <td>Calidi Biotherapeutics Inc</td>
                                 <td>$0.18</td>
-                                <td>+18.4%</td>
-                                <td>111,886</td>
+                                <td>+17.8%</td>
+                                <td>213,772</td>
                                 <td>0.0x</td>
                                 <td>$2.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.180, mktcap $2.9M</td>
+                                <td>Filtered: price $0.179, mktcap $2.9M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BBLG</td>
                                 <td>Bone Biologics Corp</td>
-                                <td>$1.76</td>
-                                <td>+19.6%</td>
-                                <td>5,317</td>
+                                <td>$1.73</td>
+                                <td>+17.7%</td>
+                                <td>5,770</td>
                                 <td>0.0x</td>
                                 <td>$2.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $2.6M, vol 5,317</td>
+                                <td>Filtered: mktcap $2.6M, vol 5,770</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CTNT</td>
-                                <td>Cheetah Net Supply Chain Service Inc.</td>
-                                <td>$1.88</td>
-                                <td>+18.6%</td>
-                                <td>5,842</td>
+                                <td class="ticker-cell">RUM</td>
+                                <td>Rumble Inc</td>
+                                <td>$8.56</td>
+                                <td>+17.4%</td>
+                                <td>8,385</td>
                                 <td>0.0x</td>
-                                <td>$4.7M</td>
+                                <td>$3172.8M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $4.7M, vol 5,842</td>
+                                <td>Filtered: vol 8,385</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">RMD</td>
-                                <td>Resmed</td>
-                                <td>$220.88</td>
-                                <td>+18.6%</td>
-                                <td>1</td>
-                                <td>0.0x</td>
-                                <td>$27022.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $220.880, mktcap $27022.6M, vol 1</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BGDE</td>
-                                <td>Big Digital Energy Inc</td>
-                                <td>$11.40</td>
-                                <td>+17.5%</td>
-                                <td>831</td>
-                                <td>0.0x</td>
-                                <td>$53.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 831</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SPRO</td>
-                                <td>Spero Therapeuti</td>
-                                <td>$2.47</td>
+                                <td class="ticker-cell">SWBI</td>
+                                <td>Smith & Wesson Brands Inc</td>
+                                <td>$16.08</td>
                                 <td>+17.1%</td>
-                                <td>11,015</td>
+                                <td>1,022</td>
                                 <td>0.0x</td>
-                                <td>$122.2M</td>
+                                <td>$610.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 11,015</td>
+                                <td>Filtered: vol 1,022</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">GPUS</td>
+                                <td>Hyperscale Data Inc.</td>
+                                <td>$0.47</td>
+                                <td>+16.9%</td>
+                                <td>8,848,438</td>
+                                <td>0.0x</td>
+                                <td>$183.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.465</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">SIGA</td>
@@ -1409,59 +1434,26 @@
                                 <td>Filtered: vol 1</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">CTNT</td>
+                                <td>Cheetah Net Supply Chain Service Inc.</td>
+                                <td>$1.84</td>
+                                <td>+16.1%</td>
+                                <td>7,346</td>
+                                <td>0.0x</td>
+                                <td>$4.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $4.7M, vol 7,346</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">AZTR</td>
                                 <td>Azitra Inc</td>
                                 <td>$0.23</td>
                                 <td>+15.8%</td>
-                                <td>31,752</td>
+                                <td>169,705</td>
                                 <td>0.0x</td>
                                 <td>$3.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.235, mktcap $3.3M, vol 31,752</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SWBI</td>
-                                <td>Smith & Wesson Brands Inc</td>
-                                <td>$15.91</td>
-                                <td>+15.9%</td>
-                                <td>734</td>
-                                <td>0.0x</td>
-                                <td>$610.9M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 734</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">GPUS</td>
-                                <td>Hyperscale Data Inc.</td>
-                                <td>$0.46</td>
-                                <td>+14.4%</td>
-                                <td>8,648,873</td>
-                                <td>0.0x</td>
-                                <td>$183.7M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.455</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AU</td>
-                                <td>Anglogold Ashant</td>
-                                <td>$103.37</td>
-                                <td>+13.7%</td>
-                                <td>1</td>
-                                <td>0.0x</td>
-                                <td>$45970.0M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $103.370, mktcap $45970.0M, vol 1</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">CLWT</td>
-                                <td>Euro Tech Holdings Co Ltd</td>
-                                <td>$1.75</td>
-                                <td>+11.6%</td>
-                                <td>1,322</td>
-                                <td>0.0x</td>
-                                <td>$11.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $11.6M, vol 1,322</td>
+                                <td>Filtered: price $0.235, mktcap $3.3M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CANG</td>
@@ -1475,37 +1467,37 @@
                                 <td>Filtered: price $0.350, vol 503</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CDTG</td>
-                                <td>CDT Environmental Technology Investment Holdings Ltd</td>
-                                <td>$1.89</td>
-                                <td>+10.5%</td>
-                                <td>500</td>
+                                <td class="ticker-cell">TRT</td>
+                                <td>Trio Tech Int</td>
+                                <td>$16.27</td>
+                                <td>+10.7%</td>
+                                <td>960</td>
                                 <td>0.0x</td>
-                                <td>$5.2M</td>
+                                <td>$148.7M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $5.2M, vol 500</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">SRXH</td>
-                                <td>SRX Health Solutions Inc</td>
-                                <td>$0.22</td>
-                                <td>+10.3%</td>
-                                <td>12,158</td>
-                                <td>0.0x</td>
-                                <td>$117.8M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.220, vol 12,158</td>
+                                <td>Filtered: vol 960</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">PAVS</td>
                                 <td>Paranovus Entertainment Technology Ord Shs Class A</td>
                                 <td>$0.19</td>
-                                <td>+10.1%</td>
-                                <td>6,718</td>
+                                <td>+9.5%</td>
+                                <td>130,497</td>
                                 <td>0.0x</td>
                                 <td>$0.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.190, mktcap $0.3M, vol 6,718</td>
+                                <td>Filtered: price $0.189, mktcap $0.3M</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">OLB</td>
+                                <td>OLB Group Inc</td>
+                                <td>$0.43</td>
+                                <td>+8.7%</td>
+                                <td>655</td>
+                                <td>0.0x</td>
+                                <td>$5.9M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.435, mktcap $5.9M, vol 655</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">ENS</td>
@@ -1530,15 +1522,15 @@
                                 <td>Filtered: mktcap $13.5M, vol 1</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">QXL</td>
-                                <td>Quantum X Labs Inc</td>
-                                <td>$6.08</td>
-                                <td>+8.2%</td>
-                                <td>219</td>
+                                <td class="ticker-cell">CLWT</td>
+                                <td>Euro Tech Holdings Co Ltd</td>
+                                <td>$1.70</td>
+                                <td>+8.3%</td>
+                                <td>4,603</td>
                                 <td>0.0x</td>
-                                <td>$75.0M</td>
+                                <td>$11.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 219</td>
+                                <td>Filtered: mktcap $11.6M, vol 4,603</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">FIVE</td>
@@ -1574,17 +1566,6 @@
                                 <td>Filtered: price $620.420, mktcap $28592.6M, vol 1</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">IPWR</td>
-                                <td>Ideal Pwr Inc</td>
-                                <td>$6.15</td>
-                                <td>+7.7%</td>
-                                <td>1,236</td>
-                                <td>0.0x</td>
-                                <td>$91.4M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 1,236</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">JLL</td>
                                 <td>Jones Lang Lasalle Inc</td>
                                 <td>$321.23</td>
@@ -1594,17 +1575,6 @@
                                 <td>$13839.7M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: price $321.230, mktcap $13839.7M, vol 1</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BTQ</td>
-                                <td>Btq Technologies Corp</td>
-                                <td>$6.34</td>
-                                <td>+7.6%</td>
-                                <td>349</td>
-                                <td>0.0x</td>
-                                <td>$832.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 349</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">MFI</td>
@@ -1629,6 +1599,28 @@
                                 <td>Filtered: vol 2</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">FMFC</td>
+                                <td>Kandal M Venture Limited</td>
+                                <td>$0.27</td>
+                                <td>+7.8%</td>
+                                <td>416</td>
+                                <td>0.0x</td>
+                                <td>$4.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.272, mktcap $4.6M, vol 416</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">BTQ</td>
+                                <td>Btq Technologies Corp</td>
+                                <td>$6.33</td>
+                                <td>+7.5%</td>
+                                <td>12,538</td>
+                                <td>0.0x</td>
+                                <td>$832.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 12,538</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">CISO</td>
                                 <td>Ciso Global</td>
                                 <td>$0.30</td>
@@ -1640,15 +1632,26 @@
                                 <td>Filtered: price $0.303, mktcap $12.8M, vol 5</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">FMFC</td>
-                                <td>Kandal M Venture Limited</td>
-                                <td>$0.27</td>
-                                <td>+7.0%</td>
-                                <td>383</td>
+                                <td class="ticker-cell">HUMA</td>
+                                <td>Humacyte Inc</td>
+                                <td>$1.04</td>
+                                <td>+7.3%</td>
+                                <td>233</td>
                                 <td>0.0x</td>
-                                <td>$4.6M</td>
+                                <td>$261.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.270, mktcap $4.6M, vol 383</td>
+                                <td>Filtered: vol 233</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">LCFY</td>
+                                <td>Locafy Ltd</td>
+                                <td>$4.27</td>
+                                <td>+7.3%</td>
+                                <td>1,295</td>
+                                <td>0.1x</td>
+                                <td>$7.2M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $7.2M, vol 1,295</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BGL</td>
@@ -1662,26 +1665,26 @@
                                 <td>Filtered: price $0.430, mktcap $16.4M, vol 409</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">SIMO</td>
+                                <td>Silicon Motion Technology Corp</td>
+                                <td>$328.38</td>
+                                <td>+6.9%</td>
+                                <td>634</td>
+                                <td>0.0x</td>
+                                <td>$10437.1M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $328.380, mktcap $10437.1M, vol 634</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">ENVX</td>
                                 <td>Enovix Corporation</td>
                                 <td>$7.15</td>
                                 <td>+6.9%</td>
-                                <td>3,717</td>
+                                <td>3,950</td>
                                 <td>0.0x</td>
                                 <td>$1459.4M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 3,717</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">KITT</td>
-                                <td>Nauticus Robotic</td>
-                                <td>$1.40</td>
-                                <td>+6.9%</td>
-                                <td>1</td>
-                                <td>0.0x</td>
-                                <td>$6.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $6.6M, vol 1</td>
+                                <td>Filtered: vol 3,950</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">ERNA</td>
@@ -1693,17 +1696,6 @@
                                 <td>$6.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: mktcap $6.9M, vol 10</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">INTC</td>
-                                <td>Intel Corp</td>
-                                <td>$129.24</td>
-                                <td>+6.7%</td>
-                                <td>441,458</td>
-                                <td>0.0x</td>
-                                <td>$608648.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $129.240, mktcap $608648.6M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">KSCP</td>
@@ -1728,48 +1720,26 @@
                                 <td>Filtered: vol 158</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">MODD</td>
-                                <td>Modular Med Inc</td>
-                                <td>$4.75</td>
-                                <td>+6.5%</td>
-                                <td>29</td>
+                                <td class="ticker-cell">ORLA</td>
+                                <td>Orla Mng</td>
+                                <td>$11.87</td>
+                                <td>+6.6%</td>
+                                <td>752</td>
                                 <td>0.0x</td>
-                                <td>$24.1M</td>
+                                <td>$3850.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $24.1M, vol 29</td>
+                                <td>Filtered: vol 752</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">MSCI</td>
-                                <td>MSCI Inc</td>
-                                <td>$635.41</td>
-                                <td>+6.5%</td>
-                                <td>1</td>
+                                <td class="ticker-cell">INTC</td>
+                                <td>Intel Corp</td>
+                                <td>$129.05</td>
+                                <td>+6.6%</td>
+                                <td>876,823</td>
                                 <td>0.0x</td>
-                                <td>$43453.6M</td>
+                                <td>$608648.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $635.410, mktcap $43453.6M, vol 1</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">JZ</td>
-                                <td>Jianzhi Education Technology Group Co Ltd</td>
-                                <td>$0.17</td>
-                                <td>+6.2%</td>
-                                <td>15,285</td>
-                                <td>0.0x</td>
-                                <td>$11.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.170, mktcap $11.6M, vol 15,285</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">ERII</td>
-                                <td>Energy Recovery Inc</td>
-                                <td>$9.55</td>
-                                <td>+6.2%</td>
-                                <td>798</td>
-                                <td>0.0x</td>
-                                <td>$463.4M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 798</td>
+                                <td>Filtered: price $129.050, mktcap $608648.6M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">ATLN</td>
@@ -1783,6 +1753,17 @@
                                 <td>Filtered: vol 1,000</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">JZ</td>
+                                <td>Jianzhi Education Technology Group Co Ltd</td>
+                                <td>$0.17</td>
+                                <td>+6.2%</td>
+                                <td>15,319</td>
+                                <td>0.0x</td>
+                                <td>$11.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.170, mktcap $11.6M, vol 15,319</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">GOSS</td>
                                 <td>Gossamer Bio</td>
                                 <td>$0.19</td>
@@ -1794,15 +1775,48 @@
                                 <td>Filtered: price $0.190, vol 454</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">MOD</td>
-                                <td>Modine Manf</td>
-                                <td>$301.20</td>
-                                <td>+6.1%</td>
+                                <td class="ticker-cell">MOB</td>
+                                <td>Mobilicom</td>
+                                <td>$5.88</td>
+                                <td>+5.9%</td>
+                                <td>26</td>
+                                <td>0.0x</td>
+                                <td>$70.1M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 26</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">TPR</td>
+                                <td>Tapestry Inc</td>
+                                <td>$154.35</td>
+                                <td>+5.8%</td>
                                 <td>1</td>
                                 <td>0.0x</td>
-                                <td>$14993.3M</td>
+                                <td>$29472.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $301.200, mktcap $14993.3M, vol 1</td>
+                                <td>Filtered: price $154.350, mktcap $29472.3M, vol 1</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">IDR</td>
+                                <td>Idaho Strategic Resources</td>
+                                <td>$38.16</td>
+                                <td>+5.7%</td>
+                                <td>3</td>
+                                <td>0.0x</td>
+                                <td>$570.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $38.160, vol 3</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">BMR</td>
+                                <td>Beamr Imaging Ltd</td>
+                                <td>$1.69</td>
+                                <td>+5.6%</td>
+                                <td>326</td>
+                                <td>0.0x</td>
+                                <td>$24.8M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $24.8M, vol 326</td>
                             </tr>
                                     </tbody>
                                 </table>
