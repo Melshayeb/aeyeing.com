@@ -1144,7 +1144,7 @@
                 <span class="status-dot"></span>
                 <span>Live Scanner Active</span>
             </div>
-            <span class="last-updated" id="page-refresh-label">Next refresh: 1:00</span>
+            <span class="last-updated" id="page-refresh-label">Next refresh: 15:00</span>
             <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
             <button class="refresh-btn" onclick="loadLiveData()">⟳ Refresh Now</button>
         </div>
@@ -2465,10 +2465,10 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 60s
+        // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 15 minutes
         // This bypasses GitHub Pages HTML cache so updates appear immediately.
 
-        const REFRESH_INTERVAL_MS = 60000;
+        const REFRESH_INTERVAL_MS = 900000; // 15 minutes — matches the market scanner cron
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
@@ -2600,10 +2600,16 @@
         }
 
         async function resolveCurrentPrice(ticker) {
-            // 1. Try a live public quote first.
+            // 1. Use live Webull quotes fetched by the backend (same source as the scanner).
+            const liveQuotes = window._lastLiveQuotes || {};
+            const live = liveQuotes[(ticker || '').toUpperCase()];
+            if (live && live.price > 0) {
+                return { price: live.price, source: 'live', timestamp: new Date(live._timestamp || window._lastScanTimestamp || Date.now()) };
+            }
+            // 2. Try a public quote as a last resort.
             let price = await fetchPublicQuote(ticker);
             if (price) return { price, source: 'live', timestamp: new Date() };
-            // 2. Fall back to the scan snapshot with a clear timestamp.
+            // 3. Fall back to the scan snapshot with a clear timestamp.
             price = getPriceFromAllGainers(ticker);
             if (price) return { price, source: 'scan', timestamp: window._lastScanTimestamp || liveLastUpdated || new Date() };
             return { price: null, source: null, timestamp: null };
@@ -2987,6 +2993,7 @@
                 window._lastPreMarketResults = preMarketResults;
                 window._lastLiveResults = results;
                 window._lastAllGainers = allGainers;
+                window._lastLiveQuotes = data.live_quotes || {};
                 window._lastScanTimestamp = lastUpdated;
 
                 // Show Pre/After toggle only for US markets (ASX has no extended session).
