@@ -2969,7 +2969,7 @@
                 }
 
                 // Update all-scanned details if expanded
-                const scannedDetails = document.querySelector('#scanned-all-details');
+                const scannedDetails = document.querySelector('details.scanned-details');
                 const isAu = (stats.market || 'us').toLowerCase() === 'au';
                 if (scannedDetails && allGainers.length) {
                     const table = scannedDetails.querySelector('table tbody');
