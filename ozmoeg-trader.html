@@ -2117,7 +2117,7 @@
             // Reset scanner first-load flag so the correct default view is applied for the new market
             scannerFirstLoadDone = false;
             userSelectedScannerView = null;
-            loadLiveData();
+            loadLiveData().then(() => renderPlanRules());
         }
 
         document.addEventListener('click', e => {
@@ -2491,7 +2491,7 @@
             return news.max_score !== undefined ? news.max_score : (news.headlines || []).reduce((m, h) => Math.max(m, h.score || 0), 0);
         }
 
-        function renderPlanRules(r) {
+        function renderPlanRules() {
             const list = document.getElementById('plan-rules-list');
             if (!list) return;
             const stats = window._lastScanStats || {};
@@ -2504,7 +2504,6 @@
                 const mktMax = auFilters.market_cap_max;
                 const moveMin = auFilters.premarket_pct_min;
                 const rvolMin = auFilters.rvol_min;
-                const volMin = auFilters.volume_min;
                 const dollarVolMin = auFilters.volume_value_aud_min;
                 list.innerHTML = `
                     <li>Price range: A$${priceMin}–A$${priceMax} ✅</li>
@@ -2692,6 +2691,7 @@
                 document.getElementById('news-scan-time').textContent = 'No recent scan';
                 document.getElementById('catalyst-headline').textContent = 'No active catalyst — waiting for next alert';
                 document.getElementById('news-list').innerHTML = '<li><span class="score">[-]</span> Select an alert above to view its catalyst and news headlines.</li>';
+                renderPlanRules();
                 return;
             }
 
@@ -2708,7 +2708,7 @@
             const riskAmount = parseFloat(p.risk_amount);
 
             // Render market-aware rules
-            renderPlanRules(r);
+            renderPlanRules();
 
             document.getElementById('plan-ticker').textContent = p.ticker;
             document.getElementById('perf-ticker').textContent = p.ticker;
@@ -2948,6 +2948,7 @@
 
                 // Re-render current view according to active toggle
                 renderScannerView();
+                renderPlanRules();
 
                 // Update news ticker
                 const ticker = document.getElementById('news-ticker');
