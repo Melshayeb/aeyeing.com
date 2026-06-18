@@ -1144,7 +1144,8 @@
                 <span class="status-dot"></span>
                 <span>Live Scanner Active</span>
             </div>
-            <span class="last-updated">Auto-refresh: 1 min</span>
+            <span class="last-updated" id="page-refresh-label">Next refresh: 1:00</span>
+            <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
             <button class="refresh-btn" onclick="loadLiveData()">⟳ Refresh Now</button>
         </div>
     </header>
@@ -2467,12 +2468,15 @@
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 60s
         // This bypasses GitHub Pages HTML cache so updates appear immediately.
 
+        const REFRESH_INTERVAL_MS = 60000;
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
         let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
         let currentMarketStatus = 'OPEN';
+        let refreshTimerId = null;
+        let nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
 
         function fmtCurrency(n) {
             if (n === undefined || n === null || isNaN(n)) return '—';
@@ -2548,6 +2552,8 @@
         }
 
         // ---- Live/current price lookup for tracker ----
+        // Prefer a real-time public quote so the tracker is not stuck with a stale
+        // scan snapshot. Fall back to the last scan price only when live data fails.
         function getPriceFromAllGainers(ticker) {
             const gainers = window._lastAllGainers || [];
             const match = gainers.find(g => {
@@ -2557,8 +2563,19 @@
             if (!match) return null;
             const t = match.ticker || match;
             const v = match.values || {};
-            const price = parseFloat(v.price || t.pprice || t.close || 0);
+            // Use the real-time price fields first; never fall back to the prior close
+            // because that creates a misleading "current price" for gap-up/gap-down stocks.
+            const price = parseFloat(v.price || t.pprice || 0);
             return price > 0 ? price : null;
+        }
+
+        function formatScanTimestamp(dateObj) {
+            if (!dateObj || isNaN(dateObj)) return '';
+            return dateObj.toLocaleString('en-AU', {
+                timeZone: 'Australia/Sydney',
+                weekday: 'short', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            });
         }
 
         async function fetchPublicQuote(ticker) {
@@ -2583,11 +2600,13 @@
         }
 
         async function resolveCurrentPrice(ticker) {
-            let price = getPriceFromAllGainers(ticker);
-            if (price) return { price, source: 'scan' };
-            price = await fetchPublicQuote(ticker);
-            if (price) return { price, source: 'live' };
-            return { price: null, source: null };
+            // 1. Try a live public quote first.
+            let price = await fetchPublicQuote(ticker);
+            if (price) return { price, source: 'live', timestamp: new Date() };
+            // 2. Fall back to the scan snapshot with a clear timestamp.
+            price = getPriceFromAllGainers(ticker);
+            if (price) return { price, source: 'scan', timestamp: window._lastScanTimestamp || liveLastUpdated || new Date() };
+            return { price: null, source: null, timestamp: null };
         }
 
         async function updateTrackerCurrentPrice(ticker, entry, t1, t2, t3, shareQty) {
@@ -2620,7 +2639,15 @@
                 curEl.textContent = fmtCurrency(current);
                 curEl.className = 'value ' + (current >= entry ? 'green' : 'red');
             }
-            if (subEl) subEl.textContent = resolved.source === 'scan' ? 'From latest scan' : 'Live quote';
+            if (subEl) {
+                if (resolved.source === 'live') {
+                    subEl.textContent = 'Live quote';
+                } else if (resolved.timestamp) {
+                    subEl.textContent = `From scan at ${formatScanTimestamp(resolved.timestamp)}`;
+                } else {
+                    subEl.textContent = 'From latest scan';
+                }
+            }
             if (pnlEl) {
                 pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
                 pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
@@ -2894,6 +2921,33 @@
             }
         }
 
+        function updateRefreshCountdown() {
+            const label = document.getElementById('page-refresh-label');
+            const lastLabel = document.getElementById('last-refresh-label');
+            if (lastLabel && window._lastScanTimestamp) {
+                lastLabel.textContent = `Last refresh: ${formatScanTimestamp(window._lastScanTimestamp)}`;
+            }
+            if (!label) return;
+            const remaining = Math.max(0, nextRefreshAt - Date.now());
+            const totalSeconds = Math.ceil(remaining / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+            label.textContent = `Next refresh: ${m}:${String(s).padStart(2, '0')}`;
+        }
+
+        function resetRefreshTimer() {
+            if (refreshTimerId) clearInterval(refreshTimerId);
+            nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
+            updateRefreshCountdown();
+            refreshTimerId = setInterval(() => {
+                if (Date.now() >= nextRefreshAt) {
+                    loadLiveData();
+                } else {
+                    updateRefreshCountdown();
+                }
+            }, 1000);
+        }
+
         async function loadLiveData() {
             try {
                 setMarketLoading(currentMarket, true);
@@ -3003,11 +3057,14 @@
                 console.error('Live data refresh failed:', e);
             } finally {
                 setMarketLoading(currentMarket, false);
+                // Reset the visible refresh countdown every time a fetch completes
+                // (success or failure) so the timer stays honest after manual refresh.
+                resetRefreshTimer();
             }
         }
         resetScannerToggleToLive();
         loadLiveData();
-        setInterval(loadLiveData, 60000);
+        resetRefreshTimer();
     </script>
 </body>
 </html>
