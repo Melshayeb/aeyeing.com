@@ -1,18 +1,74 @@
 {
-  "last_updated": "2026-06-19T10:12:30.256607",
+  "last_updated": "2026-06-19T10:14:29.284957",
   "scan_results": [
     {
       "ticker": "RDS",
       "name": "REDSTONE RESOURCES",
-      "status": "SKIP",
-      "result": "Poor R:R (1.50)",
-      "detail": "Poor R:R (1.50)",
-      "time": "10:12 AM",
-      "date": "June 19"
+      "status": "CANDIDATE",
+      "result": "AU candidate (data limited): Entry $0.003, Stop $0.003, T1 $0.003",
+      "detail": "ASX quote/news/bars limited from non-AU network. Verify on ASX broker before trading.",
+      "time": "10:14 AM",
+      "date": "June 19",
+      "news": {
+        "ticker": "RDS",
+        "catalyst": "\u26a0\ufe0f No price-sensitive ASX announcement \u2014 verify catalyst externally",
+        "max_score": 0,
+        "scan_time": "2026-06-19 10:14:28 ",
+        "headlines": [],
+        "headline_count": 0
+      },
+      "plan": {
+        "valid": true,
+        "ticker": "RDS",
+        "entry": 0.003,
+        "stop": 0.0029,
+        "targets": {
+          "t1": 0.0031,
+          "t2": 0.0032,
+          "t3": 0.0032
+        },
+        "risk_per_share": 0.0001,
+        "risk_amount": 100.0,
+        "shares": 33333,
+        "position_value": 100.0,
+        "risk_reward": 1.5,
+        "confidence": "AU-LIMITED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.0029"
+        }
+      },
+      "au_state": "AU-LIMITED"
     }
   ],
   "pre_market_results": [],
-  "active_plan": null,
+  "active_plan": {
+    "valid": true,
+    "ticker": "RDS",
+    "entry": 0.003,
+    "stop": 0.0029,
+    "targets": {
+      "t1": 0.0031,
+      "t2": 0.0032,
+      "t3": 0.0032
+    },
+    "risk_per_share": 0.0001,
+    "risk_amount": 100.0,
+    "shares": 33333,
+    "position_value": 100.0,
+    "risk_reward": 1.5,
+    "confidence": "AU-LIMITED",
+    "strategy": "Demand zone + candlestick confirmation scalp",
+    "exit_rules": {
+      "momentum_based": true,
+      "time_based": false,
+      "trail_breakeven_at": "+1%",
+      "hard_stop": "$0.0029"
+    }
+  },
   "total_candidates": 1,
   "alerts_generated": 0,
   "all_gainers": [
@@ -2171,7 +2227,7 @@
   "scan_stats": {
     "gainers_scanned": 50,
     "market_status": "OPEN",
-    "market_time": "10:12 AM AEST/AEDT",
+    "market_time": "10:14 AM AEST/AEDT",
     "market": "au",
     "au_filters": {
       "price_min": 0.001,
