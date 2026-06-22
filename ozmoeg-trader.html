@@ -2135,7 +2135,9 @@
             if (scannerBtn && !scannerBtn.classList.contains('active') && !scannerBtn.disabled) {
                 const view = scannerBtn.dataset.view;
                 setScannerToggleActive(view);
-                loadLiveData();
+                // Switching between Live and Pre/After is only a view change;
+                // it must not trigger a network reload. Render from already-fetched data.
+                renderScannerView();
             }
         });
 
@@ -2941,10 +2943,24 @@
             label.textContent = `Next refresh: ${m}:${String(s).padStart(2, '0')}`;
         }
 
+        // Schedule the next refresh relative to the actual data timestamp.
+        // If the JSON reports last_updated at 13:02, the next refresh is at 13:17,
+        // not 15 minutes from whenever the browser happens to load the page.
+        function scheduleNextRefresh(anchorTimestamp) {
+            const anchor = anchorTimestamp && !isNaN(anchorTimestamp) ? new Date(anchorTimestamp).getTime() : Date.now();
+            nextRefreshAt = anchor + REFRESH_INTERVAL_MS;
+            // If the anchor is so old that the scheduled time is already passed,
+            // fire at the next whole-minute boundary so the page doesn't get stuck.
+            if (nextRefreshAt <= Date.now()) {
+                nextRefreshAt = Date.now() + 1000; // will fire on the next tick
+            }
+            updateRefreshCountdown();
+        }
+
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
-            nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
-            updateRefreshCountdown();
+            // Use the actual last scan timestamp as the anchor when available.
+            scheduleNextRefresh(window._lastScanTimestamp);
             refreshTimerId = setInterval(() => {
                 if (Date.now() >= nextRefreshAt) {
                     loadLiveData();
@@ -2973,6 +2989,10 @@
                 const stats = data.scan_stats || {};
                 window._lastScanStats = stats;
                 const lastUpdated = new Date(data.last_updated || Date.now());
+                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
+                // aligned with the cron schedule, not the browser load time.
+                window._lastScanTimestamp = lastUpdated;
+                scheduleNextRefresh(lastUpdated);
 
                 // Update badge
                 const alerts = results.filter(r => r.status === 'ALERT').length;
@@ -2994,7 +3014,6 @@
                 window._lastLiveResults = results;
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
-                window._lastScanTimestamp = lastUpdated;
 
                 // Show Pre/After toggle only for US markets (ASX has no extended session).
                 const showPreAfterToggle = currentMarket !== 'AUS';
