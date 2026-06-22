@@ -2802,12 +2802,14 @@
 
             document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
             document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
-            // Tracker "Proposed Entry" uses the original scan basis so P&L reflects price movement
-            // between the scan/last refresh and the current live quote. The trade-plan card above
-            // still shows the actionable live entry price during pre/after-hours.
-            const basisEntry = isLiveRebased ? rawEntry : entry;
+            // Tracker "Proposed Entry" should reflect the live price captured at the last data refresh
+            // (pre-market or after-hours), not the stale regular-hours close. That way P&L tracks
+            // movement between refreshes of the same extended-hours session.
+            const liveQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
+            const liveRefreshPrice = (liveQuote && liveQuote.price > 0) ? liveQuote.price : null;
+            const basisEntry = isLiveRebased && liveRefreshPrice ? liveRefreshPrice : (isLiveRebased ? rawEntry : entry);
             document.getElementById('perf-entry').textContent = fmtCurrency(basisEntry);
-            const basisLabel = isLiveRebased ? 'Last scan basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis');
+            const basisLabel = isLiveRebased && liveRefreshPrice ? 'Live refresh basis' : (isLiveRebased ? 'Last scan basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis'));
             const scanTimeText = `${r.date || liveLastUpdated.toLocaleDateString('en-AU', { month:'long', day:'numeric' })} ${r.time || liveLastUpdated.toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' })}`;
             document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${basisLabel} · ${scanTimeText}`;
             // Current price and unrealized P&L are fetched independently so they don't blindly equal entry.
