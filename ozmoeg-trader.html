@@ -2862,13 +2862,34 @@
             }
         }
 
+        // List of headlines that are known to leak from other tickers / generic feeds and should never
+        // be shown as a ticker-specific red flag. When a skip reason matches one of these, we fall back
+        // to a generic red-flag label and surface the actual flag category (offering, dilution, etc.).
+        const BAD_RED_FLAG_HEADLINES = [
+            'Video: SpaceX dips after notes offering, KeyBanc initiation',
+            'SpaceX dips after notes offering',
+            'KeyBanc initiation'
+        ];
+
+        function sanitizeSkipReason(r) {
+            const raw = (r.result || r.detail || '').trim();
+            if (!raw) return '';
+            const lower = raw.toLowerCase();
+            const hasBadHeadline = BAD_RED_FLAG_HEADLINES.some(bad => lower.includes(bad.toLowerCase()));
+            if (!hasBadHeadline) return raw;
+            // Extract the flag category if present, e.g. "Red flags: offering:..." -> "offering"
+            const m = raw.match(/Red flags:\s*([^:]+):/i);
+            const flag = m ? m[1].trim() : 'red flag';
+            return `Red flags: ${flag} — headline mismatch (unrelated news item leaked into this ticker)`;
+        }
+
         function renderScannerRow(r) {
             let statusClass = 'result-skip';
             let emoji = '⏭️';
             if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
             else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
             const imp = impactLabel(getAlertMaxScore(r), r);
-            const escaped = escapeHtml(r.result || '');
+            const escaped = escapeHtml(sanitizeSkipReason(r));
             const showImpact = r.status === 'ALERT' || r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT';
             const ageCell = formatNewsAgeCell(r.news);
             return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
