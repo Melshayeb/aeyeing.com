@@ -2739,10 +2739,9 @@
                 t1 = entry * (1 + t1Pct);
                 t2 = entry * (1 + t2Pct);
                 t3 = entry * (1 + t3Pct);
-                // Keep risk amount constant ($100) and recalc share qty.
-                const riskAmount = parseFloat(p.risk_amount) || 100;
-                const riskPerShare = Math.abs(stop - entry);
-                shares = riskPerShare > 0 ? Math.max(1, Math.round(riskAmount / riskPerShare)) : 0;
+                // For a ~$100 test position, buy as many whole shares as $100 allows at the live price.
+                const TARGET_DOLLARS = 100;
+                shares = entry > 0 ? Math.max(1, Math.round(TARGET_DOLLARS / entry)) : 0;
                 position = shares * entry;
                 // Risk:Reward remains the original plan's ratio; recompute for safety.
                 const risk = Math.abs(entry - stop);
