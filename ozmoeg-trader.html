@@ -3052,6 +3052,7 @@
                 const allGainers = data.all_gainers || [];
                 const stats = data.scan_stats || {};
                 window._lastScanStats = stats;
+                window._lastLiveQuotes = data.live_quotes || {};
                 const lastUpdated = new Date(data.last_updated || Date.now());
                 // Anchor the auto-refresh countdown to the JSON timestamp so it stays
                 // aligned with the cron schedule, not the browser load time.
