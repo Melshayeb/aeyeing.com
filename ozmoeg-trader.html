@@ -3088,9 +3088,13 @@
                 resetRefreshTimer();
             }
         }
-        resetScannerToggleToLive();
-        loadLiveData();
-        resetRefreshTimer();
+        // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
+        // This prevents a brief flash of "15:00" before the first fetch completes.
+        (async function init() {
+            resetScannerToggleToLive();
+            await loadLiveData();
+            resetRefreshTimer();
+        })();
     </script>
 </body>
 </html>
