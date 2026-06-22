@@ -2678,7 +2678,10 @@
         async function renderSelectedAlert() {
             const sel = document.getElementById('alert-selector');
             const ticker = sel ? sel.value : '';
-            const selectable = liveResults.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            const activeRows = getActiveScannerView() === 'premarket'
+                ? (window._lastPreMarketResults || [])
+                : (window._lastLiveResults || []);
+            const selectable = activeRows.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
             const r = selectable.find(a => a.ticker === ticker);
 
             if (!r || !r.plan || !r.plan.valid) {
@@ -2799,12 +2802,16 @@
 
             document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
             document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
-            document.getElementById('perf-entry').textContent = fmtCurrency(entry);
-            const sessionLabel = isLiveRebased ? 'Live pre/after-market basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis');
+            // Tracker "Proposed Entry" uses the original scan basis so P&L reflects price movement
+            // between the scan/last refresh and the current live quote. The trade-plan card above
+            // still shows the actionable live entry price during pre/after-hours.
+            const basisEntry = isLiveRebased ? rawEntry : entry;
+            document.getElementById('perf-entry').textContent = fmtCurrency(basisEntry);
+            const basisLabel = isLiveRebased ? 'Last scan basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis');
             const scanTimeText = `${r.date || liveLastUpdated.toLocaleDateString('en-AU', { month:'long', day:'numeric' })} ${r.time || liveLastUpdated.toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' })}`;
-            document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${sessionLabel} · ${scanTimeText}`;
+            document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${basisLabel} · ${scanTimeText}`;
             // Current price and unrealized P&L are fetched independently so they don't blindly equal entry.
-            updateTrackerCurrentPrice(p.ticker, entry, t1, t2, t3, shareQty);
+            updateTrackerCurrentPrice(p.ticker, basisEntry, t1, t2, t3, shareQty);
             const pnlEl = document.getElementById('perf-pnl');
             if (pnlEl) { pnlEl.textContent = '—'; pnlEl.className = 'value'; }
             const pnlSub = document.getElementById('perf-pnl-sub');
@@ -2953,7 +2960,7 @@
                     const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
                     tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
                 }
-
+            } else {
                 // Live view: only meaningful during regular hours.
                 // During pre/after-market the "Live" toggle intentionally shows an empty state
                 // so users do not confuse it with the saved Pre/After watchlist.
