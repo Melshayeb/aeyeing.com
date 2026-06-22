@@ -2791,10 +2791,10 @@
             // (pre-market or after-hours), not the stale regular-hours close. That way P&L tracks
             // movement between refreshes of the same extended-hours session.
             const liveQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
-            const liveRefreshPrice = (liveQuote && liveQuote.price > 0) ? liveQuote.price : null;
-            const basisEntry = isLiveRebased && liveRefreshPrice ? liveRefreshPrice : (isLiveRebased ? rawEntry : entry);
+            const isRebasedSession = isExtendedHoursSession() && liveQuote && liveQuote.price > 0;
+            const basisEntry = isRebasedSession ? liveQuote.price : entry;
             document.getElementById('perf-entry').textContent = fmtCurrency(basisEntry);
-            const basisLabel = isLiveRebased && liveRefreshPrice ? 'Live refresh basis' : (isLiveRebased ? 'Last scan basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis'));
+            const basisLabel = isRebasedSession ? 'Live refresh basis' : (liveSource === 'live' ? 'Live quote basis' : 'Scan basis');
             const scanTimeText = `${r.date || liveLastUpdated.toLocaleDateString('en-AU', { month:'long', day:'numeric' })} ${r.time || liveLastUpdated.toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' })}`;
             document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${basisLabel} · ${scanTimeText}`;
             // Current price and unrealized P&L are fetched independently so they don't blindly equal entry.
