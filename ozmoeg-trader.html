@@ -778,6 +778,34 @@
             font-weight: 500;
             opacity: 0.72;
         }
+
+        /* News age badge shown inside the scanner results table */
+        .news-age-cell {
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        .news-age-cell .news-age {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+            background: rgba(0,212,255,0.10);
+            border: 1px solid rgba(0,212,255,0.35);
+            color: var(--accent-cyan);
+            font-weight: 600;
+            cursor: help;
+        }
+        .news-age-cell .news-age.stale {
+            background: rgba(255,76,76,0.12);
+            border-color: rgba(255,76,76,0.40);
+            color: var(--accent-red);
+        }
+        .news-age-cell .news-age.missing {
+            background: rgba(156,163,175,0.12);
+            border-color: var(--text-secondary);
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
         .news-catalyst-card .news-header h2 {
             margin: 0;
             font-size: 1.1rem;
@@ -1234,123 +1262,123 @@
                         <!-- NEWS_TICKER_ITEMS -->
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — LPA (Logistic Properties) — Entry $3.57, Stop $3.5343, T1 $3.6771
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — LPA (Logistic Properties) — Entry $3.57, Stop $3.5343, T1 $3.6771
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — APWC (Asia Pacific Wir) — Red flags: offering:Asia Pacific Wire & Cable Posts Strong Q1 2026 Revenue Growth and Bolsters Cash via Rights Offering
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — APWC (Asia Pacific Wir) — Red flags: offering:Asia Pacific Wire & Cable Posts Strong Q1 2026 Revenue Growth and Bolsters Cash via Rights Offering
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — GPUS (Hyperscale Data Inc.) — Red flags: offering:Hyperscale Data launches $300M ATM stock offering program; shares down; offering:Hyperscale Data announces $300M at-the-market equity offering program
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — GPUS (Hyperscale Data Inc.) — Red flags: offering:Hyperscale Data launches $300M ATM stock offering program; shares down; offering:Hyperscale Data announces $300M at-the-market equity offering program
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — BFLY (Butterfly Network Inc) — Entry $8.9, Stop $8.811, T1 $9.167
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — BFLY (Butterfly Network Inc) — Entry $8.9, Stop $8.811, T1 $9.167
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — CRVO (CervoMed) — Red flags: offering:CervoMed announces $10M registered direct offering priced at-the-market; offering:CervoMed Announces $10M Registered Direct Offering Of 2.5M Shares At $4/Share To Fund Working Capital And General Corporate Purposes; offering:CERVOMED ANNOUNCES $10 MILLION REGISTERED DIRECT OFFERING OF COMMON STOCK PRICED AT-THE-MARKET UNDER NASDAQ RULES
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — CRVO (CervoMed) — Red flags: offering:CervoMed announces $10M registered direct offering priced at-the-market; offering:CervoMed Announces $10M Registered Direct Offering Of 2.5M Shares At $4/Share To Fund Working Capital And General Corporate Purposes; offering:CERVOMED ANNOUNCES $10 MILLION REGISTERED DIRECT OFFERING OF COMMON STOCK PRICED AT-THE-MARKET UNDER NASDAQ RULES
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.01, Stop $1.9899, T1 $2.0703
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.01, Stop $1.9899, T1 $2.0703
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — WPRT (Westport Fuel Systems Inc) — Entry $2.26, Stop $2.2374, T1 $2.3278
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — WPRT (Westport Fuel Systems Inc) — Entry $2.26, Stop $2.2374, T1 $2.3278
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — SPRO (Spero Therapeuti) — Entry $2.28, Stop $2.2572, T1 $2.3484
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — SPRO (Spero Therapeuti) — Entry $2.28, Stop $2.2572, T1 $2.3484
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — UUUU (Energy Fuels) — Entry $16.56, Stop $16.3944, T1 $17.0568
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — UUUU (Energy Fuels) — Entry $16.56, Stop $16.3944, T1 $17.0568
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — RUM (Rumble Inc) — Entry $7.36, Stop $7.2864, T1 $7.5808
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — RUM (Rumble Inc) — Entry $7.36, Stop $7.2864, T1 $7.5808
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — BIRD (Allbirds, Inc.) — Entry $5.97, Stop $5.9103, T1 $6.1491
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — BIRD (Allbirds, Inc.) — Entry $5.97, Stop $5.9103, T1 $6.1491
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — AVD (American Vanguard Corp) — Entry $2.65, Stop $2.6235, T1 $2.7295
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — AVD (American Vanguard Corp) — Entry $2.65, Stop $2.6235, T1 $2.7295
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:33 PM</span> — BGDE (Big Digital Energy Inc) — Entry $10.67, Stop $10.5633, T1 $10.9901
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — BGDE (Big Digital Energy Inc) — Entry $10.67, Stop $10.5633, T1 $10.9901
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:33 PM</span> — PBK (PowerBank) — Entry $0.84, Stop $0.8316, T1 $0.8652
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — PBK (PowerBank) — Entry $0.84, Stop $0.8316, T1 $0.8652
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — CAST (Freecast Inc) — Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — LPA (Logistic Properties) — Entry $3.57, Stop $3.5343, T1 $3.6771
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — LPA (Logistic Properties) — Entry $3.57, Stop $3.5343, T1 $3.6771
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — APWC (Asia Pacific Wir) — Red flags: offering:Asia Pacific Wire & Cable Posts Strong Q1 2026 Revenue Growth and Bolsters Cash via Rights Offering
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — APWC (Asia Pacific Wir) — Red flags: offering:Asia Pacific Wire & Cable Posts Strong Q1 2026 Revenue Growth and Bolsters Cash via Rights Offering
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — GPUS (Hyperscale Data Inc.) — Red flags: offering:Hyperscale Data launches $300M ATM stock offering program; shares down; offering:Hyperscale Data announces $300M at-the-market equity offering program
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — GPUS (Hyperscale Data Inc.) — Red flags: offering:Hyperscale Data launches $300M ATM stock offering program; shares down; offering:Hyperscale Data announces $300M at-the-market equity offering program
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — BFLY (Butterfly Network Inc) — Entry $8.9, Stop $8.811, T1 $9.167
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — BFLY (Butterfly Network Inc) — Entry $8.9, Stop $8.811, T1 $9.167
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — CRVO (CervoMed) — Red flags: offering:CervoMed announces $10M registered direct offering priced at-the-market; offering:CervoMed Announces $10M Registered Direct Offering Of 2.5M Shares At $4/Share To Fund Working Capital And General Corporate Purposes; offering:CERVOMED ANNOUNCES $10 MILLION REGISTERED DIRECT OFFERING OF COMMON STOCK PRICED AT-THE-MARKET UNDER NASDAQ RULES
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — CRVO (CervoMed) — Red flags: offering:CervoMed announces $10M registered direct offering priced at-the-market; offering:CervoMed Announces $10M Registered Direct Offering Of 2.5M Shares At $4/Share To Fund Working Capital And General Corporate Purposes; offering:CERVOMED ANNOUNCES $10 MILLION REGISTERED DIRECT OFFERING OF COMMON STOCK PRICED AT-THE-MARKET UNDER NASDAQ RULES
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.01, Stop $1.9899, T1 $2.0703
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — QTEX (QTREX Quantum Ltd.) — Entry $2.01, Stop $1.9899, T1 $2.0703
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — WPRT (Westport Fuel Systems Inc) — Entry $2.26, Stop $2.2374, T1 $2.3278
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — WPRT (Westport Fuel Systems Inc) — Entry $2.26, Stop $2.2374, T1 $2.3278
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — SPRO (Spero Therapeuti) — Entry $2.28, Stop $2.2572, T1 $2.3484
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — SPRO (Spero Therapeuti) — Entry $2.28, Stop $2.2572, T1 $2.3484
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — UUUU (Energy Fuels) — Entry $16.56, Stop $16.3944, T1 $17.0568
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — UUUU (Energy Fuels) — Entry $16.56, Stop $16.3944, T1 $17.0568
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — RUM (Rumble Inc) — Entry $7.36, Stop $7.2864, T1 $7.5808
+                            <span class="date">June 22</span> <span class="time">05:41 PM</span> — RUM (Rumble Inc) — Entry $7.36, Stop $7.2864, T1 $7.5808
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — BIRD (Allbirds, Inc.) — Entry $5.97, Stop $5.9103, T1 $6.1491
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — BIRD (Allbirds, Inc.) — Entry $5.97, Stop $5.9103, T1 $6.1491
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:32 PM</span> — AVD (American Vanguard Corp) — Entry $2.65, Stop $2.6235, T1 $2.7295
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — AVD (American Vanguard Corp) — Entry $2.65, Stop $2.6235, T1 $2.7295
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:33 PM</span> — BGDE (Big Digital Energy Inc) — Entry $10.67, Stop $10.5633, T1 $10.9901
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — BGDE (Big Digital Energy Inc) — Entry $10.67, Stop $10.5633, T1 $10.9901
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">June 22</span> <span class="time">05:33 PM</span> — PBK (PowerBank) — Entry $0.84, Stop $0.8316, T1 $0.8652
+                            <span class="date">June 22</span> <span class="time">05:42 PM</span> — PBK (PowerBank) — Entry $0.84, Stop $0.8316, T1 $0.8652
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1371,7 +1399,7 @@
                         </div>
                         <span id="scanner-timestamp"></span>
                         <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 03:33 AM ET | Scanned: 50 | 15 candidates | 11 alerts
+🟡 US PRE-MARKET 03:42 AM ET | Scanned: 50 | 15 candidates | 11 alerts
                     <!-- END_SCANNER_BADGE --></span>
                         <select id="alert-selector" class="alert-selector">
                             <option value="">Select an alert…</option>
@@ -1385,6 +1413,7 @@
                                 <th>Ticker</th>
                                 <th>Name</th>
                                 <th>Status</th>
+                                <th>News Age</th>
                                 <th>Result</th>
                             </tr>
                         </thead>
@@ -1394,90 +1423,105 @@
                                 <td class="ticker-cell">CAST</td>
                                 <td>Freecast Inc</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
                                 <td>Red flags: offering:FREECAST INC FILES FOR OFFERING OF UP TO 5.75 MLN SHARES OF CLASS A COMMON STOCK BY SELLING SHAREHOLDER - SEC FILING</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LPA</td>
                                 <td>Logistic Properties</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T11:18:09.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $3.57, Stop $3.5343, T1 $3.6771</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">APWC</td>
                                 <td>Asia Pacific Wir</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
                                 <td>Red flags: offering:Asia Pacific Wire &amp; Cable Posts Strong Q1 2026 Revenue Growth and Bolsters Cash via Rights Offering</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">GPUS</td>
                                 <td>Hyperscale Data Inc.</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
                                 <td>Red flags: offering:Hyperscale Data launches $300M ATM stock offering program; shares down; offering:Hyperscale Data announces $300M at-the-market equity offering program</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BFLY</td>
                                 <td>Butterfly Network Inc</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-22T07:13:42.000+0000">27m ago · 22 Jun</span></td>
                                 <td>Entry $8.9, Stop $8.811, T1 $9.167</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CRVO</td>
                                 <td>CervoMed</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
                                 <td>Red flags: offering:CervoMed announces $10M registered direct offering priced at-the-market; offering:CervoMed Announces $10M Registered Direct Offering Of 2.5M Shares At $4/Share To Fund Working Capital And General Corporate Purposes; offering:CERVOMED ANNOUNCES $10 MILLION REGISTERED DIRECT OFFERING OF COMMON STOCK PRICED AT-THE-MARKET UNDER NASDAQ RULES</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">QTEX</td>
                                 <td>QTREX Quantum Ltd.</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T12:26:53.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $2.01, Stop $1.9899, T1 $2.0703</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">WPRT</td>
                                 <td>Westport Fuel Systems Inc</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T17:06:43.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $2.26, Stop $2.2374, T1 $2.3278</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">SPRO</td>
                                 <td>Spero Therapeuti</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-19T09:09:16.000+0000">2d ago · 19 Jun</span></td>
                                 <td>Entry $2.28, Stop $2.2572, T1 $2.3484</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">UUUU</td>
                                 <td>Energy Fuels</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-22T04:35:42.000+0000">3h ago · 22 Jun</span></td>
                                 <td>Entry $16.56, Stop $16.3944, T1 $17.0568</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">RUM</td>
                                 <td>Rumble Inc</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-21T13:41:05.000+0000">18h ago · 21 Jun</span></td>
                                 <td>Entry $7.36, Stop $7.2864, T1 $7.5808</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BIRD</td>
                                 <td>Allbirds, Inc.</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T13:57:46.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $5.97, Stop $5.9103, T1 $6.1491</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">AVD</td>
                                 <td>American Vanguard Corp</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-15T09:09:25.927+0000">6d ago · 15 Jun</span></td>
                                 <td>Entry $2.65, Stop $2.6235, T1 $2.7295</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">BGDE</td>
                                 <td>Big Digital Energy Inc</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T21:06:16.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $10.67, Stop $10.5633, T1 $10.9901</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">PBK</td>
                                 <td>PowerBank</td>
                                 <td><span class="result-alert">🚨 ALERT</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-06-18T11:14:13.000+0000">3d ago · 18 Jun</span></td>
                                 <td>Entry $0.84, Stop $0.8316, T1 $0.8652</td>
                             </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
@@ -2909,7 +2953,40 @@
             const imp = impactLabel(getAlertMaxScore(r), r);
             const escaped = escapeHtml(r.result || '');
             const showImpact = r.status === 'ALERT' || r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT';
-            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td>${escaped}</td></tr>`;
+            const ageCell = formatNewsAgeCell(r.news);
+            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
+        }
+
+        function formatNewsAgeCell(news) {
+            if (!news || !Array.isArray(news.headlines) || news.headlines.length === 0) {
+                return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
+            }
+            // Pick the newest (most recent) headline by parsing the age string.
+            const newest = news.headlines
+                .filter(h => h.time)
+                .sort((a, b) => newsAgeMinutes(a.time) - newsAgeMinutes(b.time))[0];
+            if (!newest) {
+                return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
+            }
+            const age = newest.time || '';
+            const rawIso = newest.raw_time || '';
+            const isVeryStale = /(\d+mo|\d+y)\s+ago/.test(age) || (age.match(/(\d+)d\s+ago/) && parseInt(age.match(/(\d+)d\s+ago/)[1]) > 7);
+            const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
+            const staleEmoji = isVeryStale ? '⚠️ ' : '';
+            const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
+            return `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span>`;
+        }
+
+        // Convert age strings like "2h ago", "3d ago", "2mo ago" into approximate minutes.
+        // Smaller number = newer. Unknown/missing ages are treated as very old so they sort last.
+        function newsAgeMinutes(ageStr) {
+            if (!ageStr) return Infinity;
+            const m = ageStr.match(/^(\d+)\s*([smhdwy])\s+ago/i);
+            if (!m) return Infinity;
+            const num = parseInt(m[1], 10);
+            const unit = m[2].toLowerCase();
+            const multipliers = { s: 1/60, m: 1, h: 60, d: 1440, w: 10080, mo: 43200, y: 525600 };
+            return num * (multipliers[unit] || 1);
         }
 
         function getActiveScannerView() {
@@ -2933,7 +3010,11 @@
                     const aAlert = a.status === 'ALERT' ? 1 : 0;
                     const bAlert = b.status === 'ALERT' ? 1 : 0;
                     if (aAlert !== bAlert) return bAlert - aAlert;
-                    if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
+                    if (aAlert) {
+                        const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
+                        if (scoreDiff !== 0) return scoreDiff;
+                        return getYoungestNewsAgeMinutes(a) - getYoungestNewsAgeMinutes(b);
+                    }
                     return 0;
                 });
                 if (rows.length) {
@@ -2941,7 +3022,7 @@
                     populateAlertSelector(displayedResults);
                     renderSelectedAlert();
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No pre-market/after-hours watchlist saved yet.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No pre-market/after-hours watchlist saved yet.</td></tr>';
                     populateAlertSelector([]);
                     renderSelectedAlert();
                 }
@@ -2965,7 +3046,7 @@
                     } else {
                         msg = `The US market is currently ${marketLabel}. Live scan results will resume when the market opens.`;
                     }
-                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
                     populateAlertSelector([]);
                     renderSelectedAlert();
                     if (tsEl) tsEl.textContent = '';
@@ -2974,7 +3055,11 @@
                         const aAlert = a.status === 'ALERT' ? 1 : 0;
                         const bAlert = b.status === 'ALERT' ? 1 : 0;
                         if (aAlert !== bAlert) return bAlert - aAlert;
-                        if (aAlert) return getAlertMaxScore(b) - getAlertMaxScore(a);
+                        if (aAlert) {
+                            const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
+                            if (scoreDiff !== 0) return scoreDiff;
+                            return getYoungestNewsAgeMinutes(a) - getYoungestNewsAgeMinutes(b);
+                        }
                         return 0;
                     });
                     tbody.innerHTML = sorted.map(r => renderScannerRow(r)).join('');
@@ -2985,12 +3070,17 @@
                         tsEl.textContent = ts ? `Updated ${ts}` : '';
                     }
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No live scan results available yet.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No live scan results available yet.</td></tr>';
                     populateAlertSelector([]);
                     renderSelectedAlert();
                     if (tsEl) tsEl.textContent = '';
                 }
             }
+        }
+
+        function getYoungestNewsAgeMinutes(r) {
+            if (!r || !r.news || !Array.isArray(r.news.headlines)) return Infinity;
+            return Math.min(...r.news.headlines.map(h => newsAgeMinutes(h.time)), Infinity);
         }
 
         function updateRefreshCountdown() {
