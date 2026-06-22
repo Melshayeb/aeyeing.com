@@ -783,11 +783,16 @@
             font-size: 1.1rem;
             color: var(--text-primary);
         }
-        .news-catalyst-card .news-header p {
-            margin: 0.35rem 0 0;
-            font-size: 0.75rem;
+        .news-catalyst-card .news-legend {
+            margin: 0.5rem 0 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
             max-width: 100%;
+            line-height: 1.4;
+            background: rgba(0,212,255,0.06);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 0.45rem 0.7rem;
+            border-radius: 0 4px 4px 0;
         }
         .news-catalyst-card .impact-badge {
             background: transparent;
@@ -2103,17 +2108,14 @@
             <div class="news-catalyst-card" id="news-catalyst-section">
                 <div class="news-header">
                     <h2>📰 Latest Catalyst &amp; News</h2>
-                    <p>🕒 Timestamps show each article/announcement’s own first publication age (not scan time). Hover the age badge for the exact date/time. ⚠️ = older than 7 days.</p>
                     <span class="impact-badge" id="impact-score">—</span>
                 </div>
+                <p class="news-legend">🕒 Timestamps show each article/announcement’s own first publication age (not scan time). Hover the age badge for the exact date/time. ⚠️ = older than 7 days.</p>
                 <div class="news-ticker-line" id="news-ticker-line">
                     🎯 <strong id="news-ticker-symbol">—</strong> — <span id="news-ticker-status">No active alert</span>
                     <span class="news-scan-time" id="news-scan-time">No recent scan</span>
                 </div>
                 <div class="catalyst-title" id="catalyst-headline">No active catalyst — waiting for next alert</div>
-                <div style="font-size: 0.75rem; color: var(--text-secondary); margin: -0.5rem 0 0.75rem 0;">
-                    🕒 Timestamps show article/announcement age (not scan time). ⚠️ indicates news older than 7 days.
-                </div>
                 <ul class="news-list" id="news-list">
                     <li><span class="score">[-]</span> Select an alert above to view its catalyst and news headlines.</li>
                 </ul>
