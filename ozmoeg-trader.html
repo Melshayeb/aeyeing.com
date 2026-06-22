@@ -3021,9 +3021,10 @@
             const anchor = anchorTimestamp && !isNaN(anchorTimestamp) ? new Date(anchorTimestamp).getTime() : Date.now();
             nextRefreshAt = anchor + REFRESH_INTERVAL_MS;
             // If the anchor is so old that the scheduled time is already passed,
-            // fire at the next whole-minute boundary so the page doesn't get stuck.
+            // schedule a full interval from now. Otherwise we get stuck in a 1-second
+            // refresh loop where the countdown never leaves 0:01.
             if (nextRefreshAt <= Date.now()) {
-                nextRefreshAt = Date.now() + 1000; // will fire on the next tick
+                nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
             }
             updateRefreshCountdown();
         }
