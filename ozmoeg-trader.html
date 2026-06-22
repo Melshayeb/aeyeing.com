@@ -745,21 +745,49 @@
             margin-top: 0.2rem;
             margin-left: 3.5rem;
         }
+        .news-catalyst-card .news-list li {
+            margin-bottom: 10px;
+            line-height: 1.45;
+            color: var(--text-secondary);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 6px;
+        }
         .news-catalyst-card .news-list .news-age {
-            display: inline-block;
-            color: var(--accent-amber);
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            background: rgba(0,212,255,0.10);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,212,255,0.30);
             white-space: nowrap;
+            cursor: help;
+            letter-spacing: 0.02em;
         }
         .news-catalyst-card .news-list .news-age.stale {
             color: var(--accent-red);
+            background: rgba(255,76,76,0.12);
+            border-color: rgba(255,76,76,0.40);
+        }
+        .news-catalyst-card .news-list .news-age .news-date-hint {
+            font-weight: 500;
+            opacity: 0.72;
         }
         .news-catalyst-card .news-header h2 {
             margin: 0;
             font-size: 1.1rem;
             color: var(--text-primary);
+        }
+        .news-catalyst-card .news-header p {
+            margin: 0.35rem 0 0;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            max-width: 100%;
         }
         .news-catalyst-card .impact-badge {
             background: transparent;
@@ -1199,125 +1227,125 @@
                 <div class="news-ticker-body">
                     <div class="news-ticker-scroll" id="news-ticker">
                         <!-- NEWS_TICKER_ITEMS -->
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — NOR (NORWOOD SYSTEMS LTD.) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — FBR (FBR LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — AAU (ANTILLES GOLD LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — RNX (RENEGADE EXPLORATION) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — ROG (RED SKY ENERGY.) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — NES (NELSON RESOURCES.) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — NOR (NORWOOD SYSTEMS LTD.) — AU candidate (data limited): Entry $0.035, Stop $0.035, T1 $0.036
                         </div>
                         <div class="news-item candidate">
                             <span class="score">CANDIDATE</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — IIQ (INOVIQ LTD) — AU candidate (data limited): Entry $0.525, Stop $0.523, T1 $0.541
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — AAU (ANTILLES GOLD LTD) — AU candidate (data limited): Entry $0.009, Stop $0.009, T1 $0.009
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AHN (ATHENA RESOURCES) — No demand zone or candlestick signal
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — FBR (FBR LTD) — Poor R:R (0.90)
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — HPC (THEHYDRATION) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — TAR (TARUGA MINERALS) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AGE (ALLIGATOR ENERGY) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AM3 (AMARA MINERALS LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — CLA (CELSIUS RESOURCE LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — PKO (PEAKO LIMITED) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — LEX (LEFROY EXPLORATION) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — NOR (NORWOOD SYSTEMS LTD.) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — FBR (FBR LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — AAU (ANTILLES GOLD LTD) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — RNX (RENEGADE EXPLORATION) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — ROG (RED SKY ENERGY.) — No demand zone or candlestick signal
-                        </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:01 PM</span> — NES (NELSON RESOURCES.) — No demand zone or candlestick signal
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — RNX (RENEGADE EXPLORATION) — Poor R:R (0.90)
                         </div>
                         <div class="news-item candidate">
                             <span class="score">CANDIDATE</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — IIQ (INOVIQ LTD) — AU candidate (data limited): Entry $0.525, Stop $0.523, T1 $0.541
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — ROG (RED SKY ENERGY.) — AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — NES (NELSON RESOURCES.) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — IIQ (INOVIQ LTD) — AU candidate (data limited): Entry $0.535, Stop $0.532, T1 $0.551
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AHN (ATHENA RESOURCES) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — HPC (THEHYDRATION) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — TAR (TARUGA MINERALS) — AU candidate (data limited): Entry $0.022, Stop $0.022, T1 $0.023
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AGE (ALLIGATOR ENERGY) — AU candidate (data limited): Entry $0.045, Stop $0.045, T1 $0.046
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AM3 (AMARA MINERALS LTD) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — CLA (CELSIUS RESOURCE LTD) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — PKO (PEAKO LIMITED) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — LEX (LEFROY EXPLORATION) — AU candidate (data limited): Entry $0.130, Stop $0.129, T1 $0.134
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — NOR (NORWOOD SYSTEMS LTD.) — AU candidate (data limited): Entry $0.035, Stop $0.035, T1 $0.036
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — AAU (ANTILLES GOLD LTD) — AU candidate (data limited): Entry $0.009, Stop $0.009, T1 $0.009
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AHN (ATHENA RESOURCES) — No demand zone or candlestick signal
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — FBR (FBR LTD) — Poor R:R (0.90)
                         </div>
                         <div class="news-item skip">
                             <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — HPC (THEHYDRATION) — No demand zone or candlestick signal
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — RNX (RENEGADE EXPLORATION) — Poor R:R (0.90)
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — TAR (TARUGA MINERALS) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — ROG (RED SKY ENERGY.) — AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AGE (ALLIGATOR ENERGY) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — NES (NELSON RESOURCES.) — AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — AM3 (AMARA MINERALS LTD) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:16 PM</span> — IIQ (INOVIQ LTD) — AU candidate (data limited): Entry $0.535, Stop $0.532, T1 $0.551
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — CLA (CELSIUS RESOURCE LTD) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AHN (ATHENA RESOURCES) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — PKO (PEAKO LIMITED) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — HPC (THEHYDRATION) — AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005
                         </div>
-                        <div class="news-item skip">
-                            <span class="score">SKIP</span>
-                            <span class="date">June 22</span> <span class="time">04:02 PM</span> — LEX (LEFROY EXPLORATION) — No demand zone or candlestick signal
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — TAR (TARUGA MINERALS) — AU candidate (data limited): Entry $0.022, Stop $0.022, T1 $0.023
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AGE (ALLIGATOR ENERGY) — AU candidate (data limited): Entry $0.045, Stop $0.045, T1 $0.046
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — AM3 (AMARA MINERALS LTD) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — CLA (CELSIUS RESOURCE LTD) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — PKO (PEAKO LIMITED) — AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006
+                        </div>
+                        <div class="news-item candidate">
+                            <span class="score">CANDIDATE</span>
+                            <span class="date">June 22</span> <span class="time">04:17 PM</span> — LEX (LEFROY EXPLORATION) — AU candidate (data limited): Entry $0.130, Stop $0.129, T1 $0.134
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1338,7 +1366,7 @@
                         </div>
                         <span id="scanner-timestamp"></span>
                         <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🔴 AUS CLOSED 04:02 PM AEST/AEDT | Scanned: 50 | 15 candidates | 0 alerts
+🔴 AUS CLOSED 04:17 PM AEST/AEDT | Scanned: 50 | 15 candidates | 0 alerts
                     <!-- END_SCANNER_BADGE --></span>
                         <select id="alert-selector" class="alert-selector">
                             <option value="">Select an alert…</option>
@@ -1360,92 +1388,92 @@
                             <tr>
                                 <td class="ticker-cell">NOR</td>
                                 <td>NORWOOD SYSTEMS LTD.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.035, Stop $0.035, T1 $0.036</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AAU</td>
+                                <td>ANTILLES GOLD LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.009, Stop $0.009, T1 $0.009</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">FBR</td>
                                 <td>FBR LTD</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AAU</td>
-                                <td>ANTILLES GOLD LTD</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td>Poor R:R (0.90)</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">RNX</td>
                                 <td>RENEGADE EXPLORATION</td>
                                 <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td>Poor R:R (0.90)</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">ROG</td>
                                 <td>RED SKY ENERGY.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.002, Stop $0.002, T1 $0.002</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">NES</td>
                                 <td>NELSON RESOURCES.</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.004, Stop $0.004, T1 $0.004</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">IIQ</td>
                                 <td>INOVIQ LTD</td>
                                 <td><span class="result-candidate">🔬 CANDIDATE</span></td>
-                                <td>AU candidate (data limited): Entry $0.525, Stop $0.523, T1 $0.541</td>
+                                <td>AU candidate (data limited): Entry $0.535, Stop $0.532, T1 $0.551</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">AHN</td>
                                 <td>ATHENA RESOURCES</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">HPC</td>
                                 <td>THEHYDRATION</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.005, Stop $0.005, T1 $0.005</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">TAR</td>
                                 <td>TARUGA MINERALS</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.022, Stop $0.022, T1 $0.023</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">AGE</td>
                                 <td>ALLIGATOR ENERGY</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.045, Stop $0.045, T1 $0.046</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">AM3</td>
                                 <td>AMARA MINERALS LTD</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CLA</td>
                                 <td>CELSIUS RESOURCE LTD</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">PKO</td>
                                 <td>PEAKO LIMITED</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.006, Stop $0.006, T1 $0.006</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LEX</td>
                                 <td>LEFROY EXPLORATION</td>
-                                <td><span class="result-skip">⏭️ SKIP</span></td>
-                                <td>No demand zone or candlestick signal</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td>AU candidate (data limited): Entry $0.130, Stop $0.129, T1 $0.134</td>
                             </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
@@ -1465,22 +1493,11 @@
                             <tr>
                                 <td class="ticker-cell">NOR</td>
                                 <td>NORWOOD SYSTEMS LTD.</td>
-                                <td>$0.033</td>
-                                <td>+153.8%</td>
-                                <td>59,903,718</td>
-                                <td>2.9x</td>
-                                <td>$18.7M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">FBR</td>
-                                <td>FBR LTD</td>
-                                <td>$0.004</td>
-                                <td>+100.0%</td>
-                                <td>37,307,612</td>
-                                <td>2.2x</td>
-                                <td>$27.9M</td>
+                                <td>$0.036</td>
+                                <td>+176.9%</td>
+                                <td>63,828,089</td>
+                                <td>3.0x</td>
+                                <td>$20.4M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1489,9 +1506,20 @@
                                 <td>ANTILLES GOLD LTD</td>
                                 <td>$0.009</td>
                                 <td>+50.0%</td>
-                                <td>36,313,005</td>
+                                <td>36,486,146</td>
                                 <td>0.6x</td>
                                 <td>$29.5M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">FBR</td>
+                                <td>FBR LTD</td>
+                                <td>$0.003</td>
+                                <td>+50.0%</td>
+                                <td>39,213,345</td>
+                                <td>2.4x</td>
+                                <td>$20.9M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1500,7 +1528,7 @@
                                 <td>RENEGADE EXPLORATION</td>
                                 <td>$0.003</td>
                                 <td>+50.0%</td>
-                                <td>32,490,729</td>
+                                <td>32,520,000</td>
                                 <td>5.5x</td>
                                 <td>$6.2M</td>
                                 <td><span class="scan-pass">PASS</span></td>
@@ -1522,7 +1550,7 @@
                                 <td>NELSON RESOURCES.</td>
                                 <td>$0.004</td>
                                 <td>+33.3%</td>
-                                <td>1,148,761</td>
+                                <td>1,548,761</td>
                                 <td>0.1x</td>
                                 <td>$11.1M</td>
                                 <td><span class="scan-pass">PASS</span></td>
@@ -1531,11 +1559,11 @@
                             <tr>
                                 <td class="ticker-cell">IIQ</td>
                                 <td>INOVIQ LTD</td>
-                                <td>$0.530</td>
-                                <td>+26.2%</td>
-                                <td>1,602,734</td>
-                                <td>2.7x</td>
-                                <td>$74.6M</td>
+                                <td>$0.535</td>
+                                <td>+27.4%</td>
+                                <td>1,681,324</td>
+                                <td>2.8x</td>
+                                <td>$75.3M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1577,8 +1605,8 @@
                                 <td>ALLIGATOR ENERGY</td>
                                 <td>$0.045</td>
                                 <td>+21.6%</td>
-                                <td>170,648,047</td>
-                                <td>2.8x</td>
+                                <td>175,594,677</td>
+                                <td>2.9x</td>
                                 <td>$199.7M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
@@ -1599,7 +1627,7 @@
                                 <td>CELSIUS RESOURCE LTD</td>
                                 <td>$0.006</td>
                                 <td>+20.0%</td>
-                                <td>4,638,503</td>
+                                <td>4,639,944</td>
                                 <td>0.1x</td>
                                 <td>$22.3M</td>
                                 <td><span class="scan-pass">PASS</span></td>
@@ -1672,12 +1700,23 @@
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">ESR</td>
+                                <td>ESTRELLA RES LTD</td>
+                                <td>$0.025</td>
+                                <td>+13.6%</td>
+                                <td>10,055,462</td>
+                                <td>3.3x</td>
+                                <td>$55.4M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">PTR</td>
                                 <td>PTR MINERALS LTD</td>
                                 <td>$0.125</td>
                                 <td>+13.6%</td>
-                                <td>2,354,656</td>
-                                <td>5.2x</td>
+                                <td>2,530,151</td>
+                                <td>5.5x</td>
                                 <td>$49.4M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
@@ -1687,7 +1726,7 @@
                                 <td>VERTEXMIN</td>
                                 <td>$0.125</td>
                                 <td>+13.6%</td>
-                                <td>794,910</td>
+                                <td>802,682</td>
                                 <td>0.7x</td>
                                 <td>$35.8M</td>
                                 <td><span class="scan-pass">PASS</span></td>
@@ -1705,24 +1744,24 @@
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">KRR</td>
-                                <td>KING RIVER RESOURCES</td>
-                                <td>$0.043</td>
-                                <td>+13.2%</td>
-                                <td>4,102,175</td>
-                                <td>1.6x</td>
-                                <td>$63.4M</td>
+                                <td class="ticker-cell">VFY</td>
+                                <td>VITRAFY LIFE SCIENCE</td>
+                                <td>$3.200</td>
+                                <td>+13.5%</td>
+                                <td>134,802</td>
+                                <td>0.6x</td>
+                                <td>$196.7M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">PNN</td>
-                                <td>POWER MINERALS LTD</td>
-                                <td>$0.153</td>
-                                <td>+13.3%</td>
-                                <td>5,926,831</td>
-                                <td>1.8x</td>
-                                <td>$53.7M</td>
+                                <td class="ticker-cell">ATX</td>
+                                <td>AMPLIA THERAPEUTICS</td>
+                                <td>$0.130</td>
+                                <td>+13.0%</td>
+                                <td>4,320,924</td>
+                                <td>3.0x</td>
+                                <td>$66.7M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1773,11 +1812,11 @@
                             <tr>
                                 <td class="ticker-cell">LKO</td>
                                 <td>LAKES BLUE ENERGY</td>
-                                <td>$0.380</td>
-                                <td>+11.8%</td>
-                                <td>94,770</td>
-                                <td>2.2x</td>
-                                <td>$27.9M</td>
+                                <td>$0.370</td>
+                                <td>+8.8%</td>
+                                <td>130,070</td>
+                                <td>3.0x</td>
+                                <td>$27.2M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1789,6 +1828,17 @@
                                 <td>61,453</td>
                                 <td>0.7x</td>
                                 <td>$10.8M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">GBM</td>
+                                <td>GBM RESOURCES</td>
+                                <td>$0.020</td>
+                                <td>+11.1%</td>
+                                <td>3,389,838</td>
+                                <td>0.5x</td>
+                                <td>$98.2M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1815,15 +1865,48 @@
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">TON</td>
-                                <td>TRITON MIN LTD</td>
-                                <td>$0.005</td>
-                                <td>+0.0%</td>
-                                <td>19,795</td>
-                                <td>0.1x</td>
-                                <td>$7.8M</td>
+                                <td class="ticker-cell">PNN</td>
+                                <td>POWER MINERALS LTD</td>
+                                <td>$0.150</td>
+                                <td>+11.1%</td>
+                                <td>6,145,116</td>
+                                <td>1.8x</td>
+                                <td>$52.8M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">KRR</td>
+                                <td>KING RIVER RESOURCES</td>
+                                <td>$0.042</td>
+                                <td>+10.5%</td>
+                                <td>4,556,908</td>
+                                <td>1.8x</td>
+                                <td>$61.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">WC1</td>
+                                <td>WESTCOBARMETALS</td>
+                                <td>$0.021</td>
+                                <td>+10.5%</td>
+                                <td>3,894,760</td>
+                                <td>3.9x</td>
+                                <td>$7.4M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">BNZ</td>
+                                <td>BENZMINING</td>
+                                <td>$2.110</td>
+                                <td>+10.5%</td>
+                                <td>568,617</td>
+                                <td>0.9x</td>
+                                <td>$602.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $602.7M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">GDR</td>
@@ -1833,6 +1916,17 @@
                                 <td>25,000</td>
                                 <td>0.9x</td>
                                 <td>$5.4M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">GLL</td>
+                                <td>GALILEE ENERGY LTD</td>
+                                <td>$0.006</td>
+                                <td>+20.0%</td>
+                                <td>3,825,863</td>
+                                <td>0.4x</td>
+                                <td>$10.0M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -1859,6 +1953,17 @@
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">RNU</td>
+                                <td>RENASCOR RES LTD</td>
+                                <td>$0.055</td>
+                                <td>+10.0%</td>
+                                <td>9,750,719</td>
+                                <td>2.3x</td>
+                                <td>$137.5M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">ZNC</td>
                                 <td>ZENITH MINERALS LTD</td>
                                 <td>$0.110</td>
@@ -1868,39 +1973,6 @@
                                 <td>$67.0M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BNZ</td>
-                                <td>BENZMINING</td>
-                                <td>$2.100</td>
-                                <td>+9.9%</td>
-                                <td>520,574</td>
-                                <td>0.9x</td>
-                                <td>$599.8M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $599.8M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">VFY</td>
-                                <td>VITRAFY LIFE SCIENCE</td>
-                                <td>$3.100</td>
-                                <td>+9.9%</td>
-                                <td>130,921</td>
-                                <td>0.6x</td>
-                                <td>$190.6M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AYA</td>
-                                <td>ARTRYALIMITED</td>
-                                <td>$5.260</td>
-                                <td>+9.8%</td>
-                                <td>1,933,615</td>
-                                <td>3.0x</td>
-                                <td>$853.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $5.260, mktcap $853.6M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">GLH</td>
@@ -1914,6 +1986,17 @@
                                 <td>Passed filters</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">CHM</td>
+                                <td>CHIMERIC THERAPEUTIC</td>
+                                <td>$0.071</td>
+                                <td>+9.2%</td>
+                                <td>157,932</td>
+                                <td>0.6x</td>
+                                <td>$3.9M</td>
+                                <td><span class="scan-pass">PASS</span></td>
+                                <td>Passed filters</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">BEL</td>
                                 <td>BENTLEY CAPITAL LTD</td>
                                 <td>$0.012</td>
@@ -1923,28 +2006,6 @@
                                 <td>$0.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: mktcap $0.9M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">ESR</td>
-                                <td>ESTRELLA RES LTD</td>
-                                <td>$0.024</td>
-                                <td>+9.1%</td>
-                                <td>10,052,165</td>
-                                <td>3.3x</td>
-                                <td>$53.2M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">LSR</td>
-                                <td>LODESTAR MINERALS</td>
-                                <td>$0.012</td>
-                                <td>+9.1%</td>
-                                <td>4,713,327</td>
-                                <td>0.3x</td>
-                                <td>$17.5M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">NUC</td>
@@ -1976,39 +2037,6 @@
                                 <td>74,854</td>
                                 <td>0.1x</td>
                                 <td>$5.0M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">RNU</td>
-                                <td>RENASCOR RES LTD</td>
-                                <td>$0.055</td>
-                                <td>+10.0%</td>
-                                <td>9,621,705</td>
-                                <td>2.3x</td>
-                                <td>$138.8M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AMO</td>
-                                <td>AMBERTECH LIMITED</td>
-                                <td>$0.098</td>
-                                <td>+8.9%</td>
-                                <td>35,424</td>
-                                <td>0.5x</td>
-                                <td>$9.3M</td>
-                                <td><span class="scan-pass">PASS</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BCN</td>
-                                <td>BEACON MINERALS</td>
-                                <td>$2.730</td>
-                                <td>+8.8%</td>
-                                <td>95,684</td>
-                                <td>0.6x</td>
-                                <td>$308.3M</td>
                                 <td><span class="scan-pass">PASS</span></td>
                                 <td>Passed filters</td>
                             </tr>
@@ -2075,6 +2103,7 @@
             <div class="news-catalyst-card" id="news-catalyst-section">
                 <div class="news-header">
                     <h2>📰 Latest Catalyst &amp; News</h2>
+                    <p>🕒 Timestamps show each article/announcement’s own first publication age (not scan time). Hover the age badge for the exact date/time. ⚠️ = older than 7 days.</p>
                     <span class="impact-badge" id="impact-score">—</span>
                 </div>
                 <div class="news-ticker-line" id="news-ticker-line">
@@ -2848,7 +2877,10 @@
                     const isVeryStale = /(\d+mo|\d+y)\s+ago/.test(age) || (age.match(/(\d+)d\s+ago/) && parseInt(age.match(/(\d+)d\s+ago/)[1]) > 7);
                     const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
                     const staleEmoji = isVeryStale ? '⚠️ ' : '';
-                    const timeHtml = age ? `<span class="${staleClass}">${staleEmoji}${escapeHtml(age)}</span> ` : '';
+                    // Show exact original timestamp as a tooltip
+                    const rawIso = h.raw_time || '';
+                    const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
+                    const timeHtml = age ? `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span> ` : '';
                     return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> <a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a> <em>${escapeHtml(h.source || '')}</em></li>`;
                 }).join('');
             } else {
