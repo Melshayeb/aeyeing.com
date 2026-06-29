@@ -2965,8 +2965,12 @@
                 list.innerHTML = headlines.map(h => {
                     const s = h.score || 0;
                     const scoreClass = s >= 4 ? 'impact-high' : (s >= 2 ? 'impact-medium' : 'impact-low');
-                    const age = h.time || '';
-                    const isVeryStale = /(\d+mo|\d+y)\s+ago/.test(age) || (age.match(/(\d+)d\s+ago/) && parseInt(age.match(/(\d+)d\s+ago/)[1]) > 7);
+                    // Recompute age from raw timestamp so saved snapshots stay accurate.
+                    const age = computeNewsAge(h.raw_time) || (h.time || '');
+                    const isVeryStale = /^(\d+mo|\d+y|\d+d)\s+ago/.test(age) && (
+                        /^(\d+mo|\d+y)\s+ago/.test(age) ||
+                        (age.match(/^(\d+)d\s+ago/) && parseInt(age.match(/^(\d+)d\s+ago/)[1]) > 7)
+                    );
                     const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
                     const staleEmoji = isVeryStale ? '⚠️ ' : '';
                     // Show exact original timestamp as a tooltip
