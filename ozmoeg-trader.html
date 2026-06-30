@@ -2404,7 +2404,16 @@
         let liveLastUpdated = new Date();
         let currentMarketStatus = 'OPEN';
         let refreshTimerId = null;
-        let nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
+        // Persist the next refresh time across page reloads so the countdown is always
+        // anchored to the last actual scan, not to when the browser happens to open.
+        let nextRefreshAt = (() => {
+            try {
+                const stored = localStorage.getItem('ozmoeg-next-refresh');
+                const ts = stored ? parseInt(stored, 10) : 0;
+                if (ts && !isNaN(ts)) return ts;
+            } catch (e) { /* storage may be unavailable */ }
+            return Date.now() + REFRESH_INTERVAL_MS;
+        })();
 
         function fmtCurrency(n) {
             if (n === undefined || n === null || isNaN(n)) return '—';
@@ -3070,6 +3079,10 @@
             if (nextRefreshAt <= Date.now()) {
                 nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
             }
+            // Persist so the countdown survives page reloads.
+            try {
+                localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
+            } catch (e) { /* storage may be unavailable */ }
             updateRefreshCountdown();
         }
 
@@ -3078,6 +3091,10 @@
             // Use the actual last scan timestamp as the anchor when available.
             scheduleNextRefresh(window._lastScanTimestamp);
             refreshTimerId = setInterval(() => {
+                // Persist every tick so the value stays current across reloads.
+                try {
+                    localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
+                } catch (e) { /* storage may be unavailable */ }
                 if (Date.now() >= nextRefreshAt) {
                     loadLiveData();
                 } else {
