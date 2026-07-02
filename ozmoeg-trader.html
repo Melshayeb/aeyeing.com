@@ -1132,22 +1132,30 @@
             color: var(--text-secondary);
         }
         .country-badge {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            background: rgba(255,255,255,0.08);
-            padding: 0.15rem 0.45rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(59,130,246,0.9), rgba(37,99,235,0.85));
+            padding: 0.18rem 0.55rem;
             border-radius: 999px;
-            border: 1px solid var(--border);
-            margin-left: 0.35rem;
+            border: 1px solid rgba(96,165,250,0.5);
+            margin-left: 0.4rem;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
             vertical-align: middle;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 0 8px rgba(59,130,246,0.25);
+        }
+        .ticker-cell .country-badge {
+            font-size: 0.6rem;
+            padding: 0.12rem 0.45rem;
         }
 
         /* ===== SMALL PHONES (≤480px) ===== */
-        @media (max-width: 480px) {
+
             html { font-size: 14px; }
 
             .header-title {
@@ -1302,11 +1310,11 @@
                         <!-- NEWS_TICKER_ITEMS -->
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">July 02</span> <span class="time">08:31 PM</span> <span class="news-age" title="First published: 2026-07-02T07:43:17.000+0000">2h ago</span> — SURG (Surgepays Inc) — <span style="color:var(--accent-amber)">📰 Lindsay, Franklin Covey And 3 Stocks To Watch Heading Into Thursday</span> — Entry $0.6609, Stop $0.6543, T1 $0.6741
+                            <span class="date">July 02</span> <span class="time">08:32 PM</span> <span class="news-age" title="First published: 2026-07-02T07:43:17.000+0000">2h ago</span> — SURG (Surgepays Inc) — <span style="color:var(--accent-amber)">📰 Lindsay, Franklin Covey And 3 Stocks To Watch Heading Into Thursday</span> — Entry $0.6567, Stop $0.6501, T1 $0.6699
                         </div>
                         <div class="news-item alert">
                             <span class="score">ALERT</span>
-                            <span class="date">July 02</span> <span class="time">08:31 PM</span> <span class="news-age" title="First published: 2026-07-02T07:43:17.000+0000">2h ago</span> — SURG (Surgepays Inc) — <span style="color:var(--accent-amber)">📰 Lindsay, Franklin Covey And 3 Stocks To Watch Heading Into Thursday</span> — Entry $0.6609, Stop $0.6543, T1 $0.6741
+                            <span class="date">July 02</span> <span class="time">08:32 PM</span> <span class="news-age" title="First published: 2026-07-02T07:43:17.000+0000">2h ago</span> — SURG (Surgepays Inc) — <span style="color:var(--accent-amber)">📰 Lindsay, Franklin Covey And 3 Stocks To Watch Heading Into Thursday</span> — Entry $0.6567, Stop $0.6501, T1 $0.6699
                         </div>
                     <!-- END_NEWS_TICKER_ITEMS -->
                     </div>
@@ -1327,7 +1335,7 @@
                         </div>
                         <span id="scanner-timestamp"></span>
                         <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 06:31 AM ET | Scanned: 50 | 1 candidates | 1 alerts (skipped: 0)
+🟡 US PRE-MARKET 06:32 AM ET | Scanned: 50 | 1 candidates | 1 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
                         <select id="alert-selector" class="alert-selector">
                             <option value="">Select an alert…</option>
@@ -1352,7 +1360,7 @@
                                 <td>Surgepays Inc <span class="country-badge">United States</span></td>
                                 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (2)</span></td>
                                 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-02T07:43:17.000+0000">2h ago</span></td>
-                                <td>Entry $0.6609, Stop $0.6543, T1 $0.6741</td>
+                                <td>Entry $0.6567, Stop $0.6501, T1 $0.6699</td>
                             </tr>
                     <!-- END_SCANNER_TABLE_BODY -->
                         </tbody>
@@ -1378,31 +1386,31 @@
                             <tr>
                                 <td class="ticker-cell">USDE</td>
                                 <td>STABLECOINX INC</td>
-                                <td>$5.32</td>
-                                <td>+155.8%</td>
-                                <td>1,808,830</td>
+                                <td>$5.17</td>
+                                <td>+148.6%</td>
+                                <td>1,815,616</td>
                                 <td>0.6x</td>
                                 <td>$12.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: move too large 155.8% > 80%</td>
+                                <td>Filtered: move too large 148.6% > 80%</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">WHLR</td>
                                 <td>Wheeler Real Estate Invt Tr</td>
-                                <td>$1.88</td>
-                                <td>+90.0%</td>
-                                <td>8,428,622</td>
+                                <td>$1.86</td>
+                                <td>+88.0%</td>
+                                <td>8,460,341</td>
                                 <td>7.8x</td>
                                 <td>$0.5M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $0.5M, move too large 90.0% > 80%, avg $vol $2.0M < $5.0M</td>
+                                <td>Filtered: mktcap $0.5M, move too large 88.0% > 80%, avg $vol $2.0M < $5.0M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">DSY</td>
                                 <td>Big Tree Cloud Holdings Limited</td>
-                                <td>$4.89</td>
-                                <td>+69.7%</td>
-                                <td>3,069,464</td>
+                                <td>$4.88</td>
+                                <td>+69.4%</td>
+                                <td>3,073,191</td>
                                 <td>5.0x</td>
                                 <td>$13.7M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -1411,9 +1419,9 @@
                             <tr>
                                 <td class="ticker-cell">SURG</td>
                                 <td>Surgepays Inc</td>
-                                <td>$0.64</td>
-                                <td>+55.0%</td>
-                                <td>12,079,684</td>
+                                <td>$0.66</td>
+                                <td>+59.3%</td>
+                                <td>12,142,935</td>
                                 <td>1.2x</td>
                                 <td>$10.4M</td>
                                 <td><span class="scan-pass">PASS</span></td>
@@ -1433,20 +1441,20 @@
                             <tr>
                                 <td class="ticker-cell">SDEV</td>
                                 <td>Stablecoin Development Corporation</td>
-                                <td>$1.33</td>
-                                <td>+27.8%</td>
-                                <td>3,274,089</td>
+                                <td>$1.30</td>
+                                <td>+25.1%</td>
+                                <td>3,276,224</td>
                                 <td>2.4x</td>
                                 <td>$52.5M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: avg $vol $1.8M < $5.0M</td>
+                                <td>Filtered: avg $vol $1.7M < $5.0M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LIMN</td>
                                 <td>Liminatus Pharma</td>
                                 <td>$0.13</td>
                                 <td>+16.7%</td>
-                                <td>43,321,555</td>
+                                <td>43,348,546</td>
                                 <td>2.7x</td>
                                 <td>$5.2M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -1464,37 +1472,37 @@
                                 <td>Filtered: vol 32,600, float 65.7M > 50M, vol/float 0.00x < 0.5x, avg $vol $0.0M < $5.0M</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">AVAT</td>
-                                <td>Avalanche Treasury Corp</td>
-                                <td>$0.58</td>
-                                <td>+15.0%</td>
-                                <td>39,942</td>
-                                <td>0.0x</td>
-                                <td>$22.7M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 39,942, vol/float 0.00x < 0.5x, avg $vol $0.5M < $5.0M</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">YRD</td>
                                 <td>Yiren Digital Ltd</td>
                                 <td>$1.03</td>
-                                <td>+14.2%</td>
-                                <td>7,983,473</td>
-                                <td>53.7x</td>
+                                <td>+14.3%</td>
+                                <td>8,004,442</td>
+                                <td>53.9x</td>
                                 <td>$78.9M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: float 87.5M > 50M, vol/float 0.09x < 0.5x, avg $vol $0.2M < $5.0M</td>
                             </tr>
                             <tr>
+                                <td class="ticker-cell">AVAT</td>
+                                <td>Avalanche Treasury Corp</td>
+                                <td>$0.58</td>
+                                <td>+15.0%</td>
+                                <td>40,475</td>
+                                <td>0.0x</td>
+                                <td>$22.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 40,475, vol/float 0.00x < 0.5x, avg $vol $0.5M < $5.0M</td>
+                            </tr>
+                            <tr>
                                 <td class="ticker-cell">SDOT</td>
                                 <td>Sadot Group</td>
-                                <td>$81.80</td>
-                                <td>+13.6%</td>
-                                <td>40,390</td>
+                                <td>$81.99</td>
+                                <td>+13.9%</td>
+                                <td>40,447</td>
                                 <td>0.0x</td>
                                 <td>$53.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $81.800, vol 40,390, vol/float 0.25x < 0.5x</td>
+                                <td>Filtered: price $81.990, vol 40,447, vol/float 0.25x < 0.5x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">CAST</td>
@@ -1673,17 +1681,6 @@
                                 <td>Filtered: mktcap $1884.5M, vol 1, float 99.6M > 50M, vol/float 0.00x < 0.5x, avg $vol $2.3M < $5.0M</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">DWTX</td>
-                                <td>Dogwood Therapeutics</td>
-                                <td>$1.62</td>
-                                <td>+8.0%</td>
-                                <td>11</td>
-                                <td>0.0x</td>
-                                <td>$50.4M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: vol 11, vol/float 0.00x < 0.5x, avg $vol $0.1M < $5.0M</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">KNRX</td>
                                 <td>KNOREX LTD.</td>
                                 <td>$0.49</td>
@@ -1750,26 +1747,15 @@
                                 <td>Filtered: vol 2, float 97.3M > 50M, vol/float 0.00x < 0.5x, avg $vol $0.8M < $5.0M</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">FWDI</td>
-                                <td>Forward Inds Inc N Y</td>
-                                <td>$5.06</td>
-                                <td>+7.7%</td>
-                                <td>1,288</td>
+                                <td class="ticker-cell">FURY</td>
+                                <td>Fury Gold Mines Limited</td>
+                                <td>$0.56</td>
+                                <td>+7.5%</td>
+                                <td>3</td>
                                 <td>0.0x</td>
-                                <td>$346.6M</td>
+                                <td>$99.1M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: mktcap $346.6M, vol 1,288, float 51.0M > 50M, vol/float 0.00x < 0.5x</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">JEM</td>
-                                <td>707 Cayman Holding Limited</td>
-                                <td>$3.44</td>
-                                <td>+7.2%</td>
-                                <td>1,031,330</td>
-                                <td>0.0x</td>
-                                <td>$5.8M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: tiny rvol 0.0x</td>
+                                <td>Filtered: vol 3, float 175.9M > 50M, vol/float 0.00x < 0.5x, avg $vol $0.1M < $5.0M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">PCSA</td>
@@ -1814,17 +1800,6 @@
                                 <td>$3.2M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: mktcap $3.2M, vol 1,456, vol/float 0.00x < 0.5x, avg $vol $0.1M < $5.0M</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">OPTT</td>
-                                <td>Ocean Power Tech</td>
-                                <td>$0.29</td>
-                                <td>+6.7%</td>
-                                <td>2,257</td>
-                                <td>0.0x</td>
-                                <td>$69.4M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.290, vol 2,257, float 245.0M > 50M, vol/float 0.00x < 0.5x, avg $vol $0.9M < $5.0M</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">NPT</td>
@@ -1895,13 +1870,13 @@
                             <tr>
                                 <td class="ticker-cell">MSTR</td>
                                 <td>Strategy Inc</td>
-                                <td>$99.27</td>
+                                <td>$99.26</td>
                                 <td>+6.3%</td>
-                                <td>298,621</td>
+                                <td>299,606</td>
                                 <td>0.0x</td>
                                 <td>$32728.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $99.270, mktcap $32728.3M, float 329.9M > 50M, vol/float 0.00x < 0.5x</td>
+                                <td>Filtered: price $99.260, mktcap $32728.3M, float 329.9M > 50M, vol/float 0.00x < 0.5x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">PSQH</td>
@@ -1924,6 +1899,39 @@
                                 <td>$5.4M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: price $0.400, tiny price $0.400, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 55, vol/float 0.00x < 0.5x, avg $vol $0.1M < $5.0M</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">NIPG</td>
+                                <td>NIP Group Inc.</td>
+                                <td>$0.27</td>
+                                <td>+6.4%</td>
+                                <td>152</td>
+                                <td>0.0x</td>
+                                <td>$63.9M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.266, vol 152, float 250.0M > 50M, vol/float 0.00x < 0.5x, avg $vol $0.0M < $5.0M</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">FOXX</td>
+                                <td>Foxx Development Holdings Inc.</td>
+                                <td>$3.58</td>
+                                <td>+6.2%</td>
+                                <td>1,515</td>
+                                <td>0.0x</td>
+                                <td>$23.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: vol 1,515, vol/float 0.00x < 0.5x, avg $vol $0.2M < $5.0M</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">PHI</td>
+                                <td>Pldt</td>
+                                <td>$18.83</td>
+                                <td>+6.1%</td>
+                                <td>2</td>
+                                <td>0.0x</td>
+                                <td>$3835.0M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: mktcap $3835.0M, vol 2, float 216.0M > 50M, vol/float 0.00x < 0.5x, avg $vol $4.0M < $5.0M</td>
                             </tr>                                    </tbody>
                                 </table>
                             </div>
@@ -1945,7 +1953,7 @@
                                 <td>Eason Technology</td>
                                 <td>$0.58</td>
                                 <td>-34.4%</td>
-                                <td>239,476</td>
+                                <td>240,869</td>
                                 <td>0.0x</td>
                                 <td>$4.6M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -1954,9 +1962,9 @@
                             <tr>
                                 <td class="ticker-cell">LHAI</td>
                                 <td>Linkhome Holdings Inc.</td>
-                                <td>$1.84</td>
-                                <td>-32.8%</td>
-                                <td>1,571,529</td>
+                                <td>$1.83</td>
+                                <td>-33.2%</td>
+                                <td>1,572,593</td>
                                 <td>0.0x</td>
                                 <td>$44.5M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -1965,20 +1973,20 @@
                             <tr>
                                 <td class="ticker-cell">HKIT</td>
                                 <td>HiTek Global Inc.</td>
-                                <td>$0.15</td>
-                                <td>-28.3%</td>
-                                <td>194,243</td>
+                                <td>$0.16</td>
+                                <td>-27.4%</td>
+                                <td>194,246</td>
                                 <td>0.0x</td>
                                 <td>$4.3M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.155, mktcap $4.3M, rvol 0.0x, vol/float 0.01x</td>
+                                <td>Filtered: price $0.157, mktcap $4.3M, rvol 0.0x, vol/float 0.01x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">INLF</td>
                                 <td>INLIF</td>
                                 <td>$0.02</td>
                                 <td>-26.8%</td>
-                                <td>13,323,621</td>
+                                <td>13,360,531</td>
                                 <td>0.0x</td>
                                 <td>$0.5M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -1989,7 +1997,7 @@
                                 <td>Token Cat Ltd</td>
                                 <td>$3.62</td>
                                 <td>-24.5%</td>
-                                <td>107,098</td>
+                                <td>107,164</td>
                                 <td>0.0x</td>
                                 <td>$126.8M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -2011,11 +2019,22 @@
                                 <td>LQR House Inc.</td>
                                 <td>$0.04</td>
                                 <td>-21.9%</td>
-                                <td>5,174,455</td>
+                                <td>5,175,453</td>
                                 <td>0.1x</td>
                                 <td>$1.1M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: price $0.041, mktcap $1.1M, rvol 0.1x, vol/float 0.29x</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">FC</td>
+                                <td>Franklin Covey Co</td>
+                                <td>$20.30</td>
+                                <td>-18.8%</td>
+                                <td>118</td>
+                                <td>0.0x</td>
+                                <td>$281.7M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $20.300, mktcap $281.7M, rvol 0.0x, vol 118, vol/float 0.00x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">APRE</td>
@@ -2029,17 +2048,6 @@
                                 <td>Filtered: rvol 0.0x, vol 1, vol/float 0.00x</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">NIVF</td>
-                                <td>NewGenIvf Group</td>
-                                <td>$0.46</td>
-                                <td>-17.1%</td>
-                                <td>46,000</td>
-                                <td>0.0x</td>
-                                <td>$2.2M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $0.457, mktcap $2.2M, rvol 0.0x, vol 46,000, vol/float 0.01x</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">FXHO</td>
                                 <td>Utime Ltd</td>
                                 <td>$8.07</td>
@@ -2051,28 +2059,6 @@
                                 <td>Filtered: rvol 0.1x, vol 8,748, vol/float 0.00x</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">CANF</td>
-                                <td>Can-Fite BioPharma Ltd.</td>
-                                <td>$3.92</td>
-                                <td>-15.4%</td>
-                                <td>31,875</td>
-                                <td>0.0x</td>
-                                <td>$9.9M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: rvol 0.0x, vol 31,875, vol/float 0.01x</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">FC</td>
-                                <td>Franklin Covey Co</td>
-                                <td>$21.15</td>
-                                <td>-15.4%</td>
-                                <td>61</td>
-                                <td>0.0x</td>
-                                <td>$281.7M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: price $21.150, mktcap $281.7M, rvol 0.0x, vol 61, vol/float 0.00x</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">NOMA</td>
                                 <td>NOMADAR CORP.</td>
                                 <td>$3.59</td>
@@ -2082,6 +2068,28 @@
                                 <td>$63.1M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: mktcap $63.1M, rvol 0.1x, vol 672, vol/float 0.00x</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">NIVF</td>
+                                <td>NewGenIvf Group</td>
+                                <td>$0.47</td>
+                                <td>-14.2%</td>
+                                <td>47,000</td>
+                                <td>0.0x</td>
+                                <td>$2.2M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: price $0.473, mktcap $2.2M, rvol 0.0x, vol 47,000, vol/float 0.01x</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">CANF</td>
+                                <td>Can-Fite BioPharma Ltd.</td>
+                                <td>$3.99</td>
+                                <td>-13.8%</td>
+                                <td>32,059</td>
+                                <td>0.0x</td>
+                                <td>$9.9M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: rvol 0.0x, vol 32,059, vol/float 0.01x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">YOOV</td>
@@ -2110,7 +2118,7 @@
                                 <td>Golden Sun Health Technology Group Ltd</td>
                                 <td>$0.32</td>
                                 <td>-12.5%</td>
-                                <td>152,892</td>
+                                <td>152,900</td>
                                 <td>0.0x</td>
                                 <td>$3.7M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -2220,7 +2228,7 @@
                                 <td>PMGC Holdings</td>
                                 <td>$1.14</td>
                                 <td>-10.9%</td>
-                                <td>114,043</td>
+                                <td>114,044</td>
                                 <td>0.0x</td>
                                 <td>$5.8M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
@@ -2315,17 +2323,6 @@
                                 <td>Filtered: mktcap $1.9M, rvol 0.0x, vol 12,975, vol/float 0.01x</td>
                             </tr>
                             <tr>
-                                <td class="ticker-cell">HODO</td>
-                                <td>Brag House Holdings Inc.</td>
-                                <td>$2.28</td>
-                                <td>-10.1%</td>
-                                <td>960</td>
-                                <td>0.0x</td>
-                                <td>$8.6M</td>
-                                <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: rvol 0.0x, vol 960, vol/float 0.00x</td>
-                            </tr>
-                            <tr>
                                 <td class="ticker-cell">SYNX</td>
                                 <td>SILYNXCOM LTD</td>
                                 <td>$0.97</td>
@@ -2385,11 +2382,11 @@
                                 <td>Globavend Holdings</td>
                                 <td>$5.44</td>
                                 <td>-9.0%</td>
-                                <td>5,475</td>
+                                <td>5,476</td>
                                 <td>0.0x</td>
                                 <td>$13.7M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
-                                <td>Filtered: move -9.0%, rvol 0.0x, vol 5,475, vol/float 0.00x</td>
+                                <td>Filtered: move -9.0%, rvol 0.0x, vol 5,476, vol/float 0.00x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">TMDE</td>
@@ -2456,6 +2453,17 @@
                                 <td>$1682.1M</td>
                                 <td><span class="scan-skip">SKIP</span></td>
                                 <td>Filtered: price $40.330, mktcap $1682.1M, move -8.5%, rvol 0.0x, vol 5, vol/float 0.00x</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">HODO</td>
+                                <td>Brag House Holdings Inc.</td>
+                                <td>$2.33</td>
+                                <td>-8.3%</td>
+                                <td>987</td>
+                                <td>0.0x</td>
+                                <td>$8.6M</td>
+                                <td><span class="scan-skip">SKIP</span></td>
+                                <td>Filtered: move -8.3%, rvol 0.0x, vol 987, vol/float 0.00x</td>
                             </tr>
                             <tr>
                                 <td class="ticker-cell">LGO</td>
