@@ -2867,20 +2867,33 @@
 
             document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
             document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
-            // Tracker "Proposed Entry" = last scan refresh price (e.g., 15 mins ago), not current fetch
-            // This lets you see P&L as if you entered at scan time
-            // Current Price = fresh quote to show movement since last refresh
-            const liveQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
-            const proposedEntry = (liveQuote && liveQuote.price > 0) ? liveQuote.price : entry;
-                        const isUsingLastScan = liveQuote && liveQuote.price > 0;
-                        document.getElementById('perf-entry').textContent = fmtCurrency(proposedEntry);
-                        document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${isUsingLastScan ? 'Last scan price' : 'Trade plan entry'} · ${liveQuote?._timestamp ? new Date(liveQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : (r.time || '—')}`;
-                        // Current price and unrealized P&L fetched fresh to show movement since last scan
-                        await updateTrackerCurrentPrice(p.ticker, proposedEntry, t1, t2, t3, shareQty, true);
-            const pnlEl = document.getElementById('perf-pnl');
-            if (pnlEl) { pnlEl.textContent = '—'; pnlEl.className = 'value'; }
-            const pnlSub = document.getElementById('perf-pnl-sub');
-            if (pnlSub) pnlSub.textContent = 'Fetching price…';
+            // Tracker "Proposed Entry" = previous scan refresh price, "Current Price" = current scan price
+            // Both come from the backend Webull feed, so P&L reflects real movement between refreshes.
+            const prevQuote = window._prevLiveQuotes?.[(p.ticker || '').toUpperCase()];
+            const currentQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
+            const proposedEntry = (prevQuote && prevQuote.price > 0) ? prevQuote.price : entry;
+            const currentPrice = (currentQuote && currentQuote.price > 0) ? currentQuote.price : null;
+            const hasPrevPrice = prevQuote && prevQuote.price > 0;
+            document.getElementById('perf-entry').textContent = fmtCurrency(proposedEntry);
+            document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${hasPrevPrice ? 'Previous scan price' : 'Trade plan entry'} · ${prevQuote?._timestamp ? new Date(prevQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : (r.time || '—')}`;
+            if (currentPrice !== null && currentPrice > 0) {
+                document.getElementById('perf-current').textContent = fmtCurrency(currentPrice);
+                document.getElementById('perf-current-sub').textContent = `Current scan price · ${currentQuote?._timestamp ? new Date(currentQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : '—'}`;
+                const pnl = (currentPrice - proposedEntry) * shareQty;
+                const pct = proposedEntry > 0 ? ((currentPrice - proposedEntry) / proposedEntry) * 100 : 0;
+                const pnlEl = document.getElementById('perf-pnl');
+                if (pnlEl) {
+                    pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+                    pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+                }
+                const pnlSub = document.getElementById('perf-pnl-sub');
+                if (pnlSub) pnlSub.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}% since last refresh`;
+            } else {
+                document.getElementById('perf-current').textContent = '—';
+                document.getElementById('perf-current-sub').textContent = 'No current scan price';
+                document.getElementById('perf-pnl').textContent = '—';
+                document.getElementById('perf-pnl-sub').textContent = 'Waiting for current price';
+            }
             const t1El = document.getElementById('perf-t1-pnl');
             t1El.textContent = (pnlT1 >= 0 ? '+$' : '-$') + Math.abs(pnlT1).toFixed(2);
             t1El.className = 'value ' + (pnlT1 >= 0 ? 'green' : 'red');
@@ -3201,6 +3214,17 @@
                 window._lastScanStats = stats;
                 window._lastLiveQuotes = data.live_quotes || {};
                 const lastUpdated = new Date(data.last_updated || Date.now());
+
+                // Persist previous scan's live quotes so the tracker can compute
+                // the 15-min forecast P&L: Proposed Entry = previous price,
+                // Current Price = current price, both from the backend Webull feed.
+                try {
+                    const prev = localStorage.getItem('ozmoeg-prev-live-quotes');
+                    window._prevLiveQuotes = prev ? JSON.parse(prev) : {};
+                } catch (e) {
+                    window._prevLiveQuotes = {};
+                }
+
                 // Anchor the auto-refresh countdown to the JSON timestamp so it stays
                 // aligned with the cron schedule, not the browser load time.
                 window._lastScanTimestamp = lastUpdated;
@@ -3226,6 +3250,11 @@
                 window._lastLiveResults = results;
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
+
+                // Save current scan quotes to localStorage so next refresh can compare prev vs current
+                try {
+                    localStorage.setItem('ozmoeg-prev-live-quotes', JSON.stringify(data.live_quotes || {}));
+                } catch (e) { /* storage may be unavailable */ }
 
                 // Show Pre/After toggle only for US markets (ASX has no extended session).
                 const showPreAfterToggle = currentMarket !== 'AUS';
