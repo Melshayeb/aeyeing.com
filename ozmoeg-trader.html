@@ -3761,20 +3761,26 @@
                 renderScannerView();
                 renderPlanRules();
 
-                // Update news ticker
+                // Update news ticker - only show actionable results, not all 50 skipped scans
                 const ticker = document.getElementById('news-ticker');
-                if (ticker && results.length) {
-                    const items = results.map(r => {
-                        const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
-                        const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
-                        const imp = impactLabel(getAlertMaxScore(r), r);
-                        const impactTag = r.status === 'ALERT' ? ` <span class="impact-mini ${imp.cls}">${imp.text}</span>` : '';
-                        const newsAge = formatNewsAgeInline(r.news);
-                        const catalyst = (r.news && r.news.catalyst) ? r.news.catalyst : '';
-                        const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
-                        return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
-                    }).join('');
-                    ticker.innerHTML = items + '\n' + items;
+                if (ticker) {
+                    const actionable = results.filter(r => ['ALERT','CANDIDATE','BOUNCE'].includes(r.status));
+                    if (actionable.length) {
+                        const items = actionable.map(r => {
+                            const date = r.date || lastUpdated.toLocaleDateString('en-US', { month:'long', day:'numeric' });
+                            const time = r.time || lastUpdated.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
+                            const imp = impactLabel(getAlertMaxScore(r), r);
+                            const impactTag = r.status === 'ALERT' ? ` <span class="impact-mini ${imp.cls}">${imp.text}</span>` : '';
+                            const newsAge = formatNewsAgeInline(r.news);
+                            const catalyst = (r.news && r.news.catalyst) ? r.news.catalyst : '';
+                            const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
+                        }).join('');
+                        ticker.innerHTML = items + '\n' + items;
+                    } else {
+                        const info = `<div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — No candidates passed filter criteria — Scan continues every 15 min</div>`;
+                        ticker.innerHTML = info + '\n' + info;
+                    }
                 }
 
                 // Update all-scanned details if expanded
