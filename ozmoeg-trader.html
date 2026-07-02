@@ -2936,7 +2936,10 @@
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 15 minutes
         // This bypasses GitHub Pages HTML cache so updates appear immediately.
 
-        const REFRESH_INTERVAL_MS = 900000; // 15 minutes — matches the market scanner cron
+        const REFRESH_INTERVAL_MS = 900000; // 15 minutes — default outside active window
+        const ACTIVE_REFRESH_INTERVAL_MS = 300000; // 5 minutes during active trading window
+        const ACTIVE_WINDOW_START = { h: 18, m: 0 };  // Sydney/Melbourne 18:00
+        const ACTIVE_WINDOW_END = { h: 22, m: 30 };   // Sydney/Melbourne 22:30
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
@@ -2944,15 +2947,45 @@
         let liveLastUpdated = new Date();
         let currentMarketStatus = 'OPEN';
         let refreshTimerId = null;
+
+        // True during Sydney/Melbourne active trading window (US pre-market).
+        function isActiveTradingWindow(now = new Date()) {
+            const mel = new Date(now.toLocaleString('en-US', { timeZone: 'Australia/Melbourne' }));
+            const h = mel.getHours();
+            const m = mel.getMinutes();
+            const mins = h * 60 + m;
+            const start = ACTIVE_WINDOW_START.h * 60 + ACTIVE_WINDOW_START.m;
+            const end = ACTIVE_WINDOW_END.h * 60 + ACTIVE_WINDOW_END.m;
+            return mins >= start && mins < end;
+        }
+
+        function getRefreshIntervalMs() {
+            return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : REFRESH_INTERVAL_MS;
+        }
+
+        // Compute the next aligned refresh from a given anchor timestamp.
+        // If the anchor is stale, keep stepping forward by the interval until we land in the future.
+        // This preserves the cron-aligned cadence across page reloads instead of resetting to "now + interval".
+        function computeNextRefresh(anchorTimestamp) {
+            const interval = getRefreshIntervalMs();
+            const now = Date.now();
+            let anchor = anchorTimestamp && !isNaN(anchorTimestamp) ? new Date(anchorTimestamp).getTime() : now;
+            let next = anchor + interval;
+            while (next <= now) {
+                next += interval;
+            }
+            return next;
+        }
+
         // Persist the next refresh time across page reloads so the countdown is always
         // anchored to the last actual scan, not to when the browser happens to open.
         let nextRefreshAt = (() => {
             try {
                 const stored = localStorage.getItem('ozmoeg-next-refresh');
                 const ts = stored ? parseInt(stored, 10) : 0;
-                if (ts && !isNaN(ts)) return ts;
+                if (ts && !isNaN(ts) && ts > Date.now()) return ts;
             } catch (e) { /* storage may be unavailable */ }
-            return Date.now() + REFRESH_INTERVAL_MS;
+            return Date.now() + getRefreshIntervalMs();
         })();
 
         function fmtCurrency(n) {
@@ -3655,17 +3688,10 @@
         }
 
         // Schedule the next refresh relative to the actual data timestamp.
-        // If the JSON reports last_updated at 13:02, the next refresh is at 13:17,
-        // not 15 minutes from whenever the browser happens to load the page.
+        // We keep stepping forward by the active/idle interval until we land in the future,
+        // so the countdown does not reset to "now + interval" every time a page reloads.
         function scheduleNextRefresh(anchorTimestamp) {
-            const anchor = anchorTimestamp && !isNaN(anchorTimestamp) ? new Date(anchorTimestamp).getTime() : Date.now();
-            nextRefreshAt = anchor + REFRESH_INTERVAL_MS;
-            // If the anchor is so old that the scheduled time is already passed,
-            // schedule a full interval from now. Otherwise we get stuck in a 1-second
-            // refresh loop where the countdown never leaves 0:01.
-            if (nextRefreshAt <= Date.now()) {
-                nextRefreshAt = Date.now() + REFRESH_INTERVAL_MS;
-            }
+            nextRefreshAt = computeNextRefresh(anchorTimestamp);
             // Persist so the countdown survives page reloads.
             try {
                 localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
