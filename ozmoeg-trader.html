@@ -1131,6 +1131,20 @@
             background: rgba(255,255,255,0.05);
             color: var(--text-secondary);
         }
+        .country-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.08);
+            padding: 0.15rem 0.45rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            margin-left: 0.35rem;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+        }
 
         /* ===== SMALL PHONES (≤480px) ===== */
         @media (max-width: 480px) {
@@ -3419,28 +3433,39 @@
             document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
             document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
             // Tracker "Proposed Entry" = previous scan refresh price, "Current Price" = current scan price.
-            // If no previous scan price exists yet (first load after fix), fall back to the original plan
-            // entry (rawEntry) — not the live-rebased entry, because rebased entry == current price and
-            // would make P&L always zero.
+            // When no previous scan price exists yet, we deliberately show "—" on the proposed entry side
+            // instead of faking it with the current price or raw plan entry, so the user knows the tracker
+            // is waiting for the next refresh to establish a real prior price.
             const prevQuote = window._prevLiveQuotes?.[(p.ticker || '').toUpperCase()];
             const currentQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
-            const proposedEntry = (prevQuote && prevQuote.price > 0) ? prevQuote.price : rawEntry;
-            const currentPrice = (currentQuote && currentQuote.price > 0) ? currentQuote.price : null;
             const hasPrevPrice = prevQuote && prevQuote.price > 0;
-            document.getElementById('perf-entry').textContent = fmtCurrency(proposedEntry);
-            document.getElementById('perf-entry-sub').textContent = `${p.ticker} — ${hasPrevPrice ? 'Previous scan price' : 'Trade plan entry'} · ${prevQuote?._timestamp ? new Date(prevQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : (r.time || '—')}`;
+            const currentPrice = (currentQuote && currentQuote.price > 0) ? currentQuote.price : null;
+
+            if (hasPrevPrice) {
+                document.getElementById('perf-entry').textContent = fmtCurrency(prevQuote.price);
+                document.getElementById('perf-entry-sub').textContent = `${p.ticker} — Previous scan price · ${prevQuote?._timestamp ? new Date(prevQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : (r.time || '—')}`;
+            } else {
+                document.getElementById('perf-entry').textContent = '—';
+                document.getElementById('perf-entry-sub').textContent = 'Waiting for previous refresh';
+            }
+
             if (currentPrice !== null && currentPrice > 0) {
                 document.getElementById('perf-current').textContent = fmtCurrency(currentPrice);
                 document.getElementById('perf-current-sub').textContent = `Current scan price · ${currentQuote?._timestamp ? new Date(currentQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : '—'}`;
-                const pnl = (currentPrice - proposedEntry) * shareQty;
-                const pct = proposedEntry > 0 ? ((currentPrice - proposedEntry) / proposedEntry) * 100 : 0;
-                const pnlEl = document.getElementById('perf-pnl');
-                if (pnlEl) {
-                    pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
-                    pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+                if (hasPrevPrice) {
+                    const pnl = (currentPrice - prevQuote.price) * shareQty;
+                    const pct = prevQuote.price > 0 ? ((currentPrice - prevQuote.price) / prevQuote.price) * 100 : 0;
+                    const pnlEl = document.getElementById('perf-pnl');
+                    if (pnlEl) {
+                        pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+                        pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+                    }
+                    const pnlSub = document.getElementById('perf-pnl-sub');
+                    if (pnlSub) pnlSub.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}% since last refresh`;
+                } else {
+                    document.getElementById('perf-pnl').textContent = '—';
+                    document.getElementById('perf-pnl-sub').textContent = 'Next refresh will show real P&L';
                 }
-                const pnlSub = document.getElementById('perf-pnl-sub');
-                if (pnlSub) pnlSub.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}% since last refresh`;
             } else {
                 document.getElementById('perf-current').textContent = '—';
                 document.getElementById('perf-current-sub').textContent = 'No current scan price';
@@ -3542,8 +3567,8 @@
             const showImpact = r.status === 'ALERT' || r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT';
             const ageCell = formatNewsAgeCell(r.news);
             const country = (r.country || '').trim();
-            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
-            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}${countryBadge}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
+            const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
+            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
@@ -3843,8 +3868,8 @@
                             const catalyst = (r.news && r.news.catalyst) ? r.news.catalyst : '';
                             const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
                             const country = (r.country || '').trim();
-                            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
-                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}${countryBadge}) — ${catalystPrefix}${r.result || ''}</div>`;
+                            const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker}${countryBadge} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
                         }).join('');
                         ticker.innerHTML = items + '\n' + items;
                     } else {
