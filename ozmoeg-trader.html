@@ -3371,6 +3371,18 @@
             document.getElementById('plan-ticker').textContent = p.ticker;
             document.getElementById('perf-ticker').textContent = p.ticker;
 
+            // Country badge on active trade plan and tracker header
+            const country = (r.country || '').trim();
+            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
+            const planTickerEl = document.getElementById('plan-ticker');
+            const perfTickerEl = document.getElementById('perf-ticker');
+            if (planTickerEl && !planTickerEl.innerHTML.includes('country-badge')) {
+                planTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+            }
+            if (perfTickerEl && !perfTickerEl.innerHTML.includes('country-badge')) {
+                perfTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+            }
+
             document.getElementById('plan-entry').textContent = fmtCurrency(entry);
             document.getElementById('plan-stop').textContent = fmtCurrency(stop) + fmtPct(entry, stop);
             document.getElementById('plan-t1').textContent = fmtCurrency(t1) + fmtPct(entry, t1);
@@ -3461,7 +3473,7 @@
             impactBadge.textContent = imp.text;
             impactBadge.className = 'impact-badge ' + imp.cls;
 
-            document.getElementById('news-ticker-symbol').textContent = p.ticker;
+            document.getElementById('news-ticker-symbol').innerHTML = escapeHtml(p.ticker) + countryBadge;
             document.getElementById('news-ticker-status').textContent = news.catalyst || 'Alert active';
             document.getElementById('news-scan-time').textContent = news.scan_time ? `Scanned ${news.scan_time}` : '';
             document.getElementById('catalyst-headline').textContent = news.catalyst || 'No catalyst headline available';
@@ -3529,7 +3541,9 @@
             const escaped = escapeHtml(sanitizeSkipReason(r));
             const showImpact = r.status === 'ALERT' || r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT';
             const ageCell = formatNewsAgeCell(r.news);
-            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
+            const country = (r.country || '').trim();
+            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
+            return `<tr><td class="ticker-cell">${r.ticker}</td><td>${r.name}${countryBadge}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${escaped}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
@@ -3828,7 +3842,9 @@
                             const newsAge = formatNewsAgeInline(r.news);
                             const catalyst = (r.news && r.news.catalyst) ? r.news.catalyst : '';
                             const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
-                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
+                            const country = (r.country || '').trim();
+                            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker} (${r.name}${countryBadge}) — ${catalystPrefix}${r.result || ''}</div>`;
                         }).join('');
                         ticker.innerHTML = items + '\n' + items;
                     } else {
