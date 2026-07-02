@@ -3806,14 +3806,18 @@
                 const stats = data.scan_stats || {};
                 window._lastScanStats = stats;
                 window._lastLiveQuotes = data.live_quotes || {};
+                window._previousLiveQuotes = data.previous_live_quotes || {};
                 const lastUpdated = new Date(data.last_updated || Date.now());
 
-                // Persist previous scan's live quotes so the tracker can compute
-                // the 15-min forecast P&L: Proposed Entry = previous price,
-                // Current Price = current price, both from the backend Webull feed.
+                // The backend now ships the previous scan's live quotes in the JSON,
+                // so the tracker can compute real scan-to-scan P&L immediately without
+                // waiting for browser localStorage to cycle. Fallback to localStorage
+                // only when the backend snapshot is absent.
                 try {
                     const prev = localStorage.getItem('ozmoeg-prev-live-quotes');
-                    window._prevLiveQuotes = prev ? JSON.parse(prev) : {};
+                    window._prevLiveQuotes = window._previousLiveQuotes && Object.keys(window._previousLiveQuotes).length
+                        ? window._previousLiveQuotes
+                        : (prev ? JSON.parse(prev) : {});
                 } catch (e) {
                     window._prevLiveQuotes = {};
                 }
