@@ -3962,7 +3962,6 @@
 
                 // Update all-scanned gainers and losers details if expanded
                 const isAu = (stats.market || 'us').toLowerCase() === 'au';
-                const allGainers = data.all_gainers || [];
                 const allLosers = data.all_losers || [];
                 const renderScannedRow = (stock, isLoser) => {
                     const symbol = stock.ticker || '';
