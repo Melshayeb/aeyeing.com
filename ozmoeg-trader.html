@@ -649,12 +649,10 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
-        .status-wrap {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
+        #scanner-table td:nth-child(3),
+        #scanner-table td.status-column {
             white-space: nowrap;
-            flex-wrap: nowrap;
+            min-width: fit-content;
         }
         .impact-mini {
             font-size: 0.7rem;
@@ -1459,7 +1457,7 @@
 <tr>
 <td class="ticker-cell">IQMX</td>
 <td>IQM Quantum Computers Oyj <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-high">🔥 High (5)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (5)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T13:22:37.000+0000">2h ago</span></td>
 <td><span class="tape-mini tape-medium" title="15s bars: vol accel 210.4%, velocity -1.71%, buy pressure 37.5%, large bars 2">⚡ active tape</span></td>
 <td>Move +1.0% / Volume 1,742,459</td>
@@ -1467,7 +1465,7 @@
 <tr>
 <td class="ticker-cell">SEER</td>
 <td>Seer, Inc. <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-high">🔥 High (5)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (5)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T15:44:00.000+0000">25m ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -75.6%, velocity -0.65%, buy pressure 56.2%, large bars 0">🌱 quiet tape</span></td>
 <td>Move -2.2% / Volume 23,728,006</td>
@@ -1475,7 +1473,7 @@
 <tr>
 <td class="ticker-cell">LHSW</td>
 <td>Lianhe Sowell International Group Ltd <span class="country-badge">China / Cayman-China</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-high">🔥 High (4)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (4)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T13:52:11.000+0000">2h ago</span></td>
 <td><span class="tape-mini tape-medium" title="15s bars: vol accel -17.8%, velocity 3.5%, buy pressure 50.5%, large bars 1">⚡ active tape</span></td>
 <td>Move +19.4% / Volume 84,500,812</td>
@@ -1483,7 +1481,7 @@
 <tr>
 <td class="ticker-cell">SBEV</td>
 <td>Splash Beverage Group Inc <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-high">🔥 High (4)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (4)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T13:17:41.000+0000">2h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -63.2%, velocity 0.94%, buy pressure 46.3%, large bars 1">🌱 quiet tape</span></td>
 <td>Move +35.3% / Volume 330,916,329</td>
@@ -1491,7 +1489,7 @@
 <tr>
 <td class="ticker-cell">KIDZ</td>
 <td>KIDZ AI INC <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-medium">⚡ Medium (3)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (3)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T16:02:36.000+0000">6m ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -8.8%, velocity -1.67%, buy pressure 53.1%, large bars 0">🌱 quiet tape</span></td>
 <td>Move +0.9% / Volume 154,961,659</td>
@@ -1499,7 +1497,7 @@
 <tr>
 <td class="ticker-cell">BYAH</td>
 <td>PARK HA BIOLOGICAL TECHNOLOGY <span class="country-badge">China / Cayman-China</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-medium">⚡ Medium (2)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (2)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T15:57:45.000+0000">11m ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel 23.1%, velocity -1.28%, buy pressure 50.0%, large bars 2">🌱 quiet tape</span></td>
 <td>Move +15.4% / Volume 14,638,606</td>
@@ -1507,7 +1505,7 @@
 <tr>
 <td class="ticker-cell">ZCMD</td>
 <td>Zhongchao Inc <span class="country-badge">China / Cayman-China</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-medium">⚡ Medium (2)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (2)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T15:43:32.000+0000">25m ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -44.0%, velocity -0.63%, buy pressure 71.2%, large bars 1">🌱 quiet tape</span></td>
 <td>Move +5.3% / Volume 31,423,630</td>
@@ -1515,7 +1513,7 @@
 <tr>
 <td class="ticker-cell">FXHO</td>
 <td>Utime Ltd <span class="country-badge">China / Cayman-China</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T15:43:32.000+0000">25m ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -8.4%, velocity -4.12%, buy pressure 43.5%, large bars 1">🌱 quiet tape</span></td>
 <td>Move -39.3% / Volume 5,755,734</td>
@@ -1523,7 +1521,7 @@
 <tr>
 <td class="ticker-cell">JLHL</td>
 <td>JULONG HOLDING LTD <span class="country-badge">China / Cayman-China</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T12:05:31.000+0000">4h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -10.5%, velocity -0.32%, buy pressure 50.0%, large bars 0">🌱 quiet tape</span></td>
 <td>Move +52.7% / Volume 2,048,633</td>
@@ -1531,7 +1529,7 @@
 <tr>
 <td class="ticker-cell">TDIC</td>
 <td>Dreamland Limited <span class="country-badge">China / Hong Kong</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T09:00:03.353+0000">7h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -12.2%, velocity -3.41%, buy pressure 56.2%, large bars 1">🌱 quiet tape</span></td>
 <td>Move +32.1% / Volume 6,505,707</td>
@@ -1539,7 +1537,7 @@
 <tr>
 <td class="ticker-cell">PEW</td>
 <td>GrabAGun Digital Holdings Inc <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T12:29:00.000+0000">3h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel 136.2%, velocity 0.51%, buy pressure 43.7%, large bars 2">🌱 quiet tape</span></td>
 <td>Move -7.6% / Volume 8,730,587</td>
@@ -1547,7 +1545,7 @@
 <tr>
 <td class="ticker-cell">BJDX</td>
 <td>Bluejay Diagnostics Inc <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T09:58:36.867+0000">6h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel 88.4%, velocity -0.58%, buy pressure 66.1%, large bars 0">🌱 quiet tape</span></td>
 <td>Move +1.7% / Volume 24,843,430</td>
@@ -1555,7 +1553,7 @@
 <tr>
 <td class="ticker-cell">QTEX</td>
 <td>QTREX Quantum Ltd. <span class="country-badge">United States</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T12:31:17.000+0000">3h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -63.7%, velocity -0.3%, buy pressure 56.2%, large bars 1">🌱 quiet tape</span></td>
 <td>Move -2.7% / Volume 9,187,243</td>
@@ -1563,7 +1561,7 @@
 <tr>
 <td class="ticker-cell">CRE</td>
 <td>CRE8 ENTERPRISE LTD <span class="country-badge">China / Hong Kong</span></td>
-<td><span class="status-wrap"><span class="result-alert">🚨 ALERT</span><span class="impact-mini impact-low">🌱 Low (0)</span></span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T12:05:31.000+0000">4h ago</span></td>
 <td><span class="tape-mini tape-low" title="15s bars: vol accel -39.3%, velocity 1.08%, buy pressure 50.0%, large bars 0">🌱 quiet tape</span></td>
 <td>Move -1.8% / Volume 3,435,049</td>
@@ -2766,8 +2764,8 @@
 <p class="tape-note"><span class="tape-mini tape-high">🔥</span> = aggressive tape (score ≥6) · <span class="tape-mini tape-medium">⚡</span> = active tape (score 3–6) · <span class="tape-mini tape-low">🌱</span> = quiet tape (&lt;3)</p>
 </div>
 </div>
-<div class="plan-exit" id="plan-exit">
-<h4>⏱ Exit Strategy</h4>
+<div class="plan-rules" id="plan-exit" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
+<h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
 <ul id="plan-exit-rules">
 <li>Select an alert to see exit rules.</li>
 </ul>
@@ -3850,9 +3848,6 @@
             const imp = impactLabel(getAlertMaxScore(r), r);
             const escaped = escapeHtml(sanitizeSkipReason(r));
             const showImpact = r.status === 'ALERT' || r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT';
-            const statusWrap = showImpact
-                ? `<span class="status-wrap"><span class="${statusClass}">${emoji} ${r.status}</span><span class="impact-mini ${imp.cls}">${imp.text}</span></span>`
-                : `<span class="${statusClass}">${emoji} ${r.status}</span>`;
             const ageCell = formatNewsAgeCell(r.news);
             const tape = r.tape || {};
             const tapeScore = tape.tape_score;
@@ -3868,7 +3863,7 @@
                 : `<span class="tape-mini tape-missing" title="Tape data unavailable">—</span>`;
             const country = (r.country || '').trim();
             const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
-            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td>${statusWrap}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td></tr>`;
+            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
