@@ -3967,27 +3967,20 @@
                     const table = scannedDetails.querySelector('table tbody');
                     if (table) {
                         table.innerHTML = allGainers.map(stock => {
-                            const t = stock.ticker || stock;
-                            const v = stock.values || {};
-                            const symbol = t.symbol || '';
-                            const name = t.name || symbol;
-                            const price = parseFloat(v.price || t.pprice || t.close || 0);
-                            const close = parseFloat(t.close || 0);
-                            const preClose = parseFloat(t.preClose || 0);
-                            const changeRatio = parseFloat(t.changeRatio || 0);
-                            let changePct = 0;
-                            if (isAu && preClose) changePct = (close - preClose) / preClose * 100;
-                            else if (close && price) changePct = (price - close) / close * 100;
-                            else changePct = (changeRatio - 1) * 100 || 0;
-                            const volume = parseInt(t.volume || 0);
-                            const mktCap = parseFloat(t.marketValue || 0);
-                            const rvol = parseFloat(t.rvol || 0);
-                            const passed = stock._scan_passed;
+                            // all_gainers is already flattened by the backend
+                            const symbol = stock.ticker || '';
+                            const name = stock.name || symbol;
+                            const price = parseFloat(stock.price || 0);
+                            const changePct = parseFloat(stock.change_pct || 0);
+                            const volume = parseInt(stock.volume || 0);
+                            const mktCap = parseFloat(stock.market_cap || 0);
+                            const rvol = parseFloat(stock.rvol || 0);
+                            const passed = stock.passed;
                             const badgeClass = passed ? 'scan-pass' : 'scan-skip';
                             const badgeText = passed ? 'PASS' : 'SKIP';
-                            const reason = stock._scan_reason || '';
+                            const reason = stock.reason || '';
                             const priceDecimals = isAu ? 3 : 2;
-                            return `<tr><td class="ticker-cell">${symbol}</td><td>${name}</td><td>$${price.toFixed(priceDecimals)}</td><td>${changePct >= 0 ? '+' : ''}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${reason}</td></tr>`;
+                            return `<tr><td class="ticker-cell">${escapeHtml(symbol)}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${changePct >= 0 ? '+' : ''}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
                         }).join('');
                     }
                 }
