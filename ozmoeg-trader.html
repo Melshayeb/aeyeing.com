@@ -3225,6 +3225,8 @@
             const list = document.getElementById('plan-rules-list');
             if (!list) return;
             const stats = window._lastScanStats || {};
+            // If no scan stats yet, leave the static rules list in place.
+            if (!stats.market && !Object.keys(stats.au_filters || {}).length) return;
             const auFilters = stats.au_filters || {};
             const isAu = currentMarket === 'AUS';
             if (isAu && Object.keys(auFilters).length) {
