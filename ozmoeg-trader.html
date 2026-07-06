@@ -681,6 +681,38 @@
         .tape-mini.tape-medium { color: var(--accent-amber); border-color: var(--accent-amber); background: rgba(255,171,0,0.08); }
         .tape-mini.tape-low { color: var(--accent-green); border-color: var(--accent-green); background: rgba(0,230,118,0.08); }
         .tape-mini.tape-missing { color: var(--text-secondary); border-color: var(--border); background: transparent; }
+
+        .tape-legend {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+        }
+        .tape-legend p { margin: 0 0 0.6rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .tape-legend .tape-note { margin: 0.6rem 0 0; font-size: 0.75rem; }
+        .tape-bar {
+            display: grid;
+            grid-template-columns: 9rem 1fr 4rem;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.35rem 0;
+            font-size: 0.78rem;
+        }
+        .tape-bar .tape-label { color: var(--text-primary); }
+        .tape-bar .tape-track {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .tape-bar .tape-fill {
+            height: 100%;
+            background: var(--accent-amber);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .tape-bar .tape-value { text-align: right; color: var(--text-secondary); }
         /* Scanned all-tickers detail table */
         .scanned-details {
             margin-top: 1rem;
@@ -2693,19 +2725,45 @@
                         <li>Candlestick signal confirmed ✅</li>
                         <li>Price above VWAP ✅</li>
                         <li>News catalyst confirmed outside market hours; relaxed during open ✅</li>
+                        <li>Tape score from 15s bars: vol acceleration, velocity, buy pressure, large bars ✅</li>
                         <li>Risk:Reward ≥2.0:1 ✅</li>
                         <li>Position sizing: fixed $R risk = 3% daily loss ÷ 3 trades; shares = R ÷ (entry − stop) ✅</li>
                         <li>Scale out: 50% at T1, 25% at T2, trail rest; breakeven stop after +1% ✅</li>
                     </ul>
+                    <h4>📼 Tape Explained</h4>
+                    <div class="tape-legend" id="tape-legend">
+                        <p>The <strong>Tape (15s)</strong> column is a proxy for real time-&-sales activity using 15-second candles:</p>
+                        <div class="tape-bar">
+                            <span class="tape-label">Volume Surge</span>
+                            <div class="tape-track"><div class="tape-fill" style="width:0%"></div></div>
+                            <span class="tape-value" id="tape-legend-va">—</span>
+                        </div>
+                        <div class="tape-bar">
+                            <span class="tape-label">Price Velocity</span>
+                            <div class="tape-track"><div class="tape-fill" style="width:0%"></div></div>
+                            <span class="tape-value" id="tape-legend-vel">—</span>
+                        </div>
+                        <div class="tape-bar">
+                            <span class="tape-label">Buy Pressure</span>
+                            <div class="tape-track"><div class="tape-fill" style="width:0%"></div></div>
+                            <span class="tape-value" id="tape-legend-bp">—</span>
+                        </div>
+                        <div class="tape-bar">
+                            <span class="tape-label">Large Prints (15s bars > 2× normal range)</span>
+                            <div class="tape-track"><div class="tape-fill" style="width:0%"></div></div>
+                            <span class="tape-value" id="tape-legend-lb">—</span>
+                        </div>
+                        <p class="tape-note"><span class="tape-mini tape-high">🔥</span> = aggressive tape (score ≥6) · <span class="tape-mini tape-medium">⚡</span> = active tape (score 3–6) · <span class="tape-mini tape-low">🌱</span> = quiet tape (<3)</p>
+                    </div>
                 </div>
-                <div class="plan-rules" style="border-left-color: var(--accent-amber); margin-top: 0.5rem;">
-                    <h4 style="color: var(--accent-amber);">⏱ Exit Strategy</h4>
-                    <ul id="plan-exit-rules">
-                        <li>Select an alert to see exit rules.</li>
+                <div class="plan-exit" id="plan-exit">
+                    <h4>⏱ Exit Strategy</h4>
+                    <ul id="exit-list">
+                        <li>No active plan yet</li>
                     </ul>
                 </div>
             </div>
-
+        </div>
             <!-- PERFORMANCE TRACKER -->
             <div class="performance-card" id="performance-card">
                 <h2>📈 Forecast vs Actual Tracker <span class="ticker-badge" id="perf-ticker">—</span></h2>
@@ -3595,6 +3653,31 @@
             document.getElementById('plan-shares').textContent = isNaN(shares) ? '—' : shares.toLocaleString();
             document.getElementById('plan-position').textContent = fmtCurrency(position);
             document.getElementById('plan-rr').textContent = isNaN(rr) ? '—' : `1:${rr.toFixed(2)}`;
+
+            // Render tape legend bars for the active plan
+            const tape = r.tape || {};
+            const va = tape.valid ? (tape.volume_acceleration || 0) : null;
+            const vel = tape.valid ? (tape.price_velocity_pct || 0) : null;
+            const bp = tape.valid ? (tape.buy_pressure_pct || 0) : null;
+            const lb = tape.valid ? (tape.large_bar_count || 0) : null;
+            function setTapeBar(id, val, fmt, cap) {
+                const wrap = document.getElementById(id);
+                if (!wrap) return;
+                const fill = wrap.querySelector('.tape-fill');
+                const valueEl = wrap.querySelector('.tape-value');
+                if (val === null || val === undefined) {
+                    if (fill) fill.style.width = '0%';
+                    if (valueEl) valueEl.textContent = '—';
+                    return;
+                }
+                const pct = Math.min(100, Math.max(0, (val / cap) * 100));
+                if (fill) fill.style.width = pct + '%';
+                if (valueEl) valueEl.textContent = fmt(val);
+            }
+            setTapeBar('tape-legend-va', va, v => `${v.toFixed(1)}%`, 200);
+            setTapeBar('tape-legend-vel', vel, v => `${v > 0 ? '+' : ''}${v.toFixed(2)}%`, 20);
+            setTapeBar('tape-legend-bp', bp, v => `${v.toFixed(1)}%`, 100);
+            setTapeBar('tape-legend-lb', lb, v => `${Math.round(v)}`, 10);
 
             const exitRules = p.exit_rules || {};
             const half = isNaN(shares) ? '—' : Math.round(shares * 0.5);
