@@ -3080,14 +3080,29 @@
         let refreshTimerId = null;
 
         // True during Sydney/Melbourne active trading window (US pre-market).
+        // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
         function isActiveTradingWindow(now = new Date()) {
-            const mel = new Date(now.toLocaleString('en-US', { timeZone: 'Australia/Melbourne' }));
-            const h = mel.getHours();
-            const m = mel.getMinutes();
-            const mins = h * 60 + m;
-            const start = ACTIVE_WINDOW_START.h * 60 + ACTIVE_WINDOW_START.m;
-            const end = ACTIVE_WINDOW_END.h * 60 + ACTIVE_WINDOW_END.m;
-            return mins >= start && mins < end;
+            try {
+                const fmt = new Intl.DateTimeFormat('en-AU', {
+                    timeZone: 'Australia/Melbourne',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: false,
+                });
+                const parts = fmt.formatToParts(now);
+                let h = 0, m = 0;
+                for (const p of parts) {
+                    if (p.type === 'hour') h = parseInt(p.value, 10);
+                    if (p.type === 'minute') m = parseInt(p.value, 10);
+                }
+                const mins = h * 60 + m;
+                const start = ACTIVE_WINDOW_START.h * 60 + ACTIVE_WINDOW_START.m;
+                const end = ACTIVE_WINDOW_END.h * 60 + ACTIVE_WINDOW_END.m;
+                return mins >= start && mins < end;
+            } catch (e) {
+                // Fallback: assume active if US market status is PRE-MARKET/AFTER-HOURS.
+                return currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS';
+            }
         }
 
         function getRefreshIntervalMs() {
