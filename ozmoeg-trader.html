@@ -3960,29 +3960,35 @@
                     }
                 }
 
-                // Update all-scanned details if expanded
-                const scannedDetails = document.querySelector('details.scanned-details');
+                // Update all-scanned gainers and losers details if expanded
                 const isAu = (stats.market || 'us').toLowerCase() === 'au';
-                if (scannedDetails && allGainers.length) {
-                    const table = scannedDetails.querySelector('table tbody');
-                    if (table) {
-                        table.innerHTML = allGainers.map(stock => {
-                            // all_gainers is already flattened by the backend
-                            const symbol = stock.ticker || '';
-                            const name = stock.name || symbol;
-                            const price = parseFloat(stock.price || 0);
-                            const changePct = parseFloat(stock.change_pct || 0);
-                            const volume = parseInt(stock.volume || 0);
-                            const mktCap = parseFloat(stock.market_cap || 0);
-                            const rvol = parseFloat(stock.rvol || 0);
-                            const passed = stock.passed;
-                            const badgeClass = passed ? 'scan-pass' : 'scan-skip';
-                            const badgeText = passed ? 'PASS' : 'SKIP';
-                            const reason = stock.reason || '';
-                            const priceDecimals = isAu ? 3 : 2;
-                            return `<tr><td class="ticker-cell">${escapeHtml(symbol)}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${changePct >= 0 ? '+' : ''}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
-                        }).join('');
-                    }
+                const allGainers = data.all_gainers || [];
+                const allLosers = data.all_losers || [];
+                const renderScannedRow = (stock, isLoser) => {
+                    const symbol = stock.ticker || '';
+                    const name = stock.name || symbol;
+                    const price = parseFloat(stock.price || 0);
+                    let changePct = parseFloat(stock.change_pct || 0);
+                    const volume = parseInt(stock.volume || 0);
+                    const mktCap = parseFloat(stock.market_cap || 0);
+                    const rvol = parseFloat(stock.rvol || 0);
+                    const passed = stock.passed;
+                    const badgeClass = passed ? 'scan-pass' : 'scan-skip';
+                    const badgeText = passed ? 'PASS' : 'SKIP';
+                    const reason = stock.reason || '';
+                    const priceDecimals = isAu ? 3 : 2;
+                    const sign = changePct >= 0 ? '+' : '';
+                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
+                };
+                const gainersDetails = document.getElementById('scanned-gainers-details');
+                if (gainersDetails && allGainers.length) {
+                    const table = gainersDetails.querySelector('table tbody');
+                    if (table) table.innerHTML = allGainers.map(s => renderScannedRow(s, false)).join('');
+                }
+                const losersDetails = document.getElementById('scanned-losers-details');
+                if (losersDetails && allLosers.length) {
+                    const table = losersDetails.querySelector('table tbody');
+                    if (table) table.innerHTML = allLosers.map(s => renderScannedRow(s, true)).join('');
                 }
             } catch (e) {
                 console.error('Live data refresh failed:', e);
