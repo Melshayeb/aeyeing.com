@@ -649,6 +649,13 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
+        .status-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+        }
         .impact-mini {
             font-size: 0.7rem;
             font-weight: 700;
@@ -3853,7 +3860,7 @@
                 : `<span class="tape-mini tape-missing" title="Tape data unavailable">—</span>`;
             const country = (r.country || '').trim();
             const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
-            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td></tr>`;
+            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td>${statusWrap}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
