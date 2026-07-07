@@ -1433,7 +1433,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🔴 US CLOSED 03:34 AM ET | Scanned: 50 | 14 candidates | 14 alerts (skipped: 1)
+🔴 US CLOSED 03:40 AM ET | Scanned: 50 | 14 candidates | 14 alerts (skipped: 1)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -3925,12 +3925,10 @@
             let tapeCell;
             if (isAuMarket || tape.not_available) {
                 tapeCell = `<span class="tape-mini tape-missing" title="Tape / time-and-sales not available for ASX">— N/A</span>`;
-            } else if (!tape.valid || tape.stale) {
-                const ageNote = tape.stale_age_seconds ? ` · stale ${Math.round(tape.stale_age_seconds/60)}m` : '';
-                tapeCell = `<span class="tape-mini tape-missing" title="Tape data unavailable or stale${ageNote}. Last trade: ${tape.last_trade_time || 'unknown'}">— stale${ageNote}</span>`;
             } else if (tape.no_move) {
                 const timeNote = formatTapeTime(tape.last_trade_time);
-                tapeCell = `<span class="tape-mini tape-missing" title="15s bars show no tape movement / no trades${timeNote}">— no move${timeNote}</span>`;
+                const ageNote = tape.stale_age_seconds ? ` · stale ${Math.round(tape.stale_age_seconds/60)}m` : '';
+                tapeCell = `<span class="tape-mini tape-missing" title="15s bars show no tape movement / no trades${timeNote}${ageNote}">— no move${timeNote}${ageNote}</span>`;
             } else {
                 const tapeScore = tape.tape_score;
                 const timeNote = formatTapeTime(tape.last_trade_time);
