@@ -491,6 +491,50 @@
             font-size: 0.75rem; color: var(--text-muted);
             margin-top: 0.3rem;
         }
+        /* Minimal US market timeline bar */
+        .market-timeline {
+            margin-top: 0.8rem;
+            width: 100%;
+        }
+        .market-timeline-track {
+            display: flex;
+            height: 5px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: var(--bg-card);
+            position: relative;
+        }
+        .market-timeline-segment {
+            flex: 1;
+            min-width: 0;
+            transition: opacity 0.3s;
+        }
+        .market-timeline-segment.pre  { background: #7c4dff; }
+        .market-timeline-segment.open { background: var(--accent-green); }
+        .market-timeline-segment.post { background: #ffab00; }
+        .market-timeline-segment.closed { background: #546e7a; }
+        .market-timeline-notch {
+            position: absolute;
+            top: -5px;
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--text-primary);
+            transform: translateX(-50%);
+            transition: left 0.5s ease;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+        }
+        .market-timeline-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .market-timeline-labels span { flex: 1; text-align: center; }
+        .market-timeline-labels span.active { color: var(--text-primary); font-weight: 600; }
         .news-ticker-box {
             background: #000000;
             border: 2px solid var(--accent-green);
@@ -1358,6 +1402,21 @@
 <div class="countdown-status" id="countdown-status">Checking next open...</div>
 <div class="countdown-timer" id="countdown-timer">--:--:--</div>
 <div class="countdown-next" id="countdown-next">--</div>
+<div class="market-timeline" id="market-timeline">
+<div class="market-timeline-track">
+<div class="market-timeline-segment pre" data-phase="pre"></div>
+<div class="market-timeline-segment open" data-phase="open"></div>
+<div class="market-timeline-segment post" data-phase="post"></div>
+<div class="market-timeline-segment closed" data-phase="closed"></div>
+<div class="market-timeline-notch" id="market-timeline-notch"></div>
+</div>
+<div class="market-timeline-labels">
+<span data-phase="pre">Pre</span>
+<span data-phase="open">Open</span>
+<span data-phase="post">After</span>
+<span data-phase="closed">Closed</span>
+</div>
+</div>
 </div>
 <div class="news-ticker-box">
 <div class="news-ticker-header">
@@ -1433,7 +1492,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 04:20 AM ET | Scanned: 50 | 4 candidates | 4 alerts (skipped: 1)
+🟡 US PRE-MARKET 04:26 AM ET | Scanned: 50 | 4 candidates | 4 alerts (skipped: 1)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1459,32 +1518,32 @@
 <td>SHUTTLE PHARMACTCLS HLDGS INC <span class="country-badge">United States</span></td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (5)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-08T02:02:55.000+0000">6h ago</span></td>
-<td><span class="tape-mini tape-low" title="15s bars: score 2.2, vol accel 8.4%, velocity 4.82%, buy pressure 56.2%, large bars 3. Last: 2026-07-07T20:00:00.845000+00:00 · stale 741m">🌱 quiet tape</span></td>
-<td>Move +22.7% / Volume 113,087</td>
+<td><span class="tape-mini tape-low" title="15s bars: score 2.2, vol accel 8.4%, velocity 4.82%, buy pressure 56.2%, large bars 3. Last: 2026-07-07T20:00:00.845000+00:00 · stale 748m">🌱 quiet tape</span></td>
+<td>Move +16.3% / Volume 174,428</td>
 </tr>
 <tr>
 <td class="ticker-cell">VEEE</td>
 <td>Twin Vee Powercats Co <span class="country-badge">United States</span></td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T09:24:49.990+0000">1d ago</span></td>
-<td><span class="tape-mini tape-high" title="15s bars: score 9.0, vol accel 224.0%, velocity 4.63%, buy pressure 62.5%, large bars 2. Last: 2026-07-07T19:58:59.761000+00:00 · stale 742m">🔥 aggressive tape</span></td>
-<td>Move +13.3% / Volume 62,990</td>
+<td><span class="tape-mini tape-high" title="15s bars: score 9.0, vol accel 224.0%, velocity 4.63%, buy pressure 62.5%, large bars 2. Last: 2026-07-07T19:58:59.761000+00:00 · stale 749m">🔥 aggressive tape</span></td>
+<td>Move +12.8% / Volume 68,111</td>
 </tr>
 <tr>
 <td class="ticker-cell">IOTR</td>
 <td>IOTHREE LTD <span class="country-badge">Singapore</span></td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-08T05:54:59.000+0000">2h ago</span></td>
-<td><span class="tape-mini tape-low" title="15s bars: score 1.3, vol accel 26.1%, velocity -4.17%, buy pressure 56.2%, large bars 1. Last: 2026-07-07T19:57:58.604000+00:00 · stale 743m">🌱 quiet tape</span></td>
-<td>Move +73.4% / Volume 1,181,899</td>
+<td><span class="tape-mini tape-low" title="15s bars: score 1.3, vol accel 26.1%, velocity -4.17%, buy pressure 56.2%, large bars 1. Last: 2026-07-07T19:57:58.604000+00:00 · stale 749m">🌱 quiet tape</span></td>
+<td>Move +66.3% / Volume 1,343,369</td>
 </tr>
 <tr>
 <td class="ticker-cell">NCRA</td>
 <td>Nocera <span class="country-badge">United States</span></td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-06T23:50:17.000+0000">1d ago</span></td>
-<td><span class="tape-mini tape-low" title="15s bars: score 2.0, vol accel -13.9%, velocity -0.5%, buy pressure 43.8%, large bars 1. Last: 2026-07-07T20:00:00.491000+00:00 · stale 741m">🌱 quiet tape</span></td>
-<td>Move +16.5% / Volume 488,372</td>
+<td><span class="tape-mini tape-low" title="15s bars: score 2.0, vol accel -13.9%, velocity -0.5%, buy pressure 43.8%, large bars 1. Last: 2026-07-07T20:00:00.491000+00:00 · stale 748m">🌱 quiet tape</span></td>
+<td>Move +6.5% / Volume 563,094</td>
 </tr>
 <!-- END_SCANNER_TABLE_BODY -->
 </tbody>
@@ -1510,77 +1569,66 @@
 <tr>
 <td class="ticker-cell">IOTR</td>
 <td>IOTHREE LTD</td>
-<td>$4.37</td>
-<td>+73.4%</td>
-<td>1,181,899</td>
+<td>$4.19</td>
+<td>+66.3%</td>
+<td>1,343,369</td>
 <td>0.0x</td>
 <td>$6.5M</td>
 <td><span class="scan-pass">PASS</span></td>
 <td>Passed filters</td>
 </tr>
 <tr>
+<td class="ticker-cell">EDBL</td>
+<td>Edible Garden AG Inc</td>
+<td>$0.13</td>
+<td>+52.8%</td>
+<td>17,037,509</td>
+<td>0.0x</td>
+<td>$0.5M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: price $0.134, mktcap $0.5M</td>
+</tr>
+<tr>
 <td class="ticker-cell">DCX</td>
 <td>Digital Currency X Technology Inc</td>
-<td>$1.45</td>
-<td>+42.2%</td>
-<td>2,120,967</td>
+<td>$1.42</td>
+<td>+39.1%</td>
+<td>2,309,661</td>
 <td>0.0x</td>
 <td>$20.2M</td>
 <td><span class="scan-pass">PASS</span></td>
 <td>Passed filters</td>
 </tr>
 <tr>
-<td class="ticker-cell">EDBL</td>
-<td>Edible Garden AG Inc</td>
-<td>$0.12</td>
-<td>+40.2%</td>
-<td>12,775,021</td>
-<td>0.0x</td>
-<td>$0.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.123, mktcap $0.5M</td>
-</tr>
-<tr>
 <td class="ticker-cell">WFF</td>
 <td>WF Holding Ltd.</td>
-<td>$2.53</td>
-<td>+24.6%</td>
-<td>16,895</td>
+<td>$2.63</td>
+<td>+29.6%</td>
+<td>23,819</td>
 <td>0.0x</td>
 <td>$18.4M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 16,895, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
-<td class="ticker-cell">SHPH</td>
-<td>SHUTTLE PHARMACTCLS HLDGS INC</td>
-<td>$4.00</td>
-<td>+22.7%</td>
-<td>113,087</td>
-<td>0.0x</td>
-<td>$2.1M</td>
-<td><span class="scan-pass">PASS</span></td>
-<td>Passed filters</td>
+<td>Filtered: vol 23,819, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">TC</td>
 <td>Token Cat Ltd</td>
-<td>$2.51</td>
-<td>+22.4%</td>
-<td>88,629</td>
+<td>$2.54</td>
+<td>+23.9%</td>
+<td>101,661</td>
 <td>0.0x</td>
 <td>$54.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
-<td class="ticker-cell">NCRA</td>
-<td>Nocera</td>
-<td>$2.33</td>
-<td>+16.6%</td>
-<td>488,372</td>
+<td class="ticker-cell">SHPH</td>
+<td>SHUTTLE PHARMACTCLS HLDGS INC</td>
+<td>$3.79</td>
+<td>+16.3%</td>
+<td>174,428</td>
 <td>0.0x</td>
-<td>$1.3M</td>
+<td>$2.1M</td>
 <td><span class="scan-pass">PASS</span></td>
 <td>Passed filters</td>
 </tr>
@@ -1596,28 +1644,6 @@
 <td>Filtered: price $370.000, mktcap $9031.3M, vol 1, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
-<td class="ticker-cell">VEEE</td>
-<td>Twin Vee Powercats Co</td>
-<td>$6.38</td>
-<td>+13.3%</td>
-<td>62,990</td>
-<td>0.0x</td>
-<td>$3.0M</td>
-<td><span class="scan-pass">PASS</span></td>
-<td>Passed filters</td>
-</tr>
-<tr>
-<td class="ticker-cell">KC</td>
-<td>Kingsoft Cloud Holdings Ltd</td>
-<td>$10.70</td>
-<td>+13.3%</td>
-<td>26,407</td>
-<td>0.0x</td>
-<td>$2852.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 26,407, float 302.1M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
 <td class="ticker-cell">MLEC</td>
 <td>Moolec Science</td>
 <td>$8.69</td>
@@ -1629,48 +1655,59 @@
 <td>Filtered: vol 14, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">CPIX</td>
-<td>Cumberland Pharmaceuticals Inc</td>
-<td>$7.08</td>
-<td>+12.6%</td>
-<td>9</td>
+<td class="ticker-cell">VEEE</td>
+<td>Twin Vee Powercats Co</td>
+<td>$6.35</td>
+<td>+12.8%</td>
+<td>68,111</td>
 <td>0.0x</td>
-<td>$94.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 9, vol/float 0.00x &lt; 0.1x</td>
+<td>$3.0M</td>
+<td><span class="scan-pass">PASS</span></td>
+<td>Passed filters</td>
 </tr>
 <tr>
-<td class="ticker-cell">CNTB</td>
-<td>Connect Biopharma Holdings Ltd</td>
-<td>$2.47</td>
+<td class="ticker-cell">BATL</td>
+<td>Battalion Oil Corp</td>
+<td>$1.99</td>
 <td>+11.8%</td>
-<td>61</td>
+<td>1,145,779</td>
 <td>0.0x</td>
-<td>$139.2M</td>
+<td>$39.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 61, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: vol/float 0.06x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">KC</td>
+<td>Kingsoft Cloud Holdings Ltd</td>
+<td>$10.52</td>
+<td>+11.4%</td>
+<td>31,472</td>
+<td>0.0x</td>
+<td>$2852.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 31,472, float 302.1M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">TPET</td>
+<td>TRIO PETROLEUM CORP</td>
+<td>$0.37</td>
+<td>+9.8%</td>
+<td>1,140,048</td>
+<td>0.0x</td>
+<td>$14.9M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.03x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">BABA</td>
 <td>Alibaba Group Hldg Ltd</td>
-<td>$108.61</td>
-<td>+10.7%</td>
-<td>731,253</td>
+<td>$108.22</td>
+<td>+10.3%</td>
+<td>754,629</td>
 <td>0.0x</td>
 <td>$235451.0M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $108.610, mktcap $235451.0M, float 2355.1M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
-<td class="ticker-cell">IRWD</td>
-<td>Ironwood</td>
-<td>$4.93</td>
-<td>+10.2%</td>
-<td>1,093</td>
-<td>0.0x</td>
-<td>$735.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 1,093, float 159.0M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: price $108.220, mktcap $235451.0M, float 2355.1M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">YSXT</td>
@@ -1684,15 +1721,26 @@
 <td>Filtered: vol 50, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">BATL</td>
-<td>Battalion Oil Corp</td>
-<td>$1.95</td>
-<td>+9.6%</td>
-<td>935,541</td>
+<td class="ticker-cell">CNTB</td>
+<td>Connect Biopharma Holdings Ltd</td>
+<td>$2.43</td>
+<td>+9.8%</td>
+<td>108</td>
 <td>0.0x</td>
-<td>$39.2M</td>
+<td>$139.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.05x &lt; 0.1x</td>
+<td>Filtered: vol 108, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">IRWD</td>
+<td>Ironwood</td>
+<td>$4.90</td>
+<td>+9.6%</td>
+<td>1,193</td>
+<td>0.0x</td>
+<td>$735.8M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 1,193, float 159.0M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">MTNB</td>
@@ -1706,26 +1754,15 @@
 <td>Filtered: vol 1,363, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">SHMD</td>
-<td>SCHMID Group N.V.</td>
-<td>$5.16</td>
-<td>+9.3%</td>
-<td>10,950</td>
-<td>0.0x</td>
-<td>$306.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 10,950, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
 <td class="ticker-cell">IMTX</td>
 <td>Immatics N.V</td>
 <td>$11.20</td>
 <td>+9.2%</td>
-<td>1,001</td>
+<td>1,304</td>
 <td>0.0x</td>
 <td>$1402.3M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 1,001, float 102.2M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: vol 1,304, float 102.2M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">AIG</td>
@@ -1743,11 +1780,22 @@
 <td>Royal Bk Can</td>
 <td>$227.31</td>
 <td>+8.7%</td>
-<td>1</td>
+<td>9</td>
 <td>0.0x</td>
 <td>$290552.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $227.310, mktcap $290552.7M, vol 1, float 1389.3M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: price $227.310, mktcap $290552.7M, vol 9, float 1389.3M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">LUCY</td>
+<td>Lucyd Inc</td>
+<td>$1.38</td>
+<td>+8.7%</td>
+<td>62,852</td>
+<td>0.0x</td>
+<td>$8.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.01x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">KALA</td>
@@ -1761,17 +1809,6 @@
 <td>Filtered: vol 550, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
-<td class="ticker-cell">SMTK</td>
-<td>Smartkem</td>
-<td>$0.24</td>
-<td>+8.6%</td>
-<td>154</td>
-<td>0.0x</td>
-<td>$4.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 154, vol/float 0.00x &lt; 0.1x, avg $vol $0.2M &lt; $0.2M</td>
-</tr>
-<tr>
 <td class="ticker-cell">PTEN</td>
 <td>Patterson-Uti Energy Inc</td>
 <td>$9.92</td>
@@ -1781,6 +1818,17 @@
 <td>$3473.5M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol 40, float 364.3M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">RDGT</td>
+<td>RIDGETECH Inc</td>
+<td>$1.44</td>
+<td>+8.3%</td>
+<td>9,867</td>
+<td>0.0x</td>
+<td>$1.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 9,867, vol/float 0.01x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">GTEC</td>
@@ -1794,15 +1842,15 @@
 <td>Filtered: vol 2, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">VTAK</td>
-<td>Catheter Precision</td>
-<td>$0.77</td>
-<td>+8.0%</td>
-<td>95,410</td>
+<td class="ticker-cell">SHMD</td>
+<td>SCHMID Group N.V.</td>
+<td>$5.10</td>
+<td>+8.1%</td>
+<td>12,244</td>
 <td>0.0x</td>
-<td>$1.9M</td>
+<td>$306.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.04x &lt; 0.1x</td>
+<td>Filtered: vol 12,244, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">CTKB</td>
@@ -1814,6 +1862,17 @@
 <td>$588.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol 5, float 118.2M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">ICON</td>
+<td>Icon Energy Corp.</td>
+<td>$0.95</td>
+<td>+7.8%</td>
+<td>1,582</td>
+<td>0.0x</td>
+<td>$3.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 1,582, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">AMS</td>
@@ -1836,6 +1895,28 @@
 <td>$10.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol 1, vol/float 0.00x &lt; 0.1x, avg $vol $0.2M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">LXEH</td>
+<td>Lixiang Education Holding Co . Ltd</td>
+<td>$1.43</td>
+<td>+7.5%</td>
+<td>28</td>
+<td>0.0x</td>
+<td>$2.5M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 28, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">VTAK</td>
+<td>Catheter Precision</td>
+<td>$0.77</td>
+<td>+7.3%</td>
+<td>98,200</td>
+<td>0.0x</td>
+<td>$1.9M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.04x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">DUO</td>
@@ -1871,17 +1952,6 @@
 <td>Filtered: vol 11, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">TPET</td>
-<td>TRIO PETROLEUM CORP</td>
-<td>$0.36</td>
-<td>+6.8%</td>
-<td>951,104</td>
-<td>0.0x</td>
-<td>$14.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.02x &lt; 0.1x</td>
-</tr>
-<tr>
 <td class="ticker-cell">OFAL</td>
 <td>OFA Group</td>
 <td>$0.18</td>
@@ -1891,6 +1961,17 @@
 <td>$8.0M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: price $0.185, vol 12, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SKYQ</td>
+<td>Sky Quarry Inc</td>
+<td>$3.19</td>
+<td>+6.4%</td>
+<td>105,918</td>
+<td>0.0x</td>
+<td>$14.4M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.03x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">BRLS</td>
@@ -1904,6 +1985,17 @@
 <td>Filtered: vol 14, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
 </tr>
 <tr>
+<td class="ticker-cell">NCRA</td>
+<td>Nocera</td>
+<td>$2.13</td>
+<td>+6.5%</td>
+<td>563,094</td>
+<td>0.0x</td>
+<td>$1.3M</td>
+<td><span class="scan-pass">PASS</span></td>
+<td>Passed filters</td>
+</tr>
+<tr>
 <td class="ticker-cell">GDS</td>
 <td>Gds Holdings Limited</td>
 <td>$32.34</td>
@@ -1915,28 +2007,6 @@
 <td>Filtered: mktcap $6110.2M, vol 2,097, float 198.8M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
-<td class="ticker-cell">HOVR</td>
-<td>New Horizon Aircraft</td>
-<td>$1.86</td>
-<td>+6.3%</td>
-<td>2,512</td>
-<td>0.0x</td>
-<td>$108.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 2,512, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
-<td class="ticker-cell">BIDU</td>
-<td>Baidu Inc</td>
-<td>$119.07</td>
-<td>+6.2%</td>
-<td>19,069</td>
-<td>0.0x</td>
-<td>$38143.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $119.070, mktcap $38143.4M, vol 19,069, float 265.8M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
 <td class="ticker-cell">OCG</td>
 <td>Oriental Culture Holding Ltd</td>
 <td>$1.73</td>
@@ -1946,28 +2016,6 @@
 <td>$3.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol 461, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
-</tr>
-<tr>
-<td class="ticker-cell">BIVI</td>
-<td>Biovie Inc</td>
-<td>$2.29</td>
-<td>+6.0%</td>
-<td>3</td>
-<td>0.0x</td>
-<td>$16.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 3, vol/float 0.00x &lt; 0.1x</td>
-</tr>
-<tr>
-<td class="ticker-cell">DC</td>
-<td>Dakota Gold Corp.</td>
-<td>$4.45</td>
-<td>+6.0%</td>
-<td>20</td>
-<td>0.0x</td>
-<td>$562.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 20, float 114.9M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">KAPA</td>
@@ -2014,15 +2062,26 @@
 <td>Filtered: price $0.143, vol 10, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
 </tr>
 <tr>
-<td class="ticker-cell">UMC</td>
-<td>United Microelec</td>
-<td>$24.73</td>
-<td>+3.8%</td>
-<td>38,729</td>
+<td class="ticker-cell">BIDU</td>
+<td>Baidu Inc</td>
+<td>$118.50</td>
+<td>+5.7%</td>
+<td>21,270</td>
 <td>0.0x</td>
-<td>$59941.9M</td>
+<td>$38143.4M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $59941.9M, move 3.8% / rvol 0.0, vol 38,729, float 2514.9M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: price $118.500, mktcap $38143.4M, vol 21,270, float 265.8M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">HOVR</td>
+<td>New Horizon Aircraft</td>
+<td>$1.85</td>
+<td>+5.7%</td>
+<td>6,415</td>
+<td>0.0x</td>
+<td>$108.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 6,415, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
 <td class="ticker-cell">TBBB</td>
@@ -2047,15 +2106,15 @@
 <td>Filtered: price $155.940, mktcap $5582.2M, vol 1, vol/float 0.00x &lt; 0.1x</td>
 </tr>
 <tr>
-<td class="ticker-cell">MSCI</td>
-<td>MSCI Inc</td>
-<td>$640.87</td>
-<td>+5.4%</td>
-<td>4</td>
+<td class="ticker-cell">CURX</td>
+<td>CURANEX PHARMACEUTICALS INC</td>
+<td>$0.24</td>
+<td>+5.2%</td>
+<td>279</td>
 <td>0.0x</td>
-<td>$44269.0M</td>
+<td>$6.4M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $640.870, mktcap $44269.0M, vol 4, vol/float 0.00x &lt; 0.1x</td>
+<td>Filtered: vol 279, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $0.2M</td>
 </tr>
 </tbody>
 </table>
@@ -3781,7 +3840,11 @@
                     const rawIso = h.raw_time || '';
                     const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
                     const timeHtml = age ? `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span> ` : '';
-                    return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> <a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a> <em>${escapeHtml(h.source || '')}</em></li>`;
+                    const hasUrl = h.url && /^https?:\/\//i.test(h.url);
+                    const titleHtml = hasUrl
+                        ? `<a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`
+                        : `<span class="news-title">${escapeHtml(h.title)}</span>`;
+                    return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> ${titleHtml} <em>${escapeHtml(h.source || '')}</em></li>`;
                 }).join('');
             } else {
                 list.innerHTML = '<li><span class="score">[-]</span> No qualifying news headlines found for this alert.</li>';
