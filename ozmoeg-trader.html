@@ -3320,29 +3320,28 @@
             return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : REFRESH_INTERVAL_MS;
         }
 
-        // Compute the next aligned refresh from a given anchor timestamp.
-        // If the anchor is stale, keep stepping forward by the interval until we land in the future.
-        // This preserves the cron-aligned cadence across page reloads instead of resetting to "now + interval".
-        function computeNextRefresh(anchorTimestamp) {
+        // Compute the next wall-clock aligned refresh.
+        // During active window this is the next 10-min boundary (:00, :10, :20 ...).
+        // During open/after-hours this is the next 15-min boundary (:00, :15, :30, :45).
+        // We align to real-time boundaries because the backend cron fires on those boundaries.
+        function computeNextRefresh() {
             const interval = getRefreshIntervalMs();
             const now = Date.now();
-            let anchor = anchorTimestamp && !isNaN(new Date(anchorTimestamp).getTime()) ? new Date(anchorTimestamp).getTime() : now;
-            let next = anchor + interval;
-            while (next <= now) {
-                next += interval;
-            }
-            return next;
+            // Round up to the next interval boundary from the epoch.
+            const next = Math.ceil(now / interval) * interval;
+            // If we are exactly on a boundary, add one interval so we don't fire immediately.
+            return next <= now ? next + interval : next;
         }
 
         // Persist the next refresh time across page reloads so the countdown is always
-        // anchored to the last actual scan, not to when the browser happens to open.
+        // anchored to the cron schedule, not to when the browser happens to open.
         let nextRefreshAt = (() => {
             try {
                 const stored = localStorage.getItem('ozmoeg-next-refresh');
                 const ts = stored ? parseInt(stored, 10) : 0;
                 if (ts && !isNaN(ts) && ts > Date.now()) return ts;
             } catch (e) { /* storage may be unavailable */ }
-            return Date.now() + getRefreshIntervalMs();
+            return computeNextRefresh();
         })();
 
         function updateRefreshCountdown() {
@@ -3366,7 +3365,7 @@
         // We keep stepping forward by the active/idle interval until we land in the future,
         // so the countdown does not reset to "now + interval" every time a page reloads.
         function scheduleNextRefresh(anchorTimestamp) {
-            nextRefreshAt = computeNextRefresh(anchorTimestamp);
+            nextRefreshAt = computeNextRefresh();
             // Persist so the countdown survives page reloads.
             try {
                 localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
@@ -3376,8 +3375,8 @@
 
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
-            // Use the actual last scan timestamp as the anchor when available.
-            scheduleNextRefresh(window._lastScanTimestamp || Date.now());
+            // Align to the next wall-clock cron boundary.
+            scheduleNextRefresh();
             refreshTimerId = setInterval(() => {
                 // Persist every tick so the value stays current across reloads.
                 try {
@@ -4343,7 +4342,8 @@
                 // Anchor the auto-refresh countdown to the JSON timestamp so it stays
                 // aligned with the cron schedule, not the browser load time.
                 window._lastScanTimestamp = lastUpdated;
-                scheduleNextRefresh(lastUpdated);
+                // Do not recompute nextRefreshAt here; the interval timer handles firing
+                // at the next wall-clock cron boundary and will reschedule after the fetch.
 
                 // Update badge
                 const alerts = results.filter(r => r.status === 'ALERT').length;
@@ -4357,8 +4357,6 @@
                 const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
                 document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
 
-                // Update alert selector + active plan + tracker + catalyst
-                liveResults = results;
                 liveLastUpdated = lastUpdated;
                 // Preserve pre-market/after-hours watchlist for US; rendered via the same scanner table when toggled.
                 window._lastPreMarketResults = preMarketResults;
