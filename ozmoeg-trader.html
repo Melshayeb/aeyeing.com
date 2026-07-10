@@ -1369,10 +1369,9 @@
 <button data-market="AUS">🇦🇺 AUS</button>
 </div>
 <div class="status-badge">
-<span class="status-dot"></span>
-<span>Live Scanner Active</span>
+<span class="status-dot" id="status-dot"></span>
+<span id="scanner-active-text">Scanner — checking market status...</span>
 </div>
-<span class="last-updated" id="page-refresh-label">Next refresh: 15:00</span>
 <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
 <button class="refresh-btn" onclick="loadLiveData()">⟳ Refresh Now</button>
 </div>
@@ -1446,7 +1445,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 06:52 PM AEST | Scanned: 0 | 0 candidates | 0 alerts (skipped: 0)
+🟡 US PRE-MARKET 07:01 PM AEST | Scanned: 0 | 0 candidates | 0 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1506,556 +1505,8 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class="ticker-cell">LHAI</td>
-<td>Linkhome Holdings Inc.</td>
-<td>$1.76</td>
-<td>+0.0%</td>
-<td>20,126,367</td>
-<td>0.4x</td>
-<td>$28.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 0.0%, rvol 0.4x</td>
-</tr>
-<tr>
-<td class="ticker-cell">TC</td>
-<td>Token Cat Ltd</td>
-<td>$3.39</td>
-<td>+15.7%</td>
-<td>1,661,300</td>
-<td>0.2x</td>
-<td>$77.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $77.4M, move 15.7%, rvol 0.2x, vol/float 0.06x</td>
-</tr>
-<tr>
-<td class="ticker-cell">ELTX</td>
-<td>Elicio Therapeutics, Inc.</td>
-<td>$3.65</td>
-<td>+13.4%</td>
-<td>4,353,448</td>
-<td>2.6x</td>
-<td>$61.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $61.5M, move 13.4%, vol/float 0.33x</td>
-</tr>
-<tr>
-<td class="ticker-cell">DXF</td>
-<td>Eason Technology</td>
-<td>$0.64</td>
-<td>-0.4%</td>
-<td>6,693,798</td>
-<td>0.2x</td>
-<td>$3.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.3M, move -0.4%, rvol 0.2x</td>
-</tr>
-<tr>
-<td class="ticker-cell">EDBL</td>
-<td>Edible Garden AG Inc</td>
-<td>$0.12</td>
-<td>-2.4%</td>
-<td>9,377,144</td>
-<td>0.2x</td>
-<td>$0.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.123, mktcap $0.7M, move -2.4%, rvol 0.2x</td>
-</tr>
-<tr>
-<td class="ticker-cell">HKIT</td>
-<td>HiTek Global Inc.</td>
-<td>$0.17</td>
-<td>+3.0%</td>
-<td>9,312,679</td>
-<td>0.4x</td>
-<td>$3.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.170, mktcap $3.3M, move 3.0%, rvol 0.4x, vol/float 0.47x</td>
-</tr>
-<tr>
-<td class="ticker-cell">FC</td>
-<td>Franklin Covey Co</td>
-<td>$19.75</td>
-<td>-9.3%</td>
-<td>478,662</td>
-<td>2.1x</td>
-<td>$245.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $19.750, mktcap $245.5M, move -9.3%, vol/float 0.05x</td>
-</tr>
-<tr>
-<td class="ticker-cell">LGCL</td>
-<td>Lucas GC Limited</td>
-<td>$1.48</td>
-<td>-10.3%</td>
-<td>19,488,594</td>
-<td>0.9x</td>
-<td>$70.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $70.6M, rvol 0.9x</td>
-</tr>
-<tr>
-<td class="ticker-cell">INLF</td>
-<td>INLIF</td>
-<td>$0.03</td>
-<td>+20.4%</td>
-<td>219,731,764</td>
-<td>0.3x</td>
-<td>$0.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.026, mktcap $0.3M, move 20.4%, rvol 0.3x</td>
-</tr>
-<tr>
-<td class="ticker-cell">NIVF</td>
-<td>NewGenIvf Group</td>
-<td>$0.44</td>
-<td>-3.9%</td>
-<td>896,609</td>
-<td>0.3x</td>
-<td>$1.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.443, mktcap $1.9M, move -3.9%, rvol 0.3x, vol/float 0.22x</td>
-</tr>
-<tr>
-<td class="ticker-cell">TRDA</td>
-<td>Entrada Therapeutics, Inc.</td>
-<td>$6.15</td>
-<td>-20.3%</td>
-<td>360,890</td>
-<td>0.8x</td>
-<td>$299.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $299.7M, rvol 0.8x, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">FEBO</td>
-<td>Fenbo Holdings Limited</td>
-<td>$0.77</td>
-<td>-15.3%</td>
-<td>2,629</td>
-<td>0.4x</td>
-<td>$10.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: rvol 0.4x, vol 2,629, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">YHC</td>
-<td>LQR House Inc.</td>
-<td>$0.04</td>
-<td>-2.4%</td>
-<td>107,600,393</td>
-<td>1.0x</td>
-<td>$1.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.044, mktcap $1.0M, move -2.4%, rvol 1.0x</td>
-</tr>
-<tr>
-<td class="ticker-cell">KMTS</td>
-<td>KESTRA MED TECHNOLOGIES LTD</td>
-<td>$22.14</td>
-<td>-17.9%</td>
-<td>308,083</td>
-<td>0.5x</td>
-<td>$1574.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $22.140, mktcap $1574.9M, rvol 0.5x, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">FXHO</td>
-<td>Utime Ltd</td>
-<td>$8.09</td>
-<td>+12.4%</td>
-<td>1,448,933</td>
-<td>5.6x</td>
-<td>$37.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 12.4%, vol/float 0.28x</td>
-</tr>
-<tr>
-<td class="ticker-cell">EVTC</td>
-<td>Evertec Inc</td>
-<td>$25.18</td>
-<td>-15.0%</td>
-<td>425,800</td>
-<td>0.7x</td>
-<td>$1825.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $25.180, mktcap $1825.8M, rvol 0.7x, float 60.6M, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">UPC</td>
-<td>Universe Pharmaceuticals Inc</td>
-<td>$4.85</td>
-<td>-23.3%</td>
-<td>4,889,668</td>
-<td>0.4x</td>
-<td>$4.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $4.1M, rvol 0.4x</td>
-</tr>
-<tr>
-<td class="ticker-cell">RYAN</td>
-<td>Ryan Specialty Hldgs Inc</td>
-<td>$35.00</td>
-<td>-16.7%</td>
-<td>2,839,085</td>
-<td>0.9x</td>
-<td>$11081.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $35.000, mktcap $11081.6M, rvol 0.9x, float 111.6M, vol/float 0.03x</td>
-</tr>
-<tr>
-<td class="ticker-cell">SONM</td>
-<td>DNA X</td>
-<td>$4.60</td>
-<td>+22.8%</td>
-<td>189,122</td>
-<td>4.1x</td>
-<td>$5.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 22.8%, vol/float 0.20x</td>
-</tr>
-<tr>
-<td class="ticker-cell">NAMI</td>
-<td>JINXIN TECHNOLOGY HLDG CO</td>
-<td>$3.05</td>
-<td>-16.0%</td>
-<td>208,013</td>
-<td>3.7x</td>
-<td>$11.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.07x</td>
-</tr>
-<tr>
-<td class="ticker-cell">AMIX</td>
-<td>Autonomix Medical Inc</td>
-<td>$6.08</td>
-<td>-5.4%</td>
-<td>9,176</td>
-<td>0.3x</td>
-<td>$3.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.5M, move -5.4%, rvol 0.3x, vol 9,176, vol/float 0.02x</td>
-</tr>
-<tr>
-<td class="ticker-cell">ELAB</td>
-<td>PMGC Holdings</td>
-<td>$1.13</td>
-<td>-4.2%</td>
-<td>1,781,163</td>
-<td>0.3x</td>
-<td>$5.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move -4.2%, rvol 0.3x, vol/float 0.44x</td>
-</tr>
-<tr>
-<td class="ticker-cell">SFWL</td>
-<td>SHENGFENG DEV LTD</td>
-<td>$0.80</td>
-<td>-10.3%</td>
-<td>1,709</td>
-<td>0.4x</td>
-<td>$73.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $73.6M, rvol 0.4x, vol 1,709, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">EHGO</td>
-<td>Eshallgo Inc</td>
-<td>$2.36</td>
-<td>+13.6%</td>
-<td>2,356,323</td>
-<td>0.2x</td>
-<td>$4.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $4.6M, move 13.6%, rvol 0.2x</td>
-</tr>
-<tr>
-<td class="ticker-cell">SVRE</td>
-<td>SAVERONE 2014 LTD</td>
-<td>$2.26</td>
-<td>-13.7%</td>
-<td>283,789</td>
-<td>0.1x</td>
-<td>$2.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $2.4M, rvol 0.1x, vol/float 0.30x</td>
-</tr>
-<tr>
-<td class="ticker-cell">WCT</td>
-<td>Wellchange Holdings</td>
-<td>$1.08</td>
-<td>-9.2%</td>
-<td>207,975</td>
-<td>0.4x</td>
-<td>$3.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.6M, move -9.2%, rvol 0.4x, vol/float 0.15x</td>
-</tr>
-<tr>
-<td class="ticker-cell">GIBO</td>
-<td>GIBO Holdings Limited</td>
-<td>$25.00</td>
-<td>+2.8%</td>
-<td>15,247</td>
-<td>1.4x</td>
-<td>$63.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $25.000, mktcap $63.3M, move 2.8%, rvol 1.4x, vol 15,247, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">LGPS</td>
-<td>LogProStyle Inc.</td>
-<td>$0.72</td>
-<td>-5.2%</td>
-<td>782,848</td>
-<td>0.1x</td>
-<td>$18.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move -5.2%, rvol 0.1x, vol/float 0.12x</td>
-</tr>
-<tr>
-<td class="ticker-cell">KELYB</td>
-<td>Kelly Svcs Inc</td>
-<td>$21.00</td>
-<td>-4.5%</td>
-<td>1,464</td>
-<td>0.9x</td>
-<td>$762.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $21.000, mktcap $762.7M, move -4.5%, rvol 0.9x, vol 1,464, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">TNMG</td>
-<td>TNL Mediagene</td>
-<td>$0.59</td>
-<td>-4.1%</td>
-<td>727,614</td>
-<td>0.0x</td>
-<td>$1.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $1.8M, move -4.1%, rvol 0.0x, vol/float 0.30x</td>
-</tr>
-<tr>
-<td class="ticker-cell">KUST</td>
-<td>Kustom Entertainment Inc</td>
-<td>$1.20</td>
-<td>+11.1%</td>
-<td>1,433,519</td>
-<td>0.1x</td>
-<td>$0.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $0.7M, move 11.1%, rvol 0.1x</td>
-</tr>
-<tr>
-<td class="ticker-cell">GOTU</td>
-<td>Gaotu Techedu Inc</td>
-<td>$1.60</td>
-<td>-8.6%</td>
-<td>299,561</td>
-<td>0.7x</td>
-<td>$416.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $416.6M, move -8.6%, rvol 0.7x, float 113.3M, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">JZ</td>
-<td>Jianzhi Education Technology Group Co Ltd</td>
-<td>$0.12</td>
-<td>+25.8%</td>
-<td>2,177,925</td>
-<td>0.3x</td>
-<td>$7.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.122, move 25.8%, rvol 0.3x, float 71.3M, vol/float 0.03x</td>
-</tr>
-<tr>
-<td class="ticker-cell">SCAG</td>
-<td>Scage Future</td>
-<td>$0.37</td>
-<td>+0.0%</td>
-<td>651,824</td>
-<td>0.0x</td>
-<td>$26.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.370, move 0.0%, rvol 0.0x, vol/float 0.03x</td>
-</tr>
-<tr>
-<td class="ticker-cell">AZUL</td>
-<td>AZUL S A</td>
-<td>$8.92</td>
-<td>+1.1%</td>
-<td>31,373</td>
-<td>0.6x</td>
-<td>$1609.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $1609.1M, move 1.1%, rvol 0.6x, vol 31,373, float 182.3M, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">FTFT</td>
-<td>Future Fintech G</td>
-<td>$0.60</td>
-<td>-1.6%</td>
-<td>410,371</td>
-<td>3.1x</td>
-<td>$3.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.6M, move -1.6%, vol/float 0.14x</td>
-</tr>
-<tr>
-<td class="ticker-cell">NOMA</td>
-<td>NOMADAR CORP.</td>
-<td>$3.85</td>
-<td>-7.2%</td>
-<td>26,688</td>
-<td>2.0x</td>
-<td>$61.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $61.8M, move -7.2%, vol 26,688, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">TAOP</td>
-<td>Taoping Inc</td>
-<td>$1.33</td>
-<td>-4.3%</td>
-<td>28,366</td>
-<td>1.6x</td>
-<td>$13.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move -4.3%, rvol 1.6x, vol 28,366, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">YOOV</td>
-<td>Concorde International Group Limited</td>
-<td>$0.59</td>
-<td>-15.3%</td>
-<td>1,059,017</td>
-<td>0.1x</td>
-<td>$158.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $158.7M, rvol 0.1x, vol/float 0.03x</td>
-</tr>
-<tr>
-<td class="ticker-cell">VNET</td>
-<td>VNET GROUP INC</td>
-<td>$8.01</td>
-<td>+1.1%</td>
-<td>10,859,533</td>
-<td>1.8x</td>
-<td>$2254.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $2254.8M, move 1.1%, rvol 1.8x, float 279.6M, vol/float 0.04x</td>
-</tr>
-<tr>
-<td class="ticker-cell">LCII</td>
-<td>Lci Inds</td>
-<td>$92.91</td>
-<td>-10.1%</td>
-<td>1,181,813</td>
-<td>1.0x</td>
-<td>$2510.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $92.910, mktcap $2510.1M, rvol 1.0x, vol/float 0.05x</td>
-</tr>
-<tr>
-<td class="ticker-cell">KIDZ</td>
-<td>KIDZ AI INC</td>
-<td>$0.66</td>
-<td>-3.7%</td>
-<td>150,261</td>
-<td>0.1x</td>
-<td>$0.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $0.8M, move -3.7%, rvol 0.1x, vol/float 0.14x</td>
-</tr>
-<tr>
-<td class="ticker-cell">OXBR</td>
-<td>Oxbridge Re Hldgs Ltd</td>
-<td>$1.16</td>
-<td>-9.4%</td>
-<td>102,387</td>
-<td>1.9x</td>
-<td>$10.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move -9.4%, rvol 1.9x, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">ZKIN</td>
-<td>ZK International Group</td>
-<td>$1.33</td>
-<td>-1.9%</td>
-<td>13,814</td>
-<td>2.7x</td>
-<td>$77.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $77.9M, move -1.9%, vol 13,814, float 56.3M, vol/float 0.00x</td>
-</tr>
-<tr>
-<td class="ticker-cell">NSP</td>
-<td>Insperity Inc</td>
-<td>$40.33</td>
-<td>-11.1%</td>
-<td>612,480</td>
-<td>0.8x</td>
-<td>$1731.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $40.330, mktcap $1731.7M, rvol 0.8x, vol/float 0.02x</td>
-</tr>
-<tr>
-<td class="ticker-cell">CABR</td>
-<td>Caring Brands</td>
-<td>$1.30</td>
-<td>-3.7%</td>
-<td>68,196</td>
-<td>1.1x</td>
-<td>$12.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move -3.7%, rvol 1.1x, vol 68,196, vol/float 0.01x</td>
-</tr>
-<tr>
-<td class="ticker-cell">GSUN</td>
-<td>Golden Sun Health Technology Group Ltd</td>
-<td>$0.34</td>
-<td>-7.1%</td>
-<td>7,068,690</td>
-<td>0.4x</td>
-<td>$3.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.339, mktcap $3.7M, move -7.1%, rvol 0.4x</td>
-</tr>
-<tr>
-<td class="ticker-cell">STAK</td>
-<td>STAK inc.</td>
-<td>$3.80</td>
-<td>-13.4%</td>
-<td>335,376</td>
-<td>0.8x</td>
-<td>$84.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $84.3M, rvol 0.8x, vol/float 0.41x</td>
-</tr>
-<tr>
-<td class="ticker-cell">DCOY</td>
-<td>DECOY THERAPEUTICS INC</td>
-<td>$7.00</td>
-<td>-4.2%</td>
-<td>84,756</td>
-<td>0.0x</td>
-<td>$3.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.9M, move -4.2%, rvol 0.0x, vol 84,756, vol/float 0.16x</td>
-</tr>
-<tr>
-<td class="ticker-cell">OCG</td>
-<td>Oriental Culture Holding Ltd</td>
-<td>$1.70</td>
-<td>+0.0%</td>
-<td>77,990</td>
-<td>1.2x</td>
-<td>$3.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $3.3M, move 0.0%, rvol 1.2x, vol 77,990, vol/float 0.04x</td>
-</tr> </tbody>
+<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No losers data available for this scan</td></tr>
+</tbody>
 </table>
 </div>
 </details>
@@ -2346,8 +1797,50 @@
             // Future: toggle a loading class on the header/status badge if desired.
         }
 
+        function updateScannerStatusBadge(marketStatus, gainersCount, losersCount) {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('scanner-active-text');
+            if (!statusDot || !statusText) return;
+            const status = (marketStatus || 'UNKNOWN').toUpperCase();
+            const colorMap = {
+                'OPEN': '#22c55e',
+                'PRE-MARKET': '#f59e0b',
+                'AFTER-HOURS': '#f59e0b',
+                'CLOSED': '#ef4444',
+                'WEEKEND': '#ef4444',
+                'UNKNOWN': '#9ca3af'
+            };
+            const labelMap = {
+                'OPEN': 'Live Scanner — Market Open',
+                'PRE-MARKET': 'Scanner Active — Pre-Market',
+                'AFTER-HOURS': 'Scanner Active — After Hours',
+                'CLOSED': 'Scanner Idle — Market Closed',
+                'WEEKEND': 'Scanner Idle — Weekend',
+                'UNKNOWN': 'Scanner Status Unknown'
+            };
+            statusDot.style.backgroundColor = colorMap[status] || colorMap['UNKNOWN'];
+            statusText.textContent = labelMap[status] || labelMap['UNKNOWN'];
+
+            // Show a visible data-source warning when the scan returned no raw lists
+            // but the market phase expects data (open, pre-market, after-hours).
+            let warningEl = document.getElementById('data-source-warning');
+            if (!warningEl) {
+                warningEl = document.createElement('div');
+                warningEl.id = 'data-source-warning';
+                warningEl.style.cssText = 'margin-top:0.5rem;padding:0.5rem 0.75rem;border-radius:6px;background:rgba(239,68,68,0.15);color:#ff6b6b;font-size:0.8rem;border-left:3px solid #ef4444;';
+                const badge = document.querySelector('.status-badge');
+                if (badge && badge.parentElement) badge.parentElement.insertBefore(warningEl, badge.nextSibling);
+            }
+            if (['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
+                warningEl.textContent = '⚠️ Data source returned 0 gainers/losers. The website will stay on the last known data until the API connection is restored.';
+                warningEl.style.display = 'block';
+            } else {
+                warningEl.style.display = 'none';
+            }
+        }
+
         function findNextMarketOpen(fromTime) {
-            // Walk forward minute-by-minute from fromTime until ET shows Mon-Fri 9:30
+
             let probe = new Date(fromTime);
             let safety = 0;
             while (safety++ < 10080) { // Max 1 week
@@ -3783,7 +3276,8 @@
                     }
                 }
 
-                // Update all-scanned gainers and losers details if expanded
+                // Update all-scanned gainers and losers details tables dynamically from JSON.
+                // This guarantees they always reflect the latest scan instead of stale server-rendered HTML.
                 const isAu = (stats.market || 'us').toLowerCase() === 'au';
                 const allLosers = data.all_losers || [];
                 const renderScannedRow = (stock, isLoser) => {
@@ -3800,18 +3294,30 @@
                     const reason = stock.reason || '';
                     const priceDecimals = isAu ? 3 : 2;
                     const sign = changePct >= 0 ? '+' : '';
-                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
+                    return `\u003ctr\u003e\u003ctd class="ticker-cell"\u003e${escapeHtml(symbol)}\u003c/td\u003e\u003ctd\u003e${escapeHtml(name)}\u003c/td\u003e\u003ctd\u003e$${price.toFixed(priceDecimals)}\u003c/td\u003e\u003ctd\u003e${sign}${changePct.toFixed(1)}%\u003c/td\u003e\u003ctd\u003e${volume.toLocaleString()}\u003c/td\u003e\u003ctd\u003e${rvol.toFixed(1)}x\u003c/td\u003e\u003ctd\u003e$${(mktCap/1e6).toFixed(1)}M\u003c/td\u003e\u003ctd\u003e\u003cspan class="${badgeClass}"\u003e${badgeText}\u003c/span\u003e\u003c/td\u003e\u003ctd\u003e${escapeHtml(reason)}\u003c/td\u003e\u003c/tr\u003e`;
                 };
                 const gainersDetails = document.getElementById('scanned-gainers-details');
-                if (gainersDetails && allGainers.length) {
+                if (gainersDetails) {
                     const table = gainersDetails.querySelector('table tbody');
-                    if (table) table.innerHTML = allGainers.map(s => renderScannedRow(s, false)).join('');
+                    if (table) {
+                        table.innerHTML = allGainers.length
+                            ? allGainers.map(s => renderScannedRow(s, false)).join('')
+                            : '\u003ctr\u003e\u003ctd colspan="9" style="text-align:center;color:var(--text-secondary)"\u003eNo gainers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
+                    }
                 }
                 const losersDetails = document.getElementById('scanned-losers-details');
-                if (losersDetails && allLosers.length) {
+                if (losersDetails) {
                     const table = losersDetails.querySelector('table tbody');
-                    if (table) table.innerHTML = allLosers.map(s => renderScannedRow(s, true)).join('');
+                    if (table) {
+                        table.innerHTML = allLosers.length
+                            ? allLosers.map(s => renderScannedRow(s, true)).join('')
+                            : '\u003ctr\u003e\u003ctd colspan="9" style="text-align:center;color:var(--text-secondary)"\u003eNo losers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
+                    }
                 }
+
+                // Update header status badge to reflect actual market phase.
+                updateScannerStatusBadge(marketStatus, allGainers.length, allLosers.length);
+
             } catch (e) {
                 console.error('Live data refresh failed:', e);
             } finally {
@@ -3821,6 +3327,7 @@
                 resetRefreshTimer();
             }
         }
+
         // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
         (async function init() {
@@ -3828,6 +3335,7 @@
             await loadLiveData();
             resetRefreshTimer();
         })();
-    </script>
+
+</script>
 </body>
 </html>
