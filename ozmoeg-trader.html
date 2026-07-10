@@ -3358,7 +3358,9 @@
             // Active trading window indicator: glowing red pulse + bolt icon
             const active = isActiveTradingWindow();
             label.classList.toggle('active-refresh', active);
-            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${active ? '(10-min active mode)' : '(15-min market mode)'}`;
+            const intervalMin = Math.round(getRefreshIntervalMs() / 60000);
+            const modeLabel = active ? `(${intervalMin}-min active mode)` : '(15-min market mode)';
+            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
         }
 
         // Schedule the next refresh relative to the actual data timestamp.
