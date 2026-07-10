@@ -3326,7 +3326,7 @@
         function computeNextRefresh(anchorTimestamp) {
             const interval = getRefreshIntervalMs();
             const now = Date.now();
-            let anchor = anchorTimestamp && !isNaN(anchorTimestamp) ? new Date(anchorTimestamp).getTime() : now;
+            let anchor = anchorTimestamp && !isNaN(new Date(anchorTimestamp).getTime()) ? new Date(anchorTimestamp).getTime() : now;
             let next = anchor + interval;
             while (next <= now) {
                 next += interval;
@@ -3344,6 +3344,52 @@
             } catch (e) { /* storage may be unavailable */ }
             return Date.now() + getRefreshIntervalMs();
         })();
+
+        function updateRefreshCountdown() {
+            const label = document.getElementById('page-refresh-label');
+            const lastLabel = document.getElementById('last-refresh-label');
+            if (lastLabel && window._lastScanTimestamp) {
+                lastLabel.textContent = `Last refresh: ${formatScanTimestamp(window._lastScanTimestamp)}`;
+            }
+            if (!label) return;
+            const remaining = Math.max(0, nextRefreshAt - Date.now());
+            const totalSeconds = Math.ceil(remaining / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+            // Active trading window indicator: glowing red pulse + bolt icon
+            const active = isActiveTradingWindow();
+            label.classList.toggle('active-refresh', active);
+            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${active ? '(10-min active mode)' : '(15-min market mode)'}`;
+        }
+
+        // Schedule the next refresh relative to the actual data timestamp.
+        // We keep stepping forward by the active/idle interval until we land in the future,
+        // so the countdown does not reset to "now + interval" every time a page reloads.
+        function scheduleNextRefresh(anchorTimestamp) {
+            nextRefreshAt = computeNextRefresh(anchorTimestamp);
+            // Persist so the countdown survives page reloads.
+            try {
+                localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
+            } catch (e) { /* storage may be unavailable */ }
+            updateRefreshCountdown();
+        }
+
+        function resetRefreshTimer() {
+            if (refreshTimerId) clearInterval(refreshTimerId);
+            // Use the actual last scan timestamp as the anchor when available.
+            scheduleNextRefresh(window._lastScanTimestamp || Date.now());
+            refreshTimerId = setInterval(() => {
+                // Persist every tick so the value stays current across reloads.
+                try {
+                    localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
+                } catch (e) { /* storage may be unavailable */ }
+                if (Date.now() >= nextRefreshAt) {
+                    loadLiveData();
+                } else {
+                    updateRefreshCountdown();
+                }
+            }, 1000);
+        }
 
         function fmtCurrency(n) {
             if (n === undefined || n === null || isNaN(n)) return '—';
@@ -4258,51 +4304,6 @@
             return Math.min(...r.news.headlines.map(h => newsAgeMinutes(h.time)), Infinity);
         }
 
-        function updateRefreshCountdown() {
-            const label = document.getElementById('page-refresh-label');
-            const lastLabel = document.getElementById('last-refresh-label');
-            if (lastLabel && window._lastScanTimestamp) {
-                lastLabel.textContent = `Last refresh: ${formatScanTimestamp(window._lastScanTimestamp)}`;
-            }
-            if (!label) return;
-            const remaining = Math.max(0, nextRefreshAt - Date.now());
-            const totalSeconds = Math.ceil(remaining / 1000);
-            const m = Math.floor(totalSeconds / 60);
-            const s = totalSeconds % 60;
-            // Active trading window indicator: glowing red pulse + bolt icon
-            const active = isActiveTradingWindow();
-            label.classList.toggle('active-refresh', active);
-            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${active ? '(10-min active mode)' : '(15-min market mode)'}`;
-        }
-
-        // Schedule the next refresh relative to the actual data timestamp.
-
-        // so the countdown does not reset to "now + interval" every time a page reloads.
-        function scheduleNextRefresh(anchorTimestamp) {
-            nextRefreshAt = computeNextRefresh(anchorTimestamp);
-            // Persist so the countdown survives page reloads.
-            try {
-                localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
-            } catch (e) { /* storage may be unavailable */ }
-            updateRefreshCountdown();
-        }
-
-        function resetRefreshTimer() {
-            if (refreshTimerId) clearInterval(refreshTimerId);
-            // Use the actual last scan timestamp as the anchor when available.
-            scheduleNextRefresh(window._lastScanTimestamp);
-            refreshTimerId = setInterval(() => {
-                // Persist every tick so the value stays current across reloads.
-                try {
-                    localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
-                } catch (e) { /* storage may be unavailable */ }
-                if (Date.now() >= nextRefreshAt) {
-                    loadLiveData();
-                } else {
-                    updateRefreshCountdown();
-                }
-            }, 1000);
-        }
 
         async function loadLiveData() {
             try {
