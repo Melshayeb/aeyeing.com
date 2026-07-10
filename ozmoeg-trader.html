@@ -1445,7 +1445,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 07:01 PM AEST | Scanned: 0 | 0 candidates | 0 alerts (skipped: 0)
+🟡 US PRE-MARKET 07:04 PM AEST | Scanned: 0 | 0 candidates | 0 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1800,6 +1800,7 @@
         function updateScannerStatusBadge(marketStatus, gainersCount, losersCount) {
             const statusDot = document.getElementById('status-dot');
             const statusText = document.getElementById('scanner-active-text');
+            const badge = document.querySelector('.status-badge');
             if (!statusDot || !statusText) return;
             const status = (marketStatus || 'UNKNOWN').toUpperCase();
             const colorMap = {
@@ -1818,7 +1819,11 @@
                 'WEEKEND': 'Scanner Idle — Weekend',
                 'UNKNOWN': 'Scanner Status Unknown'
             };
-            statusDot.style.backgroundColor = colorMap[status] || colorMap['UNKNOWN'];
+            const color = colorMap[status] || colorMap['UNKNOWN'];
+            statusDot.style.cssText = `width:8px;height:8px;border-radius:50%;background:${color};animation:pulse 2s infinite;`;
+            if (badge) {
+                badge.style.cssText = `display:flex;align-items:center;gap:0.5rem;background:${color}26;border:1px solid ${color};padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:500;color:${color};`;
+            }
             statusText.textContent = labelMap[status] || labelMap['UNKNOWN'];
 
             // Show a visible data-source warning when the scan returned no raw lists
@@ -1828,9 +1833,10 @@
                 warningEl = document.createElement('div');
                 warningEl.id = 'data-source-warning';
                 warningEl.style.cssText = 'margin-top:0.5rem;padding:0.5rem 0.75rem;border-radius:6px;background:rgba(239,68,68,0.15);color:#ff6b6b;font-size:0.8rem;border-left:3px solid #ef4444;';
-                const badge = document.querySelector('.status-badge');
-                if (badge && badge.parentElement) badge.parentElement.insertBefore(warningEl, badge.nextSibling);
+                const headerStatus = document.querySelector('.header-status');
+                if (headerStatus) headerStatus.appendChild(warningEl);
             }
+
             if (['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
                 warningEl.textContent = '⚠️ Data source returned 0 gainers/losers. The website will stay on the last known data until the API connection is restored.';
                 warningEl.style.display = 'block';
