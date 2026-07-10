@@ -4273,10 +4273,10 @@
             const active = isActiveTradingWindow();
             label.classList.toggle('active-refresh', active);
             label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${active ? '(10-min active mode)' : '(15-min market mode)'}`;
-
+        }
 
         // Schedule the next refresh relative to the actual data timestamp.
-        // We keep stepping forward by the active/idle interval until we land in the future,
+
         // so the countdown does not reset to "now + interval" every time a page reloads.
         function scheduleNextRefresh(anchorTimestamp) {
             nextRefreshAt = computeNextRefresh(anchorTimestamp);
