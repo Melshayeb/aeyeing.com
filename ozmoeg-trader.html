@@ -3383,6 +3383,9 @@
                     localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
                 } catch (e) { /* storage may be unavailable */ }
                 if (Date.now() >= nextRefreshAt) {
+                    // Advance to the next boundary before fetching so overlapping ticks
+                    // don't fire multiple loads while this one is in flight.
+                    nextRefreshAt = computeNextRefresh();
                     loadLiveData();
                 } else {
                     updateRefreshCountdown();
@@ -4357,6 +4360,7 @@
                 const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
                 document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
 
+                liveResults = results;
                 liveLastUpdated = lastUpdated;
                 // Preserve pre-market/after-hours watchlist for US; rendered via the same scanner table when toggled.
                 window._lastPreMarketResults = preMarketResults;
