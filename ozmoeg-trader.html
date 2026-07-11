@@ -2366,7 +2366,24 @@
             const statusText = document.getElementById('scanner-active-text');
             const badge = document.querySelector('.status-badge');
             if (!statusDot || !statusText) return;
-            const status = (marketStatus || 'UNKNOWN').toUpperCase();
+
+            // Use real-time US market status if the JSON scan is stale (older than ~90 min)
+            // so weekend/closed sessions don't falsely show "OPEN" from Friday's last scan.
+            let status = (marketStatus || 'UNKNOWN').toUpperCase();
+            const now = new Date();
+            const lastScanAgeMin = window._lastScanTimestamp
+                ? Math.max(0, (now.getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
+                : Infinity;
+            const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : status;
+            if (lastScanAgeMin > 90 && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(realTimeStatus)) {
+                status = realTimeStatus;
+            }
+            // If real-time status is closed/weekend, always prefer it regardless of JSON age.
+            if (realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
+                status = realTimeStatus;
+            }
+            currentMarketStatus = status;
+
             const colorMap = {
                 'OPEN': '#22c55e',
                 'PRE-MARKET': '#f59e0b',
@@ -2384,6 +2401,7 @@
                 'UNKNOWN': 'Scanner Status Unknown'
             };
             const color = colorMap[status] || colorMap['UNKNOWN'];
+
             statusDot.style.cssText = `width:8px;height:8px;border-radius:50%;background:${color};animation:pulse 2s infinite;`;
             if (badge) {
                 badge.style.cssText = `display:flex;align-items:center;gap:0.5rem;background:${color}26;border:1px solid ${color};padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:500;color:${color};`;
@@ -2469,6 +2487,19 @@
                 month: parseInt(get('month'), 10),
                 day: parseInt(get('day'), 10)
             };
+        }
+
+
+        function getCurrentUSMarketStatus(now = new Date()) {
+            const et = getETParts(now);
+            if (et.weekdayNum >= 6) return 'WEEKEND';
+            if (et.weekdayNum === 5 && (et.hour > 16 || (et.hour === 16 && et.minute >= 0))) return 'AFTER-HOURS'; // Friday after close treated as closed/weekend-ish
+            if (et.hour < 9 || (et.hour === 9 && et.minute < 30)) {
+                if (et.hour >= 4) return 'PRE-MARKET';
+                return 'CLOSED';
+            }
+            if (et.hour >= 16) return 'AFTER-HOURS';
+            return 'OPEN';
         }
 
         function getETDateFor(year, month, day, hour, minute) {
@@ -2774,9 +2805,19 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            // Active trading window indicator: glowing red pulse + bolt icon
-            const active = isActiveTradingWindow();
+            // Detect real-time US market status; stop countdown when markets are closed/weekend.
+            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
+            const closed = usStatus === 'CLOSED' || usStatus === 'WEEKEND';
+            const active = isActiveTradingWindow() && !closed;
             label.classList.toggle('active-refresh', active);
+            if (closed) {
+                const nextOpen = findNextMarketOpen(new Date());
+                const openText = nextOpen
+                    ? `Opens ${nextOpen.toLocaleString('en-AU', { weekday:'short', hour:'2-digit', minute:'2-digit' })}`
+                    : 'market closed';
+                label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
+                return;
+            }
             const intervalMin = Math.round(getRefreshIntervalMs() / 60000);
             const modeLabel = active ? `(${intervalMin}-min active mode)` : '(15-min market mode)';
             label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
@@ -3803,8 +3844,24 @@
                 if (!scannerFirstLoadDone) {
                     const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
                     const isUsClosedWithWatchlist = currentMarket !== 'AUS' && (marketStatus === 'WEEKEND' || marketStatus === 'CLOSED') && preMarketResults.length > 0;
+                    const isCurrentlyClosed = currentMarket !== 'AUS' && (marketStatus === 'WEEKEND' || marketStatus === 'CLOSED');
                     if (isUsExtendedHours || isUsClosedWithWatchlist) {
                         setScannerToggleActive('premarket');
+                    } else if (isCurrentlyClosed) {
+                        // During closed/weekend there is no live session to watch; grey out the live toggle.
+                        setScannerToggleActive('premarket');
+                        const liveBtn = document.querySelector('#scanner-toggle button[data-view="live"]');
+                        const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
+                        if (liveBtn) {
+                            liveBtn.disabled = true;
+                            liveBtn.style.opacity = '0.5';
+                            liveBtn.style.cursor = 'not-allowed';
+                        }
+                        if (preBtn) {
+                            preBtn.disabled = true;
+                            preBtn.style.opacity = '0.5';
+                            preBtn.style.cursor = 'not-allowed';
+                        }
                     } else {
                         setScannerToggleActive('live');
                     }
