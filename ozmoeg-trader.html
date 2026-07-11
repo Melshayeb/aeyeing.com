@@ -3810,10 +3810,19 @@
                 // Do not recompute nextRefreshAt here; the interval timer handles firing
                 // at the next wall-clock cron boundary and will reschedule after the fetch.
 
-                // Update badge
+                // Update badge — prefer real-time US market status when the JSON scan is stale
+                // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
                 const alerts = results.filter(r => r.status === 'ALERT').length;
                 const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
-                const marketStatus = stats.market_status || 'OPEN';
+                const rawStatus = stats.market_status || 'OPEN';
+                const lastScanAgeMin = window._lastScanTimestamp
+                    ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
+                    : 0;
+                let marketStatus = rawStatus;
+                const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus;
+                if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
+                    marketStatus = realTimeStatus;
+                }
                 currentMarketStatus = marketStatus;
                 const marketTime = stats.market_time || '';
                 const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
