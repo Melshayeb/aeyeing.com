@@ -3851,13 +3851,15 @@
                     preBtn.style.display = showPreAfterToggle ? 'inline-flex' : 'none';
                 }
                 if (!scannerFirstLoadDone) {
-                    const isUsExtendedHours = currentMarket !== 'AUS' && (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS');
-                    const isUsClosedWithWatchlist = currentMarket !== 'AUS' && (marketStatus === 'WEEKEND' || marketStatus === 'CLOSED') && preMarketResults.length > 0;
-                    const isCurrentlyClosed = currentMarket !== 'AUS' && (marketStatus === 'WEEKEND' || marketStatus === 'CLOSED');
+                    // Use real-time market status for toggle defaults, not the stale JSON status.
+                    const effectiveStatus = currentMarketStatus || marketStatus;
+                    const isUsExtendedHours = currentMarket !== 'AUS' && (effectiveStatus === 'PRE-MARKET' || effectiveStatus === 'AFTER-HOURS');
+                    const isUsClosedWithWatchlist = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED') && preMarketResults.length > 0;
+                    const isCurrentlyClosed = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED');
                     if (isUsExtendedHours || isUsClosedWithWatchlist) {
                         setScannerToggleActive('premarket');
                     } else if (isCurrentlyClosed) {
-                        // During closed/weekend there is no live session to watch; grey out the live toggle.
+                        // During closed/weekend there is no live session to watch; grey out both toggles.
                         setScannerToggleActive('premarket');
                         const liveBtn = document.querySelector('#scanner-toggle button[data-view="live"]');
                         const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
