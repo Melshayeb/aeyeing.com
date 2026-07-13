@@ -3313,8 +3313,11 @@
         // Compute the next wall-clock aligned refresh.
         function computeNextRefresh() {
             const interval = getRefreshIntervalMs();
-            if (interval <= 0) return Infinity;
             const now = Date.now();
+            if (interval <= 0) {
+                // Markets are closed; check again in 60 seconds so the label can recover if status changes.
+                return now + 60000;
+            }
             // Round up to the next interval boundary from the epoch.
             const next = Math.ceil(now / interval) * interval;
             // If we are exactly on a boundary, add one interval so we don't fire immediately.
@@ -3329,7 +3332,8 @@
                 const ts = stored ? parseInt(stored, 10) : 0;
                 if (ts && !isNaN(ts) && ts > Date.now()) return ts;
             } catch (e) { /* storage may be unavailable */ }
-            return computeNextRefresh();
+            const initial = computeNextRefresh();
+            return Number.isFinite(initial) ? initial : Date.now() + ACTIVE_REFRESH_INTERVAL_MS;
         })();
 
         function updateRefreshCountdown() {
@@ -3380,7 +3384,8 @@
         // We keep stepping forward by the active/idle interval until we land in the future,
         // so the countdown does not reset to "now + interval" every time a page reloads.
         function scheduleNextRefresh(anchorTimestamp) {
-            nextRefreshAt = computeNextRefresh();
+            const candidate = computeNextRefresh();
+            nextRefreshAt = Number.isFinite(candidate) ? candidate : Date.now() + ACTIVE_REFRESH_INTERVAL_MS;
             // Persist so the countdown survives page reloads.
             try {
                 localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
@@ -3405,7 +3410,8 @@
                 if (Date.now() >= nextRefreshAt) {
                     // Advance to the next boundary before fetching so overlapping ticks
                     // don't fire multiple loads while this one is in flight.
-                    nextRefreshAt = computeNextRefresh();
+                    const candidate = computeNextRefresh();
+                    nextRefreshAt = Number.isFinite(candidate) ? candidate : Date.now() + interval;
                     loadLiveData();
                 } else {
                     updateRefreshCountdown();
