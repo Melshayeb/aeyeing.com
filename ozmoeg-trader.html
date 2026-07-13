@@ -2523,8 +2523,10 @@
 
         function getCurrentUSMarketStatus(now = new Date()) {
             const et = getETParts(now);
-            if (et.weekdayNum >= 6) return 'WEEKEND';
-            if (et.weekdayNum === 5 && (et.hour > 16 || (et.hour === 16 && et.minute >= 0))) return 'AFTER-HOURS'; // Friday after close treated as closed/weekend-ish
+            // Sunday (0) and Saturday (6) are weekend all day.
+            if (et.weekdayNum === 0 || et.weekdayNum >= 6) return 'WEEKEND';
+            // Friday after 16:00 ET is closed for the weekend.
+            if (et.weekdayNum === 5 && (et.hour > 16 || (et.hour === 16 && et.minute >= 0))) return 'WEEKEND';
             if (et.hour < 9 || (et.hour === 9 && et.minute < 30)) {
                 if (et.hour >= 4) return 'PRE-MARKET';
                 return 'CLOSED';
