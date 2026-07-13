@@ -9,7 +9,6 @@
 <meta content="0" http-equiv="Expires"/>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
-<meta content="900" http-equiv="refresh"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
@@ -2757,13 +2756,14 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Live data refresh: fetch latest scan results from ozmoeg-latest.json every 15 minutes
-        // This bypasses GitHub Pages HTML cache so updates appear immediately.
-
-        const REFRESH_INTERVAL_MS = 900000;          // 15 min during open/after-hours
-        const ACTIVE_REFRESH_INTERVAL_MS = 300000;   // 5 min during active trading window (18:00 Sydney → US open)
-        const ACTIVE_WINDOW_START = { h: 18, m: 0 };  // Sydney/Melbourne 18:00
-        const ACTIVE_WINDOW_END = { h: 23, m: 30 };   // Sydney/Melbourne 23:30 (US market open)
+        // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
+        // Intervals are driven by real-time US market status:
+        //   PRE-MARKET (Sydney 18:00 → US 09:30) : every 5 minutes
+        //   OPEN / AFTER-HOURS                    : every 1 hour
+        //   CLOSED / WEEKEND                      : no auto-fetch
+        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
+        const HOURLY_REFRESH_INTERVAL_MS = 3600000;     // 60 min during open/after-hours
+        const ACTIVE_REFRESH_INTERVAL_MS = 300000;     // 5 min during US pre-market (Sydney 18:00 → US open)
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
@@ -2772,7 +2772,7 @@
         let currentMarketStatus = 'OPEN';
         let refreshTimerId = null;
 
-        // True during Sydney/Melbourne active trading window (US pre-market).
+        // Active = US pre-market, which maps to Sydney/Melbourne 18:00 until 09:30 ET.
         // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
         function isActiveTradingWindow(now = new Date()) {
             try {
@@ -2789,25 +2789,27 @@
                     if (p.type === 'minute') m = parseInt(p.value, 10);
                 }
                 const mins = h * 60 + m;
-                const start = ACTIVE_WINDOW_START.h * 60 + ACTIVE_WINDOW_START.m;
-                const end = ACTIVE_WINDOW_END.h * 60 + ACTIVE_WINDOW_END.m;
+                const start = 18 * 60;      // Sydney 18:00
+                const end = 23 * 60 + 30;   // Sydney 23:30 (approx US 09:30 ET in July)
                 return mins >= start && mins < end;
             } catch (e) {
-                // Fallback: assume active if US market status is PRE-MARKET/AFTER-HOURS.
-                return currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS';
+                // Fallback: assume active only if US market status is PRE-MARKET.
+                return currentMarketStatus === 'PRE-MARKET';
             }
         }
 
         function getRefreshIntervalMs() {
-            return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : REFRESH_INTERVAL_MS;
+            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
+            if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') return CLOSED_REFRESH_INTERVAL_MS;
+            if (usStatus === 'PRE-MARKET') return ACTIVE_REFRESH_INTERVAL_MS;
+            // OPEN and AFTER-HOURS refresh hourly.
+            return HOURLY_REFRESH_INTERVAL_MS;
         }
 
         // Compute the next wall-clock aligned refresh.
-        // During active window this is the next 10-min boundary (:00, :10, :20 ...).
-        // During open/after-hours this is the next 15-min boundary (:00, :15, :30, :45).
-        // We align to real-time boundaries because the backend cron fires on those boundaries.
         function computeNextRefresh() {
             const interval = getRefreshIntervalMs();
+            if (interval <= 0) return Infinity;
             const now = Date.now();
             // Round up to the next interval boundary from the epoch.
             const next = Math.ceil(now / interval) * interval;
@@ -2833,16 +2835,23 @@
                 lastLabel.textContent = `Last refresh: ${formatScanTimestamp(window._lastScanTimestamp)}`;
             }
             if (!label) return;
-            const remaining = Math.max(0, nextRefreshAt - Date.now());
-            const totalSeconds = Math.ceil(remaining / 1000);
-            const m = Math.floor(totalSeconds / 60);
-            const s = totalSeconds % 60;
-            // Detect real-time US market status; stop countdown when markets are closed/weekend.
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            const closed = usStatus === 'CLOSED' || usStatus === 'WEEKEND';
-            const active = isActiveTradingWindow() && !closed;
+            const interval = getRefreshIntervalMs();
+            const active = usStatus === 'PRE-MARKET';
             label.classList.toggle('active-refresh', active);
-            if (closed) {
+
+            let modeLabel;
+            if (usStatus === 'PRE-MARKET') {
+                modeLabel = '(5-min pre-market mode)';
+            } else if (usStatus === 'OPEN') {
+                modeLabel = '(60-min open market mode)';
+            } else if (usStatus === 'AFTER-HOURS') {
+                modeLabel = '(60-min after-hours mode)';
+            } else {
+                modeLabel = '(markets closed)';
+            }
+
+            if (interval === 0) {
                 const nextOpen = findNextMarketOpen(new Date());
                 const openText = nextOpen
                     ? `Opens ${nextOpen.toLocaleString('en-AU', { weekday:'short', hour:'2-digit', minute:'2-digit' })}`
@@ -2850,8 +2859,11 @@
                 label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
                 return;
             }
-            const intervalMin = Math.round(getRefreshIntervalMs() / 60000);
-            const modeLabel = active ? `(${intervalMin}-min active mode)` : '(15-min market mode)';
+
+            const remaining = Math.max(0, nextRefreshAt - Date.now());
+            const totalSeconds = Math.ceil(remaining / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
             label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
         }
 
@@ -2869,9 +2881,14 @@
 
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
-            // Align to the next wall-clock cron boundary.
             scheduleNextRefresh();
             refreshTimerId = setInterval(() => {
+                const interval = getRefreshIntervalMs();
+                if (interval === 0) {
+                    // Markets are closed; do not fetch, just update the label.
+                    updateRefreshCountdown();
+                    return;
+                }
                 // Persist every tick so the value stays current across reloads.
                 try {
                     localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
