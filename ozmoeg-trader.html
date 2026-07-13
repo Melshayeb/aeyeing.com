@@ -2855,9 +2855,14 @@
 
             if (interval === 0) {
                 const nextOpen = findNextMarketOpen(new Date());
-                const openText = nextOpen
-                    ? `Opens ${nextOpen.toLocaleString('en-AU', { weekday:'short', hour:'2-digit', minute:'2-digit' })}`
-                    : 'market closed';
+                let openText;
+                if (nextOpen) {
+                    const usOpen = nextOpen.toLocaleString('en-AU', { timeZone: 'America/New_York', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true });
+                    const sydneyOpen = nextOpen.toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true });
+                    openText = `Opens ${usOpen} ET / ${sydneyOpen} Sydney`;
+                } else {
+                    openText = 'market closed';
+                }
                 label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
                 return;
             }
