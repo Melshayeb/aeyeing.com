@@ -2658,23 +2658,23 @@
 <div class="plan-rules">
 <h4>📋 Rules / Filters Applied</h4>
 <ul id="plan-rules-list">
-<li>Price range: $0.50–$30 ✅</li>
-<li>Market cap: $5M–$300M ✅</li>
-<li>Active mover ≥5% or RVOL ≥2.0x (≥1.0x in pre/after-hours) ✅</li>
-<li>Minimum volume 100,000 shares; avg dollar volume ≥$2M ✅</li>
-<li>Max float 50M shares; volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
-<li>Move cap 40% (tier-2 exception up to 80% with RVOL ≥3.0x &amp; VFR ≥2.0x); tiny-cap tier up to 300% ✅</li>
+<li>Price range: $0.20–$50 ✅</li>
+<li>Market cap: $1M–$5B ✅</li>
+<li>Pre/after-hours mover ≥5% or RVOL ≥1.0x; regular-hours active mover ≥5% or RVOL ≥2.0x ✅</li>
+<li>Minimum current volume 50,000 shares (pre/after-hours); avg dollar volume ≥$0.5M ✅</li>
+<li>Max float 50M shares (regular hours) / 100M shares (pre/after-hours); volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
+<li>Move cap 800% (tier-2 exception up to 1,500% with RVOL ≥1.5x &amp; VFR ≥0.5x); tiny-cap tier up to 150% ✅</li>
 <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
 <li>News catalyst scored ≥3 from ≥2 sources; gating relaxed in extended hours and regular-hours US ✅</li>
 <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
-<li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
+<li>Volume indicator: today's volume vs 10-day average (RVOL) ✅</li>
 <li>Risk:Reward ≥2.0:1 ✅</li>
 <li>Position sizing: R = account balance × max daily loss % ÷ max trades per day; shares = R ÷ (entry − stop) ✅</li>
-<li>Scale out: 50% at 2R (T1), 25% at 3R (T2), trail rest above 5R (T3); breakeven stop after +1% ✅</li>
+<li>Scale out: 50% at T1, 25% at T2, trail rest above T3; breakeven stop after +1% ✅</li>
 </ul>
 <h4>📼 Volume Indicator</h4>
 <div class="tape-legend" id="tape-legend">
-<p>The <strong>Tape (15s)</strong> column is now a simple volume indicator comparing today's trading volume against the 3-month average daily volume (ADV):</p>
+<p>The <strong>Tape (15s)</strong> column is a simple volume indicator comparing today's trading volume against the 10-day average daily volume (ADV):</p>
 <p class="tape-note"><span class="tape-mini tape-high">🔥</span> = high volume (RVOL ≥ 2.0) · <span class="tape-mini tape-medium">⚡</span> = moderate volume (RVOL 1.0 – 1.99) · <span class="tape-mini tape-low">🌱</span> = low volume (RVOL &lt; 1.0)</p>
 </div>
 </div>
@@ -3293,12 +3293,12 @@
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
         // Intervals are driven by real-time US market status:
-        //   PRE-MARKET (Sydney 18:00 → US 09:30) : every 5 minutes
+        //   PRE-MARKET (Sydney 18:00 → US 09:30) : every 2 minutes
         //   OPEN / AFTER-HOURS                    : every 1 hour
         //   CLOSED / WEEKEND                      : no auto-fetch
         const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
         const HOURLY_REFRESH_INTERVAL_MS = 3600000;     // 60 min during open/after-hours
-        const ACTIVE_REFRESH_INTERVAL_MS = 300000;     // 5 min during US pre-market (Sydney 18:00 → US open)
+        const ACTIVE_REFRESH_INTERVAL_MS = 120000;     // 2 min during US pre-market (Sydney 18:00 → US open)
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
