@@ -1,166 +1,1742 @@
 {
-  "last_updated": "2026-07-15T08:00:42.983175Z",
-  "scan_results": [],
-  "pre_market_results": [],
-  "bounce_results": [],
-  "losers_scanned": 50,
-  "active_plan": null,
-  "total_candidates": 0,
-  "alerts_generated": 0,
-  "all_gainers": [
-    {
-      "ticker": "KUST",
-      "name": "Kustom Entertainment Inc",
-      "price": 1.71,
-      "change_pct": 69.3069306930693,
-      "volume": 43808,
-      "rvol": 0.0,
-      "market_cap": 633128.6,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.6M, vol 43,808, vol/float 0.07x < 0.1x"
-    },
+  "last_updated": "2026-07-15T08:05:55.136556Z",
+  "scan_results": [
     {
       "ticker": "GCTK",
       "name": "Glucotrack",
-      "price": 0.85,
-      "change_pct": 60.65016065016064,
-      "volume": 588994,
-      "rvol": 0.0,
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.708,
+      "change_pct": 33.8121338121338,
+      "volume": 1937776,
       "market_cap": 3311784.52,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.09x < 0.1x"
+      "country": "United States",
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "result": "+33.8% \u00b7 Entry $0.71 \u00b7 T1 $0.74 \u00b7 T2 $0.75 \u00b7 T3 $0.78",
+      "plan": {
+        "valid": true,
+        "ticker": "GCTK",
+        "entry": 0.708,
+        "stop": 0.6938,
+        "targets": {
+          "t1": 0.7364,
+          "t2": 0.7506,
+          "t3": 0.779
+        },
+        "risk_per_share": 0.0142,
+        "risk_amount": 100.0,
+        "daily_risk_budget": 300.0,
+        "risk_unit_label": "R = $100.0 (3% daily \u00f7 3 trades)",
+        "shares": 3531,
+        "position_value": 2499.95,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.6938"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "GCTK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T03:27:06.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+            "source": "Webull",
+            "time": "9h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T22:19:05.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:42:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:40:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+            "source": "Webull",
+            "time": "15h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T16:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:32:12.310+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T12:05:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:16:14.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:04:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:32.448+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T03:27:06.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+            "source": "Webull",
+            "time": "9h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T22:19:05.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:42:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:40:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+            "source": "Webull",
+            "time": "15h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T16:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:32:12.310+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T12:05:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:16:14.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:04:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:32.448+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "GCTK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 2.0,
+        "rvol": 0.39,
+        "volume_indicator": "low",
+        "volume": 1937776,
+        "adv": 4954321,
+        "recent_pct_of_adv": 39.11,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 1937776,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 0.5291,
+        "vwap": null,
+        "last_trade_time": "2026-07-15T08:05:24.221000+00:00",
+        "stale_age_seconds": 28
+      },
+      "date": "2026-07-15",
+      "time": "18:05:52",
+      "skip_news_check": false
     },
     {
       "ticker": "VTAK",
       "name": "Catheter Precision",
-      "price": 0.79,
-      "change_pct": 41.07142857142856,
-      "volume": 2123,
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.12,
+      "change_pct": 100.0,
+      "volume": 426781,
+      "market_cap": 2021303.76,
+      "country": "United States",
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "result": "+100.0% \u00b7 Entry $1.12 \u00b7 T1 $1.16 \u00b7 T2 $1.19 \u00b7 T3 $1.23",
+      "plan": {
+        "valid": true,
+        "ticker": "VTAK",
+        "entry": 1.12,
+        "stop": 1.0976,
+        "targets": {
+          "t1": 1.1648,
+          "t2": 1.1872,
+          "t3": 1.232
+        },
+        "risk_per_share": 0.0224,
+        "risk_amount": 100.0,
+        "daily_risk_budget": 300.0,
+        "risk_unit_label": "R = $100.0 (3% daily \u00f7 3 trades)",
+        "shares": 2232,
+        "position_value": 2499.84,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.0976"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "VTAK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T04:24:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "11h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:05:41.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vision Marine Technologies Shares Are Trading Higher By Over 60%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "23h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T08:56:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at VTAK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:08:18.994+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T17:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Catheter Precision Plunges as Traders Unwind Gains from Recent News",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T15:19:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T17:05:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3 Penny Stocks to Watch Today, 7/9/2026",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T14:13:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T12:05:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Ultra Clean Shares Are Trading Higher By Over 6%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T08:53:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Flyte Partners With LifeVac To Equip Every Vision Jet With Life-Saving Device",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T05:02:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T21:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T17:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Falls 500 Points; Helen Of Troy Posts Q1 Profit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T14:04:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:05:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T04:24:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "11h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:05:41.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vision Marine Technologies Shares Are Trading Higher By Over 60%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "23h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T08:56:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at VTAK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:08:18.994+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T17:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Catheter Precision Plunges as Traders Unwind Gains from Recent News",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T15:19:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T17:05:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3 Penny Stocks to Watch Today, 7/9/2026",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T14:13:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T12:05:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Ultra Clean Shares Are Trading Higher By Over 6%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T08:53:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Flyte Partners With LifeVac To Equip Every Vision Jet With Life-Saving Device",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T05:02:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T21:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T17:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Falls 500 Points; Helen Of Troy Posts Q1 Profit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T14:04:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:05:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "VTAK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 2.0,
+        "rvol": 0.06,
+        "volume_indicator": "low",
+        "volume": 426781,
+        "adv": 7177557,
+        "recent_pct_of_adv": 5.95,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 426781,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 0.56,
+        "vwap": null,
+        "last_trade_time": "2026-07-15T08:05:24.120000+00:00",
+        "stale_age_seconds": 28
+      },
+      "date": "2026-07-15",
+      "time": "18:05:52",
+      "skip_news_check": false
+    }
+  ],
+  "pre_market_results": [
+    {
+      "ticker": "GCTK",
+      "name": "Glucotrack",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.708,
+      "change_pct": 33.8121338121338,
+      "volume": 1937776,
+      "market_cap": 3311784.52,
+      "country": "United States",
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "result": "+33.8% \u00b7 Entry $0.71 \u00b7 T1 $0.74 \u00b7 T2 $0.75 \u00b7 T3 $0.78",
+      "plan": {
+        "valid": true,
+        "ticker": "GCTK",
+        "entry": 0.708,
+        "stop": 0.6938,
+        "targets": {
+          "t1": 0.7364,
+          "t2": 0.7506,
+          "t3": 0.779
+        },
+        "risk_per_share": 0.0142,
+        "risk_amount": 100.0,
+        "daily_risk_budget": 300.0,
+        "risk_unit_label": "R = $100.0 (3% daily \u00f7 3 trades)",
+        "shares": 3531,
+        "position_value": 2499.95,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.6938"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "GCTK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T03:27:06.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+            "source": "Webull",
+            "time": "9h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T22:19:05.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:42:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:40:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+            "source": "Webull",
+            "time": "15h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T16:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:32:12.310+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T12:05:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:16:14.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:04:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:32.448+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T03:27:06.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+            "source": "Webull",
+            "time": "9h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T22:19:05.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:42:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+            "source": "Webull",
+            "time": "10h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:40:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+            "source": "Webull",
+            "time": "15h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T16:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:32:12.310+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T12:05:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:16:14.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:04:30.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:32.448+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:01:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "GCTK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 2.0,
+        "rvol": 0.39,
+        "volume_indicator": "low",
+        "volume": 1937776,
+        "adv": 4954321,
+        "recent_pct_of_adv": 39.11,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 1937776,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 0.5291,
+        "vwap": null,
+        "last_trade_time": "2026-07-15T08:05:24.221000+00:00",
+        "stale_age_seconds": 28
+      },
+      "date": "2026-07-15",
+      "time": "18:05:52",
+      "skip_news_check": false
+    },
+    {
+      "ticker": "VTAK",
+      "name": "Catheter Precision",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.12,
+      "change_pct": 100.0,
+      "volume": 426781,
+      "market_cap": 2021303.76,
+      "country": "United States",
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "result": "+100.0% \u00b7 Entry $1.12 \u00b7 T1 $1.16 \u00b7 T2 $1.19 \u00b7 T3 $1.23",
+      "plan": {
+        "valid": true,
+        "ticker": "VTAK",
+        "entry": 1.12,
+        "stop": 1.0976,
+        "targets": {
+          "t1": 1.1648,
+          "t2": 1.1872,
+          "t3": 1.232
+        },
+        "risk_per_share": 0.0224,
+        "risk_amount": 100.0,
+        "daily_risk_budget": 300.0,
+        "risk_unit_label": "R = $100.0 (3% daily \u00f7 3 trades)",
+        "shares": 2232,
+        "position_value": 2499.84,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.0976"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "VTAK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T04:24:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "11h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:05:41.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vision Marine Technologies Shares Are Trading Higher By Over 60%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "23h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T08:56:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at VTAK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:08:18.994+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T17:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Catheter Precision Plunges as Traders Unwind Gains from Recent News",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T15:19:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T17:05:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3 Penny Stocks to Watch Today, 7/9/2026",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T14:13:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T12:05:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Ultra Clean Shares Are Trading Higher By Over 6%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T08:53:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Flyte Partners With LifeVac To Equip Every Vision Jet With Life-Saving Device",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T05:02:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T21:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T17:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Falls 500 Points; Helen Of Troy Posts Q1 Profit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T14:04:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:05:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 15 Jul",
+            "raw_time": "2026-07-15T04:24:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "11h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T21:05:41.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vision Marine Technologies Shares Are Trading Higher By Over 60%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "23h ago \u00b7 14 Jul",
+            "raw_time": "2026-07-14T08:56:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at VTAK last week (0706-0710)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 13 Jul",
+            "raw_time": "2026-07-13T09:08:18.994+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T17:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Catheter Precision Plunges as Traders Unwind Gains from Recent News",
+            "source": "Webull",
+            "time": "4d ago \u00b7 10 Jul",
+            "raw_time": "2026-07-10T15:19:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T17:05:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3 Penny Stocks to Watch Today, 7/9/2026",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T14:13:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T12:05:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Ultra Clean Shares Are Trading Higher By Over 6%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "5d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T08:53:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Flyte Partners With LifeVac To Equip Every Vision Jet With Life-Saving Device",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Jul",
+            "raw_time": "2026-07-09T05:02:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T21:05:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T17:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Falls 500 Points; Helen Of Troy Posts Q1 Profit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T14:04:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 08 Jul",
+            "raw_time": "2026-07-08T12:05:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Catheter Precision (VTAK) Stock Surges Over 19% After Hours: Why is it Moving?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "VTAK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 2.0,
+        "rvol": 0.06,
+        "volume_indicator": "low",
+        "volume": 426781,
+        "adv": 7177557,
+        "recent_pct_of_adv": 5.95,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 426781,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 0.56,
+        "vwap": null,
+        "last_trade_time": "2026-07-15T08:05:24.120000+00:00",
+        "stale_age_seconds": 28
+      },
+      "date": "2026-07-15",
+      "time": "18:05:52",
+      "skip_news_check": false
+    }
+  ],
+  "bounce_results": [],
+  "losers_scanned": 50,
+  "active_plan": {
+    "ticker": "GCTK",
+    "name": "Glucotrack",
+    "status": "ALERT",
+    "source": "regular",
+    "price": 0.708,
+    "change_pct": 33.8121338121338,
+    "volume": 1937776,
+    "market_cap": 3311784.52,
+    "country": "United States",
+    "scan_reason": "Passed filters",
+    "scan_passed": true,
+    "result": "+33.8% \u00b7 Entry $0.71 \u00b7 T1 $0.74 \u00b7 T2 $0.75 \u00b7 T3 $0.78",
+    "plan": {
+      "valid": true,
+      "ticker": "GCTK",
+      "entry": 0.708,
+      "stop": 0.6938,
+      "targets": {
+        "t1": 0.7364,
+        "t2": 0.7506,
+        "t3": 0.779
+      },
+      "risk_per_share": 0.0142,
+      "risk_amount": 100.0,
+      "daily_risk_budget": 300.0,
+      "risk_unit_label": "R = $100.0 (3% daily \u00f7 3 trades)",
+      "shares": 3531,
+      "position_value": 2499.95,
+      "risk_reward": 2.0,
+      "confidence": "MED",
+      "strategy": "Demand zone + candlestick confirmation scalp",
+      "exit_rules": {
+        "momentum_based": true,
+        "time_based": false,
+        "trail_breakeven_at": "+1%",
+        "hard_stop": "$0.6938"
+      }
+    },
+    "ta": {
+      "valid": false,
+      "error": "No bar data"
+    },
+    "news": {
+      "ticker": "GCTK",
+      "total_items": 20,
+      "scored_items": [
+        {
+          "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+          "source": "Webull",
+          "time": "4h ago \u00b7 15 Jul",
+          "raw_time": "2026-07-15T03:27:06.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+          "source": "Webull",
+          "time": "9h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T22:19:05.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+          "source": "Webull",
+          "time": "10h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T21:42:31.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+          "source": "Webull",
+          "time": "10h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T21:40:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+          "source": "Webull",
+          "time": "15h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T16:40:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+          "source": "Webull",
+          "time": "1d ago \u00b7 13 Jul",
+          "raw_time": "2026-07-13T09:32:12.310+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+          "source": "Webull",
+          "time": "4d ago \u00b7 10 Jul",
+          "raw_time": "2026-07-10T12:05:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:16:14.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:04:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:01:32.448+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:01:26.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "headlines": [
+        {
+          "title": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+          "source": "Webull",
+          "time": "4h ago \u00b7 15 Jul",
+          "raw_time": "2026-07-15T03:27:06.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack completes business combination with L\u014dkahi Therapeutics, creating L\u014dkahi-controlled public company",
+          "source": "Webull",
+          "time": "9h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T22:19:05.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack Completes Its Strategic Business Combination With L\u014dkahi Therapeutics; Transaction Is Structured Such That L\u014dkahi Therapeutics Becomes The Operating And Controlling Business Of The Combined Company, Leveraging Glucotrack\u2019s Public Market Platform To Support Long-Term Growth And Access To Capital",
+          "source": "Webull",
+          "time": "10h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T21:42:31.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack names Erik Emerson CEO, Paul Goode CTO in L\u014dkahi deal",
+          "source": "Webull",
+          "time": "10h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T21:40:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Glucotrack and L\u014dkahi Therapeutics Complete Strategic Business Combination, Establishing L\u014dkahi-Controlled Public Platform",
+          "source": "Webull",
+          "time": "15h ago \u00b7 14 Jul",
+          "raw_time": "2026-07-14T16:40:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at GCTK last week (0706-0710)?",
+          "source": "Webull",
+          "time": "1d ago \u00b7 13 Jul",
+          "raw_time": "2026-07-13T09:32:12.310+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+          "source": "Webull",
+          "time": "4d ago \u00b7 10 Jul",
+          "raw_time": "2026-07-10T12:05:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack announces USPTO notice of allowance for patent application",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:16:14.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GlucoTrack says USPTO allows patent claims for implantable continuous blood glucose monitoring platform",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:04:30.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "GLUCOTRACK ANNOUNCES USPTO NOTICE OF ALLOWANCE FOR PATENT APPLICATION COVERING ITS IMPLANTABLE CBGM PLATFORM ",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:01:32.448+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Glucotrack Issued Notice Of Allowance From U.S. Patent And Trademark Office Titled 'Methods And Systems For Continuously Monitoring The Glucose Level Of A Patient'",
+          "source": "Webull",
+          "time": "6d ago \u00b7 08 Jul",
+          "raw_time": "2026-07-08T12:01:26.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "red_flags": [],
+      "max_score": 0,
+      "avg_score": 0.0,
+      "catalyst_confirmed": false,
+      "high_impact_count": 0,
+      "top_headline": "Glucotrack (GCTK) Stock Is Trending Overnight \u2014 Here\u2019s Why it Spiked Over 69% in After-Hours Session",
+      "news_filter_reason": "low catalyst score (max 0/5)"
+    },
+    "tape": {
+      "ticker": "GCTK",
+      "valid": true,
+      "stale": false,
+      "no_move": false,
+      "tape_score": 2.0,
+      "rvol": 0.39,
+      "volume_indicator": "low",
+      "volume": 1937776,
+      "adv": 4954321,
+      "recent_pct_of_adv": 39.11,
+      "volume_acceleration": 0.0,
+      "price_velocity_pct": 0.0,
+      "buy_pressure_pct": 0.0,
+      "large_bar_count": 0,
+      "vwap_distance_pct": 0.0,
+      "recent_volume": 1937776,
+      "prior_volume": 0,
+      "median_range": 0.0,
+      "last_price": 0.5291,
+      "vwap": null,
+      "last_trade_time": "2026-07-15T08:05:24.221000+00:00",
+      "stale_age_seconds": 28
+    },
+    "date": "2026-07-15",
+    "time": "18:05:52",
+    "skip_news_check": false
+  },
+  "total_candidates": 2,
+  "alerts_generated": 2,
+  "all_gainers": [
+    {
+      "ticker": "VTAK",
+      "name": "Catheter Precision",
+      "price": 1.12,
+      "change_pct": 100.0,
+      "volume": 426781,
       "rvol": 0.0,
       "market_cap": 2021303.76,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
+      "ticker": "KUST",
+      "name": "Kustom Entertainment Inc",
+      "price": 1.66,
+      "change_pct": 64.35643564356435,
+      "volume": 1611571,
+      "rvol": 0.0,
+      "market_cap": 633128.6,
       "passed": false,
-      "reason": "Filtered: vol 2,123, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: mktcap $0.6M"
+    },
+    {
+      "ticker": "GCTK",
+      "name": "Glucotrack",
+      "price": 0.708,
+      "change_pct": 33.8121338121338,
+      "volume": 1937776,
+      "rvol": 0.0,
+      "market_cap": 3311784.52,
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "AEHR",
       "name": "Aehr Test Sys",
-      "price": 94.0,
-      "change_pct": 30.537425357589214,
-      "volume": 2177,
+      "price": 93.95,
+      "change_pct": 30.467990556867097,
+      "volume": 9620,
       "rvol": 0.0,
       "market_cap": 2264948820.54,
       "passed": false,
-      "reason": "Filtered: price $94.000, vol 2,177, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: price $93.950, vol 9,620, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "PMI",
       "name": "Picard Medical, Inc.",
-      "price": 0.176,
-      "change_pct": 25.714285714285694,
-      "volume": 1754107,
+      "price": 0.172,
+      "change_pct": 22.857142857142836,
+      "volume": 4038179,
       "rvol": 0.0,
       "market_cap": 14377430.9,
       "passed": false,
-      "reason": "Filtered: price $0.176, vol/float 0.03x < 0.1x"
+      "reason": "Filtered: price $0.172, vol/float 0.08x < 0.1x"
     },
     {
       "ticker": "XCUR",
       "name": "Exicure Inc",
-      "price": 2.15,
-      "change_pct": 24.999999999999996,
-      "volume": 3030,
+      "price": 2.03,
+      "change_pct": 18.02325581395348,
+      "volume": 122948,
       "rvol": 0.0,
       "market_cap": 10963171.64,
       "passed": false,
-      "reason": "Filtered: vol 3,030, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
-      "ticker": "VEEA",
-      "name": "VEEA INC",
-      "price": 0.25,
-      "change_pct": 21.359223300970882,
-      "volume": 168390,
+      "ticker": "JLHL",
+      "name": "JULONG HOLDING LTD",
+      "price": 9.18,
+      "change_pct": 16.20253164556961,
+      "volume": 11779,
       "rvol": 0.0,
-      "market_cap": 11354092.32,
+      "market_cap": 169444192.8,
       "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: vol 11,779, vol/float 0.01x < 0.1x"
     },
     {
-      "ticker": "NYT",
-      "name": "New York Times",
-      "price": 84.65,
-      "change_pct": 15.9906823787339,
-      "volume": 1,
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "price": 0.528,
+      "change_pct": 15.66265060240964,
+      "volume": 5937,
       "rvol": 0.0,
-      "market_cap": 11812739773.02,
+      "market_cap": 3582565.89,
       "passed": false,
-      "reason": "Filtered: price $84.650, mktcap $11812.7M, vol 1, float 143.5M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "CRVO",
-      "name": "CervoMed",
-      "price": 3.54,
-      "change_pct": 14.935064935064934,
-      "volume": 141,
-      "rvol": 0.0,
-      "market_cap": 41660797.64,
-      "passed": false,
-      "reason": "Filtered: vol 141, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "TRT",
-      "name": "Trio Tech Int",
-      "price": 11.77,
-      "change_pct": 14.717348927875243,
-      "volume": 2,
-      "rvol": 0.0,
-      "market_cap": 103755265.74,
-      "passed": false,
-      "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "BYAH",
-      "name": "PARK HA BIOLOGICAL TECHNOLOGY",
-      "price": 0.46,
-      "change_pct": 13.86138613861386,
-      "volume": 1145,
-      "rvol": 0.0,
-      "market_cap": 2549731.26,
-      "passed": false,
-      "reason": "Filtered: vol 1,145, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 5,937, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.5M"
     },
     {
       "ticker": "PYPL",
       "name": "Paypal Holdings",
-      "price": 53.05,
-      "change_pct": 11.99071142073042,
-      "volume": 136545,
+      "price": 54.73,
+      "change_pct": 15.537259869115475,
+      "volume": 534008,
       "rvol": 0.0,
       "market_cap": 41785337203.41,
       "passed": false,
-      "reason": "Filtered: price $53.050, mktcap $41785.3M, float 876.1M > 100M, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: price $54.730, mktcap $41785.3M, float 876.1M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "GNTA",
-      "name": "Genenta Science Spa",
-      "price": 1.39,
-      "change_pct": 11.199999999999992,
-      "volume": 2799,
+      "ticker": "SHMD",
+      "name": "SCHMID Group N.V.",
+      "price": 5.119,
+      "change_pct": 13.252212389380535,
+      "volume": 935,
       "rvol": 0.0,
-      "market_cap": 29488775.0,
+      "market_cap": 296854281.52,
       "passed": false,
-      "reason": "Filtered: vol 2,799, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: vol 935, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "BJDX",
-      "name": "Bluejay Diagnostics Inc",
-      "price": 1.38,
-      "change_pct": 10.399999999999991,
-      "volume": 805,
+      "ticker": "TRT",
+      "name": "Trio Tech Int",
+      "price": 11.61,
+      "change_pct": 13.157894736842103,
+      "volume": 1008,
       "rvol": 0.0,
-      "market_cap": 1293393.75,
+      "market_cap": 103755265.74,
       "passed": false,
-      "reason": "Filtered: vol 805, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 1,008, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "VEEA",
+      "name": "VEEA INC",
+      "price": 0.233,
+      "change_pct": 13.106796116504867,
+      "volume": 438827,
+      "rvol": 0.0,
+      "market_cap": 11354092.32,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "CRVO",
+      "name": "CervoMed",
+      "price": 3.45,
+      "change_pct": 12.012987012987015,
+      "volume": 22573,
+      "rvol": 0.0,
+      "market_cap": 41660797.64,
+      "passed": false,
+      "reason": "Filtered: vol 22,573, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "SCNI",
+      "name": "Scinai Immunotherapeutics Ltd.",
+      "price": 0.266,
+      "change_pct": 10.236220472440957,
+      "volume": 17826,
+      "rvol": 0.0,
+      "market_cap": 1247372.12,
+      "passed": false,
+      "reason": "Filtered: vol 17,826, vol/float 0.00x < 0.1x, avg $vol $0.3M < $0.5M"
+    },
+    {
+      "ticker": "VMAR",
+      "name": "Vision Marine Technologies Inc",
+      "price": 1.45,
+      "change_pct": 9.84848484848484,
+      "volume": 33219,
+      "rvol": 0.0,
+      "market_cap": 959706.0,
+      "passed": false,
+      "reason": "Filtered: mktcap $1.0M, vol 33,219, vol/float 0.05x < 0.1x"
     },
     {
       "ticker": "MVIS",
@@ -174,17 +1750,6 @@
       "reason": "Filtered: vol 691, float 338.2M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "ONFO",
-      "name": "Onfolio Holdings",
-      "price": 0.169,
-      "change_pct": 8.821635544108188,
-      "volume": 3570,
-      "rvol": 0.0,
-      "market_cap": 1093362.94,
-      "passed": false,
-      "reason": "Filtered: price $0.169, vol 3,570, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "NXL",
       "name": "Nexalin Tech",
       "price": 0.444,
@@ -196,15 +1761,26 @@
       "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.5M"
     },
     {
-      "ticker": "PRSO",
-      "name": "Peraso",
-      "price": 0.822,
-      "change_pct": 8.157894736842097,
-      "volume": 12249,
+      "ticker": "ACTU",
+      "name": "Actuate Therapeutics Inc",
+      "price": 1.87,
+      "change_pct": 8.092485549132956,
+      "volume": 3477,
       "rvol": 0.0,
-      "market_cap": 11430916.04,
+      "market_cap": 41391723.96,
       "passed": false,
-      "reason": "Filtered: vol 12,249, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 3,477, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "BJDX",
+      "name": "Bluejay Diagnostics Inc",
+      "price": 1.35,
+      "change_pct": 8.000000000000007,
+      "volume": 30637,
+      "rvol": 0.0,
+      "market_cap": 1293393.75,
+      "passed": false,
+      "reason": "Filtered: vol 30,637, vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "CYPH",
@@ -218,26 +1794,37 @@
       "reason": "Filtered: vol 8,312, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "ISPC",
-      "name": "Ispecimen Inc.",
-      "price": 2.58,
-      "change_pct": 7.9497907949790765,
-      "volume": 1,
+      "ticker": "CPOP",
+      "name": "Pop Culture Group Co., Ltd",
+      "price": 0.531,
+      "change_pct": 7.904897378581599,
+      "volume": 9392,
       "rvol": 0.0,
-      "market_cap": 3434805.23,
+      "market_cap": 7444113.82,
       "passed": false,
-      "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.3M < $0.5M"
+      "reason": "Filtered: vol 9,392, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "MNSO",
-      "name": "Miniso Group Holding Ltd",
-      "price": 12.44,
-      "change_pct": 7.892454466608847,
-      "volume": 51,
+      "ticker": "BTTC",
+      "name": "Black TITAN Corp",
+      "price": 0.863,
+      "change_pct": 7.874999999999993,
+      "volume": 1126,
       "rvol": 0.0,
-      "market_cap": 3571303329.94,
+      "market_cap": 8619696.8,
       "passed": false,
-      "reason": "Filtered: vol 51, float 309.7M > 100M, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 1,126, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.5M"
+    },
+    {
+      "ticker": "QTRX",
+      "name": "Quanterix",
+      "price": 4.4,
+      "change_pct": 7.843137254901968,
+      "volume": 880,
+      "rvol": 0.0,
+      "market_cap": 192192402.48,
+      "passed": false,
+      "reason": "Filtered: vol 880, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "A",
@@ -251,17 +1838,6 @@
       "reason": "Filtered: price $145.540, mktcap $38184.8M, vol 3, float 281.8M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "QTRX",
-      "name": "Quanterix",
-      "price": 4.389,
-      "change_pct": 7.573529411764709,
-      "volume": 130,
-      "rvol": 0.0,
-      "market_cap": 192192402.48,
-      "passed": false,
-      "reason": "Filtered: vol 130, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "FLD",
       "name": "Fold Holdings, Inc",
       "price": 0.461,
@@ -273,15 +1849,26 @@
       "reason": "Filtered: vol 1,697, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "EVTL",
-      "name": "Vertical Aerospace Ltd",
-      "price": 1.759,
-      "change_pct": 7.2560975609756095,
+      "ticker": "AQMS",
+      "name": "Aqua Metals Inc",
+      "price": 2.95,
+      "change_pct": 7.27272727272728,
       "volume": 1,
       "rvol": 0.0,
-      "market_cap": 208817926.56,
+      "market_cap": 9776030.0,
       "passed": false,
-      "reason": "Filtered: vol 1, float 122.6M > 100M, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.5M"
+    },
+    {
+      "ticker": "GNTA",
+      "name": "Genenta Science Spa",
+      "price": 1.34,
+      "change_pct": 7.200000000000006,
+      "volume": 9329,
+      "rvol": 0.0,
+      "market_cap": 29488775.0,
+      "passed": false,
+      "reason": "Filtered: vol 9,329, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "HCWC",
@@ -310,11 +1897,22 @@
       "name": "Biocryst Pharmaceuticals Inc",
       "price": 10.43,
       "change_pct": 7.084188911704308,
-      "volume": 1,
+      "volume": 5,
       "rvol": 0.0,
       "market_cap": 2475544308.4,
       "passed": false,
-      "reason": "Filtered: vol 1, float 234.4M > 100M, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 5, float 234.4M > 100M, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "MNSO",
+      "name": "Miniso Group Holding Ltd",
+      "price": 12.32,
+      "change_pct": 6.851691240242854,
+      "volume": 874,
+      "rvol": 0.0,
+      "market_cap": 3571303329.94,
+      "passed": false,
+      "reason": "Filtered: vol 874, float 309.7M > 100M, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "FEAM",
@@ -328,37 +1926,26 @@
       "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "CPOP",
-      "name": "Pop Culture Group Co., Ltd",
-      "price": 0.525,
-      "change_pct": 6.685633001422484,
-      "volume": 9172,
+      "ticker": "ISPC",
+      "name": "Ispecimen Inc.",
+      "price": 2.55,
+      "change_pct": 6.694560669456054,
+      "volume": 534,
       "rvol": 0.0,
-      "market_cap": 7444113.82,
+      "market_cap": 3434805.23,
       "passed": false,
-      "reason": "Filtered: vol 9,172, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 534, vol/float 0.00x < 0.1x, avg $vol $0.3M < $0.5M"
     },
     {
-      "ticker": "HRTX",
-      "name": "Heron Therapeutics Inc",
-      "price": 0.458,
-      "change_pct": 6.536403814840663,
-      "volume": 1,
+      "ticker": "UMC",
+      "name": "United Microelec",
+      "price": 25.41,
+      "change_pct": 6.585570469798658,
+      "volume": 15918,
       "rvol": 0.0,
-      "market_cap": 81371200.73,
+      "market_cap": 59967063860.16,
       "passed": false,
-      "reason": "Filtered: vol 1, float 175.1M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "SOBR",
-      "name": "Sobr Safe Inc",
-      "price": 1.245,
-      "change_pct": 6.410256410256427,
-      "volume": 7769,
-      "rvol": 0.0,
-      "market_cap": 3365577.54,
-      "passed": false,
-      "reason": "Filtered: vol 7,769, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: mktcap $59967.1M, vol 15,918, float 2514.9M > 100M, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "WETO",
@@ -372,6 +1959,28 @@
       "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "CXAI",
+      "name": "CXApp",
+      "price": 0.16,
+      "change_pct": 6.666666666666673,
+      "volume": 1691,
+      "rvol": 0.0,
+      "market_cap": 14522821.2,
+      "passed": false,
+      "reason": "Filtered: price $0.160, vol 1,691, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "BRCB",
+      "name": "Black Rock Coffee Bar, Inc.",
+      "price": 8.53,
+      "change_pct": 6.2266500622665015,
+      "volume": 1,
+      "rvol": 0.0,
+      "market_cap": 401948130.21,
+      "passed": false,
+      "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x"
+    },
+    {
       "ticker": "BRTX",
       "name": "Biorestorative Therapies Inc",
       "price": 0.35,
@@ -381,6 +1990,28 @@
       "market_cap": 8407796.1,
       "passed": false,
       "reason": "Filtered: vol 4, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.5M"
+    },
+    {
+      "ticker": "TXT",
+      "name": "Textron",
+      "price": 94.8,
+      "change_pct": 5.921787709497203,
+      "volume": 2,
+      "rvol": 0.0,
+      "market_cap": 15563063799.5,
+      "passed": false,
+      "reason": "Filtered: price $94.800, mktcap $15563.1M, vol 2, float 172.6M > 100M, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "NVMI",
+      "name": "Nova Ltd",
+      "price": 501.4,
+      "change_pct": 5.883346707775469,
+      "volume": 52,
+      "rvol": 0.0,
+      "market_cap": 15061489479.94,
+      "passed": false,
+      "reason": "Filtered: price $501.400, mktcap $15061.5M, vol 52, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "IMOS",
@@ -405,39 +2036,6 @@
       "reason": "Filtered: vol 1, float 110.6M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "DFNS",
-      "name": "T3 Defense Inc",
-      "price": 0.077,
-      "change_pct": 5.624142661179688,
-      "volume": 39573,
-      "rvol": 0.0,
-      "market_cap": 9208137.66,
-      "passed": false,
-      "reason": "Filtered: price $0.077, vol 39,573, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "UMC",
-      "name": "United Microelec",
-      "price": 25.2,
-      "change_pct": 5.7046979865771785,
-      "volume": 11296,
-      "rvol": 0.0,
-      "market_cap": 59967063860.16,
-      "passed": false,
-      "reason": "Filtered: mktcap $59967.1M, vol 11,296, float 2514.9M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "ASML",
-      "name": "Asml Holding",
-      "price": 1875.48,
-      "change_pct": 5.62276137054808,
-      "volume": 7963,
-      "rvol": 0.0,
-      "market_cap": 684363022680.6,
-      "passed": false,
-      "reason": "Filtered: price $1875.480, mktcap $684363.0M, vol 7,963, float 385.4M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "KITT",
       "name": "Nauticus Robotic",
       "price": 0.919,
@@ -449,26 +2047,59 @@
       "reason": "Filtered: vol 34, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.5M"
     },
     {
-      "ticker": "VICR",
-      "name": "Vicor Corp",
-      "price": 279.0,
-      "change_pct": 5.482041587901701,
-      "volume": 208,
+      "ticker": "MESO",
+      "name": "Mesoblast",
+      "price": 17.68,
+      "change_pct": 5.615292712066914,
+      "volume": 4,
       "rvol": 0.0,
-      "market_cap": 12056282151.5,
+      "market_cap": 2164189953.96,
       "passed": false,
-      "reason": "Filtered: price $279.000, mktcap $12056.3M, vol 208, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 4, float 122.8M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "SLNH",
-      "name": "SOLUNA HOLDINGS INC",
-      "price": 1.18,
-      "change_pct": 5.357142857142842,
-      "volume": 3708,
+      "ticker": "COCH",
+      "name": "Envoy Medical",
+      "price": 0.8,
+      "change_pct": 5.443521813628576,
+      "volume": 9470,
       "rvol": 0.0,
-      "market_cap": 176677036.48,
+      "market_cap": 58329698.16,
       "passed": false,
-      "reason": "Filtered: vol 3,708, float 105.5M > 100M, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 9,470, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "CTM",
+      "name": "Castellum Inc",
+      "price": 0.675,
+      "change_pct": 5.43580131208998,
+      "volume": 2083,
+      "rvol": 0.0,
+      "market_cap": 60626260.75,
+      "passed": false,
+      "reason": "Filtered: vol 2,083, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "ONTO",
+      "name": "Onto Innovation Inc",
+      "price": 336.66,
+      "change_pct": 5.430289364900424,
+      "volume": 1199,
+      "rvol": 0.0,
+      "market_cap": 15884115814.44,
+      "passed": false,
+      "reason": "Filtered: price $336.660, mktcap $15884.1M, vol 1,199, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "ASML",
+      "name": "Asml Holding",
+      "price": 1870.95,
+      "change_pct": 5.3676420896127555,
+      "volume": 18871,
+      "rvol": 0.0,
+      "market_cap": 684363022680.6,
+      "passed": false,
+      "reason": "Filtered: price $1870.950, mktcap $684363.0M, vol 18,871, float 385.4M > 100M, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "RANI",
@@ -482,17 +2113,6 @@
       "reason": "Filtered: vol 685, float 106.7M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "ELPW",
-      "name": "Elong Power Holding Limited",
-      "price": 0.316,
-      "change_pct": 5.193075898801599,
-      "volume": 2885,
-      "rvol": 0.0,
-      "market_cap": 1995498.32,
-      "passed": false,
-      "reason": "Filtered: vol 2,885, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "UTSI",
       "name": "Utstarcom Holdings",
       "price": 2.538,
@@ -502,138 +2122,94 @@
       "market_cap": 22880805.1,
       "passed": false,
       "reason": "Filtered: vol 20, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "CNTN",
-      "name": "Canton Strategic Holdings",
-      "price": 2.42,
-      "change_pct": 5.2173913043478315,
-      "volume": 4,
-      "rvol": 0.0,
-      "market_cap": 177381943.2,
-      "passed": false,
-      "reason": "Filtered: vol 4, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "WNW",
-      "name": "Meiwu Technology Company Ltd",
-      "price": 3.63,
-      "change_pct": 5.217391304347817,
-      "volume": 2,
-      "rvol": 0.0,
-      "market_cap": 90840124.95,
-      "passed": false,
-      "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "COHU",
-      "name": "Cohu Inc",
-      "price": 58.68,
-      "change_pct": 5.198996055934024,
-      "volume": 1,
-      "rvol": 0.0,
-      "market_cap": 2631440855.66,
-      "passed": false,
-      "reason": "Filtered: price $58.680, vol 1, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "IMCC",
-      "name": "Im Cannabis Corp",
-      "price": 0.149,
-      "change_pct": 5.300353356890464,
-      "volume": 13,
-      "rvol": 0.0,
-      "market_cap": 880600.2,
-      "passed": false,
-      "reason": "Filtered: price $0.149, mktcap $0.9M, vol 13, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "FTEK",
-      "name": "Fuel Tech",
-      "price": 1.68,
-      "change_pct": 4.99999999999999,
-      "volume": 1,
-      "rvol": 0.0,
-      "market_cap": 49864398.4,
-      "passed": false,
-      "reason": "Filtered: move 5.0% / rvol 0.0, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     }
   ],
   "all_losers": [
     {
       "ticker": "VIVK",
       "name": "Vivakor",
-      "price": 0.213,
-      "change_pct": -29.376657824933684,
-      "volume": 8532,
+      "price": 0.201,
+      "change_pct": -33.35543766578248,
+      "volume": 28337,
       "rvol": 0.0,
       "market_cap": 14987629.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "VEEE",
-      "name": "Twin Vee Powercats Co",
-      "price": 29.88,
-      "change_pct": -22.409763697740846,
-      "volume": 11540,
-      "rvol": 0.0,
-      "market_cap": 20384498.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "BMGL",
-      "name": "Basel Medical Group Ltd",
-      "price": 6.57,
-      "change_pct": -19.088669950738904,
-      "volume": 271,
-      "rvol": 0.0,
-      "market_cap": 12711697.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "LGHL",
-      "name": "Lion Group Holding Ltd",
-      "price": 1.96,
-      "change_pct": -19.008264462809915,
-      "volume": 39,
-      "rvol": 0.0,
-      "market_cap": 372227.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "NXTC",
       "name": "Nextcure",
-      "price": 5.48,
-      "change_pct": -16.71732522796352,
-      "volume": 510,
+      "price": 5.11,
+      "change_pct": -22.34042553191489,
+      "volume": 14662,
       "rvol": 0.0,
       "market_cap": 23767591.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "BMGL",
+      "name": "Basel Medical Group Ltd",
+      "price": 6.4,
+      "change_pct": -21.182266009852206,
+      "volume": 443,
+      "rvol": 0.0,
+      "market_cap": 12711697.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "CNEY",
       "name": "Cn Energy Group Inc",
-      "price": 0.625,
-      "change_pct": -16.666666666666664,
-      "volume": 1447,
+      "price": 0.604,
+      "change_pct": -19.46666666666667,
+      "volume": 29710,
       "rvol": 0.0,
       "market_cap": 6152480.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "LGHL",
+      "name": "Lion Group Holding Ltd",
+      "price": 1.95,
+      "change_pct": -19.421487603305785,
+      "volume": 1398,
+      "rvol": 0.0,
+      "market_cap": 372227.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "VEEE",
+      "name": "Twin Vee Powercats Co",
+      "price": 32.29,
+      "change_pct": -16.15164892235783,
+      "volume": 32083,
+      "rvol": 0.0,
+      "market_cap": 20384498.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "PNR",
       "name": "Pentair",
-      "price": 63.99,
-      "change_pct": -15.446617336152224,
-      "volume": 4,
+      "price": 63.5,
+      "change_pct": -16.09408033826639,
+      "volume": 62,
       "rvol": 0.0,
       "market_cap": 12230307342.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "BCAB",
+      "name": "Bioatla, Inc.",
+      "price": 3.6,
+      "change_pct": -11.330049261083733,
+      "volume": 100,
+      "rvol": 0.0,
+      "market_cap": 6737789.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -653,20 +2229,42 @@
       "name": "CL Workshop Group",
       "price": 0.235,
       "change_pct": -10.476190476190485,
-      "volume": 16,
+      "volume": 5030,
       "rvol": 0.0,
       "market_cap": 4345205.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "AEON",
+      "name": "Aeon Biopharma",
+      "price": 0.32,
+      "change_pct": -10.364145658263299,
+      "volume": 14071,
+      "rvol": 0.0,
+      "market_cap": 9391674.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "LESL",
       "name": "Leslie'S, Inc.",
-      "price": 2.99,
-      "change_pct": -9.393939393939382,
-      "volume": 560,
+      "price": 2.98,
+      "change_pct": -9.696969696969692,
+      "volume": 1153,
       "rvol": 0.0,
       "market_cap": 30886178.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "SHPH",
+      "name": "SHUTTLE PHARMACTCLS HLDGS INC",
+      "price": 3.779,
+      "change_pct": -9.15865384615385,
+      "volume": 1350,
+      "rvol": 0.0,
+      "market_cap": 2650369.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -682,6 +2280,17 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "PHOE",
+      "name": "Phoenix Asia Holdings Limited",
+      "price": 23.66,
+      "change_pct": -8.824662813102115,
+      "volume": 277,
+      "rvol": 0.0,
+      "market_cap": 560520000.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "MSCI",
       "name": "MSCI Inc",
       "price": 557.63,
@@ -693,46 +2302,46 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "PHOE",
-      "name": "Phoenix Asia Holdings Limited",
-      "price": 23.72,
-      "change_pct": -8.593448940269752,
-      "volume": 141,
-      "rvol": 0.0,
-      "market_cap": 560520000.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "AEON",
-      "name": "Aeon Biopharma",
-      "price": 0.328,
-      "change_pct": -8.12324929971988,
-      "volume": 585,
-      "rvol": 0.0,
-      "market_cap": 9391674.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "UONEK",
       "name": "Urban One Inc",
       "price": 3.88,
       "change_pct": -8.056872037914689,
-      "volume": 386,
+      "volume": 395,
       "rvol": 0.0,
       "market_cap": 19063617.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "FXHO",
-      "name": "Utime Ltd",
-      "price": 19.31,
-      "change_pct": -7.430488974113139,
-      "volume": 76,
+      "ticker": "LEDS",
+      "name": "Semileds Corp",
+      "price": 2.07,
+      "change_pct": -7.58928571428573,
+      "volume": 4430,
       "rvol": 0.0,
-      "market_cap": 108417513.0,
+      "market_cap": 18497142.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "HAO",
+      "name": "Haoxi Health Technology Limited",
+      "price": 0.263,
+      "change_pct": -7.719298245614023,
+      "volume": 18044,
+      "rvol": 0.0,
+      "market_cap": 633420.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "WXM",
+      "name": "WF International Limited",
+      "price": 2.888,
+      "change_pct": -7.435897435897443,
+      "volume": 91,
+      "rvol": 0.0,
+      "market_cap": 3515850.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -744,6 +2353,39 @@
       "volume": 363,
       "rvol": 0.0,
       "market_cap": 12777707.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "LOOP",
+      "name": "Loop Industries",
+      "price": 0.885,
+      "change_pct": -6.773411987780473,
+      "volume": 1,
+      "rvol": 0.0,
+      "market_cap": 45927486.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "EDBL",
+      "name": "Edible Garden AG Inc",
+      "price": 3.25,
+      "change_pct": -6.609195402298849,
+      "volume": 9,
+      "rvol": 0.0,
+      "market_cap": 422962.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "LHAI",
+      "name": "Linkhome Holdings Inc.",
+      "price": 1.142,
+      "change_pct": -6.3934426229508245,
+      "volume": 18477,
+      "rvol": 0.0,
+      "market_cap": 19800600.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -781,6 +2423,17 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "ASTI",
+      "name": "Ascent Solar Tec",
+      "price": 3.7,
+      "change_pct": -6.091370558375629,
+      "volume": 1181,
+      "rvol": 0.0,
+      "market_cap": 38676738.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "EVO",
       "name": "Evotec Ag",
       "price": 2.01,
@@ -796,20 +2449,20 @@
       "name": "Evogene",
       "price": 0.454,
       "change_pct": -6.023597598840811,
-      "volume": 11,
+      "volume": 44,
       "rvol": 0.0,
       "market_cap": 5847663.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "PMA",
-      "name": "Ming Shing Group Holdings Limited",
-      "price": 1.41,
-      "change_pct": -6.000000000000005,
-      "volume": 241,
+      "ticker": "SKHY",
+      "name": "SK Hynix Inc",
+      "price": 182.34,
+      "change_pct": -5.971534653465339,
+      "volume": 225422,
       "rvol": 0.0,
-      "market_cap": 19462500.0,
+      "market_cap": 1413415977600.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -825,6 +2478,17 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "GDHG",
+      "name": "Golden Heaven Gr",
+      "price": 1.43,
+      "change_pct": -5.921052631578952,
+      "volume": 89,
+      "rvol": 0.0,
+      "market_cap": 30448784.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "CYAB",
       "name": "CYABRA INC",
       "price": 0.342,
@@ -836,6 +2500,28 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "NVNI",
+      "name": "Nvni Group Limited",
+      "price": 1.29,
+      "change_pct": -5.839416058394165,
+      "volume": 5266,
+      "rvol": 0.0,
+      "market_cap": 16018222.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "UBXG",
+      "name": "U-BX Technology Ltd.",
+      "price": 4.35,
+      "change_pct": -5.639913232104136,
+      "volume": 472,
+      "rvol": 0.0,
+      "market_cap": 8381127.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "VNTG",
       "name": "Vantage Corp",
       "price": 0.66,
@@ -843,17 +2529,6 @@
       "volume": 828,
       "rvol": 0.0,
       "market_cap": 22184512.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ZBAO",
-      "name": "Zhibao Tech",
-      "price": 0.284,
-      "change_pct": -5.396402398401082,
-      "volume": 4,
-      "rvol": 0.0,
-      "market_cap": 10225319.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -873,20 +2548,9 @@
       "name": "Matinas Biopharm",
       "price": 0.331,
       "change_pct": -5.374499714122351,
-      "volume": 634,
+      "volume": 658,
       "rvol": 0.0,
       "market_cap": 2240885.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "GMM",
-      "name": "Global Mofy AI Ltd",
-      "price": 3.21,
-      "change_pct": -5.309734513274341,
-      "volume": 188,
-      "rvol": 0.0,
-      "market_cap": 6610500.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -902,6 +2566,17 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "ZCMD",
+      "name": "Zhongchao Inc",
+      "price": 1.63,
+      "change_pct": -5.232558139534889,
+      "volume": 696,
+      "rvol": 0.0,
+      "market_cap": 1989259.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "PLSM",
       "name": "Pulsenmore Ltd",
       "price": 3.69,
@@ -909,17 +2584,6 @@
       "volume": 100,
       "rvol": 0.0,
       "market_cap": 25296063.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "RCT",
-      "name": "RedCloud",
-      "price": 0.247,
-      "change_pct": -5.000000000000004,
-      "volume": 566,
-      "rvol": 0.0,
-      "market_cap": 16129884.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -946,6 +2610,17 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "ICMB",
+      "name": "Investcorp Cr Mgmt Bdc Inc",
+      "price": 0.783,
+      "change_pct": -4.871826023569435,
+      "volume": 108,
+      "rvol": 0.0,
+      "market_cap": 11879367.0,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "RIME",
       "name": "Algorhythm Holdings Inc",
       "price": 0.493,
@@ -957,13 +2632,13 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "ALBT",
-      "name": "Avalon Globocare Corp",
-      "price": 0.244,
-      "change_pct": -4.761904761904757,
-      "volume": 2448,
+      "ticker": "LCID",
+      "name": "Lucid Group Inc",
+      "price": 4.401,
+      "change_pct": -4.740259740259747,
+      "volume": 52202,
       "rvol": 0.0,
-      "market_cap": 3086608.0,
+      "market_cap": 1802986452.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -979,17 +2654,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "ZCMD",
-      "name": "Zhongchao Inc",
-      "price": 1.64,
-      "change_pct": -4.651162790697678,
-      "volume": 1,
-      "rvol": 0.0,
-      "market_cap": 1989259.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "CELC",
       "name": "Celcuity Inc",
       "price": 106.0,
@@ -997,17 +2661,6 @@
       "volume": 5,
       "rvol": 0.0,
       "market_cap": 5415496282.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "APVO",
-      "name": "Aptevo Therapeutics Inc",
-      "price": 4.41,
-      "change_pct": -4.545454545454545,
-      "volume": 36,
-      "rvol": 0.0,
-      "market_cap": 5757005.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -1021,143 +2674,42 @@
       "market_cap": 50127000.0,
       "passed": false,
       "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "SKHY",
-      "name": "SK Hynix Inc",
-      "price": 185.67,
-      "change_pct": -4.254331683168317,
-      "volume": 59083,
-      "rvol": 0.0,
-      "market_cap": 1413415977600.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "DAIC",
-      "name": "CID Holdco Inc",
-      "price": 1.37,
-      "change_pct": -4.195804195804184,
-      "volume": 97,
-      "rvol": 0.0,
-      "market_cap": 1730847.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "LCID",
-      "name": "Lucid Group Inc",
-      "price": 4.432,
-      "change_pct": -4.069264069264063,
-      "volume": 39118,
-      "rvol": 0.0,
-      "market_cap": 1802986452.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ASTI",
-      "name": "Ascent Solar Tec",
-      "price": 3.78,
-      "change_pct": -4.0609137055837605,
-      "volume": 300,
-      "rvol": 0.0,
-      "market_cap": 38676738.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "CDTG",
-      "name": "CDT Environmental Technology Investment Holdings Ltd",
-      "price": 1.66,
-      "change_pct": -4.046242774566478,
-      "volume": 148,
-      "rvol": 0.0,
-      "market_cap": 5226376.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "VIVS",
-      "name": "VivoSim Labs Inc",
-      "price": 0.802,
-      "change_pct": -3.929084810733103,
-      "volume": 4,
-      "rvol": 0.0,
-      "market_cap": 2177126.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ROLR",
-      "name": "High Roller Technologies, Inc.",
-      "price": 6.34,
-      "change_pct": -3.9393939393939363,
-      "volume": 345,
-      "rvol": 0.0,
-      "market_cap": 72395314.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "UFG",
-      "name": "Uni-Fuels Holdings Ltd.",
-      "price": 0.69,
-      "change_pct": -4.006677796327219,
-      "volume": 1,
-      "rvol": 0.0,
-      "market_cap": 23335842.0,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
     }
   ],
-  "live_quotes": {},
-  "previous_live_quotes": {
-    "LHAI": {
-      "price": 1.22,
-      "open": 1.44,
-      "high": 1.47,
-      "low": 1.15,
-      "close": 1.22,
-      "preClose": 1.0,
-      "volume": 91687315,
-      "changeRatio": 0.22,
-      "marketValue": 19800600.0,
-      "name": "Linkhome Holdings Inc.",
-      "_timestamp": "2026-07-14T19:45:47.033080Z"
+  "live_quotes": {
+    "VTAK": {
+      "price": 0.56,
+      "open": 0.58,
+      "high": 0.7177,
+      "low": 0.552,
+      "close": 0.56,
+      "preClose": 0.6504,
+      "volume": 761786,
+      "changeRatio": -0.139,
+      "marketValue": 2021303.76,
+      "name": "Catheter Precision",
+      "_timestamp": "2026-07-15T08:05:54.038043Z"
     },
-    "NXTC": {
-      "price": 6.59,
-      "open": 9.22,
-      "high": 9.9,
-      "low": 5.76,
-      "close": 6.59,
-      "preClose": 2.18,
-      "volume": 108274372,
-      "changeRatio": 2.0229,
-      "marketValue": 23803712.64,
-      "name": "Nextcure",
-      "_timestamp": "2026-07-14T19:45:47.033080Z"
-    },
-    "CRMT": {
-      "price": 4.2,
-      "open": 2.94,
-      "high": 4.25,
-      "low": 2.9,
-      "close": 4.2,
-      "preClose": 3.02,
-      "volume": 3668219,
-      "changeRatio": 0.3907,
-      "marketValue": 34870290.0,
-      "name": "Amer Carmart",
-      "_timestamp": "2026-07-14T19:45:47.033080Z"
+    "GCTK": {
+      "price": 0.5291,
+      "open": 0.469,
+      "high": 0.5495,
+      "low": 0.44,
+      "close": 0.5291,
+      "preClose": 0.4636,
+      "volume": 2090746,
+      "changeRatio": 0.1413,
+      "marketValue": 3311784.52,
+      "name": "Glucotrack",
+      "_timestamp": "2026-07-15T08:05:54.038043Z"
     }
   },
+  "previous_live_quotes": {},
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "PRE-MARKET",
-    "market_time": "06:00 PM AEST",
+    "market_time": "06:05 PM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
