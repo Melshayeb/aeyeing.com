@@ -191,7 +191,7 @@ class WebsiteUpdater:
                         </div>''')
 
         if not news_items:
-            news_items = ['                        <div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — No candidates passed filter criteria — Scan continues every 15 min</div>']
+            news_items = ['                        <div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — No candidates passed filter criteria — Next scan within 10 min</div>']
 
         news_content = '\n'.join(news_items)
         looped_content = news_content + '\n' + news_content
