@@ -658,7 +658,7 @@
             if (!label) return;
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
             const interval = getRefreshIntervalMs();
-            const active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
+            let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
                             (usStatus === 'OPEN' && isActiveTradingWindow());
             label.classList.toggle('active-refresh', active);
 
@@ -695,7 +695,7 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            const active = isActiveTradingWindow();
+            active = isActiveTradingWindow();
             label.classList.toggle('active-refresh', active);
             label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
         }
