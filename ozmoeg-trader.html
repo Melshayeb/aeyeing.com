@@ -3386,7 +3386,7 @@
             if (!label) return;
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
             const interval = getRefreshIntervalMs();
-            const active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
+            let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
                             (usStatus === 'OPEN' && isActiveTradingWindow());
             label.classList.toggle('active-refresh', active);
 
