@@ -190,7 +190,7 @@
 </head>
 <body>
 <header>
-    <h1>🗾 OzMoEg Trip Planner</h1>
+    <h1>🌍 OzMoEg Trip Planner</h1>
     <span class="badge">AI + Real Online Data</span>
 </header>
 <a class="home-link" href="index.html" title="Back to Aeyeing">
@@ -203,7 +203,7 @@
         <p style="margin-top:0;color:var(--muted);font-size:.85rem;">Speak or type naturally, or fill the structured form.</p>
 
         <label>Voice / chat request</label>
-        <textarea id="chatInput" placeholder="Plan a Japan family trip from 2026-04-12 to 2026-04-21 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love temples, anime, food, parks and museums. We eat sushi, ramen and need halal options. We want Tokyo, Kyoto and Osaka."></textarea>
+        <textarea id="chatInput" placeholder="Plan an Australia family trip from 2026-08-10 to 2026-08-14 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love history, food, parks, museums and kid-friendly places. We eat seafood and coffee. We want Melbourne."></textarea>
         <div class="row">
             <button id="micBtn" class="secondary" type="button">🎙️ Start voice</button>
             <button id="parseBtn" type="button">Parse from text</button>
@@ -216,14 +216,12 @@
         </div>
         <form id="tripForm">
             <div class="row">
-                <div><label>Country</label><input name="destination_country" id="country" value="Japan"></div>
+                <div><label>Country</label><input name="destination_country" id="country" value="Australia"></div>
                 <div><label>Requester email</label><input name="requester_email" id="email" value=""></div>
             </div>
 
-            <label>Cities & dates <span class="example">one per line: Tokyo 2026-04-12 2026-04-16</span></label>
-            <textarea id="citiesRaw" rows="4">Tokyo 2026-04-12 2026-04-16
-Kyoto 2026-04-17 2026-04-19
-Osaka 2026-04-20 2026-04-21</textarea>
+            <label>Cities & dates <span class="example">one per line: Melbourne 2026-08-10 2026-08-14</span></label>
+            <textarea id="citiesRaw" rows="4">Melbourne 2026-08-10 2026-08-14</textarea>
 
             <label>Travelers <span class="example">adult 40, adult 38, child 12, child 9</span></label>
             <input id="travelersRaw" value="adult 40, adult 38, child 12, child 9">
