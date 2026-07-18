@@ -36,13 +36,25 @@
         header h1 { margin: 0; font-size: 1.4rem; }
         .header-left { display: flex; align-items: center; gap: 1rem; }
         .back-home {
-            display: inline-flex; align-items: center; gap: .4rem;
-            padding: .45rem .9rem; border-radius: 8px;
-            background: transparent; border: 1px solid var(--border);
-            color: var(--muted); text-decoration: none; font-size: .85rem;
-            transition: .2s;
+            display: inline-flex; align-items: center; gap: .45rem;
+            padding: .55rem 1rem; border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), #3b82f6);
+            border: none;
+            color: #fff; text-decoration: none; font-size: .85rem; font-weight: 600;
+            box-shadow: 0 2px 10px rgba(88,166,255,.25);
+            transition: transform .2s, box-shadow .2s, filter .2s;
         }
-        .back-home:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .back-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(88,166,255,.4);
+            filter: brightness(1.1);
+        }
+        .back-home svg {
+            width: 1rem; height: 1rem;
+            fill: currentColor;
+            transition: transform .2s;
+        }
+        .back-home:hover svg { transform: translateX(-3px); }
         .badge {
             color: var(--accent-2);
             border: 1px solid var(--accent-2);
@@ -134,12 +146,43 @@
         }
         .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
         .download-link { display: none; margin-top: .8rem; }
+        .preview-wrap {
+            margin-top: 1.2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            box-shadow: 0 8px 30px rgba(0,0,0,.25);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .preview-wrap:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(88,166,255,.2);
+        }
+        .preview-img {
+            width: 100%; height: auto; display: block;
+            animation: fadeInUp .7s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .disclaimer {
+            margin-top: 1rem;
+            font-size: .8rem;
+            color: var(--muted);
+            border-left: 3px solid var(--accent);
+            padding-left: .7rem;
+        }
     </style>
 </head>
 <body>
 <header>
     <div class="header-left">
-        <a class="back-home" href="index.html" title="Back to Aeyeing">← Home</a>
+        <a class="back-home" href="index.html" title="Back to Aeyeing">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    Home
+</a>
         <h1>🗾 OzMoEg Trip Planner</h1>
     </div>
     <span class="badge">AI + Real Online Data</span>
@@ -177,12 +220,19 @@ Osaka 2026-04-20 2026-04-21</textarea>
                 <span class="chip on">temples</span><span class="chip on">food</span><span class="chip on">anime</span>
                 <span class="chip on">parks</span><span class="chip on">museums</span><span class="chip">shopping</span>
                 <span class="chip">nature</span><span class="chip">nightlife</span><span class="chip">history</span>
+                <span class="chip">technology</span><span class="chip">architecture</span><span class="chip">onsen</span>
+                <span class="chip">festivals</span><span class="chip">hiking</span><span class="chip">art galleries</span>
+                <span class="chip">music</span><span class="chip">kids friendly</span><span class="chip">photography</span>
             </div>
 
             <label>Food preferences</label>
             <div class="options" id="food">
                 <span class="chip on">sushi</span><span class="chip on">ramen</span><span class="chip on">halal</span>
                 <span class="chip">vegetarian</span><span class="chip">vegan</span><span class="chip">street food</span>
+                <span class="chip">kaiseki</span><span class="chip">tempura</span><span class="chip">yakitori</span>
+                <span class="chip">okonomiyaki</span><span class="chip">soba</span><span class="chip">udon</span>
+                <span class="chip">wagyu</span><span class="chip">seafood</span><span class="chip">matcha sweets</span>
+                <span class="chip">kid-friendly</span><span class="chip">gluten-free</span><span class="chip">local izakaya</span>
             </div>
 
             <button id="generateBtn" type="submit">Generate Excel plan</button>
@@ -205,7 +255,10 @@ Osaka 2026-04-20 2026-04-21</textarea>
             <li>Green cells for confirmed selections; editable backup rows</li>
             <li>Top hotel recommendation auto-marked with X</li>
         </ul>
-        <p class="example">Backend API runs locally at <code>http://localhost:8777</code>. Configure with ?api=URL if hosted elsewhere.</p>
+        <div class="preview-wrap">
+            <img src="trip-planner-preview.png" alt="Generated Excel trip plan sample" class="preview-img">
+        </div>
+        <p class="disclaimer">⚠️ Disclaimer: Live hotel and weather data are sourced from third-party APIs and may change. Always double-check bookings, prices and opening hours directly with providers before travelling.</p>
     </div>
 </main>
 
