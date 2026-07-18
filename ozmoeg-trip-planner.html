@@ -402,13 +402,21 @@ async function generateExcel(e) {
         const url = URL.createObjectURL(blob);
         link.href = url;
         link.style.display = 'inline-block';
-        link.download = res.headers.get('X-Filename') || 'OzMoEg_Trip_Plan.xlsx';
         if (!email) setStatus('Plan generated. Click the download link.', 'ok');
+        link.download = res.headers.get('X-Filename') || setDownloadFilename(req) || 'OzMoEg_Trip_Plan.xlsx';
     } catch (err) {
         setStatus('Generation failed: ' + err.message, 'error');
     } finally {
         btn.disabled = false;
     }
+}
+
+function setDownloadFilename(req) {
+    const firstCity = (req.cities?.[0]?.city || 'Trip').replace(/\s+/g, '_');
+    const start = req.cities?.[0]?.start_date || '';
+    const country = (req.destination_country || '').replace(/\s+/g, '_');
+    const name = `${country}_${firstCity}_${start}.xlsx`.replace(/^_+|_+$/g, '');
+    return name || 'OzMoEg_Trip_Plan.xlsx';
 }
 
 document.getElementById('parseBtn').addEventListener('click', parseFromText);
