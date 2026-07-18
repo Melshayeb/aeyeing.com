@@ -27,34 +27,34 @@
         .header {
             background: var(--panel);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             position: relative;
         }
-        header h1 { margin: 0; font-size: 1.4rem; }
-        .header-left { display: flex; align-items: center; gap: 1rem; }
-        .back-home {
-            display: inline-flex; align-items: center; gap: .45rem;
-            padding: .55rem 1rem; border-radius: 999px;
-            background: linear-gradient(135deg, var(--accent), #3b82f6);
-            border: none;
-            color: #fff; text-decoration: none; font-size: .85rem; font-weight: 600;
-            box-shadow: 0 2px 10px rgba(88,166,255,.25);
-            transition: transform .2s, box-shadow .2s, filter .2s;
+        header h1 { margin: 0; font-size: 1.5rem; }
+        .home-link {
+            display: inline-flex; align-items: center; gap: .35rem;
+            margin: 1rem auto 0;
+            padding: .4rem 1rem;
+            border-radius: 999px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: .85rem;
+            text-decoration: none;
+            transition: .2s;
         }
-        .back-home:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(88,166,255,.4);
-            filter: brightness(1.1);
+        .home-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
-        .back-home svg {
-            width: 1rem; height: 1rem;
-            fill: currentColor;
+        .home-link svg {
+            width: .9rem; height: .9rem; fill: currentColor;
             transition: transform .2s;
         }
-        .back-home:hover svg { transform: translateX(-3px); }
+        .home-link:hover svg { transform: translateX(-2px); }
         .badge {
             color: var(--accent-2);
             border: 1px solid var(--accent-2);
@@ -178,15 +178,13 @@
 </head>
 <body>
 <header>
-    <div class="header-left">
-        <a class="back-home" href="index.html" title="Back to Aeyeing">
-    <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    Home
-</a>
-        <h1>🗾 OzMoEg Trip Planner</h1>
-    </div>
+    <h1>🗾 OzMoEg Trip Planner</h1>
     <span class="badge">AI + Real Online Data</span>
 </header>
+<a class="home-link" href="index.html" title="Back to Aeyeing">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    Back to Aeyeing
+</a>
 <main>
     <div class="card">
         <h2>1. Tell us about your trip</h2>
@@ -217,22 +215,22 @@ Osaka 2026-04-20 2026-04-21</textarea>
 
             <label>Interests</label>
             <div class="options" id="interests">
-                <span class="chip on">temples</span><span class="chip on">food</span><span class="chip on">anime</span>
-                <span class="chip on">parks</span><span class="chip on">museums</span><span class="chip">shopping</span>
-                <span class="chip">nature</span><span class="chip">nightlife</span><span class="chip">history</span>
-                <span class="chip">technology</span><span class="chip">architecture</span><span class="chip">onsen</span>
-                <span class="chip">festivals</span><span class="chip">hiking</span><span class="chip">art galleries</span>
-                <span class="chip">music</span><span class="chip">kids friendly</span><span class="chip">photography</span>
+                <span class="chip on">history & culture</span><span class="chip on">food & drink</span><span class="chip on">pop culture</span>
+                <span class="chip on">parks & outdoors</span><span class="chip on">museums & art</span><span class="chip">shopping</span>
+                <span class="chip">nature & wildlife</span><span class="chip">nightlife</span><span class="chip">architecture</span>
+                <span class="chip">technology</span><span class="chip">music & shows</span><span class="chip">wellness & spa</span>
+                <span class="chip">festivals & events</span><span class="chip">hiking & adventure</span><span class="chip">photography</span>
+                <span class="chip">sports</span><span class="chip">kids friendly</span><span class="chip">local markets</span>
             </div>
 
             <label>Food preferences</label>
             <div class="options" id="food">
-                <span class="chip on">sushi</span><span class="chip on">ramen</span><span class="chip on">halal</span>
-                <span class="chip">vegetarian</span><span class="chip">vegan</span><span class="chip">street food</span>
-                <span class="chip">kaiseki</span><span class="chip">tempura</span><span class="chip">yakitori</span>
-                <span class="chip">okonomiyaki</span><span class="chip">soba</span><span class="chip">udon</span>
-                <span class="chip">wagyu</span><span class="chip">seafood</span><span class="chip">matcha sweets</span>
-                <span class="chip">kid-friendly</span><span class="chip">gluten-free</span><span class="chip">local izakaya</span>
+                <span class="chip on">seafood</span><span class="chip on">noodles</span><span class="chip on">street food</span>
+                <span class="chip">vegetarian</span><span class="chip">vegan</span><span class="chip">halal</span>
+                <span class="chip">fine dining</span><span class="chip">grilled meats</span><span class="chip">sweets & desserts</span>
+                <span class="chip">farm-to-table</span><span class="chip">wine & cocktails</span><span class="chip">coffee & cafés</span>
+                <span class="chip">kid-friendly meals</span><span class="chip">gluten-free</span><span class="chip">budget eats</span>
+                <span class="chip">michelin-recommended</span><span class="chip">private kitchens</span><span class="chip">allergy aware</span>
             </div>
 
             <button id="generateBtn" type="submit">Generate Excel plan</button>
@@ -246,7 +244,7 @@ Osaka 2026-04-20 2026-04-21</textarea>
         <div id="parsedPreview" class="chat-output">Fill the form or paste a natural-language request, then click Parse.</div>
         <h2 style="margin-top:1.5rem;">3. What you get</h2>
         <ul style="color:var(--muted);font-size:.9rem;padding-left:1.2rem;">
-            <li>Editable Excel matching your Japan Trip.xlsx format</li>
+            <li>Editable Excel plan tailored to your dates and travel party</li>
             <li>Exact city named for every date</li>
             <li>Weather from live Open-Meteo data</li>
             <li>Morning / Afternoon / Evening scheduling</li>
