@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzMoEg Trip Planner</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --card: #1f242c;
+            --accent: #58a6ff;
+            --accent-2: #7ee787;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --border: #30363d;
+            --danger: #f85149;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        header {
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header h1 { margin: 0; font-size: 1.4rem; }
+        .badge {
+            color: var(--accent-2);
+            border: 1px solid var(--accent-2);
+            padding: .2rem .6rem;
+            border-radius: 999px;
+            font-size: .75rem;
+        }
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .card h2 { margin-top: 0; font-size: 1.1rem; color: var(--accent); }
+        label { display: block; margin-top: .8rem; font-size: .85rem; color: var(--muted); }
+        input, textarea, select {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: .55rem .75rem;
+            margin-top: .25rem;
+            font-size: .95rem;
+        }
+        textarea { min-height: 120px; resize: vertical; }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+        .row.three { grid-template-columns: repeat(3, 1fr); }
+        button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: .7rem 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: .95rem;
+        }
+        button:hover { filter: brightness(1.1); }
+        button.secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        button:disabled { opacity: .5; cursor: not-allowed; }
+        .chat-output {
+            white-space: pre-wrap;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 160px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: .9rem;
+        }
+        .status { margin-top: .75rem; font-size: .85rem; color: var(--muted); }
+        .status.error { color: var(--danger); }
+        .status.ok { color: var(--accent-2); }
+        .example {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: .4rem;
+        }
+        .options {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-top: .3rem;
+        }
+        .chip {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: .25rem .55rem;
+            font-size: .75rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .download-link { display: none; margin-top: .8rem; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🗾 OzMoEg Trip Planner</h1>
+    <span class="badge">AI + Real Online Data</span>
+</header>
+<main>
+    <div class="card">
+        <h2>1. Tell us about your trip</h2>
+        <p style="margin-top:0;color:var(--muted);font-size:.85rem;">Speak or type naturally, or fill the structured form.</p>
+
+        <label>Voice / chat request</label>
+        <textarea id="chatInput" placeholder="Plan a Japan family trip from 2026-04-12 to 2026-04-21 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love temples, anime, food, parks and museums. We eat sushi, ramen and need halal options. We want Tokyo, Kyoto and Osaka."></textarea>
+        <div class="row">
+            <button id="micBtn" class="secondary" type="button">🎙️ Start voice</button>
+            <button id="parseBtn" type="button">Parse from text</button>
+        </div>
+
+        <hr style="border-color:var(--border);margin:1.2rem 0;">
+
+        <form id="tripForm">
+            <div class="row">
+                <div><label>Country</label><input name="destination_country" id="country" value="Japan"></div>
+                <div><label>Requester email</label><input name="requester_email" id="email" value=""></div>
+            </div>
+
+            <label>Cities & dates <span class="example">one per line: Tokyo 2026-04-12 2026-04-16</span></label>
+            <textarea id="citiesRaw" rows="4">Tokyo 2026-04-12 2026-04-16
+Kyoto 2026-04-17 2026-04-19
+Osaka 2026-04-20 2026-04-21</textarea>
+
+            <label>Travelers <span class="example">adult 40, adult 38, child 12, child 9</span></label>
+            <input id="travelersRaw" value="adult 40, adult 38, child 12, child 9">
+
+            <label>Interests</label>
+            <div class="options" id="interests">
+                <span class="chip on">temples</span><span class="chip on">food</span><span class="chip on">anime</span>
+                <span class="chip on">parks</span><span class="chip on">museums</span><span class="chip">shopping</span>
+                <span class="chip">nature</span><span class="chip">nightlife</span><span class="chip">history</span>
+            </div>
+
+            <label>Food preferences</label>
+            <div class="options" id="food">
+                <span class="chip on">sushi</span><span class="chip on">ramen</span><span class="chip on">halal</span>
+                <span class="chip">vegetarian</span><span class="chip">vegan</span><span class="chip">street food</span>
+            </div>
+
+            <button id="generateBtn" type="submit">Generate Excel plan</button>
+            <a id="downloadLink" class="download-link" href="#" download="OzMoEg_Trip_Plan.xlsx">⬇️ Download Excel plan</a>
+            <div id="status" class="status"></div>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>2. Parsed request preview</h2>
+        <div id="parsedPreview" class="chat-output">Fill the form or paste a natural-language request, then click Parse.</div>
+        <h2 style="margin-top:1.5rem;">3. What you get</h2>
+        <ul style="color:var(--muted);font-size:.9rem;padding-left:1.2rem;">
+            <li>Editable Excel matching your Japan Trip.xlsx format</li>
+            <li>Exact city named for every date</li>
+            <li>Weather from live Open-Meteo data</li>
+            <li>Morning / Afternoon / Evening scheduling</li>
+            <li>Top hotel recommendation auto-marked with X</li>
+            <li>Attractions filtered by age & interests</li>
+            <li>Backup rows left editable</li>
+        </ul>
+        <p class="example">Backend API runs locally at <code>http://localhost:8777</code>. Configure with ?api=URL if hosted elsewhere.</p>
+    </div>
+</main>
+
+<script>
+const API = new URLSearchParams(location.search).get('api') || 'http://localhost:8777';
+
+function chipsToList(containerId) {
+    return Array.from(document.querySelectorAll(`#${containerId} .chip.on`)).map(c => c.textContent.trim());
+}
+
+document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => chip.classList.toggle('on'));
+});
+
+function parseCities(raw) {
+    return raw.split(/\n+/).map(l => l.trim()).filter(Boolean).map(line => {
+        const parts = line.split(/\s+/);
+        return { city: parts[0], start_date: parts[1], end_date: parts[2] };
+    });
+}
+
+function parseTravelers(raw) {
+    return raw.split(',').map(t => t.trim()).filter(Boolean).map(t => {
+        const m = t.match(/(adult|child)\s*(\d+)?/i);
+        return { name: (m?.[1] || 'adult').replace(/^\w/, c => c.toUpperCase()), age: parseInt(m?.[2] || '35', 10) };
+    });
+}
+
+function buildRequest() {
+    return {
+        destination_country: document.getElementById('country').value,
+        cities: parseCities(document.getElementById('citiesRaw').value),
+        travelers: parseTravelers(document.getElementById('travelersRaw').value),
+        interests: chipsToList('interests'),
+        food_preferences: chipsToList('food'),
+        requester_email: document.getElementById('email').value,
+        raw_input: document.getElementById('chatInput').value
+    };
+}
+
+async function parseFromText() {
+    const text = document.getElementById('chatInput').value.trim();
+    if (!text) return;
+    setStatus('Parsing natural-language request...');
+    try {
+        const res = await fetch(`${API}/parse`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+        });
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+        fillForm(data);
+        document.getElementById('parsedPreview').textContent = JSON.stringify(data, null, 2);
+        setStatus('Parsed successfully.', 'ok');
+    } catch (e) {
+        setStatus('Parse failed: ' + e.message, 'error');
+    }
+}
+
+function fillForm(req) {
+    if (req.destination_country) document.getElementById('country').value = req.destination_country;
+    if (req.requester_email) document.getElementById('email').value = req.requester_email;
+    if (req.cities) document.getElementById('citiesRaw').value = req.cities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+    if (req.travelers) document.getElementById('travelersRaw').value = req.travelers.map(t => `${t.name.toLowerCase()} ${t.age}`).join(', ');
+    setChips('interests', req.interests || []);
+    setChips('food', req.food_preferences || []);
+}
+
+function setChips(containerId, values) {
+    document.querySelectorAll(`#${containerId} .chip`).forEach(chip => {
+        chip.classList.toggle('on', values.includes(chip.textContent.trim()));
+    });
+}
+
+function setStatus(msg, cls) {
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = 'status ' + (cls || '');
+}
+
+async function generateExcel(e) {
+    e.preventDefault();
+    const btn = document.getElementById('generateBtn');
+    const link = document.getElementById('downloadLink');
+    btn.disabled = true;
+    setStatus('Generating Excel plan with live weather & attractions...');
+    try {
+        const res = await fetch(`${API}/generate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(buildRequest())
+        });
+        if (!res.ok) throw new Error(await res.text());
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.style.display = 'inline-block';
+        link.download = res.headers.get('X-Filename') || 'OzMoEg_Trip_Plan.xlsx';
+        setStatus('Plan generated. Click the download link.', 'ok');
+    } catch (err) {
+        setStatus('Generation failed: ' + err.message, 'error');
+    } finally {
+        btn.disabled = false;
+    }
+}
+
+document.getElementById('parseBtn').addEventListener('click', parseFromText);
+document.getElementById('tripForm').addEventListener('submit', generateExcel);
+
+// Web Speech API voice input
+const micBtn = document.getElementById('micBtn');
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-AU';
+    recognition.onstart = () => micBtn.textContent = '🔴 Listening...';
+    recognition.onend = () => micBtn.textContent = '🎙️ Start voice';
+    recognition.onresult = e => {
+        const txt = e.results[0][0].transcript;
+        document.getElementById('chatInput').value = txt;
+        parseFromText();
+    };
+    micBtn.addEventListener('click', () => recognition.start());
+} else {
+    micBtn.style.display = 'none';
+}
+</script>
+</body>
+</html>
