@@ -212,7 +212,7 @@
         <hr style="border-color:var(--border);margin:1.2rem 0;">
 
         <div class="api-status" id="apiStatus">
-            🔌 Checking local API…
+            🔌 Checking trip planner connection…
         </div>
         <form id="tripForm">
             <div class="row">
@@ -274,7 +274,8 @@
 </main>
 
 <script>
-const API = new URLSearchParams(location.search).get('api') || 'http://localhost:8777';
+const API = new URLSearchParams(location.search).get('api') || 'https://trip-planner.aeyeing.com';
+const LOCAL_API = 'http://localhost:8777';
 
 async function checkApi() {
     const el = document.getElementById('apiStatus');
@@ -282,20 +283,36 @@ async function checkApi() {
         const res = await fetch(`${API}/health`, { method: 'GET', mode: 'cors' });
         if (res.ok) {
             el.className = 'api-status ok';
-            el.innerHTML = '✅ Local API is connected. You can generate plans.';
-        } else {
-            throw new Error('API not healthy');
+            el.innerHTML = `✅ Trip Planner API is connected at ${API}. You can request plans.`;
+            return;
         }
+        throw new Error('API not healthy');
     } catch (e) {
+        // If the public/tunnel URL is unreachable, try the local API as fallback.
+        try {
+            const localRes = await fetch(`${LOCAL_API}/health`, { method: 'GET', mode: 'cors' });
+            if (localRes.ok) {
+                window.__actualApi = LOCAL_API;
+                el.className = 'api-status ok';
+                el.innerHTML = `✅ Local API is connected at ${LOCAL_API}. You can request plans.`;
+                return;
+            }
+        } catch (localErr) {
+            // ignore
+        }
         el.className = 'api-status error';
-        el.innerHTML = `❌ Cannot reach local API at ${API}.<br>
-        If you opened this page from GitHub Pages (HTTPS), browsers block the local HTTP backend.
-        <br>Please run the local launcher:
+        el.innerHTML = `❌ Cannot reach API at ${API}.<br>
+        If you just opened this page from GitHub Pages, the Cloudflare tunnel may not be running yet.
+        <br>Please run the launcher on the host PC:
         <br><code style="display:inline-block;margin-top:.4rem;padding:.3rem .5rem;background:var(--panel);border-radius:6px;">C:\Users\openclaw\AppData\Local\hermes\skills\ozmoeg\trip_planner\scripts\start_local_website.bat</code>
-        <br>Or open the HTML file directly from your desktop after starting the API.`;
+        <br>Or start only the tunnel: <code style="display:inline-block;margin-top:.4rem;padding:.3rem .5rem;background:var(--panel);border-radius:6px;">cloudflared tunnel run ozmoeg-trip-planner</code>`;
     }
 }
 checkApi();
+
+function activeApi() {
+    return window.__actualApi || API;
+}
 
 function chipsToList(containerId) {
     return Array.from(document.querySelectorAll(`#${containerId} .chip.on`)).map(c => c.textContent.trim());
@@ -336,7 +353,7 @@ async function parseFromText() {
     if (!text) return;
     setStatus('Parsing natural-language request...');
     try {
-        const res = await fetch(`${API}/parse`, {
+        const res = await fetch(`${activeApi()}/parse`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })
@@ -378,21 +395,25 @@ async function generateExcel(e) {
     const link = document.getElementById('downloadLink');
     const email = document.getElementById('email').value.trim();
     btn.disabled = true;
-    setStatus('Generating Excel plan with live weather, hotels and attractions...');
+    link.style.display = 'none';
+    setStatus('Building your plan with live weather, hotels and attractions...');
     try {
         const req = buildRequest();
-        // If email is provided, also send the plan by email.
+        const API_BASE = activeApi();
+        // If email is provided, queue generation and email delivery.
         if (email) {
-            const emailRes = await fetch(`${API}/generate-and-email`, {
+            const emailRes = await fetch(`${API_BASE}/generate-and-email`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(req)
             });
             const emailData = await emailRes.json();
             if (!emailRes.ok) throw new Error(emailData.error || 'Email send failed');
-            setStatus(`Plan generated and emailed to ${email}. Download below.`, 'ok');
+            setStatus(`✅ Plan queued. It will be emailed to ${email} within a few minutes.`, 'ok');
+            return;
         }
-        const res = await fetch(`${API}/generate`, {
+        // Fallback: download immediately if no email.
+        const res = await fetch(`${API_BASE}/generate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req)
@@ -402,7 +423,7 @@ async function generateExcel(e) {
         const url = URL.createObjectURL(blob);
         link.href = url;
         link.style.display = 'inline-block';
-        if (!email) setStatus('Plan generated. Click the download link.', 'ok');
+        setStatus('Plan generated. Click the download link.', 'ok');
         link.download = res.headers.get('X-Filename') || setDownloadFilename(req) || 'OzMoEg_Trip_Plan.xlsx';
     } catch (err) {
         setStatus('Generation failed: ' + err.message, 'error');
