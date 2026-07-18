@@ -187,9 +187,10 @@ Osaka 2026-04-20 2026-04-21</textarea>
             <li>Exact city named for every date</li>
             <li>Weather from live Open-Meteo data</li>
             <li>Morning / Afternoon / Evening scheduling</li>
-            <li>Top hotel recommendation auto-marked with X</li>
+            <li>Live hotel rates from Nuitee/LiteAPI (max 2 hotels per city)</li>
             <li>Attractions filtered by age & interests</li>
-            <li>Backup rows left editable</li>
+            <li>Green cells for confirmed selections; editable backup rows</li>
+            <li>Top hotel recommendation auto-marked with X</li>
         </ul>
         <p class="example">Backend API runs locally at <code>http://localhost:8777</code>. Configure with ?api=URL if hosted elsewhere.</p>
     </div>
@@ -277,13 +278,26 @@ async function generateExcel(e) {
     e.preventDefault();
     const btn = document.getElementById('generateBtn');
     const link = document.getElementById('downloadLink');
+    const email = document.getElementById('email').value.trim();
     btn.disabled = true;
-    setStatus('Generating Excel plan with live weather & attractions...');
+    setStatus('Generating Excel plan with live weather, hotels and attractions...');
     try {
+        const req = buildRequest();
+        // If email is provided, also send the plan by email.
+        if (email) {
+            const emailRes = await fetch(`${API}/generate-and-email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(req)
+            });
+            const emailData = await emailRes.json();
+            if (!emailRes.ok) throw new Error(emailData.error || 'Email send failed');
+            setStatus(`Plan generated and emailed to ${email}. Download below.`, 'ok');
+        }
         const res = await fetch(`${API}/generate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(buildRequest())
+            body: JSON.stringify(req)
         });
         if (!res.ok) throw new Error(await res.text());
         const blob = await res.blob();
@@ -291,7 +305,7 @@ async function generateExcel(e) {
         link.href = url;
         link.style.display = 'inline-block';
         link.download = res.headers.get('X-Filename') || 'OzMoEg_Trip_Plan.xlsx';
-        setStatus('Plan generated. Click the download link.', 'ok');
+        if (!email) setStatus('Plan generated. Click the download link.', 'ok');
     } catch (err) {
         setStatus('Generation failed: ' + err.message, 'error');
     } finally {
