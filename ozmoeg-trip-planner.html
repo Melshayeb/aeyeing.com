@@ -470,7 +470,7 @@ let addedCities = [];
 
 function syncCities() {
     const raw = document.getElementById('citiesRaw');
-    if (raw) raw.value = addedCities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+    if (raw) raw.value = JSON.stringify(addedCities);
     renderAddedCities();
 }
 
@@ -679,7 +679,7 @@ function parseTravelers(raw) {
 function buildRequest() {
     return {
         destination_country: document.getElementById('country').value,
-        cities: parseCities(document.getElementById('citiesRaw').value),
+        cities: addedCities.map(c => ({ city: c.city, start_date: c.start_date, end_date: c.end_date })),
         travelers: parseTravelers(document.getElementById('travelersRaw').value),
         interests: chipsToList('interests'),
         food_preferences: chipsToList('food'),
@@ -719,7 +719,7 @@ function fillForm(req) {
     if (req.requester_email) document.getElementById('email').value = req.requester_email;
     if (req.cities) {
         addedCities = req.cities.map(c => ({ city: c.city, start_date: c.start_date, end_date: c.end_date }));
-        document.getElementById('citiesRaw').value = req.cities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+        document.getElementById('citiesRaw').value = JSON.stringify(addedCities);
         syncCities();
     }
     if (req.travelers) document.getElementById('travelersRaw').value = req.travelers.map(t => `${t.name.toLowerCase()} ${t.age}`).join(', ');
