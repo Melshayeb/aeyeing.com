@@ -669,16 +669,25 @@ async function checkApi() {
                 document.open();
                 document.write(html);
                 document.close();
+                // Re-initialize after replacing the document so dropdowns populate immediately.
+                if (typeof initCountryDropdown === 'function') initCountryDropdown();
+                if (typeof syncCities === 'function') syncCities();
             }
         })
         .catch(() => {});
 })();
 
-// Run init in order after DOM is ready, but keep the existing sync call above too.
-document.addEventListener('DOMContentLoaded', () => {
+// Run init in order after DOM is ready.
+function runInit() {
     checkApi();
     initCountryDropdown();
-});
+    syncCities();
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInit);
+} else {
+    runInit();
+}
 
 function activeApi() {
     return window.__actualApi || API;
