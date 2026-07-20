@@ -534,12 +534,14 @@ countrySelect.addEventListener('change', () => {
 let addedCities = [];
 
 function syncCities() {
-    document.getElementById('citiesRaw').value = addedCities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+    const raw = document.getElementById('citiesRaw');
+    if (raw) raw.value = addedCities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
     renderAddedCities();
 }
 
 function renderAddedCities() {
     const list = document.getElementById('addedCitiesList');
+    if (!list) return;
     list.innerHTML = '';
     if (addedCities.length === 0) {
         list.innerHTML = '<div style="color:var(--muted);font-size:.85rem;" id="noCitiesMsg">No cities added yet.</div>';
@@ -582,8 +584,10 @@ function editCity(idx) {
     const c = addedCities[idx];
     if (!c) return;
     citySelect.value = c.city;
-    document.getElementById('cityStart').value = c.start_date;
-    document.getElementById('cityEnd').value = c.end_date;
+    const startEl = document.getElementById('cityStart');
+    const endEl = document.getElementById('cityEnd');
+    if (startEl) startEl.value = c.start_date;
+    if (endEl) endEl.value = c.end_date;
     addedCities.splice(idx, 1);
     syncCities();
     setStatus('City loaded into the editor. Modify above and click Add city.', 'ok');
@@ -595,7 +599,7 @@ function deleteCity(idx) {
     setStatus('City removed.', 'ok');
 }
 
-document.getElementById('addCityBtn').addEventListener('click', () => {
+function addCity() {
     const city = citySelect.value;
     const start = document.getElementById('cityStart').value;
     const end = document.getElementById('cityEnd').value;
@@ -613,13 +617,18 @@ document.getElementById('addCityBtn').addEventListener('click', () => {
     document.getElementById('cityStart').value = "";
     document.getElementById('cityEnd').value = "";
     setStatus('City added.', 'ok');
-});
+}
+
+if (document.getElementById('addCityBtn')) {
+    document.getElementById('addCityBtn').addEventListener('click', addCity);
+}
 
 // Seed the default Melbourne example on first load if nothing is parsed.
-if (!document.getElementById('citiesRaw').value.trim()) {
+const rawEl = document.getElementById('citiesRaw');
+if (!rawEl || !rawEl.value.trim()) {
     addedCities = [{ city: 'Melbourne', start_date: '2026-08-10', end_date: '2026-08-14' }];
 } else {
-    addedCities = parseCities(document.getElementById('citiesRaw').value);
+    addedCities = parseCities(rawEl.value);
 }
 syncCities();
 
@@ -651,12 +660,12 @@ async function checkApi() {
 // If this copy of the page is missing the Pace section, the GitHub Pages CDN is still serving
 // the old HTML. Ask the API server for its copy of the page, which is always the latest version.
 (function ensureLatestPage() {
-    if (document.getElementById('paceContainer') || document.getElementById('apiStatus')?.textContent?.includes('Connected')) return;
+    if (document.getElementById('paceContainer') && document.getElementById('addedCitiesList')) return;
     fetch(`${API}/ozmoeg-trip-planner.html`, { method: 'GET', mode: 'cors' })
         .then(r => r.ok ? r.text() : Promise.reject('not ok'))
         .then(html => {
-            // Only replace if the fetched page actually contains the new Pace section.
-            if (html.includes('paceContainer') || html.includes('Pace')) {
+            // Only replace if the fetched page actually contains the new UI sections.
+            if (html.includes('paceContainer') && html.includes('addedCitiesList')) {
                 document.open();
                 document.write(html);
                 document.close();
@@ -665,8 +674,11 @@ async function checkApi() {
         .catch(() => {});
 })();
 
-checkApi();
-initCountryDropdown();
+// Run init in order after DOM is ready, but keep the existing sync call above too.
+document.addEventListener('DOMContentLoaded', () => {
+    checkApi();
+    initCountryDropdown();
+});
 
 function activeApi() {
     return window.__actualApi || API;
