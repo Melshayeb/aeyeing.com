@@ -338,6 +338,7 @@
             <li>Attractions filtered by age &amp; interests</li>
             <li>Green cells for confirmed selections; editable backup rows</li>
             <li>Top hotel recommendation auto-marked with X</li>
+            <li id="paceBullet">Relaxed pace: 1–2 activities per day</li>
         </ul>
         <div class="preview-wrap">
             <img src="trip-planner-preview.png" alt="Generated Excel trip plan sample" class="preview-img">
@@ -534,7 +535,7 @@ async function checkApi() {
         const res = await fetch(`${API}/health`, { method: 'GET', mode: 'cors' });
         if (res.ok) {
             el.className = 'api-status ok';
-            el.innerHTML = `✅ Trip Planner API is connected at ${API}. You can request plans.`;
+            el.textContent = 'Connected';
             return;
         }
         throw new Error('API not healthy');
@@ -544,16 +545,12 @@ async function checkApi() {
             if (localRes.ok) {
                 window.__actualApi = LOCAL_API;
                 el.className = 'api-status ok';
-                el.innerHTML = `✅ Local API is connected at ${LOCAL_API}. You can request plans.`;
+                el.textContent = 'Connected';
                 return;
             }
         } catch (localErr) {}
         el.className = 'api-status error';
-        el.innerHTML = `❌ Cannot reach API at ${API}.<br>
-        If you just opened this page from GitHub Pages, the Cloudflare tunnel may not be running yet.
-        <br>Please run the launcher on the host PC:
-        <br><code style="display:inline-block;margin-top:.4rem;padding:.3rem .5rem;background:var(--panel);border-radius:6px;">C:\Users\openclaw\AppData\Local\hermes\skills\ozmoeg\trip_planner\scripts\start_local_website.bat</code>
-        <br>Or start only the tunnel: <code style="display:inline-block;margin-top:.4rem;padding:.3rem .5rem;background:var(--panel);border-radius:6px;">cloudflared tunnel run ozmoeg-trip-planner</code>`;
+        el.textContent = 'Disconnected — will be back soon';
     }
 }
 checkApi();
@@ -579,6 +576,12 @@ document.querySelectorAll('.chip').forEach(chip => {
             // Pace is single-select
             parent.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
             chip.classList.add('on');
+            const bullet = document.getElementById('paceBullet');
+            if (bullet) {
+                bullet.textContent = chip.dataset.value === 'compressed'
+                    ? 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions'
+                    : 'Relaxed pace: 1–2 activities per day';
+            }
         } else {
             chip.classList.toggle('on');
         }
