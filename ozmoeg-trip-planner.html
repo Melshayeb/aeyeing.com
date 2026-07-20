@@ -498,25 +498,27 @@ const COUNTRY_CITIES = {
     "Zimbabwe": ["Harare", "Victoria Falls"]
 };
 
-const countrySelect = document.getElementById('country');
-const citySelect = document.getElementById('citySelect');
-const citiesRaw = document.getElementById('citiesRaw');
-
 function initCountryDropdown() {
+    // Replace the select node entirely to work around browser/DOM quirks that clear the value.
+    const oldSelect = countrySelect;
+    const newSelect = oldSelect.cloneNode(false);
+    newSelect.innerHTML = '<option value="" disabled>Select a country</option>';
     const sorted = Object.keys(COUNTRY_CITIES).sort();
-    // Remove existing non-placeholder options to avoid duplicates if init runs twice.
-    Array.from(countrySelect.options).forEach(opt => {
-        if (opt.value !== '') opt.remove();
-    });
     sorted.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c;
         opt.textContent = c;
-        countrySelect.appendChild(opt);
+        newSelect.appendChild(opt);
     });
-    // Select Australia by index to avoid browser quirks with value assignment before DOM paint.
-    const australiaIndex = sorted.indexOf('Australia') + 1; // +1 for placeholder
-    countrySelect.selectedIndex = Math.max(1, australiaIndex);
+    const australiaIndex = Math.max(1, sorted.indexOf('Australia') + 1);
+    newSelect.selectedIndex = australiaIndex;
+    oldSelect.parentNode.replaceChild(newSelect, oldSelect);
+    // Re-bind our cached reference so the rest of the code talks to the new element.
+    countrySelect = newSelect;
+    countrySelect.addEventListener('change', () => {
+        updateCityDropdown();
+        if (citiesRaw) citiesRaw.value = "";
+    });
     updateCityDropdown();
 }
 
@@ -532,9 +534,14 @@ function updateCityDropdown() {
     });
 }
 
+let countrySelect = document.getElementById('country');
+let citySelect = document.getElementById('citySelect');
+let citiesRaw = document.getElementById('citiesRaw');
+
+// Bind change listener once; initCountryDropdown re-binds after replacement.
 countrySelect.addEventListener('change', () => {
     updateCityDropdown();
-    citiesRaw.value = "";
+    if (citiesRaw) citiesRaw.value = "";
 });
 
 let addedCities = [];
@@ -688,19 +695,25 @@ function runInit() {
     checkApi();
     initCountryDropdown();
     syncCities();
-    // Defensive: if the dropdown still has only the placeholder, force a fresh build.
-    if (document.getElementById('country').options.length <= 1) {
-        const c = document.getElementById('country');
-        c.innerHTML = '<option value="" disabled>Select a country</option>';
+    // Defensive: if the dropdown still has only the placeholder, replace the node.
+    const c = document.getElementById('country');
+    if (c.options.length <= 1) {
+        const newC = c.cloneNode(false);
+        newC.innerHTML = '<option value="" disabled>Select a country</option>';
         const sorted = Object.keys(COUNTRY_CITIES).sort();
         sorted.forEach(name => {
             const opt = document.createElement('option');
             opt.value = name;
             opt.textContent = name;
-            c.appendChild(opt);
+            newC.appendChild(opt);
         });
-        const australiaIndex = sorted.indexOf('Australia') + 1;
-        c.selectedIndex = Math.max(1, australiaIndex);
+        newC.selectedIndex = Math.max(1, sorted.indexOf('Australia') + 1);
+        c.parentNode.replaceChild(newC, c);
+        countrySelect = newC;
+        countrySelect.addEventListener('change', () => {
+            updateCityDropdown();
+            if (citiesRaw) citiesRaw.value = "";
+        });
         updateCityDropdown();
     }
 }
