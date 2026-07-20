@@ -504,6 +504,10 @@ const citiesRaw = document.getElementById('citiesRaw');
 
 function initCountryDropdown() {
     const sorted = Object.keys(COUNTRY_CITIES).sort();
+    // Remove existing non-placeholder options to avoid duplicates if init runs twice.
+    Array.from(countrySelect.options).forEach(opt => {
+        if (opt.value !== '') opt.remove();
+    });
     sorted.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c;
@@ -682,6 +686,19 @@ function runInit() {
     checkApi();
     initCountryDropdown();
     syncCities();
+    // Defensive: if the dropdown still has only the placeholder, force a fresh build.
+    if (document.getElementById('country').options.length <= 1) {
+        const c = document.getElementById('country');
+        c.innerHTML = '<option value="" disabled>Select a country</option>';
+        Object.keys(COUNTRY_CITIES).sort().forEach(name => {
+            const opt = document.createElement('option');
+            opt.value = name;
+            opt.textContent = name;
+            c.appendChild(opt);
+        });
+        c.value = 'Australia';
+        updateCityDropdown();
+    }
 }
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInit);
