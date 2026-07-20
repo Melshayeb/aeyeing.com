@@ -313,6 +313,12 @@
                 <span class="chip">michelin-recommended</span><span class="chip">private kitchens</span><span class="chip">allergy aware</span>
             </div>
 
+            <label>Pace <span class="example">Relaxed = 1–2 activities per day. Compressed = pack Morning, Afternoon &amp; Evening with nearby places.</span></label>
+            <div class="options" id="pace">
+                <span class="chip on" data-value="relaxed">Relaxed</span>
+                <span class="chip" data-value="compressed">Compressed</span>
+            </div>
+
             <button id="generateBtn" type="submit">Generate Excel plan</button>
             <a id="downloadLink" class="download-link" href="#" download="OzMoEg_Trip_Plan.xlsx">⬇️ Download Excel plan</a>
             <div id="status" class="status"></div>
@@ -561,8 +567,22 @@ function chipsToList(containerId) {
     return Array.from(document.querySelectorAll(`#${containerId} .chip.on`)).map(c => c.textContent.trim());
 }
 
+function selectedValue(containerId, defaultValue) {
+    const selected = document.querySelector(`#${containerId} .chip.on`);
+    return selected ? selected.dataset.value || selected.textContent.trim() : defaultValue;
+}
+
 document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => chip.classList.toggle('on'));
+    chip.addEventListener('click', () => {
+        const parent = chip.parentElement;
+        if (parent && parent.id === 'pace') {
+            // Pace is single-select
+            parent.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+            chip.classList.add('on');
+        } else {
+            chip.classList.toggle('on');
+        }
+    });
 });
 
 function parseCities(raw) {
@@ -586,6 +606,7 @@ function buildRequest() {
         travelers: parseTravelers(document.getElementById('travelersRaw').value),
         interests: chipsToList('interests'),
         food_preferences: chipsToList('food'),
+        pace: selectedValue('pace', 'relaxed'),
         requester_email: document.getElementById('email').value,
         raw_input: document.getElementById('chatInput').value
     };
@@ -624,11 +645,14 @@ function fillForm(req) {
     if (req.travelers) document.getElementById('travelersRaw').value = req.travelers.map(t => `${t.name.toLowerCase()} ${t.age}`).join(', ');
     setChips('interests', req.interests || []);
     setChips('food', req.food_preferences || []);
+    if (req.pace) setChips('pace', [req.pace]);
 }
 
 function setChips(containerId, values) {
-    document.querySelectorAll(`#${containerId} .chip`).forEach(chip => {
-        chip.classList.toggle('on', values.includes(chip.textContent.trim()));
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.querySelectorAll('.chip').forEach(chip => {
+        chip.classList.toggle('on', values.includes(chip.dataset.value || chip.textContent.trim()));
     });
 }
 
