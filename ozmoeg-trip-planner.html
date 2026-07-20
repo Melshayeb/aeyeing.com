@@ -783,25 +783,27 @@ async function generateExcel(e) {
     showLoading('Building your trip plan…', 'Live weather, hotels & attractions');
     try {
         const API_BASE = activeApi();
+        const endpoint = email ? `${API_BASE}/generate-and-email` : `${API_BASE}/generate`;
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req)
+        });
+        if (!res.ok) {
+            let msg = await res.text();
+            try {
+                const data = JSON.parse(msg);
+                msg = data.error || data.message || msg;
+            } catch (_) {}
+            throw new Error(msg || `HTTP ${res.status}`);
+        }
         if (email) {
-            const emailRes = await fetch(`${API_BASE}/generate-and-email`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(req)
-            });
-            const emailData = await emailRes.json();
-            if (!emailRes.ok) throw new Error(emailData.error || 'Email send failed');
+            const data = await res.json();
             showDone(`Plan queued for ${email}`);
             setTimeout(hideLoading, 1500);
             setStatus(`✅ Plan queued. It will be emailed to ${email} within a few minutes.`, 'ok');
             return;
         }
-        const res = await fetch(`${API_BASE}/generate`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(req)
-        });
-        if (!res.ok) throw new Error(await res.text());
         const blob = await res.blob();
         const url = URL.createObjectURL(blob);
         link.href = url;
