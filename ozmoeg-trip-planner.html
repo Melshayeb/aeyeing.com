@@ -502,6 +502,10 @@ function initCountryDropdown() {
     // Replace the select node entirely to work around browser/DOM quirks that clear the value.
     const oldSelect = countrySelect;
     const newSelect = oldSelect.cloneNode(false);
+    newSelect.id = oldSelect.id;
+    newSelect.name = oldSelect.name || '';
+    newSelect.className = oldSelect.className;
+    newSelect.required = oldSelect.required;
     newSelect.innerHTML = '<option value="" disabled>Select a country</option>';
     const sorted = Object.keys(COUNTRY_CITIES).sort();
     sorted.forEach(c => {
@@ -699,6 +703,10 @@ function runInit() {
     const c = document.getElementById('country');
     if (c.options.length <= 1) {
         const newC = c.cloneNode(false);
+        newC.id = c.id;
+        newC.name = c.name || '';
+        newC.className = c.className;
+        newC.required = c.required;
         newC.innerHTML = '<option value="" disabled>Select a country</option>';
         const sorted = Object.keys(COUNTRY_CITIES).sort();
         sorted.forEach(name => {
