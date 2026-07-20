@@ -3,490 +3,428 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>OzMoEg Trip Planner</title>
     <style>
         :root {
-            --bg: #0d1117;
-            --panel: #161b22;
-            --card: #1f242c;
-            --accent: #58a6ff;
-            --accent-2: #7ee787;
-            --text: #e6edf3;
-            --muted: #8b949e;
-            --border: #30363d;
-            --danger: #f85149;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --input: #111827;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --ok: #22c55e;
+            --error: #ef4444;
+            --chip-on: #3b82f6;
+            --chip-off: #334155;
+            --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: var(--font);
             background: var(--bg);
             color: var(--text);
             line-height: 1.5;
         }
-        .header {
-            background: var(--panel);
-            border-bottom: 1px solid var(--border);
-            padding: 1.25rem 2rem;
+        a { color: var(--accent); text-decoration: none; }
+        .banner {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
+            gap: 1rem;
+            border-bottom: 1px solid #334155;
         }
-        header h1 { margin: 0; font-size: 1.5rem; }
-        .home-link {
-            display: inline-flex; align-items: center; gap: .35rem;
-            margin: 1rem auto 0;
-            padding: .4rem 1rem;
-            border-radius: 999px;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--muted);
-            font-size: .85rem;
-            text-decoration: none;
-            transition: .2s;
-        }
-        .home-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-        .home-link svg {
-            width: .9rem; height: .9rem; fill: currentColor;
-            transition: transform .2s;
-        }
-        .home-link:hover svg { transform: translateX(-2px); }
+        .banner h1 { margin: 0; font-size: 1.5rem; }
         .badge {
-            color: var(--accent-2);
-            border: 1px solid var(--accent-2);
-            padding: .2rem .6rem;
-            border-radius: 999px;
-            font-size: .75rem;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: .25rem .5rem;
+            border-radius: 9999px;
+            background: #064e3b;
+            color: #6ee7b7;
         }
-        main {
+        .container {
             max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 0 auto;
+            padding: 1.5rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
         }
-        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
         .card {
             background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
         }
-        .card h2 { margin-top: 0; font-size: 1.1rem; color: var(--accent); }
-        label { display: block; margin-top: .8rem; font-size: .85rem; color: var(--muted); }
-        input, textarea, select {
+        h2 { margin-top: 0; color: #60a5fa; }
+        label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; color: var(--muted); }
+        input[type="text"], input[type="email"], input[type="date"], textarea, select {
             width: 100%;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .65rem .85rem;
             color: var(--text);
-            padding: .55rem .75rem;
-            margin-top: .25rem;
-            font-size: .95rem;
+            font: inherit;
         }
-        textarea { min-height: 120px; resize: vertical; }
-        .row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
-        .row.three { grid-template-columns: repeat(3, 1fr); }
-        button {
+        textarea { min-height: 90px; resize: vertical; }
+        select { appearance: auto; cursor: pointer; }
+        .row { display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; }
+        .row > * { flex: 1; min-width: 140px; }
+        .btn {
             background: var(--accent);
             color: #fff;
             border: none;
-            border-radius: 8px;
-            padding: .7rem 1.2rem;
-            font-weight: 600;
+            border-radius: .5rem;
+            padding: .65rem 1rem;
+            font: inherit;
             cursor: pointer;
-            margin-top: 1rem;
-            font-size: .95rem;
+            transition: background .15s;
+            white-space: nowrap;
         }
-        button:hover { filter: brightness(1.1); }
-        button.secondary {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-        }
-        button:disabled { opacity: .5; cursor: not-allowed; }
-        .chat-output {
-            white-space: pre-wrap;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            min-height: 160px;
-            max-height: 300px;
-            overflow-y: auto;
-            font-size: .9rem;
-        }
-        .status { margin-top: .75rem; font-size: .85rem; color: var(--muted); }
-        .status.error { color: var(--danger); }
-        .status.ok { color: var(--accent-2); }
-        .example {
-            font-size: .8rem;
-            color: var(--muted);
-            margin-top: .4rem;
-        }
-        .options {
+        .btn:hover { background: var(--accent-hover); }
+        .btn.secondary { background: var(--chip-off); }
+        .btn.secondary:hover { background: #475569; }
+        .chip-grid {
             display: flex;
-            gap: .5rem;
             flex-wrap: wrap;
-            margin-top: .3rem;
+            gap: .5rem;
+            margin-top: .5rem;
         }
         .chip {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: .25rem .55rem;
-            font-size: .75rem;
+            background: var(--chip-off);
+            color: var(--text);
+            border: 1px solid #475569;
+            border-radius: 9999px;
+            padding: .35rem .75rem;
+            font-size: .85rem;
             cursor: pointer;
             user-select: none;
         }
-        .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
-        .added-city {
-            display: flex; align-items: center; justify-content: space-between;
-            background: var(--panel); border: 1px solid var(--border); border-radius: .5rem;
-            padding: .55rem .75rem; margin-bottom: .4rem; font-size: .9rem;
-        }
-        .added-city .info { flex: 1; }
-        .added-city .name { font-weight: 600; }
-        .added-city .dates { color: var(--muted); font-size: .8rem; }
-        .added-city .actions { display: flex; gap: .4rem; }
-        .added-city button {
-            padding: .3rem .55rem; font-size: .75rem; border-radius: .35rem;
-            border: 1px solid var(--border); background: transparent; color: var(--muted);
-            cursor: pointer;
-        }
-        .added-city button.edit:hover { color: var(--accent); border-color: var(--accent); }
-        .added-city button.delete { color: var(--danger); border-color: var(--danger); }
-        .download-link { display: none; margin-top: .8rem; }
-        .preview-wrap {
-            margin-top: 1.2rem;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            box-shadow: 0 8px 30px rgba(0,0,0,.25);
-            transition: transform .3s, box-shadow .3s;
-        }
-        .preview-wrap:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 16px 40px rgba(88,166,255,.2);
-        }
-        .preview-img {
-            width: 100%; height: auto; display: block;
-            animation: fadeInUp .7s ease-out;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .disclaimer {
-            margin-top: 1rem;
-            font-size: .8rem;
-            color: var(--muted);
-            border-left: 3px solid var(--accent);
-            padding-left: .7rem;
-        }
+        .chip.on { background: var(--chip-on); border-color: var(--chip-on); }
         .api-status {
-            margin: 0 0 1rem;
-            padding: .65rem .9rem;
-            border-radius: 8px;
-            font-size: .85rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            font-size: .9rem;
+            margin-bottom: 1rem;
+            background: #1f2937;
             color: var(--muted);
         }
-        .api-status.ok { border-color: var(--accent-2); color: var(--accent-2); background: rgba(126,231,135,.08); }
-        .api-status.error { border-color: var(--danger); color: var(--danger); background: rgba(248,81,73,.08); }
-        .api-status a { color: var(--accent); text-decoration: underline; }
-
-        /* Loading overlay */
+        .api-status.ok { background: #064e3b; color: #6ee7b7; }
+        .api-status.error { background: #450a0a; color: #fca5a5; }
+        .added-city {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            margin-top: .5rem;
+        }
+        .added-city .name { font-weight: 600; }
+        .added-city .dates { font-size: .85rem; color: var(--muted); }
+        .added-city .actions { display: flex; gap: .5rem; }
+        .added-city button {
+            background: transparent;
+            border: 1px solid #475569;
+            color: var(--text);
+            border-radius: .35rem;
+            padding: .3rem .6rem;
+            cursor: pointer;
+            font-size: .8rem;
+        }
+        .added-city button.delete { border-color: var(--error); color: var(--error); }
+        .status { min-height: 1.5rem; font-size: .9rem; margin-top: .75rem; }
+        .status.error { color: var(--error); }
+        .status.ok { color: var(--ok); }
+        .preview { white-space: pre-wrap; background: var(--input); padding: 1rem; border-radius: .5rem; font-family: monospace; font-size: .85rem; max-height: 300px; overflow: auto; }
+        .hero-img { width: 100%; border-radius: .5rem; margin-top: 1rem; }
         .loading-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(13, 17, 23, 0.92);
-            backdrop-filter: blur(4px);
-            display: none;
+            background: rgba(15,23,42,.92);
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             z-index: 9999;
             opacity: 0;
-            transition: opacity .3s;
+            pointer-events: none;
+            transition: opacity .2s;
         }
-        .loading-overlay.show { display: flex; opacity: 1; }
+        .loading-overlay.show { opacity: 1; pointer-events: auto; }
         .spinner {
             width: 64px; height: 64px;
-            border: 4px solid var(--border);
+            border: 4px solid #334155;
             border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text {
-            margin-top: 1rem;
-            font-size: 1rem;
-            color: var(--text);
-        }
-        .loading-sub {
-            margin-top: .4rem;
-            font-size: .85rem;
-            color: var(--muted);
-        }
-        .done-check {
-            width: 72px; height: 72px;
+        .checkmark {
+            width: 64px; height: 64px;
+            background: var(--ok);
             border-radius: 50%;
-            background: var(--accent-2);
             display: none;
             align-items: center;
             justify-content: center;
-            animation: popIn .4s ease-out;
+            font-size: 2rem;
         }
-        .done-check svg { width: 40px; height: 40px; fill: #0d1117; }
-        @keyframes popIn {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        .loading-text { margin-top: 1rem; font-size: 1.1rem; }
+        .loading-sub { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+        .download-link { display: none; margin-top: 1rem; }
+        .back { display: inline-block; margin: 1rem 1.5rem; padding: .5rem 1rem; border: 1px solid #475569; border-radius: .5rem; }
     </style>
 </head>
 <body>
-<div class="loading-overlay" id="loadingOverlay">
-    <div class="spinner" id="loadingSpinner"></div>
-    <div class="done-check" id="doneCheck">
-        <svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-    </div>
-    <div class="loading-text" id="loadingText">Building your trip plan…</div>
-    <div class="loading-sub" id="loadingSub">Live weather, hotels & attractions</div>
-</div>
-<header>
-    <h1>🌍 OzMoEg Trip Planner</h1>
-    <span class="badge">AI + Real Online Data</span>
-</header>
-<a class="home-link" href="index.html" title="Back to Aeyeing">
-    <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    Back to Aeyeing
-</a>
-<main>
-    <div class="card">
-        <h2>1. Tell us about your trip</h2>
-        <p style="margin-top:0;color:var(--muted);font-size:.85rem;">Speak or type naturally, or fill the structured form.</p>
-
-        <label>Voice / chat request</label>
-        <textarea id="chatInput" placeholder="Plan an Australia family trip from 2026-08-10 to 2026-08-14 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love history, food, parks, museums and kid-friendly places. We eat seafood and coffee. We want Melbourne."></textarea>
-        <div class="row">
-            <button id="micBtn" class="secondary" type="button">🎙️ Start voice</button>
-            <button id="parseBtn" type="button">Parse from text</button>
-        </div>
-
-        <hr style="border-color:var(--border);margin:1.2rem 0;">
-
-        <div class="api-status" id="apiStatus">
-            🔌 Checking trip planner connection…
-        </div>
-        <form id="tripForm">
-            <div class="row">
-                <div>
-                    <label>Country</label>
-                    <select name="destination_country" id="country">
-                        <option value="" disabled>Select a country</option>
-                    </select>
+    <header class="banner">
+        <h1>🌍 OzMoEg Trip Planner</h1>
+        <span class="badge">AI + Real Online Data</span>
+    </header>
+    <a class="back" href="index.html">← Back to Aeyeing</a>
+    <div class="container">
+        <div class="card">
+            <h2>1. Tell us about your trip</h2>
+            <p style="color:var(--muted)">Speak or type naturally, or fill the structured form.</p>
+            <label>Voice / chat request</label>
+            <textarea id="chatInput" placeholder="Plan an Australia family trip from 2026-08-10 to 2026-08-14 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love history, food, parks, museums and kid-friendly places. We eat seafood and coffee. We want Melbourne."></textarea>
+            <div class="row" style="margin-top:.75rem">
+                <button id="micBtn" class="btn secondary">🎙️ Start voice</button>
+                <button id="parseBtn" class="btn">Parse from text</button>
+            </div>
+            <hr style="border-color:#374151;margin:1.25rem 0">
+            <div id="apiStatus" class="api-status">🔌 Checking trip planner connection…</div>
+            <form id="tripForm">
+                <div class="row">
+                    <div>
+                        <label>Country</label>
+                        <select id="country"><option value="" disabled>Select a country</option></select>
+                    </div>
+                    <div>
+                        <label>Requester email</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
                 </div>
-                <div><label>Requester email</label><input name="requester_email" id="email" value=""></div>
-            </div>
-
-            <label>Cities & dates <span class="example">Select a city and dates, then click Add. You can add multiple cities.</span></label>
-            <div class="row three">
-                <div><select id="citySelect"><option value="">Choose city…</option></select></div>
-                <div><input type="date" id="cityStart" /></div>
-                <div><input type="date" id="cityEnd" /></div>
-            </div>
-            <button type="button" id="addCityBtn" class="secondary" style="margin-top:.5rem;">+ Add city</button>
-            <div id="addedCitiesList" class="added-cities" style="margin-top:.5rem;"></div>
-            <textarea id="citiesRaw" rows="3" readonly style="display:none;">Melbourne 2026-08-10 2026-08-14</textarea>
-
-            <label>Travelers <span class="example">adult 40, adult 38, child 12, child 9</span></label>
-            <input id="travelersRaw" value="adult 40, adult 38, child 12, child 9">
-
-            <label>Interests</label>
-            <div class="options" id="interests">
-                <span class="chip on">history &amp; culture</span><span class="chip on">food &amp; drink</span><span class="chip on">pop culture</span>
-                <span class="chip on">parks &amp; outdoors</span><span class="chip on">museums &amp; art</span><span class="chip">shopping</span>
-                <span class="chip">nature &amp; wildlife</span><span class="chip">nightlife</span><span class="chip">architecture</span>
-                <span class="chip">technology</span><span class="chip">music &amp; shows</span><span class="chip">wellness &amp; spa</span>
-                <span class="chip">festivals &amp; events</span><span class="chip">hiking &amp; adventure</span><span class="chip">photography</span>
-                <span class="chip">sports</span><span class="chip">kids friendly</span><span class="chip">local markets</span>
-            </div>
-
-            <label>Food preferences</label>
-            <div class="options" id="food">
-                <span class="chip on">seafood</span><span class="chip on">noodles</span><span class="chip on">street food</span>
-                <span class="chip">vegetarian</span><span class="chip">vegan</span><span class="chip">halal</span>
-                <span class="chip">fine dining</span><span class="chip">grilled meats</span><span class="chip">sweets &amp; desserts</span>
-                <span class="chip">farm-to-table</span><span class="chip">wine &amp; cocktails</span><span class="chip">coffee &amp; cafés</span>
-                <span class="chip">kid-friendly meals</span><span class="chip">gluten-free</span><span class="chip">budget eats</span>
-                <span class="chip">michelin-recommended</span><span class="chip">private kitchens</span><span class="chip">allergy aware</span>
-            </div>
-
-            <label>Pace <span class="example">Relaxed = 1–2 activities per day. Compressed = pack Morning, Afternoon &amp; Evening with nearby places.</span></label>
-            <div class="options" id="pace">
-                <span class="chip on" data-value="relaxed">Relaxed</span>
-                <span class="chip" data-value="compressed">Compressed</span>
-            </div>
-
-            <button id="generateBtn" type="submit">Generate Excel plan</button>
-            <a id="downloadLink" class="download-link" href="#" download="OzMoEg_Trip_Plan.xlsx">⬇️ Download Excel plan</a>
-            <div id="status" class="status"></div>
-        </form>
-    </div>
-
-    <div class="card">
-        <h2>2. Parsed request preview</h2>
-        <div id="parsedPreview" class="chat-output">Fill the form or paste a natural-language request, then click Parse.</div>
-        <h2 style="margin-top:1.5rem;">3. What you get</h2>
-        <ul style="color:var(--muted);font-size:.9rem;padding-left:1.2rem;">
-            <li>Editable Excel plan tailored to your dates and travel party</li>
-            <li>Exact city named for every date</li>
-            <li>Weather from live Open-Meteo data</li>
-            <li>Morning / Afternoon / Evening scheduling</li>
-            <li>Live hotel rates from Nuitee/LiteAPI (max 2 hotels per city)</li>
-            <li>Attractions filtered by age &amp; interests</li>
-            <li>Green cells for confirmed selections; editable backup rows</li>
-            <li>Top hotel recommendation auto-marked with X</li>
-            <li id="paceBullet">Relaxed pace: 1–2 activities per day</li>
-        </ul>
-        <div class="preview-wrap">
-            <img src="trip-planner-preview.png" alt="Generated Excel trip plan sample" class="preview-img">
+                <label>Cities &amp; dates <span style="color:var(--muted)">Select a city and dates, then click Add. You can add multiple cities.</span></label>
+                <div class="row">
+                    <div>
+                        <select id="citySelect"><option value="">Choose city…</option></select>
+                    </div>
+                    <div>
+                        <input type="date" id="cityStart">
+                    </div>
+                    <div>
+                        <input type="date" id="cityEnd">
+                    </div>
+                    <button type="button" id="addCityBtn" class="btn">+ Add city</button>
+                </div>
+                <div id="addedCitiesList"></div>
+                <input type="hidden" id="citiesRaw">
+                <label>Travelers</label>
+                <input type="text" id="travelersRaw" placeholder="adult 40, adult 38, child 12, child 9" value="adult 40, adult 38, child 12, child 9">
+                <label>Interests</label>
+                <div id="interests" class="chip-grid">
+                    <span class="chip" data-value="history &amp; culture">history &amp; culture</span>
+                    <span class="chip" data-value="food &amp; drink">food &amp; drink</span>
+                    <span class="chip" data-value="pop culture">pop culture</span>
+                    <span class="chip" data-value="parks &amp; outdoors">parks &amp; outdoors</span>
+                    <span class="chip" data-value="museums &amp; art">museums &amp; art</span>
+                    <span class="chip" data-value="shopping">shopping</span>
+                    <span class="chip" data-value="nature &amp; wildlife">nature &amp; wildlife</span>
+                    <span class="chip" data-value="nightlife">nightlife</span>
+                    <span class="chip" data-value="architecture">architecture</span>
+                    <span class="chip" data-value="technology">technology</span>
+                    <span class="chip" data-value="music &amp; shows">music &amp; shows</span>
+                    <span class="chip" data-value="wellness &amp; spa">wellness &amp; spa</span>
+                    <span class="chip" data-value="festivals &amp; events">festivals &amp; events</span>
+                    <span class="chip" data-value="hiking &amp; adventure">hiking &amp; adventure</span>
+                    <span class="chip" data-value="photography">photography</span>
+                    <span class="chip" data-value="sports">sports</span>
+                    <span class="chip" data-value="kids friendly">kids friendly</span>
+                    <span class="chip" data-value="local markets">local markets</span>
+                </div>
+                <label>Food preferences</label>
+                <div id="food" class="chip-grid">
+                    <span class="chip" data-value="seafood">seafood</span>
+                    <span class="chip" data-value="noodles">noodles</span>
+                    <span class="chip" data-value="street food">street food</span>
+                    <span class="chip" data-value="vegetarian">vegetarian</span>
+                    <span class="chip" data-value="vegan">vegan</span>
+                    <span class="chip" data-value="halal">halal</span>
+                    <span class="chip" data-value="fine dining">fine dining</span>
+                    <span class="chip" data-value="grilled meats">grilled meats</span>
+                    <span class="chip" data-value="sweets &amp; desserts">sweets &amp; desserts</span>
+                    <span class="chip" data-value="family-friendly table">family-friendly table</span>
+                    <span class="chip" data-value="wine &amp; cocktails">wine &amp; cocktails</span>
+                    <span class="chip" data-value="coffee &amp; cafés">coffee &amp; cafés</span>
+                    <span class="chip" data-value="kid-friendly meals">kid-friendly meals</span>
+                    <span class="chip" data-value="gluten-free">gluten-free</span>
+                    <span class="chip" data-value="budget eats">budget eats</span>
+                    <span class="chip" data-value="michelin-recommended">michelin-recommended</span>
+                    <span class="chip" data-value="private kitchens">private kitchens</span>
+                    <span class="chip" data-value="allergy aware">allergy aware</span>
+                </div>
+                <label>Pace <span id="paceBullet" style="color:var(--muted)">Relaxed = 1–2 activities per day. Compressed = pack Morning, Afternoon &amp; Evening with nearby places.</span></label>
+                <div id="paceContainer">
+                    <div id="pace" class="chip-grid">
+                        <span class="chip on" data-value="relaxed">Relaxed</span>
+                        <span class="chip" data-value="compressed">Compressed</span>
+                    </div>
+                </div>
+                <div id="status" class="status"></div>
+                <button id="generateBtn" type="submit" class="btn" style="margin-top:1rem;width:100%">Generate Excel plan</button>
+                <a id="downloadLink" class="download-link btn" style="text-align:center">Download Excel plan</a>
+            </form>
         </div>
-        <p class="disclaimer">⚠️ Disclaimer: Live hotel and weather data are sourced from third-party APIs and may change. Always double-check bookings, prices and opening hours directly with providers before travelling.</p>
+        <div class="card">
+            <h2>2. Parsed request preview</h2>
+            <div id="parsedPreview" class="preview">Fill the form or paste a natural-language request, then click Parse.</div>
+            <h2>3. What you get</h2>
+            <ul style="color:var(--muted)">
+                <li>Editable Excel plan tailored to your dates and travel party</li>
+                <li>Exact city named for every date</li>
+                <li>Weather from live Open-Meteo data</li>
+                <li>Morning / Afternoon / Evening scheduling</li>
+                <li>Live hotel rates from Nuitee/LiteAPI (max 2 hotels per city)</li>
+                <li>Attractions filtered by age &amp; interests</li>
+                <li>Green cells for confirmed selections; editable backup rows</li>
+                <li>Top hotel recommendation auto-marked with X</li>
+                <li id="paceBulletText">Relaxed pace: 1–2 activities per day</li>
+            </ul>
+            <img class="hero-img" src="trip-planner-preview.png" alt="Generated Excel trip plan sample">
+            <p>⚠️ Disclaimer: Live hotel and weather data are sourced from third-party APIs and may change. Always double-check bookings, prices and opening hours directly with providers before travelling.</p>
+        </div>
     </div>
-</main>
-
+    <div id="loadingOverlay" class="loading-overlay">
+        <div id="loadingSpinner" class="spinner"></div>
+        <div id="doneCheck" class="checkmark">✓</div>
+        <div id="loadingText" class="loading-text">Building your trip plan…</div>
+        <div id="loadingSub" class="loading-sub">Live weather, hotels &amp; attractions</div>
+    </div>
 <script>
-const API = new URLSearchParams(location.search).get('api') || 'https://trip-planner.aeyeing.com';
+const API = 'https://trip-planner.aeyeing.com';
 const LOCAL_API = 'http://localhost:8777';
-// Use the same host (API server) as a fallback when GitHub Pages is serving a stale copy.
-const PAGE_HOST = API.replace(/\/$/, '');
 
 const COUNTRY_CITIES = {
-    "Afghanistan": ["Kabul", "Herat", "Kandahar"],
-    "Albania": ["Tirana", "Sarandë", "Berat"],
-    "Algeria": ["Algiers", "Oran", "Constantine"],
+    "Afghanistan": ["Kabul"],
+    "Albania": ["Tirana"],
+    "Algeria": ["Algiers"],
     "Andorra": ["Andorra la Vella"],
-    "Argentina": ["Buenos Aires", "Mendoza", "Córdoba", "Bariloche"],
+    "Argentina": ["Buenos Aires", "Mendoza", "Bariloche", "Córdoba"],
     "Armenia": ["Yerevan"],
     "Australia": ["Melbourne", "Sydney", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast", "Hobart", "Darwin"],
     "Austria": ["Vienna", "Salzburg", "Innsbruck", "Graz"],
     "Azerbaijan": ["Baku"],
     "Bahamas": ["Nassau"],
     "Bahrain": ["Manama"],
-    "Bangladesh": ["Dhaka", "Chittagong", "Sylhet"],
+    "Bangladesh": ["Dhaka"],
     "Barbados": ["Bridgetown"],
     "Belarus": ["Minsk"],
     "Belgium": ["Brussels", "Bruges", "Antwerp", "Ghent"],
     "Belize": ["Belize City"],
-    "Bhutan": ["Thimphu", "Paro"],
-    "Bolivia": ["La Paz", "Sucre", "Uyuni"],
+    "Bhutan": ["Thimphu"],
+    "Bolivia": ["La Paz", "Sucre", "Santa Cruz de la Sierra"],
     "Bosnia and Herzegovina": ["Sarajevo", "Mostar"],
-    "Botswana": ["Gaborone", "Maun"],
-    "Brazil": ["Rio de Janeiro", "São Paulo", "Salvador", "Florianópolis", "Foz do Iguaçu"],
+    "Botswana": ["Gaborone"],
+    "Brazil": ["Rio de Janeiro", "São Paulo", "Salvador", "Brasília", "Florianópolis"],
     "Bulgaria": ["Sofia", "Plovdiv", "Varna"],
     "Cambodia": ["Siem Reap", "Phnom Penh"],
-    "Cameroon": ["Yaoundé", "Douala"],
-    "Canada": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa", "Quebec City", "Banff", "Victoria"],
+    "Cameroon": ["Yaoundé"],
+    "Canada": ["Toronto", "Vancouver", "Montreal", "Calgary", "Quebec City", "Ottawa"],
     "Chile": ["Santiago", "Valparaíso", "San Pedro de Atacama"],
-    "China": ["Beijing", "Shanghai", "Guangzhou", "Shenzhen", "Xi'an", "Chengdu", "Hangzhou", "Hong Kong"],
-    "Colombia": ["Bogotá", "Medellín", "Cartagena", "Cali"],
-    "Costa Rica": ["San José", "Monteverde", "Manuel Antonio"],
-    "Croatia": ["Dubrovnik", "Split", "Zagreb", "Zadar"],
-    "Cuba": ["Havana", "Varadero", "Trinidad"],
-    "Cyprus": ["Nicosia", "Limassol", "Paphos"],
-    "Czech Republic": ["Prague", "Český Krumlov", "Brno"],
-    "Denmark": ["Copenhagen", "Aarhus", "Odense"],
+    "China": ["Beijing", "Shanghai", "Xi'an", "Guilin", "Chengdu"],
+    "Colombia": ["Bogotá", "Medellín", "Cartagena"],
+    "Costa Rica": ["San José"],
+    "Croatia": ["Dubrovnik", "Split", "Zagreb"],
+    "Cuba": ["Havana"],
+    "Cyprus": ["Nicosia"],
+    "Czech Republic": ["Prague", "Český Krumlov"],
+    "Denmark": ["Copenhagen"],
     "Dominican Republic": ["Punta Cana", "Santo Domingo"],
     "Ecuador": ["Quito", "Guayaquil", "Galápagos"],
     "Egypt": ["Cairo", "Alexandria", "Luxor", "Aswan", "Sharm El-Sheikh", "Hurghada"],
     "El Salvador": ["San Salvador"],
     "Estonia": ["Tallinn"],
-    "Ethiopia": ["Addis Ababa", "Lalibela", "Gondar"],
-    "Fiji": ["Nadi", "Suva", "Denarau", "Coral Coast", "Mamanuca Islands", "Yasawa Islands"],
-    "Finland": ["Helsinki", "Rovaniemi", "Tampere"],
-    "France": ["Paris", "Lyon", "Nice", "Marseille", "Bordeaux", "Strasbourg", "Toulouse", "Lille"],
-    "Georgia": ["Tbilisi", "Batumi"],
-    "Germany": ["Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Stuttgart", "Dresden"],
-    "Ghana": ["Accra", "Kumasi"],
-    "Greece": ["Athens", "Santorini", "Mykonos", "Crete", "Rhodes", "Thessaloniki"],
-    "Guatemala": ["Guatemala City", "Antigua Guatemala", "Lake Atitlán"],
-    "Hungary": ["Budapest", "Debrecen"],
-    "Iceland": ["Reykjavík", "Akureyri"],
-    "India": ["Delhi", "Mumbai", "Jaipur", "Agra", "Goa", "Bangalore", "Chennai", "Kolkata", "Kerala"],
-    "Indonesia": ["Bali", "Jakarta", "Yogyakarta", "Lombok", "Bandung"],
+    "Ethiopia": ["Addis Ababa"],
+    "Fiji": ["Nadi", "Suva", "Denarau Island"],
+    "Finland": ["Helsinki", "Rovaniemi"],
+    "France": ["Paris", "Nice", "Lyon", "Marseille", "Bordeaux", "Strasbourg"],
+    "Georgia": ["Tbilisi"],
+    "Germany": ["Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Dresden"],
+    "Ghana": ["Accra"],
+    "Greece": ["Athens", "Santorini", "Mykonos", "Thessaloniki"],
+    "Guatemala": ["Antigua Guatemala", "Guatemala City"],
+    "Hungary": ["Budapest"],
+    "Iceland": ["Reykjavík"],
+    "India": ["New Delhi", "Mumbai", "Jaipur", "Agra", "Bangalore", "Kerala"],
+    "Indonesia": ["Jakarta", "Bali", "Yogyakarta"],
     "Iran": ["Tehran", "Isfahan", "Shiraz"],
-    "Ireland": ["Dublin", "Cork", "Galway", "Limerick"],
-    "Israel": ["Jerusalem", "Tel Aviv", "Haifa", "Eilat"],
-    "Italy": ["Rome", "Florence", "Venice", "Milan", "Naples", "Amalfi", "Turin", "Bologna"],
-    "Jamaica": ["Montego Bay", "Kingston", "Ocho Rios"],
+    "Ireland": ["Dublin", "Galway", "Cork"],
+    "Israel": ["Jerusalem", "Tel Aviv"],
+    "Italy": ["Rome", "Venice", "Florence", "Milan", "Naples", "Amalfi Coast"],
+    "Jamaica": ["Kingston", "Montego Bay"],
     "Japan": ["Tokyo", "Kyoto", "Osaka", "Nara", "Yokohama", "Sapporo", "Hiroshima", "Fukuoka"],
-    "Jordan": ["Amman", "Petra", "Aqaba", "Wadi Rum"],
+    "Jordan": ["Amman", "Petra", "Aqaba"],
     "Kazakhstan": ["Almaty", "Astana"],
-    "Kenya": ["Nairobi", "Mombasa", "Maasai Mara"],
+    "Kenya": ["Nairobi", "Mombasa"],
     "Kuwait": ["Kuwait City"],
     "Laos": ["Luang Prabang", "Vientiane"],
     "Latvia": ["Riga"],
-    "Lebanon": ["Beirut", "Byblos", "Baalbek"],
+    "Lebanon": ["Beirut"],
     "Lithuania": ["Vilnius"],
     "Luxembourg": ["Luxembourg City"],
-    "Malaysia": ["Kuala Lumpur", "Penang", "Langkawi", "Malacca", "Johor Bahru"],
+    "Malaysia": ["Kuala Lumpur", "Penang", "Langkawi"],
     "Maldives": ["Malé"],
     "Malta": ["Valletta"],
-    "Mexico": ["Mexico City", "Cancun", "Guadalajara", "Oaxaca", "Playa del Carmen", "Tulum"],
-    "Monaco": ["Monte Carlo"],
+    "Mexico": ["Mexico City", "Cancún", "Guadalajara", "Oaxaca"],
+    "Monaco": ["Monaco"],
     "Mongolia": ["Ulaanbaatar"],
     "Montenegro": ["Kotor", "Podgorica"],
-    "Morocco": ["Marrakech", "Fes", "Casablanca", "Rabat", "Chefchaouen"],
+    "Morocco": ["Marrakech", "Casablanca", "Fez", "Rabat"],
     "Nepal": ["Kathmandu", "Pokhara"],
-    "Netherlands": ["Amsterdam", "Rotterdam", "The Hague", "Utrecht"],
-    "New Zealand": ["Auckland", "Wellington", "Queenstown", "Christchurch", "Rotorua"],
+    "Netherlands": ["Amsterdam", "Rotterdam", "The Hague"],
+    "New Zealand": ["Auckland", "Wellington", "Queenstown", "Christchurch"],
     "Nigeria": ["Lagos", "Abuja"],
-    "North Macedonia": ["Skopje", "Ohrid"],
-    "Norway": ["Oslo", "Bergen", "Tromsø", "Stavanger"],
-    "Oman": ["Muscat", "Salalah"],
+    "North Macedonia": ["Skopje"],
+    "Norway": ["Oslo", "Bergen", "Tromsø"],
+    "Oman": ["Muscat"],
     "Pakistan": ["Karachi", "Lahore", "Islamabad"],
-    "Panama": ["Panama City", "Boquete"],
+    "Panama": ["Panama City"],
     "Papua New Guinea": ["Port Moresby"],
     "Paraguay": ["Asunción"],
-    "Peru": ["Lima", "Cusco", "Machu Picchu", "Arequipa"],
-    "Philippines": ["Manila", "Cebu", "Palawan", "Boracay"],
-    "Poland": ["Warsaw", "Kraków", "Gdańsk", "Wrocław"],
-    "Portugal": ["Lisbon", "Porto", "Faro", "Sintra", "Madeira"],
+    "Peru": ["Lima", "Cusco", "Arequipa"],
+    "Philippines": ["Manila", "Cebu", "Palawan"],
+    "Poland": ["Warsaw", "Kraków", "Gdańsk"],
+    "Portugal": ["Lisbon", "Porto", "Faro"],
     "Qatar": ["Doha"],
-    "Romania": ["Bucharest", "Brașov", "Cluj-Napoca"],
+    "Romania": ["Bucharest", "Brașov"],
     "Russia": ["Moscow", "Saint Petersburg"],
     "Rwanda": ["Kigali"],
-    "Saudi Arabia": ["Riyadh", "Jeddah", "AlUla"],
+    "Saudi Arabia": ["Riyadh", "Jeddah", "Al Ula"],
     "Serbia": ["Belgrade"],
-    "Seychelles": ["Victoria", "Mahé"],
+    "Seychelles": ["Mahé"],
     "Singapore": ["Singapore"],
     "Slovakia": ["Bratislava"],
-    "Slovenia": ["Ljubljana", "Bled"],
-    "South Africa": ["Cape Town", "Johannesburg", "Durban", "Kruger National Park"],
-    "South Korea": ["Seoul", "Busan", "Jeju"],
-    "Spain": ["Barcelona", "Madrid", "Seville", "Valencia", "Granada", "Málaga", "Bilbao"],
+    "Slovenia": ["Ljubljana"],
+    "South Africa": ["Cape Town", "Johannesburg", "Durban"],
+    "South Korea": ["Seoul", "Busan"],
+    "Spain": ["Madrid", "Barcelona", "Seville", "Valencia", "Granada"],
     "Sri Lanka": ["Colombo", "Kandy", "Galle"],
-    "Sweden": ["Stockholm", "Gothenburg", "Malmö"],
-    "Switzerland": ["Zurich", "Geneva", "Lucerne", "Interlaken", "Basel", "Zermatt"],
+    "Sweden": ["Stockholm", "Gothenburg"],
+    "Switzerland": ["Zurich", "Geneva", "Lucerne", "Interlaken"],
     "Taiwan": ["Taipei", "Kaohsiung"],
-    "Tanzania": ["Dar es Salaam", "Zanzibar", "Arusha"],
-    "Thailand": ["Bangkok", "Phuket", "Chiang Mai", "Krabi", "Pattaya", "Koh Samui"],
-    "Tunisia": ["Tunis", "Sidi Bou Said", "Sousse"],
-    "Turkey": ["Istanbul", "Cappadocia", "Antalya", "Izmir", "Ankara"],
+    "Tanzania": ["Zanzibar City", "Arusha"],
+    "Thailand": ["Bangkok", "Chiang Mai", "Phuket"],
+    "Tunisia": ["Tunis"],
+    "Turkey": ["Istanbul", "Cappadocia", "Antalya"],
     "Uganda": ["Kampala"],
-    "Ukraine": ["Kyiv", "Lviv", "Odesa"],
+    "Ukraine": ["Kyiv"],
     "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah"],
     "United Kingdom": ["London", "Edinburgh", "Manchester", "Birmingham", "Liverpool", "Glasgow", "Belfast"],
     "United States": ["New York", "Los Angeles", "San Francisco", "Las Vegas", "Chicago", "Miami", "Washington DC", "Boston", "Seattle", "New Orleans", "San Diego", "Honolulu"],
@@ -497,25 +435,6 @@ const COUNTRY_CITIES = {
     "Zambia": ["Lusaka", "Livingstone"],
     "Zimbabwe": ["Harare", "Victoria Falls"]
 };
-
-function initCountryDropdown() {
-    // Never replace the node. Just populate the existing select in-place to avoid
-    // a race where the browser/form restamp drops the replacement out of the DOM.
-    const select = document.getElementById('country');
-    if (!select) return;
-    select.innerHTML = '<option value="" disabled>Select a country</option>';
-    const sorted = Object.keys(COUNTRY_CITIES).sort();
-    sorted.forEach(c => {
-        const opt = document.createElement('option');
-        opt.value = c;
-        opt.textContent = c;
-        select.appendChild(opt);
-    });
-    const australiaIndex = Math.max(1, sorted.indexOf('Australia') + 1);
-    select.selectedIndex = australiaIndex;
-    countrySelect = select;
-    updateCityDropdown();
-}
 
 function updateCityDropdown() {
     const country = document.getElementById('country')?.value || '';
@@ -531,15 +450,21 @@ function updateCityDropdown() {
     });
 }
 
-let countrySelect = document.getElementById('country');
-let citySelect = document.getElementById('citySelect');
-let citiesRaw = document.getElementById('citiesRaw');
-
-// Bind change listener once; updateCityDropdown reads the live node each time.
-countrySelect.addEventListener('change', () => {
+function initCountryDropdown() {
+    const select = document.getElementById('country');
+    if (!select) return;
+    select.innerHTML = '<option value="" disabled>Select a country</option>';
+    const sorted = Object.keys(COUNTRY_CITIES).sort();
+    sorted.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        select.appendChild(opt);
+    });
+    const australiaIndex = Math.max(1, sorted.indexOf('Australia') + 1);
+    select.selectedIndex = australiaIndex;
     updateCityDropdown();
-    if (citiesRaw) citiesRaw.value = "";
-});
+}
 
 let addedCities = [];
 
@@ -675,12 +600,10 @@ async function checkApi() {
     fetch(`${API}/ozmoeg-trip-planner.html`, { method: 'GET', mode: 'cors' })
         .then(r => r.ok ? r.text() : Promise.reject('not ok'))
         .then(html => {
-            // Only replace if the fetched page actually contains the new UI sections.
             if (html.includes('paceContainer') && html.includes('addedCitiesList')) {
                 document.open();
                 document.write(html);
                 document.close();
-                // Re-initialize after replacing the document so dropdowns populate immediately.
                 if (typeof initCountryDropdown === 'function') initCountryDropdown();
                 if (typeof syncCities === 'function') syncCities();
             }
@@ -688,27 +611,17 @@ async function checkApi() {
         .catch(() => {});
 })();
 
-// Run init in order after DOM is ready.
 function runInit() {
     checkApi();
     initCountryDropdown();
     syncCities();
-    // Defensive: if the dropdown still has only the placeholder, populate in-place.
-    const c = document.getElementById('country');
-    if (c.options.length <= 1) {
-        c.innerHTML = '<option value="" disabled>Select a country</option>';
-        const sorted = Object.keys(COUNTRY_CITIES).sort();
-        sorted.forEach(name => {
-            const opt = document.createElement('option');
-            opt.value = name;
-            opt.textContent = name;
-            c.appendChild(opt);
-        });
-        c.selectedIndex = Math.max(1, sorted.indexOf('Australia') + 1);
-        countrySelect = c;
-        updateCityDropdown();
+    // Bind change listener here after DOM is ready.
+    const country = document.getElementById('country');
+    if (country) {
+        country.addEventListener('change', updateCityDropdown);
     }
 }
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInit);
 } else {
@@ -732,14 +645,16 @@ document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
         const parent = chip.parentElement;
         if (parent && parent.id === 'pace') {
-            // Pace is single-select
             parent.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
             chip.classList.add('on');
             const bullet = document.getElementById('paceBullet');
-            if (bullet) {
-                bullet.textContent = chip.dataset.value === 'compressed'
-                    ? 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions'
-                    : 'Relaxed pace: 1–2 activities per day';
+            const bulletText = document.getElementById('paceBulletText');
+            if (chip.dataset.value === 'compressed') {
+                if (bullet) bullet.textContent = 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions';
+                if (bulletText) bulletText.textContent = 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions';
+            } else {
+                if (bullet) bullet.textContent = 'Relaxed pace: 1–2 activities per day';
+                if (bulletText) bulletText.textContent = 'Relaxed pace: 1–2 activities per day';
             }
         } else {
             chip.classList.toggle('on');
