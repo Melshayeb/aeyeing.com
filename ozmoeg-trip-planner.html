@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>OzMoEg Trip Planner</title>
     <style>
         :root {
@@ -145,6 +148,22 @@
             user-select: none;
         }
         .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .added-city {
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--panel); border: 1px solid var(--border); border-radius: .5rem;
+            padding: .55rem .75rem; margin-bottom: .4rem; font-size: .9rem;
+        }
+        .added-city .info { flex: 1; }
+        .added-city .name { font-weight: 600; }
+        .added-city .dates { color: var(--muted); font-size: .8rem; }
+        .added-city .actions { display: flex; gap: .4rem; }
+        .added-city button {
+            padding: .3rem .55rem; font-size: .75rem; border-radius: .35rem;
+            border: 1px solid var(--border); background: transparent; color: var(--muted);
+            cursor: pointer;
+        }
+        .added-city button.edit:hover { color: var(--accent); border-color: var(--accent); }
+        .added-city button.delete { color: var(--danger); border-color: var(--danger); }
         .download-link { display: none; margin-top: .8rem; }
         .preview-wrap {
             margin-top: 1.2rem;
@@ -288,7 +307,8 @@
                 <div><input type="date" id="cityEnd" /></div>
             </div>
             <button type="button" id="addCityBtn" class="secondary" style="margin-top:.5rem;">+ Add city</button>
-            <textarea id="citiesRaw" rows="3" readonly style="margin-top:.5rem;background:var(--panel);">Melbourne 2026-08-10 2026-08-14</textarea>
+            <div id="addedCitiesList" class="added-cities" style="margin-top:.5rem;"></div>
+            <textarea id="citiesRaw" rows="3" readonly style="display:none;">Melbourne 2026-08-10 2026-08-14</textarea>
 
             <label>Travelers <span class="example">adult 40, adult 38, child 12, child 9</span></label>
             <input id="travelersRaw" value="adult 40, adult 38, child 12, child 9">
@@ -350,6 +370,8 @@
 <script>
 const API = new URLSearchParams(location.search).get('api') || 'https://trip-planner.aeyeing.com';
 const LOCAL_API = 'http://localhost:8777';
+// Use the same host (API server) as a fallback when GitHub Pages is serving a stale copy.
+const PAGE_HOST = API.replace(/\/$/, '');
 
 const COUNTRY_CITIES = {
     "Afghanistan": ["Kabul", "Herat", "Kandahar"],
@@ -511,6 +533,68 @@ countrySelect.addEventListener('change', () => {
 
 let addedCities = [];
 
+function syncCities() {
+    document.getElementById('citiesRaw').value = addedCities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+    renderAddedCities();
+}
+
+function renderAddedCities() {
+    const list = document.getElementById('addedCitiesList');
+    list.innerHTML = '';
+    if (addedCities.length === 0) {
+        list.innerHTML = '<div style="color:var(--muted);font-size:.85rem;" id="noCitiesMsg">No cities added yet.</div>';
+        return;
+    }
+    addedCities.forEach((c, idx) => {
+        const row = document.createElement('div');
+        row.className = 'added-city';
+        row.innerHTML = `
+            <div class="info">
+                <div class="name">${escapeHtml(c.city)}</div>
+                <div class="dates">${formatDate(c.start_date)} → ${formatDate(c.end_date)}</div>
+            </div>
+            <div class="actions">
+                <button type="button" class="edit" data-idx="${idx}">Edit</button>
+                <button type="button" class="delete" data-idx="${idx}">Delete</button>
+            </div>`;
+        list.appendChild(row);
+    });
+    list.querySelectorAll('button.edit').forEach(btn => {
+        btn.addEventListener('click', () => editCity(parseInt(btn.dataset.idx, 10)));
+    });
+    list.querySelectorAll('button.delete').forEach(btn => {
+        btn.addEventListener('click', () => deleteCity(parseInt(btn.dataset.idx, 10)));
+    });
+}
+
+function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function editCity(idx) {
+    const c = addedCities[idx];
+    if (!c) return;
+    citySelect.value = c.city;
+    document.getElementById('cityStart').value = c.start_date;
+    document.getElementById('cityEnd').value = c.end_date;
+    addedCities.splice(idx, 1);
+    syncCities();
+    setStatus('City loaded into the editor. Modify above and click Add city.', 'ok');
+}
+
+function deleteCity(idx) {
+    addedCities.splice(idx, 1);
+    syncCities();
+    setStatus('City removed.', 'ok');
+}
+
 document.getElementById('addCityBtn').addEventListener('click', () => {
     const city = citySelect.value;
     const start = document.getElementById('cityStart').value;
@@ -524,10 +608,20 @@ document.getElementById('addCityBtn').addEventListener('click', () => {
         return;
     }
     addedCities.push({ city, start_date: start, end_date: end });
-    citiesRaw.value = addedCities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+    syncCities();
     citySelect.value = "";
+    document.getElementById('cityStart').value = "";
+    document.getElementById('cityEnd').value = "";
     setStatus('City added.', 'ok');
 });
+
+// Seed the default Melbourne example on first load if nothing is parsed.
+if (!document.getElementById('citiesRaw').value.trim()) {
+    addedCities = [{ city: 'Melbourne', start_date: '2026-08-10', end_date: '2026-08-14' }];
+} else {
+    addedCities = parseCities(document.getElementById('citiesRaw').value);
+}
+syncCities();
 
 async function checkApi() {
     const el = document.getElementById('apiStatus');
@@ -553,6 +647,24 @@ async function checkApi() {
         el.textContent = 'Disconnected — will be back soon';
     }
 }
+
+// If this copy of the page is missing the Pace section, the GitHub Pages CDN is still serving
+// the old HTML. Ask the API server for its copy of the page, which is always the latest version.
+(function ensureLatestPage() {
+    if (document.getElementById('paceContainer') || document.getElementById('apiStatus')?.textContent?.includes('Connected')) return;
+    fetch(`${API}/ozmoeg-trip-planner.html`, { method: 'GET', mode: 'cors' })
+        .then(r => r.ok ? r.text() : Promise.reject('not ok'))
+        .then(html => {
+            // Only replace if the fetched page actually contains the new Pace section.
+            if (html.includes('paceContainer') || html.includes('Pace')) {
+                document.open();
+                document.write(html);
+                document.close();
+            }
+        })
+        .catch(() => {});
+})();
+
 checkApi();
 initCountryDropdown();
 
@@ -644,6 +756,7 @@ function fillForm(req) {
     if (req.cities) {
         addedCities = req.cities.map(c => ({ city: c.city, start_date: c.start_date, end_date: c.end_date }));
         document.getElementById('citiesRaw').value = req.cities.map(c => `${c.city} ${c.start_date} ${c.end_date}`).join('\n');
+        syncCities();
     }
     if (req.travelers) document.getElementById('travelersRaw').value = req.travelers.map(t => `${t.name.toLowerCase()} ${t.age}`).join(', ');
     setChips('interests', req.interests || []);
