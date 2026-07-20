@@ -518,14 +518,16 @@ function initCountryDropdown() {
 }
 
 function updateCityDropdown() {
-    const country = countrySelect.value;
-    citySelect.innerHTML = '<option value="">Choose city…</option>';
+    const country = document.getElementById('country')?.value || '';
+    const city = document.getElementById('citySelect');
+    if (!city) return;
+    city.innerHTML = '<option value="">Choose city…</option>';
     if (!country || !COUNTRY_CITIES[country]) return;
-    COUNTRY_CITIES[country].forEach(city => {
+    COUNTRY_CITIES[country].forEach(cityName => {
         const opt = document.createElement('option');
-        opt.value = city;
-        opt.textContent = city;
-        citySelect.appendChild(opt);
+        opt.value = cityName;
+        opt.textContent = cityName;
+        city.appendChild(opt);
     });
 }
 
@@ -533,7 +535,7 @@ let countrySelect = document.getElementById('country');
 let citySelect = document.getElementById('citySelect');
 let citiesRaw = document.getElementById('citiesRaw');
 
-// Bind change listener once; initCountryDropdown uses the same node.
+// Bind change listener once; updateCityDropdown reads the live node each time.
 countrySelect.addEventListener('change', () => {
     updateCityDropdown();
     if (citiesRaw) citiesRaw.value = "";
@@ -591,7 +593,8 @@ function escapeHtml(s) {
 function editCity(idx) {
     const c = addedCities[idx];
     if (!c) return;
-    citySelect.value = c.city;
+    const cityEl = document.getElementById('citySelect');
+    if (cityEl) cityEl.value = c.city;
     const startEl = document.getElementById('cityStart');
     const endEl = document.getElementById('cityEnd');
     if (startEl) startEl.value = c.start_date;
@@ -608,9 +611,9 @@ function deleteCity(idx) {
 }
 
 function addCity() {
-    const city = citySelect.value;
-    const start = document.getElementById('cityStart').value;
-    const end = document.getElementById('cityEnd').value;
+    const city = document.getElementById('citySelect')?.value || '';
+    const start = document.getElementById('cityStart')?.value || '';
+    const end = document.getElementById('cityEnd')?.value || '';
     if (!city || !start || !end) {
         setStatus('Please select a city and both dates.', 'error');
         return;
@@ -621,7 +624,7 @@ function addCity() {
     }
     addedCities.push({ city, start_date: start, end_date: end });
     syncCities();
-    citySelect.value = "";
+    document.getElementById('citySelect').value = "";
     document.getElementById('cityStart').value = "";
     document.getElementById('cityEnd').value = "";
     setStatus('City added.', 'ok');
@@ -793,9 +796,9 @@ async function parseFromText() {
 
 function fillForm(req) {
     if (req.destination_country) {
-        // Match by text if value doesn't work, then update cities.
-        const match = Array.from(countrySelect.options).find(o => o.value === req.destination_country || o.textContent === req.destination_country);
-        if (match) countrySelect.selectedIndex = match.index;
+        const c = document.getElementById('country');
+        const match = Array.from(c.options).find(o => o.value === req.destination_country || o.textContent === req.destination_country);
+        if (match) c.selectedIndex = match.index;
         updateCityDropdown();
     }
     if (req.requester_email) document.getElementById('email').value = req.requester_email;
