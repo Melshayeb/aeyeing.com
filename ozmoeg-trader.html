@@ -2961,6 +2961,10 @@
         function toggleSound(enabled) {
             soundEnabled = enabled;
             try { localStorage.setItem('ozmoeg-sound-enabled', enabled ? 'true' : 'false'); } catch (e) {}
+            // Prime the audio engine on the user gesture so autoplay-blocked sounds can fire later.
+            if (enabled && sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(err => console.warn('AudioContext resume failed:', err));
+            }
             const btn = document.getElementById('sound-toggle');
             if (btn) {
                 btn.textContent = enabled ? '🔊 Sound on' : '🔇 Sound off';
@@ -4111,7 +4115,7 @@
                     ...(results || []),
                     ...(preMarketResults || []),
                     ...(preMarketWatchlist || []),
-                    ...(data.bouncers || [])
+                    ...(data.bounce_results || [])
                 ];
                 const prevVisibleTickers = new Set(window._lastVisibleTickers || []);
                 const currentVisibleTickers = new Set(allResultsForDrop.map(r => r.ticker).filter(Boolean));
