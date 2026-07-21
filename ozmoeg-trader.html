@@ -3348,7 +3348,6 @@
         let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
         let currentMarketStatus = 'OPEN';
-        let refreshTimerId = null;
         let soundEnabled = localStorage.getItem('ozmoeg-sound-enabled') !== 'false';
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
@@ -3391,53 +3390,90 @@
             return IDLE_REFRESH_INTERVAL_MS;
         }
 
-        // Compute the next wall-clock aligned refresh.
-        function computeNextRefresh() {
-            const interval = getRefreshIntervalMs();
-            const now = Date.now();
-            if (interval <= 0) {
-                // Markets are closed; check again in 60 seconds so the label can recover if status changes.
-                return now + 60000;
-            }
-            // Round up to the next interval boundary from the epoch.
-            const next = Math.ceil(now / interval) * interval;
-            // If we are exactly on a boundary, add one interval so we don't fire immediately.
-            return next <= now ? next + interval : next;
+        // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
+        // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
+        // race where the frontend refreshes on a wall-clock boundary before the backend scan
+        // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
+        const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
+        let refreshTimerId = null;
+        let nextPollAt = Date.now() + 5000; // small delay on first load so static HTML renders first
+
+        function getManifestFile() {
+            return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
         }
 
-        // Persist the next refresh time across page reloads so the countdown is always
-        // anchored to the cron schedule, not to when the browser happens to open.
-        let nextRefreshAt = (() => {
+        function getDefaultSnapshotFile() {
+            return currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+        }
+
+        async function pollManifest() {
+            if (window._pollingManifest) return;
+            window._pollingManifest = true;
+            nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+            updateRefreshCountdown();
             try {
-                const stored = localStorage.getItem('ozmoeg-next-refresh');
-                const ts = stored ? parseInt(stored, 10) : 0;
-                if (ts && !isNaN(ts) && ts > Date.now()) return ts;
-            } catch (e) { /* storage may be unavailable */ }
-            const initial = computeNextRefresh();
-            return Number.isFinite(initial) ? initial : Date.now() + (isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : IDLE_REFRESH_INTERVAL_MS);
-        })();
+                const manifestFile = getManifestFile();
+                const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+                const res = await fetch(manifestFile + '?_=' + buster, {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                if (!res.ok) {
+                    console.warn('Manifest fetch failed:', res.status);
+                    return;
+                }
+                const manifest = await res.json();
+                if (!manifest || !manifest.latest) {
+                    console.warn('Manifest missing latest snapshot');
+                    return;
+                }
+                const latest = manifest.latest;
+                const lastUpdated = manifest.last_updated;
+                // Load if the snapshot name changed OR if the manifest timestamp is newer than
+                // the last loaded one. This covers the case where the backend rewrites the same
+                // filename with updated content (it shouldn't, but be defensive).
+                const lastLoaded = window._lastLoadedSnapshot;
+                const lastLoadedTs = window._lastLoadedSnapshotTs;
+                const isNewSnapshot = !lastLoaded || latest !== lastLoaded;
+                const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
+                if (isNewSnapshot || isNewerTimestamp) {
+                    await loadLiveData(latest);
+                }
+            } catch (e) {
+                console.warn('Manifest poll failed:', e);
+            } finally {
+                window._pollingManifest = false;
+            }
+        }
+
+        function resetRefreshTimer() {
+            if (refreshTimerId) clearInterval(refreshTimerId);
+            nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+            refreshTimerId = setInterval(() => {
+                updateRefreshCountdown();
+                if (Date.now() >= nextPollAt) {
+                    pollManifest().catch(err => console.error('Auto pollManifest failed:', err));
+                }
+            }, 1000);
+        }
 
         function updateRefreshCountdown() {
             const label = document.getElementById('page-refresh-label');
             const lastLabel = document.getElementById('last-refresh-label');
-            // "Last refresh" now reflects the actual wall-clock time the browser last fetched data,
-            // so it ticks forward every minute even if the underlying JSON scan is throttled.
-            const lastFetchTime = window._lastFetchSuccessAt || window._lastFetchAttemptAt || window._lastScanTimestamp;
+            // "Last refresh" reflects the actual JSON scan timestamp so users can see how fresh the data is.
+            const lastFetchTime = window._lastFetchSuccessAt || window._lastFetchAttemptAt;
             const jsonDataTime = window._lastScanTimestamp;
             const newsTickerTs = window._lastNewsTickerTs || jsonDataTime;
             if (lastLabel) {
-                if (lastFetchTime) {
-                    const displayTs = newsTickerTs || lastFetchTime;
-                    const fetchAgeMin = Math.max(0, (Date.now() - new Date(lastFetchTime).getTime()) / 60000);
-                    const jsonAgeMin = jsonDataTime
-                        ? Math.max(0, (Date.now() - new Date(jsonDataTime).getTime()) / 60000)
-                        : fetchAgeMin;
-                    // Data staleness is measured against the JSON scan timestamp, but the displayed
-                    // "Last refresh" time is the browser's last successful fetch.
+                if (jsonDataTime) {
+                    const jsonAgeMin = Math.max(0, (Date.now() - new Date(jsonDataTime).getTime()) / 60000);
                     const stale = jsonAgeMin > 5;
                     const ageText = stale ? ` ⚠️ ${Math.round(jsonAgeMin)}m stale data` : '';
-                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(displayTs))}${ageText}`;
+                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(jsonDataTime))}${ageText}`;
                     lastLabel.style.color = stale ? 'var(--danger)' : '';
+                } else if (lastFetchTime) {
+                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(lastFetchTime))}`;
+                    lastLabel.style.color = '';
                 } else {
                     lastLabel.textContent = 'Last refresh: —';
                     lastLabel.style.color = '';
@@ -3445,7 +3481,6 @@
             }
             if (!label) return;
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            const interval = getRefreshIntervalMs();
             let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
                             (usStatus === 'OPEN' && isActiveTradingWindow());
             label.classList.toggle('active-refresh', active);
@@ -3465,6 +3500,7 @@
                 modeLabel = '(markets closed)';
             }
 
+            const interval = getRefreshIntervalMs();
             if (interval === 0) {
                 const nextOpen = findNextMarketOpen(new Date());
                 let openText;
@@ -3479,7 +3515,7 @@
                 return;
             }
 
-            const remaining = Math.max(0, nextRefreshAt - Date.now());
+            const remaining = Math.max(0, nextPollAt - Date.now());
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
@@ -3546,53 +3582,6 @@
                 osc.start(now + i * 0.22);
                 osc.stop(now + i * 0.22 + 0.5);
             }
-        }
-
-        function scheduleNextRefresh(anchorTimestamp) {
-            const interval = getRefreshIntervalMs();
-            const now = Date.now();
-            let next;
-            if (interval <= 0) {
-                // Markets closed — keep a 60 s heartbeat so the label recovers when status changes.
-                next = now + 60000;
-            } else {
-                // Always compute the next cron boundary from the current wall-clock time.
-                // The JSON scan timestamp is only used as a fallback sanity check, never as the
-                // primary anchor, because an old/stale scan timestamp would push nextRefreshAt
-                // into the past and make the countdown stick at 0:00.
-                const anchor = anchorTimestamp ? new Date(anchorTimestamp).getTime() : 0;
-                const anchorMs = Number.isFinite(anchor) && anchor > 0 ? anchor : now;
-                // Align to the previous boundary of the scan timestamp (or now) so the boundary
-                // sequence matches the cron schedule, then step forward until we land in the future.
-                const alignedStart = Math.floor(anchorMs / interval) * interval;
-                next = alignedStart + interval;
-                while (next <= now) {
-                    next += interval;
-                }
-            }
-            nextRefreshAt = Number.isFinite(next) ? next : now + (isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : IDLE_REFRESH_INTERVAL_MS);
-            try {
-                localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
-            } catch (e) { /* storage may be unavailable */ }
-            updateRefreshCountdown();
-        }
-
-        function resetRefreshTimer() {
-            if (refreshTimerId) clearInterval(refreshTimerId);
-            scheduleNextRefresh(window._lastScanTimestamp);
-            refreshTimerId = setInterval(() => {
-                const interval = getRefreshIntervalMs();
-                if (interval === 0) {
-                    updateRefreshCountdown();
-                    return;
-                }
-                if (Date.now() >= nextRefreshAt) {
-                    const candidate = computeNextRefresh();
-                    nextRefreshAt = Number.isFinite(candidate) ? candidate : Date.now() + interval;
-                    loadLiveData().catch(err => console.error('Auto loadLiveData failed:', err));
-                }
-                updateRefreshCountdown();
-            }, 1000);
         }
 
         function fmtCurrency(n) {
@@ -4544,7 +4533,7 @@
         }
 
 
-        async function loadLiveData() {
+        async function loadLiveData(forcedSnapshotFile) {
             if (window._loadingLiveData) return;
             window._loadingLiveData = true;
             try {
@@ -4553,24 +4542,26 @@
                 // We cache-bust the manifest so Cloudflare always serves the latest version map.
                 const manifestBuster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
                 const manifestFile = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
-                const manifestRes = await fetch(manifestFile + '?_=' + manifestBuster, {
-                    cache: 'no-store',
-                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                });
-                let snapshotFile = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-                if (manifestRes.ok) {
-                    try {
-                        const manifestText = await manifestRes.text();
-                        const manifest = JSON.parse(manifestText);
-                        if (manifest && manifest.latest) {
-                            snapshotFile = manifest.latest;
-                            window._lastManifestFetchSuccessAt = new Date();
+                let snapshotFile = forcedSnapshotFile || (currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json');
+                if (!forcedSnapshotFile) {
+                    const manifestRes = await fetch(manifestFile + '?_=' + manifestBuster, {
+                        cache: 'no-store',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                    if (manifestRes.ok) {
+                        try {
+                            const manifestText = await manifestRes.text();
+                            const manifest = JSON.parse(manifestText);
+                            if (manifest && manifest.latest) {
+                                snapshotFile = manifest.latest;
+                                window._lastManifestFetchSuccessAt = new Date();
+                            }
+                        } catch (e) {
+                            console.warn('Manifest parse failed; falling back to', snapshotFile, e);
                         }
-                    } catch (e) {
-                        console.warn('Manifest parse failed; falling back to', snapshotFile, e);
+                    } else {
+                        console.warn('Manifest fetch failed; falling back to', snapshotFile, manifestRes.status);
                     }
-                } else {
-                    console.warn('Manifest fetch failed; falling back to', snapshotFile, manifestRes.status);
                 }
 
                 const ts = Date.now();
@@ -4583,12 +4574,15 @@
                 });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
-                    console.warn('Could not load', jsonFile, res.status);
+                    console.warn('Could not load', snapshotFile, res.status);
                     setMarketLoading(currentMarket, false);
                     return;
                 }
                 const data = await res.json();
                 window._lastFetchSuccessAt = new Date();
+                // Remember what we just loaded so the manifest poller skips unchanged snapshots.
+                window._lastLoadedSnapshot = snapshotFile;
+                window._lastLoadedSnapshotTs = data.last_updated;
                 const results = data.scan_results || [];
                 const preMarketResults = data.pre_market_results || [];
                 const preMarketWatchlist = data.pre_market_watchlist || [];
@@ -4612,13 +4606,7 @@
                     window._prevLiveQuotes = {};
                 }
 
-                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
-                // aligned with the cron schedule, not the browser load time.
                 window._lastScanTimestamp = lastUpdated;
-                // Recompute the next refresh boundary from the scan timestamp so the timer
-                // shows the *true* time to the next scheduled fetch instead of re-using the
-                // stale value that just fired.
-                scheduleNextRefresh(lastUpdated);
 
                 // Update badge — prefer real-time US market status when the JSON scan is stale
                 // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
