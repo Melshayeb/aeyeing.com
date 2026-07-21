@@ -3449,7 +3449,7 @@
         }
 
         async function pollManifest() {
-            if (window._pollingManifest) return;
+            if (window._pollingManifest || window._loadingLiveData) return;
             window._pollingManifest = true;
             nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
             updateRefreshCountdown();
