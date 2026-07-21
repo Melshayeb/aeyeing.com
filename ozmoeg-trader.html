@@ -2160,13 +2160,13 @@
 <ul id="plan-rules-list">
 <li>Price range: $0.20–$50 ✅</li>
 <li>Market cap: $1M–$5B ✅</li>
-<li>Active mover ≥5% or RVOL ≥1.0x (pre/after-hours); regular-hours active mover ≥5% or RVOL ≥2.0x ✅</li>
-<li>Minimum current volume 50,000 shares (pre/after-hours); avg dollar volume ≥$0.5M ✅</li>
-<li>Max float 50M shares (regular hours) / 100M shares (pre/after-hours); volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
+<li>Active mover ≥5% or RVOL ≥1.0x ✅</li>
+<li>Minimum current volume 50,000 shares ✅</li>
+<li>Max float 100M shares; volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
 <li>Move cap 800% (tier-2 exception up to 1,500% with RVOL ≥1.5x &amp; VFR ≥0.5x); tiny-cap tier up to 150% ✅</li>
 <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
 <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
-<li>News catalyst scored ≥3 from ≥2 sources; gating relaxed in extended hours and regular-hours US ✅</li>
+<li>News catalyst scored ≥3 from ≥2 sources ✅</li>
 <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
 <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
 <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
@@ -2176,7 +2176,7 @@
 </ul>
 <h4>📼 Volume Indicator</h4>
 <div class="tape-legend" id="tape-legend">
-<p>The <strong>Tape (15s)</strong> column is a simple volume indicator comparing today's trading volume against the 3-month average daily volume (ADV):</p>
+
 <p class="tape-note"><span class="tape-mini tape-high">🔥</span> = high volume (RVOL ≥ 2.0) · <span class="tape-mini tape-medium">⚡</span> = moderate volume (RVOL 1.0 – 1.99) · <span class="tape-mini tape-low">🌱</span> = low volume (RVOL &lt; 1.0)</p>
 </div>
 </div>
@@ -3130,31 +3130,32 @@
                 list.innerHTML = `
                     <li>Price range: $${priceMin}–$${priceMax} ✅</li>
                     <li>Market cap: ${fm(mktMin)}–${fm(mktMax)} ✅</li>
-                    <li>Active mover ≥${moveMin}% or RVOL ≥${rvolMin}x (pre/after-hours ≥${extMove}% or RVOL ≥${extRvol}x) ✅</li>
-                    <li>Minimum volume ${volumeMin.toLocaleString()} shares; avg dollar volume ≥${fm(avgDvMin)} (${fm(extAvgDv)} in pre/after-hours) ✅</li>
+                    <li>Active mover ≥${moveMin}% or RVOL ≥${rvolMin}x ✅</li>
+                    <li>Minimum current volume ${volumeMin.toLocaleString()} shares ✅</li>
                     <li>Max float ${maxFloat.toLocaleString()} shares; volume/float ≥${vfrMin}x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
                     <li>Move cap ${moveMax}% (tier-2 exception up to ${moveTier2}% with RVOL ≥${usFilters.move_tier_2_min_rvol}x &amp; VFR ≥${usFilters.move_tier_2_min_float_ratio}x); tiny-cap tier up to ${tinyMoveTier2}% ✅</li>
                     <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
                     <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
-                    <li>News catalyst scored ≥3 from ≥2 sources; gating relaxed in extended hours and regular-hours US ✅</li>
+                    <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
                     <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
                     <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
                     <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
                     <li>Risk:Reward ≥2.0:1 ✅</li>
                     <li>Position sizing: R = account balance × max daily loss % ÷ max trades per day; shares = R ÷ (entry − stop) ✅</li>
-                    <li>Scale out: 50% at 2R (T1), 25% at 3R (T2), trail rest above 5R (T3); breakeven stop after +1% ✅</li>
+                    <li>Scale out: 50% at T1, 25% at T2, trail rest above T3; breakeven stop after +1% ✅</li>
                 `;
             } else {
+                // Fallback to static unified rules if no scan stats yet.
                 list.innerHTML = `
                     <li>Price range: $0.20–$50 ✅</li>
                     <li>Market cap: $1M–$5B ✅</li>
-                    <li>Active mover ≥5% or RVOL ≥1.0x (pre/after-hours); regular-hours active mover ≥5% or RVOL ≥2.0x ✅</li>
-                    <li>Minimum current volume 50,000 shares (pre/after-hours); avg dollar volume ≥$0.5M ✅</li>
-                    <li>Max float 50M shares (regular hours) / 100M shares (pre/after-hours); volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
+                    <li>Active mover ≥5% or RVOL ≥1.0x ✅</li>
+                    <li>Minimum current volume 50,000 shares ✅</li>
+                    <li>Max float 100M shares; volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
                     <li>Move cap 800% (tier-2 exception up to 1,500% with RVOL ≥1.5x &amp; VFR ≥0.5x); tiny-cap tier up to 150% ✅</li>
                     <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
                     <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
-                    <li>News catalyst scored ≥3 from ≥2 sources; gating relaxed in extended hours and regular-hours US ✅</li>
+                    <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
                     <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
                     <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
                     <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
@@ -4086,8 +4087,13 @@
 
                 // Detect genuinely new ALERT tickers since the previous scan and play a chirp.
                 // We compare against the previous fetch's alert list so repeated rows stay silent.
+                const allResultsForSound = [
+                    ...(results || []),
+                    ...(preMarketResults || []),
+                    ...(preMarketWatchlist || [])
+                ];
                 const prevAlertTickers = new Set(window._lastAlertTickers || []);
-                const currentAlerts = results.filter(r => r.status === 'ALERT');
+                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
                 const newAlertTickers = currentAlerts.map(r => r.ticker).filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && newAlertTickers.length > 0) {
                     playNewAlertSound(newAlertTickers.length);
