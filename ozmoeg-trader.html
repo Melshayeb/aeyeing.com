@@ -108,8 +108,6 @@
             50% { opacity: 0.5; transform: scale(1.2); }
         }
         .last-updated { color: var(--text-secondary); font-size: 0.8rem; }
-        .manual-refresh-btn { background: #1f2937; border: 1px solid #374151; color: #9ca3af; border-radius: 6px; padding: 0.25rem 0.5rem; margin-left: 0.5rem; cursor: pointer; font-size: 0.85rem; line-height: 1; transition: background 0.15s, color 0.15s; }
-        .manual-refresh-btn:hover { background: #374151; color: #e5e7eb; }
         .refresh-btn {
             background: var(--accent-teal); color: white; border: none;
             padding: 0.5rem 1.2rem; border-radius: 6px;
@@ -1400,7 +1398,6 @@
 </div>
 <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
 <span class="last-updated" id="page-refresh-label">Next refresh: —</span>
-<button class="manual-refresh-btn" id="manual-refresh" onclick="nextRefreshAt=Date.now(); loadLiveData();" title="Refresh now">↻</button>
 </div></header>
 <a class="telegram-cta" href="https://t.me/+c92A0PlqVBg2ZTdl" rel="noopener" target="_blank" title="Join OzMoEg Money Maker Telegram Channel">
 <div class="telegram-icon">✈️</div>
@@ -3023,20 +3020,24 @@
             const now = Date.now();
             let next;
             if (interval <= 0) {
+                // Markets closed — keep a 60 s heartbeat so the label recovers when status changes.
                 next = now + 60000;
             } else {
-                const anchor = anchorTimestamp ? new Date(anchorTimestamp).getTime() : now;
-                // Snap to the previous wall-clock interval boundary because the cron fires on
-                // the boundary (18:00, 18:02, 18:04 ...), not at the exact scan completion time.
-                const alignedAnchor = Math.floor(anchor / interval) * interval;
-                // If the anchor is unreasonably old (no data yet), fall back to the current wall-clock boundary.
-                const start = (anchorTimestamp && alignedAnchor > now - 24 * 3600 * 1000)
-                    ? alignedAnchor
-                    : Math.floor(now / interval) * interval;
-                next = start + interval;
+                // Always compute the next cron boundary from the current wall-clock time.
+                // The JSON scan timestamp is only used as a fallback sanity check, never as the
+                // primary anchor, because an old/stale scan timestamp would push nextRefreshAt
+                // into the past and make the countdown stick at 0:00.
+                const anchor = anchorTimestamp ? new Date(anchorTimestamp).getTime() : 0;
+                const anchorMs = Number.isFinite(anchor) && anchor > 0 ? anchor : now;
+                // Align to the previous boundary of the scan timestamp (or now) so the boundary
+                // sequence matches the cron schedule, then step forward until we land in the future.
+                const alignedStart = Math.floor(anchorMs / interval) * interval;
+                next = alignedStart + interval;
+                while (next <= now) {
+                    next += interval;
+                }
             }
             nextRefreshAt = Number.isFinite(next) ? next : now + (isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : IDLE_REFRESH_INTERVAL_MS);
-            // Persist so the countdown survives page reloads.
             try {
                 localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
             } catch (e) { /* storage may be unavailable */ }
@@ -3052,9 +3053,6 @@
                     updateRefreshCountdown();
                     return;
                 }
-                try {
-                    localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
-                } catch (e) { /* storage may be unavailable */ }
                 if (Date.now() >= nextRefreshAt) {
                     const candidate = computeNextRefresh();
                     nextRefreshAt = Number.isFinite(candidate) ? candidate : Date.now() + interval;
@@ -4103,11 +4101,12 @@
                 ];
                 const prevAlertTickers = new Set(window._lastAlertTickers || []);
                 const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
-                const newAlertTickers = currentAlerts.map(r => r.ticker).filter(t => !prevAlertTickers.has(t));
-                if (soundEnabled && newAlertTickers.length > 0) {
+                const currentAlertTickers = currentAlerts.map(r => r.ticker);
+                const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
+                if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
                     playNewAlertSound(newAlertTickers.length);
                 }
-                window._lastAlertTickers = currentAlerts.map(r => r.ticker);
+                window._lastAlertTickers = currentAlertTickers;
 
                 // Detect tickers that disappeared from the combined scanner list and play a drop sound.
                 // We track every ticker that was visible in any scanner view (live, pre/after, watchlist, bouncers).
@@ -4120,10 +4119,11 @@
                 const prevVisibleTickers = new Set(window._lastVisibleTickers || []);
                 const currentVisibleTickers = new Set(allResultsForDrop.map(r => r.ticker).filter(Boolean));
                 const droppedTickers = [...prevVisibleTickers].filter(t => !currentVisibleTickers.has(t));
-                if (soundEnabled && droppedTickers.length > 0) {
+                if (soundEnabled && window._soundInitialised && droppedTickers.length > 0) {
                     playDropSound(droppedTickers.length);
                 }
                 window._lastVisibleTickers = [...currentVisibleTickers];
+                window._soundInitialised = true;
 
                 const rawStatus = stats.market_status || 'OPEN';
                 const lastScanAgeMin = window._lastScanTimestamp
@@ -4301,28 +4301,6 @@
                 resetRefreshTimer();
             }
         }
-
-        // Manual refresh button (if present) re-fetches immediately and restarts the timer.
-        document.addEventListener('DOMContentLoaded', () => {
-            const manualRefreshBtn = document.getElementById('manual-refresh');
-            if (manualRefreshBtn) {
-                manualRefreshBtn.addEventListener('click', () => {
-                    nextRefreshAt = Date.now();
-                    loadLiveData();
-                });
-            }
-        });
-
-        // Prime the audio engine on the first user gesture anywhere on the page.
-        function primeAudioOnFirstGesture() {
-            if (sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
-                sharedAudioCtx.resume().catch(err => console.warn('AudioContext resume failed:', err));
-            }
-            document.removeEventListener('click', primeAudioOnFirstGesture);
-            document.removeEventListener('keydown', primeAudioOnFirstGesture);
-        }
-        document.addEventListener('click', primeAudioOnFirstGesture);
-        document.addEventListener('keydown', primeAudioOnFirstGesture);
 
         // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
