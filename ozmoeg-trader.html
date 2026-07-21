@@ -1468,7 +1468,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US AFTER-HOURS 06:10 AM AEST | Scanned: 50 | 0 candidates | 0 alerts (skipped: 0)
+🟡 US AFTER-HOURS 06:21 AM AEST | Scanned: 50 | 2 candidates | 2 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1490,7 +1490,22 @@
 </thead>
 <tbody>
 <!-- SCANNER_TABLE_BODY -->
-<tr><td colspan="6" style="text-align: center; color: var(--text-secondary);">No candidates met the full alert criteria in this scan</td></tr>
+<tr>
+<td class="ticker-cell">VIVK</td>
+<td>Vivakor <span class="country-badge">United States</span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (3)</span></td>
+<td class="news-age-cell"><span class="news-age" title="First published: 2026-07-21T18:35:27.000+0000">1h ago</span></td>
+<td><span class="tape-mini tape-high" title="RVOL 442.83x vs ADV (139,001,410 today / 313,891 avg). Last: 2026-07-21T20:20:38.616000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+12.8% · Entry $2.91 · T1 $3.03 · T2 $3.08 · T3 $3.20</td>
+</tr>
+<tr>
+<td class="ticker-cell">PAPL</td>
+<td>Pineapple Financial Inc. <span class="country-badge">Canada</span></td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
+<td class="news-age-cell"><span class="news-age" title="First published: 2026-07-20T21:56:00.000+0000">22h ago</span></td>
+<td><span class="tape-mini tape-medium" title="RVOL 1.5x vs ADV (5,734,503 today / 3,816,394 avg). Last: 2026-07-21T20:19:59.402000+00:00 · stale 1m">⚡ moderate volume</span></td>
+<td>+5.2% · Entry $0.80 · T1 $0.83 · T2 $0.85 · T3 $0.88</td>
+</tr>
 <!-- END_SCANNER_TABLE_BODY -->
 </tbody>
 </table>
@@ -1515,46 +1530,57 @@
 <tr>
 <td class="ticker-cell">ZNB</td>
 <td>Zeta Network Group</td>
-<td>$0.70</td>
-<td>+85.8%</td>
-<td>4,214,567</td>
+<td>$0.72</td>
+<td>+90.6%</td>
+<td>15,766,635</td>
 <td>0.0x</td>
 <td>$0.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: mktcap $0.7M</td>
 </tr>
 <tr>
+<td class="ticker-cell">SNTG</td>
+<td>Sentage Holdings Inc</td>
+<td>$2.52</td>
+<td>+20.6%</td>
+<td>86,360</td>
+<td>0.0x</td>
+<td>$5.9M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.08x, vol/float 0.08x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
 <td class="ticker-cell">SMCI</td>
 <td>Super Micro Computer Inc</td>
-<td>$29.90</td>
-<td>+17.3%</td>
-<td>31,853,101</td>
+<td>$30.07</td>
+<td>+17.9%</td>
+<td>36,346,647</td>
 <td>0.0x</td>
 <td>$16494.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: mktcap $16494.2M, float 563.5M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">DUO</td>
-<td>Fangdd Network Group Ltd.</td>
-<td>$0.65</td>
-<td>+14.0%</td>
-<td>61,833</td>
+<td class="ticker-cell">VIVK</td>
+<td>Vivakor</td>
+<td>$2.91</td>
+<td>+12.8%</td>
+<td>139,001,410</td>
 <td>0.0x</td>
-<td>$22.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+<td>$1.2M</td>
+<td><span class="scan-pass">PASS</span></td>
+<td>Passed filters</td>
 </tr>
 <tr>
-<td class="ticker-cell">SNTG</td>
-<td>Sentage Holdings Inc</td>
-<td>$2.40</td>
-<td>+9.6%</td>
-<td>54,054</td>
+<td class="ticker-cell">EZRA</td>
+<td>Reliance Global Group Inc</td>
+<td>$2.59</td>
+<td>+13.1%</td>
+<td>44,977</td>
 <td>0.0x</td>
-<td>$6.1M</td>
+<td>$1.3M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny avg $vol, tiny vol/float 0.05x, vol/float 0.05x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+<td>Filtered: tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.09x, vol 44,977, vol/float 0.09x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">SLBT</td>
@@ -1568,37 +1594,92 @@
 <td>Filtered: float 226.9M &gt; 100M, vol/float 0.00x &lt; 0.5x, avg $vol $0.3M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">HTCR</td>
-<td>HEARTCORE ENTERPRISES INC</td>
-<td>$2.62</td>
-<td>+6.5%</td>
-<td>14,780</td>
+<td class="ticker-cell">HKPD</td>
+<td>Cellyan Biotechnology Co Ltd</td>
+<td>$0.41</td>
+<td>+8.4%</td>
+<td>148,368</td>
 <td>0.0x</td>
-<td>$3.5M</td>
+<td>$8.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.02x, vol 14,780, vol/float 0.02x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+<td>Filtered: tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">KUST</td>
 <td>Kustom Entertainment Inc</td>
-<td>$1.02</td>
-<td>+6.2%</td>
-<td>747,563</td>
+<td>$1.04</td>
+<td>+8.2%</td>
+<td>763,456</td>
 <td>0.0x</td>
 <td>$0.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: mktcap $0.6M</td>
 </tr>
 <tr>
-<td class="ticker-cell">SUIG</td>
-<td>Sui Group Holdings Limited</td>
-<td>$1.21</td>
-<td>+6.1%</td>
-<td>346,072</td>
+<td class="ticker-cell">NOMA</td>
+<td>NOMADAR CORP.</td>
+<td>$3.33</td>
+<td>+8.1%</td>
+<td>10,686</td>
 <td>0.0x</td>
-<td>$87.6M</td>
+<td>$45.8M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+<td>Filtered: vol 10,686, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">CHOW</td>
+<td>CHOWCHOW CLOUD INTL HLDGS LTD</td>
+<td>$0.37</td>
+<td>+7.4%</td>
+<td>541,489</td>
+<td>0.0x</td>
+<td>$12.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.05x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">DUO</td>
+<td>Fangdd Network Group Ltd.</td>
+<td>$0.61</td>
+<td>+6.8%</td>
+<td>2,795,127</td>
+<td>0.0x</td>
+<td>$22.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.07x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">WBUY</td>
+<td>Webuy Global</td>
+<td>$0.80</td>
+<td>+6.6%</td>
+<td>170,501</td>
+<td>0.0x</td>
+<td>$4.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: tiny rvol 0.3x, tiny vol/float 0.05x, vol/float 0.05x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">MWC</td>
+<td>Micware Co., Ltd.</td>
+<td>$1.18</td>
+<td>+6.3%</td>
+<td>3,424,033</td>
+<td>0.0x</td>
+<td>$66.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.13x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SCAG</td>
+<td>Scage Future</td>
+<td>$0.34</td>
+<td>+6.2%</td>
+<td>383,069</td>
+<td>0.0x</td>
+<td>$23.6M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.02x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">SFWL</td>
@@ -1612,6 +1693,28 @@
 <td>Filtered: vol 228, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
+<td class="ticker-cell">ABEO</td>
+<td>Abeona Therapeut</td>
+<td>$6.93</td>
+<td>+6.1%</td>
+<td>1,568,979</td>
+<td>0.0x</td>
+<td>$372.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.03x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">CTXR</td>
+<td>Citius Pharmaceuticals Inc</td>
+<td>$0.58</td>
+<td>+6.0%</td>
+<td>1,868,811</td>
+<td>0.0x</td>
+<td>$15.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.07x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
 <td class="ticker-cell">SVRN</td>
 <td>Oceanpal Inc</td>
 <td>$8.16</td>
@@ -1621,6 +1724,17 @@
 <td>$14.4M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Filtered: vol 11,065, vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">CAPS</td>
+<td>Capstone Holding Corp.</td>
+<td>$0.26</td>
+<td>+6.0%</td>
+<td>201,720</td>
+<td>0.0x</td>
+<td>$3.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">NWTG</td>
@@ -1634,26 +1748,81 @@
 <td>Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 6,787, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">BRIA</td>
-<td>BrillaA Inc</td>
-<td>$1.43</td>
-<td>+5.1%</td>
-<td>34,209</td>
+<td class="ticker-cell">MIMI</td>
+<td>Mint Incorporation Limited</td>
+<td>$2.28</td>
+<td>+5.6%</td>
+<td>445,147</td>
 <td>0.0x</td>
-<td>$41.6M</td>
+<td>$15.3M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 34,209, vol/float 0.01x &lt; 0.5x</td>
+<td>Filtered: vol/float 0.08x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">MI</td>
-<td>NFT LIMITED</td>
-<td>$9.04</td>
-<td>+5.1%</td>
-<td>21,269</td>
+<td class="ticker-cell">FTFT</td>
+<td>Future Fintech G</td>
+<td>$1.51</td>
+<td>+5.6%</td>
+<td>188,231</td>
 <td>0.0x</td>
-<td>$2.0M</td>
+<td>$2.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.09x, vol 21,269, vol/float 0.09x &lt; 0.5x, avg $vol $0.3M &lt; $0.5M</td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.17x, vol/float 0.17x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">DELL</td>
+<td>Dell Technologies</td>
+<td>$426.42</td>
+<td>+5.5%</td>
+<td>4,791,998</td>
+<td>0.0x</td>
+<td>$261138.5M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: price $426.420, mktcap $261138.5M, float 300.2M &gt; 100M, vol/float 0.02x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PAPL</td>
+<td>Pineapple Financial Inc.</td>
+<td>$0.80</td>
+<td>+5.2%</td>
+<td>5,734,503</td>
+<td>0.0x</td>
+<td>$19.8M</td>
+<td><span class="scan-pass">PASS</span></td>
+<td>Passed filters</td>
+</tr>
+<tr>
+<td class="ticker-cell">SUIG</td>
+<td>Sui Group Holdings Limited</td>
+<td>$1.20</td>
+<td>+5.2%</td>
+<td>346,073</td>
+<td>0.0x</td>
+<td>$87.6M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.01x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">AIMD</td>
+<td>Ainos Inc</td>
+<td>$1.64</td>
+<td>+5.1%</td>
+<td>36,403</td>
+<td>0.0x</td>
+<td>$13.3M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 36,403, vol/float 0.01x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">JFU</td>
+<td>9F Inc.</td>
+<td>$2.34</td>
+<td>+5.1%</td>
+<td>4,086</td>
+<td>0.0x</td>
+<td>$26.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol 4,086, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">MDBH</td>
@@ -1667,26 +1836,37 @@
 <td>Filtered: vol 1,158, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">CRE</td>
-<td>CRE8 ENTERPRISE LTD</td>
-<td>$2.94</td>
+<td class="ticker-cell">MLEC</td>
+<td>Moolec Science</td>
+<td>$8.87</td>
 <td>+5.0%</td>
-<td>30,606</td>
+<td>147,274</td>
 <td>0.0x</td>
-<td>$5.6M</td>
+<td>$6.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.03x, move 5.0% / rvol 0.8, vol 30,606, vol/float 0.03x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.26x, vol/float 0.26x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">FTFT</td>
-<td>Future Fintech G</td>
-<td>$1.50</td>
-<td>+4.9%</td>
-<td>188,001</td>
+<td class="ticker-cell">HPE</td>
+<td>Hewlett Packard Enterprise Co</td>
+<td>$48.90</td>
+<td>+4.7%</td>
+<td>12,357,017</td>
 <td>0.0x</td>
-<td>$2.7M</td>
+<td>$61866.8M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny avg $vol, tiny vol/float 0.16x, vol/float 0.16x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+<td>Filtered: mktcap $61866.8M, move 4.7% / rvol 0.7, float 1319.1M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">LVWR</td>
+<td>LIVEWIRE GROUP INC</td>
+<td>$0.89</td>
+<td>+4.6%</td>
+<td>470,608</td>
+<td>0.0x</td>
+<td>$174.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: move 4.6% / rvol 0.3, vol/float 0.04x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">ELTK</td>
@@ -1700,48 +1880,59 @@
 <td>Filtered: move 4.6% / rvol 0.8, vol 1,863, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">ITP</td>
-<td>It Tech Packaging</td>
-<td>$0.18</td>
-<td>+4.6%</td>
-<td>278,830</td>
-<td>0.0x</td>
-<td>$3.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $0.185, tiny price $0.185, tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.02x, move 4.6% / rvol 0.3, vol/float 0.02x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">CCEL</td>
-<td>Cryo-Cell Intl Inc</td>
-<td>$3.50</td>
+<td class="ticker-cell">DOGZ</td>
+<td>Dogness International Corp</td>
+<td>$1.05</td>
 <td>+4.5%</td>
-<td>12,559</td>
+<td>26,618</td>
 <td>0.0x</td>
-<td>$27.0M</td>
+<td>$14.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 12,559, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+<td>Filtered: vol 26,618, vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">CDT</td>
-<td>CDT Equity</td>
-<td>$4.00</td>
-<td>+4.4%</td>
-<td>125,002</td>
+<td class="ticker-cell">GNLN</td>
+<td>Greenlane Holdings</td>
+<td>$2.40</td>
+<td>+4.3%</td>
+<td>7,699</td>
 <td>0.0x</td>
-<td>$2.4M</td>
+<td>$1.5M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny avg $vol, tiny vol/float 0.27x, vol/float 0.27x &lt; 0.5x, avg $vol $0.3M &lt; $0.5M</td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.01x, vol 7,699, vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">PHGE</td>
-<td>Biomx Inc</td>
-<td>$0.21</td>
-<td>+4.4%</td>
-<td>600,619</td>
+<td class="ticker-cell">IPST</td>
+<td>IP Strategy Holdings Inc</td>
+<td>$2.41</td>
+<td>+4.3%</td>
+<td>15,956</td>
 <td>0.0x</td>
-<td>$2.4M</td>
+<td>$1.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.07x, move 4.4% / rvol 0.6, vol/float 0.07x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+<td>Filtered: tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.02x, move 4.3% / rvol 0.5, vol 15,956, vol/float 0.02x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">WCT</td>
+<td>Wellchange Holdings</td>
+<td>$0.85</td>
+<td>+4.3%</td>
+<td>268,142</td>
+<td>0.0x</td>
+<td>$3.7M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.22x, vol/float 0.22x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SEGG</td>
+<td>Sports Ent</td>
+<td>$0.77</td>
+<td>+4.2%</td>
+<td>365,149</td>
+<td>0.0x</td>
+<td>$16.9M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: move 4.2% / rvol 0.3, vol/float 0.02x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">INTJ</td>
@@ -1755,15 +1946,37 @@
 <td>Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, move 4.2% / rvol 0.4, vol 6,004, vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">HPE</td>
-<td>Hewlett Packard Enterprise Co</td>
-<td>$48.50</td>
-<td>+3.8%</td>
-<td>12,171,507</td>
+<td class="ticker-cell">CXM</td>
+<td>Sprinklr Inc</td>
+<td>$6.03</td>
+<td>+4.1%</td>
+<td>2,331,626</td>
 <td>0.0x</td>
-<td>$61880.0M</td>
+<td>$1356.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: mktcap $61880.0M, move 3.8% / rvol 0.7, float 1319.1M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
+<td>Filtered: move 4.1% / rvol 0.7, float 110.2M &gt; 100M, vol/float 0.02x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">SOAR</td>
+<td>Volato Group Inc-A</td>
+<td>$0.14</td>
+<td>+4.3%</td>
+<td>1,924,720</td>
+<td>0.0x</td>
+<td>$7.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: price $0.141, tiny price $0.141, tiny avg $vol, tiny vol/float 0.05x, vol/float 0.05x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SMTK</td>
+<td>Smartkem</td>
+<td>$0.20</td>
+<td>+4.0%</td>
+<td>336,348</td>
+<td>0.0x</td>
+<td>$4.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">SLXN</td>
@@ -1777,26 +1990,70 @@
 <td>Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.02x, move 4.0% / rvol 0.9, vol 17,656, vol/float 0.02x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
+<td class="ticker-cell">RITR</td>
+<td>Reitar Logtech Holdings Limited</td>
+<td>$0.16</td>
+<td>+4.2%</td>
+<td>2,888,677</td>
+<td>0.0x</td>
+<td>$9.6M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: price $0.160, tiny price $0.160, tiny avg $vol, tiny vol/float 0.17x, vol/float 0.17x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">RADX</td>
+<td>Radiopharm Theranostics Ltd</td>
+<td>$4.46</td>
+<td>+4.0%</td>
+<td>23,646</td>
+<td>0.0x</td>
+<td>$50.7M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: move 4.0% / rvol 0.9, vol 23,646, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">MNY</td>
+<td>MoneyHero Limited</td>
+<td>$1.01</td>
+<td>+3.9%</td>
+<td>62,559</td>
+<td>0.0x</td>
+<td>$43.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
 <td class="ticker-cell">FGL</td>
 <td>Founder Group Ltd</td>
 <td>$1.07</td>
 <td>+3.9%</td>
-<td>22,625</td>
+<td>22,631</td>
 <td>0.0x</td>
 <td>$1.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.02x, move 3.9% / rvol 0.1, vol 22,625, vol/float 0.02x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
+<td>Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.02x, move 3.9% / rvol 0.1, vol 22,631, vol/float 0.02x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">JSPR</td>
-<td>Jasper Therapeutics Inc</td>
-<td>$0.80</td>
+<td class="ticker-cell">ATPC</td>
+<td>Agape Atp Corp</td>
+<td>$2.68</td>
 <td>+3.9%</td>
-<td>1,703,649</td>
+<td>97,573</td>
 <td>0.0x</td>
-<td>$21.6M</td>
+<td>$2.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.9% / rvol 0.2, vol/float 0.06x &lt; 0.5x</td>
+<td>Filtered: tiny rvol 0.0x, tiny vol/float 0.10x, move 3.9% / rvol 0.0, vol/float 0.10x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">LFS</td>
+<td>Leifras Co. Ltd.</td>
+<td>$2.15</td>
+<td>+3.9%</td>
+<td>27,714</td>
+<td>0.0x</td>
+<td>$54.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Filtered: move 3.9% / rvol 0.4, vol 27,714, vol/float 0.00x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">IMTE</td>
@@ -1810,257 +2067,15 @@
 <td>Filtered: tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">BQ</td>
-<td>Boqii Holding Ltd</td>
-<td>$0.88</td>
+<td class="ticker-cell">FWDI</td>
+<td>Forward Inds Inc N Y</td>
+<td>$4.48</td>
 <td>+3.7%</td>
-<td>71,010</td>
+<td>1,126,456</td>
 <td>0.0x</td>
-<td>$4.1M</td>
+<td>$318.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.0x, tiny vol/float 0.02x, move 3.7% / rvol 0.0, vol/float 0.02x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">ZOOZ</td>
-<td>ZOOZ STRATEGY</td>
-<td>$5.40</td>
-<td>+3.6%</td>
-<td>4,590</td>
-<td>0.0x</td>
-<td>$42.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.6% / rvol 0.6, vol 4,590, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">CLRO</td>
-<td>Clearone Inc</td>
-<td>$6.94</td>
-<td>+3.6%</td>
-<td>106,327</td>
-<td>0.0x</td>
-<td>$17.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.6% / rvol 0.1, vol/float 0.12x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">BGIN</td>
-<td>BGIN BLOCKCHAIN LTD</td>
-<td>$1.95</td>
-<td>+3.5%</td>
-<td>7,712</td>
-<td>0.0x</td>
-<td>$213.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 7,712, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">DELL</td>
-<td>Dell Technologies</td>
-<td>$418.52</td>
-<td>+3.6%</td>
-<td>4,448,604</td>
-<td>0.0x</td>
-<td>$261073.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $418.520, mktcap $261073.8M, move 3.6% / rvol 0.6, float 300.2M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">CANF</td>
-<td>Can-Fite BioPharma Ltd.</td>
-<td>$3.38</td>
-<td>+3.4%</td>
-<td>26,193</td>
-<td>0.0x</td>
-<td>$7.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.1x, tiny vol/float 0.01x, move 3.4% / rvol 0.1, vol 26,193, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">YIBO</td>
-<td>Planet Image</td>
-<td>$1.26</td>
-<td>+3.3%</td>
-<td>95,215</td>
-<td>0.0x</td>
-<td>$72.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.02x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">QNT</td>
-<td>Quantinuum Inc.</td>
-<td>$60.50</td>
-<td>+3.3%</td>
-<td>1,240,324</td>
-<td>0.0x</td>
-<td>$15287.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $60.500, mktcap $15287.7M, move 3.3% / rvol 0.8, vol/float 0.04x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">EVEX</td>
-<td>Eve Holding Inc</td>
-<td>$2.51</td>
-<td>+3.2%</td>
-<td>958,172</td>
-<td>0.0x</td>
-<td>$846.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.2% / rvol 0.8, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">NNBR</td>
-<td>Nn Inc</td>
-<td>$3.53</td>
-<td>+3.2%</td>
-<td>1,250,553</td>
-<td>0.0x</td>
-<td>$264.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.2% / rvol 0.7, vol/float 0.02x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">MOG B</td>
-<td>Moog Inc</td>
-<td>$408.24</td>
-<td>+3.2%</td>
-<td>92</td>
-<td>0.0x</td>
-<td>$12537.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: price $408.240, mktcap $12537.4M, move 3.2% / rvol 0.4, vol 92, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">DLXY</td>
-<td>DELIXY HLDGS LTD</td>
-<td>$0.46</td>
-<td>+3.0%</td>
-<td>15,274</td>
-<td>0.0x</td>
-<td>$7.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.00x, move 3.0% / rvol 0.3, vol 15,274, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">WFF</td>
-<td>WF Holding Ltd.</td>
-<td>$2.39</td>
-<td>+3.0%</td>
-<td>6,771</td>
-<td>0.0x</td>
-<td>$21.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.0% / rvol 0.3, vol 6,771, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">RETO</td>
-<td>Reto Eco Solutions Inc</td>
-<td>$2.94</td>
-<td>+3.0%</td>
-<td>2,252</td>
-<td>0.0x</td>
-<td>$12.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 3.0% / rvol 0.2, vol 2,252, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">MYND</td>
-<td>Mynd.ai, Inc.</td>
-<td>$0.40</td>
-<td>+2.8%</td>
-<td>1,681</td>
-<td>0.0x</td>
-<td>$18.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 2.8% / rvol 0.3, vol 1,681, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">NPT</td>
-<td>Texxon Holding Limited</td>
-<td>$2.65</td>
-<td>+2.7%</td>
-<td>35,528</td>
-<td>0.0x</td>
-<td>$57.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 2.7% / rvol 0.8, vol 35,528, vol/float 0.01x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">JXG</td>
-<td>JX LUXVENTURE LIMITED</td>
-<td>$6.71</td>
-<td>+2.6%</td>
-<td>8,433</td>
-<td>0.0x</td>
-<td>$78.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 8,433, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">AMBO</td>
-<td>Ambow Education Holding Ltd.</td>
-<td>$2.34</td>
-<td>+2.6%</td>
-<td>4,675</td>
-<td>0.0x</td>
-<td>$6.5M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.00x, move 2.6% / rvol 0.7, vol 4,675, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">INLX</td>
-<td>Intellinetics</td>
-<td>$5.67</td>
-<td>+2.5%</td>
-<td>136</td>
-<td>0.0x</td>
-<td>$24.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 2.5% / rvol 0.1, vol 136, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">GCDT</td>
-<td>Green Circle DecarbonizeTechnology Limited</td>
-<td>$0.51</td>
-<td>+2.5%</td>
-<td>146,484</td>
-<td>0.0x</td>
-<td>$6.4M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: tiny avg $vol, tiny vol/float 0.04x, vol/float 0.04x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">OGG</td>
-<td>OSISKO GOLD GROUP INC</td>
-<td>$2.52</td>
-<td>+2.4%</td>
-<td>1,720,453</td>
-<td>0.0x</td>
-<td>$749.6M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: move 2.4% / rvol 0.8, float 220.4M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">EXOZ</td>
-<td>eXoZymes Inc</td>
-<td>$5.33</td>
-<td>+2.5%</td>
-<td>17,211</td>
-<td>0.0x</td>
-<td>$48.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol 17,211, vol/float 0.01x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">PYPD</td>
-<td>Polypid Ltd.</td>
-<td>$3.83</td>
-<td>+2.4%</td>
-<td>2,204,826</td>
-<td>0.0x</td>
-<td>$71.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Filtered: vol/float 0.16x &lt; 0.5x</td>
+<td>Filtered: vol/float 0.02x &lt; 0.5x</td>
 </tr>
 </tbody>
 </table>
@@ -2081,9 +2096,9 @@
 <tr>
 <td class="ticker-cell">FFAI</td>
 <td>Faraday Future Intelligent Electric Inc</td>
-<td>$0.09</td>
-<td>-17.6%</td>
-<td>41,686,342</td>
+<td>$0.08</td>
+<td>-27.4%</td>
+<td>48,198,159</td>
 <td>0.0x</td>
 <td>$40.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
@@ -2092,9 +2107,9 @@
 <tr>
 <td class="ticker-cell">JZXN</td>
 <td>Jiuzi Holdings Inc</td>
-<td>$1.71</td>
-<td>-11.4%</td>
-<td>32,463,933</td>
+<td>$1.65</td>
+<td>-14.5%</td>
+<td>33,042,865</td>
 <td>0.0x</td>
 <td>$2.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
@@ -2103,11 +2118,33 @@
 <tr>
 <td class="ticker-cell">ZYBT</td>
 <td>Zhengye Biotechnology Holding Limited</td>
-<td>$2.52</td>
-<td>-11.6%</td>
-<td>37,200,313</td>
+<td>$2.48</td>
+<td>-12.9%</td>
+<td>37,284,196</td>
 <td>0.0x</td>
 <td>$84.7M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">VTAK</td>
+<td>Catheter Precision</td>
+<td>$0.43</td>
+<td>-12.5%</td>
+<td>5,590,283</td>
+<td>0.0x</td>
+<td>$1.8M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">EUDA</td>
+<td>EUDA Health Holdings Ltd</td>
+<td>$13.47</td>
+<td>-12.0%</td>
+<td>5,956</td>
+<td>0.0x</td>
+<td>$45.8M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2123,57 +2160,57 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">CPHI</td>
+<td>China Pharma</td>
+<td>$7.24</td>
+<td>-10.6%</td>
+<td>83,722,222</td>
+<td>0.0x</td>
+<td>$328.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">NIPG</td>
+<td>NIP Group Inc.</td>
+<td>$6.78</td>
+<td>-9.6%</td>
+<td>155,094</td>
+<td>0.0x</td>
+<td>$63.9M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">NIKI</td>
 <td>NIKI BIOSOLUTIONS INC,</td>
-<td>$8.55</td>
-<td>-10.6%</td>
-<td>199,232</td>
+<td>$8.68</td>
+<td>-9.0%</td>
+<td>202,029</td>
 <td>0.0x</td>
 <td>$7.8M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">EUDA</td>
-<td>EUDA Health Holdings Ltd</td>
-<td>$13.96</td>
-<td>-9.3%</td>
-<td>5,637</td>
+<td class="ticker-cell">HWC</td>
+<td>Hancock Whitney Corporation</td>
+<td>$70.00</td>
+<td>-8.7%</td>
+<td>1,422,297</td>
 <td>0.0x</td>
-<td>$46.1M</td>
+<td>$6219.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">SLGB</td>
-<td>Smart Logistics Global Limited</td>
-<td>$0.90</td>
-<td>-8.4%</td>
-<td>179,430,678</td>
+<td class="ticker-cell">CLDX</td>
+<td>Celldex Therapeutics Inc</td>
+<td>$32.89</td>
+<td>-7.8%</td>
+<td>1,241,662</td>
 <td>0.0x</td>
-<td>$44.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">RCON</td>
-<td>Recon Technology Ltd</td>
-<td>$0.40</td>
-<td>-8.0%</td>
-<td>25,068,063</td>
-<td>0.0x</td>
-<td>$38.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">LBGJ</td>
-<td>Li Bang International Corporation Inc.</td>
-<td>$0.06</td>
-<td>-8.2%</td>
-<td>151,107,259</td>
-<td>0.0x</td>
-<td>$0.2M</td>
+<td>$2799.0M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2189,46 +2226,101 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">KIDZ</td>
-<td>KIDZ AI INC</td>
-<td>$0.52</td>
+<td class="ticker-cell">FXHO</td>
+<td>Utime Ltd</td>
+<td>$13.72</td>
+<td>-7.7%</td>
+<td>158,295</td>
+<td>0.0x</td>
+<td>$77.3M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">DXF</td>
+<td>Eason Technology</td>
+<td>$0.54</td>
+<td>-7.3%</td>
+<td>2,707,484</td>
+<td>0.0x</td>
+<td>$3.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">PDC</td>
+<td>Perpetuals.com Ltd</td>
+<td>$3.70</td>
+<td>-7.3%</td>
+<td>253,201</td>
+<td>0.0x</td>
+<td>$27.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RCON</td>
+<td>Recon Technology Ltd</td>
+<td>$0.40</td>
 <td>-7.1%</td>
-<td>271,585,271</td>
+<td>25,085,949</td>
 <td>0.0x</td>
-<td>$1.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">ELPW</td>
-<td>Elong Power Holding Limited</td>
-<td>$0.26</td>
-<td>-6.2%</td>
-<td>11,920,727</td>
-<td>0.0x</td>
-<td>$4.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">WGRX</td>
-<td>Wellgistics Health Inc.</td>
-<td>$3.30</td>
-<td>-6.3%</td>
-<td>536,474</td>
-<td>0.0x</td>
-<td>$9.3M</td>
+<td>$38.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
 <td class="ticker-cell">PEGA</td>
 <td>Pegasystems Inc</td>
-<td>$29.03</td>
-<td>-6.2%</td>
-<td>5,784,778</td>
+<td>$28.80</td>
+<td>-6.9%</td>
+<td>6,115,397</td>
 <td>0.0x</td>
 <td>$5170.6M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">ELPW</td>
+<td>Elong Power Holding Limited</td>
+<td>$0.25</td>
+<td>-9.5%</td>
+<td>12,225,930</td>
+<td>0.0x</td>
+<td>$4.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">LEDS</td>
+<td>Semileds Corp</td>
+<td>$2.35</td>
+<td>-6.4%</td>
+<td>300,509</td>
+<td>0.0x</td>
+<td>$20.8M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">GITS</td>
+<td>Global Interactive Technologies Inc</td>
+<td>$2.12</td>
+<td>-6.2%</td>
+<td>161,325</td>
+<td>0.0x</td>
+<td>$8.3M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">LBGJ</td>
+<td>Li Bang International Corporation Inc.</td>
+<td>$0.06</td>
+<td>-6.5%</td>
+<td>152,096,601</td>
+<td>0.0x</td>
+<td>$0.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2244,57 +2336,112 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">BYAH</td>
+<td>PARK HA BIOLOGICAL TECHNOLOGY</td>
+<td>$0.48</td>
+<td>-6.1%</td>
+<td>2,686,306</td>
+<td>0.0x</td>
+<td>$3.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">CIGL</td>
 <td>Concorde International Group Limited</td>
 <td>$0.53</td>
 <td>-6.1%</td>
-<td>242,693</td>
+<td>242,966</td>
 <td>0.0x</td>
 <td>$126.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">CLDX</td>
-<td>Celldex Therapeutics Inc</td>
-<td>$33.51</td>
+<td class="ticker-cell">PETZ</td>
+<td>Tdh Hldgs Inc</td>
+<td>$1.10</td>
 <td>-6.0%</td>
-<td>1,220,083</td>
+<td>1,088</td>
 <td>0.0x</td>
-<td>$2799.0M</td>
+<td>$12.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">NOMA</td>
-<td>NOMADAR CORP.</td>
-<td>$3.08</td>
+<td class="ticker-cell">WGRX</td>
+<td>Wellgistics Health Inc.</td>
+<td>$3.31</td>
 <td>-5.8%</td>
-<td>10,634</td>
+<td>536,499</td>
 <td>0.0x</td>
-<td>$48.7M</td>
+<td>$9.3M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">BGL</td>
-<td>Blue Gold Limited</td>
-<td>$0.20</td>
-<td>-5.9%</td>
-<td>512,495</td>
+<td class="ticker-cell">OMH</td>
+<td>Ohmyhome Limited</td>
+<td>$0.76</td>
+<td>-5.7%</td>
+<td>293,157,865</td>
 <td>0.0x</td>
-<td>$9.0M</td>
+<td>$18.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">PDC</td>
-<td>Perpetuals.com Ltd</td>
-<td>$3.76</td>
-<td>-5.8%</td>
-<td>252,493</td>
+<td class="ticker-cell">JZ</td>
+<td>Jianzhi Education Technology Group Co Ltd</td>
+<td>$2.16</td>
+<td>-5.7%</td>
+<td>138,584</td>
 <td>0.0x</td>
-<td>$27.0M</td>
+<td>$5.5M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">UPC</td>
+<td>Universe Pharmaceuticals Inc</td>
+<td>$4.00</td>
+<td>-5.7%</td>
+<td>129,221</td>
+<td>0.0x</td>
+<td>$2.7M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">LZMH</td>
+<td>LZ Technology Holdings Limited</td>
+<td>$1.17</td>
+<td>-5.6%</td>
+<td>87,902</td>
+<td>0.0x</td>
+<td>$11.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">KIDZ</td>
+<td>KIDZ AI INC</td>
+<td>$0.53</td>
+<td>-5.7%</td>
+<td>271,971,984</td>
+<td>0.0x</td>
+<td>$1.2M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RDGT</td>
+<td>RIDGETECH Inc</td>
+<td>$1.39</td>
+<td>-5.4%</td>
+<td>19,573,202</td>
+<td>0.0x</td>
+<td>$1.3M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2303,31 +2450,53 @@
 <td>Digital Currency X Technology Inc</td>
 <td>$0.66</td>
 <td>-5.3%</td>
-<td>48,972</td>
+<td>49,072</td>
 <td>0.0x</td>
 <td>$13.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">AXIL</td>
-<td>Axil Brands</td>
-<td>$5.55</td>
-<td>-5.1%</td>
-<td>8,081</td>
+<td class="ticker-cell">TULP</td>
+<td>Bloomia Holdings</td>
+<td>$3.62</td>
+<td>-5.2%</td>
+<td>2,070</td>
 <td>0.0x</td>
-<td>$39.9M</td>
+<td>$18.2M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">HUDI</td>
-<td>Huadi International Grp Co Ltd</td>
-<td>$0.74</td>
+<td class="ticker-cell">MCB</td>
+<td>Metropolitan Bank</td>
+<td>$94.01</td>
 <td>-5.1%</td>
-<td>24,175</td>
+<td>188,906</td>
 <td>0.0x</td>
-<td>$11.2M</td>
+<td>$1228.0M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">YTRA</td>
+<td>Yatra Online Inc</td>
+<td>$0.84</td>
+<td>-5.0%</td>
+<td>19,167</td>
+<td>0.0x</td>
+<td>$56.3M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">PFSA</td>
+<td>Profusa Inc</td>
+<td>$1.90</td>
+<td>-5.0%</td>
+<td>578,202</td>
+<td>0.0x</td>
+<td>$1.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2343,6 +2512,28 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">KAPA</td>
+<td>KAIROS PHARMA LTD</td>
+<td>$0.34</td>
+<td>-5.0%</td>
+<td>572,422</td>
+<td>0.0x</td>
+<td>$7.7M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">TPET</td>
+<td>TRIO PETROLEUM CORP</td>
+<td>$0.30</td>
+<td>-4.9%</td>
+<td>1,452,046</td>
+<td>0.0x</td>
+<td>$14.1M</td>
+<td><span class="scan-skip">SKIP</span></td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">GDHG</td>
 <td>Golden Heaven Gr</td>
 <td>$1.38</td>
@@ -2354,57 +2545,57 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">RDGT</td>
-<td>RIDGETECH Inc</td>
-<td>$1.40</td>
+<td class="ticker-cell">CRE</td>
+<td>CRE8 ENTERPRISE LTD</td>
+<td>$2.80</td>
 <td>-4.8%</td>
-<td>19,558,461</td>
+<td>30,756</td>
 <td>0.0x</td>
-<td>$1.3M</td>
+<td>$5.9M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">PHOE</td>
-<td>Phoenix Asia Holdings Limited</td>
-<td>$26.96</td>
-<td>-4.6%</td>
-<td>68,484</td>
+<td class="ticker-cell">HIHO</td>
+<td>Highway Hldgs Ltd</td>
+<td>$1.02</td>
+<td>-4.7%</td>
+<td>51,766,599</td>
 <td>0.0x</td>
-<td>$610.2M</td>
+<td>$5.0M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">ASBP</td>
-<td>Aspire Biopharma Holdings Inc</td>
-<td>$7.20</td>
-<td>-4.5%</td>
-<td>117,037</td>
+<td class="ticker-cell">CCTG</td>
+<td>CCSC Technology International Holdings Limited</td>
+<td>$0.81</td>
+<td>-4.7%</td>
+<td>10,224,753</td>
 <td>0.0x</td>
-<td>$9.8M</td>
+<td>$11.5M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">AKAN</td>
-<td>AKANDA CORP</td>
-<td>$7.96</td>
+<td class="ticker-cell">OZK</td>
+<td>Bank Ozk</td>
+<td>$48.53</td>
 <td>-4.4%</td>
-<td>12,780</td>
+<td>1,755,937</td>
 <td>0.0x</td>
-<td>$4.5M</td>
+<td>$5553.7M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">DGICB</td>
-<td>Donegal Group Inc</td>
-<td>$21.81</td>
+<td class="ticker-cell">GSUN</td>
+<td>Golden Sun Health Technology Group Ltd</td>
+<td>$0.24</td>
 <td>-4.3%</td>
-<td>4,276</td>
+<td>47,191,865</td>
 <td>0.0x</td>
-<td>$844.7M</td>
+<td>$2.5M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2420,211 +2611,35 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">OLOX</td>
-<td>Olenox Industries Inc</td>
-<td>$5.53</td>
-<td>-3.8%</td>
-<td>25,026</td>
+<td class="ticker-cell">SLE</td>
+<td>Super League Gaming Inc</td>
+<td>$2.75</td>
+<td>-4.2%</td>
+<td>6,496</td>
 <td>0.0x</td>
-<td>$7.5M</td>
+<td>$4.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">VHC</td>
-<td>Virnetx Holding</td>
-<td>$12.05</td>
-<td>-3.8%</td>
-<td>25,672</td>
+<td class="ticker-cell">CJMB</td>
+<td>Callan JMB Inc.</td>
+<td>$1.38</td>
+<td>-4.1%</td>
+<td>2,242,001</td>
 <td>0.0x</td>
-<td>$52.4M</td>
+<td>$8.1M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">VYNE</td>
-<td>Vyne Therapeutics Inc</td>
-<td>$0.86</td>
-<td>-3.6%</td>
-<td>5,290,941</td>
+<td class="ticker-cell">MF</td>
+<td>Mindforge Inc</td>
+<td>$4.00</td>
+<td>-4.1%</td>
+<td>202,733</td>
 <td>0.0x</td>
-<td>$29.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">MTNB</td>
-<td>Matinas Biopharm</td>
-<td>$0.28</td>
-<td>-3.4%</td>
-<td>677,326</td>
-<td>0.0x</td>
-<td>$3.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">VIDA</td>
-<td>VIDA Global Inc.</td>
-<td>$2.51</td>
-<td>-3.5%</td>
-<td>273,302</td>
-<td>0.0x</td>
-<td>$37.9M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">AKO B</td>
-<td>Embotellad Andin</td>
-<td>$29.42</td>
-<td>-3.4%</td>
-<td>4,636</td>
-<td>0.0x</td>
-<td>$4802.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">MBBC</td>
-<td>Marathon Bancorp Inc</td>
-<td>$14.76</td>
-<td>-3.3%</td>
-<td>176</td>
-<td>0.0x</td>
-<td>$45.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">XCH</td>
-<td>XCHG LTD</td>
-<td>$0.60</td>
-<td>-3.2%</td>
-<td>13,688</td>
-<td>0.0x</td>
-<td>$55.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">ROLR</td>
-<td>High Roller Technologies, Inc.</td>
-<td>$6.73</td>
-<td>-3.2%</td>
-<td>47,484</td>
-<td>0.0x</td>
-<td>$76.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">NXB</td>
-<td>NEXTBOAT INC</td>
-<td>$1.91</td>
-<td>-3.1%</td>
-<td>45,000</td>
-<td>0.0x</td>
-<td>$48.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">COE</td>
-<td>51Talk</td>
-<td>$15.80</td>
-<td>-3.1%</td>
-<td>42,871</td>
-<td>0.0x</td>
-<td>$98.0M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">BRID</td>
-<td>Bridgford Food</td>
-<td>$6.38</td>
-<td>-3.2%</td>
-<td>5,864</td>
-<td>0.0x</td>
-<td>$59.8M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">LUD</td>
-<td>Luda Technology Group</td>
-<td>$4.07</td>
-<td>-3.1%</td>
-<td>37,586</td>
-<td>0.0x</td>
-<td>$95.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">NA</td>
-<td>Nano Labs Ltd</td>
-<td>$1.81</td>
-<td>-3.1%</td>
-<td>22,236</td>
-<td>0.0x</td>
-<td>$43.3M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">HVT A</td>
-<td>Haverty Frn Cl A</td>
-<td>$27.64</td>
-<td>-3.0%</td>
-<td>105</td>
-<td>0.0x</td>
-<td>$458.7M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">BYAH</td>
-<td>PARK HA BIOLOGICAL TECHNOLOGY</td>
-<td>$0.48</td>
-<td>-3.1%</td>
-<td>2,374,544</td>
-<td>0.0x</td>
-<td>$3.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">AWX</td>
-<td>Avalon Holdings</td>
-<td>$2.53</td>
-<td>-3.0%</td>
-<td>1,258</td>
-<td>0.0x</td>
-<td>$10.2M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">DXR</td>
-<td>DAXOR CORP</td>
-<td>$10.16</td>
-<td>-3.0%</td>
-<td>4,571</td>
-<td>0.0x</td>
-<td>$61.1M</td>
-<td><span class="scan-skip">SKIP</span></td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">CCTG</td>
-<td>CCSC Technology International Holdings Limited</td>
-<td>$0.82</td>
-<td>-2.9%</td>
-<td>10,222,845</td>
-<td>0.0x</td>
-<td>$11.5M</td>
+<td>$7.6M</td>
 <td><span class="scan-skip">SKIP</span></td>
 <td>Bounce scanner disabled</td>
 </tr>
