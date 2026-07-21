@@ -3406,74 +3406,74 @@
             return currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
         }
 
-                async function fetchManifestRaw() {
-                    // Try the main site first; fall back to raw GitHub content when the CDN fronting
-                    // aeyeing.com caches the manifest beyond the scan cadence. Both are served with
-                    // permissive CORS so this works from any browser.
-                    const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
-                    const tryFetch = async (url, desc) => {
-                        try {
-                            const res = await fetch(url + '?_=' + buster, {
-                                cache: 'no-store',
-                                headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                            });
-                            if (!res.ok) {
-                                console.warn('Manifest fetch failed for', desc, res.status);
-                                return null;
-                            }
-                            const manifest = await res.json();
-                            if (!manifest || !manifest.latest || !manifest.last_updated) {
-                                console.warn('Manifest malformed for', desc);
-                                return null;
-                            }
-                            return manifest;
-                        } catch (e) {
-                            console.warn('Manifest fetch exception for', desc, e);
-                            return null;
-                        }
-                    };
-                    const market = currentMarket === 'AUS' ? '-au' : '';
-                    const main = await tryFetch(getManifestFile(), 'main');
-                    const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-                    if (!main && !raw) return null;
-                    if (!main) return raw;
-                    if (!raw) return main;
-                    // Prefer the newer of the two manifests by timestamp.
-                    const mainTs = new Date(main.last_updated).getTime() || 0;
-                    const rawTs = new Date(raw.last_updated).getTime() || 0;
-                    if (rawTs > mainTs) {
-                        console.log('Using raw-github manifest (newer):', raw.latest, raw.last_updated);
-                        return raw;
+        async function fetchManifestRaw() {
+            // Try the main site first; fall back to raw GitHub content when the CDN fronting
+            // aeyeing.com caches the manifest beyond the scan cadence. Both are served with
+            // permissive CORS so this works from any browser.
+            const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+            const tryFetch = async (url, desc) => {
+                try {
+                    const res = await fetch(url + '?_=' + buster, {
+                        cache: 'no-store',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                    if (!res.ok) {
+                        console.warn('Manifest fetch failed for', desc, res.status);
+                        return null;
                     }
-                    return main;
+                    const manifest = await res.json();
+                    if (!manifest || !manifest.latest || !manifest.last_updated) {
+                        console.warn('Manifest malformed for', desc);
+                        return null;
+                    }
+                    return manifest;
+                } catch (e) {
+                    console.warn('Manifest fetch exception for', desc, e);
+                    return null;
                 }
+            };
+            const market = currentMarket === 'AUS' ? '-au' : '';
+            const main = await tryFetch(getManifestFile(), 'main');
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            if (!main && !raw) return null;
+            if (!main) return raw;
+            if (!raw) return main;
+            // Prefer the newer of the two manifests by timestamp.
+            const mainTs = new Date(main.last_updated).getTime() || 0;
+            const rawTs = new Date(raw.last_updated).getTime() || 0;
+            if (rawTs > mainTs) {
+                console.log('Using raw-github manifest (newer):', raw.latest, raw.last_updated);
+                return raw;
+            }
+            return main;
+        }
 
-                async function pollManifest() {
-                    if (window._pollingManifest) return;
-                    window._pollingManifest = true;
-                    nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
-                    updateRefreshCountdown();
-                    try {
-                        const manifest = await fetchManifestRaw();
-                        if (!manifest) {
-                            console.warn('No manifest available from any source');
-                            return;
-                        }
-                        const latest = manifest.latest;
-                        const lastUpdated = manifest.last_updated;
-                        const lastLoaded = window._lastLoadedSnapshot;
-                        const lastLoadedTs = window._lastLoadedSnapshotTs;
-                        const isNewSnapshot = !lastLoaded || latest !== lastLoaded;
-                        const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
-                        if (isNewSnapshot || isNewerTimestamp) {
-                            await loadLiveData(latest);
-                        }
-                    } catch (e) {
-                        console.warn('Manifest poll failed:', e);
-                    } finally {
-                        window._pollingManifest = false;
-                    }
+        async function pollManifest() {
+            if (window._pollingManifest) return;
+            window._pollingManifest = true;
+            nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+            updateRefreshCountdown();
+            try {
+                const manifest = await fetchManifestRaw();
+                if (!manifest) {
+                    console.warn('No manifest available from any source');
+                    return;
                 }
+                const latest = manifest.latest;
+                const lastUpdated = manifest.last_updated;
+                const lastLoaded = window._lastLoadedSnapshot;
+                const lastLoadedTs = window._lastLoadedSnapshotTs;
+                const isNewSnapshot = !lastLoaded || latest !== lastLoaded;
+                const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
+                if (isNewSnapshot || isNewerTimestamp) {
+                    await loadLiveData(latest);
+                }
+            } catch (e) {
+                console.warn('Manifest poll failed:', e);
+            } finally {
+                window._pollingManifest = false;
+            }
+        }
 
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
