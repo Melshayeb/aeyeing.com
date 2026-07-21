@@ -3486,18 +3486,19 @@
             label.classList.toggle('active-refresh', active);
 
             let modeLabel;
+            const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
             if (isActiveTradingWindow() && usStatus === 'CLOSED') {
-                modeLabel = '(1-min catalyst watchlist mode)';
+                modeLabel = `(1-min catalyst watchlist mode)`;
             } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
-                modeLabel = '(1-min pre-market mode)';
+                modeLabel = `(1-min pre-market mode)`;
             } else if (usStatus === 'OPEN') {
-                modeLabel = '(10-min open market mode)';
+                modeLabel = `(${pollMin}-min open market mode)`;
             } else if (usStatus === 'AFTER-HOURS') {
-                modeLabel = '(10-min after-hours mode)';
+                modeLabel = `(${pollMin}-min after-hours mode)`;
             } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
-                modeLabel = '(10-min pre-market mode)';
+                modeLabel = `(${pollMin}-min pre-market mode)`;
             } else {
-                modeLabel = '(markets closed)';
+                modeLabel = `(${pollMin}-min markets closed)`;
             }
 
             const interval = getRefreshIntervalMs();
