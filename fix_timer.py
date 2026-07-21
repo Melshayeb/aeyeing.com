@@ -1,10 +1,10 @@
-import pathlib, re
+import pathlib
 
 p = pathlib.Path('ozmoeg-trader.html')
 text = p.read_text(encoding='utf-8')
 
-# 1. Fix resetRefreshTimer: always update countdown and call loadLiveData with catch
-old = '''        function resetRefreshTimer() {
+# 1. Replace resetRefreshTimer so expiry always updates countdown and fetches data.
+old_reset = '''        function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
             scheduleNextRefresh(window._lastScanTimestamp);
             refreshTimerId = setInterval(() => {
@@ -24,8 +24,9 @@ old = '''        function resetRefreshTimer() {
                     updateRefreshCountdown();
                 }
             }, 1000);
-        }'''
-new = '''        function resetRefreshTimer() {
+        }
+'''
+new_reset = '''        function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
             scheduleNextRefresh(window._lastScanTimestamp);
             refreshTimerId = setInterval(() => {
@@ -44,19 +45,20 @@ new = '''        function resetRefreshTimer() {
                 }
                 updateRefreshCountdown();
             }, 1000);
-        }'''
-print('reset old found' if old in text else 'reset old NOT found')
-text = text.replace(old, new)
+        }
+'''
+assert old_reset in text, 'resetRefreshTimer block not found'
+text = text.replace(old_reset, new_reset)
 
-# 2. Recompute nextRefreshAt from scan timestamp after every load
-old2 = '''                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
+# 2. Recompute nextRefreshAt after each successful fetch.
+old_next = '''                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
                 // aligned with the cron schedule, not the browser load time.
                 window._lastScanTimestamp = lastUpdated;
                 // Do not recompute nextRefreshAt here; the interval timer handles firing
                 // at the next wall-clock cron boundary and will reschedule after the fetch.
 
                 // Update badge — prefer real-time US market status when the JSON scan is stale'''
-new2 = '''                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
+new_next = '''                // Anchor the auto-refresh countdown to the JSON timestamp so it stays
                 // aligned with the cron schedule, not the browser load time.
                 window._lastScanTimestamp = lastUpdated;
                 // Recompute the next refresh boundary from the scan timestamp so the timer
@@ -65,11 +67,11 @@ new2 = '''                // Anchor the auto-refresh countdown to the JSON times
                 scheduleNextRefresh(lastUpdated);
 
                 // Update badge — prefer real-time US market status when the JSON scan is stale'''
-print('nextRefreshAt old found' if old2 in text else 'nextRefreshAt old NOT found')
-text = text.replace(old2, new2)
+assert old_next in text, 'nextRefreshAt comment block not found'
+text = text.replace(old_next, new_next)
 
-# 3. Add drop-sound detection
-old3 = '''                const prevAlertTickers = new Set(window._lastAlertTickers || []);
+# 3. Add drop-sound detection.
+old_alert = '''                const prevAlertTickers = new Set(window._lastAlertTickers || []);
                 const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
                 const newAlertTickers = currentAlerts.map(r => r.ticker).filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && newAlertTickers.length > 0) {
@@ -78,7 +80,7 @@ old3 = '''                const prevAlertTickers = new Set(window._lastAlertTick
                 window._lastAlertTickers = currentAlerts.map(r => r.ticker);
 
                 const rawStatus = stats.market_status || 'OPEN';'''
-new3 = '''                const prevAlertTickers = new Set(window._lastAlertTickers || []);
+new_alert = '''                const prevAlertTickers = new Set(window._lastAlertTickers || []);
                 const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
                 const newAlertTickers = currentAlerts.map(r => r.ticker).filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && newAlertTickers.length > 0) {
@@ -103,16 +105,16 @@ new3 = '''                const prevAlertTickers = new Set(window._lastAlertTick
                 window._lastVisibleTickers = [...currentVisibleTickers];
 
                 const rawStatus = stats.market_status || 'OPEN';'''
-print('drop old found' if old3 in text else 'drop old NOT found')
-text = text.replace(old3, new3)
+assert old_alert in text, 'alert sound block not found'
+text = text.replace(old_alert, new_alert)
 
-# 4. Add playDropSound function
-old4 = '''                osc.stop(now + i * 0.18 + 0.4);
+# 4. Add playDropSound function.
+old_play_alert = '''                osc.stop(now + i * 0.18 + 0.4);
             }
         }
 
         function scheduleNextRefresh(anchor) {'''
-new4 = '''                osc.stop(now + i * 0.18 + 0.4);
+new_play_alert = '''                osc.stop(now + i * 0.18 + 0.4);
             }
         }
 
@@ -140,87 +142,91 @@ new4 = '''                osc.stop(now + i * 0.18 + 0.4);
         }
 
         function scheduleNextRefresh(anchor) {'''
-print('playDropSound old found' if old4 in text else 'playDropSound old NOT found')
-text = text.replace(old4, new4)
+assert old_play_alert in text, 'playNewAlertSound end block not found'
+text = text.replace(old_play_alert, new_play_alert)
 
-# 5. Simplify second duplicate scheduleNextRefresh to just use computeNextRefresh
-old5 = '''        function scheduleNextRefresh(anchor) {
-            const now = Date.now();
+# 5. Simplify duplicate scheduleNextRefresh definitions.
+old_dup = '''        // Schedule the next refresh relative to the actual data timestamp.
+        // We keep stepping forward by the active/idle interval until we land in the future,
+        // so the countdown does not reset to "now + interval" every time a page reloads.
+        function scheduleNextRefresh(anchorTimestamp) {
             const interval = getRefreshIntervalMs();
-            if (interval === 0) {
-                nextRefreshAt = now;
-                updateRefreshCountdown();
-                return;
-            }
+            const now = Date.now();
             let next;
-            if (anchor && Number.isFinite(new Date(anchor).getTime())) {
-                const alignedAnchor = new Date(anchor).getTime();
-                const start = alignedAnchor <= now
+            if (interval <= 0) {
+                next = now + 60000;
+            } else {
+                const anchor = anchorTimestamp ? new Date(anchorTimestamp).getTime() : now;
+                // Snap to the previous wall-clock interval boundary because the cron fires on
+                // the boundary (18:00, 18:02, 18:04 ...), not at the exact scan completion time.
+                const alignedAnchor = Math.floor(anchor / interval) * interval;
+                // If the anchor is unreasonably old (no data yet), fall back to the current wall-clock boundary.
+                const start = (anchorTimestamp && alignedAnchor > now - 24 * 3600 * 1000)
                     ? alignedAnchor
                     : Math.floor(now / interval) * interval;
-                next = start;
-                while (next <= now) next += interval;
-            } else {
-                const start = Math.floor(now / interval) * interval;
                 next = start + interval;
             }
-            nextRefreshAt = Number.isFinite(next) ? next : now + interval;
+            nextRefreshAt = Number.isFinite(next) ? next : now + (isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : IDLE_REFRESH_INTERVAL_MS);
+            // Persist so the countdown survives page reloads.
             try {
                 localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
             } catch (e) { /* storage may be unavailable */ }
             updateRefreshCountdown();
         }
 
-        function resetRefreshTimer() {'''
-new5 = '''        function scheduleNextRefresh(anchor) {
+'''
+assert old_dup in text, 'first scheduleNextRefresh duplicate not found'
+text = text.replace(old_dup, '')
+
+old_anchor = '''        function scheduleNextRefresh(anchor) {
             const interval = getRefreshIntervalMs();
             if (interval <= 0) {
                 nextRefreshAt = Date.now() + 60000;
                 updateRefreshCountdown();
                 return;
             }
-            nextRefreshAt = computeNextRefresh();
-            try {
-                localStorage.setItem('ozmoeg-next-refresh', String(nextRefreshAt));
-            } catch (e) { /* storage may be unavailable */ }
-            updateRefreshCountdown();
-        }
+            nextRefreshAt = computeNextRefresh();'''
+new_anchor = '''        function scheduleNextRefresh(anchorTimestamp) {
+            const interval = getRefreshIntervalMs();
+            if (interval <= 0) {
+                nextRefreshAt = Date.now() + 60000;
+                updateRefreshCountdown();
+                return;
+            }
+            nextRefreshAt = computeNextRefresh();'''
+assert old_anchor in text, 'remaining scheduleNextRefresh not found'
+text = text.replace(old_anchor, new_anchor)
 
-        function resetRefreshTimer() {'''
-print('dup schedule old found' if old5 in text else 'dup schedule old NOT found')
-text = text.replace(old5, new5)
-
-# 6. Add concurrency guard to loadLiveData start
-old6 = '''        async function loadLiveData() {
+# 6. Add concurrency guard to loadLiveData.
+old_load_start = '''        async function loadLiveData() {
             try {
                 setMarketLoading(currentMarket, true);'''
-new6 = '''        async function loadLiveData() {
+new_load_start = '''        async function loadLiveData() {
             if (window._loadingLiveData) return;
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);'''
-print('loadLiveData start old found' if old6 in text else 'loadLiveData start old NOT found')
-text = text.replace(old6, new6)
+assert old_load_start in text, 'loadLiveData start not found'
+text = text.replace(old_load_start, new_load_start)
 
-# 7. Release concurrency guard in finally
-old6b = '''            } catch (e) {
+old_load_finally = '''            } catch (e) {
                 console.error('Live data refresh failed:', e);
             } finally {
                 setMarketLoading(currentMarket, false);'''
-new6b = '''            } catch (e) {
+new_load_finally = '''            } catch (e) {
                 console.error('Live data refresh failed:', e);
             } finally {
                 window._loadingLiveData = false;
                 setMarketLoading(currentMarket, false);'''
-print('loadLiveData finally old found' if old6b in text else 'loadLiveData finally old NOT found')
-text = text.replace(old6b, new6b)
+assert old_load_finally in text, 'loadLiveData finally not found'
+text = text.replace(old_load_finally, new_load_finally)
 
-# 8. Add manual-refresh listener if not present
+# 7. Add manual-refresh button listener if the page has one.
 if 'manual-refresh' not in text:
-    init_old = '''        // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
+    old_init = '''        // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
         (async function init() {'''
-    init_new = '''        // Manual refresh button (if present) re-fetches immediately and restarts the timer.
+    new_init = '''        // Manual refresh button (if present) re-fetches immediately and restarts the timer.
         document.addEventListener('DOMContentLoaded', () => {
             const manualRefreshBtn = document.getElementById('manual-refresh');
             if (manualRefreshBtn) {
@@ -234,13 +240,8 @@ if 'manual-refresh' not in text:
         // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
         (async function init() {'''
-    if init_old in text:
-        text = text.replace(init_old, init_new)
-        print('added manual-refresh listener')
-    else:
-        print('init block not found')
-else:
-    print('manual-refresh listener already present')
+    assert old_init in text, 'init block not found'
+    text = text.replace(old_init, new_init)
 
 p.write_text(text, encoding='utf-8')
-print('done')
+print('patch ok')
