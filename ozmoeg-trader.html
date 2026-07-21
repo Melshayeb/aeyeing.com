@@ -4693,13 +4693,13 @@
                         return newestMin < NEWS_TICKER_MAX_AGE_HOURS * 60;
                     });
                     const itemsToShow = recentItems.length ? recentItems : actionable;
+                    // Use the scan snapshot time for the news ticker so it matches the
+                    // "Last refresh" stamp (AEST) and does not drift into a different timezone.
+                    const scanTs = new Date(data.last_updated || Date.now());
+                    const tickerDate = scanTs.toLocaleDateString('en-AU', { timeZone: 'Australia/Sydney', month: 'short', day: 'numeric' });
+                    const tickerTime = scanTs.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney', hour: '2-digit', minute: '2-digit', hour12: true });
                     if (itemsToShow.length) {
                         const items = itemsToShow.map(r => {
-                            // Use the scan snapshot time for the news ticker so it matches the
-                            // "Last refresh" stamp (AEST) and does not drift into a different timezone.
-                            const scanTs = new Date(data.last_updated || Date.now());
-                            const date = scanTs.toLocaleDateString('en-AU', { timeZone: 'Australia/Sydney', month: 'short', day: 'numeric' });
-                            const time = scanTs.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney', hour: '2-digit', minute: '2-digit', hour12: true });
                             const imp = impactLabel(getAlertMaxScore(r), r);
                             const impactTag = ` <span class="impact-mini ${imp.cls}">${imp.text}</span>`;
 
@@ -4709,11 +4709,11 @@
                             const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
                             const country = (r.country || '').trim();
                             const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
-                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${date}</span> <span class="time">${time}</span> — ${r.ticker}${countryBadge} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${tickerDate}</span> <span class="time">${tickerTime}</span> — ${r.ticker}${countryBadge} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
                         }).join('');
                         ticker.innerHTML = items + '\n' + items;
                     } else {
-                        const info = `<div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — No candidates passed filter criteria — Scan continues every 15 min</div>`;
+                        const info = `<div class="news-item skip"><span class="score">INFO</span><span class="time">${tickerTime}</span> — No candidates passed filter criteria — Scan continues every minute</div>`;
                         ticker.innerHTML = info + '\n' + info;
                     }
                 }
