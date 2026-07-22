@@ -7,11 +7,33 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
+<script>
+    // Auto-reload guard: GitHub Pages/Cloudflare cache ozmoeg-trader.html for 10 minutes,
+    // so a stale copy can linger after a deployment. Check the server's Last-Modified header
+    // against the loaded page and reload once with a fresh URL if a newer version exists.
+    (function(){
+        if (sessionStorage.getItem('ozmoeg-reloaded')) return;
+        try {
+            fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                .then(function(r){
+                    const serverTs = r.headers.get('last-modified');
+                    if (!serverTs) return;
+                    const serverTime = new Date(serverTs).getTime();
+                    const pageTime = new Date(document.lastModified).getTime();
+                    if (serverTime > pageTime + 5000) {
+                        sessionStorage.setItem('ozmoeg-reloaded', '1');
+                        var url = new URL(location.href);
+                        url.searchParams.set('_', Date.now().toString());
+                        url.searchParams.set('force', '1');
+                        location.replace(url.toString());
+                    }
+                })
+                .catch(function(e){ /* ignore network errors */ });
+        } catch (e) { /* ignore */ }
+    })();
+</script>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
-<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
-<meta content="no-cache" http-equiv="Pragma"/>
-<meta content="0" http-equiv="Expires"/>
 <link href="images/logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
