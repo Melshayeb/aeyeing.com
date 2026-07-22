@@ -2516,21 +2516,21 @@
             }
         }
 
-        function findNextMarketOpen(fromTime) {
-
+        function findNextScanWindow(fromTime) {
+            // The scanner's active window starts at 17:00 Sydney on weekdays.
             let probe = new Date(fromTime);
             let safety = 0;
             while (safety++ < 10080) { // Max 1 week
                 probe.setMinutes(probe.getMinutes() + 1);
-                const pp = new Intl.DateTimeFormat('en-US', {
-                    timeZone: 'America/New_York',
+                const sydney = new Intl.DateTimeFormat('en-AU', {
+                    timeZone: 'Australia/Sydney',
                     hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
                 }).formatToParts(probe);
-                const ph = parseInt(pp.find(p => p.type === 'hour').value);
-                const pm = parseInt(pp.find(p => p.type === 'minute').value);
-                const pw = pp.find(p => p.type === 'weekday').value;
-                const pwn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[pw];
-                if (pwn >= 1 && pwn <= 5 && ph === 9 && pm === 30) {
+                const sh = parseInt(sydney.find(p => p.type === 'hour').value);
+                const sm = parseInt(sydney.find(p => p.type === 'minute').value);
+                const sw = sydney.find(p => p.type === 'weekday').value;
+                const swn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[sw];
+                if (swn >= 1 && swn <= 5 && sh === 17 && sm === 0) {
                     return probe;
                 }
             }
@@ -3017,12 +3017,11 @@
 
             const interval = getRefreshIntervalMs();
             if (interval === 0) {
-                const nextOpen = findNextMarketOpen(new Date());
+                const nextOpen = findNextScanWindow(new Date());
                 let openText;
                 if (nextOpen) {
-                    const usOpen = nextOpen.toLocaleString('en-AU', { timeZone: 'America/New_York', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true });
                     const sydneyOpen = nextOpen.toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true });
-                    openText = `Opens ${usOpen} ET / ${sydneyOpen} Sydney`;
+                    openText = `Watchlist resumes ${sydneyOpen} Sydney`;
                 } else {
                     openText = 'market closed';
                 }
