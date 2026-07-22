@@ -90,6 +90,8 @@ _CITY_CENTERS: Dict[str, Tuple[float, float]] = {
     "langkawi": (6.3500, 99.8000),
     "george town": (5.4142, 100.3288),
     "chengdu": (30.5728, 104.0668),
+    "marrakech": (31.6295, -7.9811),
+    "casablanca": (33.5731, -7.5898),
 }
 
 
@@ -253,9 +255,9 @@ def fetch_weather(lat: float, lon: float, start_date: str, end_date: str) -> Lis
     from datetime import date
     today = date.today().isoformat()
     today_dt = datetime.strptime(today, "%Y-%m-%d").date()
-    forecast_limit_dt = today_dt + timedelta(days=16)
+    forecast_limit_dt = today_dt + timedelta(days=15)  # Open-Meteo forecast API accepts up to ~16 days inclusive
     forecast_limit = forecast_limit_dt.isoformat()
-    safe_forecast_end_dt = today_dt + timedelta(days=15)
+    safe_forecast_end_dt = today_dt + timedelta(days=14)
     safe_forecast_end = safe_forecast_end_dt.isoformat()
 
     def _parse_range(s, e):
@@ -300,6 +302,9 @@ def fetch_weather(lat: float, lon: float, start_date: str, end_date: str) -> Lis
         result = {}
         s_dt, e_dt = _parse_range(start_date, end_date)
         cfg = _WEATHER_TIMEOUTS
+
+        if s_dt > e_dt:
+            return []
 
         if end_date < today:
             url = "https://archive-api.open-meteo.com/v1/archive"
@@ -1170,6 +1175,121 @@ def _builtin_city_places(city: str, country: str, kind: str, limit: int = 30) ->
                 {"name": "Hotel Negresco", "price": "~EUR 600", "location": "Promenade des Anglais", "highlights": "Iconic Belle Époque palace hotel"},
                 {"name": "Le Méridien Nice", "price": "~EUR 280", "location": "Promenade des Anglais", "highlights": "Seafront location near Old Town"},
                 {"name": "Hôtel La Pérouse", "price": "~EUR 220", "location": "Castle Hill", "highlights": "Quiet boutique hotel by the sea"},
+            ],
+        },
+        "marrakech": {
+            "attractions": [
+                {"name": "Jemaa el-Fnaa Square", "tags": ["culture", "local markets", "food & drink", "evening"], "best_time": ["afternoon", "evening"], "lat": 31.6258, "lon": -7.9893},
+                {"name": "Koutoubia Mosque", "tags": ["architecture", "history & culture", "photography"], "best_time": ["morning", "afternoon"], "lat": 31.6241, "lon": -7.9937},
+                {"name": "Bahia Palace", "tags": ["history & culture", "architecture", "photography"], "best_time": ["morning", "afternoon"], "lat": 31.6173, "lon": -7.9816},
+                {"name": "Saadian Tombs", "tags": ["history & culture", "architecture"], "best_time": ["morning", "afternoon"], "lat": 31.6173, "lon": -7.9896},
+                {"name": "Majorelle Garden", "tags": ["parks & outdoors", "museums & art", "photography"], "best_time": ["morning", "afternoon"], "lat": 31.6418, "lon": -8.0030},
+                {"name": "El Badi Palace", "tags": ["history & culture", "architecture", "photography"], "best_time": ["morning", "afternoon"], "lat": 31.6181, "lon": -7.9864},
+                {"name": "Medersa Ben Youssef", "tags": ["history & culture", "architecture"], "best_time": ["morning", "afternoon"], "lat": 31.6328, "lon": -7.9861},
+                {"name": "Dar Si Said Museum", "tags": ["museums & art", "history & culture"], "best_time": ["afternoon"], "lat": 31.6250, "lon": -7.9860},
+                {"name": "Menara Gardens", "tags": ["parks & outdoors", "views", "photography"], "best_time": ["morning", "evening"], "lat": 31.6178, "lon": -8.0225},
+                {"name": "Cyber Park Arsat Moulay Abdeslam", "tags": ["parks & outdoors", "relaxation"], "best_time": ["morning"], "lat": 31.6250, "lon": -8.0000},
+                {"name": "Royal Palace of Marrakech", "tags": ["architecture", "history & culture"], "best_time": ["morning"], "lat": 31.6200, "lon": -7.9900},
+                {"name": "Herborist of the Paradis", "tags": ["wellness & spa", "shopping", "culture"], "best_time": ["afternoon"], "lat": 31.6300, "lon": -7.9800},
+            ],
+            "museums": [
+                {"name": "Marrakech Museum", "tags": ["museums & art", "history & culture", "architecture"], "best_time": ["morning", "afternoon"], "lat": 31.6310, "lon": -7.9860},
+                {"name": "Dar Si Said Museum", "tags": ["museums & art", "history & culture", "crafts"], "best_time": ["afternoon"], "lat": 31.6250, "lon": -7.9860},
+                {"name": "Musée Yves Saint Laurent Marrakech", "tags": ["museums & art", "fashion", "art galleries"], "best_time": ["afternoon"], "lat": 31.6418, "lon": -8.0030},
+                {"name": "Photography Museum of Marrakech", "tags": ["museums & art", "photography", "history & culture"], "best_time": ["morning", "afternoon"], "lat": 31.6300, "lon": -7.9850},
+                {"name": "House of Photography", "tags": ["museums & art", "photography"], "best_time": ["afternoon"], "lat": 31.6325, "lon": -7.9875},
+            ],
+            "markets": [
+                {"name": "Souk Semmarine", "tags": ["local markets", "shopping", "crafts"], "lat": 31.6280, "lon": -7.9880},
+                {"name": "Rahba Kedima (Spice Square)", "tags": ["local markets", "food & drink", "culture"], "lat": 31.6300, "lon": -7.9860},
+                {"name": "Marrakech Souks", "tags": ["local markets", "shopping", "crafts", "culture"], "lat": 31.6280, "lon": -7.9880},
+                {"name": "Ensemble Artisanal", "tags": ["local markets", "crafts", "shopping"], "lat": 31.6150, "lon": -7.9900},
+            ],
+            "food": [
+                {"name": "Nomad", "tags": ["local cuisine", "modern moroccan", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 31.6295, "lon": -7.9860},
+                {"name": "Le Jardin", "tags": ["local cuisine", "medina", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 31.6310, "lon": -7.9850},
+                {"name": "Café des Épices", "tags": ["local cuisine", "café", "lunch"], "best_time": ["afternoon"], "lat": 31.6300, "lon": -7.9865},
+                {"name": "Terrasse des Épices", "tags": ["local cuisine", "views", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 31.6295, "lon": -7.9865},
+                {"name": "Al Fassia", "tags": ["local cuisine", "moroccan", "fine dining", "dinner"], "best_time": ["evening"], "lat": 31.6400, "lon": -8.0100},
+                {"name": "Comptoir Darna", "tags": ["local cuisine", "moroccan", "dinner", "entertainment"], "best_time": ["evening"], "lat": 31.6350, "lon": -8.0050},
+                {"name": "Grand Café de la Poste", "tags": ["french", "moroccan", "breakfast", "lunch"], "best_time": ["morning", "afternoon"], "lat": 31.6305, "lon": -8.0080},
+                {"name": "La Famille", "tags": ["vegetarian", "local cuisine", "lunch"], "best_time": ["afternoon"], "lat": 31.6315, "lon": -7.9860},
+                {"name": "Henna Art Café", "tags": ["coffee & cafés", "culture", "breakfast", "lunch"], "best_time": ["morning", "afternoon"], "lat": 31.6320, "lon": -7.9870},
+                {"name": "Café Clock", "tags": ["local cuisine", "international", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 31.6340, "lon": -7.9855},
+            ],
+            "neighborhoods": [
+                {"name": "Medina", "tags": ["history & culture", "local markets", "food & drink"], "lat": 31.6280, "lon": -7.9880},
+                {"name": "Kasbah", "tags": ["history & culture", "architecture", "food & drink"], "lat": 31.6170, "lon": -7.9880},
+                {"name": "Gueliz (New Town)", "tags": ["shopping", "food & drink", "modern"], "lat": 31.6350, "lon": -8.0100},
+                {"name": "Hivernage", "tags": ["luxury", "nightlife", "food & drink"], "lat": 31.6250, "lon": -8.0050},
+                {"name": "Palmeraie", "tags": ["parks & outdoors", "luxury", "relaxation"], "lat": 31.6600, "lon": -7.9800},
+            ],
+            "day_trips": [
+                {"name": "Atlas Mountains Day Trip (Imlil Valley)", "tags": ["nature & wildlife", "hiking & adventure", "day trip", "views"], "best_time": ["morning", "afternoon"], "lat": 31.1326, "lon": -7.9198},
+                {"name": "Ouzoud Waterfalls", "tags": ["nature & wildlife", "hiking & adventure", "day trip"], "best_time": ["morning", "afternoon"], "lat": 32.0150, "lon": -6.7200},
+                {"name": "Essaouira Day Trip", "tags": ["beach", "history & culture", "day trip"], "best_time": ["morning", "afternoon"], "lat": 31.5085, "lon": -9.7595},
+                {"name": "Ourika Valley", "tags": ["nature & wildlife", "hiking & adventure", "day trip", "culture"], "best_time": ["morning", "afternoon"], "lat": 31.3700, "lon": -7.7800},
+                {"name": "Ait Benhaddou", "tags": ["history & culture", "architecture", "unesco", "day trip"], "best_time": ["morning", "afternoon"], "lat": 31.0470, "lon": -7.1300},
+                {"name": "Agafay Desert", "tags": ["nature & wildlife", "adventure", "day trip"], "best_time": ["afternoon", "evening"], "lat": 31.4500, "lon": -8.1500},
+            ],
+            "hotels": [
+                {"name": "La Mamounia", "price": "~MAD 5,500", "location": "Medina", "highlights": "Iconic palace hotel and gardens near the medina walls"},
+                {"name": "Riad Yasmine", "price": "~MAD 1,200", "location": "Medina", "highlights": "Intimate boutique riad with pool"},
+                {"name": "Hotel Les Jardins de la Koutoubia", "price": "~MAD 1,800", "location": "Medina", "highlights": "Spacious rooms near Jemaa el-Fnaa"},
+                {"name": "Radisson Blu Marrakech", "price": "~MAD 1,400", "location": "Gueliz", "highlights": "Modern hotel close to Gueliz shops and restaurants"},
+                {"name": "Ibis Marrakech Centre Gare", "price": "~MAD 550", "location": "Gueliz", "highlights": "Budget hotel near the train station"},
+            ],
+        },
+        "casablanca": {
+            "attractions": [
+                {"name": "Hassan II Mosque", "tags": ["architecture", "history & culture", "photography"], "best_time": ["morning", "afternoon"], "lat": 33.6088, "lon": -7.6328},
+                {"name": "Corniche Ain Diab", "tags": ["beach", "parks & outdoors", "food & drink"], "best_time": ["afternoon", "evening"], "lat": 33.5938, "lon": -7.6637},
+                {"name": "Morocco Mall", "tags": ["shopping", "food & drink"], "best_time": ["afternoon"], "lat": 33.5926, "lon": -7.6506},
+                {"name": "Quartier Habous", "tags": ["history & culture", "shopping", "architecture"], "best_time": ["morning", "afternoon"], "lat": 33.5831, "lon": -7.6113},
+                {"name": "Mahkama du Pacha", "tags": ["history & culture", "architecture"], "best_time": ["morning"], "lat": 33.5800, "lon": -7.6150},
+                {"name": "Casablanca Cathedral (Sacré-Cœur)", "tags": ["architecture", "history & culture", "photography"], "best_time": ["morning"], "lat": 33.5850, "lon": -7.6200},
+                {"name": "Villa des Arts", "tags": ["art galleries", "museums & art", "culture"], "best_time": ["afternoon"], "lat": 33.5850, "lon": -7.6300},
+                {"name": "Parc de la Ligue Arabe", "tags": ["parks & outdoors", "relaxation"], "best_time": ["morning", "afternoon"], "lat": 33.5775, "lon": -7.6197},
+                {"name": "Casablanca Central Market (Marché Central)", "tags": ["local markets", "food & drink", "culture"], "best_time": ["morning"], "lat": 33.5890, "lon": -7.6100},
+                {"name": "Twin Center", "tags": ["architecture", "views", "shopping"], "best_time": ["afternoon"], "lat": 33.5857, "lon": -7.6322},
+            ],
+            "museums": [
+                {"name": "Museum of Moroccan Judaism", "tags": ["museums & art", "history & culture"], "best_time": ["morning", "afternoon"], "lat": 33.5700, "lon": -7.6400},
+                {"name": "Villa des Arts", "tags": ["museums & art", "art galleries"], "best_time": ["afternoon"], "lat": 33.5850, "lon": -7.6300},
+                {"name": "Mohammed VI Museum of Modern and Contemporary Art", "tags": ["museums & art", "art galleries"], "best_time": ["morning", "afternoon"], "lat": 33.6000, "lon": -7.6200},
+            ],
+            "markets": [
+                {"name": "Casablanca Central Market", "tags": ["local markets", "food & drink"], "lat": 33.5890, "lon": -7.6100},
+                {"name": "Quartier Habous Market", "tags": ["local markets", "shopping", "crafts"], "lat": 33.5831, "lon": -7.6113},
+                {"name": "Morocco Mall", "tags": ["shopping", "food & drink"], "lat": 33.5926, "lon": -7.6506},
+            ],
+            "food": [
+                {"name": "La Sqala", "tags": ["local cuisine", "seafood", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 33.6050, "lon": -7.6300},
+                {"name": "Le Petit Roche", "tags": ["seafood", "local cuisine", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 33.6000, "lon": -7.6350},
+                {"name": "Restaurant du Port de Pêche", "tags": ["seafood", "local cuisine", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 33.6030, "lon": -7.6200},
+                {"name": "Café Maure", "tags": ["coffee & cafés", "sweets & desserts"], "best_time": ["morning", "afternoon"], "lat": 33.5830, "lon": -7.6100},
+                {"name": "Al Mounia", "tags": ["local cuisine", "moroccan", "dinner"], "best_time": ["evening"], "lat": 33.5840, "lon": -7.6200},
+                {"name": "Bondi Coffee Kitchen", "tags": ["coffee & cafés", "breakfast"], "best_time": ["morning"], "lat": 33.5900, "lon": -7.6500},
+                {"name": "Taverne du Dauphin", "tags": ["seafood", "french", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 33.6020, "lon": -7.6250},
+                {"name": "L'Entrecôte Café de Paris", "tags": ["steakhouse", "french", "lunch", "dinner"], "best_time": ["afternoon", "evening"], "lat": 33.5850, "lon": -7.6300},
+            ],
+            "neighborhoods": [
+                {"name": "Quartier Habous", "tags": ["history & culture", "shopping", "architecture"], "lat": 33.5831, "lon": -7.6113},
+                {"name": "Ain Diab", "tags": ["beach", "food & drink", "nightlife"], "lat": 33.5938, "lon": -7.6637},
+                {"name": "City Centre", "tags": ["shopping", "architecture", "business"], "lat": 33.5731, "lon": -7.5898},
+                {"name": "Anfa", "tags": ["residential", "upscale", "dining"], "lat": 33.5800, "lon": -7.6400},
+            ],
+            "day_trips": [
+                {"name": "Rabat Day Trip", "tags": ["history & culture", "day trip"], "best_time": ["morning", "afternoon"], "lat": 34.0209, "lon": -6.8417},
+                {"name": "El Jadida Day Trip", "tags": ["beach", "history & culture", "day trip"], "best_time": ["morning", "afternoon"], "lat": 33.2540, "lon": -8.5060},
+                {"name": "Azemmour Day Trip", "tags": ["history & culture", "photography", "day trip"], "best_time": ["morning", "afternoon"], "lat": 33.2890, "lon": -8.3430},
+                {"name": "Bouskoura Forest", "tags": ["nature & wildlife", "parks & outdoors", "day trip"], "best_time": ["morning", "afternoon"], "lat": 33.4500, "lon": -7.6700},
+            ],
+            "hotels": [
+                {"name": "Ibis Casablanca City Center", "price": "~MAD 700", "location": "City Centre", "highlights": "Budget-friendly hotel near Casa-Voyageurs station"},
+                {"name": "Hotel Club Val d'Anfa", "price": "~MAD 1,200", "location": "Anfa", "highlights": "Beachside hotel with pool and garden"},
+                {"name": "Four Seasons Hotel Casablanca", "price": "~MAD 3,500", "location": "Ain Diab", "highlights": "Luxury oceanfront resort"},
+                {"name": "Movenpick Hotel Casablanca", "price": "~MAD 1,600", "location": "City Centre", "highlights": "Modern hotel near Hassan II Mosque"},
             ],
         },
     }

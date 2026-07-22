@@ -162,7 +162,11 @@ def build_plan_data(trip: Dict, pace: str = "relaxed") -> Dict:
     city_meta = []
     coords_cache = {}
     for c in cities:
-        latlon = geocode_city(c["city"], country)
+        try:
+            latlon = geocode_city(c["city"], country)
+        except Exception as e:
+            print(f"Geocode failed for {c['city']}: {e}")
+            latlon = None
         coords_cache[c["city"]] = latlon
         city_meta.append({
             "city": c["city"],
