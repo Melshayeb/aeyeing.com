@@ -2583,14 +2583,16 @@
             const et = getETParts(now);
             // Sunday (0) and Saturday (6) are weekend all day.
             if (et.weekdayNum === 0 || et.weekdayNum >= 6) return 'WEEKEND';
-            // Friday after 16:00 ET is closed for the weekend.
-            if (et.weekdayNum === 5 && (et.hour > 16 || (et.hour === 16 && et.minute >= 0))) return 'WEEKEND';
-            if (et.hour < 9 || (et.hour === 9 && et.minute < 30)) {
-                if (et.hour >= 4) return 'PRE-MARKET';
+            // Friday after 20:00 ET is closed for the weekend (aligns with backend AFTER-HOURS end).
+            if (et.weekdayNum === 5 && et.hour >= 20) return 'WEEKEND';
+            const minutes = et.hour * 60 + et.minute;
+            if (minutes < 570) { // 09:30
+                if (minutes >= 240) return 'PRE-MARKET'; // 04:00
                 return 'CLOSED';
             }
-            if (et.hour >= 16) return 'AFTER-HOURS';
-            return 'OPEN';
+            if (minutes < 960) return 'OPEN'; // 16:00
+            if (minutes < 1200) return 'AFTER-HOURS'; // 20:00
+            return 'CLOSED';
         }
 
         function getETDateFor(year, month, day, hour, minute) {
@@ -3025,6 +3027,7 @@
                     openText = 'market closed';
                 }
                 label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
+                label.classList.remove('active-refresh');
                 return;
             }
 
@@ -3032,7 +3035,7 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            active = isActiveTradingWindow();
+            active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
             label.classList.toggle('active-refresh', active);
             label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
         }
