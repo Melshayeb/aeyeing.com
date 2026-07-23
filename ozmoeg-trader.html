@@ -8,29 +8,71 @@
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
 <script>
-    // Auto-reload guard: GitHub Pages/Cloudflare cache ozmoeg-trader.html for 10 minutes,
-    // so a stale copy can linger after a deployment. Check the server's Last-Modified header
-    // against the loaded page and reload once with a fresh URL if a newer version exists.
+    // Auto-reload guard: GitHub Pages/Cloudflare cache aeyeing.com for ~10 minutes,
+    // so a stale copy can linger after a deployment. We compare the CDN Last-Modified
+    // with the loaded page and also compare the raw GitHub manifest timestamp with the
+    // CDN manifest timestamp. If raw GitHub is ahead, force-reload with a cache-busting
+    // URL until the browser actually has the latest HTML that uses raw GitHub as its
+    // primary data source.
     (function(){
-        const reloadedKey = 'ozmoeg-reloaded-' + Math.floor(Date.now() / 600000); // one reload per 10-min bucket
-        if (sessionStorage.getItem(reloadedKey)) return;
+        const now = Date.now();
+        const reloadKey = 'ozmoeg-reloaded-v2';
+        const lastReload = parseInt(sessionStorage.getItem(reloadKey) || '0', 10);
+        // Allow another reload if at least 20 seconds have passed (prevents infinite loops).
+        if (now - lastReload < 20000) return;
+
+        function reloadFresh() {
+            sessionStorage.setItem(reloadKey, now.toString());
+            var url = new URL(location.href);
+            url.searchParams.set('_', now.toString());
+            url.searchParams.set('force', '1');
+            location.replace(url.toString());
+        }
+
+        function checkRawGithub() {
+            try {
+                var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
+                var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + now;
+                fetch(rawUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                    .then(function(r){ return r.json(); })
+                    .then(function(raw){
+                        if (!raw || !raw.last_updated) return;
+                        var rawTs = new Date(raw.last_updated).getTime();
+                        // Also fetch the CDN manifest to see if the current HTML/JS is stale.
+                        var cdnUrl = 'https://aeyeing.com/ozmoeg-manifest' + market + '.json?_=' + now;
+                        fetch(cdnUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                            .then(function(r){ return r.json(); })
+                            .then(function(cdn){
+                                var cdnTs = cdn && cdn.last_updated ? new Date(cdn.last_updated).getTime() : 0;
+                                // If raw GitHub is more than 2 minutes ahead of the CDN manifest,
+                                // the current page is using stale cached data.
+                                if (rawTs && cdnTs && rawTs > cdnTs + 120000) {
+                                    console.warn('CDN manifest is stale; reloading from fresh URL');
+                                    reloadFresh();
+                                }
+                            })
+                            .catch(function(){});
+                    })
+                    .catch(function(){});
+            } catch(e){ /* ignore */ }
+        }
+
+        // First check: compare loaded HTML Last-Modified with server.
         try {
             fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
                 .then(function(r){
-                    const serverTs = r.headers.get('last-modified');
-                    if (!serverTs) return;
-                    const serverTime = new Date(serverTs).getTime();
-                    const pageTime = new Date(document.lastModified).getTime();
+                    var serverTs = r.headers.get('last-modified');
+                    if (!serverTs) { checkRawGithub(); return; }
+                    var serverTime = new Date(serverTs).getTime();
+                    var pageTime = new Date(document.lastModified).getTime();
                     if (serverTime > pageTime + 3000) {
-                        sessionStorage.setItem(reloadedKey, '1');
-                        var url = new URL(location.href);
-                        url.searchParams.set('_', Date.now().toString());
-                        url.searchParams.set('force', '1');
-                        location.replace(url.toString());
+                        reloadFresh();
+                    } else {
+                        checkRawGithub();
                     }
                 })
-                .catch(function(e){ /* ignore network errors */ });
-        } catch (e) { /* ignore */ }
+                .catch(function(){ checkRawGithub(); });
+        } catch (e) { checkRawGithub(); }
     })();
 </script>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
