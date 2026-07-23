@@ -3443,8 +3443,7 @@
         async function pollManifest() {
             if (window._pollingManifest || window._loadingLiveData) return;
             window._pollingManifest = true;
-            nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
-            try { sessionStorage.setItem(NEXT_POLL_KEY, String(nextPollAt)); } catch (e) {}
+            nextPollAt = computeNextPollAt();
             updateRefreshCountdown();
             try {
                 const manifest = await fetchManifestRaw();
@@ -3470,11 +3469,8 @@
 
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
-            // If the saved deadline is still valid, keep it; otherwise start a fresh interval.
-            if (nextPollAt <= Date.now() || nextPollAt > Date.now() + MANIFEST_POLL_INTERVAL_MS * 2) {
-                nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
-                try { sessionStorage.setItem(NEXT_POLL_KEY, String(nextPollAt)); } catch (e) {}
-            }
+            // Recompute against the fixed minute boundary so reloads don't restart the countdown.
+            nextPollAt = computeNextPollAt();
             refreshTimerId = setInterval(() => {
                 updateRefreshCountdown();
                 if (Date.now() >= nextPollAt) {
