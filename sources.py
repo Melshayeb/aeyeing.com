@@ -440,37 +440,27 @@ def enrich_place(place: Dict, interests: List[str], ages: List[int], city: str =
 def fetch_places(city: str, country: str, kind: str, interests: List[str] = None,
                  ages: List[int] = None, limit: int = 20,
                  latlon: Optional[Tuple[float, float]] = None) -> List[Dict]:
-    """Return curated or live points of interest for a city.
+    """Return curated or generated points of interest for a city.
     Order of preference:
-      1. Built-in curated lists for major cities (use these first to avoid live latency).
-      2. Local curated fallback JSON.
-      3. OpenStreetMap only if curated data is too short (best effort; never fail).
+      1. Built-in curated lists for major cities.
+      2. Cached LLM-generated dataset.
+      3. LLM on-demand dataset (Ollama primary, cloud fallback).
+      4. Generic safe template (never fails).
     """
+    ages = ages or []
     places = _builtin_city_places(city, country, kind, limit)
     if places:
         return [enrich_place(p, interests, ages, city) for p in places[:limit]]
 
-    places = load_fallback(country, city, kind)
-    if not places:
-        places = load_fallback("generic", city, kind)
-    if len(places) >= 5:
-        return [enrich_place(p, interests, ages, city) for p in places[:limit]]
+    # Tier 2/3: LLM-generated and cached datasets.
+    from llm_places import generate_city_dataset, load_cached
+    cached = load_cached(city, country)
+    if cached is None:
+        cached = generate_city_dataset(city, country, ages=ages)
+    if cached and cached.get(kind):
+        return [enrich_place(p, interests, ages, city) for p in cached[kind][:limit]]
 
-    # If curated list is short, supplement with live OSM (best-effort; never crash generation).
-    osm = []
-    try:
-        if latlon is None:
-            latlon = geocode_city(city, country)
-        if latlon:
-            osm = _osm_places(city, country, kind, limit, latlon=latlon)
-    except Exception as e:
-        print(f"OSM place fetch failed for {city}/{kind}: {e}")
-
-    combined = places + osm
-    if combined:
-        return [enrich_place(p, interests, ages, city) for p in combined[:limit]]
-
-    # If everything else failed, return a generic safe placeholder so the sheet still builds.
+    # Tier 4: generic safe placeholders.
     return [enrich_place(p, interests, ages, city) for p in _generic_placeholders(city, kind)[:limit]]
 
 
