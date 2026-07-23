@@ -3446,11 +3446,11 @@
             if (!main && !raw) return null;
             if (!main) return raw;
             if (!raw) return main;
-            // Prefer the newer of the two manifests by timestamp.
+            // Raw GitHub is uncached, so prefer it whenever it is at least as fresh as the CDN.
             const mainTs = new Date(main.last_updated).getTime() || 0;
             const rawTs = new Date(raw.last_updated).getTime() || 0;
-            if (rawTs > mainTs) {
-                console.log('Using raw-github manifest (newer):', raw.latest, raw.last_updated);
+            if (rawTs >= mainTs) {
+                console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
                 return raw;
             }
             return main;
