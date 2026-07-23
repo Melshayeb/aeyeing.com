@@ -12,7 +12,8 @@
     // so a stale copy can linger after a deployment. Check the server's Last-Modified header
     // against the loaded page and reload once with a fresh URL if a newer version exists.
     (function(){
-        if (sessionStorage.getItem('ozmoeg-reloaded')) return;
+        const reloadedKey = 'ozmoeg-reloaded-' + Math.floor(Date.now() / 600000); // one reload per 10-min bucket
+        if (sessionStorage.getItem(reloadedKey)) return;
         try {
             fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
                 .then(function(r){
@@ -20,8 +21,8 @@
                     if (!serverTs) return;
                     const serverTime = new Date(serverTs).getTime();
                     const pageTime = new Date(document.lastModified).getTime();
-                    if (serverTime > pageTime + 5000) {
-                        sessionStorage.setItem('ozmoeg-reloaded', '1');
+                    if (serverTime > pageTime + 3000) {
+                        sessionStorage.setItem(reloadedKey, '1');
                         var url = new URL(location.href);
                         url.searchParams.set('_', Date.now().toString());
                         url.searchParams.set('force', '1');
