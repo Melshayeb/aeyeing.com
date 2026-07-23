@@ -3379,8 +3379,22 @@
         // race where the frontend refreshes on a wall-clock boundary before the backend scan
         // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
         const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
+        const NEXT_POLL_KEY = 'ozmoeg-next-poll-at';
         let refreshTimerId = null;
-        let nextPollAt = Date.now() + 5000; // small delay on first load so static HTML renders first
+        // Restore the previously scheduled poll deadline from the last session so the
+        // countdown does not restart from 60 seconds every time the page reloads.
+        let nextPollAt = (() => {
+            try {
+                const saved = sessionStorage.getItem(NEXT_POLL_KEY);
+                if (saved) {
+                    const ts = parseInt(saved, 10);
+                    if (ts > Date.now() && ts <= Date.now() + MANIFEST_POLL_INTERVAL_MS * 2) {
+                        return ts;
+                    }
+                }
+            } catch (e) {}
+            return Date.now() + 5000; // small delay on first load so static HTML renders first
+        })();
 
         function getManifestFile() {
             return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
@@ -3436,6 +3450,7 @@
             if (window._pollingManifest || window._loadingLiveData) return;
             window._pollingManifest = true;
             nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+            try { sessionStorage.setItem(NEXT_POLL_KEY, String(nextPollAt)); } catch (e) {}
             updateRefreshCountdown();
             try {
                 const manifest = await fetchManifestRaw();
@@ -3461,7 +3476,11 @@
 
         function resetRefreshTimer() {
             if (refreshTimerId) clearInterval(refreshTimerId);
-            nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+            // If the saved deadline is still valid, keep it; otherwise start a fresh interval.
+            if (nextPollAt <= Date.now() || nextPollAt > Date.now() + MANIFEST_POLL_INTERVAL_MS * 2) {
+                nextPollAt = Date.now() + MANIFEST_POLL_INTERVAL_MS;
+                try { sessionStorage.setItem(NEXT_POLL_KEY, String(nextPollAt)); } catch (e) {}
+            }
             refreshTimerId = setInterval(() => {
                 updateRefreshCountdown();
                 if (Date.now() >= nextPollAt) {
