@@ -86,10 +86,35 @@
             cursor: pointer;
             transition: background .15s;
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
         }
         .btn:hover { background: var(--accent-hover); }
         .btn.secondary { background: var(--chip-off); }
         .btn.secondary:hover { background: #475569; }
+        .voice-wave {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            height: 18px;
+        }
+        .voice-wave span {
+            width: 3px;
+            background: currentColor;
+            border-radius: 2px;
+            animation: voice-bounce 0.8s ease-in-out infinite;
+        }
+        .voice-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+        .voice-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+        .voice-wave span:nth-child(3) { height: 18px; animation-delay: 0.2s; }
+        .voice-wave span:nth-child(4) { height: 12px; animation-delay: 0.3s; }
+        .voice-wave span:nth-child(5) { height: 6px; animation-delay: 0.4s; }
+        @keyframes voice-bounce {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
         .chip-grid {
             display: flex;
             flex-wrap: wrap;
@@ -836,17 +861,71 @@ const micBtn = document.getElementById('micBtn');
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
+    recognition.continuous = true;
+    recognition.interimResults = true;
     recognition.lang = 'en-AU';
-    recognition.onstart = () => micBtn.textContent = '🔴 Listening...';
-    recognition.onend = () => micBtn.textContent = '🎙️ Start voice';
-    recognition.onresult = e => {
-        const txt = e.results[0][0].transcript;
-        document.getElementById('chatInput').value = txt;
-        parseFromText();
+
+    let finalTranscript = '';
+    let silenceTimer = null;
+    const SILENCE_TIMEOUT = 2500; // ms before stopping after last speech
+
+    function setMicListening(listening) {
+        if (listening) {
+            micBtn.innerHTML = '<span class="voice-wave"><span></span><span></span><span></span><span></span><span></span></span> Listening...';
+            micBtn.classList.add('listening');
+        } else {
+            micBtn.textContent = '🎙️ Start voice';
+            micBtn.classList.remove('listening');
+        }
+    }
+
+    recognition.onstart = () => {
+        finalTranscript = '';
+        setMicListening(true);
+        setStatus('Listening… speak naturally. Pauses up to ~2.5 seconds are OK.', 'ok');
     };
-    micBtn.addEventListener('click', () => recognition.start());
+    recognition.onend = () => {
+        setMicListening(false);
+        if (finalTranscript) {
+            document.getElementById('chatInput').value = finalTranscript.trim();
+            parseFromText();
+        }
+    };
+    recognition.onerror = e => {
+        console.error('Voice error', e.error);
+        let msg = 'Voice failed: ' + e.error;
+        if (e.error === 'not-allowed') msg = 'Microphone permission denied. Check the 🔒 icon in the address bar.';
+        if (e.error === 'no-speech') msg = 'No speech heard. Try again.';
+        if (e.error === 'network') msg = 'Speech recognition network error.';
+        setStatus(msg, 'error');
+        setMicListening(false);
+    };
+    recognition.onresult = e => {
+        let interim = '';
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+            const transcript = e.results[i][0].transcript;
+            if (e.results[i].isFinal) {
+                finalTranscript += ' ' + transcript;
+            } else {
+                interim = transcript;
+            }
+        }
+        // Show live interim preview in the textarea
+        document.getElementById('chatInput').value = (finalTranscript + ' ' + interim).trim();
+
+        // Reset silence timer on any speech
+        if (silenceTimer) clearTimeout(silenceTimer);
+        silenceTimer = setTimeout(() => {
+            try { recognition.stop(); } catch (_) {}
+        }, SILENCE_TIMEOUT);
+    };
+    micBtn.addEventListener('click', () => {
+        if (micBtn.classList.contains('listening')) {
+            try { recognition.stop(); } catch (_) {}
+        } else {
+            try { recognition.start(); } catch (_) {}
+        }
+    });
 } else {
     micBtn.style.display = 'none';
 }
