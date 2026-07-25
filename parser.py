@@ -157,10 +157,32 @@ def _extract_dates(text: str, cities: List[Dict]) -> List[Dict]:
 
 def _extract_travelers(text: str) -> List[Dict]:
     """Extract number of adults/children and ages."""
+    text_lower = text.lower()
     m = re.search(r"(\d+)\s*adults?", text, re.IGNORECASE)
-    adults = int(m.group(1)) if m else 2
+    adults = int(m.group(1)) if m else None
     m = re.search(r"(\d+)\s*(?:children?|kids?)", text, re.IGNORECASE)
-    children = int(m.group(1)) if m else 0
+    children = int(m.group(1)) if m else None
+
+    # Family shorthand: "family of 4" / "family of 5" / "family of four"
+    family_num_map = {
+        "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+    }
+    family_total = None
+    fm = re.search(r"family\s+of\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten)", text_lower)
+    if fm:
+        val = fm.group(1)
+        family_total = family_num_map.get(val) or int(val)
+
+    if family_total is not None and adults is None:
+        adults = 2
+        inferred_children = max(0, family_total - adults)
+        if children is None:
+            children = inferred_children
+        else:
+            children = max(children, inferred_children)
+
+    adults = adults if adults is not None else 2
+    children = children if children is not None else 0
 
     def _parse_ages_near(keyword: str, limit: int) -> List[int]:
         # Find keyword position and capture the following tokens up to punctuation or next keyword
@@ -218,7 +240,16 @@ def _extract_food_preferences(text: str) -> List[str]:
                      "gluten free", "kosher", "indian", "italian", "thai",
                      "sweet", "sweets", "dessert", "desserts", "healthy", "salads",
                      "fruit", "pastry", "baklava", "turkish delight"]
-    return [k for k in food_keywords if k in text_lower]
+    # Normalize common misspellings before matching
+    normalized = text_lower.replace("hala ", "halal ").replace(" hala", " halal") \
+                           .replace("hala,", "halal,").replace("hala.", "halal.")
+    found = [k for k in food_keywords if k in normalized]
+    # Collapse singular/plural duplicates
+    if "desserts" in found and "dessert" in found:
+        found.remove("dessert")
+    if "sweets" in found and "sweet" in found:
+        found.remove("sweet")
+    return found
 
 
 def _extract_pace(text: str) -> str:
