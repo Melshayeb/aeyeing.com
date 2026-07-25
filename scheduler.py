@@ -15,8 +15,13 @@ from template import _fill, GREEN_FILL, SCHEDULED_VALUES
 
 
 def _all_dates(start: str, end: str) -> List[str]:
-    s = datetime.strptime(start, "%Y-%m-%d").date()
-    e = datetime.strptime(end, "%Y-%m-%d").date()
+    try:
+        s = datetime.strptime(start, "%Y-%m-%d").date()
+        e = datetime.strptime(end, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        return []
+    if s > e:
+        s, e = e, s
     days = []
     while s <= e:
         days.append(s.isoformat())
@@ -197,6 +202,19 @@ def build_plan_data(trip: Dict, pace: str = "relaxed") -> Dict:
     food_pref = [f.lower() for f in trip.get("food_preferences", [])]
     ages = [t["age"] for t in trip.get("travelers", [])]
     dates = _all_dates(cities[0]["start_date"], cities[-1]["end_date"])
+    if not dates:
+        return {
+            "trip_name": trip.get("trip_name", "Trip"),
+            "dates": [],
+            "day_plan": [],
+            "food_plan": [],
+            "sections": {},
+            "cities": [],
+            "transport_options": [],
+            "hotels": [],
+            "weather_by_date": {},
+            "_coords_cache": {},
+        }
     last_date = dates[-1]
 
     del signal  # imported only to avoid accidental use; timeouts use threading
