@@ -3921,7 +3921,16 @@
             }
             const country = (r.country || '').trim();
             const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
-            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td><td>${floatCell}</td></tr>`;
+
+            function formatSecFilings(filings) {
+                if (!filings || typeof filings !== 'string' || filings.trim() === '') {
+                    return '<span class="sec-filings-mini" title="No recent S-1, S-3, 424B*, or 8-K filings">—</span>';
+                }
+                return `<span class="sec-filings-mini" title="${escapeHtml(filings)}">${escapeHtml(filings)}</span>`;
+            }
+            const secFilingsCell = formatSecFilings(r.sec_filings);
+
+            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td><td>${floatCell}</td><td>${secFilingsCell}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
@@ -3935,6 +3944,7 @@
             if (!newest) {
                 return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
             }
+
             const age = computeNewsAge(newest.raw_time);
             if (!age) {
                 return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
