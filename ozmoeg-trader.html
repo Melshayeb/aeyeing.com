@@ -4215,11 +4215,15 @@
             document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
             document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
             // Tracker "Proposed Entry" = previous scan refresh price, "Current Price" = current scan price.
-            // When no previous scan price exists yet, we deliberately show "—" on the proposed entry side
-            // instead of faking it with the current price or raw plan entry, so the user knows the tracker
-            // is waiting for the next refresh to establish a real prior price.
-            const prevQuote = window._prevLiveQuotes?.[(p.ticker || '').toUpperCase()];
-            const currentQuote = window._lastLiveQuotes?.[(p.ticker || '').toUpperCase()];
+            // We prefer the explicit previous_price attached by the backend, then fall back to the
+            // previous live-quotes map; this ensures a real prior price is shown even when the
+            // previous live fetch didn't include the selected ticker.
+            const tickerKey = (p.ticker || '').toUpperCase();
+            const explicitPrevPrice = r?.previous_price;
+            const prevQuote = explicitPrevPrice
+                ? { price: explicitPrevPrice, _timestamp: window._previousLiveQuotes?.[tickerKey]?._timestamp }
+                : window._prevLiveQuotes?.[tickerKey];
+            const currentQuote = window._lastLiveQuotes?.[tickerKey];
             const hasPrevPrice = prevQuote && prevQuote.price > 0;
             const currentPrice = (currentQuote && currentQuote.price > 0) ? currentQuote.price : null;
 
