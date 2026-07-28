@@ -3345,9 +3345,15 @@
         async function resolveLiveEntryPrice(ticker, fallbackEntry) {
             // During US pre/after-market we may rebase the trade plan on the current
             // live price, because the scanner's plan was computed from the last scan.
-            // We use the backend live quote first; only if it is missing do we try a public fetch.
+            // The scanner Result column already shows the refreshed scan-row price, so use
+            // that exact value whenever it is available. It is fresher than the public quote
+            // and avoids stale open-market prices from Yahoo fallback.
             if (!isExtendedHoursSession()) {
                 return { price: fallbackEntry, source: 'scan', liveAvailable: false };
+            }
+            const scanRow = findScanResult(ticker);
+            if (scanRow && scanRow.price > 0) {
+                return { price: parseFloat(scanRow.price), source: 'scan', liveAvailable: true };
             }
             const resolved = await resolveCurrentPrice(ticker);
             if (resolved && resolved.price > 0) {
