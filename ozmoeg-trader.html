@@ -3821,7 +3821,7 @@
                 return { price: fallbackEntry, source: 'scan', liveAvailable: false };
             }
             const resolved = await resolveCurrentPrice(ticker, /*forceFresh=*/ true);
-            if (resolved && resolved.price > 0 && Math.abs(resolved.price - fallbackEntry) > 0.0001) {
+            if (resolved && resolved.price > 0) {
                 return { price: resolved.price, source: resolved.source || 'live', liveAvailable: true };
             }
             return { price: fallbackEntry, source: 'scan', liveAvailable: false };
@@ -3929,7 +3929,9 @@
             }
 
             // Abort if the user switched to a different alert while the fetch was in flight
-            if (document.getElementById('perf-ticker')?.textContent !== ticker) return;
+            const perfTickerEl = document.getElementById('perf-ticker');
+            const currentPerfTicker = perfTickerEl?.dataset?.ticker || perfTickerEl?.textContent;
+            if ((currentPerfTicker || '').trim() !== ticker) return;
 
             const current = resolved.price;
             if (current === null || current === undefined || isNaN(current) || current <= 0) {
@@ -4105,9 +4107,11 @@
             const perfTickerEl = document.getElementById('perf-ticker');
             if (planTickerEl && !planTickerEl.innerHTML.includes('country-badge')) {
                 planTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+                planTickerEl.dataset.ticker = p.ticker;
             }
             if (perfTickerEl && !perfTickerEl.innerHTML.includes('country-badge')) {
                 perfTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+                perfTickerEl.dataset.ticker = p.ticker;
             }
 
             document.getElementById('plan-entry').textContent = fmtCurrency(entry);
@@ -4313,7 +4317,9 @@
             // Kick off a fresh current-price fetch for the tracker. During extended hours we bypass
             // the cached backend live quote and fetch a real pre/after-hours price; during the regular
             // session the cached backend quote is already current.
-            updateTrackerCurrentPrice(p.ticker, entry, t1, t2, t3, shareQty, /*forceFresh=*/ isExtendedHoursSession()).catch(err => console.error('Tracker price update failed:', err));
+            if (p.ticker) {
+                updateTrackerCurrentPrice(p.ticker, entry, t1, t2, t3, shareQty, /*forceFresh=*/ isExtendedHoursSession()).catch(err => console.error('Tracker price update failed:', err));
+            }
 
             // News & catalyst
             const news = r.news || {};
