@@ -4376,37 +4376,38 @@
                 const headlines = news.headlines || [];
                 if (headlines.length) {
                     list.innerHTML = headlines.map(h => {
-                    const s = h.score || 0;
-                    const scoreClass = s >= 4 ? 'impact-high' : (s >= 2 ? 'impact-medium' : 'impact-low');
-                    // Recompute age from raw timestamp so saved snapshots stay accurate.
-                    const age = computeNewsAge(h.raw_time) || (h.time || '');
-                    const isVeryStale = /^(\d+mo|\d+y|\d+d)\s+ago/.test(age) && (
-                        /^(\d+mo|\d+y)\s+ago/.test(age) ||
-                        (age.match(/^(\d+)d\s+ago/) && parseInt(age.match(/^(\d+)d\s+ago/)[1]) > 7)
-                    );
-                    const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
-                    const staleEmoji = isVeryStale ? '⚠️ ' : '';
-                    // Show exact original timestamp as a tooltip
-                    const rawIso = h.raw_time || '';
-                    const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
-                    const timeHtml = age ? `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span> ` : '';
-                    const hasUrl = h.url && /^https?:\/\//i.test(h.url);
-                    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(h.title + ' ' + (h.source || ''))}`;
-                    const titleHtml = hasUrl
-                        ? `<a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`
-                        : `<a href="${searchUrl}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`;
-                    return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> ${titleHtml} <em>${escapeHtml(h.source || '')}</em></li>`;
-                }).join('');
-            } else {
-                list.innerHTML = '<li><span class="score">[-]</span> No qualifying news headlines found for this alert.</li>';
-            }
+                        const s = h.score || 0;
+                        const scoreClass = s >= 4 ? 'impact-high' : (s >= 2 ? 'impact-medium' : 'impact-low');
+                        // Recompute age from raw timestamp so saved snapshots stay accurate.
+                        const age = computeNewsAge(h.raw_time) || (h.time || '');
+                        const isVeryStale = /^(\d+mo|\d+y|\d+d)\s+ago/.test(age) && (
+                            /^(\d+mo|\d+y)\s+ago/.test(age) ||
+                            (age.match(/^(\d+)d\s+ago/) && parseInt(age.match(/^(\d+)d\s+ago/)[1]) > 7)
+                        );
+                        const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
+                        const staleEmoji = isVeryStale ? '⚠️ ' : '';
+                        // Show exact original timestamp as a tooltip
+                        const rawIso = h.raw_time || '';
+                        const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
+                        const timeHtml = age ? `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span> ` : '';
+                        const hasUrl = h.url && /^https?:\/\//i.test(h.url);
+                        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(h.title + ' ' + (h.source || ''))}`;
+                        const titleHtml = hasUrl
+                            ? `<a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`
+                            : `<a href="${searchUrl}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`;
+                        return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> ${titleHtml} <em>${escapeHtml(h.source || '')}</em></li>`;
+                    }).join('');
+                } else {
+                    list.innerHTML = '<li><span class="score">[-]</span> No qualifying news headlines found for this alert.</li>';
+                }
 
-            // Surface AU data quality note when applicable
-            if (currentMarket === 'AUS' && (r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT')) {
-                const dataNote = document.createElement('li');
-                dataNote.style.cssText = 'color: var(--accent-amber); font-style: italic; font-size: 0.8rem;';
-                dataNote.innerHTML = 'ℹ️ ASX intraday bars/TA are limited from this network. Price, volume and announcements are live; verify on your ASX broker before acting.';
-                list.appendChild(dataNote);
+                // Surface AU data quality note when applicable
+                if (currentMarket === 'AUS' && (r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT')) {
+                    const dataNote = document.createElement('li');
+                    dataNote.style.cssText = 'color: var(--accent-amber); font-style: italic; font-size: 0.8rem;';
+                    dataNote.innerHTML = 'ℹ️ ASX intraday bars/TA are limited from this network. Price, volume and announcements are live; verify on your ASX broker before acting.';
+                    list.appendChild(dataNote);
+                }
             }
         }
 
