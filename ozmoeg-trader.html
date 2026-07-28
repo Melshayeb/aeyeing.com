@@ -4269,6 +4269,8 @@
                 const timeLabel = ts ? ts.toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : '—';
                 if (currentSource === 'live') {
                     document.getElementById('perf-current-sub').textContent = `Current price · ${timeLabel}`;
+                } else if (currentSource === 'public') {
+                    document.getElementById('perf-current-sub').textContent = `Public quote (delayed) · ${timeLabel}`;
                 } else {
                     document.getElementById('perf-current-sub').textContent = `Current scan price · ${timeLabel}`;
                 }
