@@ -118,13 +118,13 @@ positions['GCTK'][1] = max(positions['GCTK'][1], math.log10(0.42))
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
-# Focus the chart on the trade zone: Y from $0.50 to $25 with log scale
+# Focus the chart on the trade zone, but start y from 0.20 to avoid clipping pennies
 ax.set_xlim(-300_000, 12_500_000)
 ax.set_yscale('log')
-ax.set_ylim(0.45, 28)
+ax.set_ylim(0.20, 28)
 
-# Small, subtle penny zone
-ax.axhspan(0.45, 1, color='#f87171', alpha=0.05, zorder=1)
+# Penny zone fill from 0.20 to 1
+ax.axhspan(0.20, 1, color='#f87171', alpha=0.05, zorder=1)
 
 # Prominent recommended trade zone
 ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.22, zorder=1)
