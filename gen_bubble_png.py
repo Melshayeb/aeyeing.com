@@ -150,12 +150,15 @@ y_vals = [10 ** positions[t['ticker']][1] for t in tickers]
 
 ax.scatter(x_vals, y_vals, s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
 
-# Labels inside bubbles
+# Labels inside bubbles - ticker on top, country below, smaller country font
 for t in tickers:
     x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    ax.text(x, y, f"{t['ticker']}\n{t['country']}",
-            ha='center', va='center', color='white', fontsize=9.5, fontweight='bold',
-            linespacing=0.72, zorder=6)
+    ax.text(x, y + 0.015, t['ticker'],
+            ha='center', va='bottom', color='white', fontsize=10, fontweight='bold',
+            linespacing=0.7, zorder=6)
+    ax.text(x, y - 0.015, t['country'],
+            ha='center', va='top', color='white', fontsize=7.5,
+            linespacing=0.7, zorder=6)
 
 # Hover tooltip mockup on NUWE
 for t in tickers:
@@ -178,9 +181,9 @@ for spine in ax.spines.values():
     spine.set_color('#374151')
 
 # Zone labels
-ax.text(100_000, 0.52, 'Penny zone (< $1)', color=(248/255, 113/255, 113/255, 0.7),
+ax.text(100_000, 0.25, 'Penny zone (< $0.55)', color=(248/255, 113/255, 113/255, 0.7),
         fontsize=9, ha='left', fontstyle='italic')
-ax.text(1_450_000, 22, 'Recommended trade zone', color=(251/255, 191/255, 36/255, 0.95),
+ax.text(1_450_000, 23, 'Recommended trade zone', color=(52/255, 211/255, 153/255, 0.95),
         fontsize=11, ha='right', fontstyle='italic', fontweight='bold')
 
 ax.set_title('OzMoEg Bubble View Prototype — Float vs Price', color='#2dd4bf', fontsize=16, pad=18)
@@ -188,7 +191,7 @@ ax.set_title('OzMoEg Bubble View Prototype — Float vs Price', color='#2dd4bf',
 # Legend at bottom
 legend = [
     mpatches.Patch(color='#f87171', alpha=0.45, label='Penny stock (< $1)'),
-    mpatches.Patch(color='#fbbf24', alpha=0.45, label='Recommended trade zone'),
+    mpatches.Patch(color='#34d399', alpha=0.45, label='Recommended trade zone'),
     mpatches.Patch(color='#22d3ee', alpha=0.65, label='Price change > 80% (glow)'),
     mpatches.Patch(color='#f87171', alpha=0.55, label='ALERT status'),
     mpatches.Patch(color='none', label='Size = |price change %|'),
