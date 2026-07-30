@@ -113,7 +113,8 @@ for _ in range(100):
         positions[t1['ticker']][1] = positions[t1['ticker']][1] * 0.85 + orig_y * 0.15
 
 # Ensure GCTK bubble stays above its label (push it up slightly if it dropped too low)
-positions['GCTK'][1] = max(positions['GCTK'][1], math.log10(0.42))
+positions['GCTK'][1] = max(positions['GCTK'][1], math.log10(0.30))
+positions['CYCU'][1] = max(positions['CYCU'][1], math.log10(0.30))
 
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
@@ -169,7 +170,7 @@ for t in tickers:
 ax.set_xlabel('Float (shares)', color='#94a3b8', fontsize=12, labelpad=14)
 ax.set_ylabel('Price ($)', color='#94a3b8', fontsize=12, labelpad=10)
 ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{x/1_000_000:.1f}M' if x >= 1_000_000 else f'{x/1_000:.0f}K'))
-ax.set_yticks([0.5, 1, 2, 5, 10, 20, 25])
+ax.set_yticks([0.25, 0.5, 1, 2, 5, 10, 20, 25])
 ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, pos: f'${x:.2f}' if x < 1 else f'${x:.0f}'))
 ax.tick_params(colors='#94a3b8', which='both', labelsize=10)
 ax.grid(True, color='#1f2937', linestyle='-', linewidth=0.6, zorder=1)
