@@ -245,6 +245,16 @@
             border-color: var(--accent-teal);
         }
 
+        /* Visual flash for newly-detected ALERT tickers (paired with sound effect) */
+        @keyframes flashNewAlert {
+            0%   { background-color: rgba(239, 68, 68, 0.35); }
+            20%  { background-color: rgba(239, 68, 68, 0.55); }
+            100% { background-color: transparent; }
+        }
+        .flash-new-alert {
+            animation: flashNewAlert 5s ease-out forwards;
+        }
+
         .main-grid {
             display: grid;
             grid-template-columns: 380px 1fr;
@@ -1532,7 +1542,7 @@
 </div>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟡 US PRE-MARKET 07:46 PM AEST | Scanned: 50 | 3 candidates | 3 alerts (skipped: 0)
+🟡 US PRE-MARKET 07:48 PM AEST | Scanned: 50 | 3 candidates | 3 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1560,8 +1570,8 @@
 <td>Nuwellis Inc</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (3)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T03:33:14.000+0000">6h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 5.12x vs ADV (1,594,760 today / 311,396 avg). Last: 2026-07-30T09:45:23.141000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+100.5% · Entry $3.79 · T1 $3.94 · T2 $4.02 · T3 $4.17</td>
+<td><span class="tape-mini tape-high" title="RVOL 5.15x vs ADV (1,602,875 today / 311,396 avg). Last: 2026-07-30T09:47:24.588000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+105.2% · Entry $3.88 · T1 $4.03 · T2 $4.11 · T3 $4.27</td>
 <td>509.93K</td>
 <td><span class="sec-filings-mini" title="8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)">8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)</span></td>
 </tr>
@@ -1570,8 +1580,8 @@
 <td>Glucotrack</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-28T20:04:33.000+0000">1d ago</span></td>
-<td><span class="tape-mini tape-medium" title="RVOL 1.19x vs ADV (6,563,610 today / 5,501,514 avg). Last: 2026-07-30T09:45:25.515000+00:00 · stale 0m">⚡ moderate volume</span></td>
-<td>+43.5% · Entry $0.41 · T1 $0.43 · T2 $0.43 · T3 $0.45</td>
+<td><span class="tape-mini tape-medium" title="RVOL 1.2x vs ADV (6,597,399 today / 5,501,514 avg). Last: 2026-07-30T09:47:24.929000+00:00 · stale 0m">⚡ moderate volume</span></td>
+<td>+45.6% · Entry $0.41 · T1 $0.43 · T2 $0.44 · T3 $0.46</td>
 <td>6.50M</td>
 <td><span class="sec-filings-mini" title="8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)">8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)</span></td>
 </tr>
@@ -1580,8 +1590,8 @@
 <td>STEAKHOLDER FOODS LTD</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T08:30:35.000+0000">1h ago</span></td>
-<td><span class="tape-mini tape-medium" title="RVOL 1.35x vs ADV (1,052,130 today / 780,630 avg). Last: 2026-07-30T09:45:24.646000+00:00 · stale 0m">⚡ moderate volume</span></td>
-<td>+57.5% · Entry $4.27 · T1 $4.44 · T2 $4.53 · T3 $4.70</td>
+<td><span class="tape-mini tape-medium" title="RVOL 1.37x vs ADV (1,067,088 today / 780,630 avg). Last: 2026-07-30T09:47:23.962000+00:00 · stale 0m">⚡ moderate volume</span></td>
+<td>+54.2% · Entry $4.18 · T1 $4.35 · T2 $4.43 · T3 $4.60</td>
 <td>495.47K</td>
 <td><span class="sec-filings-mini" title="424B3 (May 19)">424B3 (May 19)</span></td>
 </tr>
@@ -1607,9 +1617,9 @@
 <tr>
 <td class="ticker-cell">NUWE <span class="country-badge">NANO CAP</span></td>
 <td>Nuwellis Inc</td>
-<td>$3.79</td>
-<td>+100.5%</td>
-<td>1,594,760</td>
+<td>$3.88</td>
+<td>+105.2%</td>
+<td>1,602,875</td>
 <td>0.0x</td>
 <td>$1.0M</td>
 <td>509.93K</td>
@@ -1618,35 +1628,35 @@
 <tr>
 <td class="ticker-cell">DFNS <span class="country-badge">MICRO CAP</span></td>
 <td>T3 Defense Inc</td>
-<td>$91.00</td>
-<td>+81.2%</td>
-<td>207,389</td>
+<td>$90.51</td>
+<td>+80.2%</td>
+<td>208,014</td>
 <td>0.0x</td>
 <td>$50.7M</td>
 <td>707.99K</td>
-<td>Filtered: price $91.000, vol/float 0.29x &lt; 0.5x</td>
+<td>Filtered: price $90.510, vol/float 0.29x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">STKH <span class="country-badge">NANO CAP</span></td>
+<td>STEAKHOLDER FOODS LTD</td>
+<td>$4.18</td>
+<td>+54.2%</td>
+<td>1,067,088</td>
+<td>0.0x</td>
+<td>$1.6M</td>
+<td>495.47K</td>
+<td>Passed filters</td>
 </tr>
 <tr>
 <td class="ticker-cell">SXTC <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>China Sxt Pharmaceuticals Inc</td>
 <td>$0.08</td>
-<td>+58.1%</td>
-<td>106,207,561</td>
+<td>+52.4%</td>
+<td>107,019,161</td>
 <td>0.0x</td>
 <td>$2.2M</td>
 <td>7.44M</td>
-<td>Filtered: price $0.083, tiny price $0.083</td>
-</tr>
-<tr>
-<td class="ticker-cell">STKH <span class="country-badge">NANO CAP</span></td>
-<td>STEAKHOLDER FOODS LTD</td>
-<td>$4.27</td>
-<td>+57.5%</td>
-<td>1,052,130</td>
-<td>0.0x</td>
-<td>$1.6M</td>
-<td>495.47K</td>
-<td>Passed filters</td>
+<td>Filtered: price $0.080, tiny price $0.080</td>
 </tr>
 <tr>
 <td class="ticker-cell">ARW <span class="country-badge">SMALL CAP</span></td>
@@ -1663,8 +1673,8 @@
 <td class="ticker-cell">GCTK <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>Glucotrack</td>
 <td>$0.41</td>
-<td>+43.5%</td>
-<td>6,563,610</td>
+<td>+45.6%</td>
+<td>6,597,399</td>
 <td>0.0x</td>
 <td>$2.2M</td>
 <td>6.50M</td>
@@ -1674,19 +1684,30 @@
 <td class="ticker-cell">DCX <span class="country-badge">SMALL CAP</span></td>
 <td>Digital Currency X Technology Inc</td>
 <td>$1.44</td>
-<td>+33.4%</td>
-<td>975,499</td>
+<td>+33.3%</td>
+<td>981,869</td>
 <td>0.0x</td>
 <td>$379.7M</td>
 <td>333.86M</td>
 <td>Filtered: float 333.9M &gt; 100M, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
+<td class="ticker-cell">CISS <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>C3is</td>
+<td>$0.17</td>
+<td>+25.7%</td>
+<td>3,466,504</td>
+<td>0.0x</td>
+<td>$1.7M</td>
+<td>13.08M</td>
+<td>Filtered: price $0.167, tiny price $0.167, vol/float 0.27x &lt; 0.5x</td>
+</tr>
+<tr>
 <td class="ticker-cell">GVH <span class="country-badge">NANO CAP</span></td>
 <td>Globavend Holdings</td>
-<td>$1.12</td>
-<td>+23.1%</td>
-<td>626,188</td>
+<td>$1.13</td>
+<td>+24.2%</td>
+<td>628,845</td>
 <td>0.0x</td>
 <td>$2.2M</td>
 <td>2.36M</td>
@@ -1704,15 +1725,15 @@
 <td>Filtered: price $114.150, mktcap $9978.3M, vol 2,264, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">PEBK <span class="country-badge">MICRO CAP</span></td>
-<td>People Bncp Nc</td>
-<td>$52.18</td>
-<td>+20.4%</td>
-<td>22,931</td>
+<td class="ticker-cell">BOOM <span class="country-badge">MICRO CAP</span></td>
+<td>Dmc Global Inc</td>
+<td>$6.58</td>
+<td>+21.4%</td>
+<td>14,743</td>
 <td>0.0x</td>
-<td>$236.7M</td>
-<td>4.41M</td>
-<td>Filtered: price $52.180, vol 22,931, vol/float 0.01x &lt; 0.5x</td>
+<td>$110.9M</td>
+<td>18.98M</td>
+<td>Filtered: vol 14,743, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">MLSS <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
@@ -1724,28 +1745,6 @@
 <td>$33.3M</td>
 <td>74.24M</td>
 <td>Filtered: vol 57, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">CISS <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
-<td>C3is</td>
-<td>$0.16</td>
-<td>+19.6%</td>
-<td>2,296,117</td>
-<td>0.0x</td>
-<td>$1.7M</td>
-<td>13.08M</td>
-<td>Filtered: price $0.159, tiny price $0.159, vol/float 0.18x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">BOOM <span class="country-badge">MICRO CAP</span></td>
-<td>Dmc Global Inc</td>
-<td>$6.46</td>
-<td>+19.2%</td>
-<td>14,734</td>
-<td>0.0x</td>
-<td>$110.9M</td>
-<td>18.98M</td>
-<td>Filtered: vol 14,734, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">PRCH <span class="country-badge">SMALL CAP</span></td>
@@ -1781,17 +1780,6 @@
 <td>Filtered: vol 1, vol/float 0.00x &lt; 0.5x, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">RCKY <span class="country-badge">SMALL CAP</span></td>
-<td>Rocky Brands Inc</td>
-<td>$49.99</td>
-<td>+1.8%</td>
-<td>245,592</td>
-<td>0.0x</td>
-<td>$370.3M</td>
-<td>7.05M</td>
-<td>Filtered: vol/float 0.03x &lt; 0.5x</td>
-</tr>
-<tr>
 <td class="ticker-cell">QCLS <span class="country-badge">NANO CAP</span></td>
 <td>Q/C Technologies Inc</td>
 <td>$2.94</td>
@@ -1803,15 +1791,15 @@
 <td>Filtered: vol 1, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">LGHL <span class="country-badge">NANO CAP</span></td>
-<td>Lion Group Holding Ltd</td>
-<td>$1.25</td>
-<td>+15.7%</td>
-<td>82,285</td>
+<td class="ticker-cell">MNDR <span class="country-badge">NANO CAP</span></td>
+<td>Mobile-health Network Solutions</td>
+<td>$1.69</td>
+<td>+16.6%</td>
+<td>1,037</td>
 <td>0.0x</td>
-<td>$1.0M</td>
-<td>917.39K</td>
-<td>Filtered: vol/float 0.09x &lt; 0.5x</td>
+<td>$1.7M</td>
+<td>597.38K</td>
+<td>Filtered: vol 1,037, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">EPR <span class="country-badge">SMALL CAP</span></td>
@@ -1825,22 +1813,11 @@
 <td>Filtered: price $73.970, vol 1, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">ORIQ <span class="country-badge">MICRO CAP</span></td>
-<td>Origin Invt Corp I</td>
-<td>$11.90</td>
-<td>+15.1%</td>
-<td>11,821</td>
-<td>0.0x</td>
-<td>$89.2M</td>
-<td>7.12M</td>
-<td>Filtered: vol 11,821, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
 <td class="ticker-cell">CAST <span class="country-badge">MICRO CAP</span></td>
 <td>Freecast Inc</td>
-<td>$1.38</td>
-<td>+15.0%</td>
-<td>212,041</td>
+<td>$1.39</td>
+<td>+15.6%</td>
+<td>212,475</td>
 <td>0.0x</td>
 <td>$57.1M</td>
 <td>24.60M</td>
@@ -1858,17 +1835,6 @@
 <td>Filtered: vol 3,142, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
-<td class="ticker-cell">GMEX <span class="country-badge">NANO CAP</span></td>
-<td>GMEX ROBOTICS</td>
-<td>$1.47</td>
-<td>+14.9%</td>
-<td>1,140,030</td>
-<td>0.0x</td>
-<td>$0.0M</td>
-<td>17.97K</td>
-<td>Filtered: mktcap $0.0M</td>
-</tr>
-<tr>
 <td class="ticker-cell">ARAI <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>Arrive AI Inc</td>
 <td>$0.27</td>
@@ -1884,33 +1850,22 @@
 <td>AKANDA CORP</td>
 <td>$6.62</td>
 <td>+14.5%</td>
-<td>1,063</td>
+<td>1,079</td>
 <td>0.0x</td>
 <td>$3.1M</td>
 <td>537.67K</td>
-<td>Filtered: vol 1,063, vol/float 0.00x &lt; 0.5x</td>
+<td>Filtered: vol 1,079, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">WLDS <span class="country-badge">NANO CAP</span></td>
-<td>Wearable Devices Ltd.</td>
-<td>$3.39</td>
+<td class="ticker-cell">GMEX <span class="country-badge">NANO CAP</span></td>
+<td>GMEX ROBOTICS</td>
+<td>$1.46</td>
 <td>+14.1%</td>
-<td>13,516</td>
+<td>1,147,352</td>
 <td>0.0x</td>
-<td>$6.5M</td>
-<td>1.64M</td>
-<td>Filtered: vol 13,516, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">JEM <span class="country-badge">NANO CAP</span></td>
-<td>707 Cayman Holding Limited</td>
-<td>$6.16</td>
-<td>+13.9%</td>
-<td>45,803</td>
-<td>0.0x</td>
-<td>$3.6M</td>
-<td>574.41K</td>
-<td>Filtered: vol 45,803, vol/float 0.08x &lt; 0.5x</td>
+<td>$0.0M</td>
+<td>17.97K</td>
+<td>Filtered: mktcap $0.0M</td>
 </tr>
 <tr>
 <td class="ticker-cell">SMHI <span class="country-badge">MICRO CAP</span></td>
@@ -1935,6 +1890,17 @@
 <td>Filtered: price $94.550, mktcap $6505.3M, vol 3,376, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
+<td class="ticker-cell">JEM <span class="country-badge">NANO CAP</span></td>
+<td>707 Cayman Holding Limited</td>
+<td>$6.12</td>
+<td>+13.1%</td>
+<td>47,609</td>
+<td>0.0x</td>
+<td>$3.6M</td>
+<td>574.41K</td>
+<td>Filtered: vol 47,609, vol/float 0.08x &lt; 0.5x</td>
+</tr>
+<tr>
 <td class="ticker-cell">LUNG <span class="country-badge">MICRO CAP</span></td>
 <td>Pulmonx Corp</td>
 <td>$1.41</td>
@@ -1944,17 +1910,6 @@
 <td>$52.8M</td>
 <td>39.87M</td>
 <td>Filtered: vol 91, vol/float 0.00x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">MB <span class="country-badge">MICRO CAP</span></td>
-<td>Master</td>
-<td>$4.14</td>
-<td>+0.2%</td>
-<td>4,036</td>
-<td>0.0x</td>
-<td>$70.8M</td>
-<td>4.69M</td>
-<td>Filtered: vol 4,036, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
 </tr>
 <tr>
 <td class="ticker-cell">NSC <span class="country-badge">SMALL CAP</span></td>
@@ -1968,136 +1923,37 @@
 <td>Filtered: price $378.010, mktcap $75410.0M, vol 3, float 224.5M &gt; 100M, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">IPCX <span class="country-badge">SMALL CAP</span></td>
-<td>Inflection Point Acquisition Corp. III</td>
-<td>$10.00</td>
-<td>+7.0%</td>
-<td>139,574</td>
-<td>0.0x</td>
-<td>$322.3M</td>
-<td>26.04M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
 <td class="ticker-cell">TAL <span class="country-badge">SMALL CAP</span></td>
 <td>Tal Education Group</td>
-<td>$12.18</td>
-<td>+11.8%</td>
-<td>46,804</td>
+<td>$12.15</td>
+<td>+11.6%</td>
+<td>47,608</td>
 <td>0.0x</td>
 <td>$6040.2M</td>
 <td>554.56M</td>
-<td>Filtered: mktcap $6040.2M, vol 46,804, float 554.6M &gt; 100M, vol/float 0.00x &lt; 0.5x</td>
+<td>Filtered: mktcap $6040.2M, vol 47,608, float 554.6M &gt; 100M, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">JXG <span class="country-badge">MICRO CAP</span></td>
-<td>JX LUXVENTURE LIMITED</td>
-<td>$7.81</td>
-<td>+11.7%</td>
-<td>376</td>
+<td class="ticker-cell">LGHL <span class="country-badge">NANO CAP</span></td>
+<td>Lion Group Holding Ltd</td>
+<td>$1.20</td>
+<td>+11.1%</td>
+<td>88,379</td>
 <td>0.0x</td>
-<td>$84.3M</td>
-<td>8.71M</td>
-<td>Filtered: vol 376, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">WETH <span class="country-badge">NANO CAP</span></td>
-<td>Wetouch Technology Inc</td>
-<td>$1.45</td>
-<td>+23.9%</td>
-<td>96,158</td>
-<td>0.0x</td>
-<td>$14.0M</td>
-<td>11.92M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">PYPD <span class="country-badge">MICRO CAP</span></td>
-<td>Polypid Ltd.</td>
-<td>$4.18</td>
-<td>+2.5%</td>
-<td>435,659</td>
-<td>0.0x</td>
-<td>$78.2M</td>
-<td>14.09M</td>
-<td>Filtered: vol/float 0.03x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">VHC <span class="country-badge">MICRO CAP</span></td>
-<td>Virnetx Holding</td>
-<td>$14.49</td>
-<td>+12.8%</td>
-<td>3,291</td>
-<td>0.0x</td>
-<td>$53.8M</td>
-<td>3.52M</td>
-<td>Filtered: vol 3,291, vol/float 0.00x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">SBMT <span class="country-badge">MICRO CAP</span></td>
-<td>SILVER BOW MNG CORP</td>
-<td>$7.25</td>
-<td>+15.1%</td>
-<td>69,106</td>
-<td>0.0x</td>
-<td>$186.0M</td>
-<td>27.83M</td>
-<td>Filtered: vol/float 0.00x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">RBBN <span class="country-badge">SMALL CAP</span></td>
-<td>Ribbon Communications</td>
-<td>$2.28</td>
-<td>+4.1%</td>
-<td>1,800,653</td>
-<td>0.0x</td>
-<td>$385.7M</td>
-<td>141.88M</td>
-<td>Filtered: float 141.9M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
+<td>$1.0M</td>
+<td>917.39K</td>
+<td>Filtered: vol/float 0.10x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">SIMO <span class="country-badge">SMALL CAP</span></td>
 <td>Silicon Motion Technology Corp</td>
-<td>$233.00</td>
+<td>$232.99</td>
 <td>+11.1%</td>
-<td>1,761</td>
+<td>1,851</td>
 <td>0.0x</td>
 <td>$7109.8M</td>
 <td>32.63M</td>
-<td>Filtered: price $233.000, mktcap $7109.8M, vol 1,761, vol/float 0.00x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">RNAC <span class="country-badge">MICRO CAP</span></td>
-<td>Cartesian</td>
-<td>$8.50</td>
-<td>+14.6%</td>
-<td>168,818</td>
-<td>0.0x</td>
-<td>$218.0M</td>
-<td>13.58M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">HP <span class="country-badge">SMALL CAP</span></td>
-<td>Helmerich</td>
-<td>$36.77</td>
-<td>+9.9%</td>
-<td>1,121,136</td>
-<td>0.0x</td>
-<td>$3343.7M</td>
-<td>95.90M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">ULBI <span class="country-badge">MICRO CAP</span></td>
-<td>Ultralife</td>
-<td>$5.84</td>
-<td>+10.2%</td>
-<td>19,721</td>
-<td>0.0x</td>
-<td>$88.3M</td>
-<td>16.12M</td>
-<td>Filtered: vol 19,721, vol/float 0.00x &lt; 0.5x, avg $vol $0.2M &lt; $0.5M</td>
+<td>Filtered: price $232.990, mktcap $7109.8M, vol 1,851, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">ABLV <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
@@ -2109,17 +1965,6 @@
 <td>$41.0M</td>
 <td>17.91M</td>
 <td>Filtered: vol 9, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
-</tr>
-<tr>
-<td class="ticker-cell">GTE <span class="country-badge">MICRO CAP</span></td>
-<td>Gran Tierra Energy</td>
-<td>$7.08</td>
-<td>+6.0%</td>
-<td>443,149</td>
-<td>0.0x</td>
-<td>$236.2M</td>
-<td>33.95M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">FROG <span class="country-badge">SMALL CAP</span></td>
@@ -2153,6 +1998,171 @@
 <td>$4.6M</td>
 <td>7.07M</td>
 <td>Filtered: vol 557, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">DGNX <span class="country-badge">NANO CAP</span></td>
+<td>Diginex Limited</td>
+<td>$1.71</td>
+<td>+10.3%</td>
+<td>111,929</td>
+<td>0.0x</td>
+<td>$45.1M</td>
+<td>16.78M</td>
+<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">FTNT <span class="country-badge">SMALL CAP</span></td>
+<td>Fortinet</td>
+<td>$168.91</td>
+<td>+10.2%</td>
+<td>11,619</td>
+<td>0.0x</td>
+<td>$112256.4M</td>
+<td>605.23M</td>
+<td>Filtered: price $168.910, mktcap $112256.4M, vol 11,619, float 605.2M &gt; 100M, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PPCB <span class="country-badge">NANO CAP</span></td>
+<td>Propanc Bio</td>
+<td>$1.09</td>
+<td>+10.1%</td>
+<td>3</td>
+<td>0.0x</td>
+<td>$2.3M</td>
+<td>1.25M</td>
+<td>Filtered: vol 3, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">SDST <span class="country-badge">NANO CAP</span></td>
+<td>Stardust Power Inc</td>
+<td>$1.07</td>
+<td>+10.1%</td>
+<td>176</td>
+<td>0.0x</td>
+<td>$10.3M</td>
+<td>6.54M</td>
+<td>Filtered: vol 176, vol/float 0.00x &lt; 0.5x, avg $vol $0.3M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">ACH <span class="country-badge">MICRO CAP</span></td>
+<td>Accendra Health Inc</td>
+<td>$3.65</td>
+<td>+9.9%</td>
+<td>10</td>
+<td>0.0x</td>
+<td>$254.3M</td>
+<td>70.45M</td>
+<td>Filtered: vol 10, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">NAMI <span class="country-badge">NANO CAP</span></td>
+<td>JINXIN TECHNOLOGY HLDG CO</td>
+<td>$2.68</td>
+<td>+9.8%</td>
+<td>48</td>
+<td>0.0x</td>
+<td>$7.7M</td>
+<td>2.83M</td>
+<td>Filtered: tiny avg $vol, vol 48, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.1M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SBFM <span class="country-badge">NANO CAP</span></td>
+<td>Sunshine Biopharma Inc</td>
+<td>$1.35</td>
+<td>+9.8%</td>
+<td>17,362</td>
+<td>0.0x</td>
+<td>$2.6M</td>
+<td>2.11M</td>
+<td>Filtered: vol 17,362, vol/float 0.01x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">NICM <span class="country-badge">MICRO CAP</span></td>
+<td>Nicola Mining Inc.</td>
+<td>$6.22</td>
+<td>+9.7%</td>
+<td>13</td>
+<td>0.0x</td>
+<td>$108.5M</td>
+<td>19.13M</td>
+<td>Filtered: vol 13, vol/float 0.00x &lt; 0.5x, avg $vol $0.0M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">GKOS <span class="country-badge">SMALL CAP</span></td>
+<td>Glaukos Corp</td>
+<td>$177.00</td>
+<td>+9.5%</td>
+<td>2</td>
+<td>0.0x</td>
+<td>$9494.9M</td>
+<td>56.61M</td>
+<td>Filtered: price $177.000, mktcap $9494.9M, vol 2, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">STAK <span class="country-badge">NANO CAP</span></td>
+<td>STAK inc.</td>
+<td>$2.66</td>
+<td>+9.5%</td>
+<td>413,948</td>
+<td>0.0x</td>
+<td>$46.7M</td>
+<td>10.01M</td>
+<td>Filtered: vol/float 0.04x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">FBGL <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>FBS Global Limited</td>
+<td>$0.61</td>
+<td>+9.5%</td>
+<td>1,955</td>
+<td>0.0x</td>
+<td>$7.6M</td>
+<td>6.58M</td>
+<td>Filtered: vol 1,955, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">WLDS <span class="country-badge">NANO CAP</span></td>
+<td>Wearable Devices Ltd.</td>
+<td>$3.25</td>
+<td>+9.4%</td>
+<td>13,682</td>
+<td>0.0x</td>
+<td>$6.5M</td>
+<td>1.64M</td>
+<td>Filtered: vol 13,682, vol/float 0.01x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">SFM <span class="country-badge">SMALL CAP</span></td>
+<td>Sprouts Farmers</td>
+<td>$86.50</td>
+<td>+9.3%</td>
+<td>10,325</td>
+<td>0.0x</td>
+<td>$7444.5M</td>
+<td>93.39M</td>
+<td>Filtered: price $86.500, mktcap $7444.5M, vol 10,325, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">SPRO <span class="country-badge">MICRO CAP</span></td>
+<td>Spero Therapeuti</td>
+<td>$1.30</td>
+<td>+9.2%</td>
+<td>2,795</td>
+<td>0.0x</td>
+<td>$68.9M</td>
+<td>44.87M</td>
+<td>Filtered: vol 2,795, vol/float 0.00x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">NWGL <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>CL Workshop Group</td>
+<td>$0.25</td>
+<td>+8.7%</td>
+<td>3,412</td>
+<td>0.0x</td>
+<td>$3.8M</td>
+<td>4.94M</td>
+<td>Filtered: vol 3,412, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 </tbody>
 </table>
@@ -2204,6 +2214,17 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">AGRZ <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Agroz</td>
+<td>$0.28</td>
+<td>-17.6%</td>
+<td>35,781</td>
+<td>0.0x</td>
+<td>$7.4M</td>
+<td>—</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">YYAI <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>AiRWA Inc</td>
 <td>$0.24</td>
@@ -2226,13 +2247,13 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
-<td class="ticker-cell">AGRZ <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
-<td>Agroz</td>
-<td>$0.28</td>
-<td>-16.4%</td>
-<td>35,627</td>
+<td class="ticker-cell">NCRA <span class="country-badge">NANO CAP</span></td>
+<td>Nocera</td>
+<td>$2.60</td>
+<td>-16.6%</td>
+<td>93,180</td>
 <td>0.0x</td>
-<td>$7.4M</td>
+<td>$4.8M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2244,17 +2265,6 @@
 <td>5,781</td>
 <td>0.0x</td>
 <td>$85.6M</td>
-<td>—</td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">NCRA <span class="country-badge">NANO CAP</span></td>
-<td>Nocera</td>
-<td>$2.61</td>
-<td>-16.3%</td>
-<td>92,173</td>
-<td>0.0x</td>
-<td>$4.8M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2338,9 +2348,9 @@
 <tr>
 <td class="ticker-cell">EGG <span class="country-badge">MICRO CAP</span></td>
 <td>Enigmatig Limited</td>
-<td>$3.35</td>
-<td>-14.5%</td>
-<td>9,519</td>
+<td>$3.36</td>
+<td>-14.4%</td>
+<td>9,525</td>
 <td>0.0x</td>
 <td>$109.8M</td>
 <td>—</td>
@@ -2362,7 +2372,7 @@
 <td>Li Bang International Corporation Inc.</td>
 <td>$0.02</td>
 <td>-12.5%</td>
-<td>10,927,119</td>
+<td>11,167,310</td>
 <td>0.0x</td>
 <td>$0.1M</td>
 <td>—</td>
@@ -2481,9 +2491,9 @@
 <tr>
 <td class="ticker-cell">META <span class="country-badge">SMALL CAP</span></td>
 <td>Meta Platforms Inc</td>
-<td>$535.52</td>
+<td>$535.24</td>
 <td>-8.6%</td>
-<td>128,577</td>
+<td>128,980</td>
 <td>0.0x</td>
 <td>$1486526.1M</td>
 <td>—</td>
@@ -2494,7 +2504,7 @@
 <td>Global Mofy AI Ltd</td>
 <td>$2.68</td>
 <td>-8.5%</td>
-<td>33,158</td>
+<td>33,171</td>
 <td>0.0x</td>
 <td>$5.7M</td>
 <td>—</td>
@@ -2516,7 +2526,7 @@
 <td>Turbo Energy SA</td>
 <td>$1.37</td>
 <td>-8.5%</td>
-<td>34,903</td>
+<td>35,002</td>
 <td>0.0x</td>
 <td>$19.8M</td>
 <td>—</td>
@@ -2530,17 +2540,6 @@
 <td>50</td>
 <td>0.0x</td>
 <td>$252.3M</td>
-<td>—</td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">DXST <span class="country-badge">NANO CAP</span></td>
-<td>Decent Holding Inc.</td>
-<td>$2.08</td>
-<td>-8.4%</td>
-<td>311</td>
-<td>0.0x</td>
-<td>$4.1M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2567,6 +2566,17 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">OMH <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Ohmyhome Limited</td>
+<td>$0.12</td>
+<td>-8.0%</td>
+<td>117,279</td>
+<td>0.0x</td>
+<td>$2.9M</td>
+<td>—</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">MX <span class="country-badge">MICRO CAP</span></td>
 <td>Magnachip Semiconductor Corp N</td>
 <td>$2.77</td>
@@ -2574,17 +2584,6 @@
 <td>904</td>
 <td>0.0x</td>
 <td>$109.9M</td>
-<td>—</td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">MGN <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
-<td>MEGAN HLDGS LTD</td>
-<td>$0.07</td>
-<td>-7.5%</td>
-<td>86,963</td>
-<td>0.0x</td>
-<td>$2.6M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2615,9 +2614,20 @@
 <td>Processa Pharmaceuticals Inc</td>
 <td>$1.87</td>
 <td>-7.9%</td>
-<td>8,622</td>
+<td>8,643</td>
 <td>0.0x</td>
 <td>$5.6M</td>
+<td>—</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">DXST <span class="country-badge">NANO CAP</span></td>
+<td>Decent Holding Inc.</td>
+<td>$2.10</td>
+<td>-7.7%</td>
+<td>321</td>
+<td>0.0x</td>
+<td>$4.1M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -2688,6 +2698,17 @@
 <td>Bounce scanner disabled</td>
 </tr>
 <tr>
+<td class="ticker-cell">MGN <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>MEGAN HLDGS LTD</td>
+<td>$0.07</td>
+<td>-7.5%</td>
+<td>86,973</td>
+<td>0.0x</td>
+<td>$2.6M</td>
+<td>—</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
 <td class="ticker-cell">SQM <span class="country-badge">SMALL CAP</span></td>
 <td>Sociedad Quimica y Minera</td>
 <td>$62.80</td>
@@ -2706,17 +2727,6 @@
 <td>218</td>
 <td>0.0x</td>
 <td>$19.6M</td>
-<td>—</td>
-<td>Bounce scanner disabled</td>
-</tr>
-<tr>
-<td class="ticker-cell">OBAI <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
-<td>Our Bond, Inc.</td>
-<td>$0.48</td>
-<td>-6.8%</td>
-<td>11,099</td>
-<td>0.0x</td>
-<td>$12.7M</td>
 <td>—</td>
 <td>Bounce scanner disabled</td>
 </tr>
@@ -4471,7 +4481,7 @@
             return `Red flags: ${flag} — headline mismatch (unrelated news item leaked into this ticker)`;
         }
 
-        function renderScannerRow(r) {
+        function renderScannerRow(r, opts = {}) {
             let statusClass = 'result-skip';
             let emoji = '⏭️';
             if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
@@ -4559,7 +4569,8 @@
             }
             const secFilingsCell = formatSecFilings(r.sec_filings);
 
-            return `<tr><td class="ticker-cell">${r.ticker}${countryBadge}${capBadge}${pennyBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td><td>${floatCell}</td><td>${secFilingsCell}</td></tr>`;
+            const flashClass = opts.flash ? ' flash-new-alert' : '';
+            return `<tr class="scanner-row${flashClass}"><td class="ticker-cell">${r.ticker}${countryBadge}${capBadge}${pennyBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td><td>${floatCell}</td><td>${secFilingsCell}</td></tr>`;
         }
 
         function formatNewsAgeCell(news) {
@@ -4824,6 +4835,12 @@
                 const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
                     playNewAlertSound(newAlertTickers.length);
+                }
+                // Make newly-detected ALERT tickers visually flash in the scanner table
+                // alongside the sound, so the user can identify which ticker triggered it.
+                window._newAlertTickers = newAlertTickers;
+                if (newAlertTickers.length > 0) {
+                    setTimeout(() => { window._newAlertTickers = []; }, 5000);
                 }
                 window._lastAlertTickers = currentAlertTickers;
 
