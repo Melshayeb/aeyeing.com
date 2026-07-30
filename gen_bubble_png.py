@@ -172,16 +172,15 @@ for t in label_inside:
             ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
 
-# Outside labels with arrows - placed to avoid overlap
-# Determine outside positions based on bubble location; fallback rules
+# Outside labels with arrows - placed close to the bubble
 for t in label_outside:
     bx, by = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    # Place to the right of the bubble, at a safe y
-    tx = bx + 1_200_000
-    ty = max(0.7, min(23, by * 1.5))
+    # Place slightly to the right and at bubble center y
+    tx = bx + max(300_000, by * 250_000)
+    ty = by
     ax.annotate(f"{t['ticker']}\n{t['country']}",
                 xy=(bx, by), xytext=(tx, ty),
-                ha='center', va='center', color='white', fontsize=9,
+                ha='left', va='center', color='white', fontsize=9,
                 fontweight='bold', linespacing=0.72, zorder=6,
                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#111827', edgecolor='#374151', alpha=0.9),
                 arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.8))
