@@ -150,14 +150,14 @@ y_vals = [10 ** positions[t['ticker']][1] for t in tickers]
 
 ax.scatter(x_vals, y_vals, s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
 
-# Labels inside bubbles - ticker on top, country below, smaller country font
+# Labels inside bubbles - larger separation between ticker and country code
 for t in tickers:
     x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    ax.text(x, y + 0.015, t['ticker'],
+    ax.text(x, y + 0.028, t['ticker'],
             ha='center', va='bottom', color='white', fontsize=10, fontweight='bold',
             linespacing=0.7, zorder=6)
-    ax.text(x, y - 0.015, t['country'],
-            ha='center', va='top', color='white', fontsize=7.5,
+    ax.text(x, y - 0.028, t['country'],
+            ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
 
 # Hover tooltip mockup on NUWE
@@ -183,8 +183,8 @@ for spine in ax.spines.values():
 # Zone labels
 ax.text(100_000, 0.25, 'Penny zone (< $0.55)', color=(248/255, 113/255, 113/255, 0.7),
         fontsize=9, ha='left', fontstyle='italic')
-ax.text(1_450_000, 23, 'Recommended trade zone', color=(52/255, 211/255, 153/255, 0.95),
-        fontsize=11, ha='right', fontstyle='italic', fontweight='bold')
+ax.text(1_000_000, 23, 'Recommended trade zone', color=(52/255, 211/255, 153/255, 0.95),
+        fontsize=10, ha='center', fontstyle='italic', fontweight='bold')
 
 ax.set_title('OzMoEg Bubble View Prototype — Float vs Price', color='#2dd4bf', fontsize=16, pad=18)
 
