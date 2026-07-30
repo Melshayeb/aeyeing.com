@@ -172,10 +172,10 @@ for t in label_inside:
             ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
 
-# Outside labels with arrows - placed close to the bubble, ticker larger, country smaller
+# Outside labels with arrows - placed just next to the bubble, no touching
 for t in label_outside:
     bx, by = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    offset_x = max(180_000, by * 120_000)
+    offset_x = max(260_000, by * 180_000)
     tx = bx + offset_x
     # Stack ticker above country with vertical separation
     ax.text(tx, by * 1.008, t['ticker'],
@@ -184,7 +184,7 @@ for t in label_outside:
     ax.text(tx, by * 0.992, t['country'],
             ha='left', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
-    ax.annotate('', xy=(bx + offset_x * 0.05, by), xytext=(tx - 50_000, by),
+    ax.annotate('', xy=(bx + offset_x * 0.15, by), xytext=(tx - 70_000, by),
                 arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.7), zorder=5)
 
 # Hover tooltip mockup on NUWE
