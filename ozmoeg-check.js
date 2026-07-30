@@ -1,0 +1,2311 @@
+    // Auto-reload guard: GitHub Pages/Cloudflare cache aeyeing.com for ~10 minutes,
+    // so a stale copy can linger after a deployment. We compare the CDN Last-Modified
+    // with the loaded page and also compare the raw GitHub manifest timestamp with the
+    // CDN manifest timestamp. If raw GitHub is ahead, force-reload with a cache-busting
+    // URL until the browser actually has the latest HTML that uses raw GitHub as its
+    // primary data source.
+    (function(){
+        const now = Date.now();
+        const reloadKey = 'ozmoeg-reloaded-v2';
+        const lastReload = parseInt(sessionStorage.getItem(reloadKey) || '0', 10);
+        // Allow another reload if at least 20 seconds have passed (prevents infinite loops).
+        if (now - lastReload < 20000) return;
+
+        function reloadFresh() {
+            sessionStorage.setItem(reloadKey, now.toString());
+            var url = new URL(location.href);
+            url.searchParams.set('_', now.toString());
+            url.searchParams.set('force', '1');
+            location.replace(url.toString());
+        }
+
+        function checkRawGithub() {
+            try {
+                var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
+                var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + now;
+                fetch(rawUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                    .then(function(r){ return r.json(); })
+                    .then(function(raw){
+                        if (!raw || !raw.last_updated) return;
+                        var rawTs = new Date(raw.last_updated).getTime();
+                        // Also fetch the CDN manifest to see if the current HTML/JS is stale.
+                        var cdnUrl = 'https://aeyeing.com/ozmoeg-manifest' + market + '.json?_=' + now;
+                        fetch(cdnUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                            .then(function(r){ return r.json(); })
+                            .then(function(cdn){
+                                var cdnTs = cdn && cdn.last_updated ? new Date(cdn.last_updated).getTime() : 0;
+                                // If raw GitHub is more than 2 minutes ahead of the CDN manifest,
+                                // the current page is using stale cached data.
+                                if (rawTs && cdnTs && rawTs > cdnTs + 120000) {
+                                    console.warn('CDN manifest is stale; reloading from fresh URL');
+                                    reloadFresh();
+                                }
+                            })
+                            .catch(function(){});
+                    })
+                    .catch(function(){});
+            } catch(e){ /* ignore */ }
+        }
+
+        // First check: compare loaded HTML Last-Modified with server.
+        try {
+            fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                .then(function(r){
+                    var serverTs = r.headers.get('last-modified');
+                    if (!serverTs) { checkRawGithub(); return; }
+                    var serverTime = new Date(serverTs).getTime();
+                    var pageTime = new Date(document.lastModified).getTime();
+                    if (serverTime > pageTime + 3000) {
+                        reloadFresh();
+                    } else {
+                        checkRawGithub();
+                    }
+                })
+                .catch(function(){ checkRawGithub(); });
+        } catch (e) { checkRawGithub(); }
+    })();
+</script>
+<script>
+        // ── Market region toggle (US / AUS) ─────────────────────────────
+        let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
+        // If the URL path indicates the AUS market (e.g., /au), force the market to AUS
+        if (window.location.pathname.includes('/au')) {
+            currentMarket = 'AUS';
+            localStorage.setItem('ozmoeg-market', 'AUS');
+        }
+
+        function setMarketButtons() {
+            document.querySelectorAll('#market-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.market === currentMarket);
+            });
+        }
+
+        function resetScannerToggleToLive() {
+            const toggle = document.getElementById('scanner-toggle');
+            if (!toggle) return;
+            toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            const liveBtn = toggle.querySelector('button[data-view="live"]');
+            if (liveBtn) liveBtn.classList.add('active');
+            userSelectedScannerView = 'live';
+            saveScannerViewPreference('live');
+        }
+
+        function switchMarket(market) {
+            currentMarket = market;
+            localStorage.setItem('ozmoeg-market', market);
+            setMarketButtons();
+            updateHeaderText();
+            updateDateTime();
+            updateCountdown();
+            // clear cached selection so the new market's top alert is selected
+            localStorage.removeItem('ozmoeg-selected-alert');
+            // Reset scanner first-load flag so the correct default view is applied for the new market
+            scannerFirstLoadDone = false;
+            userSelectedScannerView = null;
+            loadLiveData().then(() => renderPlanRules());
+        }
+
+        document.addEventListener('click', e => {
+            const marketBtn = e.target.closest('#market-toggle button');
+            if (marketBtn && marketBtn.dataset.market && marketBtn.dataset.market !== currentMarket) {
+                switchMarket(marketBtn.dataset.market);
+            }
+            const scannerBtn = e.target.closest('#scanner-toggle button');
+            if (scannerBtn && !scannerBtn.classList.contains('active') && !scannerBtn.disabled) {
+                const view = scannerBtn.dataset.view;
+                setScannerToggleActive(view);
+                // Switching between Live and Pre/After is only a view change;
+                // it must not trigger a network reload. Render from already-fetched data.
+                renderScannerView();
+            }
+        });
+
+        function setScannerToggleActive(view) {
+            const toggle = document.getElementById('scanner-toggle');
+            if (!toggle) return;
+            toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            const target = toggle.querySelector(`button[data-view="${view}"]`);
+            if (target) target.classList.add('active');
+            userSelectedScannerView = view;
+            saveScannerViewPreference(view);
+        }
+
+        const alertSelector = document.getElementById('alert-selector');
+        if (alertSelector) {
+            alertSelector.addEventListener('change', function() {
+                localStorage.setItem('ozmoeg-selected-alert', this.value);
+                renderSelectedAlert();
+            });
+        }
+
+        // Persist scanner view preference
+        function saveScannerViewPreference(view) {
+            localStorage.setItem('ozmoeg-scanner-view', view);
+        }
+        function loadScannerViewPreference() {
+            return localStorage.getItem('ozmoeg-scanner-view') || 'live';
+        }
+
+        function updateHeaderText() {
+            const sub = document.getElementById('header-subtitle');
+            const label = document.getElementById('countdown-label');
+            if (!sub || !label) return;
+            if (currentMarket === 'AUS') {
+                sub.textContent = 'ASX Small-Cap Monitor — Live Market Intelligence';
+                label.textContent = '🇦🇺 AUS / ASX Market';
+            } else {
+                sub.textContent = 'US Small-Cap Scalp Monitor — Live Market Intelligence';
+                label.textContent = '🇺🇸 US Market';
+            }
+        }
+
+        // ASX is 10:00–16:00 AEST/AEDT Monday–Friday, no pre/after market.
+        function getSydneyParts(date) {
+            const parts = new Intl.DateTimeFormat('en-AU', {
+                timeZone: 'Australia/Sydney',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: false, weekday: 'long'
+            }).formatToParts(date);
+            return {
+                hour: parseInt(parts.find(p => p.type === 'hour').value),
+                minute: parseInt(parts.find(p => p.type === 'minute').value),
+                second: parseInt(parts.find(p => p.type === 'second').value),
+                weekday: parts.find(p => p.type === 'weekday').value,
+                weekdayNum: {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[parts.find(p => p.type === 'weekday').value]
+            };
+        }
+
+        function findNextASXOpen(fromTime) {
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 10080) {
+                probe.setMinutes(probe.getMinutes() + 1);
+                const p = getSydneyParts(probe);
+                if (p.weekdayNum >= 1 && p.weekdayNum <= 5 && p.hour === 10 && p.minute === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+
+        function findNextASXClose(fromTime) {
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 480) {
+                probe.setMinutes(probe.getMinutes() + 1);
+                const p = getSydneyParts(probe);
+                if (p.weekdayNum >= 1 && p.weekdayNum <= 5 && p.hour === 16 && p.minute === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Sydney time display (always show correct AEST/AEDT)
+            const sydneyOptions = {
+                timeZone: 'Australia/Sydney',
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            document.getElementById('datetime-display').textContent = 
+                now.toLocaleDateString('en-AU', sydneyOptions);
+            
+            // Detect if Sydney is in DST (AEDT) or standard (AEST)
+            const janOffset = new Date(now.getFullYear(), 0, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
+            const julOffset = new Date(now.getFullYear(), 6, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
+            const isDst = now.toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'}) === janOffset;
+            const tzLabel = isDst ? 'Sydney AEDT' : 'Sydney AEST';
+            document.querySelector('.timezone').textContent = tzLabel;
+            
+            // Market status based on selected region
+            let status;
+            if (currentMarket === 'AUS') {
+                const syd = getSydneyParts(now);
+                if (syd.weekdayNum === 0 || syd.weekdayNum === 6) {
+                    status = "🔴 Weekend — ASX Closed";
+                } else if (syd.hour >= 10 && syd.hour < 16) {
+                    status = "🟢 ASX Open — Live monitoring";
+                } else {
+                    status = "🔴 ASX Closed — Next session at 10:00 Sydney";
+                }
+            } else {
+                const etParts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(now);
+                const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
+                const etMin = parseInt(etParts.find(p => p.type === 'minute').value);
+                const etWeekday = etParts.find(p => p.type === 'weekday').value;
+                const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
+                if (etWeekdayNum === 0 || etWeekdayNum === 6) {
+                    status = "🔴 Weekend — Markets Closed";
+                } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
+                    status = "🟡 Pre-Market — Scanning for setups";
+                } else if (etHour < 16) {
+                    status = "🟢 Market Open — Live monitoring";
+                } else {
+                    status = "🟡 After Hours — Pre-market scan mode";
+                }
+            }
+            document.getElementById('market-status').textContent = status;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        
+        // US Market Countdown (Sydney-time based)
+        let marketOpenTarget = null;
+        let marketCloseTarget = null;
+        let lastStatus = '';
+        let lastMarket = '';
+
+        function setMarketLoading(market, isLoading) {
+            // No dedicated spinner currently exists; this prevents loadLiveData from crashing.
+            // Future: toggle a loading class on the header/status badge if desired.
+        }
+
+        function updateScannerStatusBadge(marketStatus, gainersCount, losersCount) {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('scanner-active-text');
+            const badge = document.querySelector('.status-badge');
+            if (!statusDot || !statusText) return;
+
+            // Use real-time US market status if the JSON scan is stale (older than ~90 min)
+            // so weekend/closed sessions don't falsely show "OPEN" from Friday's last scan.
+            let status = (marketStatus || 'UNKNOWN').toUpperCase();
+            const now = new Date();
+            const lastScanAgeMin = window._lastScanTimestamp
+                ? Math.max(0, (now.getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
+                : Infinity;
+            const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : status;
+            if (lastScanAgeMin > 90 && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(realTimeStatus)) {
+                status = realTimeStatus;
+            }
+            // If real-time status is closed/weekend, always prefer it regardless of JSON age.
+            if (realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
+                status = realTimeStatus;
+            }
+            currentMarketStatus = status;
+
+            const colorMap = {
+                'OPEN': '#22c55e',
+                'PRE-MARKET': '#f59e0b',
+                'AFTER-HOURS': '#f59e0b',
+                'CLOSED': '#ef4444',
+                'WEEKEND': '#ef4444',
+                'UNKNOWN': '#9ca3af'
+            };
+            const labelMap = {
+                'OPEN': 'Live Scanner — Market Open',
+                'PRE-MARKET': 'Scanner Active — Pre-Market',
+                'AFTER-HOURS': 'Scanner Active — After Hours',
+                'CLOSED': 'Scanner Idle — Market Closed',
+                'WEEKEND': 'Scanner Idle — Weekend',
+                'UNKNOWN': 'Scanner Status Unknown'
+            };
+            const color = colorMap[status] || colorMap['UNKNOWN'];
+
+            statusDot.style.cssText = `width:8px;height:8px;border-radius:50%;background:${color};animation:pulse 2s infinite;`;
+            if (badge) {
+                badge.style.cssText = `display:flex;align-items:center;gap:0.5rem;background:${color}26;border:1px solid ${color};padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:500;color:${color};`;
+            }
+            statusText.textContent = labelMap[status] || labelMap['UNKNOWN'];
+
+            // Show a visible data-source warning when the scan returned no raw lists
+            // but the market phase expects data (open, pre-market, after-hours).
+            let warningEl = document.getElementById('data-source-warning');
+            if (!warningEl) {
+                warningEl = document.createElement('div');
+                warningEl.id = 'data-source-warning';
+                warningEl.style.cssText = 'margin-top:0.5rem;padding:0.5rem 0.75rem;border-radius:6px;background:rgba(239,68,68,0.15);color:#ff6b6b;font-size:0.8rem;border-left:3px solid #ef4444;';
+                const headerStatus = document.querySelector('.header-status');
+                if (headerStatus) headerStatus.appendChild(warningEl);
+            }
+
+            if (['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
+                warningEl.textContent = '⚠️ Data source returned 0 gainers/losers. The website will stay on the last known data until the API connection is restored.';
+                warningEl.style.display = 'block';
+            } else {
+                warningEl.style.display = 'none';
+            }
+        }
+
+        function findNextScanWindow(fromTime) {
+            // The scanner's active window starts at 17:00 Sydney on weekdays.
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 10080) { // Max 1 week
+                probe.setMinutes(probe.getMinutes() + 1);
+                const sydney = new Intl.DateTimeFormat('en-AU', {
+                    timeZone: 'Australia/Sydney',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(probe);
+                const sh = parseInt(sydney.find(p => p.type === 'hour').value);
+                const sm = parseInt(sydney.find(p => p.type === 'minute').value);
+                const sw = sydney.find(p => p.type === 'weekday').value;
+                const swn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[sw];
+                if (swn >= 1 && swn <= 5 && sh === 17 && sm === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+        
+        function findNextMarketClose(fromTime) {
+            // Walk forward minute-by-minute from fromTime until ET shows Mon-Fri 16:00
+            let probe = new Date(fromTime);
+            let safety = 0;
+            while (safety++ < 480) { // Max 8 hours
+                probe.setMinutes(probe.getMinutes() + 1);
+                const pp = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
+                }).formatToParts(probe);
+                const ph = parseInt(pp.find(p => p.type === 'hour').value);
+                const pm = parseInt(pp.find(p => p.type === 'minute').value);
+                const pw = pp.find(p => p.type === 'weekday').value;
+                const pwn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[pw];
+                if (pwn >= 1 && pwn <= 5 && ph === 16 && pm === 0) {
+                    return probe;
+                }
+            }
+            return null;
+        }
+
+        function getETParts(date) {
+            const parts = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/New_York',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: false, weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric'
+            }).formatToParts(date);
+            const get = type => parts.find(p => p.type === type).value;
+            const weekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[get('weekday')];
+            return {
+                hour: parseInt(get('hour'), 10),
+                minute: parseInt(get('minute'), 10),
+                second: parseInt(get('second'), 10),
+                weekday: get('weekday'),
+                weekdayNum,
+                year: parseInt(get('year'), 10),
+                month: parseInt(get('month'), 10),
+                day: parseInt(get('day'), 10)
+            };
+        }
+
+
+        function getCurrentUSMarketStatus(now = new Date()) {
+            const et = getETParts(now);
+            // Sunday (0) and Saturday (6) are weekend all day.
+            if (et.weekdayNum === 0 || et.weekdayNum >= 6) return 'WEEKEND';
+            // Friday after 20:00 ET is closed for the weekend (aligns with backend AFTER-HOURS end).
+            if (et.weekdayNum === 5 && et.hour >= 20) return 'WEEKEND';
+            const minutes = et.hour * 60 + et.minute;
+            if (minutes < 570) { // 09:30
+                if (minutes >= 240) return 'PRE-MARKET'; // 04:00
+                return 'CLOSED';
+            }
+            if (minutes < 960) return 'OPEN'; // 16:00
+            if (minutes < 1200) return 'AFTER-HOURS'; // 20:00
+            return 'CLOSED';
+        }
+
+        function getETDateFor(year, month, day, hour, minute) {
+            // Build a Sydney-time Date whose ET components match the requested values by walking from midnight ET.
+            // Start with the same calendar day in Sydney; then adjust minute-by-minute until ET matches.
+            let probe = new Date(year, month - 1, day, hour, minute);
+            for (let safety = 0; safety < 2880; safety++) {
+                const et = getETParts(probe);
+                if (et.year === year && et.month === month && et.day === day && et.hour === hour && et.minute === minute) {
+                    return probe;
+                }
+                probe.setMinutes(probe.getMinutes() + 1);
+            }
+            return null;
+        }
+
+        function getUSMarketPhase(now) {
+            const et = getETParts(now);
+            const weekdayNum = et.weekdayNum;
+            const minutes = et.hour * 60 + et.minute;
+            const isWeekday = weekdayNum >= 1 && weekdayNum <= 5;
+            const tomorrowNum = (weekdayNum + 1) % 7;
+
+            // Phase boundaries in ET minutes from midnight
+            const PRE_START = 4 * 60;      // 04:00
+            const OPEN_START = 9 * 60 + 30; // 09:30
+            const POST_START = 16 * 60;   // 16:00
+            const DAY_END = 20 * 60;      // 20:00
+
+            let phase, targetMinutes, statusText, phaseStart, phaseEnd;
+            let targetWeekday = weekdayNum;
+
+            if (!isWeekday) {
+                // Weekend: treat as closed; target next Monday 04:00 pre-market.
+                phase = 'closed';
+                statusText = '🔴 Weekend — Pre-market in';
+                targetWeekday = 1; // Monday
+                targetMinutes = PRE_START;
+                phaseStart = null;
+                phaseEnd = null;
+            } else if (minutes >= POST_START && minutes < DAY_END) {
+                phase = 'post';
+                statusText = '🟡 After Hours — Closes in';
+                targetMinutes = DAY_END;
+                phaseStart = POST_START;
+                phaseEnd = DAY_END;
+            } else if (minutes >= OPEN_START && minutes < POST_START) {
+                phase = 'open';
+                statusText = '🟢 Market Open — After hours in';
+                targetMinutes = POST_START;
+                phaseStart = OPEN_START;
+                phaseEnd = POST_START;
+            } else if (minutes >= PRE_START && minutes < OPEN_START) {
+                phase = 'pre';
+                statusText = '🟡 Pre-Market — Opens in';
+                targetMinutes = OPEN_START;
+                phaseStart = PRE_START;
+                phaseEnd = OPEN_START;
+            } else {
+                // Closed overnight (00:00-04:00 or 20:00-24:00 ET)
+                phase = 'closed';
+                statusText = '🔴 Closed — Pre-market in';
+                targetMinutes = PRE_START;
+                if (minutes >= DAY_END) {
+                    targetWeekday = tomorrowNum;
+                }
+                if (targetWeekday === 0 || targetWeekday === 6) targetWeekday = 1;
+                phaseStart = null;
+                phaseEnd = null;
+            }
+
+            // Calculate target Date in local (Sydney) time
+            let probe = new Date(now);
+            while (getETParts(probe).weekdayNum !== targetWeekday) {
+                probe.setDate(probe.getDate() + 1);
+            }
+            const targetProbe = getETParts(probe);
+            const target = getETDateFor(targetProbe.year, targetProbe.month, targetProbe.day,
+                Math.floor(targetMinutes / 60), targetMinutes % 60);
+
+            return { phase, target: target || probe, statusText, phaseStart, phaseEnd };
+        }
+
+        function updateTimeline(phase, phaseStart, phaseEnd, now) {
+            const timeline = document.getElementById('market-timeline');
+            const notch = document.getElementById('market-timeline-notch');
+            if (!timeline || !notch) return;
+
+            if (!phase) {
+                timeline.style.display = 'none';
+                return;
+            }
+            timeline.style.display = 'block';
+
+            // Segment order and positions (each 25%)
+            const segments = ['pre', 'open', 'post', 'closed'];
+            const segIndex = segments.indexOf(phase);
+            const segCount = segments.length;
+            const segWidth = 100 / segCount;
+            const segCenter = segWidth * segIndex + segWidth / 2;
+
+            let progress = 0;
+            if (phaseStart !== null && phaseEnd !== null && phaseEnd > phaseStart) {
+                const et = getETParts(now);
+                const minutes = et.hour * 60 + et.minute;
+                progress = Math.max(0, Math.min(1, (minutes - phaseStart) / (phaseEnd - phaseStart)));
+            }
+            const left = segWidth * segIndex + segWidth * progress;
+            notch.style.left = `${left}%`;
+
+            // Highlight active label and dim other segments slightly
+            timeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
+                span.classList.toggle('active', span.dataset.phase === phase);
+            });
+            timeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
+                seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
+            });
+        }
+
+        function updateCountdown() {
+            const now = new Date(); // Browser local time = Sydney time
+
+            // If the market mode changed since the last tick, reset cached targets immediately.
+            if (lastMarket !== currentMarket) {
+                marketOpenTarget = null;
+                marketCloseTarget = null;
+                lastStatus = '';
+                lastMarket = currentMarket;
+            }
+
+            if (currentMarket === 'AUS') {
+                const syd = getSydneyParts(now);
+                const isMarketOpen = syd.weekdayNum >= 1 && syd.weekdayNum <= 5 && syd.hour >= 10 && syd.hour < 16;
+                updateTimeline(null, 0, 0, now);
+
+                if (isMarketOpen) {
+                    if (!marketCloseTarget || marketCloseTarget <= now || lastStatus !== 'open') {
+                        marketCloseTarget = findNextASXClose(now);
+                        lastStatus = 'open';
+                    }
+                    const diff = marketCloseTarget - now;
+                    const h = Math.floor(diff / (1000 * 60 * 60));
+                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((diff % (1000 * 60)) / 1000);
+                    document.getElementById('countdown-status').textContent = '🟢 ASX OPEN — Closing in';
+                    document.getElementById('countdown-timer').textContent =
+                        `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                    document.getElementById('countdown-timer').className = 'countdown-timer open';
+                    const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+                    document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
+                    return;
+                }
+
+                if (!marketOpenTarget || marketOpenTarget <= now || lastStatus === 'open') {
+                    marketOpenTarget = findNextASXOpen(now);
+                    marketCloseTarget = null;
+                    lastStatus = 'closed';
+                }
+                let statusText;
+                if (syd.weekdayNum === 0 || syd.weekdayNum === 6) {
+                    statusText = "🔴 Weekend — ASX Opens Monday";
+                } else if (syd.hour >= 16) {
+                    const tomorrowWeekday = (syd.weekdayNum + 1) % 7;
+                    statusText = (tomorrowWeekday === 0 || tomorrowWeekday === 6)
+                        ? "🔴 ASX Closed — Opens Monday"
+                        : "🔴 ASX Closed — Opens Tomorrow 10:00";
+                } else {
+                    statusText = "🔴 ASX Closed — Opens Today 10:00";
+                }
+                const diff = marketOpenTarget - now;
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const timerStr = d > 0
+                    ? `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+                    : `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                const sydneyDay = dayNames[marketOpenTarget.getDay()];
+                const sydneyTime = marketOpenTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+                const sydneyDate = marketOpenTarget.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
+                document.getElementById('countdown-status').textContent = statusText;
+                document.getElementById('countdown-timer').textContent = timerStr;
+                document.getElementById('countdown-timer').className = 'countdown-timer closed';
+                document.getElementById('countdown-next').textContent = `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
+                return;
+            }
+
+            // US Market phase-aware countdown
+            const phaseInfo = getUSMarketPhase(now);
+            const target = phaseInfo.target;
+            updateTimeline(phaseInfo.phase, phaseInfo.phaseStart, phaseInfo.phaseEnd, now);
+
+            const diff = target - now;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const timerStr = d > 0
+                ? `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+                : `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+
+            const isOpen = phaseInfo.phase === 'open';
+            document.getElementById('countdown-status').textContent = phaseInfo.statusText;
+            document.getElementById('countdown-timer').textContent = timerStr;
+            document.getElementById('countdown-timer').className = isOpen ? 'countdown-timer open' : 'countdown-timer closed';
+
+            const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            const sydneyDay = dayNames[target.getDay()];
+            const sydneyTime = target.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
+            const sydneyDate = target.toLocaleDateString('en-AU', {weekday:'short', month:'short', day:'numeric'});
+            const etTime = target.toLocaleTimeString('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute:'2-digit'});
+            let nextLabel;
+            if (phaseInfo.phase === 'pre') nextLabel = 'Market open';
+            else if (phaseInfo.phase === 'open') nextLabel = 'After hours';
+            else if (phaseInfo.phase === 'post') nextLabel = 'After hours close';
+            else nextLabel = 'Pre-market';
+            document.getElementById('countdown-next').textContent =
+                `${nextLabel} ${sydneyDay} ${sydneyDate} at ${sydneyTime} Sydney / ${etTime} ET`;
+        }
+        updateHeaderText();
+        setMarketButtons();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
+        // Intervals are driven by Sydney wall-clock time and US market status:
+        //   CATALYST WATCHLIST (Sydney 17:00 → 17:59): every 1 minute, news-only mode
+        //   PRE-MARKET / OPEN / AFTER-HOURS inside Sydney active window : every 1 minute
+        //   OPEN / AFTER-HOURS outside Sydney active window             : every 10 minutes
+        //   CLOSED / WEEKEND (outside Sydney active window)             : no auto-fetch
+        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
+        const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside Sydney window
+        const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during Sydney active window (17:00-23:59)
+        let liveResults = [];
+        let displayedResults = [];
+        let userSelectedScannerView = null;
+        let scannerFirstLoadDone = false;
+        let liveLastUpdated = new Date();
+        let currentMarketStatus = 'OPEN';
+        let soundEnabled = localStorage.getItem('ozmoeg-sound-enabled') !== 'false';
+        const audioCtx = window.AudioContext || window.webkitAudioContext;
+        const sharedAudioCtx = audioCtx ? new audioCtx() : null;
+
+        // Active = Sydney window for the website 1-minute refresh: 17:00 to 23:59 Sydney time.
+        // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
+        function isActiveTradingWindow(now = new Date()) {
+            try {
+                const fmt = new Intl.DateTimeFormat('en-AU', {
+                    timeZone: 'Australia/Melbourne',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: false,
+                });
+                const parts = fmt.formatToParts(now);
+                let h = 0, m = 0;
+                for (const p of parts) {
+                    if (p.type === 'hour') h = parseInt(p.value, 10);
+                    if (p.type === 'minute') m = parseInt(p.value, 10);
+                }
+                const mins = h * 60 + m;
+                const start = 17 * 60;      // Sydney 17:00
+                const end = 24 * 60;        // Sydney 24:00 (exclusive)
+                return mins >= start && mins < end;
+            } catch (e) {
+                // Fallback: assume active only if US market status is PRE-MARKET.
+                return currentMarketStatus === 'PRE-MARKET';
+            }
+        }
+
+        function getRefreshIntervalMs() {
+            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
+            if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
+                // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
+                return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
+            }
+            if (isActiveTradingWindow()) return ACTIVE_REFRESH_INTERVAL_MS;
+            // US OPEN / AFTER-HOURS outside the Sydney 17:00-23:59 window refresh every 10 minutes.
+            // PRE-MARKET outside the window is treated the same way: the website is not in active mode.
+            return IDLE_REFRESH_INTERVAL_MS;
+        }
+
+        // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
+        // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
+        // race where the frontend refreshes on a wall-clock boundary before the backend scan
+        // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
+        const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
+        const MANIFEST_POLL_OFFSET_MS = 5000;    // poll at :05 past each minute
+        let refreshTimerId = null;
+        let nextPollAt = computeNextPollAt();
+
+        function computeNextPollAt() {
+            const now = Date.now();
+            // Align to the next minute boundary plus a small offset.
+            const nextMinute = Math.ceil(now / MANIFEST_POLL_INTERVAL_MS) * MANIFEST_POLL_INTERVAL_MS;
+            return nextMinute + MANIFEST_POLL_OFFSET_MS;
+        }
+
+        function getManifestFile() {
+            return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
+        }
+
+        function getDefaultSnapshotFile() {
+            return currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+        }
+
+        async function fetchManifestRaw() {
+            // Try the main site first; fall back to raw GitHub content when the CDN fronting
+            // aeyeing.com caches the manifest beyond the scan cadence. Both are served with
+            // permissive CORS so this works from any browser.
+            const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+            const tryFetch = async (url, desc) => {
+                try {
+                    const res = await fetch(url + '?_=' + buster, {
+                        cache: 'no-store',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                    if (!res.ok) {
+                        console.warn('Manifest fetch failed for', desc, res.status);
+                        return null;
+                    }
+                    const manifest = await res.json();
+                    if (!manifest || !manifest.latest || !manifest.last_updated) {
+                        console.warn('Manifest malformed for', desc);
+                        return null;
+                    }
+                    return manifest;
+                } catch (e) {
+                    console.warn('Manifest fetch exception for', desc, e);
+                    return null;
+                }
+            };
+            const market = currentMarket === 'AUS' ? '-au' : '';
+            const main = await tryFetch(getManifestFile(), 'main');
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            if (!main && !raw) return null;
+            if (!main) return raw;
+            if (!raw) return main;
+            // Raw GitHub is uncached, so prefer it whenever it is at least as fresh as the CDN.
+            const mainTs = new Date(main.last_updated).getTime() || 0;
+            const rawTs = new Date(raw.last_updated).getTime() || 0;
+            if (rawTs >= mainTs) {
+                console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
+                return raw;
+            }
+            return main;
+        }
+
+        async function pollManifest() {
+            if (window._pollingManifest || window._loadingLiveData) return;
+            window._pollingManifest = true;
+            nextPollAt = computeNextPollAt();
+            updateRefreshCountdown();
+            try {
+                const manifest = await fetchManifestRaw();
+                if (!manifest) {
+                    console.warn('No manifest available from any source');
+                    return;
+                }
+                const latest = manifest.latest;
+                const lastUpdated = manifest.last_updated;
+                const lastLoaded = window._lastLoadedSnapshot;
+                const lastLoadedTs = window._lastLoadedSnapshotTs;
+                const isNewSnapshot = !lastLoaded || latest !== lastLoaded;
+                const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
+                if (isNewSnapshot || isNewerTimestamp) {
+                    await loadLiveData(latest);
+                }
+            } catch (e) {
+                console.warn('Manifest poll failed:', e);
+            } finally {
+                window._pollingManifest = false;
+            }
+        }
+
+        function resetRefreshTimer() {
+            if (refreshTimerId) clearInterval(refreshTimerId);
+            // Recompute against the fixed minute boundary so reloads don't restart the countdown.
+            nextPollAt = computeNextPollAt();
+            refreshTimerId = setInterval(() => {
+                updateRefreshCountdown();
+                if (Date.now() >= nextPollAt) {
+                    pollManifest().catch(err => console.error('Auto pollManifest failed:', err));
+                }
+            }, 1000);
+        }
+
+        function updateRefreshCountdown() {
+            const label = document.getElementById('page-refresh-label');
+            const lastLabel = document.getElementById('last-refresh-label');
+            // "Last refresh" reflects the actual JSON scan timestamp so users can see how fresh the data is.
+            const lastFetchTime = window._lastFetchSuccessAt || window._lastFetchAttemptAt;
+            const jsonDataTime = window._lastScanTimestamp;
+            const newsTickerTs = window._lastNewsTickerTs || jsonDataTime;
+            if (lastLabel) {
+                if (jsonDataTime) {
+                    const jsonAgeMin = Math.max(0, (Date.now() - new Date(jsonDataTime).getTime()) / 60000);
+                    const stale = jsonAgeMin > 5;
+                    const ageText = stale ? ` ⚠️ ${Math.round(jsonAgeMin)}m stale data` : '';
+                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(jsonDataTime))}${ageText}`;
+                    lastLabel.style.color = stale ? 'var(--danger)' : '';
+                } else if (lastFetchTime) {
+                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(lastFetchTime))}`;
+                    lastLabel.style.color = '';
+                } else {
+                    lastLabel.textContent = 'Last refresh: —';
+                    lastLabel.style.color = '';
+                }
+            }
+            if (!label) return;
+            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
+            let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
+                            (usStatus === 'OPEN' && isActiveTradingWindow());
+            label.classList.toggle('active-refresh', active);
+
+            let modeLabel;
+            const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
+            if (isActiveTradingWindow() && usStatus === 'CLOSED') {
+                modeLabel = `(1-min catalyst watchlist mode)`;
+            } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
+                modeLabel = `(1-min pre-market mode)`;
+            } else if (usStatus === 'OPEN') {
+                modeLabel = `(${pollMin}-min open market mode)`;
+            } else if (usStatus === 'AFTER-HOURS') {
+                modeLabel = `(${pollMin}-min after-hours mode)`;
+            } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
+                modeLabel = `(${pollMin}-min pre-market mode)`;
+            } else {
+                modeLabel = `(${pollMin}-min markets closed)`;
+            }
+
+            const interval = getRefreshIntervalMs();
+            if (interval === 0) {
+                const nextOpen = findNextScanWindow(new Date());
+                let openText;
+                if (nextOpen) {
+                    const sydneyOpen = nextOpen.toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true });
+                    openText = `Watchlist resumes ${sydneyOpen} Sydney`;
+                } else {
+                    openText = 'market closed';
+                }
+                label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
+                label.classList.remove('active-refresh');
+                return;
+            }
+
+            const remaining = Math.max(0, nextPollAt - Date.now());
+            const totalSeconds = Math.ceil(remaining / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+            active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
+            label.classList.toggle('active-refresh', active);
+            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
+        }
+
+        function toggleSound(enabled) {
+            soundEnabled = enabled;
+            try { localStorage.setItem('ozmoeg-sound-enabled', enabled ? 'true' : 'false'); } catch (e) {}
+            // Prime the audio engine on the user gesture so autoplay-blocked sounds can fire later.
+            if (enabled && sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(err => console.warn('AudioContext resume failed:', err));
+            }
+            const btn = document.getElementById('sound-toggle');
+            if (btn) {
+                btn.textContent = enabled ? '🔊 Sound on' : '🔇 Sound off';
+                btn.classList.toggle('active', enabled);
+            }
+        }
+
+        function playNewAlertSound(count) {
+            if (!sharedAudioCtx) return;
+            // Browsers suspend AudioContext until a user gesture. Resume every time before playing.
+            if (sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(err => console.warn('AudioContext resume failed:', err));
+            }
+            const now = sharedAudioCtx.currentTime;
+            for (let i = 0; i < Math.min(count, 3); i++) {
+                const osc = sharedAudioCtx.createOscillator();
+                const gain = sharedAudioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, now + i * 0.18);
+                osc.frequency.exponentialRampToValueAtTime(1760, now + i * 0.18 + 0.12);
+                gain.gain.setValueAtTime(0.0001, now + i * 0.18);
+                gain.gain.exponentialRampToValueAtTime(0.15, now + i * 0.18 + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.18 + 0.35);
+                osc.connect(gain);
+                gain.connect(sharedAudioCtx.destination);
+                osc.start(now + i * 0.18);
+                osc.stop(now + i * 0.18 + 0.4);
+            }
+        }
+
+        function playDropSound(count) {
+            if (!sharedAudioCtx) return;
+            if (sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(err => console.warn('AudioContext resume failed:', err));
+            }
+            const now = sharedAudioCtx.currentTime;
+            for (let i = 0; i < Math.min(count, 3); i++) {
+                const osc = sharedAudioCtx.createOscillator();
+                const gain = sharedAudioCtx.createGain();
+                osc.type = 'sine';
+                // A short descending "drop" tone: 440 Hz down to 220 Hz.
+                osc.frequency.setValueAtTime(440, now + i * 0.22);
+                osc.frequency.exponentialRampToValueAtTime(220, now + i * 0.22 + 0.18);
+                gain.gain.setValueAtTime(0.0001, now + i * 0.22);
+                gain.gain.exponentialRampToValueAtTime(0.12, now + i * 0.22 + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.22 + 0.45);
+                osc.connect(gain);
+                gain.connect(sharedAudioCtx.destination);
+                osc.start(now + i * 0.22);
+                osc.stop(now + i * 0.22 + 0.5);
+            }
+        }
+
+        function fmtCurrency(n) {
+            if (n === undefined || n === null || isNaN(n)) return '—';
+            return '$' + parseFloat(n).toFixed((parseFloat(n) % 1 === 0) ? 2 : 4).replace(/\.?0+$/, '');
+        }
+
+        function impactLabel(score, r) {
+            const auState = r && r.au_state;
+            if (auState === 'AU-LIMITED' || (r && r.plan && r.plan.confidence === 'AU-LIMITED')) {
+                return { text: '🇦🇺 AU-LIMITED', cls: 'impact-au-limited' };
+            }
+            if (auState === 'AU-ANNOUNCEMENT') {
+                return { text: '🇦🇺 AU-ANNOUNCEMENT', cls: 'impact-au-limited' };
+            }
+            if (score >= 4) return { text: `🔥 High (${score})`, cls: 'impact-high' };
+            if (score >= 2) return { text: `⚡ Medium (${score})`, cls: 'impact-medium' };
+            return { text: `🌱 Low (${score})`, cls: 'impact-low' };
+        }
+        function getAlertMaxScore(r) {
+            const news = r.news || {};
+            return news.max_score !== undefined ? news.max_score : (news.headlines || []).reduce((m, h) => Math.max(m, h.score || 0), 0);
+        }
+
+        function renderPlanRules() {
+            const list = document.getElementById('plan-rules-list');
+            if (!list) return;
+            const stats = window._lastScanStats || {};
+            // If no scan stats yet, leave the static rules list in place.
+            if (!stats.market && !Object.keys(stats.au_filters || {}).length && !Object.keys(stats.us_filters || {}).length) return;
+            const auFilters = stats.au_filters || {};
+            const usFilters = stats.us_filters || {};
+            const isAu = currentMarket === 'AUS';
+            if (isAu && Object.keys(auFilters).length) {
+                const priceMin = auFilters.price_min;
+                const priceMax = auFilters.price_max;
+                const mktMin = auFilters.market_cap_min;
+                const mktMax = auFilters.market_cap_max;
+                const moveMin = auFilters.premarket_pct_min;
+                const rvolMin = auFilters.rvol_min;
+                const dollarVolMin = auFilters.volume_value_aud_min;
+                list.innerHTML = `
+                    <li>Price range: A$${priceMin}–A$${priceMax} ✅</li>
+                    <li>Market cap: A$${(mktMin/1e6).toFixed(1)}M–A$${(mktMax/1e6).toFixed(0)}M ✅</li>
+                    <li>Pre-market/active mover ≥${moveMin}% or RVOL ≥${rvolMin}x ✅</li>
+                    <li>Approx. dollar volume ≥A$${dollarVolMin.toLocaleString()} ✅</li>
+                    <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
+                    <li>ASX announcement preferred; limited-catalyst rows flagged 🇦🇺 AU-LIMITED ✅</li>
+                    <li>Risk:Reward ≥2.0:1 ✅</li>
+                    <li>Position sizing: ~A$100 test per trade ✅</li>
+                `;
+            } else if (Object.keys(usFilters).length) {
+                const fm = (n) => n >= 1_000_000 ? `$${(n/1e6).toFixed(0)}M` : `$${(n/1e3).toFixed(0)}K`;
+                const priceMin = usFilters.price_min;
+                const priceMax = usFilters.price_max;
+                const mktMin = usFilters.market_cap_min;
+                const mktMax = usFilters.market_cap_max;
+                const rvolMin = usFilters.rvol_min;
+                const moveMin = usFilters.premarket_pct_min;
+                const volumeMin = usFilters.volume_min;
+                const avgDvMin = usFilters.min_avg_daily_dollar_volume;
+                const maxFloat = usFilters.max_float_shares;
+                const vfrMin = usFilters.min_volume_float_ratio;
+                const moveMax = usFilters.move_max_pct;
+                const moveTier2 = usFilters.move_tier_2_max;
+                const tinyMoveMax = usFilters.tiny_cap_move_max_pct;
+                const tinyMoveTier2 = usFilters.tiny_cap_move_tier_2_max;
+                const extRvol = usFilters.extended_hours_rvol_min;
+                const extMove = usFilters.extended_hours_premarket_pct_min;
+                const extAvgDv = usFilters.extended_hours_min_avg_daily_dollar_volume;
+                list.innerHTML = `
+                    <li>Price range: $${priceMin}–$${priceMax} ✅</li>
+                    <li>Market cap: ${fm(mktMin)}–${fm(mktMax)} ✅</li>
+                    <li>Cap-size badges (market cap based): NANO CAP &lt; $50M · MICRO CAP $50M–$300M · SMALL CAP $300M–$2B ✅</li>
+                    <li>Penny-stock badge when price &lt; $1.00 ✅</li>
+                    <li>Active mover ≥${moveMin}% or RVOL ≥${rvolMin}x ✅</li>
+                    <li>Minimum current volume ${volumeMin.toLocaleString()} shares ✅</li>
+                    <li>Max float ${maxFloat.toLocaleString()} shares; volume/float ≥${vfrMin}x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
+                    <li>Move cap ${moveMax}% (tier-2 exception up to ${moveTier2}% with RVOL ≥${usFilters.move_tier_2_min_rvol}x &amp; VFR ≥${usFilters.move_tier_2_min_float_ratio}x); tiny-cap tier up to ${tinyMoveTier2}% ✅</li>
+                    <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
+                    <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
+                    <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
+                    <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
+                    <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
+                    <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
+                    <li>Risk:Reward ≥2.0:1 ✅</li>
+                    <li>Position sizing: R = account balance × max daily loss % ÷ max trades per day; shares = R ÷ (entry − stop) ✅</li>
+                    <li>Scale out: 50% at T1, 25% at T2, trail rest above T3; breakeven stop after +1% ✅</li>
+                `;
+            } else {
+                // Fallback to static unified rules if no scan stats yet.
+                list.innerHTML = `
+                    <li>Price range: $0.20–$50 ✅</li>
+                    <li>Market cap: $300K–$5B ✅</li>
+                    <li>Cap-size badges (market cap based): NANO CAP &lt; $50M · MICRO CAP $50M–$300M · SMALL CAP $300M–$2B ✅</li>
+                    <li>Penny-stock badge when price &lt; $1.00 ✅</li>
+                    <li>Active mover ≥5% or RVOL ≥1.0x ✅</li>
+                    <li>Minimum current volume 50,000 shares ✅</li>
+                    <li>Max float 100M shares; volume/float ≥0.5x (≥1.0x for $5M–$10M tiny-caps) ✅</li>
+                    <li>Move cap 800% (tier-2 exception up to 1,500% with RVOL ≥1.5x &amp; VFR ≥0.5x); tiny-cap tier up to 150% ✅</li>
+                    <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
+                    <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
+                    <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
+                    <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
+                    <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
+                    <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
+                    <li>Risk:Reward ≥2.0:1 ✅</li>
+                    <li>Position sizing: R = account balance × max daily loss % ÷ max trades per day; shares = R ÷ (entry − stop) ✅</li>
+                    <li>Scale out: 50% at T1, 25% at T2, trail rest above T3; breakeven stop after +1% ✅</li>
+                `;
+            }
+        }
+
+        function fmtPct(base, val) {
+            if (!base || !val) return '';
+            const pct = ((val - base) / base) * 100;
+            return ` (${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)`;
+        }
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // ---- Live/current price lookup for tracker ----
+        // Prefer a real-time public quote so the tracker is not stuck with a stale
+        // scan snapshot. Fall back to the last scan price only when live data fails.
+        function getPriceFromAllGainers(ticker) {
+            // The scanner table already displays the live refresh price from each scan-result row.
+            // Prefer that exact value so the Active Trade Plan and tracker stay in sync with what the user sees.
+            const scanRow = findScanResult(ticker);
+            if (scanRow && scanRow.price > 0) {
+                return parseFloat(scanRow.price);
+            }
+            const gainers = window._lastAllGainers || [];
+            const match = gainers.find(g => {
+                const t = g.ticker || g;
+                return (t.symbol || '').toUpperCase() === (ticker || '').toUpperCase();
+            });
+            if (!match) return null;
+            const t = match.ticker || match;
+            const v = match.values || {};
+            // Use the real-time price fields first; never fall back to the prior close
+            // because that creates a misleading "current price" for gap-up/gap-down stocks.
+            const price = parseFloat(v.price || t.pprice || 0);
+            return price > 0 ? price : null;
+        }
+
+        // Helper: find the selected ticker across all scanner views (live, pre/after, watchlist).
+        function findScanResult(ticker) {
+            const all = [
+                ...(window._lastLiveResults || []),
+                ...(window._lastPreMarketResults || []),
+                ...(window._lastPreMarketWatchlist || [])
+            ];
+            return all.find(r => r.ticker && r.ticker.toUpperCase() === (ticker || '').toUpperCase()) || null;
+        }
+
+        function isExtendedHoursSession() {
+            return currentMarket !== 'AUS' && (currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS');
+        }
+
+        async function resolveLiveEntryPrice(ticker, fallbackEntry) {
+            // During US pre/after-market we may rebase the trade plan on the current
+            // live price, because the scanner's plan was computed from the last scan.
+            // The scanner Result column already shows the refreshed scan-row price, so use
+            // that exact value whenever it is available. It is fresher than the public quote
+            // and avoids stale open-market prices from Yahoo fallback.
+            if (!isExtendedHoursSession()) {
+                return { price: fallbackEntry, source: 'scan', liveAvailable: false };
+            }
+            const scanRow = findScanResult(ticker);
+            if (scanRow && scanRow.price > 0) {
+                return { price: parseFloat(scanRow.price), source: 'scan', liveAvailable: true };
+            }
+            const resolved = await resolveCurrentPrice(ticker);
+            if (resolved && resolved.price > 0) {
+                return { price: resolved.price, source: resolved.source || 'live', liveAvailable: true };
+            }
+            return { price: fallbackEntry, source: 'scan', liveAvailable: false };
+        }
+
+        function formatScanTimestamp(dateObj) {
+            if (!dateObj || isNaN(dateObj)) return '';
+            const d = new Date(dateObj);
+            const date = d.toLocaleDateString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short' });
+            const time = d.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney', hour: '2-digit', minute: '2-digit', hour12: true });
+            return `${date}, ${time}`;
+        }
+
+        async function fetchPublicQuote(ticker, endpoint = 'query1') {
+            try {
+                const now = new Date();
+                const period2 = Math.floor(now.getTime() / 1000);
+                // 1h range with 1m bars captures pre/after-hours trade if available
+                const base = endpoint === 'query2' ? 'https://query2.finance.yahoo.com' : 'https://query1.finance.yahoo.com';
+                const url = `${base}/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1m&range=1h&period2=${period2}`;
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) {
+                    console.warn(`Public quote ${endpoint} HTTP ${res.status} for`, ticker);
+                    return null;
+                }
+                const data = await res.json();
+                const result = data?.chart?.result?.[0];
+                if (!result) {
+                    console.warn(`Public quote ${endpoint} no result for`, ticker, data);
+                    return null;
+                }
+
+                const meta = result.meta || {};
+                const isPre = isExtendedHoursSession() && currentMarketStatus === 'PRE-MARKET';
+                const isAfter = isExtendedHoursSession() && currentMarketStatus === 'AFTER-HOURS';
+
+                // Extended-hours: prefer the explicit pre/after market price, then the last 1m close.
+                let latestPrice = 0;
+                if (isPre) {
+                    latestPrice = parseFloat(meta.preMarketPrice || 0);
+                } else if (isAfter) {
+                    latestPrice = parseFloat(meta.postMarketPrice || 0);
+                }
+                // If no explicit extended-hours price, use the freshest 1m close (includes after-hours trades)
+                if (latestPrice <= 0) {
+                    const quote = result?.indicators?.quote?.[0] || {};
+                    const closes = quote.close || [];
+                    for (let i = closes.length - 1; i >= 0; i--) {
+                        if (closes[i] != null) { latestPrice = parseFloat(closes[i]); break; }
+                    }
+                }
+                if (latestPrice > 0) return latestPrice;
+
+                // Final fallback: regular session price / previous close
+                const fallback = (
+                    parseFloat(meta.regularMarketPrice || 0)
+                    || parseFloat(meta.previousClose || 0)
+                );
+                if (fallback > 0) return fallback;
+
+                // Try adjclose as last resort
+                const adjclose = result?.indicators?.adjclose?.[0]?.adjclose || [];
+                for (let i = adjclose.length - 1; i >= 0; i--) {
+                    if (adjclose[i] != null) return parseFloat(adjclose[i]);
+                }
+                console.warn(`Public quote ${endpoint} no usable price for`, ticker, meta);
+                return null;
+            } catch (e) {
+                console.warn('Public quote fetch failed for', ticker, endpoint, e);
+                return null;
+            }
+        }
+
+        async function resolveCurrentPrice(ticker) {
+            // 1. Prefer the exact scan-row price shown in the scanner Result column.
+            //    It is the freshest value the backend shipped and avoids stale
+            //    open-market prices returned by Webull's regular quote during
+            //    pre/after-market hours.
+            let price = getPriceFromAllGainers(ticker);
+            if (price) {
+                return { price, source: 'scan', timestamp: window._lastScanTimestamp || liveLastUpdated || new Date() };
+            }
+
+            // 2. Fall back to live Webull quotes fetched by the backend.
+            const liveQuotes = window._lastLiveQuotes || {};
+            const live = liveQuotes[(ticker || '').toUpperCase()];
+            if (live && live.price > 0) {
+                return { price: live.price, source: 'live', timestamp: new Date(live._timestamp || window._lastScanTimestamp || Date.now()) };
+            }
+
+            // 3. Last resort: a public quote, but never label it as a live pre/after-hours quote.
+            price = await fetchPublicQuote(ticker);
+            if (price) return { price, source: 'public', timestamp: new Date() };
+            return { price: null, source: null, timestamp: null };
+        }
+
+        async function updateTrackerCurrentPrice(ticker, entryBasis, shareQty) {
+            const curEl = document.getElementById('perf-current');
+            const subEl = document.getElementById('perf-current-sub');
+            const pnlEl = document.getElementById('perf-pnl');
+            const pnlSub = document.getElementById('perf-pnl-sub');
+            if (curEl) { curEl.textContent = '—'; curEl.className = 'value'; }
+            if (subEl) subEl.textContent = 'Fetching price…';
+            if (pnlEl) { pnlEl.textContent = '—'; pnlEl.className = 'value'; }
+            if (pnlSub) pnlSub.textContent = 'Waiting for price';
+
+            const resolved = await resolveCurrentPrice(ticker);
+
+            // Abort if the user switched to a different alert while the fetch was in flight
+            const perfTickerEl = document.getElementById('perf-ticker');
+            const currentPerfTicker = perfTickerEl?.dataset?.ticker || perfTickerEl?.textContent;
+            if ((currentPerfTicker || '').trim() !== ticker) return;
+
+            const current = resolved.price;
+            if (current === null || current === undefined || isNaN(current) || current <= 0) {
+                if (curEl) { curEl.textContent = '—'; curEl.className = 'value'; }
+                if (subEl) subEl.textContent = 'Live price unavailable';
+                if (pnlEl) { pnlEl.textContent = '—'; pnlEl.className = 'value'; }
+                if (pnlSub) pnlSub.textContent = 'No current price data';
+                return;
+            }
+
+            // P&L must use the same entry basis shown in the Proposed Entry field,
+            // otherwise the dollar/% value becomes meaningless when the trade plan
+            // entry is rebased on a live quote.
+            const basis = (entryBasis > 0) ? entryBasis : current;
+            const pnl = (current - basis) * shareQty;
+            const pct = basis > 0 ? ((current - basis) / basis) * 100 : 0;
+            if (curEl) {
+                curEl.textContent = fmtCurrency(current);
+                curEl.className = 'value ' + (current >= basis ? 'green' : 'red');
+            }
+            if (subEl) {
+                if (resolved.source === 'live') {
+                    const isPreAfter = /PRE-MARKET|AFTER-HOURS/i.test(document.getElementById('market-status')?.textContent || '')
+                        || /PRE-MARKET|AFTER-HOURS/i.test(document.getElementById('badge')?.textContent || '')
+                        || /Pre-Market|After-Hours/i.test(document.getElementById('session-status')?.textContent || '');
+                    subEl.textContent = isPreAfter ? 'Live pre/after-hours quote' : 'Live quote';
+                } else if (resolved.source === 'public') {
+                    subEl.textContent = 'Public quote (delayed)';
+                } else if (resolved.timestamp) {
+                    subEl.textContent = `From scan at ${formatScanTimestamp(resolved.timestamp)}`;
+                } else {
+                    subEl.textContent = 'From latest scan';
+                }
+            }
+            if (pnlEl) {
+                pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+                pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+            }
+            if (pnlSub) pnlSub.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}% since last refresh`;
+        }
+
+        function populateAlertSelector(entries) {
+            const sel = document.getElementById('alert-selector');
+            if (!sel) return;
+            const previousTicker = sel.value;
+            sel.innerHTML = '';
+            let selectable = entries.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            selectable.forEach(r => { r._maxScore = getAlertMaxScore(r); });
+            // Sort High impact (≥4) first, then Medium (≥2), then Low
+            selectable.sort((a, b) => b._maxScore - a._maxScore);
+            if (!selectable.length) {
+                sel.innerHTML = '<option value="">No alerts yet</option>';
+                renderSelectedAlert();
+                return;
+            }
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Select an alert…';
+            sel.appendChild(defaultOption);
+            selectable.forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.ticker;
+                const imp = impactLabel(r._maxScore, r);
+                opt.textContent = `${r.ticker} — ${imp.text}${r.status === 'CANDIDATE' ? ' (candidate)' : ''}`;
+                sel.appendChild(opt);
+            });
+            // Prefer previously-selected ticker (from localStorage or prior selection), otherwise top sorted alert.
+            const storedTicker = localStorage.getItem('ozmoeg-selected-alert');
+            if (storedTicker && selectable.some(a => a.ticker === storedTicker)) {
+                sel.value = storedTicker;
+            } else if (previousTicker && selectable.some(a => a.ticker === previousTicker)) {
+                sel.value = previousTicker;
+            } else {
+                sel.value = selectable[0].ticker;
+            }
+            renderSelectedAlert();
+        }
+
+        async function renderSelectedAlert() {
+            const sel = document.getElementById('alert-selector');
+            const ticker = sel ? sel.value : '';
+
+            // Search across ALL available alert sources, not just the current toggle view.
+            // This fixes the common case where the user has a ticker selected and the page
+            // switches to premarket/closed view, then the alert vanishes from the tracker/news.
+            const allSources = [
+                ...(window._lastLiveResults || []),
+                ...(window._lastPreMarketResults || []),
+                ...(window._lastPreMarketWatchlist || [])
+            ];
+            const activeRows = getActiveScannerView() === 'premarket'
+                ? (window._lastPreMarketResults || [])
+                : (window._lastLiveResults || []);
+            const selectable = activeRows.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            // First try the active view; fall back to any source that contains this ticker.
+            let r = selectable.find(a => a.ticker === ticker);
+            if (!r && ticker) {
+                const fallback = allSources.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+                r = fallback.find(a => a.ticker === ticker);
+            }
+
+            if (!r || !r.plan || !r.plan.valid) {
+                // If a ticker is still selected, data is likely loading or the view has changed;
+                // keep the previously rendered plan/tracker/news. Only clear when nothing is selected.
+                if (!ticker) {
+                    document.getElementById('plan-ticker').textContent = '—';
+                    document.getElementById('perf-ticker').textContent = '—';
+                    ['plan-entry','plan-stop','plan-t1','plan-t2','plan-t3','plan-shares','plan-position','plan-rr'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.textContent = '—';
+                    });
+                    document.getElementById('plan-exit-rules').innerHTML = '<li>Select an alert to see exit rules.</li>';
+                    ['perf-investment','perf-entry','perf-current','perf-pnl','perf-t1-pnl','perf-t2-pnl','perf-t3-pnl','perf-risk'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) { el.textContent = '—'; el.className = 'value'; }
+                    });
+                    document.getElementById('perf-entry-sub').textContent = '—';
+                    document.getElementById('perf-current-sub').textContent = '—';
+                    document.getElementById('perf-pnl-sub').textContent = '—';
+                    document.getElementById('perf-t1-pnl-sub').textContent = '—';
+                    document.getElementById('perf-t2-pnl-sub').textContent = '—';
+                    document.getElementById('perf-t3-pnl-sub').textContent = '—';
+                    document.getElementById('perf-risk-sub').textContent = '—';
+                    document.getElementById('impact-score').textContent = '—';
+                    document.getElementById('news-ticker-symbol').textContent = '—';
+                    document.getElementById('news-ticker-status').textContent = 'No active alert';
+                    document.getElementById('news-scan-time').textContent = 'No recent scan';
+                    document.getElementById('catalyst-headline').textContent = 'No active catalyst — waiting for next alert';
+                    document.getElementById('news-list').innerHTML = '<li><span class="score">[-]</span> Select an alert above to view its catalyst and news headlines.</li>';
+                    renderPlanRules();
+                }
+                return;
+            }
+
+            const p = r.plan;
+            const t = p.targets || {};
+
+            // Resolve the entry basis. During US pre/after-market the backend's plan
+            // was built from the prior close, so we rebase it on the live current price.
+            const entryBasis = await resolveLiveEntryPrice(p.ticker, parseFloat(p.entry));
+            const liveEntry = entryBasis.price;
+            const liveSource = entryBasis.source;
+            const isLiveRebased = isExtendedHoursSession() && entryBasis.liveAvailable;
+
+            // When rebasing to live price, keep the same percentage-based stop/targets
+            // relative to the original plan so risk/reward geometry is preserved.
+            const rawEntry = parseFloat(p.entry);
+            const rawStop = parseFloat(p.stop);
+            const rawT1 = parseFloat(t.t1);
+            const rawT2 = parseFloat(t.t2);
+            const rawT3 = parseFloat(t.t3);
+
+            let entry, stop, t1, t2, t3, shares, position, rr;
+            if (isLiveRebased && rawEntry > 0 && liveEntry > 0) {
+                entry = liveEntry;
+                const stopPct = (rawStop - rawEntry) / rawEntry;
+                const t1Pct = (rawT1 - rawEntry) / rawEntry;
+                const t2Pct = (rawT2 - rawEntry) / rawEntry;
+                const t3Pct = (rawT3 - rawEntry) / rawEntry;
+                stop = entry * (1 + stopPct);
+                t1 = entry * (1 + t1Pct);
+                t2 = entry * (1 + t2Pct);
+                t3 = entry * (1 + t3Pct);
+                // Video formula: fixed $R risk per trade, shares = R / stop_distance.
+                // Use the risk_amount stored in the plan (3% daily loss / 3 trades).
+                const riskAmount = parseFloat(p.risk_amount) || 100.0;
+                const stopDistance = Math.abs(entry - stop);
+                shares = stopDistance > 0 ? Math.max(1, Math.round(riskAmount / stopDistance)) : 0;
+                position = shares * entry;
+                // Risk:Reward remains the original plan's ratio; recompute for safety.
+                const risk = Math.abs(entry - stop);
+                const reward = Math.abs(t1 - entry);
+                rr = risk > 0 ? reward / risk : parseFloat(p.risk_reward);
+            } else {
+                entry = rawEntry;
+                stop = rawStop;
+                t1 = rawT1;
+                t2 = rawT2;
+                t3 = rawT3;
+                shares = parseInt(p.shares);
+                position = parseFloat(p.position_value);
+                rr = parseFloat(p.risk_reward);
+            }
+            const riskAmount = parseFloat(p.risk_amount);
+            const risk_per_share = Math.abs(entry - stop);
+
+            // Render market-aware rules
+            renderPlanRules();
+
+            document.getElementById('plan-ticker').textContent = p.ticker;
+            document.getElementById('perf-ticker').textContent = p.ticker;
+
+            // Country badge on active trade plan and tracker header
+            const country = (r.country || '').trim();
+            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
+            const planTickerEl = document.getElementById('plan-ticker');
+            const perfTickerEl = document.getElementById('perf-ticker');
+            if (planTickerEl && !planTickerEl.innerHTML.includes('country-badge')) {
+                planTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+                planTickerEl.dataset.ticker = p.ticker;
+            }
+            if (perfTickerEl && !perfTickerEl.innerHTML.includes('country-badge')) {
+                perfTickerEl.innerHTML = escapeHtml(p.ticker) + countryBadge;
+                perfTickerEl.dataset.ticker = p.ticker;
+            }
+
+            document.getElementById('plan-entry').textContent = fmtCurrency(entry);
+            document.getElementById('plan-stop').textContent = fmtCurrency(stop) + fmtPct(entry, stop);
+            document.getElementById('plan-t1').textContent = fmtCurrency(t1) + fmtPct(entry, t1);
+            document.getElementById('plan-t2').textContent = fmtCurrency(t2) + fmtPct(entry, t2);
+            document.getElementById('plan-t3').textContent = fmtCurrency(t3) + fmtPct(entry, t3);
+            document.getElementById('plan-shares').textContent = isNaN(shares) ? '—' : shares.toLocaleString();
+            document.getElementById('plan-position').textContent = fmtCurrency(position);
+            document.getElementById('plan-rr').textContent = isNaN(rr) ? '—' : `1:${rr.toFixed(2)}`;
+
+            // Render tape legend bars for the active plan
+            const tape = r.tape || {};
+            const isAuActive = currentMarket === 'AUS';
+            const tapeLegend = document.getElementById('tape-legend');
+            if (isAuActive || tape.not_available) {
+                if (tapeLegend) {
+                    const bars = tapeLegend.querySelectorAll('.tape-bar');
+                    bars.forEach(bar => {
+                        const fill = bar.querySelector('.tape-fill');
+                        const valueEl = bar.querySelector('.tape-value');
+                        if (fill) fill.style.width = '0%';
+                        if (valueEl) valueEl.textContent = '—';
+                    });
+                    const note = tapeLegend.querySelector('.tape-note');
+                    if (note) note.innerHTML = '<span class="tape-mini tape-missing">—</span> Tape / time-and-sales not available for ASX.';
+                }
+            } else if (tape.not_available) {
+                if (tapeLegend) {
+                    const bars = tapeLegend.querySelectorAll('.tape-bar');
+                    bars.forEach(bar => {
+                        const fill = bar.querySelector('.tape-fill');
+                        const valueEl = bar.querySelector('.tape-value');
+                        if (fill) fill.style.width = '0%';
+                        if (valueEl) valueEl.textContent = '—';
+                    });
+                    const note = tapeLegend.querySelector('.tape-note');
+                    if (note) note.innerHTML = '<span class="tape-mini tape-missing">—</span> Tape / time-and-sales not available for ASX.';
+                }
+            } else if (!tape.valid || tape.stale) {
+                if (tapeLegend) {
+                    const bars = tapeLegend.querySelectorAll('.tape-bar');
+                    bars.forEach(bar => {
+                        const fill = bar.querySelector('.tape-fill');
+                        const valueEl = bar.querySelector('.tape-value');
+                        if (fill) fill.style.width = '0%';
+                        if (valueEl) valueEl.textContent = '—';
+                    });
+                    const note = tapeLegend.querySelector('.tape-note');
+                    const staleAge = tape.stale_age_seconds ? ` · stale ${Math.round(tape.stale_age_seconds/60)}m` : '';
+                    if (note) note.innerHTML = `<span class="tape-mini tape-missing">—</span> Tape data unavailable or stale${staleAge}. Last trade: ${tape.last_trade_time ? new Date(tape.last_trade_time).toLocaleTimeString() : 'unknown'}.`;
+                }
+            } else if (tape.no_move) {
+                if (tapeLegend) {
+                    const bars = tapeLegend.querySelectorAll('.tape-bar');
+                    bars.forEach(bar => {
+                        const fill = bar.querySelector('.tape-fill');
+                        const valueEl = bar.querySelector('.tape-value');
+                        if (fill) fill.style.width = '0%';
+                        if (valueEl) valueEl.textContent = '—';
+                    });
+                    const note = tapeLegend.querySelector('.tape-note');
+                    const timeNote = formatTapeTime(tape.last_trade_time);
+                    if (note) note.innerHTML = `<span class="tape-mini tape-missing">—</span> No tape movement / no trades detected${timeNote}.`;
+                }
+            } else {
+                const va = tape.valid && !tape.stale ? (tape.volume_acceleration || 0) : null;
+                const vel = tape.valid && !tape.stale ? (tape.price_velocity_pct || 0) : null;
+                const bp = tape.valid && !tape.stale ? (tape.buy_pressure_pct || 0) : null;
+                const lb = tape.valid && !tape.stale ? (tape.large_bar_count || 0) : null;
+                function setTapeBar(id, val, fmt, cap) {
+                    const wrap = document.getElementById(id);
+                    if (!wrap) return;
+                    const fill = wrap.querySelector('.tape-fill');
+                    const valueEl = wrap.querySelector('.tape-value');
+                    if (val === null || val === undefined) {
+                        if (fill) fill.style.width = '0%';
+                        if (valueEl) valueEl.textContent = '—';
+                        return;
+                    }
+                    const pct = Math.min(100, Math.max(0, (val / cap) * 100));
+                    if (fill) fill.style.width = pct + '%';
+                    if (valueEl) valueEl.textContent = fmt(val);
+                }
+                setTapeBar('tape-legend-va', va, v => `${v.toFixed(1)}%`, 200);
+                setTapeBar('tape-legend-vel', vel, v => `${v > 0 ? '+' : ''}${v.toFixed(2)}%`, 20);
+                setTapeBar('tape-legend-bp', bp, v => `${v.toFixed(1)}%`, 100);
+                setTapeBar('tape-legend-lb', lb, v => `${Math.round(v)}`, 10);
+
+                const note = tapeLegend?.querySelector('.tape-note');
+                if (note) note.innerHTML = '<span class="tape-mini tape-high">🔥</span> = high volume (RVOL ≥ 2.0) · <span class="tape-mini tape-medium">⚡</span> = moderate volume (RVOL 1.0–1.99) · <span class="tape-mini tape-low">🌱</span> = low volume (RVOL &lt; 1.0)';
+            }
+
+            const exitRules = p.exit_rules || {};
+            const half = isNaN(shares) ? '—' : Math.round(shares * 0.5);
+            const quarter = isNaN(shares) ? '—' : Math.round(shares * 0.25);
+            const t1R = risk_per_share > 0 ? ((t1 - entry) / risk_per_share).toFixed(1) : '—';
+            const t2R = risk_per_share > 0 ? ((t2 - entry) / risk_per_share).toFixed(1) : '—';
+            const t3R = risk_per_share > 0 ? ((t3 - entry) / risk_per_share).toFixed(1) : '—';
+            document.getElementById('plan-exit-rules').innerHTML = `
+                <li>Sell 50% (${half} shares) at Target 1: ${fmtCurrency(t1)} (${t1R}R)</li>
+                <li>Sell 25% (${quarter} shares) at Target 2: ${fmtCurrency(t2)} (${t2R}R)</li>
+                <li>Trail remaining 25% with 2% cushion above Target 3: ${fmtCurrency(t3)} (${t3R}R)</li>
+                <li>Hard stop: ${fmtCurrency(stop)}${fmtPct(entry, stop)} — Webull requires stop/take-profit legs ≥ 0.1% apart</li>
+                ${isLiveRebased ? `<li style="color:var(--accent-amber)">⚠️ Live pre/after-market rebase: original close plan was ${fmtCurrency(rawEntry)} → ${fmtCurrency(entry)}</li>` : ''}
+                <li>Move stop to breakeven once up ${exitRules.trail_breakeven_at || '+1%'}</li>
+                <li>Exit if bearish engulfing or volume drops below 1.5x average</li>
+            `;
+
+            // Tracker — video formula sizing: fixed $R risk per trade, shares = R / stop distance
+            const riskAmountTracker = parseFloat(p.risk_amount) || 100.0;
+            const stopDistanceTracker = Math.abs(entry - stop);
+            const shareQty = stopDistanceTracker > 0 ? Math.max(1, Math.round(riskAmountTracker / stopDistanceTracker)) : 0;
+            const totalCost = shareQty * entry;
+            // P&L if the full share qty is executed (sold) at each target
+            const pnlT1 = entry > 0 ? (t1 - entry) * shareQty : 0;
+            const pnlT2 = entry > 0 ? (t2 - entry) * shareQty : 0;
+            const pnlT3 = entry > 0 ? (t3 - entry) * shareQty : 0;
+            const maxRisk = (stop - entry) * shareQty;
+
+            document.getElementById('perf-investment').textContent = `${shareQty.toLocaleString()} sh`;
+            document.getElementById('perf-investment-sub').textContent = `~${fmtCurrency(totalCost)} @ entry`;
+            // Tracker "Proposed Entry" = previous scan refresh price, "Current Price" = latest live price.
+            // We prefer the explicit previous_price attached by the backend, then fall back to the
+            // previous live-quotes map; this ensures a real prior price is shown even when the
+            // previous live fetch didn't include the selected ticker.
+            const tickerKey = (p.ticker || '').toUpperCase();
+            const explicitPrevPrice = r?.previous_price;
+            const prevQuote = explicitPrevPrice
+                ? { price: explicitPrevPrice, _timestamp: window._previousLiveQuotes?.[tickerKey]?._timestamp }
+                : window._prevLiveQuotes?.[tickerKey];
+            const hasPrevPrice = prevQuote && prevQuote.price > 0;
+
+            // Resolve the latest live current price. The backend live quote already reflects
+            // pre/after-hours trades, so we use it as the primary source. Public fetch is only
+            // used as a fallback when the backend has no quote for this ticker.
+            const currentResolved = await resolveCurrentPrice(tickerKey);
+            const currentPrice = currentResolved?.price > 0 ? currentResolved.price : null;
+            const currentSource = currentResolved?.source || 'scan';
+
+            // Show the same live scan price the scanner Result column uses, so the tracker never
+            // displays a stale open-market fallback when a fresh scan row is available.
+            const scanRow = findScanResult(tickerKey);
+            const scanRowPrice = (scanRow && scanRow.price > 0) ? parseFloat(scanRow.price) : null;
+            const trackerPrice = scanRowPrice || currentPrice;
+            const trackerSource = scanRowPrice ? 'scan' : currentSource;
+
+            if (hasPrevPrice) {
+                document.getElementById('perf-entry').textContent = fmtCurrency(prevQuote.price);
+                document.getElementById('perf-entry-sub').textContent = `${p.ticker} — Previous scan price · ${prevQuote?._timestamp ? new Date(prevQuote._timestamp).toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : (r.time || '—')}`;
+            } else if (scanRowPrice) {
+                document.getElementById('perf-entry').textContent = fmtCurrency(scanRowPrice);
+                document.getElementById('perf-entry-sub').textContent = `${p.ticker} — Current scan price · ${r.time || '—'}`;
+            } else {
+                document.getElementById('perf-entry').textContent = '—';
+                document.getElementById('perf-entry-sub').textContent = 'Waiting for previous refresh';
+            }
+
+            if (trackerPrice !== null && trackerPrice > 0) {
+                document.getElementById('perf-current').textContent = fmtCurrency(trackerPrice);
+                const ts = currentResolved?.timestamp ? new Date(currentResolved.timestamp) : null;
+                const timeLabel = ts ? ts.toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'}) : '—';
+                if (trackerSource === 'live') {
+                    document.getElementById('perf-current-sub').textContent = `Current price · ${timeLabel}`;
+                } else if (trackerSource === 'public') {
+                    document.getElementById('perf-current-sub').textContent = `Public quote (delayed) · ${timeLabel}`;
+                } else {
+                    document.getElementById('perf-current-sub').textContent = `Current scan price · ${timeLabel}`;
+                }
+                if (hasPrevPrice) {
+                    const prevTs = prevQuote?._timestamp ? new Date(prevQuote._timestamp) : null;
+                    const curTs = currentResolved?.timestamp ? new Date(currentResolved.timestamp) : null;
+                    const sameRefresh = prevTs && curTs && prevTs.getTime() === curTs.getTime();
+                    if (sameRefresh) {
+                        document.getElementById('perf-pnl').textContent = '—';
+                        document.getElementById('perf-pnl-sub').textContent = 'Next refresh will compare prices';
+                    } else {
+                        const pnl = (trackerPrice - prevQuote.price) * shareQty;
+                        const pct = prevQuote.price > 0 ? ((trackerPrice - prevQuote.price) / prevQuote.price) * 100 : 0;
+                        const pnlEl = document.getElementById('perf-pnl');
+                        if (pnlEl) {
+                            pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+                            pnlEl.className = 'value ' + (pnl >= 0 ? 'green' : 'red');
+                        }
+                        const pnlSub = document.getElementById('perf-pnl-sub');
+                        if (pnlSub) pnlSub.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}% since last refresh`;
+                    }
+                } else if (scanRowPrice) {
+                    document.getElementById('perf-pnl').textContent = '—';
+                    document.getElementById('perf-pnl-sub').textContent = 'No prior scan price to compare';
+                } else {
+                    document.getElementById('perf-pnl').textContent = '—';
+                    document.getElementById('perf-pnl-sub').textContent = 'Next refresh will show real P&L';
+                }
+            } else {
+                document.getElementById('perf-current').textContent = '—';
+                document.getElementById('perf-current-sub').textContent = 'No current price data';
+                document.getElementById('perf-pnl').textContent = '—';
+                document.getElementById('perf-pnl-sub').textContent = 'Waiting for current price';
+            }
+
+            const t1El = document.getElementById('perf-t1-pnl');
+            t1El.textContent = (pnlT1 >= 0 ? '+$' : '-$') + Math.abs(pnlT1).toFixed(2);
+            t1El.className = 'value ' + (pnlT1 >= 0 ? 'green' : 'red');
+            document.getElementById('perf-t1-pnl-sub').textContent = `At T1: ${fmtCurrency(t1)}`;
+            const t2El = document.getElementById('perf-t2-pnl');
+            t2El.textContent = (pnlT2 >= 0 ? '+$' : '-$') + Math.abs(pnlT2).toFixed(2);
+            t2El.className = 'value ' + (pnlT2 >= 0 ? 'green' : 'red');
+            document.getElementById('perf-t2-pnl-sub').textContent = `At T2: ${fmtCurrency(t2)}`;
+            const t3El = document.getElementById('perf-t3-pnl');
+            t3El.textContent = (pnlT3 >= 0 ? '+$' : '-$') + Math.abs(pnlT3).toFixed(2);
+            t3El.className = 'value ' + (pnlT3 >= 0 ? 'green' : 'red');
+            document.getElementById('perf-t3-pnl-sub').textContent = `At T3: ${fmtCurrency(t3)}`;
+            const riskEl = document.getElementById('perf-risk');
+            riskEl.textContent = (maxRisk >= 0 ? '+$' : '-$') + Math.abs(maxRisk).toFixed(2);
+            riskEl.className = 'value red';
+            document.getElementById('perf-risk-sub').textContent = `At stop: ${fmtCurrency(stop)}`;
+
+            // Kick off a current-price refresh for the tracker. The backend live quote is the
+            // primary source; the public fetcher is only a fallback if that quote is missing.
+            // Pass the displayed entry basis so the async P&L update uses the same value.
+            const displayedEntryBasis = hasPrevPrice ? prevQuote.price : (scanRowPrice || entry);
+            if (p.ticker) {
+                updateTrackerCurrentPrice(p.ticker, displayedEntryBasis, shareQty).catch(err => console.error('Tracker price update failed:', err));
+            }
+
+            // News & catalyst
+            const news = r.news || {};
+            const maxScore = getAlertMaxScore(r);
+            const imp = impactLabel(maxScore, r);
+            const impactBadge = document.getElementById('impact-score');
+            if (impactBadge) {
+                impactBadge.textContent = imp.text;
+                impactBadge.className = 'impact-badge ' + imp.cls;
+            }
+
+            const newsSymbol = document.getElementById('news-ticker-symbol');
+            if (newsSymbol) newsSymbol.innerHTML = escapeHtml(p.ticker) + countryBadge;
+            const newsStatus = document.getElementById('news-ticker-status');
+            if (newsStatus) {
+                newsStatus.textContent = news.catalyst || 'Alert active';
+                newsStatus.style.display = news.catalyst ? '' : 'none';
+            }
+            const newsScanTime = document.getElementById('news-scan-time');
+            if (newsScanTime) newsScanTime.textContent = news.scan_time ? `Scanned ${news.scan_time}` : '';
+            const catalystHeadline = document.getElementById('catalyst-headline');
+            if (catalystHeadline) catalystHeadline.textContent = news.catalyst || 'No catalyst headline available';
+
+            const list = document.getElementById('news-list');
+            if (list) {
+                const headlines = news.headlines || [];
+                if (headlines.length) {
+                    list.innerHTML = headlines.map(h => {
+                        const s = h.score || 0;
+                        const scoreClass = s >= 4 ? 'impact-high' : (s >= 2 ? 'impact-medium' : 'impact-low');
+                        // Recompute age from raw timestamp so saved snapshots stay accurate.
+                        const age = computeNewsAge(h.raw_time) || (h.time || '');
+                        const isVeryStale = /^(\d+mo|\d+y|\d+d)\s+ago/.test(age) && (
+                            /^(\d+mo|\d+y)\s+ago/.test(age) ||
+                            (age.match(/^(\d+)d\s+ago/) && parseInt(age.match(/^(\d+)d\s+ago/)[1]) > 7)
+                        );
+                        const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
+                        const staleEmoji = isVeryStale ? '⚠️ ' : '';
+                        // Show exact original timestamp as a tooltip
+                        const rawIso = h.raw_time || '';
+                        const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
+                        const timeHtml = age ? `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span> ` : '';
+                        const hasUrl = h.url && /^https?:\/\//i.test(h.url);
+                        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(h.title + ' ' + (h.source || ''))}`;
+                        const titleHtml = hasUrl
+                            ? `<a href="${escapeHtml(h.url)}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`
+                            : `<a href="${searchUrl}" target="_blank" rel="noopener">${escapeHtml(h.title)}</a>`;
+                        return `<li>${timeHtml}<span class="score ${scoreClass}">[${s}]</span> ${titleHtml} <em>${escapeHtml(h.source || '')}</em></li>`;
+                    }).join('');
+                } else {
+                    list.innerHTML = '<li><span class="score">[-]</span> No qualifying news headlines found for this alert.</li>';
+                }
+
+                // Surface AU data quality note when applicable
+                if (currentMarket === 'AUS' && (r.au_state === 'AU-LIMITED' || r.au_state === 'AU-ANNOUNCEMENT')) {
+                    const dataNote = document.createElement('li');
+                    dataNote.style.cssText = 'color: var(--accent-amber); font-style: italic; font-size: 0.8rem;';
+                    dataNote.innerHTML = 'ℹ️ ASX intraday bars/TA are limited from this network. Price, volume and announcements are live; verify on your ASX broker before acting.';
+                    list.appendChild(dataNote);
+                }
+            }
+        }
+
+        // List of headlines that are known to leak from other tickers / generic feeds and should never
+        // be shown as a ticker-specific red flag. When a skip reason matches one of these, we fall back
+        // to a generic red-flag label and surface the actual flag category (offering, dilution, etc.).
+        const BAD_RED_FLAG_HEADLINES = [
+            'Video: SpaceX dips after notes offering, KeyBanc initiation',
+            'SpaceX dips after notes offering',
+            'KeyBanc initiation'
+        ];
+
+        function sanitizeSkipReason(r) {
+            const raw = (r.result || r.detail || '').trim();
+            if (!raw) return '';
+            const lower = raw.toLowerCase();
+            const hasBadHeadline = BAD_RED_FLAG_HEADLINES.some(bad => lower.includes(bad.toLowerCase()));
+            if (!hasBadHeadline) return raw;
+            // Extract the flag category if present, e.g. "Red flags: offering:..." -> "offering"
+            const m = raw.match(/Red flags:\s*([^:]+):/i);
+            const flag = m ? m[1].trim() : 'red flag';
+            return `Red flags: ${flag} — headline mismatch (unrelated news item leaked into this ticker)`;
+        }
+
+        function renderScannerRow(r, opts = {}) {
+            let statusClass = 'result-skip';
+            let emoji = '⏭️';
+            if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
+            else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
+            else if (r.status === 'WATCHLIST') { statusClass = 'result-candidate'; emoji = '⏰'; }
+            const imp = impactLabel(getAlertMaxScore(r), r);
+            const escaped = escapeHtml(sanitizeSkipReason(r));
+            const showImpact = true;
+            const ageCell = formatNewsAgeCell(r.news);
+            const tape = r.tape || {};
+            const isAuMarket = currentMarket === 'AUS';
+            const isWatchlist = r.status === 'WATCHLIST';
+            const floatShares = parseFloat(r.float_shares || 0);
+
+            function formatFloat(n) {
+                if (!isFinite(n) || n <= 0) return '—';
+                if (n >= 1e9) return `${(n/1e9).toFixed(2)}B`;
+                if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
+                return `${(n/1e3).toFixed(0)}K`;
+            }
+            const floatCell = isWatchlist ? `<span class="float-cell float-pending" title="Catalyst watchlist — no live float data yet">— pending</span>` : `<span class="float-cell" title="Outstanding shares proxy (Webull does not expose true free float)">${formatFloat(floatShares)}</span>`;
+
+            function formatTapeTime(iso) {
+                if (!iso) return '';
+                try {
+                    const d = new Date(iso);
+                    if (isNaN(d.getTime())) return '';
+                    // Show local HH:MM:SS with relative age in minutes
+                    const now = Date.now();
+                    const ageMin = Math.round((now - d.getTime()) / 60000);
+                    const ageText = ageMin < 1 ? 'just now' : ageMin < 60 ? `${ageMin}m ago` : `${Math.floor(ageMin/60)}h ago`;
+                    return ` · last ${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'})} (${ageText})`;
+                } catch (e) { return ''; }
+            }
+
+            let tapeCell;
+            if (isWatchlist) {
+                tapeCell = `<span class="tape-mini tape-missing" title="Catalyst watchlist — no live volume data yet">— pending</span>`;
+            } else if (isAuMarket || tape.not_available) {
+                tapeCell = `<span class="tape-mini tape-missing" title="Tape / time-and-sales not available for ASX">— N/A</span>`;
+            } else if (tape.no_move) {
+                const timeNote = formatTapeTime(tape.last_trade_time);
+                const ageNote = tape.stale_age_seconds ? ` · stale ${Math.round(tape.stale_age_seconds/60)}m` : '';
+                tapeCell = `<span class="tape-mini tape-missing" title="15s bars show no tape movement / no trades${timeNote}${ageNote}">— no move${timeNote}${ageNote}</span>`;
+            } else {
+                const timeNote = formatTapeTime(tape.last_trade_time);
+                const rvol = tape.rvol || 0;
+                const volume = tape.volume || 0;
+                const adv = tape.adv || 0;
+                const indicator = tape.volume_indicator || '';
+                let tapeClass = 'tape-missing';
+                let tapeText = '— missing';
+                let title = 'Volume data unavailable';
+
+                if (indicator === 'high') {
+                    tapeClass = 'tape-high';
+                    tapeText = '🔥 high volume';
+                    title = `RVOL ${rvol}x vs ADV (${volume.toLocaleString()} today / ${adv.toLocaleString()} avg)${timeNote}`;
+                } else if (indicator === 'moderate') {
+                    tapeClass = 'tape-medium';
+                    tapeText = '⚡ moderate volume';
+                    title = `RVOL ${rvol}x vs ADV (${volume.toLocaleString()} today / ${adv.toLocaleString()} avg)${timeNote}`;
+                } else if (indicator === 'low') {
+                    tapeClass = 'tape-low';
+                    tapeText = '🌱 low volume';
+                    title = `RVOL ${rvol}x vs ADV (${volume.toLocaleString()} today / ${adv.toLocaleString()} avg)${timeNote}`;
+                } else if (tape.no_move) {
+                    tapeClass = 'tape-missing';
+                    tapeText = '— no move';
+                    title = `No volume recorded${timeNote}`;
+                }
+                tapeCell = `\u003cspan class="tape-mini ${tapeClass}" title="${title}">${tapeText}\u003c/span\u003e`;
+            }
+            const country = (r.country || '').trim();
+            const countryBadge = country ? ` <span class="country-badge">${escapeHtml(country)}</span>` : '';
+            const capSize = (r.cap_size || '').trim();
+            const capBadge = capSize ? ` <span class="country-badge">${escapeHtml(capSize.toUpperCase().replace(/-/g, ' '))}</span>` : '';
+            const pennyBadge = r.is_penny_stock ? ` <span class="country-badge">PENNY</span>` : '';
+
+            function formatSecFilings(filings) {
+                if (!filings || typeof filings !== 'string' || filings.trim() === '') {
+                    return '<span class="sec-filings-mini" title="No recent S-1, S-3, 424B*, or 8-K filings">—</span>';
+                }
+                return `<span class="sec-filings-mini" title="${escapeHtml(filings)}">${escapeHtml(filings)}</span>`;
+            }
+            const secFilingsCell = formatSecFilings(r.sec_filings);
+
+            const flashClass = opts.flash ? ' flash-new-alert' : '';
+            return `<tr class="scanner-row${flashClass}"><td class="ticker-cell">${r.ticker}${countryBadge}${capBadge}${pennyBadge}</td><td>${r.name}</td><td><span class="${statusClass}">${emoji} ${r.status}</span> ${showImpact ? `<span class="impact-mini ${imp.cls}">${imp.text}</span>` : ''}</td><td class="news-age-cell">${ageCell}</td><td>${tapeCell}</td><td>${escaped}</td><td>${floatCell}</td><td>${secFilingsCell}</td></tr>`;
+        }
+
+        function formatNewsAgeCell(news) {
+            if (!news || !Array.isArray(news.headlines) || news.headlines.length === 0) {
+                return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
+            }
+            // Pick the newest (most recent) headline by its exact raw timestamp.
+            const newest = news.headlines
+                .filter(h => h.raw_time)
+                .sort((a, b) => newsAgeMinutes(a) - newsAgeMinutes(b))[0];
+            if (!newest) {
+                return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
+            }
+
+            const age = computeNewsAge(newest.raw_time);
+            if (!age) {
+                return '<span class="news-age missing" title="No qualifying news headlines">—</span>';
+            }
+            const rawIso = newest.raw_time || '';
+            const isVeryStale = /^(\d+mo|\d+y|\d+d)\s+ago/.test(age) && (
+                /^(\d+mo|\d+y)\s+ago/.test(age) ||
+                (age.match(/^(\d+)d\s+ago/) && parseInt(age.match(/^(\d+)d\s+ago/)[1]) > 7)
+            );
+            const staleClass = isVeryStale ? 'news-age stale' : 'news-age';
+            const staleEmoji = isVeryStale ? '⚠️ ' : '';
+            const titleTip = rawIso ? ` title="First published: ${escapeHtml(rawIso)}"` : '';
+            return `<span class="${staleClass}"${titleTip}>${staleEmoji}${escapeHtml(age)}</span>`;
+        }
+
+        function formatNewsAgeInline(news) {
+            if (!news || !Array.isArray(news.headlines) || news.headlines.length === 0) {
+                return '';
+            }
+            // For the live ticker stream, only badge news younger than 24h so old headlines don't look live.
+            const newest = news.headlines
+                .filter(h => h.raw_time)
+                .map(h => ({ age: computeNewsAge(h.raw_time), mins: newsAgeMinutes(h) }))
+                .filter(x => x.age && x.mins < 24 * 60)
+                .sort((a, b) => a.mins - b.mins)[0];
+            if (!newest) return '';
+            return ` <span class="news-age" title="Age of the most recent qualifying headline">${escapeHtml(newest.age)}</span>`;
+        }
+
+        // Convert a headline's exact raw ISO timestamp to approximate minutes.
+        // Smaller number = newer. Unknown/missing ages are treated as very old so they sort last.
+        function computeNewsAge(rawIso) {
+            if (!rawIso) return null;
+            // Normalise Webull's +0000/+00:00 offsets to Z so Safari/IE parse them reliably
+            const normalised = String(rawIso).trim().replace(/\+0000$/, 'Z').replace(/\+00:00$/, 'Z');
+            const parsed = new Date(normalised);
+            if (isNaN(parsed.getTime())) return null;
+            const diffMin = Math.max(0, Math.floor((Date.now() - parsed.getTime()) / 60000));
+            if (diffMin < 1) return 'just now';
+            if (diffMin < 60) return `${diffMin}m ago`;
+            const diffHour = Math.floor(diffMin / 60);
+            if (diffHour < 24) return `${diffHour}h ago`;
+            const diffDay = Math.floor(diffHour / 24);
+            if (diffDay < 30) return `${diffDay}d ago`;
+            const diffMonth = Math.floor(diffDay / 30.44);
+            if (diffMonth < 12) return `${diffMonth}mo ago`;
+            const diffYear = Math.floor(diffMonth / 12);
+            return `${diffYear}y ago`;
+        }
+
+        function newsAgeMinutes(headline) {
+            if (!headline || !headline.raw_time) return Number.POSITIVE_INFINITY;
+            const age = computeNewsAge(headline.raw_time);
+            if (!age) return Number.POSITIVE_INFINITY;
+            const m = age.match(/^(\d+)m?\s+ago$/);
+            if (m) return parseInt(m[1]);
+            const h = age.match(/^(\d+)h\s+ago$/);
+            if (h) return parseInt(h[1]) * 60;
+            const d = age.match(/^(\d+)d\s+ago$/);
+            if (d) return parseInt(d[1]) * 1440;
+            const mo = age.match(/^(\d+)mo\s+ago$/);
+            if (mo) return parseInt(mo[1]) * 30.44 * 1440;
+            const y = age.match(/^(\d+)y\s+ago$/);
+            if (y) return parseInt(y[1]) * 365.25 * 1440;
+            if (age === 'just now') return 0;
+            return Number.POSITIVE_INFINITY;
+        }
+        function getActiveScannerView() {
+            const toggle = document.getElementById('scanner-toggle');
+            if (!toggle) return 'live';
+            const active = toggle.querySelector('button.active');
+            return active?.dataset.view || 'live';
+        }
+
+        function renderScannerView() {
+            const view = getActiveScannerView();
+            const isPre = view === 'premarket';
+            const isWatchlist = view === 'watchlist';
+            const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
+                         isPre ? (window._lastPreMarketResults || []) :
+                         (window._lastLiveResults || []);
+            displayedResults = rows;
+            const tsEl = document.getElementById('scanner-timestamp');
+            const tbody = document.querySelector('#scanner-table tbody');
+            if (!tbody) return;
+            const newAlertSet = new Set(window._newAlertTickers || []);
+            const rowRenderer = (r) => renderScannerRow(r, { flash: newAlertSet.has(r.ticker) });
+            if (isWatchlist) {
+                const sorted = [...rows].sort((a, b) => (getAlertMaxScore(b) || 0) - (getAlertMaxScore(a) || 0));
+                if (rows.length) {
+                    tbody.innerHTML = sorted.map(rowRenderer).join('');
+                    populateAlertSelector(displayedResults);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No catalyst watchlist saved yet. Runs Sydney 17:00-17:59 weekdays.</td></tr>';
+                    populateAlertSelector([]);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                }
+                if (tsEl) {
+                    const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                    tsEl.textContent = window._lastPreMarketWatchlist?.length ? `${window._lastPreMarketWatchlist.length} catalyst rows from ${ts}` : 'No catalyst watchlist';
+                }
+            } else if (isPre) {
+                const sorted = [...rows].sort((a, b) => {
+                    const aAlert = a.status === 'ALERT' ? 1 : 0;
+                    const bAlert = b.status === 'ALERT' ? 1 : 0;
+                    if (aAlert !== bAlert) return bAlert - aAlert;
+                    if (aAlert) {
+                        const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
+                        if (scoreDiff !== 0) return scoreDiff;
+                        return getYoungestNewsAgeMinutes(a) - getYoungestNewsAgeMinutes(b);
+                    }
+                    return 0;
+                });
+                if (rows.length) {
+                    tbody.innerHTML = sorted.map(rowRenderer).join('');
+                    populateAlertSelector(displayedResults);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No pre-market/after-hours watchlist saved yet.</td></tr>';
+                    populateAlertSelector([]);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                }
+                if (tsEl) {
+                    const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                    tsEl.textContent = window._lastPreMarketResults?.length ? `${window._lastPreMarketResults.length} saved rows from ${ts}` : 'No saved watchlist';
+                }
+            } else {
+                // Live view: show the actual scan results whenever they exist.
+                // During pre/after-hours these are the extended-hours candidates, not an empty state.
+                if (rows.length) {
+                    const sorted = [...rows].sort((a, b) => {
+                        const aAlert = a.status === 'ALERT' ? 1 : 0;
+                        const bAlert = b.status === 'ALERT' ? 1 : 0;
+                        if (aAlert !== bAlert) return bAlert - aAlert;
+                        if (aAlert) {
+                            const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
+                            if (scoreDiff !== 0) return scoreDiff;
+                            return getYoungestNewsAgeMinutes(a) - getYoungestNewsAgeMinutes(b);
+                        }
+                        return 0;
+                    });
+                    tbody.innerHTML = sorted.map(rowRenderer).join('');
+                    populateAlertSelector(displayedResults);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                    if (tsEl) {
+                        const ts = window._lastScanTimestamp ? window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+                        tsEl.textContent = ts ? `Updated ${ts}` : '';
+                    }
+                } else {
+                    const isExtendedHours = currentMarket !== 'AUS' && (currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'AFTER-HOURS');
+                    const isClosed = currentMarketStatus === 'CLOSED' || currentMarketStatus === 'WEEKEND';
+                    const marketLabel = currentMarketStatus === 'PRE-MARKET' ? 'pre-market' : (currentMarketStatus === 'AFTER-HOURS' ? 'after-hours' : 'closed');
+                    let msg;
+                    if (currentMarket === 'AUS') {
+                        msg = `The ASX is currently ${marketLabel}. Live scan results will resume when the market opens.`;
+                    } else if (isExtendedHours) {
+                        msg = `The US market is currently ${marketLabel}. No scan results available yet — the next scan will populate this table.`;
+                    } else if (isClosed) {
+                        msg = `The US market is currently ${marketLabel}. Live scan results will resume when the market opens.`;
+                    } else {
+                        msg = 'No candidates met the alert criteria in the latest scan.';
+                    }
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
+                    populateAlertSelector([]);
+                    renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
+                    if (tsEl) tsEl.textContent = '';
+                }
+            }
+        }
+
+        function getYoungestNewsAgeMinutes(r) {
+            if (!r || !r.news || !Array.isArray(r.news.headlines)) return Infinity;
+            return Math.min(...r.news.headlines.map(h => newsAgeMinutes(h.time)), Infinity);
+        }
+
+
+        async function loadLiveData(forcedSnapshotFile) {
+            if (window._loadingLiveData) return;
+            window._loadingLiveData = true;
+            try {
+                setMarketLoading(currentMarket, true);
+                // Manifest file tells us the exact unique snapshot filename written by the backend.
+                const manifest = await fetchManifestRaw();
+                let snapshotFile = forcedSnapshotFile || getDefaultSnapshotFile();
+                if (manifest && manifest.latest) {
+                    snapshotFile = manifest.latest;
+                    window._lastManifestFetchSuccessAt = new Date();
+                }
+
+                const ts = Date.now();
+                const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
+                const res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                window._lastFetchAttemptAt = new Date();
+                if (!res.ok) {
+                    console.warn('Could not load', snapshotFile, res.status);
+                    setMarketLoading(currentMarket, false);
+                    return;
+                }
+                const data = await res.json();
+                window._lastFetchSuccessAt = new Date();
+                // Remember what we just loaded so the manifest poller skips unchanged snapshots.
+                window._lastLoadedSnapshot = snapshotFile;
+                window._lastLoadedSnapshotTs = data.last_updated;
+                const results = data.scan_results || [];
+                const preMarketResults = data.pre_market_results || [];
+                const preMarketWatchlist = data.pre_market_watchlist || [];
+                const allGainers = data.all_gainers || [];
+                const stats = data.scan_stats || {};
+                window._lastScanStats = stats;
+                window._lastLiveQuotes = data.live_quotes || {};
+                window._previousLiveQuotes = data.previous_live_quotes || {};
+                // The backend now ships the previous scan's live quotes in the JSON,
+                // so the tracker can compute real scan-to-scan P&L immediately without
+                // waiting for browser localStorage to cycle. Fallback to localStorage
+                // only when the backend snapshot is absent.
+                try {
+                    const prev = localStorage.getItem('ozmoeg-prev-live-quotes');
+                    window._prevLiveQuotes = window._previousLiveQuotes && Object.keys(window._previousLiveQuotes).length
+                        ? window._previousLiveQuotes
+                        : (prev ? JSON.parse(prev) : {});
+                } catch (e) {
+                    window._prevLiveQuotes = {};
+                }
+
+                const lastUpdated = new Date(data.last_updated || Date.now());
+
+                window._latestData = data;
+
+                window._lastScanTimestamp = lastUpdated;
+
+                // Update badge — prefer real-time US market status when the JSON scan is stale
+                // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
+                const alerts = results.filter(r => r.status === 'ALERT').length;
+                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
+
+                // Detect genuinely new ALERT tickers since the previous scan and play a chirp.
+                // We compare against the previous fetch's alert list so repeated rows stay silent.
+                const allResultsForSound = [
+                    ...(results || []),
+                    ...(preMarketResults || []),
+                    ...(preMarketWatchlist || [])
+                ];
+                const prevAlertTickers = new Set(window._lastAlertTickers || []);
+                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
+                const currentAlertTickers = currentAlerts.map(r => r.ticker);
+                const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
+                if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
+                    playNewAlertSound(newAlertTickers.length);
+                }
+                // Make newly-detected ALERT tickers visually flash in the scanner table
+                // alongside the sound, so the user can identify which ticker triggered it.
+                window._newAlertTickers = newAlertTickers;
+                if (newAlertTickers.length > 0) {
+                    setTimeout(() => { window._newAlertTickers = []; }, 5000);
+                }
+                window._lastAlertTickers = currentAlertTickers;
+
+                // Detect tickers that disappeared from the combined scanner list and play a drop sound.
+                // We track every ticker that was visible in any scanner view (live, pre/after, watchlist, bouncers).
+                const allResultsForDrop = [
+                    ...(results || []),
+                    ...(preMarketResults || []),
+                    ...(preMarketWatchlist || []),
+                    ...(data.bounce_results || [])
+                ];
+                const prevVisibleTickers = new Set(window._lastVisibleTickers || []);
+                const currentVisibleTickers = new Set(allResultsForDrop.map(r => r.ticker).filter(Boolean));
+                const droppedTickers = [...prevVisibleTickers].filter(t => !currentVisibleTickers.has(t));
+                if (soundEnabled && window._soundInitialised && droppedTickers.length > 0) {
+                    playDropSound(droppedTickers.length);
+                }
+                window._lastVisibleTickers = [...currentVisibleTickers];
+                window._soundInitialised = true;
+
+                const rawStatus = stats.market_status || 'OPEN';
+                const lastScanAgeMin = window._lastScanTimestamp
+                    ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
+                    : 0;
+                let marketStatus = rawStatus;
+                const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus;
+                if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
+                    marketStatus = realTimeStatus;
+                }
+                currentMarketStatus = marketStatus;
+                const marketTime = stats.market_time || '';
+                const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
+                const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
+                const marketLabel = marketFromData;
+                const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
+                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
+
+                liveResults = results;
+                liveLastUpdated = lastUpdated;
+                // Preserve pre-market/after-hours watchlist and catalyst watchlist for US.
+                window._lastPreMarketResults = preMarketResults;
+                window._lastPreMarketWatchlist = preMarketWatchlist;
+                window._lastLiveResults = results;
+                window._lastAllGainers = allGainers;
+                window._lastLiveQuotes = data.live_quotes || {};
+
+                // Save current scan quotes to localStorage so next refresh can compare prev vs current
+                try {
+                    localStorage.setItem('ozmoeg-prev-live-quotes', JSON.stringify(data.live_quotes || {}));
+                } catch (e) { /* storage may be unavailable */ }
+
+                // Keep the selected alert consistent across auto-refresh: if the previously selected
+                // ticker is still present in the new scan (any status/source), re-render it after the
+                // scanner view refreshes so the tracker/news never gets stuck on the empty state.
+                const selectedTicker = (() => {
+                    const sel = document.getElementById('alert-selector');
+                    return sel ? sel.value : '';
+                })();
+
+                // Show Pre/After toggle only for US markets (ASX has no extended session).
+                const showPreAfterToggle = currentMarket !== 'AUS';
+                const watchBtn = document.querySelector('#scanner-toggle button[data-view="watchlist"]');
+                const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
+                const liveBtn = document.querySelector('#scanner-toggle button[data-view="live"]');
+                [preBtn, watchBtn].forEach(btn => {
+                    if (btn) btn.style.display = showPreAfterToggle ? 'inline-flex' : 'none';
+                });
+
+                if (!scannerFirstLoadDone) {
+                    // Use real-time market status for toggle defaults, not the stale JSON status.
+                    const effectiveStatus = currentMarketStatus || marketStatus;
+                    const isUsExtendedHours = currentMarket !== 'AUS' && (effectiveStatus === 'PRE-MARKET' || effectiveStatus === 'AFTER-HOURS');
+                    const isUsClosedWithWatchlist = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED') && window._lastPreMarketWatchlist.length > 0;
+                    const isCurrentlyClosed = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED');
+                    const isWatchlistWindow = currentMarket !== 'AUS' && isActiveTradingWindow() && effectiveStatus === 'CLOSED';
+                    if (isWatchlistWindow) {
+                        setScannerToggleActive('watchlist');
+                    } else if (isUsExtendedHours || isUsClosedWithWatchlist) {
+                        setScannerToggleActive('premarket');
+                    } else if (isCurrentlyClosed) {
+                        // During closed/weekend there is no live session to watch; grey out both toggles.
+                        setScannerToggleActive('premarket');
+                        if (liveBtn) {
+                            liveBtn.disabled = true;
+                            liveBtn.style.opacity = '0.5';
+                            liveBtn.style.cursor = 'not-allowed';
+                        }
+                        if (preBtn) {
+                            preBtn.disabled = true;
+                            preBtn.style.opacity = '0.5';
+                            preBtn.style.cursor = 'not-allowed';
+                        }
+                    } else {
+                        setScannerToggleActive('live');
+                    }
+                    scannerFirstLoadDone = true;
+                }
+
+                // Re-render current view according to active toggle
+                renderScannerView();
+                renderPlanRules();
+
+                // Re-render the currently selected alert after the data refresh so the tracker,
+                // catalyst headline and news list always match the latest scan.
+                if (selectedTicker) {
+                    renderSelectedAlert();
+                }
+
+                // If watchlist rows exist but current view is live, surface a subtle hint.
+                if (currentMarket !== 'AUS' && window._lastPreMarketWatchlist?.length > 0 && getActiveScannerView() === 'live') {
+                    const badge = document.getElementById('scanner-badge');
+                    if (badge) badge.textContent = badge.textContent + ` · ⏰ ${window._lastPreMarketWatchlist.length} catalyst watchlist item(s)`;
+                }
+
+                // Update news ticker - only show actionable results with recent news (< 24h), not all 50 skipped scans
+                const ticker = document.getElementById('news-ticker');
+                if (ticker) {
+                    const NEWS_TICKER_MAX_AGE_HOURS = 24;
+                    const actionable = results.filter(r => ['ALERT','CANDIDATE','BOUNCE'].includes(r.status));
+                    const recentItems = actionable.filter(r => {
+                        if (!r.news || !Array.isArray(r.news.headlines) || r.news.headlines.length === 0) return true;
+                        const newestMin = Math.min(...r.news.headlines.map(h => newsAgeMinutes(h)));
+                        return newestMin < NEWS_TICKER_MAX_AGE_HOURS * 60;
+                    });
+                    const itemsToShow = recentItems.length ? recentItems : actionable;
+                    // Use the scan snapshot time for the news ticker so it matches the
+                    // "Last refresh" stamp (AEST) and does not drift into a different timezone.
+                    const scanTs = new Date(data.last_updated || Date.now());
+                    const tickerDate = scanTs.toLocaleDateString('en-AU', { timeZone: 'Australia/Sydney', month: 'short', day: 'numeric' });
+                    const tickerTime = scanTs.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney', hour: '2-digit', minute: '2-digit', hour12: true });
+                    window._lastNewsTickerTs = scanTs;
+                    if (itemsToShow.length) {
+                        const items = itemsToShow.map(r => {
+                            const imp = impactLabel(getAlertMaxScore(r), r);
+                            const impactTag = ` <span class="impact-mini ${imp.cls}">${imp.text}</span>`;
+
+                            const newsAge = formatNewsAgeInline(r.news);
+                            const catalyst = (r.news && r.news.top_headline) ? r.news.top_headline : (r.news && r.news.catalyst ? r.news.catalyst : '');
+
+                            const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
+                            const country = (r.country || '').trim();
+                            const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
+                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${tickerDate}</span> <span class="time">${tickerTime}</span> — ${r.ticker}${countryBadge} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
+                        }).join('');
+                        ticker.innerHTML = items + '\n' + items;
+                    } else {
+                        const info = `<div class="news-item skip"><span class="score">INFO</span><span class="time">${tickerTime}</span> — No candidates passed filter criteria — Scan continues every minute</div>`;
+                        ticker.innerHTML = info + '\n' + info;
+                    }
+                }
+
+                // Update all-scanned gainers and losers details tables dynamically from JSON.
+                // This guarantees they always reflect the latest scan instead of stale server-rendered HTML.
+                const isAu = (stats.market || 'us').toLowerCase() === 'au';
+                const allLosers = data.all_losers || [];
+                const renderScannedRow = (stock, isLoser) => {
+                    const symbol = stock.ticker || '';
+                    const name = stock.name || symbol;
+                    const price = parseFloat(stock.price || 0);
+                    let changePct = parseFloat(stock.change_pct || 0);
+                    const volume = parseInt(stock.volume || 0);
+                    const mktCap = parseFloat(stock.market_cap || 0);
+                    const rvol = parseFloat(stock.rvol || 0);
+                    const capSize = (stock.cap_size || '').trim();
+                    const capBadge = capSize ? ` <span class="country-badge">${escapeHtml(capSize.toUpperCase().replace(/-/g, ' '))}</span>` : '';
+                    const pennyBadge = stock.is_penny_stock ? ` <span class="country-badge">PENNY</span>` : '';
+                    const floatShares = parseFloat(stock.float_shares || 0);
+                    const passed = stock.passed;
+                    const badgeClass = passed ? 'scan-pass' : 'scan-skip';
+                    const badgeText = passed ? 'PASS' : 'SKIP';
+                    const reason = stock.reason || '';
+                    const priceDecimals = isAu ? 3 : 2;
+                    const sign = changePct >= 0 ? '+' : '';
+                    function formatFloatAllScanned(n) {
+                        if (!isFinite(n) || n <= 0) return '—';
+                        if (n >= 1e9) return `${(n/1e9).toFixed(2)}B`;
+                        if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
+                        return `${(n/1e3).toFixed(0)}K`;
+                    }
+                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
+                };
+
+                const gainersDetails = document.getElementById('scanned-gainers-details');
+                if (gainersDetails) {
+                    const table = gainersDetails.querySelector('table tbody');
+                    if (table) {
+                        table.innerHTML = allGainers.length
+                            ? allGainers.map(s => renderScannedRow(s, false)).join('')
+                            : '\u003ctr\u003e\u003ctd colspan="10" style="text-align:center;color:var(--text-secondary)"\u003eNo gainers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
+                    }
+                }
+                const losersDetails = document.getElementById('scanned-losers-details');
+                if (losersDetails) {
+                    const table = losersDetails.querySelector('table tbody');
+                    if (table) {
+                        table.innerHTML = allLosers.length
+                            ? allLosers.map(s => renderScannedRow(s, true)).join('')
+                            : '\u003ctr\u003e\u003ctd colspan="10" style="text-align:center;color:var(--text-secondary)"\u003eNo losers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
+                    }
+                }
+
+                // Update header status badge to reflect actual market phase.
+                updateScannerStatusBadge(marketStatus, allGainers.length, allLosers.length);
+
+            } catch (e) {
+                console.error('Live data refresh failed:', e);
+            } finally {
+                window._loadingLiveData = false;
+                setMarketLoading(currentMarket, false);
+                // Reset the visible refresh countdown every time a fetch completes
+                // (success or failure) so the timer stays honest after manual refresh.
+                resetRefreshTimer();
+            }
+        }
+
+        // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
+        // This prevents a brief flash of "15:00" before the first fetch completes.
+        (async function init() {
+            resetScannerToggleToLive();
+            toggleSound(soundEnabled);
+            await loadLiveData();
+            resetRefreshTimer();
+        })();
+
