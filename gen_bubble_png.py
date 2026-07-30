@@ -172,25 +172,28 @@ for t in label_inside:
             ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
 
-# Outside labels with arrows - placed close to the bubble
+# Outside labels with arrows - placed close to the bubble, same font as inside
 for t in label_outside:
     bx, by = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    # Place slightly to the right and at bubble center y
-    tx = bx + max(300_000, by * 250_000)
+    # Place slightly to the right, aligned with bubble center y
+    offset_x = max(180_000, by * 120_000)
+    tx = bx + offset_x
     ty = by
     ax.annotate(f"{t['ticker']}\n{t['country']}",
                 xy=(bx, by), xytext=(tx, ty),
-                ha='left', va='center', color='white', fontsize=9,
+                ha='left', va='center', color='white', fontsize=9.5,
                 fontweight='bold', linespacing=0.72, zorder=6,
-                bbox=dict(boxstyle='round,pad=0.25', facecolor='#111827', edgecolor='#374151', alpha=0.9),
-                arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.8))
+                bbox=dict(boxstyle='round,pad=0.22', facecolor='#111827', edgecolor='#374151', alpha=0.9),
+                arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.7))
 
 # Hover tooltip mockup on NUWE
 for t in tickers:
     if t['ticker'] == 'NUWE':
         x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
         ax.text(x, y * 0.78,
-                f"${t['price']:.2f}\nFloat: {t['float']/1_000_000:.2f}M",
+                f"${t['price']:.2f} | Float {t['float']/1_000_000:.2f}M\n"
+                f"Change {t['change_pct']:+.1f}% | {t['status']}\n"
+                f"Vol 1.2M | News 12m",
                 ha='center', va='top', color='#94a3b8', fontsize=8,
                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
 
