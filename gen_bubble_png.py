@@ -84,7 +84,6 @@ for t in tickers:
     t['plot_r'] = 0.08 + rel * 0.18  # in log-price units
 
 # Simple force-directed repulsion for overlapping bubbles
-# Use small displacements in (x, log-y) space, anchored to original position
 positions = {t['ticker']: [float_to_x(t['float']), price_to_y(t['price'])] for t in tickers}
 
 for _ in range(100):
@@ -97,24 +96,23 @@ for _ in range(100):
             x2, y2 = positions[t2['ticker']]
             dx = x1 - x2
             dy = y1 - y2
-            dist = math.hypot(dx, dy * 8_000_000)  # scale y to comparable magnitude
+            dist = math.hypot(dx, dy * 8_000_000)
             min_dist = (t1['plot_r'] + t2['plot_r']) * 8_000_000
             if dist < min_dist and dist > 0:
                 force = (min_dist - dist) / dist
                 fx += force * dx
                 fy += force * dy / (8_000_000 ** 2)
-        # Dampen and anchor to original
         positions[t1['ticker']][0] += fx * 0.02
         positions[t1['ticker']][1] += fy * 0.02
-        # Pull back toward original
         orig_x = float_to_x(t1['float'])
         orig_y = price_to_y(t1['price'])
         positions[t1['ticker']][0] = positions[t1['ticker']][0] * 0.85 + orig_x * 0.15
         positions[t1['ticker']][1] = positions[t1['ticker']][1] * 0.85 + orig_y * 0.15
 
-# Ensure GCTK bubble stays above its label (push it up slightly if it dropped too low)
-positions['GCTK'][1] = max(positions['GCTK'][1], math.log10(0.30))
-positions['CYCU'][1] = max(positions['CYCU'][1], math.log10(0.30))
+# Ensure bottom bubbles don't get clipped
+for tk in ['GCTK', 'CYCU']:
+    if tk in positions:
+        positions[tk][1] = max(positions[tk][1], math.log10(0.30))
 
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
@@ -124,10 +122,10 @@ ax.set_xlim(-300_000, 12_500_000)
 ax.set_yscale('log')
 ax.set_ylim(0.20, 28)
 
-# Very small subtle penny zone
-ax.axhspan(0.20, 0.55, color='#f87171', alpha=0.05, zorder=1)
+# Penny zone < $1
+ax.axhspan(0.20, 1, color='#f87171', alpha=0.05, zorder=1)
 
-# Prominent green recommended trade zone, expanded to Float 2M, Price $1.80-$22
+# Prominent green recommended trade zone, Float 2M, Price $1.80-$22
 ax.fill_between([0, 2_000_000], 1.8, 22, color='#34d399', alpha=0.18, zorder=1)
 
 # Bubbles
@@ -150,15 +148,43 @@ y_vals = [10 ** positions[t['ticker']][1] for t in tickers]
 
 ax.scatter(x_vals, y_vals, s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
 
-# Labels inside bubbles - larger separation between ticker and country code
+# Decide label placement: inside if bubble is large enough, outside with arrow if too small
+# Threshold based on relative change (bubble size)
+label_outside = []
+label_inside = []
 for t in tickers:
+    rel = (abs(t['change_pct']) or 0) / maxc
+    if rel < 0.25:
+        label_outside.append(t)
+    else:
+        label_inside.append(t)
+
+print('inside:', [t['ticker'] for t in label_inside])
+print('outside:', [t['ticker'] for t in label_outside])
+
+# Inside labels - larger separation between ticker and country code
+for t in label_inside:
     x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    ax.text(x, y + 0.028, t['ticker'],
+    ax.text(x, y * 1.015, t['ticker'],
             ha='center', va='bottom', color='white', fontsize=10, fontweight='bold',
             linespacing=0.7, zorder=6)
-    ax.text(x, y - 0.028, t['country'],
+    ax.text(x, y * 0.985, t['country'],
             ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
+
+# Outside labels with arrows - placed to avoid overlap
+# Determine outside positions based on bubble location; fallback rules
+for t in label_outside:
+    bx, by = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
+    # Place to the right of the bubble, at a safe y
+    tx = bx + 1_200_000
+    ty = max(0.7, min(23, by * 1.5))
+    ax.annotate(f"{t['ticker']}\n{t['country']}",
+                xy=(bx, by), xytext=(tx, ty),
+                ha='center', va='center', color='white', fontsize=9,
+                fontweight='bold', linespacing=0.72, zorder=6,
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#111827', edgecolor='#374151', alpha=0.9),
+                arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.8))
 
 # Hover tooltip mockup on NUWE
 for t in tickers:
@@ -181,7 +207,7 @@ for spine in ax.spines.values():
     spine.set_color('#374151')
 
 # Zone labels
-ax.text(100_000, 0.25, 'Penny zone (< $0.55)', color=(248/255, 113/255, 113/255, 0.7),
+ax.text(100_000, 0.25, 'Penny zone (< $1)', color=(248/255, 113/255, 113/255, 0.7),
         fontsize=9, ha='left', fontstyle='italic')
 ax.text(1_000_000, 23, 'Recommended trade zone', color=(52/255, 211/255, 153/255, 0.95),
         fontsize=10, ha='center', fontstyle='italic', fontweight='bold')
