@@ -2,7 +2,7 @@ import json, glob, os
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# Map full country names to short codes (matches live site names)
+# Map full country names to short codes
 country_map = {
     'United States': 'US',
     'China / Cayman-China': 'CN',
@@ -73,20 +73,21 @@ for r in data.get('scan_results', []):
 
 print('tickers:', [(t['ticker'], t['price'], t['float'], t['country']) for t in tickers])
 
-fig, ax = plt.subplots(figsize=(15, 10), facecolor='#0b0f17')
+fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
-# Widen Y axis: min separation $2, so penny zone gets more room
-ax.set_xlim(-500_000, 12_000_000)
-ax.set_ylim(-2, 26)
+# Semi-log: log Y (price), linear X (float)
+ax.set_xlim(-300_000, 12_500_000)
+ax.set_yscale('log')
+ax.set_ylim(0.18, 60)
 
-# Zones - no dotted lines
-ax.axhspan(0, 1, color='#f87171', alpha=0.10, zorder=1)  # light red penny zone
+# Zones on log y: penny < $1, trade zone $2-$20
+ax.axhspan(0.18, 1, color='#f87171', alpha=0.10, zorder=1)  # light red penny zone
 ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.10, zorder=1)  # golden trade zone
 
-# Bubbles
+# Bubbles - bigger
 maxc = max(abs(t['change_pct']) or 1 for t in tickers)
-sizes = [min(3000, max(550, (abs(t['change_pct']) or 0) / maxc * 2800)) for t in tickers]
+sizes = [min(5000, max(900, (abs(t['change_pct']) or 0) / maxc * 4500)) for t in tickers]
 
 colors = []
 edgecolors = []
@@ -100,51 +101,65 @@ for t in tickers:
     else:
         colors.append((45/255, 212/255, 191/255, 0.55)); edgecolors.append('#2dd4bf')
 
-# Separate overlapping GCTK/CYCU slightly
+# Use log price for plotting
 for t in tickers:
-    if t['ticker'] == 'CYCU':
-        t['price_plot'] = t['price'] + 0.25
-    elif t['ticker'] == 'GCTK':
-        t['price_plot'] = t['price'] - 0.25
-    else:
-        t['price_plot'] = t['price']
+    t['price_plot'] = t['price']
 
 ax.scatter([t['float'] for t in tickers], [t['price_plot'] for t in tickers],
            s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
 
-# Labels inside bubbles
+# Labels inside bubbles - use annotation with small offsets for overlap
+offsets = {
+    'PN': (0, 0),
+    'INLF': (60, 18),
+    'FFAI': (0, 0),
+    'NUWE': (-50, -22),
+    'STKH': (55, -15),
+    'GCTK': (0, 0),
+    'CYCU': (0, 0),
+}
 for t in tickers:
-    ax.text(t['float'], t['price_plot'], f"{t['ticker']}\n{t['country']}",
-            ha='center', va='center', color='white', fontsize=9, fontweight='bold',
-            linespacing=0.72, zorder=6)
+    ox, oy = offsets.get(t['ticker'], (0, 0))
+    if ox or oy:
+        ax.annotate(f"{t['ticker']}\n{t['country']}",
+                    xy=(t['float'], t['price_plot']), xytext=(ox, oy),
+                    textcoords='offset points', ha='center', va='center',
+                    color='white', fontsize=9.5, fontweight='bold',
+                    linespacing=0.72, zorder=6,
+                    arrowprops=dict(arrowstyle='-', color='#ffffff30', lw=0.7))
+    else:
+        ax.text(t['float'], t['price_plot'], f"{t['ticker']}\n{t['country']}",
+                ha='center', va='center', color='white', fontsize=9.5, fontweight='bold',
+                linespacing=0.72, zorder=6)
 
-# Hover tooltip mockup on NUWE
+# Hover tooltip mockup
 for t in tickers:
     if t['ticker'] == 'NUWE':
-        ax.text(t['float'], t['price_plot'] - 2.6,
+        ax.text(t['float'], t['price_plot'] * 0.65,
                 f"${t['price']:.2f}\nFloat: {t['float']/1_000_000:.2f}M",
-                ha='center', va='top', color='#94a3b8', fontsize=7.5,
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='#111827', edgecolor='#374151', alpha=0.9))
+                ha='center', va='top', color='#94a3b8', fontsize=8,
+                bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
 
 # Axis formatting
 ax.set_xlabel('Float (shares)', color='#94a3b8', fontsize=12, labelpad=14)
 ax.set_ylabel('Price ($)', color='#94a3b8', fontsize=12, labelpad=10)
 ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{x/1_000_000:.1f}M' if x >= 1_000_000 else f'{x/1_000:.0f}K'))
-ax.yaxis.set_major_locator(plt.MultipleLocator(2))
+ax.set_yticks([0.25, 0.5, 1, 2, 5, 10, 20, 50])
+ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, pos: f'${x:.2f}' if x < 1 else f'${x:.0f}'))
 ax.tick_params(colors='#94a3b8', which='both', labelsize=10)
 ax.grid(True, color='#1f2937', linestyle='-', linewidth=0.6, zorder=1)
 for spine in ax.spines.values():
     spine.set_color('#374151')
 
 # Zone labels
-ax.text(100_000, 0.35, 'Penny stock zone (< $1)', color=(248/255, 113/255, 113/255, 0.85),
+ax.text(100_000, 0.27, 'Penny stock zone (< $1)', color=(248/255, 113/255, 113/255, 0.85),
         fontsize=10, ha='left', fontstyle='italic')
-ax.text(1_450_000, 21.5, 'Recommended trade zone', color=(251/255, 191/255, 36/255, 0.85),
+ax.text(1_450_000, 22, 'Recommended trade zone', color=(251/255, 191/255, 36/255, 0.85),
         fontsize=10, ha='right', fontstyle='italic', fontweight='bold')
 
-ax.set_title('OzMoEg Bubble View Prototype — Float vs Price', color='#2dd4bf', fontsize=16, pad=18)
+ax.set_title('OzMoEg Bubble View Prototype — Float vs Price (semi-log)', color='#2dd4bf', fontsize=16, pad=18)
 
-# Legend at bottom, moved down further
+# Legend at bottom
 legend = [
     mpatches.Patch(color='#f87171', alpha=0.45, label='Penny stock (< $1)'),
     mpatches.Patch(color='#fbbf24', alpha=0.45, label='Recommended trade zone'),
