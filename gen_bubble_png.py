@@ -76,16 +76,19 @@ print('tickers:', [(t['ticker'], t['price'], t['float'], t['country']) for t in 
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
-# Semi-log: log Y (price), linear X (float)
+# Focus the chart on the trade zone: Y from $0.50 to $25 with log scale
+# This makes $2-$20 take most of the vertical space
 ax.set_xlim(-300_000, 12_500_000)
 ax.set_yscale('log')
-ax.set_ylim(0.18, 60)
+ax.set_ylim(0.45, 28)
 
-# Zones on log y: penny < $1, trade zone $2-$20
-ax.axhspan(0.18, 1, color='#f87171', alpha=0.10, zorder=1)  # light red penny zone
-ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.10, zorder=1)  # golden trade zone
+# Small, subtle penny zone (thin strip)
+ax.axhspan(0.45, 1, color='#f87171', alpha=0.06, zorder=1)
 
-# Bubbles - bigger
+# Prominent recommended trade zone - stronger golden fill
+ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.22, zorder=1)
+
+# Bubbles - keep big for readability
 maxc = max(abs(t['change_pct']) or 1 for t in tickers)
 sizes = [min(5000, max(900, (abs(t['change_pct']) or 0) / maxc * 4500)) for t in tickers]
 
@@ -101,23 +104,30 @@ for t in tickers:
     else:
         colors.append((45/255, 212/255, 191/255, 0.55)); edgecolors.append('#2dd4bf')
 
-# Use log price for plotting
-for t in tickers:
-    t['price_plot'] = t['price']
-
-ax.scatter([t['float'] for t in tickers], [t['price_plot'] for t in tickers],
+ax.scatter([t['float'] for t in tickers], [t['price'] for t in tickers],
            s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
 
-# Labels inside bubbles - use annotation with small offsets for overlap
+# Labels inside bubbles with offsets to reduce overlap
 offsets = {
     'PN': (0, 0),
-    'INLF': (60, 18),
+    'INLF': (0, 0),
     'FFAI': (0, 0),
-    'NUWE': (-50, -22),
-    'STKH': (55, -15),
+    'NUWE': (0, 0),
+    'STKH': (0, 0),
+    'YHC': (0, 0),
     'GCTK': (0, 0),
     'CYCU': (0, 0),
+    'GVH': (0, 0),
 }
+# Apply small separation for overlapping pairs
+for t in tickers:
+    if t['ticker'] == 'NUWE':
+        t['price_plot'] = t['price'] * 1.05
+    elif t['ticker'] == 'STKH':
+        t['price_plot'] = t['price'] * 0.93
+    else:
+        t['price_plot'] = t['price']
+
 for t in tickers:
     ox, oy = offsets.get(t['ticker'], (0, 0))
     if ox or oy:
@@ -125,8 +135,7 @@ for t in tickers:
                     xy=(t['float'], t['price_plot']), xytext=(ox, oy),
                     textcoords='offset points', ha='center', va='center',
                     color='white', fontsize=9.5, fontweight='bold',
-                    linespacing=0.72, zorder=6,
-                    arrowprops=dict(arrowstyle='-', color='#ffffff30', lw=0.7))
+                    linespacing=0.72, zorder=6)
     else:
         ax.text(t['float'], t['price_plot'], f"{t['ticker']}\n{t['country']}",
                 ha='center', va='center', color='white', fontsize=9.5, fontweight='bold',
@@ -135,7 +144,7 @@ for t in tickers:
 # Hover tooltip mockup
 for t in tickers:
     if t['ticker'] == 'NUWE':
-        ax.text(t['float'], t['price_plot'] * 0.65,
+        ax.text(t['float'], t['price_plot'] * 0.78,
                 f"${t['price']:.2f}\nFloat: {t['float']/1_000_000:.2f}M",
                 ha='center', va='top', color='#94a3b8', fontsize=8,
                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
@@ -144,7 +153,7 @@ for t in tickers:
 ax.set_xlabel('Float (shares)', color='#94a3b8', fontsize=12, labelpad=14)
 ax.set_ylabel('Price ($)', color='#94a3b8', fontsize=12, labelpad=10)
 ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{x/1_000_000:.1f}M' if x >= 1_000_000 else f'{x/1_000:.0f}K'))
-ax.set_yticks([0.25, 0.5, 1, 2, 5, 10, 20, 50])
+ax.set_yticks([0.5, 1, 2, 5, 10, 20, 25])
 ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, pos: f'${x:.2f}' if x < 1 else f'${x:.0f}'))
 ax.tick_params(colors='#94a3b8', which='both', labelsize=10)
 ax.grid(True, color='#1f2937', linestyle='-', linewidth=0.6, zorder=1)
@@ -152,12 +161,12 @@ for spine in ax.spines.values():
     spine.set_color('#374151')
 
 # Zone labels
-ax.text(100_000, 0.27, 'Penny stock zone (< $1)', color=(248/255, 113/255, 113/255, 0.85),
-        fontsize=10, ha='left', fontstyle='italic')
-ax.text(1_450_000, 22, 'Recommended trade zone', color=(251/255, 191/255, 36/255, 0.85),
-        fontsize=10, ha='right', fontstyle='italic', fontweight='bold')
+ax.text(100_000, 0.52, 'Penny zone (< $1)', color=(248/255, 113/255, 113/255, 0.7),
+        fontsize=9, ha='left', fontstyle='italic')
+ax.text(1_450_000, 22, 'Recommended trade zone', color=(251/255, 191/255, 36/255, 0.95),
+        fontsize=11, ha='right', fontstyle='italic', fontweight='bold')
 
-ax.set_title('OzMoEg Bubble View Prototype — Float vs Price (semi-log)', color='#2dd4bf', fontsize=16, pad=18)
+ax.set_title('OzMoEg Bubble View Prototype — Float vs Price', color='#2dd4bf', fontsize=16, pad=18)
 
 # Legend at bottom
 legend = [
