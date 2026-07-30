@@ -194,7 +194,7 @@ for t in tickers:
         ax.text(x, y * 0.78,
                 f"${t['price']:.2f} | Float {t['float']/1_000_000:.2f}M\n"
                 f"Change {t['change_pct']:+.1f}% | {t['status']}\n"
-                f"Vol 1.2M | News 12m",
+                f"Vol 1.2M | News 12m | SEC 3",
                 ha='center', va='top', color='#94a3b8', fontsize=8,
                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
 
