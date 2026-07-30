@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OzMoEg Bubble View Prototype</title>
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 <style>
 :root {
   --bg: #0b0f17;
@@ -16,377 +18,263 @@
   --penny: #f59e0b;
   --glow: #22d3ee;
 }
-body {
-  margin: 0; padding: 1rem;
-  background: var(--bg); color: var(--text);
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  text-align: center;
-}
-h1 { margin: 0.2rem 0 0.8rem; font-size: 1.3rem; color: var(--accent); }
-p { color: var(--text-2); font-size: 0.9rem; max-width: 700px; margin: 0 auto 1rem; }
-button {
-  background: var(--accent); color: #000; border: none; border-radius: 999px;
-  padding: 0.7rem 1.4rem; font-weight: 700; cursor: pointer; font-size: 1rem;
-  transition: transform 0.1s;
-}
-button:hover { transform: scale(1.03); }
-</style>
-</head>
-<body>
-<h1>🫧 OzMoEg Bubble View — Prototype</h1>
-<p>This is a preview only. It does not change the live website. Click the button to open the bubble chart in a separate popup window, just like it would behave when a "Bubble View" button is added to the scanner.</p>
-<button onclick="openBubbleView()">Open Bubble View</button>
-
-<script>
-const snapshots = [{"time": "2026-07-30T12:17:02.981698Z", "tickers": [{"ticker": "STKH", "name": "STEAKHOLDER FOODS LTD", "status": "ALERT", "price": 4.21, "float": 495474.0, "change_pct": -24.72, "volume": 3826418, "market_cap": 1603477.19, "country": "International (region 83)", "cap_size": "nano-cap", "is_penny": false, "news_status": "low catalyst score (max 0/5)", "news_age": "5d ago \u00b7 24 Jul", "top_headline": "Why Microsoft Shares Are Trading Higher By 8%; Here Are 20 Stocks Moving Premarket", "sec_filings": "424B3 (May 19)", "entry_price": 4.21}, {"ticker": "NUWE", "name": "Nuwellis Inc", "status": "ALERT", "price": 4.31, "float": 509927.0, "change_pct": -2.07, "volume": 10649172, "market_cap": 963813.06, "country": "United States", "cap_size": "nano-cap", "is_penny": false, "news_status": "catalyst confirmed", "news_age": "6d ago \u00b7 23 Jul", "top_headline": "Nuwellis reports preliminary Q2 revenue growth of 14%", "sec_filings": "8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)", "entry_price": 4.31}, {"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.416, "float": 6500870.0, "change_pct": -5.0, "volume": 18432839, "market_cap": 2199949.49, "country": "United States", "cap_size": "nano-cap", "is_penny": true, "news_status": "low catalyst score (max 0/5)", "news_age": "3d ago \u00b7 27 Jul", "top_headline": "Glucotrack Has Been Granted U.S. Patent Number 12,129,085 Titled \"Methods and systems for continuously monitoring the glucose level of a patient\".", "sec_filings": "8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)", "entry_price": 0.416}]}, {"time": "2026-07-30T12:15:03.757654Z", "tickers": [{"ticker": "STKH", "name": "STEAKHOLDER FOODS LTD", "status": "ALERT", "price": 4.141, "float": 495474.0, "change_pct": -24.72, "volume": 3788247, "market_cap": 1603477.19, "country": "International (region 83)", "cap_size": "nano-cap", "is_penny": false, "news_status": "low catalyst score (max 0/5)", "news_age": "5d ago \u00b7 24 Jul", "top_headline": "Why Microsoft Shares Are Trading Higher By 8%; Here Are 20 Stocks Moving Premarket", "sec_filings": "424B3 (May 19)", "entry_price": 4.141}, {"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.41, "float": 6500870.0, "change_pct": -5.0, "volume": 17829415, "market_cap": 2199949.49, "country": "United States", "cap_size": "nano-cap", "is_penny": true, "news_status": "low catalyst score (max 0/5)", "news_age": "3d ago \u00b7 27 Jul", "top_headline": "Glucotrack Has Been Granted U.S. Patent Number 12,129,085 Titled \"Methods and systems for continuously monitoring the glucose level of a patient\".", "sec_filings": "8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)", "entry_price": 0.41}, {"ticker": "NUWE", "name": "Nuwellis Inc", "status": "ALERT", "price": 4.26, "float": 509927.0, "change_pct": -2.07, "volume": 10429576, "market_cap": 963813.06, "country": "United States", "cap_size": "nano-cap", "is_penny": false, "news_status": "catalyst confirmed", "news_age": "6d ago \u00b7 23 Jul", "top_headline": "Nuwellis reports preliminary Q2 revenue growth of 14%", "sec_filings": "8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)", "entry_price": 4.26}]}, {"time": "2026-07-30T12:12:57.523075Z", "tickers": [{"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.43, "float": 6500870.0, "change_pct": -5.0, "volume": 16918520, "market_cap": 2199949.49, "country": "United States", "cap_size": "nano-cap", "is_penny": true, "news_status": "low catalyst score (max 0/5)", "news_age": "3d ago \u00b7 27 Jul", "top_headline": "Glucotrack Has Been Granted U.S. Patent Number 12,129,085 Titled \"Methods and systems for continuously monitoring the glucose level of a patient\".", "sec_filings": "8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)", "entry_price": 0.43}, {"ticker": "NUWE", "name": "Nuwellis Inc", "status": "ALERT", "price": 4.13, "float": 509927.0, "change_pct": -2.07, "volume": 10145231, "market_cap": 963813.06, "country": "United States", "cap_size": "nano-cap", "is_penny": false, "news_status": "catalyst confirmed", "news_age": "6d ago \u00b7 23 Jul", "top_headline": "Nuwellis reports preliminary Q2 revenue growth of 14%", "sec_filings": "8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)", "entry_price": 4.13}, {"ticker": "STKH", "name": "STEAKHOLDER FOODS LTD", "status": "ALERT", "price": 4.145, "float": 495474.0, "change_pct": -24.72, "volume": 3728626, "market_cap": 1603477.19, "country": "International (region 83)", "cap_size": "nano-cap", "is_penny": false, "news_status": "low catalyst score (max 0/5)", "news_age": "5d ago \u00b7 24 Jul", "top_headline": "Why Microsoft Shares Are Trading Higher By 8%; Here Are 20 Stocks Moving Premarket", "sec_filings": "424B3 (May 19)", "entry_price": 4.145}]}];
-let currentSnapshotIdx = 0;
-let newTickers = new Set();
-let droppedTickers = new Set();
-let popup = null;
-let refreshTimer = null;
-
-function openBubbleView() {
-  if (popup && !popup.closed) { popup.focus(); return; }
-  popup = window.open('', 'ozmoeg-bubble-view', 'width=1100,height=800,scrollbars=yes,resizable=yes');
-  popup.document.write(buildBubbleHTML());
-  popup.document.close();
-  setTimeout(() => initChart(popup), 200);
-}
-
-function buildBubbleHTML() {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>OzMoEg Bubble View</title>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<style>
-:root {
-  --bg: #0b0f17;
-  --panel: #111827;
-  --panel-2: #1f2937;
-  --text: #f8fafc;
-  --text-2: #94a3b8;
-  --accent: #2dd4bf;
-  --danger: #f87171;
-  --penny: #f59e0b;
-  --glow: #22d3ee;
-}
+* { box-sizing: border-box; }
 body {
   margin: 0; padding: 0;
   background: var(--bg); color: var(--text);
   font-family: 'Segoe UI', system-ui, sans-serif;
-  overflow: hidden;
+  height: 100vh; display: flex; flex-direction: column;
 }
 #header {
-  position: absolute; top: 0; left: 0; right: 0; height: 44px;
   background: var(--panel); border-bottom: 1px solid var(--panel-2);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 1rem; z-index: 10;
+  padding: 0.7rem 1.2rem; display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
 }
-#header h2 { margin: 0; font-size: 1rem; color: var(--accent); }
-#controls { display: flex; align-items: center; gap: 0.7rem; }
-#controls span { color: var(--text-2); font-size: 0.8rem; }
-#controls button {
+#header h1 { margin: 0; font-size: 1.15rem; color: var(--accent); }
+#controls { display: flex; align-items: center; gap: 0.8rem; }
+#last-updated { color: var(--text-2); font-size: 0.8rem; }
+button {
   background: var(--panel-2); color: var(--text); border: 1px solid #374151;
-  border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.8rem;
-  cursor: pointer;
+  border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.82rem; cursor: pointer;
 }
-#chart {
-  position: absolute; top: 44px; left: 0; right: 0; bottom: 0;
+button.primary { background: var(--accent); color: #000; border: none; font-weight: 700; }
+button:hover { filter: brightness(1.15); }
+#chart-wrap {
+  position: relative; flex: 1; min-height: 0; padding: 1rem;
 }
+#bubbleCanvas { width: 100% !important; height: 100% !important; }
 .legend {
-  position: absolute; bottom: 12px; left: 12px;
-  background: rgba(17,24,39,0.85); border: 1px solid var(--panel-2);
+  position: absolute; bottom: 18px; left: 18px;
+  background: rgba(17,24,39,0.9); border: 1px solid var(--panel-2);
   border-radius: 10px; padding: 0.7rem 1rem; font-size: 0.78rem;
-  color: var(--text-2); z-index: 10; pointer-events: none;
+  color: var(--text-2); pointer-events: none; max-width: 280px;
 }
-.legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-.tooltip {
-  position: absolute; pointer-events: none; opacity: 0;
-  background: rgba(17,24,39,0.95); border: 1px solid var(--panel-2);
-  border-radius: 10px; padding: 0.7rem; font-size: 0.78rem;
-  color: var(--text); max-width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: opacity 0.15s; z-index: 20;
+.legend .dot {
+  display: inline-block; width: 11px; height: 11px; border-radius: 50%;
+  margin-right: 6px; vertical-align: middle;
 }
-.tooltip h4 { margin: 0 0 0.3rem; color: var(--accent); font-size: 0.95rem; }
-.tooltip .row { margin: 0.15rem 0; color: var(--text-2); }
-.tooltip .row b { color: var(--text); }
-@keyframes flashNew {
-  0% { fill-opacity: 1; stroke: var(--accent); stroke-width: 3px; }
-  50% { fill-opacity: 0.7; stroke: var(--accent); stroke-width: 5px; }
-  100% { fill-opacity: 1; stroke: #334155; stroke-width: 1px; }
+.legend .dot.penny { background: rgba(245,158,11,0.55); border: 1px solid var(--penny); }
+.legend .dot.glow { background: rgba(34,211,238,0.55); box-shadow: 0 0 8px var(--glow); border: 1px solid var(--glow); }
+.legend .dot.alert { background: rgba(248,113,113,0.55); border: 1px solid var(--danger); }
+#toast {
+  position: absolute; top: 18px; right: 18px;
+  background: var(--accent); color: #000; padding: 0.55rem 1rem;
+  border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+  opacity: 0; transform: translateY(-10px); transition: all 0.3s ease;
+  pointer-events: none; z-index: 20;
 }
-@keyframes popOut {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(0); opacity: 0; }
-}
-.flash-new circle {
-  animation: flashNew 5s ease-out forwards;
-}
-.popped circle {
-  animation: popOut 0.5s ease-in forwards;
-}
-.glow circle {
-  filter: drop-shadow(0 0 8px var(--glow)) drop-shadow(0 0 16px var(--glow));
-}
+#toast.show { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 <div id="header">
-  <h2>🫧 Bubble View &nbsp;|&nbsp; Float vs Price</h2>
+  <h1>🫧 OzMoEg Bubble View — Prototype</h1>
   <div id="controls">
     <span id="last-updated">—</span>
-    <button id="pause-btn" onclick="window.parent.postMessage('toggle-pause','*')">Pause refresh</button>
-    <button onclick="window.parent.postMessage('close','*')">Close</button>
+    <button class="primary" onclick="nextRefresh()">Simulate 1-min refresh</button>
+    <button onclick="resetView()">Reset</button>
   </div>
 </div>
-<div id="chart"></div>
-<div class="legend">
-  <div><span class="dot" style="background:var(--penny)"></span>Penny stock (&lt; $1)</div>
-  <div><span class="dot" style="background:var(--accent); box-shadow:0 0 8px var(--glow)"></span>Price change &gt; 80% (glowing)</div>
-  <div><span class="dot" style="background:var(--danger)"></span>ALERT status</div>
-  <div>Bubble size = price change % (abs)</div>
+<div id="chart-wrap">
+  <canvas id="bubbleCanvas"></canvas>
+  <div class="legend">
+    <div><span class="dot penny"></span>Penny stock (&lt; $1)</div>
+    <div><span class="dot glow"></span>Price change &gt; 80% (glowing)</div>
+    <div><span class="dot alert"></span>ALERT status</div>
+    <div style="margin-top:0.3rem;">X = Float (log) &nbsp;|&nbsp; Y = Price &nbsp;|&nbsp; Size = change %</div>
+  </div>
+  <div id="toast">New ticker: —</div>
 </div>
-<div class="tooltip" id="tooltip"></div>
-</body>
-</html>`;
+
+<script>
+// Embedded real scanner snapshots (latest 3). Times are UTC.
+const snapshots = [
+  {"time": "2026-07-30T12:12:57.523075Z", "tickers": [{"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.285, "float": 7713220.0, "change_pct": -5.0, "volume": 16918520, "market_cap": 2199949.49, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.285}, {"ticker": "NUWE", "name": "Nuwellis", "status": "ALERT", "price": 0.1674, "float": 1292730.0, "change_pct": -1.5, "volume": 1172208, "market_cap": 1000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.1674}, {"ticker": "STKH", "name": "Steakholder Foods", "status": "ALERT", "price": 0.3, "float": 3000000.0, "change_pct": 0.0, "volume": 13250614, "market_cap": 3000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.3}]},
+  {"time": "2026-07-30T12:10:57.881097Z", "tickers": [{"ticker": "STKH", "name": "Steakholder Foods", "status": "ALERT", "price": 0.3, "float": 3000000.0, "change_pct": 0.0, "volume": 13250614, "market_cap": 3000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.3}, {"ticker": "NUWE", "name": "Nuwellis", "status": "ALERT", "price": 0.1674, "float": 1292730.0, "change_pct": -1.5, "volume": 1172208, "market_cap": 1000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.1674}, {"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.285, "float": 7713220.0, "change_pct": -5.0, "volume": 16918520, "market_cap": 2199949.49, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.285}]},
+  {"time": "2026-07-30T12:09:52.486712Z", "tickers": [{"ticker": "STKH", "name": "Steakholder Foods", "status": "ALERT", "price": 0.3, "float": 3000000.0, "change_pct": 0.0, "volume": 13250614, "market_cap": 3000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.3}, {"ticker": "NUWE", "name": "Nuwellis", "status": "ALERT", "price": 0.1674, "float": 1292730.0, "change_pct": -1.5, "volume": 1172208, "market_cap": 1000000.0, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.1674}, {"ticker": "GCTK", "name": "Glucotrack", "status": "ALERT", "price": 0.285, "float": 7713220.0, "change_pct": -5.0, "volume": 16918520, "market_cap": 2199949.49, "country": "US", "cap_size": "nano-cap", "is_penny": true, "news_status": "—", "news_age": "—", "top_headline": "", "sec_filings": "—", "entry_price": 0.285}]}
+];
+
+let currentIdx = 0;
+let newTickers = new Set();
+let chart = null;
+
+const fmt = n => (n || n === 0) ? n.toLocaleString(undefined, {maximumFractionDigits: 2}) : '—';
+
+function colorFor(d) {
+  if (Math.abs(d.change_pct) > 80) return 'rgba(34,211,238,0.65)'; // glow cyan
+  if (d.is_penny) return 'rgba(245,158,11,0.55)'; // penny orange
+  if (d.status === 'ALERT') return 'rgba(248,113,113,0.55)'; // alert red
+  return 'rgba(45,212,191,0.55)'; // default teal
+}
+function borderFor(d) {
+  if (Math.abs(d.change_pct) > 80) return '#22d3ee';
+  if (d.is_penny) return '#f59e0b';
+  if (d.status === 'ALERT') return '#f87171';
+  return '#2dd4bf';
 }
 
-function initChart(win) {
-  render(win, snapshots[0].tickers, snapshots[0].time);
+function buildDataset(tickers) {
+  const maxChange = Math.max(...tickers.map(d => Math.abs(d.change_pct) || 1), 1);
+  return tickers.map(d => ({
+    x: Math.max(d.float, 1),
+    y: d.price,
+    r: Math.max(8, (Math.abs(d.change_pct) || 0) / maxChange * 45),
+    _raw: d,
+    backgroundColor: colorFor(d),
+    borderColor: newTickers.has(d.ticker) ? '#ffffff' : borderFor(d),
+    borderWidth: newTickers.has(d.ticker) ? 3 : 1,
+  }));
 }
 
-function render(win, data, timeStr) {
-  const container = win.document.getElementById('chart');
-  if (!container) return;
-  const tooltip = win.document.getElementById('tooltip');
-  const width = container.clientWidth;
-  const height = container.clientHeight;
-  data.forEach(d => { d._id = d.ticker; });
-
-  const margin = { top: 20, right: 30, bottom: 55, left: 65 };
-  const innerW = width - margin.left - margin.right;
-  const innerH = height - margin.top - margin.bottom;
-
-  const x = d3.scaleLog()
-    .domain(d3.extent(data, d => Math.max(d.float, 1)))
-    .range([0, innerW])
-    .nice();
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.price) * 1.15])
-    .range([innerH, 0]);
-  const size = d3.scaleSqrt()
-    .domain([0, d3.max(data, d => Math.abs(d.change_pct) || 1)])
-    .range([6, 60]);
-
-  container.innerHTML = '';
-
-  const svg = d3.select(container)
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
-
-  const g = svg.append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
-
-  g.append('g')
-    .attr('class', 'grid')
-    .attr('transform', `translate(0,${innerH})`)
-    .call(d3.axisBottom(x).ticks(6).tickSize(-innerH).tickFormat(''))
-    .call(g => g.select('.domain').remove())
-    .call(g => g.selectAll('.tick line').attr('stroke', '#1f2937'));
-
-  g.append('g')
-    .attr('class', 'grid')
-    .call(d3.axisLeft(y).ticks(6).tickSize(-innerW).tickFormat(''))
-    .call(g => g.select('.domain').remove())
-    .call(g => g.selectAll('.tick line').attr('stroke', '#1f2937'));
-
-  g.append('g')
-    .attr('transform', `translate(0,${innerH})`)
-    .call(d3.axisBottom(x).ticks(6).tickFormat(d3.format('.2s')))
-    .call(g => g.select('.domain').attr('stroke', '#374151'))
-    .call(g => g.selectAll('.tick text').attr('fill', '#94a3b8').attr('font-size', 11));
-
-  g.append('g')
-    .call(d3.axisLeft(y).ticks(6).tickFormat(d => `$${d.toFixed(2)}`))
-    .call(g => g.select('.domain').attr('stroke', '#374151'))
-    .call(g => g.selectAll('.tick text').attr('fill', '#94a3b8').attr('font-size', 11));
-
-  g.append('text')
-    .attr('x', innerW / 2)
-    .attr('y', innerH + 42)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#94a3b8')
-    .attr('font-size', 12)
-    .text('Float (shares, log scale)');
-
-  g.append('text')
-    .attr('transform', 'rotate(-90)')
-    .attr('x', -innerH / 2)
-    .attr('y', -45)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#94a3b8')
-    .attr('font-size', 12)
-    .text('Price ($)');
-
-  const y1 = y(1);
-  if (y1 < innerH && y1 > 0) {
-    g.append('rect')
-      .attr('x', 0)
-      .attr('y', y1)
-      .attr('width', innerW)
-      .attr('height', innerH - y1)
-      .attr('fill', 'rgba(245,158,11,0.06)')
-      .attr('stroke', 'none');
-    g.append('text')
-      .attr('x', innerW - 8)
-      .attr('y', innerH - 8)
-      .attr('text-anchor', 'end')
-      .attr('fill', 'rgba(245,158,11,0.5)')
-      .attr('font-size', 11)
-      .text('Penny stock zone (< $1)');
-  }
-
-  const nodes = g.selectAll('.bubble')
-    .data(data, d => d._id)
-    .join(
-      enter => {
-        const node = enter.append('g')
-          .attr('class', d => {
-            let cls = 'bubble';
-            if (Math.abs(d.change_pct) > 80) cls += ' glow';
-            if (newTickers.has(d.ticker)) cls += ' flash-new';
-            return cls;
-          })
-          .attr('transform', d => `translate(${x(Math.max(d.float,1))},${y(d.price)})`)
-          .style('cursor', 'pointer')
-          .style('opacity', 0)
-          .call(g => g.transition().duration(600).style('opacity', 1));
-        node.append('circle')
-          .attr('r', 0)
-          .attr('fill', d => d.is_penny ? 'var(--penny)' : (d.status === 'ALERT' ? 'var(--danger)' : 'var(--accent)'))
-          .attr('stroke', d => d.is_penny ? 'var(--penny)' : '#334155')
-          .attr('stroke-width', 1)
-          .attr('fill-opacity', d => d.is_penny ? 0.35 : 0.55)
-          .transition().duration(600)
-          .attr('r', d => size(Math.abs(d.change_pct) || 1));
-        node.append('text')
-          .attr('text-anchor', 'middle')
-          .attr('dy', '.35em')
-          .attr('fill', '#f8fafc')
-          .attr('font-size', d => Math.max(9, size(Math.abs(d.change_pct)||1)/3.5))
-          .attr('font-weight', 700)
-          .attr('pointer-events', 'none')
-          .text(d => d.ticker);
-        return node;
+function initChart() {
+  const ctx = document.getElementById('bubbleCanvas').getContext('2d');
+  Chart.register(ChartDataLabels);
+  chart = new Chart(ctx, {
+    type: 'bubble',
+    data: { datasets: [{ data: buildDataset(snapshots[0].tickers), label: 'Scanned tickers' }] },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 700, easing: 'easeOutQuart' },
+      layout: { padding: 10 },
+      scales: {
+        x: {
+          type: 'logarithmic',
+          title: { display: true, text: 'Float (shares, log scale)', color: '#94a3b8', font: { size: 12 } },
+          grid: { color: '#1f2937' },
+          ticks: { color: '#94a3b8', callback: v => Number(v).toLocaleString(undefined, {notation:'compact', compactDisplay:'short'}) },
+          border: { color: '#374151' }
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Price ($)', color: '#94a3b8', font: { size: 12 } },
+          grid: { color: '#1f2937' },
+          ticks: { color: '#94a3b8', callback: v => '$' + v.toFixed(2) },
+          border: { color: '#374151' }
+        }
       },
-      update => {
-        return update
-          .attr('class', d => {
-            let cls = 'bubble';
-            if (Math.abs(d.change_pct) > 80) cls += ' glow';
-            if (newTickers.has(d.ticker)) cls += ' flash-new';
-            return cls;
-          })
-          .transition().duration(750)
-          .attr('transform', d => `translate(${x(Math.max(d.float,1))},${y(d.price)})`)
-          .selection()
-          .select('circle')
-          .transition().duration(750)
-          .attr('r', d => size(Math.abs(d.change_pct) || 1))
-          .attr('fill', d => d.is_penny ? 'var(--penny)' : (d.status === 'ALERT' ? 'var(--danger)' : 'var(--accent)'));
-      },
-      exit => {
-        return exit.attr('class', 'bubble popped')
-          .transition().duration(500).style('opacity', 0).remove();
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(17,24,39,0.95)',
+          titleColor: '#2dd4bf',
+          bodyColor: '#94a3b8',
+          borderColor: '#1f2937',
+          borderWidth: 1,
+          padding: 12,
+          cornerRadius: 10,
+          displayColors: false,
+          callbacks: {
+            title: ctx => {
+              const d = ctx[0].raw._raw;
+              return `${d.ticker} — ${d.name}`;
+            },
+            label: ctx => {
+              const d = ctx.raw._raw;
+              const pct = d.change_pct ? `${d.change_pct >= 0 ? '+' : ''}${d.change_pct.toFixed(1)}%` : '—';
+              return [
+                `Status: ${d.status}`,
+                `Price: $${fmt(d.price)}`,
+                `Entry: $${fmt(d.entry_price)}`,
+                `Change: ${pct}`,
+                `Float: ${fmt(d.float)}`,
+                `Volume: ${fmt(d.volume)}`,
+                `Cap: ${d.cap_size || '—'} (${d.country})`,
+                `News: ${d.news_status}`,
+                `News age: ${d.news_age}`,
+                `SEC filings: ${d.sec_filings}`,
+                d.top_headline ? `Headline: ${d.top_headline}` : null
+              ].filter(Boolean);
+            }
+          }
+        },
+        datalabels: {
+          color: '#f8fafc',
+          font: { weight: 'bold', size: 11 },
+          align: 'center',
+          anchor: 'center',
+          formatter: ctx => ctx.raw._raw.ticker
+        },
+        annotation: {
+          // place-holder; real penny zone drawn below with custom plugin
+        }
       }
-    );
+    },
+    plugins: [{
+      id: 'pennyZone',
+      beforeDraw: (chart) => {
+        const { ctx, chartArea: { top, bottom, left, right }, scales: { y } } = chart;
+        const y1 = y.getPixelForValue(1);
+        if (y1 > top && y1 < bottom) {
+          ctx.save();
+          ctx.fillStyle = 'rgba(245,158,11,0.07)';
+          ctx.fillRect(left, y1, right - left, bottom - y1);
+          ctx.fillStyle = 'rgba(245,158,11,0.5)';
+          ctx.font = '11px Segoe UI';
+          ctx.textAlign = 'right';
+          ctx.fillText('Penny stock zone (< $1)', right - 8, bottom - 8);
+          ctx.restore();
+        }
+      }
+    }]
+  });
+  updateTimestamp(snapshots[0].time);
+}
 
-  nodes
-    .on('mouseenter', function(event, d) {
-      const fmt = n => n ? n.toLocaleString(undefined, {maximumFractionDigits:2}) : '—';
-      const pct = d.change_pct ? `${d.change_pct >= 0 ? '+' : ''}${d.change_pct.toFixed(1)}%` : '—';
-      tooltip.innerHTML = `
-        <h4>${d.ticker} — ${d.name}</h4>
-        <div class="row"><b>Status:</b> ${d.status}</div>
-        <div class="row"><b>Price:</b> $${fmt(d.price)}</div>
-        <div class="row"><b>Entry price:</b> $${fmt(d.entry_price)}</div>
-        <div class="row"><b>Change:</b> ${pct}</div>
-        <div class="row"><b>Float:</b> ${fmt(d.float)}</div>
-        <div class="row"><b>Volume:</b> ${fmt(d.volume)}</div>
-        <div class="row"><b>Cap:</b> ${d.cap_size || '—'} (${d.country})</div>
-        <div class="row"><b>News:</b> ${d.news_status}</div>
-        <div class="row"><b>News age:</b> ${d.news_age}</div>
-        <div class="row"><b>SEC filings:</b> ${d.sec_filings}</div>
-        <div class="row" style="margin-top:0.3rem;color:#cbd5e1;font-style:italic;">${d.top_headline}</div>
-      `;
-      tooltip.style.opacity = 1;
-      const box = container.getBoundingClientRect();
-      let left = event.clientX - box.left + 15;
-      let top = event.clientY - box.top + 15;
-      if (left + 280 > width) left -= 300;
-      if (top + 200 > height) top -= 220;
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-    })
-    .on('mousemove', function(event) {
-      const box = container.getBoundingClientRect();
-      let left = event.clientX - box.left + 15;
-      let top = event.clientY - box.top + 15;
-      if (left + 280 > width) left -= 300;
-      if (top + 200 > height) top -= 220;
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-    })
-    .on('mouseleave', () => { tooltip.style.opacity = 0; });
+function updateTimestamp(t) {
+  const el = document.getElementById('last-updated');
+  if (t) {
+    el.textContent = 'Updated: ' + new Date(t).toLocaleString('en-AU', { timeZone: 'Australia/Sydney' });
+  }
+}
 
-  const lu = win.document.getElementById('last-updated');
-  if (lu) lu.textContent = 'Updated: ' + (timeStr ? new Date(timeStr).toLocaleString('en-AU', {timeZone:'Australia/Sydney'}) : '—');
+function showToast(ticker) {
+  const toast = document.getElementById('toast');
+  toast.textContent = `New ticker: ${ticker}`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 5000);
 }
 
 function nextRefresh() {
-  if (!popup || popup.closed) return;
-  const prev = snapshots[currentSnapshotIdx].tickers;
-  currentSnapshotIdx = (currentSnapshotIdx + 1) % snapshots.length;
-  const next = snapshots[currentSnapshotIdx];
+  const prev = snapshots[currentIdx].tickers;
+  currentIdx = (currentIdx + 1) % snapshots.length;
+  const next = snapshots[currentIdx];
   const prevSet = new Set(prev.map(d => d.ticker));
   const nextSet = new Set(next.tickers.map(d => d.ticker));
   newTickers = new Set(next.tickers.map(d => d.ticker).filter(t => !prevSet.has(t)));
-  droppedTickers = new Set([...prevSet].filter(t => !nextSet.has(t)));
+  const dropped = [...prevSet].filter(t => !nextSet.has(t));
+
+  // Demo: if no real new ticker, flash one so user can see the effect
   if (newTickers.size === 0 && next.tickers.length) {
-    const idx = currentSnapshotIdx % next.tickers.length;
-    newTickers.add(next.tickers[idx].ticker);
+    const demo = next.tickers[currentIdx % next.tickers.length].ticker;
+    newTickers.add(demo);
+    showToast(demo);
+  } else {
+    newTickers.forEach(t => showToast(t));
   }
-  render(popup, next.tickers, next.time);
-  setTimeout(() => { newTickers.clear(); }, 5000);
-}
 
-let paused = false;
-function startRefresh() {
-  if (refreshTimer) clearInterval(refreshTimer);
-  refreshTimer = setInterval(() => { if (!paused) nextRefresh(); }, 60000);
-}
-function stopRefresh() {
-  if (refreshTimer) clearInterval(refreshTimer);
-}
+  chart.data.datasets[0].data = buildDataset(next.tickers);
+  chart.update();
+  updateTimestamp(next.time);
 
-window.addEventListener('message', e => {
-  if (e.data === 'toggle-pause') {
-    paused = !paused;
-    if (popup && !popup.closed) {
-      const btn = popup.document.getElementById('pause-btn');
-      if (btn) btn.textContent = paused ? 'Resume refresh' : 'Pause refresh';
+  setTimeout(() => {
+    newTickers.clear();
+    if (chart) {
+      chart.data.datasets[0].data = buildDataset(next.tickers);
+      chart.update('none');
     }
-  } else if (e.data === 'close') {
-    stopRefresh();
-    if (popup && !popup.closed) popup.close();
-    popup = null;
-  }
-});
+  }, 5000);
+}
 
-startRefresh();
+function resetView() {
+  currentIdx = 0;
+  newTickers.clear();
+  chart.data.datasets[0].data = buildDataset(snapshots[0].tickers);
+  chart.update();
+  updateTimestamp(snapshots[0].time);
+}
+
+window.addEventListener('load', initChart);
 </script>
 </body>
 </html>
