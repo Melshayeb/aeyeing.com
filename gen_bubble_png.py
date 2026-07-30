@@ -112,6 +112,9 @@ for _ in range(100):
         positions[t1['ticker']][0] = positions[t1['ticker']][0] * 0.85 + orig_x * 0.15
         positions[t1['ticker']][1] = positions[t1['ticker']][1] * 0.85 + orig_y * 0.15
 
+# Ensure GCTK bubble stays above its label (push it up slightly if it dropped too low)
+positions['GCTK'][1] = max(positions['GCTK'][1], math.log10(0.42))
+
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
