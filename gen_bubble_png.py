@@ -172,28 +172,29 @@ for t in label_inside:
             ha='center', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
 
-# Outside labels with arrows - placed just next to the bubble, no touching
+# Outside labels with arrows - placed just next to the bubble, small gap
 for t in label_outside:
     bx, by = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
-    offset_x = max(260_000, by * 180_000)
+    offset_x = max(200_000, by * 140_000)
     tx = bx + offset_x
     # Stack ticker above country with vertical separation
-    ax.text(tx, by * 1.008, t['ticker'],
+    ax.text(tx, by * 1.006, t['ticker'],
             ha='left', va='bottom', color='white', fontsize=9.5,
             fontweight='bold', linespacing=0.7, zorder=6)
-    ax.text(tx, by * 0.992, t['country'],
+    ax.text(tx, by * 0.994, t['country'],
             ha='left', va='top', color='white', fontsize=7,
             linespacing=0.7, zorder=6)
-    ax.annotate('', xy=(bx + offset_x * 0.15, by), xytext=(tx - 70_000, by),
+    ax.annotate('', xy=(bx + offset_x * 0.08, by), xytext=(tx - 50_000, by),
                 arrowprops=dict(arrowstyle='-', color='#94a3b8', lw=0.7), zorder=5)
 
 # Hover tooltip mockup on NUWE
 for t in tickers:
     if t['ticker'] == 'NUWE':
         x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
+        status_display = f"Alert: {t.get('alert_level','High')}" if t['status'] == 'ALERT' else t['status']
         ax.text(x, y * 0.78,
                 f"${t['price']:.2f} | Float {t['float']/1_000_000:.2f}M\n"
-                f"Change {t['change_pct']:+.1f}% | {t['status']}\n"
+                f"Change {t['change_pct']:+.1f}% | {status_display}\n"
                 f"Vol 1.2M | News 12m | SEC 3",
                 ha='center', va='top', color='#94a3b8', fontsize=8,
                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
