@@ -1,4 +1,4 @@
-import json, glob, os
+import json, glob, os, math
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
@@ -73,23 +73,60 @@ for r in data.get('scan_results', []):
 
 print('tickers:', [(t['ticker'], t['price'], t['float'], t['country']) for t in tickers])
 
+# Plot coordinate transforms: log y, linear x
+def price_to_y(p): return math.log10(p)
+def float_to_x(f): return f
+
+# Estimate bubble radius in plot coordinates (approx)
+maxc = max(abs(t['change_pct']) or 1 for t in tickers)
+for t in tickers:
+    rel = (abs(t['change_pct']) or 0) / maxc
+    t['plot_r'] = 0.08 + rel * 0.18  # in log-price units
+
+# Simple force-directed repulsion for overlapping bubbles
+# Use small displacements in (x, log-y) space, anchored to original position
+positions = {t['ticker']: [float_to_x(t['float']), price_to_y(t['price'])] for t in tickers}
+
+for _ in range(100):
+    for i, t1 in enumerate(tickers):
+        fx, fy = 0.0, 0.0
+        x1, y1 = positions[t1['ticker']]
+        for t2 in tickers:
+            if t1['ticker'] == t2['ticker']:
+                continue
+            x2, y2 = positions[t2['ticker']]
+            dx = x1 - x2
+            dy = y1 - y2
+            dist = math.hypot(dx, dy * 8_000_000)  # scale y to comparable magnitude
+            min_dist = (t1['plot_r'] + t2['plot_r']) * 8_000_000
+            if dist < min_dist and dist > 0:
+                force = (min_dist - dist) / dist
+                fx += force * dx
+                fy += force * dy / (8_000_000 ** 2)
+        # Dampen and anchor to original
+        positions[t1['ticker']][0] += fx * 0.02
+        positions[t1['ticker']][1] += fy * 0.02
+        # Pull back toward original
+        orig_x = float_to_x(t1['float'])
+        orig_y = price_to_y(t1['price'])
+        positions[t1['ticker']][0] = positions[t1['ticker']][0] * 0.85 + orig_x * 0.15
+        positions[t1['ticker']][1] = positions[t1['ticker']][1] * 0.85 + orig_y * 0.15
+
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
 # Focus the chart on the trade zone: Y from $0.50 to $25 with log scale
-# This makes $2-$20 take most of the vertical space
 ax.set_xlim(-300_000, 12_500_000)
 ax.set_yscale('log')
 ax.set_ylim(0.45, 28)
 
-# Small, subtle penny zone (thin strip)
-ax.axhspan(0.45, 1, color='#f87171', alpha=0.06, zorder=1)
+# Small, subtle penny zone
+ax.axhspan(0.45, 1, color='#f87171', alpha=0.05, zorder=1)
 
-# Prominent recommended trade zone - stronger golden fill
+# Prominent recommended trade zone
 ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.22, zorder=1)
 
-# Bubbles - keep big for readability
-maxc = max(abs(t['change_pct']) or 1 for t in tickers)
+# Bubbles
 sizes = [min(5000, max(900, (abs(t['change_pct']) or 0) / maxc * 4500)) for t in tickers]
 
 colors = []
@@ -104,47 +141,23 @@ for t in tickers:
     else:
         colors.append((45/255, 212/255, 191/255, 0.55)); edgecolors.append('#2dd4bf')
 
-ax.scatter([t['float'] for t in tickers], [t['price'] for t in tickers],
-           s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
+x_vals = [positions[t['ticker']][0] for t in tickers]
+y_vals = [10 ** positions[t['ticker']][1] for t in tickers]
 
-# Labels inside bubbles with offsets to reduce overlap
-offsets = {
-    'PN': (0, 0),
-    'INLF': (0, 0),
-    'FFAI': (0, 0),
-    'NUWE': (0, 0),
-    'STKH': (0, 0),
-    'YHC': (0, 0),
-    'GCTK': (0, 0),
-    'CYCU': (0, 0),
-    'GVH': (0, 0),
-}
-# Apply small separation for overlapping pairs
+ax.scatter(x_vals, y_vals, s=sizes, c=colors, edgecolors=edgecolors, linewidths=1.6, zorder=3)
+
+# Labels inside bubbles
+for t in tickers:
+    x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
+    ax.text(x, y, f"{t['ticker']}\n{t['country']}",
+            ha='center', va='center', color='white', fontsize=9.5, fontweight='bold',
+            linespacing=0.72, zorder=6)
+
+# Hover tooltip mockup on NUWE
 for t in tickers:
     if t['ticker'] == 'NUWE':
-        t['price_plot'] = t['price'] * 1.05
-    elif t['ticker'] == 'STKH':
-        t['price_plot'] = t['price'] * 0.93
-    else:
-        t['price_plot'] = t['price']
-
-for t in tickers:
-    ox, oy = offsets.get(t['ticker'], (0, 0))
-    if ox or oy:
-        ax.annotate(f"{t['ticker']}\n{t['country']}",
-                    xy=(t['float'], t['price_plot']), xytext=(ox, oy),
-                    textcoords='offset points', ha='center', va='center',
-                    color='white', fontsize=9.5, fontweight='bold',
-                    linespacing=0.72, zorder=6)
-    else:
-        ax.text(t['float'], t['price_plot'], f"{t['ticker']}\n{t['country']}",
-                ha='center', va='center', color='white', fontsize=9.5, fontweight='bold',
-                linespacing=0.72, zorder=6)
-
-# Hover tooltip mockup
-for t in tickers:
-    if t['ticker'] == 'NUWE':
-        ax.text(t['float'], t['price_plot'] * 0.78,
+        x, y = positions[t['ticker']][0], 10 ** positions[t['ticker']][1]
+        ax.text(x, y * 0.78,
                 f"${t['price']:.2f}\nFloat: {t['float']/1_000_000:.2f}M",
                 ha='center', va='top', color='#94a3b8', fontsize=8,
                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#111827', edgecolor='#374151', alpha=0.95))
