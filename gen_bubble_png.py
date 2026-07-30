@@ -127,8 +127,8 @@ ax.set_ylim(0.20, 28)
 # Very small subtle penny zone
 ax.axhspan(0.20, 0.55, color='#f87171', alpha=0.05, zorder=1)
 
-# Prominent green recommended trade zone, expanded from $1.80 to $22
-ax.fill_between([0, 1_500_000], 1.8, 22, color='#34d399', alpha=0.18, zorder=1)
+# Prominent green recommended trade zone, expanded to Float 2M, Price $1.80-$22
+ax.fill_between([0, 2_000_000], 1.8, 22, color='#34d399', alpha=0.18, zorder=1)
 
 # Bubbles
 sizes = [min(5000, max(900, (abs(t['change_pct']) or 0) / maxc * 4500)) for t in tickers]
