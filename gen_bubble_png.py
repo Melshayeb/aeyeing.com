@@ -119,16 +119,16 @@ positions['CYCU'][1] = max(positions['CYCU'][1], math.log10(0.30))
 fig, ax = plt.subplots(figsize=(15, 10.5), facecolor='#0b0f17')
 ax.set_facecolor('#0b0f17')
 
-# Focus the chart on the trade zone, but start y from 0.20 to avoid clipping pennies
+# Focus the chart: small penny zone at bottom, large trade zone above
 ax.set_xlim(-300_000, 12_500_000)
 ax.set_yscale('log')
 ax.set_ylim(0.20, 28)
 
-# Penny zone fill from 0.20 to 1
-ax.axhspan(0.20, 1, color='#f87171', alpha=0.05, zorder=1)
+# Very small subtle penny zone
+ax.axhspan(0.20, 0.55, color='#f87171', alpha=0.05, zorder=1)
 
-# Prominent recommended trade zone
-ax.fill_between([0, 1_500_000], 2, 20, color='#fbbf24', alpha=0.22, zorder=1)
+# Prominent green recommended trade zone, expanded from $1.80 to $22
+ax.fill_between([0, 1_500_000], 1.8, 22, color='#34d399', alpha=0.18, zorder=1)
 
 # Bubbles
 sizes = [min(5000, max(900, (abs(t['change_pct']) or 0) / maxc * 4500)) for t in tickers]
