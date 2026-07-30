@@ -79,6 +79,7 @@
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
 <link href="images/logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <style>
         :root {
             --bg-dark: #0a0e1a;
@@ -1448,6 +1449,28 @@
         .scanner-toggle button:hover { border-color: var(--accent-blue); color: var(--text-primary); }
         .scanner-toggle button.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
         #scanner-timestamp { font-size: 0.7rem; color: var(--text-secondary); white-space: nowrap; }
+
+        /* Bubble View button + modal */
+        .bubble-view-btn {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            padding: 0.4rem 0.75rem; border-radius: 6px;
+            border: 1px solid var(--accent-teal); background: rgba(20,184,166,0.15);
+            color: var(--accent-teal); font-size: 0.8rem; font-weight: 600; cursor: pointer;
+            transition: all 0.15s;
+        }
+        .bubble-view-btn:hover { background: rgba(20,184,166,0.28); color: #fff; }
+        .bubble-modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; }
+        .bubble-modal[hidden] { display: none; }
+        .bubble-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); }
+        .bubble-modal-content { position: relative; width: min(1100px, 96vw); height: min(760px, 92vh); background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; }
+        .bubble-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--bg-card); }
+        .bubble-modal-header h2 { font-size: 1.15rem; background: linear-gradient(90deg, var(--accent-teal), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .bubble-modal-close { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+        .bubble-modal-close:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+        .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
+        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
+        .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
+        .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
     </style>
 </head>
 <body>
@@ -1513,7 +1536,6 @@
 <span data-phase="closed">Closed</span>
 </div>
 </div>
-</div>
 <div class="news-ticker-box">
 <div class="news-ticker-header">
 <h3><span class="news-scroll-icon">📡</span> Live News Stream</h3>
@@ -1530,6 +1552,22 @@
 </div>
 <!-- RIGHT PANEL -->
 <div class="right-panel">
+<!-- BUBBLE VIEW MODAL -->
+<div class="bubble-modal-backdrop"></div>
+<div class="bubble-modal-content">
+<div class="bubble-modal-header">
+<h2 id="bubble-modal-title">🫧 OzMoEg Bubble View</h2>
+<button class="bubble-modal-close" id="bubble-modal-close" title="Close bubble view" type="button">×</button>
+</div>
+<div class="bubble-modal-body">
+<p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
+<div class="bubble-chart-wrap">
+<canvas id="bubble-chart-canvas"></canvas>
+</div>
+</div>
+</div>
+</div>
+<!-- END BUBBLE VIEW MODAL -->
 <!-- CANDIDATES TABLE -->
 <div class="candidates-card">
 <div class="card-header" style="flex-wrap: wrap; gap: 0.75rem;">
@@ -1540,9 +1578,10 @@
 <button data-view="premarket" title="Saved pre-market/after-hours watchlist">🌅 Pre/After</button>
 <button data-view="watchlist" title="Sydney 17:00 catalyst watchlist">⏰ Watchlist</button>
 </div>
+<button class="bubble-view-btn" id="bubble-view-btn" title="Open interactive bubble chart" type="button">🫧 Bubble View</button>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🟢 US OPEN 01:57 AM AEST | Scanned: 50 | 7 candidates | 7 alerts (skipped: 0)
+🟢 US OPEN 01:55 AM AEST | Scanned: 50 | 7 candidates | 7 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -1570,8 +1609,8 @@
 <td>PN Smart Energy Limited</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (5)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T13:50:18.000+0000">2h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 3.14x vs ADV (6,012,415 today / 1,915,542 avg). Last: 2026-07-30T15:56:56.094000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+55.8% · Entry $16.70 · T1 $17.37 · T2 $17.70 · T3 $18.37</td>
+<td><span class="tape-mini tape-high" title="RVOL 3.13x vs ADV (6,004,944 today / 1,915,542 avg). Last: 2026-07-30T15:55:01.196000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+54.5% · Entry $16.56 · T1 $17.22 · T2 $17.55 · T3 $18.22</td>
 <td>1.17M</td>
 <td>—</td>
 </tr>
@@ -1580,8 +1619,8 @@
 <td>Cycurion Inc.</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-high">🔥 High (5)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T13:41:48.000+0000">2h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 287.98x vs ADV (317,314,372 today / 1,101,845 avg). Last: 2026-07-30T15:57:03.269000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+0.0% · Entry $0.71 · T1 $0.74 · T2 $0.76 · T3 $0.78</td>
+<td><span class="tape-mini tape-high" title="RVOL 284.87x vs ADV (313,884,880 today / 1,101,845 avg). Last: 2026-07-30T15:55:02.713000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>-0.1% · Entry $0.69 · T1 $0.72 · T2 $0.74 · T3 $0.76</td>
 <td>10.36M</td>
 <td><span class="sec-filings-mini" title="8-K (Jul 29), 8-K (Jul 24), 8-K (Jul 23)">8-K (Jul 29), 8-K (Jul 24), 8-K (Jul 23)</span></td>
 </tr>
@@ -1590,7 +1629,7 @@
 <td>Nuwellis Inc</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-medium">⚡ Medium (3)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T14:05:32.000+0000">1h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 317.8x vs ADV (98,962,638 today / 311,396 avg). Last: 2026-07-30T15:57:01.950000+00:00 · stale 0m">🔥 high volume</span></td>
+<td><span class="tape-mini tape-high" title="RVOL 316.99x vs ADV (98,709,654 today / 311,396 avg). Last: 2026-07-30T15:55:00.091000+00:00 · stale 0m">🔥 high volume</span></td>
 <td>+127.5% · Entry $4.30 · T1 $4.47 · T2 $4.56 · T3 $4.73</td>
 <td>509.93K</td>
 <td><span class="sec-filings-mini" title="8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)">8-K (Jul 24), 8-K (Jun 24), 8-K (Jun 18)</span></td>
@@ -1600,8 +1639,8 @@
 <td>Mindforge Inc</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T14:30:22.000+0000">1h ago</span></td>
-<td><span class="tape-mini tape-low" title="RVOL 0.52x vs ADV (685,731 today / 1,324,584 avg). Last: 2026-07-30T15:56:49.679000+00:00 · stale 0m">🌱 low volume</span></td>
-<td>+25.5% · Entry $8.57 · T1 $8.91 · T2 $9.08 · T3 $9.43</td>
+<td><span class="tape-mini tape-low" title="RVOL 0.51x vs ADV (681,351 today / 1,324,584 avg). Last: 2026-07-30T15:54:02.770000+00:00 · stale 1m">🌱 low volume</span></td>
+<td>+30.2% · Entry $8.89 · T1 $9.25 · T2 $9.42 · T3 $9.78</td>
 <td>1.20M</td>
 <td><span class="sec-filings-mini" title="424B5 (May 08)">424B5 (May 08)</span></td>
 </tr>
@@ -1610,8 +1649,8 @@
 <td>Globavend Holdings</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-29T21:30:30.000+0000">18h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 9.57x vs ADV (8,253,250 today / 862,269 avg). Last: 2026-07-30T15:57:03.139000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+23.1% · Entry $1.12 · T1 $1.16 · T2 $1.19 · T3 $1.23</td>
+<td><span class="tape-mini tape-high" title="RVOL 9.48x vs ADV (8,178,522 today / 862,269 avg). Last: 2026-07-30T15:55:01.452000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+24.3% · Entry $1.13 · T1 $1.18 · T2 $1.20 · T3 $1.24</td>
 <td>2.36M</td>
 <td>—</td>
 </tr>
@@ -1620,8 +1659,8 @@
 <td>Glucotrack</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T14:32:19.000+0000">1h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 11.36x vs ADV (62,507,143 today / 5,501,514 avg). Last: 2026-07-30T15:57:02.103000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+0.1% · Entry $0.40 · T1 $0.42 · T2 $0.42 · T3 $0.44</td>
+<td><span class="tape-mini tape-high" title="RVOL 11.25x vs ADV (61,878,548 today / 5,501,514 avg). Last: 2026-07-30T15:55:02.614000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>-0.1% · Entry $0.41 · T1 $0.43 · T2 $0.44 · T3 $0.45</td>
 <td>6.50M</td>
 <td><span class="sec-filings-mini" title="8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)">8-K (Jul 27), 8-K (Jul 15), 8-K (May 15)</span></td>
 </tr>
@@ -1630,8 +1669,8 @@
 <td>STEAKHOLDER FOODS LTD</td>
 <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
 <td class="news-age-cell"><span class="news-age" title="First published: 2026-07-30T08:30:35.000+0000">7h ago</span></td>
-<td><span class="tape-mini tape-high" title="RVOL 23.16x vs ADV (18,078,081 today / 780,630 avg). Last: 2026-07-30T15:57:00.802000+00:00 · stale 0m">🔥 high volume</span></td>
-<td>+34.2% · Entry $3.64 · T1 $3.78 · T2 $3.85 · T3 $4.00</td>
+<td><span class="tape-mini tape-high" title="RVOL 23.13x vs ADV (18,057,949 today / 780,630 avg). Last: 2026-07-30T15:55:00.515000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+30.3% · Entry $3.53 · T1 $3.67 · T2 $3.74 · T3 $3.88</td>
 <td>495.47K</td>
 <td><span class="sec-filings-mini" title="424B3 (May 19)">424B3 (May 19)</span></td>
 </tr>
@@ -1657,11 +1696,11 @@
 <tr>
 <td class="ticker-cell">CYCU <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>Cycurion Inc.</td>
-<td>$0.71</td>
-<td>+0.0%</td>
-<td>317,314,372</td>
+<td>$0.69</td>
+<td>-0.1%</td>
+<td>313,884,880</td>
 <td>0.0x</td>
-<td>$8.2M</td>
+<td>$8.1M</td>
 <td>10.36M</td>
 <td>Passed filters</td>
 </tr>
@@ -1670,7 +1709,7 @@
 <td>Nuwellis Inc</td>
 <td>$4.30</td>
 <td>+127.5%</td>
-<td>98,962,638</td>
+<td>98,709,654</td>
 <td>0.0x</td>
 <td>$2.2M</td>
 <td>509.93K</td>
@@ -1679,44 +1718,44 @@
 <tr>
 <td class="ticker-cell">DFNS <span class="country-badge">MICRO CAP</span></td>
 <td>T3 Defense Inc</td>
-<td>$82.50</td>
-<td>+64.3%</td>
-<td>6,359,770</td>
+<td>$82.00</td>
+<td>+63.3%</td>
+<td>6,326,273</td>
 <td>0.0x</td>
-<td>$83.7M</td>
+<td>$82.9M</td>
 <td>707.99K</td>
-<td>Filtered: price $82.500</td>
+<td>Filtered: price $82.000</td>
 </tr>
 <tr>
 <td class="ticker-cell">PN <span class="country-badge">NANO CAP</span></td>
 <td>PN Smart Energy Limited</td>
-<td>$16.70</td>
-<td>+55.8%</td>
-<td>6,012,415</td>
+<td>$16.56</td>
+<td>+54.5%</td>
+<td>6,004,944</td>
 <td>0.0x</td>
-<td>$42.9M</td>
+<td>$42.0M</td>
 <td>1.17M</td>
 <td>Passed filters</td>
 </tr>
 <tr>
 <td class="ticker-cell">GCTK <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>Glucotrack</td>
-<td>$0.40</td>
-<td>+0.1%</td>
-<td>62,507,143</td>
+<td>$0.41</td>
+<td>-0.1%</td>
+<td>61,878,548</td>
 <td>0.0x</td>
-<td>$3.1M</td>
+<td>$3.2M</td>
 <td>6.50M</td>
 <td>Passed filters</td>
 </tr>
 <tr>
 <td class="ticker-cell">CMCO <span class="country-badge">SMALL CAP</span></td>
 <td>Columbus Mckinnon Corp N Y</td>
-<td>$20.48</td>
-<td>+40.1%</td>
-<td>1,179,867</td>
+<td>$20.63</td>
+<td>+41.1%</td>
+<td>1,169,627</td>
 <td>0.0x</td>
-<td>$590.5M</td>
+<td>$594.7M</td>
 <td>28.25M</td>
 <td>Filtered: vol/float 0.04x &lt; 0.5x</td>
 </tr>
@@ -1724,89 +1763,111 @@
 <td class="ticker-cell">SXTC <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
 <td>China Sxt Pharmaceuticals Inc</td>
 <td>$0.07</td>
-<td>+0.7%</td>
-<td>474,163,960</td>
+<td>+0.3%</td>
+<td>473,481,557</td>
 <td>0.0x</td>
 <td>$3.1M</td>
 <td>7.44M</td>
-<td>Filtered: price $0.073, tiny price $0.073</td>
-</tr>
-<tr>
-<td class="ticker-cell">STKH <span class="country-badge">NANO CAP</span></td>
-<td>STEAKHOLDER FOODS LTD</td>
-<td>$3.64</td>
-<td>+34.2%</td>
-<td>18,078,081</td>
-<td>0.0x</td>
-<td>$2.1M</td>
-<td>495.47K</td>
-<td>Passed filters</td>
+<td>Filtered: price $0.072, tiny price $0.072</td>
 </tr>
 <tr>
 <td class="ticker-cell">LUNG <span class="country-badge">MICRO CAP</span></td>
 <td>Pulmonx Corp</td>
-<td>$1.67</td>
-<td>+33.5%</td>
-<td>3,730,565</td>
+<td>$1.66</td>
+<td>+33.1%</td>
+<td>3,713,530</td>
 <td>0.0x</td>
-<td>$70.2M</td>
+<td>$70.3M</td>
 <td>39.87M</td>
 <td>Filtered: vol/float 0.09x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">KEEL <span class="country-badge">SMALL CAP</span></td>
 <td>Keel Infrastructure Corp</td>
-<td>$4.21</td>
-<td>+32.5%</td>
-<td>37,057,237</td>
+<td>$4.20</td>
+<td>+32.1%</td>
+<td>36,919,823</td>
 <td>0.0x</td>
-<td>$2548.2M</td>
+<td>$2536.1M</td>
 <td>575.74M</td>
 <td>Filtered: float 575.7M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">SHAZ <span class="country-badge">SMALL CAP</span></td>
 <td>SharonAI</td>
-<td>$52.07</td>
-<td>+29.9%</td>
-<td>2,626,005</td>
+<td>$52.35</td>
+<td>+30.6%</td>
+<td>2,606,521</td>
 <td>0.0x</td>
-<td>$1846.4M</td>
+<td>$1848.3M</td>
 <td>30.62M</td>
-<td>Filtered: price $52.070, vol/float 0.09x &lt; 0.5x</td>
+<td>Filtered: price $52.350, vol/float 0.09x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">STKH <span class="country-badge">NANO CAP</span></td>
+<td>STEAKHOLDER FOODS LTD</td>
+<td>$3.53</td>
+<td>+30.3%</td>
+<td>18,057,949</td>
+<td>0.0x</td>
+<td>$2.1M</td>
+<td>495.47K</td>
+<td>Passed filters</td>
+</tr>
+<tr>
+<td class="ticker-cell">CORT <span class="country-badge">SMALL CAP</span></td>
+<td>Corcept Therapeutics Inc</td>
+<td>$121.16</td>
+<td>+30.3%</td>
+<td>2,200,985</td>
+<td>0.0x</td>
+<td>$12977.7M</td>
+<td>94.65M</td>
+<td>Filtered: price $121.160, mktcap $12977.7M, vol/float 0.02x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">MF <span class="country-badge">NANO CAP</span></td>
+<td>Mindforge Inc</td>
+<td>$8.89</td>
+<td>+30.2%</td>
+<td>681,351</td>
+<td>0.0x</td>
+<td>$16.2M</td>
+<td>1.20M</td>
+<td>Passed filters</td>
 </tr>
 <tr>
 <td class="ticker-cell">MKTX <span class="country-badge">SMALL CAP</span></td>
 <td>Marketaxess Hldgs Inc</td>
-<td>$163.09</td>
+<td>$163.07</td>
 <td>+29.7%</td>
-<td>4,735,863</td>
+<td>4,699,384</td>
 <td>0.0x</td>
-<td>$5796.5M</td>
+<td>$5795.6M</td>
 <td>35.21M</td>
-<td>Filtered: price $163.090, mktcap $5796.5M, vol/float 0.13x &lt; 0.5x</td>
+<td>Filtered: price $163.070, mktcap $5795.6M, vol/float 0.13x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">NBIS <span class="country-badge">SMALL CAP</span></td>
 <td>Nebius Group</td>
-<td>$191.47</td>
+<td>$191.44</td>
 <td>+29.2%</td>
-<td>26,950,870</td>
+<td>26,892,531</td>
 <td>0.0x</td>
-<td>$48619.0M</td>
+<td>$48602.5M</td>
 <td>212.19M</td>
-<td>Filtered: price $191.470, mktcap $48619.0M, float 212.2M &gt; 100M, vol/float 0.13x &lt; 0.5x</td>
+<td>Filtered: price $191.440, mktcap $48602.5M, float 212.2M &gt; 100M, vol/float 0.13x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">PLPC <span class="country-badge">SMALL CAP</span></td>
 <td>Preformed Line</td>
-<td>$366.04</td>
-<td>+29.1%</td>
-<td>89,528</td>
+<td>$365.20</td>
+<td>+28.8%</td>
+<td>88,313</td>
 <td>0.0x</td>
-<td>$1789.2M</td>
+<td>$1785.1M</td>
 <td>2.46M</td>
-<td>Filtered: price $366.040, vol/float 0.04x &lt; 0.5x</td>
+<td>Filtered: price $365.200, vol/float 0.04x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">PSQH <span class="country-badge">NANO CAP</span></td>
@@ -1820,37 +1881,26 @@
 <td>Filtered: vol/float 0.08x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">CORT <span class="country-badge">SMALL CAP</span></td>
-<td>Corcept Therapeutics Inc</td>
-<td>$119.07</td>
-<td>+28.1%</td>
-<td>2,222,665</td>
-<td>0.0x</td>
-<td>$12825.3M</td>
-<td>94.65M</td>
-<td>Filtered: price $119.070, mktcap $12825.3M, vol/float 0.02x &lt; 0.5x</td>
-</tr>
-<tr>
 <td class="ticker-cell">XRX <span class="country-badge">SMALL CAP</span></td>
 <td>Xerox Holdings Corp</td>
 <td>$3.38</td>
-<td>+28.0%</td>
-<td>20,990,132</td>
+<td>+28.1%</td>
+<td>20,930,415</td>
 <td>0.0x</td>
-<td>$442.0M</td>
+<td>$444.5M</td>
 <td>109.77M</td>
 <td>Filtered: float 109.8M &gt; 100M, vol/float 0.19x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">IREN <span class="country-badge">SMALL CAP</span></td>
 <td>IREN Ltd</td>
-<td>$37.34</td>
-<td>+27.4%</td>
-<td>41,917,099</td>
+<td>$37.41</td>
+<td>+27.6%</td>
+<td>41,689,920</td>
 <td>0.0x</td>
-<td>$13373.1M</td>
+<td>$13374.9M</td>
 <td>344.77M</td>
-<td>Filtered: mktcap $13373.1M, float 344.8M &gt; 100M, vol/float 0.12x &lt; 0.5x</td>
+<td>Filtered: mktcap $13374.9M, float 344.8M &gt; 100M, vol/float 0.12x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">RACC <span class="country-badge">MICRO CAP</span></td>
@@ -1864,191 +1914,158 @@
 <td>Filtered: vol 12,133, vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">FORM <span class="country-badge">SMALL CAP</span></td>
-<td>Formfactor Inc</td>
-<td>$105.85</td>
-<td>+26.8%</td>
-<td>1,054,727</td>
-<td>0.0x</td>
-<td>$8251.8M</td>
-<td>77.42M</td>
-<td>Filtered: price $105.850, mktcap $8251.8M, vol/float 0.01x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">BE <span class="country-badge">SMALL CAP</span></td>
-<td>Bloom Energy</td>
-<td>$207.37</td>
-<td>+26.6%</td>
-<td>20,624,390</td>
-<td>0.0x</td>
-<td>$61042.3M</td>
-<td>267.86M</td>
-<td>Filtered: price $207.370, mktcap $61042.3M, float 267.9M &gt; 100M, vol/float 0.08x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">WYFI <span class="country-badge">SMALL CAP</span></td>
-<td>WHITEFIBER INC</td>
-<td>$26.07</td>
-<td>+26.7%</td>
-<td>1,151,434</td>
-<td>0.0x</td>
-<td>$1006.1M</td>
-<td>11.03M</td>
-<td>Filtered: vol/float 0.10x &lt; 0.5x</td>
-</tr>
-<tr>
 <td class="ticker-cell">BHC <span class="country-badge">SMALL CAP</span></td>
 <td>Bausch Health Companies Inc</td>
-<td>$5.92</td>
-<td>+26.5%</td>
-<td>10,175,681</td>
+<td>$5.95</td>
+<td>+27.1%</td>
+<td>9,935,790</td>
 <td>0.0x</td>
-<td>$2212.8M</td>
+<td>$2220.3M</td>
 <td>325.98M</td>
 <td>Filtered: float 326.0M &gt; 100M, vol/float 0.03x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">CIFR <span class="country-badge">SMALL CAP</span></td>
-<td>Cipher Digital Inc</td>
-<td>$22.29</td>
-<td>+26.0%</td>
-<td>20,630,099</td>
+<td class="ticker-cell">FORM <span class="country-badge">SMALL CAP</span></td>
+<td>Formfactor Inc</td>
+<td>$105.89</td>
+<td>+26.9%</td>
+<td>1,052,567</td>
 <td>0.0x</td>
-<td>$9125.8M</td>
-<td>394.31M</td>
-<td>Filtered: mktcap $9125.8M, float 394.3M &gt; 100M, vol/float 0.05x &lt; 0.5x</td>
+<td>$8269.4M</td>
+<td>77.42M</td>
+<td>Filtered: price $105.890, mktcap $8269.4M, vol/float 0.01x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">MF <span class="country-badge">NANO CAP</span></td>
-<td>Mindforge Inc</td>
-<td>$8.57</td>
-<td>+25.5%</td>
-<td>685,731</td>
+<td class="ticker-cell">WYFI <span class="country-badge">SMALL CAP</span></td>
+<td>WHITEFIBER INC</td>
+<td>$26.03</td>
+<td>+26.5%</td>
+<td>1,147,090</td>
 <td>0.0x</td>
-<td>$15.7M</td>
-<td>1.20M</td>
-<td>Passed filters</td>
+<td>$1005.3M</td>
+<td>11.03M</td>
+<td>Filtered: vol/float 0.10x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">CIFR <span class="country-badge">SMALL CAP</span></td>
+<td>Cipher Digital Inc</td>
+<td>$22.26</td>
+<td>+25.8%</td>
+<td>20,558,570</td>
+<td>0.0x</td>
+<td>$9105.4M</td>
+<td>394.31M</td>
+<td>Filtered: mktcap $9105.4M, float 394.3M &gt; 100M, vol/float 0.05x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">KSCP <span class="country-badge">NANO CAP</span></td>
 <td>Knightscope, Inc.</td>
-<td>$1.73</td>
-<td>+25.4%</td>
-<td>1,510,225</td>
+<td>$1.74</td>
+<td>+25.7%</td>
+<td>1,505,955</td>
 <td>0.0x</td>
-<td>$35.0M</td>
+<td>$34.9M</td>
 <td>18.11M</td>
 <td>Filtered: vol/float 0.08x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">WLDS <span class="country-badge">NANO CAP</span></td>
-<td>Wearable Devices Ltd.</td>
-<td>$3.70</td>
-<td>+24.6%</td>
-<td>807,113</td>
+<td class="ticker-cell">BE <span class="country-badge">SMALL CAP</span></td>
+<td>Bloom Energy</td>
+<td>$205.61</td>
+<td>+25.6%</td>
+<td>20,509,873</td>
 <td>0.0x</td>
-<td>$8.1M</td>
-<td>1.64M</td>
-<td>Filtered: vol/float 0.49x &lt; 0.5x</td>
+<td>$60657.6M</td>
+<td>267.86M</td>
+<td>Filtered: price $205.610, mktcap $60657.6M, float 267.9M &gt; 100M, vol/float 0.08x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">GVH <span class="country-badge">NANO CAP</span></td>
+<td>Globavend Holdings</td>
+<td>$1.13</td>
+<td>+24.3%</td>
+<td>8,178,522</td>
+<td>0.0x</td>
+<td>$2.8M</td>
+<td>2.36M</td>
+<td>Passed filters</td>
 </tr>
 <tr>
 <td class="ticker-cell">FCEL <span class="country-badge">SMALL CAP</span></td>
 <td>Fuelcell Energy</td>
-<td>$22.44</td>
-<td>+24.1%</td>
-<td>6,374,417</td>
+<td>$22.39</td>
+<td>+23.8%</td>
+<td>6,362,280</td>
 <td>0.0x</td>
-<td>$1795.2M</td>
+<td>$1791.2M</td>
 <td>76.13M</td>
 <td>Filtered: vol/float 0.08x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">CRWV <span class="country-badge">SMALL CAP</span></td>
 <td>CoreWeave, Inc.</td>
-<td>$75.54</td>
-<td>+24.2%</td>
-<td>27,117,870</td>
+<td>$75.22</td>
+<td>+23.7%</td>
+<td>26,986,494</td>
 <td>0.0x</td>
-<td>$41196.0M</td>
+<td>$41095.1M</td>
 <td>365.51M</td>
-<td>Filtered: price $75.540, mktcap $41196.0M, float 365.5M &gt; 100M, vol/float 0.07x &lt; 0.5x</td>
+<td>Filtered: price $75.220, mktcap $41095.1M, float 365.5M &gt; 100M, vol/float 0.07x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">SNDK <span class="country-badge">SMALL CAP</span></td>
 <td>SanDisk Corp</td>
-<td>$1259.57</td>
-<td>+24.0%</td>
-<td>14,664,772</td>
+<td>$1252.28</td>
+<td>+23.3%</td>
+<td>14,520,228</td>
 <td>0.0x</td>
-<td>$186151.0M</td>
+<td>$185423.9M</td>
 <td>146.27M</td>
-<td>Filtered: price $1259.570, mktcap $186151.0M, float 146.3M &gt; 100M, vol/float 0.10x &lt; 0.5x</td>
+<td>Filtered: price $1252.280, mktcap $185423.9M, float 146.3M &gt; 100M, vol/float 0.10x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">GVH <span class="country-badge">NANO CAP</span></td>
-<td>Globavend Holdings</td>
-<td>$1.12</td>
-<td>+23.1%</td>
-<td>8,253,250</td>
+<td class="ticker-cell">BTDR <span class="country-badge">SMALL CAP</span></td>
+<td>Bitdeer Technologies Group</td>
+<td>$10.94</td>
+<td>+22.9%</td>
+<td>7,423,146</td>
 <td>0.0x</td>
-<td>$2.7M</td>
-<td>2.36M</td>
-<td>Passed filters</td>
+<td>$2661.9M</td>
+<td>132.24M</td>
+<td>Filtered: float 132.2M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">AXTI <span class="country-badge">SMALL CAP</span></td>
 <td>Axt Inc</td>
 <td>$45.36</td>
 <td>+22.7%</td>
-<td>5,856,815</td>
+<td>5,836,211</td>
 <td>0.0x</td>
-<td>$2965.0M</td>
+<td>$2972.8M</td>
 <td>60.74M</td>
 <td>Filtered: vol/float 0.10x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">RIOT <span class="country-badge">SMALL CAP</span></td>
 <td>Riot Platforms Ord Shs</td>
-<td>$22.35</td>
-<td>+22.5%</td>
-<td>11,428,313</td>
+<td>$22.32</td>
+<td>+22.4%</td>
+<td>11,397,438</td>
 <td>0.0x</td>
-<td>$8449.8M</td>
+<td>$8447.9M</td>
 <td>348.13M</td>
-<td>Filtered: mktcap $8449.8M, float 348.1M &gt; 100M, vol/float 0.03x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">BTDR <span class="country-badge">SMALL CAP</span></td>
-<td>Bitdeer Technologies Group</td>
-<td>$10.90</td>
-<td>+22.5%</td>
-<td>7,449,646</td>
-<td>0.0x</td>
-<td>$2649.7M</td>
-<td>132.24M</td>
-<td>Filtered: float 132.2M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
+<td>Filtered: mktcap $8447.9M, float 348.1M &gt; 100M, vol/float 0.03x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">CORZ <span class="country-badge">SMALL CAP</span></td>
 <td>Core Scientific Inc</td>
-<td>$22.09</td>
-<td>+21.9%</td>
-<td>13,997,741</td>
+<td>$22.07</td>
+<td>+21.8%</td>
+<td>13,939,391</td>
 <td>0.0x</td>
-<td>$7028.4M</td>
+<td>$7022.1M</td>
 <td>306.65M</td>
-<td>Filtered: mktcap $7028.4M, float 306.6M &gt; 100M, vol/float 0.05x &lt; 0.5x</td>
-</tr>
-<tr>
-<td class="ticker-cell">AIBZ <span class="country-badge">SMALL CAP</span></td>
-<td>Bitzero Holdings Inc</td>
-<td>$6.48</td>
-<td>+21.6%</td>
-<td>413,533</td>
-<td>0.0x</td>
-<td>$350.4M</td>
-<td>38.40M</td>
-<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
+<td>Filtered: mktcap $7022.1M, float 306.6M &gt; 100M, vol/float 0.05x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">DBGI <span class="country-badge">NANO CAP</span></td>
@@ -2064,13 +2081,13 @@
 <tr>
 <td class="ticker-cell">HUT <span class="country-badge">SMALL CAP</span></td>
 <td>Hut 8 Mining</td>
-<td>$106.84</td>
+<td>$106.87</td>
 <td>+21.2%</td>
-<td>2,978,176</td>
+<td>2,969,265</td>
 <td>0.0x</td>
-<td>$12017.2M</td>
+<td>$12028.4M</td>
 <td>102.07M</td>
-<td>Filtered: price $106.840, mktcap $12017.2M, float 102.1M &gt; 100M, vol/float 0.03x &lt; 0.5x</td>
+<td>Filtered: price $106.870, mktcap $12028.4M, float 102.1M &gt; 100M, vol/float 0.03x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">GYGY</td>
@@ -2084,15 +2101,37 @@
 <td>Filtered: mktcap $0.0M, vol 3,676, avg $vol $0.1M &lt; $0.5M</td>
 </tr>
 <tr>
+<td class="ticker-cell">AIBZ <span class="country-badge">SMALL CAP</span></td>
+<td>Bitzero Holdings Inc</td>
+<td>$6.47</td>
+<td>+21.4%</td>
+<td>411,531</td>
+<td>0.0x</td>
+<td>$349.8M</td>
+<td>38.40M</td>
+<td>Filtered: vol/float 0.01x &lt; 0.5x</td>
+</tr>
+<tr>
+<td class="ticker-cell">WLDS <span class="country-badge">NANO CAP</span></td>
+<td>Wearable Devices Ltd.</td>
+<td>$3.59</td>
+<td>+20.9%</td>
+<td>791,531</td>
+<td>0.0x</td>
+<td>$7.9M</td>
+<td>1.64M</td>
+<td>Filtered: vol/float 0.48x &lt; 0.5x</td>
+</tr>
+<tr>
 <td class="ticker-cell">APLD <span class="country-badge">SMALL CAP</span></td>
 <td>Applied Digital</td>
-<td>$28.06</td>
+<td>$28.04</td>
 <td>+20.8%</td>
-<td>15,849,870</td>
+<td>15,792,194</td>
 <td>0.0x</td>
-<td>$8080.9M</td>
+<td>$8086.7M</td>
 <td>260.92M</td>
-<td>Filtered: mktcap $8080.9M, float 260.9M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
+<td>Filtered: mktcap $8086.7M, float 260.9M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">BCAR <span class="country-badge">MICRO CAP</span></td>
@@ -2108,11 +2147,11 @@
 <tr>
 <td class="ticker-cell">CLSK <span class="country-badge">SMALL CAP</span></td>
 <td>Cleanspark Inc</td>
-<td>$14.45</td>
-<td>+20.3%</td>
-<td>17,725,637</td>
+<td>$14.44</td>
+<td>+20.2%</td>
+<td>17,688,187</td>
 <td>0.0x</td>
-<td>$3708.0M</td>
+<td>$3702.9M</td>
 <td>247.33M</td>
 <td>Filtered: float 247.3M &gt; 100M, vol/float 0.07x &lt; 0.5x</td>
 </tr>
@@ -2128,22 +2167,11 @@
 <td>Filtered: vol/float 0.00x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">WULF <span class="country-badge">SMALL CAP</span></td>
-<td>Terawulf Inc</td>
-<td>$18.10</td>
-<td>+19.9%</td>
-<td>22,806,681</td>
-<td>0.0x</td>
-<td>$8959.2M</td>
-<td>381.41M</td>
-<td>Filtered: mktcap $8959.2M, float 381.4M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
-</tr>
-<tr>
 <td class="ticker-cell">FRVO <span class="country-badge">SMALL CAP</span></td>
 <td>Fervo Energy Co.</td>
-<td>$20.45</td>
-<td>+19.7%</td>
-<td>1,713,962</td>
+<td>$20.49</td>
+<td>+20.0%</td>
+<td>1,700,646</td>
 <td>0.0x</td>
 <td>$6025.5M</td>
 <td>223.76M</td>
@@ -2156,7 +2184,7 @@
 <td>+19.6%</td>
 <td>375,088</td>
 <td>0.0x</td>
-<td>$252.0M</td>
+<td>$249.8M</td>
 <td>21.17M</td>
 <td>Filtered: vol/float 0.02x &lt; 0.5x</td>
 </tr>
@@ -2165,44 +2193,55 @@
 <td>HIVE Digital Technologies Ltd</td>
 <td>$3.03</td>
 <td>+19.5%</td>
-<td>12,293,372</td>
+<td>12,241,791</td>
 <td>0.0x</td>
 <td>$810.3M</td>
 <td>265.46M</td>
 <td>Filtered: float 265.5M &gt; 100M, vol/float 0.05x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">SEGG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
-<td>Sports Ent</td>
-<td>$0.67</td>
-<td>+0.0%</td>
-<td>391,914</td>
+<td class="ticker-cell">WULF <span class="country-badge">SMALL CAP</span></td>
+<td>Terawulf Inc</td>
+<td>$18.02</td>
+<td>+19.4%</td>
+<td>22,529,145</td>
 <td>0.0x</td>
-<td>$14.9M</td>
-<td>21.01M</td>
-<td>Filtered: vol/float 0.02x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
+<td>$8946.8M</td>
+<td>381.41M</td>
+<td>Filtered: mktcap $8946.8M, float 381.4M &gt; 100M, vol/float 0.06x &lt; 0.5x</td>
 </tr>
 <tr>
 <td class="ticker-cell">SEI <span class="country-badge">SMALL CAP</span></td>
 <td>Solaris Energy Infrastructure Inc</td>
-<td>$51.60</td>
-<td>+18.8%</td>
-<td>2,936,799</td>
+<td>$51.64</td>
+<td>+18.9%</td>
+<td>2,919,571</td>
 <td>0.0x</td>
-<td>$3799.2M</td>
+<td>$3794.8M</td>
 <td>66.30M</td>
-<td>Filtered: price $51.600, vol/float 0.04x &lt; 0.5x</td>
+<td>Filtered: price $51.640, vol/float 0.04x &lt; 0.5x</td>
 </tr>
 <tr>
-<td class="ticker-cell">LRCX <span class="country-badge">SMALL CAP</span></td>
-<td>Lam Research</td>
-<td>$299.92</td>
-<td>+18.9%</td>
-<td>9,638,390</td>
+<td class="ticker-cell">SEGG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Sports Ent</td>
+<td>$0.67</td>
+<td>+0.0%</td>
+<td>386,573</td>
 <td>0.0x</td>
-<td>$374546.0M</td>
-<td>1.25B</td>
-<td>Filtered: price $299.920, mktcap $374546.0M, float 1247.0M &gt; 100M, vol/float 0.01x &lt; 0.5x</td>
+<td>$15.2M</td>
+<td>21.01M</td>
+<td>Filtered: vol/float 0.02x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
+</tr>
+<tr>
+<td class="ticker-cell">TGHL <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>The GrowHub Limited</td>
+<td>$0.74</td>
+<td>-0.0%</td>
+<td>255,653</td>
+<td>0.0x</td>
+<td>$18.8M</td>
+<td>12.72M</td>
+<td>Filtered: vol/float 0.02x &lt; 0.5x, avg $vol $0.4M &lt; $0.5M</td>
 </tr>
 </tbody>
 </table>
@@ -4158,6 +4197,10 @@
                          isPre ? (window._lastPreMarketResults || []) :
                          (window._lastLiveResults || []);
             displayedResults = rows;
+            if (window.rebuildBubbleChart) {
+                const modal = document.getElementById('bubble-modal');
+                if (modal && !modal.hidden) window.rebuildBubbleChart();
+            }
             const tsEl = document.getElementById('scanner-timestamp');
             const tbody = document.querySelector('#scanner-table tbody');
             if (!tbody) return;
@@ -4558,6 +4601,393 @@
             resetRefreshTimer();
         })();
 
+        // ==================== BUBBLE VIEW ====================
+        (function() {
+            const countryMap = {
+                'United States': 'US', 'China / Cayman-China': 'CN', 'China / Cayman China': 'CN',
+                'China': 'CN', 'International (region 83)': 'IL', 'International': 'IL',
+                'Israel': 'IL', 'Canada': 'CA', 'Australia': 'AU', 'United Kingdom': 'UK',
+                'Hong Kong': 'HK', 'Singapore': 'SG', 'Japan': 'JP', 'South Korea': 'KR',
+                'Taiwan': 'TW', 'India': 'IN', 'Germany': 'DE', 'France': 'FR',
+                'Netherlands': 'NL', 'Switzerland': 'CH', 'Sweden': 'SE', 'Bermuda': 'BM',
+                'Ireland': 'IE', 'British Virgin Islands': 'VG', 'Cayman Islands': 'KY',
+                'Luxembourg': 'LU', 'Spain': 'ES', 'Italy': 'IT', 'Brazil': 'BR',
+                'Mexico': 'MX', 'South Africa': 'ZA', 'UAE': 'AE'
+            };
+
+            function getCountryShort(country) {
+                const c = (country || '').trim();
+                const mapped = countryMap[c];
+                if (mapped) return mapped;
+                if (c.length <= 3 && /^[A-Z]+$/.test(c)) return c;
+                if (c.length >= 2) return c.slice(0, 2).toUpperCase();
+                return '?';
+            }
+
+            function getAlertLevel(r) {
+                const score = r.news && r.news.max_score != null ? r.news.max_score : 0;
+                if (score >= 4) return 'High';
+                if (score >= 2) return 'Medium';
+                return 'Low';
+            }
+
+            function getNewsAge(r) {
+                const news = r.news || {};
+                if (!news.headlines || !news.headlines.length) return '—';
+                const newest = news.headlines.filter(h => h.raw_time).sort((a, b) => {
+                    const da = new Date(a.raw_time.replace(/\+00:00$/, 'Z').replace(/\+0000$/, 'Z'));
+                    const db = new Date(b.raw_time.replace(/\+00:00$/, 'Z').replace(/\+0000$/, 'Z'));
+                    return db - da;
+                })[0];
+                if (!newest) return '—';
+                const title = newest.raw_time ? `First published: ${newest.raw_time}` : '';
+                const ageText = computeNewsAge ? computeNewsAge(newest.raw_time) : '';
+                return ageText || '—';
+            }
+
+            function getVolume(r) {
+                const tape = r.tape || {};
+                const vol = tape.volume || r.volume || 0;
+                if (!vol) return '—';
+                if (vol >= 1e9) return `${(vol/1e9).toFixed(2)}B`;
+                if (vol >= 1e6) return `${(vol/1e6).toFixed(2)}M`;
+                if (vol >= 1e3) return `${(vol/1e3).toFixed(1)}K`;
+                return vol.toLocaleString();
+            }
+
+            function getSecFilings(r) {
+                if (!r.sec_filings || !String(r.sec_filings).trim()) return '0';
+                const s = String(r.sec_filings).trim();
+                const m = s.match(/\d+/);
+                return m ? m[0] : s;
+            }
+
+            function getChangePct(r) {
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.changeRatio != null) return q.changeRatio * 100;
+                const price = r.price || q.price || q.close || 0;
+                const prev = r.previous_price || q.preClose || price;
+                if (prev && price) return ((price - prev) / prev) * 100;
+                return r.change_ratio ? r.change_ratio * 100 : 0;
+            }
+
+            let bubbleChart = null;
+            let bubbleAnimationId = null;
+            const modal = document.getElementById('bubble-modal');
+            const btn = document.getElementById('bubble-view-btn');
+            const closeBtn = document.getElementById('bubble-modal-close');
+            const canvas = document.getElementById('bubble-chart-canvas');
+            if (!modal || !btn || !canvas) return;
+
+            function closeModal() {
+                modal.hidden = true;
+                if (bubbleAnimationId) cancelAnimationFrame(bubbleAnimationId);
+            }
+            function openModal() { modal.hidden = false; buildBubbleChart(); }
+
+            btn.addEventListener('click', openModal);
+            closeBtn?.addEventListener('click', closeModal);
+            modal.querySelector('.bubble-modal-backdrop')?.addEventListener('click', closeModal);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+            function buildBubbleChart() {
+                const ctx = canvas.getContext('2d');
+                if (bubbleChart) { bubbleChart.destroy(); bubbleChart = null; }
+
+                // Build rows from whichever scanner view is active
+                const rows = Array.isArray(window.displayedResults) && window.displayedResults.length
+                    ? window.displayedResults
+                    : (Array.isArray(window._lastLiveResults) ? window._lastLiveResults : []);
+
+                const raw = rows.map(r => {
+                    const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                    const price = parseFloat(r.price || q.price || q.close || 0);
+                    if (price < 0.20 || price > 50) return null;
+                    const floatShares = parseFloat(r.float_shares || 0);
+                    if (!isFinite(floatShares) || floatShares <= 0) return null;
+                    const changePct = getChangePct(r);
+                    const isPenny = price < 1.0;
+                    return {
+                        x: floatShares,
+                        y: price,
+                        r: Math.max(5, Math.min(35, (Math.abs(changePct) || 1) * 0.28)),
+                        ticker: r.ticker,
+                        country: getCountryShort(r.country),
+                        price: price,
+                        floatShares: floatShares,
+                        changePct: changePct,
+                        status: r.status || '',
+                        alertLevel: r.status === 'ALERT' ? getAlertLevel(r) : '',
+                        volume: getVolume(r),
+                        newsAge: getNewsAge(r),
+                        secFilings: getSecFilings(r),
+                        capSize: r.cap_size || '',
+                        isPenny: isPenny
+                    };
+                }).filter(Boolean);
+
+                if (!raw.length) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.textAlign = 'center';
+                    ctx.font = '14px Inter';
+                    ctx.fillText('No scanner data available. Wait for the next refresh.', canvas.width/2, canvas.height/2);
+                    return;
+                }
+
+                // Attach physics state for slow drift
+                const points = raw.map(p => ({
+                    ...p,
+                    ox: p.x, oy: p.y,
+                    vx: 0, vy: 0,
+                    phaseX: Math.random() * Math.PI * 2,
+                    phaseY: Math.random() * Math.PI * 2
+                }));
+
+                const maxFloat = Math.max(...points.map(p => p.x)) * 1.25;
+                const minY = 0.20, maxY = 28;
+
+                // Custom plugin: background zones + continuous drift + labels
+                const bubblePlugin = {
+                    id: 'ozmoegBubbleView',
+                    beforeDraw(chart) {
+                        const { ctx, chartArea: area, scales: { x, y } } = chart;
+                        if (!area) return;
+
+                        // Penny zone: y < $1
+                        ctx.save();
+                        ctx.fillStyle = 'rgba(248,113,113,0.06)';
+                        const y1 = y.getPixelForValue(minY);
+                        const yPenny = y.getPixelForValue(1);
+                        ctx.fillRect(area.left, Math.min(y1, yPenny), area.right - area.left, Math.abs(yPenny - y1));
+                        ctx.fillStyle = 'rgba(248,113,113,0.65)';
+                        ctx.font = 'italic 12px Inter';
+                        ctx.textAlign = 'left';
+                        ctx.fillText('Penny zone (< $1)', area.left + 8, yPenny - 6);
+                        ctx.restore();
+
+                        // Recommended trade zone: Float < 2M, Price $1.80 - $22
+                        ctx.save();
+                        ctx.fillStyle = 'rgba(52,211,153,0.12)';
+                        const xZone = x.getPixelForValue(2_000_000);
+                        const yZoneLow = y.getPixelForValue(1.8);
+                        const yZoneHigh = y.getPixelForValue(22);
+                        const zoneLeft = Math.max(area.left, x.getPixelForValue(0));
+                        const zoneRight = Math.min(area.right, xZone);
+                        if (zoneRight > zoneLeft) {
+                            ctx.fillRect(zoneLeft, yZoneHigh, zoneRight - zoneLeft, yZoneLow - yZoneHigh);
+                            ctx.fillStyle = 'rgba(52,211,153,0.9)';
+                            ctx.font = 'italic bold 13px Inter';
+                            ctx.textAlign = 'center';
+                            ctx.fillText('Recommended trade zone', zoneLeft + (zoneRight - zoneLeft) / 2, y.getPixelForValue(24));
+                        }
+                        ctx.restore();
+                    },
+                    afterDatasetsDraw(chart) {
+                        const { ctx, chartArea: area, scales: { x, y } } = chart;
+                        if (!area) return;
+                        const dataset = chart.data.datasets[0].data;
+                        const time = Date.now() / 1000;
+
+                        ctx.save();
+                        ctx.textBaseline = 'middle';
+                        for (const p of dataset) {
+                            const px = x.getPixelForValue(p.x);
+                            const py = y.getPixelForValue(p.y);
+                            const bubbleRadius = p.r;
+
+                            // Determine if label fits inside
+                            const labelFits = bubbleRadius >= 16 && (p.status === 'ALERT' || Math.abs(p.changePct) > 20);
+                            ctx.font = 'bold 11px Inter';
+                            const tickerWidth = ctx.measureText(p.ticker).width;
+                            ctx.font = '9px Inter';
+                            const countryWidth = ctx.measureText(p.country).width;
+                            const fits = Math.max(tickerWidth, countryWidth) <= bubbleRadius * 1.5 && bubbleRadius >= 14;
+
+                            if (fits) {
+                                ctx.fillStyle = '#fff';
+                                ctx.textAlign = 'center';
+                                ctx.font = 'bold 11px Inter';
+                                ctx.fillText(p.ticker, px, py - 4);
+                                ctx.font = '8px Inter';
+                                ctx.fillText(p.country, px, py + 6);
+                            } else {
+                                // Label just outside with short line
+                                const labelX = px + bubbleRadius + 8;
+                                const labelY = py;
+                                ctx.strokeStyle = 'rgba(148,163,184,0.6)';
+                                ctx.lineWidth = 1;
+                                ctx.beginPath();
+                                ctx.moveTo(px + bubbleRadius * 0.8, py);
+                                ctx.lineTo(labelX - 4, labelY);
+                                ctx.stroke();
+                                ctx.fillStyle = '#fff';
+                                ctx.textAlign = 'left';
+                                ctx.font = 'bold 11px Inter';
+                                ctx.fillText(p.ticker, labelX, labelY - 5);
+                                ctx.font = '8px Inter';
+                                ctx.fillText(p.country, labelX, labelY + 5);
+                            }
+                        }
+                        ctx.restore();
+                    }
+                };
+
+                bubbleChart = new Chart(ctx, {
+                    type: 'bubble',
+                    data: {
+                        datasets: [{
+                            label: 'Scanner results',
+                            data: points,
+                            backgroundColor: (ctx) => {
+                                const p = ctx.raw; if (!p) return 'rgba(45,212,191,0.55)';
+                                if (Math.abs(p.changePct) > 80) return 'rgba(34,211,238,0.72)';
+                                if (p.isPenny) return 'rgba(248,113,113,0.55)';
+                                if (p.status === 'ALERT') return 'rgba(248,113,113,0.55)';
+                                return 'rgba(45,212,191,0.55)';
+                            },
+                            borderColor: (ctx) => {
+                                const p = ctx.raw; if (!p) return '#2dd4bf';
+                                if (Math.abs(p.changePct) > 80) return '#22d3ee';
+                                if (p.isPenny) return '#f87171';
+                                if (p.status === 'ALERT') return '#f87171';
+                                return '#2dd4bf';
+                            },
+                            borderWidth: 1.5,
+                            hoverBackgroundColor: (ctx) => {
+                                const p = ctx.raw; if (!p) return 'rgba(255,255,255,0.25)';
+                                return p.status === 'ALERT' ? 'rgba(255,82,82,0.75)' : 'rgba(255,255,255,0.25)';
+                            },
+                            hoverBorderWidth: 2.5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: false,
+                        layout: { padding: { top: 10, right: 20, bottom: 10, left: 10 } },
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                title: { display: true, text: 'Float (shares)', color: '#94a3b8', font: { size: 13 } },
+                                min: -300_000,
+                                max: maxFloat,
+                                grid: { color: '#1f2937' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    callback: (v) => v >= 1_000_000 ? `${(v/1_000_000).toFixed(1)}M` : `${(v/1_000).toFixed(0)}K`
+                                },
+                                border: { color: '#374151' }
+                            },
+                            y: {
+                                type: 'logarithmic',
+                                title: { display: true, text: 'Price ($)', color: '#94a3b8', font: { size: 13 } },
+                                min: minY,
+                                max: maxY,
+                                grid: { color: '#1f2937' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    callback: (v) => v < 1 ? `$${v.toFixed(2)}` : `$${v.toFixed(0)}`
+                                },
+                                border: { color: '#374151' }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#94a3b8',
+                                    usePointStyle: true,
+                                    padding: 16,
+                                    generateLabels: () => [
+                                        { text: 'Penny stock (< $1)', fillStyle: 'rgba(248,113,113,0.55)', strokeStyle: '#f87171', pointStyle: 'circle' },
+                                        { text: 'Recommended trade zone', fillStyle: 'rgba(52,211,153,0.45)', strokeStyle: '#34d399', pointStyle: 'rect' },
+                                        { text: 'Price change > 80% (glow)', fillStyle: 'rgba(34,211,238,0.72)', strokeStyle: '#22d3ee', pointStyle: 'circle' },
+                                        { text: 'ALERT status', fillStyle: 'rgba(248,113,113,0.55)', strokeStyle: '#f87171', pointStyle: 'circle' }
+                                    ]
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(17,24,39,0.96)',
+                                titleColor: '#2dd4bf',
+                                bodyColor: '#94a3b8',
+                                borderColor: '#374151',
+                                borderWidth: 1,
+                                padding: 10,
+                                displayColors: false,
+                                callbacks: {
+                                    title: (items) => items[0].raw.ticker,
+                                    label: (ctx) => {
+                                        const p = ctx.raw;
+                                        const lines = [
+                                            `$${p.price.toFixed(p.price < 1 ? 3 : 2)} | Float ${(p.floatShares/1_000_000).toFixed(2)}M`,
+                                            `Change ${p.changePct >= 0 ? '+' : ''}${p.changePct.toFixed(1)}% | ${p.status === 'ALERT' ? 'Alert: ' + p.alertLevel : p.status || 'Candidate'}`,
+                                            `Vol ${p.volume} | News ${p.newsAge} | SEC ${p.secFilings}`
+                                        ];
+                                        return lines;
+                                    }
+                                }
+                            },
+                            ozmoegBubbleView: true
+                        }
+                    },
+                    plugins: [bubblePlugin]
+                });
+
+                // Slow continuous drift physics
+                function animate() {
+                    if (modal.hidden) return;
+                    const now = Date.now() / 1000;
+                    const xScale = bubbleChart.scales.x;
+                    const yScale = bubbleChart.scales.y;
+                    const dataset = bubbleChart.data.datasets[0].data;
+
+                    // Repulsion to prevent overlap
+                    for (let i = 0; i < dataset.length; i++) {
+                        let p = dataset[i];
+                        let fx = 0, fy = 0;
+                        for (let j = 0; j < dataset.length; j++) {
+                            if (i === j) continue;
+                            const q = dataset[j];
+                            const dx = p.x - q.x;
+                            const dy = Math.log10(p.y) - Math.log10(q.y);
+                            const dist = Math.hypot(dx, dy * maxFloat * 0.08);
+                            const minDist = (p.r + q.r) * maxFloat * 0.0008 + Math.max(p.x, q.x) * 0.02;
+                            if (dist < minDist && dist > 0) {
+                                const force = (minDist - dist) / dist;
+                                fx += force * dx;
+                                fy += force * dy / (maxFloat * 0.08);
+                            }
+                        }
+                        // Gentle perlin-like orbital drift
+                        const driftAmpX = maxFloat * 0.015;
+                        const driftAmpY = 0.03;
+                        const targetX = p.ox + Math.sin(now * 0.4 + p.phaseX) * driftAmpX;
+                        const targetYLog = Math.log10(p.oy) + Math.cos(now * 0.35 + p.phaseY) * driftAmpY;
+
+                        // Spring back to target + repulsion
+                        p.vx = (p.vx || 0) * 0.92 + (targetX - p.x) * 0.005 + fx * 0.02;
+                        const curLog = Math.log10(p.y);
+                        p.vy = (p.vy || 0) * 0.92 + (targetYLog - curLog) * 0.005 + fy * 0.02;
+
+                        p.x = Math.max(0, Math.min(maxFloat, p.x + p.vx));
+                        const newLog = Math.max(Math.log10(minY), Math.min(Math.log10(maxY), curLog + p.vy));
+                        p.y = Math.pow(10, newLog);
+                    }
+
+                    bubbleChart.update('none');
+                    bubbleAnimationId = requestAnimationFrame(animate);
+                }
+                if (bubbleAnimationId) cancelAnimationFrame(bubbleAnimationId);
+                bubbleAnimationId = requestAnimationFrame(animate);
+            }
+
+            // Expose rebuild for live data updates
+            window.rebuildBubbleChart = buildBubbleChart;
+        })();
+
 </script>
+</div>
+</div>
 </body>
 </html>
