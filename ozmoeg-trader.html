@@ -4436,16 +4436,16 @@
             }
 
             function getBubbleColor(r, changePct) {
-                // Match PNG priority: ALERT status first, then penny, then >80% glow.
+                // Glow cyan wins for extreme movers, then ALERT, then penny stock.
+                if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
                 if (r?.status === 'ALERT') return 'rgba(248,113,113,0.55)';
                 if (r?.is_penny_stock || getPrice(r) < 1) return 'rgba(248,113,113,0.55)';
-                if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
                 return 'rgba(45,212,191,0.55)';
             }
 
             function getBubbleBorderColor(r, changePct) {
-                if (r?.status === 'ALERT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
                 if (Math.abs(changePct) > 80) return '#22d3ee';
+                if (r?.status === 'ALERT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
                 return '#2dd4bf';
             }
 
@@ -4539,7 +4539,7 @@
                 const pluginLegend = {
                     id: 'bottomLegend',
                     afterDraw(chart) {
-                        const { ctx, chartArea: { left, top, width, height } } = chart;
+                        const { ctx, chartArea: { left, top, width, height }, scales: { x } } = chart;
                         const items = [
                             { color: 'rgba(248,113,113,0.55)', edge: '#f87171', label: 'Penny stock (< $1)' },
                             { color: 'rgba(52,211,153,0.45)', edge: '#34d399', label: 'Recommended trade zone' },
@@ -4550,7 +4550,8 @@
                         const box = 12;
                         const gapLabel = 8;
                         const gapItem = 28;
-                        const rowY = top + height + 34;
+                        // Position legend below the X-axis title area (under "Float (shares)")
+                        const rowY = top + height + 52;
                         ctx.save();
                         ctx.font = '11px Inter, sans-serif';
                         ctx.textBaseline = 'middle';
@@ -4659,7 +4660,7 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: false,
-                        layout: { padding: { top: 10, right: 70, bottom: 38, left: 10 } },
+                        layout: { padding: { top: 10, right: 70, bottom: 58, left: 10 } },
                         scales: {
                             x: {
                                 type: 'linear',
