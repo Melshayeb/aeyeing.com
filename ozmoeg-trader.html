@@ -3805,9 +3805,14 @@
             let bubbleAnimationId = null;
 
             function buildBubbleChart() {
-                // Always use the latest live scanner results as the authoritative source.
-                // displayedResults may lag or be from an earlier refresh, so prefer _lastLiveResults.
-                const rows = (window._lastLiveResults || window.displayedResults || []).filter(r => r);
+                // Bubble View must always show the LIVE scanner results, not the active page view
+                // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
+                const rows = (window._lastBubbleViewResults || window._lastLiveResults || []).filter(r => {
+                    // Exclude watchlist rows with no real float or price data.
+                    const float = getFloat(r);
+                    const price = getPrice(r);
+                    return float != null && float > 0 && price != null && price > 0;
+                });
                 if (!rows.length) return;
 
                 const ctx = document.getElementById('bubble-chart-canvas');
@@ -4115,7 +4120,7 @@
 
             async function refreshBubbleData() {
                 // Re-fetch the latest snapshot directly so Bubble View always reflects
-                // the most recent scanner output, even if the main page hasn't refreshed yet.
+                // the most recent LIVE scanner output, never the watchlist/premarket fallback view.
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
@@ -4124,9 +4129,10 @@
                     const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
                         const data = await res.json();
-                        const results = data?.scan_results || (Array.isArray(data) ? data : []);
+                        // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
+                        const results = data?.scan_results || [];
                         if (results.length) {
-                            window._lastLiveResults = results;
+                            window._lastBubbleViewResults = results;
                             window._lastLiveQuotes = data?.live_quotes || {};
                         }
                     }
@@ -4284,6 +4290,7 @@
                 window._lastPreMarketResults = preMarketResults;
                 window._lastPreMarketWatchlist = preMarketWatchlist;
                 window._lastLiveResults = results;
+                window._lastBubbleViewResults = data.scan_results || results || [];
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
 
