@@ -1473,6 +1473,11 @@
         .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
+        .bubble-chart-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--text-secondary); text-align: center; pointer-events: none; }
+        .bubble-chart-status-icon { font-size: 2.5rem; opacity: 0.35; animation: bubblePulse 2s ease-in-out infinite; }
+        .bubble-chart-status-text { font-size: 0.9rem; font-weight: 500; }
+        .bubble-chart-status.hidden { display: none; }
+        @keyframes bubblePulse { 0%, 100% { transform: scale(1); opacity: 0.35; } 50% { transform: scale(1.08); opacity: 0.6; } }
     </style>
 </head>
 <body>
@@ -1568,7 +1573,7 @@
 <button class="bubble-view-btn" id="bubble-view-btn" title="Open interactive bubble chart" type="button">🫧 Bubble View</button>
 <span id="scanner-timestamp"></span>
 <span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
-🔴 US CLOSED 05:10 PM AEST | Scanned: 55 | 0 candidates | 0 alerts (skipped: 0)
+🔴 US CLOSED 05:12 PM AEST | Scanned: 55 | 0 candidates | 0 alerts (skipped: 0)
                     <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
@@ -3804,16 +3809,32 @@
             let bubbleChart = null;
             let bubbleAnimationId = null;
 
+            function setBubbleStatus(text) {
+                const el = document.getElementById('bubble-chart-status');
+                const txt = document.getElementById('bubble-chart-status-text');
+                if (!el || !txt) return;
+                if (text) {
+                    txt.textContent = text;
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            }
+
             function buildBubbleChart() {
                 // Bubble View must always show the LIVE scanner results, not the active page view
                 // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
-                const rows = (window._lastBubbleViewResults || window._lastLiveResults || []).filter(r => {
+                const allRows = (window._lastBubbleViewResults || window._lastLiveResults || []);
+                const rows = allRows.filter(r => {
                     // Exclude watchlist rows with no real float or price data.
                     const float = getFloat(r);
                     const price = getPrice(r);
                     return float != null && float > 0 && price != null && price > 0;
                 });
-                if (!rows.length) return;
+                if (!rows.length) {
+                    setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
+                    return;
+                }
 
                 const ctx = document.getElementById('bubble-chart-canvas');
                 if (!ctx) return;
@@ -4076,6 +4097,9 @@
                 };
 
                 bubbleChart = new Chart(ctx, config);
+
+                // Hide the "waiting" status overlay once the chart is drawn.
+                setBubbleStatus(null);
 
                 // Expose chart reference for external rebuild/destroy logic.
                 window.bubbleChart = bubbleChart;
@@ -4488,6 +4512,10 @@
 <p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
 <div class="bubble-chart-wrap">
 <canvas id="bubble-chart-canvas"></canvas>
+<div class="bubble-chart-status" id="bubble-chart-status">
+<div class="bubble-chart-status-icon">🫧</div>
+<div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div>
+</div>
 </div>
 </div>
 </div>
