@@ -1470,6 +1470,8 @@
         .bubble-modal-refresh { height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; padding: 0 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
         .bubble-modal-refresh:hover { background: var(--accent-teal); color: #fff; border-color: var(--accent-teal); }
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
+        .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
+        .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
         .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
@@ -3568,30 +3570,32 @@
         function updateRefreshCountdown() {
             const label = document.getElementById('page-refresh-label');
             const lastLabel = document.getElementById('last-refresh-label');
+            // Bubble View mirrors
+            const bubbleNext = document.getElementById('bubble-next-refresh');
+            const bubbleLast = document.getElementById('bubble-last-refresh');
             // "Last refresh" reflects the actual JSON scan timestamp so users can see how fresh the data is.
             const lastFetchTime = window._lastFetchSuccessAt || window._lastFetchAttemptAt;
             const jsonDataTime = window._lastScanTimestamp;
             const newsTickerTs = window._lastNewsTickerTs || jsonDataTime;
-            if (lastLabel) {
+            if (lastLabel || bubbleLast) {
+                let text = 'Last refresh: —';
+                let color = '';
                 if (jsonDataTime) {
                     const jsonAgeMin = Math.max(0, (Date.now() - new Date(jsonDataTime).getTime()) / 60000);
                     const stale = jsonAgeMin > 5;
                     const ageText = stale ? ` ⚠️ ${Math.round(jsonAgeMin)}m stale data` : '';
-                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(jsonDataTime))}${ageText}`;
-                    lastLabel.style.color = stale ? 'var(--danger)' : '';
+                    text = `Last refresh: ${formatScanTimestamp(new Date(jsonDataTime))}${ageText}`;
+                    color = stale ? 'var(--danger)' : '';
                 } else if (lastFetchTime) {
-                    lastLabel.textContent = `Last refresh: ${formatScanTimestamp(new Date(lastFetchTime))}`;
-                    lastLabel.style.color = '';
-                } else {
-                    lastLabel.textContent = 'Last refresh: —';
-                    lastLabel.style.color = '';
+                    text = `Last refresh: ${formatScanTimestamp(new Date(lastFetchTime))}`;
                 }
+                if (lastLabel) { lastLabel.textContent = text; lastLabel.style.color = color; }
+                if (bubbleLast) { bubbleLast.textContent = text; bubbleLast.style.color = color; }
             }
-            if (!label) return;
+            if (!label && !bubbleNext) return;
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
             let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
                             (usStatus === 'OPEN' && isActiveTradingWindow());
-            label.classList.toggle('active-refresh', active);
 
             let modeLabel;
             const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
@@ -3619,8 +3623,9 @@
                 } else {
                     openText = 'market closed';
                 }
-                label.textContent = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
-                label.classList.remove('active-refresh');
+                const txt = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
+                if (label) { label.textContent = txt; label.classList.remove('active-refresh'); }
+                if (bubbleNext) { bubbleNext.textContent = txt; bubbleNext.classList.remove('active-refresh'); }
                 return;
             }
 
@@ -3629,8 +3634,9 @@
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
             active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
-            label.classList.toggle('active-refresh', active);
-            label.textContent = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
+            const txt = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
+            if (label) { label.classList.toggle('active-refresh', active); label.textContent = txt; }
+            if (bubbleNext) { bubbleNext.classList.toggle('active-refresh', active); bubbleNext.textContent = txt; }
         }
 
         function toggleSound(enabled) {
@@ -5424,6 +5430,12 @@
                 window._lastBubbleViewResults = data.scan_results || results || [];
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
+
+                // If Bubble View is open, rebuild it with the freshest live data.
+                const modal = document.getElementById('bubble-modal');
+                if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') {
+                    window.rebuildBubbleChart();
+                }
 
                 // Save current scan quotes to localStorage so next refresh can compare prev vs current
                 try {
