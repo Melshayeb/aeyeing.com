@@ -4835,21 +4835,23 @@
             }
 
             function getPrice(r) {
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.price != null) return q.price;
+                // The scan-row price is fresher than the quote object, which can be stale (e.g. KUST $1.18).
                 const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
                 if (live?.price != null) return live.price;
                 if (r?.price != null) return r.price;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.price != null) return q.price;
                 return 0;
             }
 
             function getChangePct(r) {
-                // Prefer the live quote change ratio, but fall back to the scan row's own change_pct.
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.changeRatio != null) return q.changeRatio * 100;
+                // The live quote object can lag the scan row (e.g. KUST showing stale $1.18 / 9%).
+                // Prefer the scan row's own change_pct so the bubble size/color matches the scanner table.
                 const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
                 if (live?.change_pct != null) return live.change_pct;
                 if (r?.change_pct != null) return r.change_pct;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.changeRatio != null) return q.changeRatio * 100;
                 return 0;
             }
 
@@ -4861,11 +4863,11 @@
             }
 
             function getVolume(r) {
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.volume != null) return q.volume;
-                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
                 if (live?.volume != null) return live.volume;
                 if (r?.volume != null) return r.volume;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.volume != null) return q.volume;
                 return 0;
             }
 
