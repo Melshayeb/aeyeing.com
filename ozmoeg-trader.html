@@ -1467,6 +1467,8 @@
         .bubble-modal-header h2 { font-size: 1.15rem; background: linear-gradient(90deg, var(--accent-teal), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .bubble-modal-close { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 1.4rem; line-height: 1; cursor: pointer; }
         .bubble-modal-close:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+        .bubble-modal-refresh { height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; padding: 0 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+        .bubble-modal-refresh:hover { background: var(--accent-teal); color: #fff; border-color: var(--accent-teal); }
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
@@ -4432,6 +4434,7 @@
             function formatFloatM(n) {
                 if (!isFinite(n) || n < 0) return '';
                 if (n === 0) return '0K';
+                if (n >= 1e9) return `${(n/1e9).toFixed(1)}B`;
                 if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
                 return `${(n/1e3).toFixed(0)}K`;
             }
@@ -4460,10 +4463,9 @@
             let bubbleAnimationId = null;
 
             function buildBubbleChart() {
-                // Prefer the current scanner view's displayedResults, but fall back to
-                // the live scan rows so the chart can render even if the view variable
-                // hasn't been populated yet (race on first open).
-                const rows = (window.displayedResults || window._lastLiveResults || []).filter(r => r);
+                // Always use the latest live scanner results as the authoritative source.
+                // displayedResults may lag or be from an earlier refresh, so prefer _lastLiveResults.
+                const rows = (window._lastLiveResults || window.displayedResults || []).filter(r => r);
                 if (!rows.length) return;
 
                 const ctx = document.getElementById('bubble-chart-canvas');
@@ -4473,7 +4475,9 @@
 
                 const minPrice = 0.20;
                 const maxPrice = 28;
-                const maxFloat = 12_500_000;
+                // Expand X-axis to fit the actual scanner dataset so no tickers are clipped.
+                const dataMaxFloat = Math.max(1, ...rows.map(r => getFloat(r) || 0));
+                const maxFloat = Math.max(12_500_000, dataMaxFloat * 1.15);
 
                 const maxChange = Math.max(1, ...rows.map(r => Math.abs(getChangePct(r)) || 0));
 
@@ -4760,7 +4764,35 @@
                 const modal = document.getElementById('bubble-modal');
                 if (!modal) return;
                 modal.hidden = false;
-                buildBubbleChart();
+                // Small delay ensures the modal layout (and canvas size) is settled
+                // before Chart.js measures the container, and lets any in-flight
+                // scan refresh complete so _lastLiveResults is current.
+                setTimeout(() => refreshBubbleData(), 80);
+            }
+
+            async function refreshBubbleData() {
+                // Re-fetch the latest snapshot directly so Bubble View always reflects
+                // the most recent scanner output, even if the main page hasn't refreshed yet.
+                const refreshBtn = document.getElementById('bubble-modal-refresh');
+                if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
+                try {
+                    const snapshotFile = getDefaultSnapshotFile();
+                    const ts = Date.now();
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const results = data?.scan_results || (Array.isArray(data) ? data : []);
+                        if (results.length) {
+                            window._lastLiveResults = results;
+                            window._lastLiveQuotes = data?.live_quotes || {};
+                        }
+                    }
+                } catch (err) {
+                    console.warn('Bubble View refresh failed:', err);
+                } finally {
+                    buildBubbleChart();
+                    if (refreshBtn) { refreshBtn.textContent = '🔄 Refresh'; refreshBtn.disabled = false; }
+                }
             }
 
             function closeBubbleModal() {
@@ -4773,6 +4805,7 @@
 
             document.addEventListener('click', e => {
                 if (e.target.closest('#bubble-view-btn')) openBubbleModal();
+                if (e.target.closest('#bubble-modal-refresh')) refreshBubbleData();
                 if (e.target.closest('#bubble-modal-close') || e.target.closest('.bubble-modal-backdrop')) closeBubbleModal();
             });
             document.addEventListener('keydown', e => {
@@ -5095,8 +5128,11 @@
 <div class="bubble-modal-backdrop"></div>
 <div class="bubble-modal-content">
 <div class="bubble-modal-header">
-<h2 id="bubble-modal-title">🫧 OzMoEg Bubble View</h2>
-<button class="bubble-modal-close" id="bubble-modal-close" title="Close bubble view" type="button">×</button>
+    <h2 id="bubble-modal-title">🫧 OzMoEg Bubble View</h2>
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+        <button class="bubble-modal-refresh" id="bubble-modal-refresh" title="Refresh scanner data" type="button">🔄 Refresh</button>
+        <button class="bubble-modal-close" id="bubble-modal-close" title="Close bubble view" type="button">×</button>
+    </div>
 </div>
 <div class="bubble-modal-body">
 <p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
