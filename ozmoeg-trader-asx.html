@@ -2071,7 +2071,19 @@
             }
             document.getElementById('market-status').textContent = status;
             const bubbleMarketStatus = document.getElementById('bubble-market-status');
-            if (bubbleMarketStatus) bubbleMarketStatus.textContent = status;
+            if (bubbleMarketStatus) {
+                let shortStatus = status;
+                if (currentMarket === 'AUS') {
+                    shortStatus = (status.indexOf('ASX OPEN') !== -1) ? '🟢 OPEN' : '🔴 CLOSED';
+                } else {
+                    if (status.indexOf('OPEN') !== -1 && status.indexOf('CLOSED') === -1) shortStatus = '🟢 OPEN';
+                    else if (status.indexOf('Pre-market') !== -1) shortStatus = '🟡 PRE-MARKET';
+                    else if (status.indexOf('After Hours') !== -1) shortStatus = '🟡 AFTER-HOURS';
+                    else shortStatus = '🔴 CLOSED';
+                }
+                bubbleMarketStatus.textContent = shortStatus;
+                bubbleMarketStatus.title = status;
+            }
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
