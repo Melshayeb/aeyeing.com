@@ -2072,21 +2072,6 @@
                 }
             }
             document.getElementById('market-status').textContent = status;
-            const bubbleMarketStatus = document.getElementById('bubble-market-status');
-            if (bubbleMarketStatus) {
-                let shortStatus = status;
-                const sLow = status.toLowerCase();
-                if (currentMarket === 'AUS') {
-                    shortStatus = sLow.indexOf('open') !== -1 ? '🟢 OPEN' : '🔴 CLOSED';
-                } else {
-                    if (sLow.indexOf('open') !== -1 && sLow.indexOf('closed') === -1) shortStatus = '🟢 OPEN';
-                    else if (sLow.indexOf('pre-market') !== -1 || sLow.indexOf('pre market') !== -1) shortStatus = '🟡 PRE-MARKET';
-                    else if (sLow.indexOf('after') !== -1) shortStatus = '🟡 AFTER-HOURS';
-                    else shortStatus = '🔴 CLOSED';
-                }
-                bubbleMarketStatus.textContent = shortStatus;
-                bubbleMarketStatus.title = status;
-            }
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
@@ -2383,8 +2368,8 @@
             const bubbleStatus = document.getElementById('bubble-market-status');
             const bubbleTimer = document.getElementById('bubble-countdown-timer');
             if (bubbleStatus) {
-                bubbleStatus.textContent = shortStatus || statusText;
-                bubbleStatus.title = statusText;
+                bubbleStatus.textContent = shortStatus || '🔴 CLOSED';
+                bubbleStatus.title = statusText || '';
             }
             if (bubbleTimer) {
                 bubbleTimer.textContent = timerStr;
