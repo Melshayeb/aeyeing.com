@@ -1820,8 +1820,12 @@
         }
 
         function switchMarket(market) {
-            currentMarket = market;
             localStorage.setItem('ozmoeg-market', market);
+            if (market !== 'US') {
+                window.location.href = 'https://aeyeing.com/ozmoeg-trader-asx.html';
+                return;
+            }
+            currentMarket = market;
             setMarketButtons();
             updateHeaderText();
             updateDateTime();
