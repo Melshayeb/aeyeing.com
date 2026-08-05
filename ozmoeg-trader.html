@@ -1472,7 +1472,16 @@
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
-        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
+        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.75rem; padding: 0.6rem 0.9rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; font-size: 0.78rem; }
+        .bubble-market-group { display: flex; flex-direction: column; gap: 0.15rem; }
+        .bubble-market-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-teal); font-weight: 600; }
+        .bubble-market-status { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.2; }
+        .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-green); letter-spacing: 1px; }
+        .bubble-countdown-timer.closed { color: var(--text-secondary); }
+        .bubble-countdown-next { color: var(--text-muted); font-size: 0.7rem; line-height: 1.2; max-width: 220px; }
+        .bubble-market-timeline { flex: 1 1 180px; min-width: 140px; }
+        @media (max-width: 720px) { .bubble-market-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; } .bubble-market-timeline { width: 100%; } }
+    
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
         .bubble-chart-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--text-secondary); text-align: center; pointer-events: none; }
@@ -1986,6 +1995,8 @@
                 }
             }
             document.getElementById('market-status').textContent = status;
+            const bubbleMarketStatus = document.getElementById('bubble-market-status');
+            if (bubbleMarketStatus) bubbleMarketStatus.textContent = status;
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
@@ -2261,6 +2272,33 @@
             timeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
                 seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
             });
+
+            const bubbleTimeline = document.getElementById('bubble-market-timeline');
+            const bubbleNotch = document.getElementById('bubble-market-timeline-notch');
+            if (bubbleTimeline && bubbleNotch && phase) {
+                bubbleTimeline.style.display = 'block';
+                bubbleNotch.style.left = `${left}%`;
+                bubbleTimeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
+                    span.classList.toggle('active', span.dataset.phase === phase);
+                });
+                bubbleTimeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
+                    seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
+                });
+            } else if (bubbleTimeline) {
+                bubbleTimeline.style.display = 'none';
+            }
+        }
+
+        function mirrorBubbleCountdown(statusText, timerStr, nextText, isOpen) {
+            const bubbleStatus = document.getElementById('bubble-market-status');
+            const bubbleTimer = document.getElementById('bubble-countdown-timer');
+            const bubbleNext = document.getElementById('bubble-countdown-next');
+            if (bubbleStatus) bubbleStatus.textContent = statusText;
+            if (bubbleTimer) {
+                bubbleTimer.textContent = timerStr;
+                bubbleTimer.className = isOpen ? 'bubble-countdown-timer' : 'bubble-countdown-timer closed';
+            }
+            if (bubbleNext && nextText) bubbleNext.textContent = nextText;
         }
 
         function updateCountdown() {
@@ -2294,6 +2332,7 @@
                     document.getElementById('countdown-timer').className = 'countdown-timer open';
                     const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                     document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
+                    mirrorBubbleCountdown('🟢 ASX OPEN — Closing in', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true);
                     return;
                 }
 
@@ -2329,6 +2368,7 @@
                 document.getElementById('countdown-timer').textContent = timerStr;
                 document.getElementById('countdown-timer').className = 'countdown-timer closed';
                 document.getElementById('countdown-next').textContent = `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
+                mirrorBubbleCountdown(statusText, timerStr, `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`, false);
                 return;
             }
 
@@ -2350,6 +2390,7 @@
             document.getElementById('countdown-status').textContent = phaseInfo.statusText;
             document.getElementById('countdown-timer').textContent = timerStr;
             document.getElementById('countdown-timer').className = isOpen ? 'countdown-timer open' : 'countdown-timer closed';
+            mirrorBubbleCountdown(phaseInfo.statusText, timerStr, null, isOpen);
 
             const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
             const sydneyDay = dayNames[target.getDay()];
@@ -2363,6 +2404,8 @@
             else nextLabel = 'Pre-market';
             document.getElementById('countdown-next').textContent =
                 `${nextLabel} ${sydneyDay} ${sydneyDate} at ${sydneyTime} Sydney / ${etTime} ET`;
+            const bubbleNext = document.getElementById('bubble-countdown-next');
+            if (bubbleNext) bubbleNext.textContent = `${nextLabel} ${sydneyDay} ${sydneyDate} at ${sydneyTime} Sydney / ${etTime} ET`;
         }
         updateHeaderText();
         setMarketButtons();
@@ -4696,16 +4739,35 @@
 <span id="bubble-next-refresh">Next refresh: —</span>
 </div>
 <p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
-<div class="bubble-chart-wrap">
-<canvas id="bubble-chart-canvas"></canvas>
-<div class="bubble-chart-status" id="bubble-chart-status">
-<div class="bubble-chart-status-icon">🫧</div>
-<div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- END BUBBLE VIEW MODAL -->
+<div class="bubble-chart-wrap"><canvas id="bubble-chart-canvas"></canvas><div class="bubble-chart-status" id="bubble-chart-status"><div class="bubble-chart-status-icon">🫧</div><div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div></div></div>
+                <!-- Compact market status bar for Bubble View -->
+                <div class="bubble-market-bar" id="bubble-market-bar">
+                    <div class="bubble-market-group">
+                        <div class="bubble-market-label" id="bubble-market-label">🇺🇸 US Market</div>
+                        <div class="bubble-market-status" id="bubble-market-status">Checking market hours…</div>
+                    </div>
+                    <div class="bubble-market-group bubble-market-timer-group">
+                        <div class="bubble-countdown-timer" id="bubble-countdown-timer">--:--:--</div>
+                    </div>
+                    <div class="bubble-market-group bubble-market-next-group">
+                        <div class="bubble-countdown-next" id="bubble-countdown-next">--</div>
+                    </div>
+                    <div class="bubble-market-timeline" id="bubble-market-timeline">
+                        <div class="market-timeline-track">
+                            <div class="market-timeline-segment pre" data-phase="pre"></div>
+                            <div class="market-timeline-segment open" data-phase="open"></div>
+                            <div class="market-timeline-segment post" data-phase="post"></div>
+                            <div class="market-timeline-segment closed" data-phase="closed"></div>
+                            <div class="market-timeline-notch" id="bubble-market-timeline-notch"></div>
+                        </div>
+                        <div class="market-timeline-labels">
+                            <span data-phase="pre">Pre</span>
+                            <span data-phase="open">Open</span>
+                            <span data-phase="post">After</span>
+                            <span data-phase="closed">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div></div></div><!-- END BUBBLE VIEW MODAL -->
 </body>
 </html>
