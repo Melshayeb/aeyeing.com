@@ -1488,7 +1488,7 @@
 <div class="header-logo">O</div>
 <div>
 <div class="header-title">OzMoEg Trader</div>
-<div class="header-subtitle" id="header-subtitle">US Small-Cap Scalp Monitor — Live Market Intelligence</div>
+<div class="header-subtitle" id="header-subtitle">ASX Small-Cap Monitor — Live Market Intelligence</div>
 </div>
 </div>
 <div class="header-status">
@@ -1861,8 +1861,8 @@
 <script>
         // ── Market region toggle (US / AUS) ─────────────────────────────
         let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
-        // If the URL path indicates the AUS market (e.g., /au), force the market to AUS
-        if (window.location.pathname.includes('/au')) {
+        // If the URL path indicates the AUS market (e.g., /ozmoeg-trader-au.html), force the market to AUS
+        if (window.location.pathname.toLowerCase().includes('trader-au')) {
             currentMarket = 'AUS';
             localStorage.setItem('ozmoeg-market', 'AUS');
         }
