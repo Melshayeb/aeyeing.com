@@ -2362,6 +2362,13 @@
         }
         updateHeaderText();
         setMarketButtons();
+        // Seed results from static HTML so the alert selector works even before live data loads
+        const staticRows = parseStaticTable();
+        if (staticRows.length) {
+            displayedResults = staticRows;
+            window._lastLiveResults = staticRows;
+            populateAlertSelector(staticRows);
+        }
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
@@ -4357,6 +4364,35 @@
             window.rebuildBubbleChart = buildBubbleChart;
             window.bubbleChart = bubbleChart;
         })();
+
+        function parseStaticTable() {
+            const rows = [];
+            document.querySelectorAll('#scanner-table tbody tr').forEach(tr => {
+                const cells = tr.querySelectorAll('td');
+                if (cells.length < 7) return;
+                const tickerCell = cells[0].innerText.trim();
+                const ticker = tickerCell.split(/\s+/)[0];
+                if (!ticker || ticker.length < 2 || ticker === 'No') return;
+                const name = cells[1].innerText.trim();
+                const statusText = cells[2].innerText.trim();
+                const isAlert = statusText.includes('🚨 ALERT');
+                const isCandidate = statusText.includes('🔬 CANDIDATE');
+                if (!isAlert && !isCandidate) return;
+                const status = isAlert ? 'ALERT' : 'CANDIDATE';
+                const result = cells[5].innerText.trim();
+                let plan = null;
+                const m = result.match(/Entry\s*\$([0-9.]+).*?T1\s*\$([0-9.]+).*?T2\s*\$([0-9.]+).*?T3\s*\$([0-9.]+)/);
+                if (m) {
+                    plan = { entry: parseFloat(m[1]), target1: parseFloat(m[2]), target2: parseFloat(m[3]), target3: parseFloat(m[4]) };
+                }
+                const newsAge = cells[3].innerText.trim();
+                let newsAgeMinutes = null;
+                const ageMatch = newsAge.match(/([0-9]+)\s*h\s*ago/);
+                if (ageMatch) newsAgeMinutes = parseInt(ageMatch[1]) * 60;
+                rows.push({ ticker, name, status, plan, result, news_age_minutes: newsAgeMinutes });
+            });
+            return rows;
+        }
 
         async function loadLiveData(forcedSnapshotFile) {
             if (window._loadingLiveData) return;
