@@ -1472,15 +1472,15 @@
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
-        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.75rem; padding: 0.6rem 0.9rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; font-size: 0.78rem; }
-        .bubble-market-group { display: flex; flex-direction: column; gap: 0.15rem; }
-        .bubble-market-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-teal); font-weight: 600; }
-        .bubble-market-status { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.2; }
-        .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-green); letter-spacing: 1px; }
+        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.5rem; padding: 0.45rem 0.6rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem 0.75rem; font-size: 0.7rem; overflow: hidden; }
+        .bubble-market-group { display: flex; flex-direction: column; gap: 0.05rem; flex-shrink: 0; }
+        .bubble-market-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent-teal); font-weight: 600; }
+        .bubble-market-status { color: var(--text-secondary); font-size: 0.68rem; line-height: 1.1; white-space: nowrap; }
+        .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 1.0rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0.5px; min-width: 6.2ch; text-align: center; flex-shrink: 0; }
         .bubble-countdown-timer.closed { color: var(--text-secondary); }
-        .bubble-countdown-next { color: var(--text-muted); font-size: 0.7rem; line-height: 1.2; max-width: 220px; }
-        .bubble-market-timeline { flex: 1 1 180px; min-width: 140px; }
-        @media (max-width: 720px) { .bubble-market-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; } .bubble-market-timeline { width: 100%; } }
+        .bubble-countdown-next { color: var(--text-muted); font-size: 0.58rem; line-height: 1.15; max-width: 150px; }
+        .bubble-market-timeline { flex: 1 1 120px; min-width: 100px; }
+        @media (max-width: 720px) { .bubble-market-bar { flex-wrap: wrap; gap: 0.4rem; padding: 0.4rem; } .bubble-market-timeline { width: 100%; min-width: auto; flex-basis: 100%; } .bubble-countdown-next { max-width: none; } }
     
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
@@ -2407,7 +2407,7 @@
                     document.getElementById('countdown-timer').className = 'countdown-timer open';
                     const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                     document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
-                    mirrorBubbleCountdown('🟢 ASX OPEN — Closing in', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true);
+                    mirrorBubbleCountdown('🟢 ASX OPEN', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true);
                     return;
                 }
 
