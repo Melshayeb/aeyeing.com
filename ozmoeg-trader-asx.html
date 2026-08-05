@@ -4067,7 +4067,7 @@
                         y: price,
                         r: Math.max(6, Math.min(45, radius)),
                         ticker: r.ticker,
-                        country: shortCountry(r.country),
+                        country: shortCountry(r.country || 'Australia'),
                         raw: r,
                         trueX: floatShares,
                         trueY: price,
@@ -4252,7 +4252,7 @@
                             const price = Math.max(minPrice, getPrice(r) || minPrice);
                             return {
                                 ticker: r.ticker,
-                                country: shortCountry(r.country),
+                                country: shortCountry(r.country || 'Australia'),
                                 float: getFloat(r),
                                 price,
                                 targetY: y.getPixelForValue(price),
@@ -4341,7 +4341,7 @@
                             },
                             y: {
                                 type: 'logarithmic',
-                                title: { display: true, text: 'Price ($)', color: '#94a3b8', font: { size: 12 }, padding: { bottom: 10 } },
+                                title: { display: true, text: 'Price (A$)', color: '#94a3b8', font: { size: 12 }, padding: { bottom: 10 } },
                                 grid: { color: '#1f2937', lineWidth: 0.6 },
                                 ticks: { color: '#94a3b8', font: { size: 10 }, callback: v => formatPriceTick(v) },
                                 min: minPrice,
