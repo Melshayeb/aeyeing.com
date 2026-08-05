@@ -2420,10 +2420,13 @@
 <script>
         // ── Market region toggle (US / AUS) ─────────────────────────────
         let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
-        // If the URL path indicates the AUS market (e.g., /au), force the market to AUS
-        if (window.location.pathname.includes('/au')) {
+        // The main US page must always default to US, even if the user previously visited the AU page.
+        if (window.location.pathname.toLowerCase().includes('trader-au')) {
             currentMarket = 'AUS';
             localStorage.setItem('ozmoeg-market', 'AUS');
+        } else {
+            currentMarket = 'US';
+            localStorage.setItem('ozmoeg-market', 'US');
         }
 
         function setMarketButtons() {
