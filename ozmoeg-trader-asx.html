@@ -3593,12 +3593,6 @@
             const isWatchlist = r.status === 'WATCHLIST';
             const floatShares = getFloat(r);
 
-            function formatFloat(n) {
-                if (!isFinite(n) || n <= 0) return '—';
-                if (n >= 1e9) return `${(n/1e9).toFixed(2)}B`;
-                if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
-                return `${(n/1e3).toFixed(0)}K`;
-            }
             const floatCell = isWatchlist ? `<span class="float-cell float-pending" title="Catalyst watchlist — no live float data yet">— pending</span>` : `<span class="float-cell" title="Outstanding shares proxy (Webull does not expose true free float)">${formatFloat(floatShares)}</span>`;
 
             function formatTapeTime(iso) {
@@ -3863,6 +3857,84 @@
         }
 
         // === BUBBLE VIEW CHART ===
+
+        function formatFloat(n) {
+            if (n == null || isNaN(n)) return '—';
+            if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(2).replace(/\.0+$/, '') + 'B';
+            if (n >= 1_000_000) return (n / 1_000_000).toFixed(2).replace(/\.0+$/, '') + 'M';
+            if (n >= 1_000) return (n / 1_000).toFixed(2).replace(/\.0+$/, '') + 'K';
+            return n.toFixed(0);
+        }
+
+        function formatPrice(p) {
+            if (p == null || isNaN(p)) return '—';
+            return p < 1 ? p.toFixed(3) : p.toFixed(2);
+        }
+
+        function formatVolume(v) {
+            if (v == null || isNaN(v)) return '—';
+            if (v >= 1_000_000_000) return (v / 1_000_000_000).toFixed(2) + 'B';
+            if (v >= 1_000_000) return (v / 1_000_000).toFixed(2) + 'M';
+            if (v >= 1_000) return (v / 1_000).toFixed(1) + 'K';
+            return v.toString();
+        }
+
+        function getPrice(r) {
+            // The scan-row price is fresher than the quote object, which can be stale (e.g. KUST $1.18).
+            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            if (live?.price != null) return live.price;
+            if (r?.price != null) return r.price;
+            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+            if (q.price != null) return q.price;
+            return 0;
+        }
+
+        function getChangePct(r) {
+            // The live quote object can lag the scan row (e.g. KUST showing stale $1.18 / 9%).
+            // Prefer the scan row's own change_pct so the bubble size/color matches the scanner table.
+            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            if (live?.change_pct != null) return live.change_pct;
+            if (r?.change_pct != null) return r.change_pct;
+            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+            if (q.changeRatio != null) return q.changeRatio * 100;
+            return 0;
+        }
+
+        function getFloat(r) {
+            if (r?.float_shares != null && r.float_shares > 0) return r.float_shares;
+            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            if (live?.float_shares != null && live.float_shares > 0) return live.float_shares;
+            const price = getPrice(r);
+            const mcap = r?.market_cap || live?.market_cap || 0;
+            if (mcap > 0 && price > 0) return Math.round(mcap / price);
+            return 0;
+        }
+
+        function getVolume(r) {
+            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            if (live?.volume != null) return live.volume;
+            if (r?.volume != null) return r.volume;
+            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+            if (q.volume != null) return q.volume;
+            return 0;
+        }
+
+        function getSecFilings(r) {
+            if (r?.sec_filings && r.sec_filings !== '—') return r.sec_filings;
+            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            if (live?.sec_filings && live.sec_filings !== '—') return live.sec_filings;
+            return '—';
+        }
+
+        function getNewsAge(r) {
+            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+            const target = live || r;
+            if (!target || !target.news || !Array.isArray(target.news.headlines) || !target.news.headlines.length) return '—';
+            const newest = target.news.headlines.slice().sort((a, b) => newsAgeMinutes(a) - newsAgeMinutes(b))[0];
+            return computeNewsAge(newest?.raw_time) || computeNewsAge(newest?.time) || '—';
+        }
+
+
         (function() {
             const countryShortMap = {
                 'United States': 'US', 'USA': 'US', 'US': 'US',
@@ -3891,82 +3963,6 @@
             function shortCountry(country) {
                 if (!country) return '?';
                 return countryShortMap[country] || (country.match(/\b([A-Z])\S*\s*\b([A-Z])\S*/) ? RegExp.$1 + RegExp.$2 : country.slice(0, 2).toUpperCase());
-            }
-
-            function formatFloat(n) {
-                if (n == null || isNaN(n)) return '—';
-                if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(2).replace(/\.0+$/, '') + 'B';
-                if (n >= 1_000_000) return (n / 1_000_000).toFixed(2).replace(/\.0+$/, '') + 'M';
-                if (n >= 1_000) return (n / 1_000).toFixed(2).replace(/\.0+$/, '') + 'K';
-                return n.toFixed(0);
-            }
-
-            function formatPrice(p) {
-                if (p == null || isNaN(p)) return '—';
-                return p < 1 ? p.toFixed(3) : p.toFixed(2);
-            }
-
-            function formatVolume(v) {
-                if (v == null || isNaN(v)) return '—';
-                if (v >= 1_000_000_000) return (v / 1_000_000_000).toFixed(2) + 'B';
-                if (v >= 1_000_000) return (v / 1_000_000).toFixed(2) + 'M';
-                if (v >= 1_000) return (v / 1_000).toFixed(1) + 'K';
-                return v.toString();
-            }
-
-            function getPrice(r) {
-                // The scan-row price is fresher than the quote object, which can be stale (e.g. KUST $1.18).
-                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                if (live?.price != null) return live.price;
-                if (r?.price != null) return r.price;
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.price != null) return q.price;
-                return 0;
-            }
-
-            function getChangePct(r) {
-                // The live quote object can lag the scan row (e.g. KUST showing stale $1.18 / 9%).
-                // Prefer the scan row's own change_pct so the bubble size/color matches the scanner table.
-                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                if (live?.change_pct != null) return live.change_pct;
-                if (r?.change_pct != null) return r.change_pct;
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.changeRatio != null) return q.changeRatio * 100;
-                return 0;
-            }
-
-            function getFloat(r) {
-                if (r?.float_shares != null && r.float_shares > 0) return r.float_shares;
-                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                if (live?.float_shares != null && live.float_shares > 0) return live.float_shares;
-                const price = getPrice(r);
-                const mcap = r?.market_cap || live?.market_cap || 0;
-                if (mcap > 0 && price > 0) return Math.round(mcap / price);
-                return 0;
-            }
-
-            function getVolume(r) {
-                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                if (live?.volume != null) return live.volume;
-                if (r?.volume != null) return r.volume;
-                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-                if (q.volume != null) return q.volume;
-                return 0;
-            }
-
-            function getSecFilings(r) {
-                if (r?.sec_filings && r.sec_filings !== '—') return r.sec_filings;
-                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                if (live?.sec_filings && live.sec_filings !== '—') return live.sec_filings;
-                return '—';
-            }
-
-            function getNewsAge(r) {
-                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-                const target = live || r;
-                if (!target || !target.news || !Array.isArray(target.news.headlines) || !target.news.headlines.length) return '—';
-                const newest = target.news.headlines.slice().sort((a, b) => newsAgeMinutes(a) - newsAgeMinutes(b))[0];
-                return computeNewsAge(newest?.raw_time) || computeNewsAge(newest?.time) || '—';
             }
 
             function getAlertLevel(r) {
