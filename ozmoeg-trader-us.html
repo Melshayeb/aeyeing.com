@@ -1475,7 +1475,7 @@
         .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.5rem; padding: 0.35rem 0.55rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.6rem; font-size: 0.66rem; height: 46px; box-sizing: border-box; overflow: hidden; }
         .bubble-market-group { display: flex; flex-direction: column; justify-content: center; gap: 0.05rem; flex-shrink: 0; height: 100%; }
         .bubble-market-label { font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent-teal); font-weight: 600; white-space: nowrap; line-height: 1.1; }
-        .bubble-market-status { color: var(--text-secondary); font-size: 0.6rem; line-height: 1.2; height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-width: 130px; }
+        .bubble-market-status { color: var(--text-secondary); font-size: 0.62rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; }
         .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 0.92rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0.5px; width: 7.2ch; text-align: center; flex-shrink: 0; line-height: 1; }
         .bubble-countdown-timer.closed { color: var(--text-secondary); }
         .bubble-market-timeline { flex: 1 1 120px; min-width: 110px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
@@ -2287,12 +2287,12 @@
             }
         }
 
-        function mirrorBubbleCountdown(statusText, timerStr, nextText, isOpen) {
+        function mirrorBubbleCountdown(statusText, timerStr, nextText, isOpen, shortStatus) {
             const bubbleStatus = document.getElementById('bubble-market-status');
             const bubbleTimer = document.getElementById('bubble-countdown-timer');
             if (bubbleStatus) {
-                bubbleStatus.textContent = statusText;
-                bubbleStatus.title = nextText || statusText;
+                bubbleStatus.textContent = shortStatus || statusText;
+                bubbleStatus.title = statusText;
             }
             if (bubbleTimer) {
                 bubbleTimer.textContent = timerStr;
@@ -2331,7 +2331,7 @@
                     document.getElementById('countdown-timer').className = 'countdown-timer open';
                     const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                     document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
-                    mirrorBubbleCountdown('🟢 ASX OPEN', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true);
+                    mirrorBubbleCountdown('🟢 ASX OPEN', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true, '🟢 OPEN');
                     return;
                 }
 
@@ -2367,7 +2367,7 @@
                 document.getElementById('countdown-timer').textContent = timerStr;
                 document.getElementById('countdown-timer').className = 'countdown-timer closed';
                 document.getElementById('countdown-next').textContent = `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
-                mirrorBubbleCountdown(statusText, timerStr, `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`, false);
+                mirrorBubbleCountdown(statusText, timerStr, `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`, false, '🔴 CLOSED');
                 return;
             }
 
@@ -2389,7 +2389,8 @@
             document.getElementById('countdown-status').textContent = phaseInfo.statusText;
             document.getElementById('countdown-timer').textContent = timerStr;
             document.getElementById('countdown-timer').className = isOpen ? 'countdown-timer open' : 'countdown-timer closed';
-            mirrorBubbleCountdown(phaseInfo.statusText, timerStr, null, isOpen);
+            const shortStatusUS = phaseInfo.phase === 'open' ? '🟢 OPEN' : phaseInfo.phase === 'pre' ? '🟡 PRE-MARKET' : phaseInfo.phase === 'post' ? '🟡 AFTER-HOURS' : '🔴 CLOSED';
+            mirrorBubbleCountdown(phaseInfo.statusText, timerStr, null, isOpen, shortStatusUS);
 
             const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
             const sydneyDay = dayNames[target.getDay()];
