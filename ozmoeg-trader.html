@@ -1975,6 +1975,8 @@
                 const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
                 if (etWeekdayNum === 0 || etWeekdayNum === 6) {
                     status = "🔴 Weekend — Markets Closed";
+                } else if (etHour < 4) {
+                    status = "🔴 US Closed — Pre-market at 4:00 AM ET";
                 } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
                     status = "🟡 Pre-Market — Scanning for setups";
                 } else if (etHour < 16) {
