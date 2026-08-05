@@ -1,0 +1,804 @@
+#!/usr/bin/env python3
+"""
+OzMoEg Money Maker — Full Pipeline Main Entry Point
+1. Check kill switches
+2. Fetch and enrich Webull gainers/losers
+3. Apply momentum + bounce filters
+4. For each candidate: technical analysis, news scoring, trade plan
+5. Send high-quality Telegram alerts (if configured)
+6. Update website JSON/HTML with full scan data
+"""
+import argparse
+import logging
+import sys
+import json
+import os
+import hashlib
+import time
+from pathlib import Path
+from datetime import datetime, timezone as dt_timezone
+from typing import Dict, Any, List, Optional
+
+from kill_switch import load_config, is_enabled, component_enabled
+from webull_client import WebullClient
+from scanner import SmallCapScanner
+from analyzer import TechnicalAnalyzer
+from trade_planner import TradePlanner
+from news_monitor import NewsMonitor
+from tape_analyzer import TapeAnalyzer
+from notifier import Notifier
+from website_updater import WebsiteUpdater
+from state_store import NotificationState
+
+# Configure logging
+log_file = Path.home() / ".hermes/skills/ozmoeg-money-maker/logs/ozmoeg.log"
+log_file.parent.mkdir(parents=True, exist_ok=True)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler(log_file, encoding='utf-8')
+    ]
+)
+logger = logging.getLogger(__name__)
+
+SKILL_DIR = Path.home() / ".hermes/skills/ozmoeg-money-maker"
+
+
+def _market_status_now(market: str = 'us', _now_override=None) -> str:
+    """Return market status for US or AU.
+
+    US: OPEN, PRE-MARKET, AFTER-HOURS, WEEKEND, CLOSED (ET clock).
+    AU: OPEN, CLOSED, WEEKEND (ASX 10:00-16:00 AEST/AEDT).
+
+    _now_override is an optional timezone-aware datetime for deterministic tests.
+    """
+    import pytz
+    from datetime import datetime as _dt
+    market = str(market).lower()
+    if market == 'au':
+        sydney = pytz.timezone('Australia/Sydney')
+        now = _now_override if _now_override else _dt.now(sydney)
+        if now.tzinfo is None:
+            now = sydney.localize(now)
+        weekday = now.weekday()
+        minutes = now.hour * 60 + now.minute
+        if weekday >= 5:
+            return 'WEEKEND'
+        if 600 <= minutes < 960:  # 10:00 - 16:00
+            return 'OPEN'
+        return 'CLOSED'
+    # US
+    et = pytz.timezone('America/New_York')
+    now = _now_override if _now_override else _dt.now(et)
+    if now.tzinfo is None:
+        now = et.localize(now)
+    weekday = now.weekday()
+    minutes = now.hour * 60 + now.minute
+    if weekday >= 5:
+        return 'WEEKEND'
+    if minutes < 570:  # 09:30
+        if minutes >= 240:  # 04:00
+            return 'PRE-MARKET'
+        return 'CLOSED'
+    if minutes < 960:  # 16:00
+        return 'OPEN'
+    if minutes < 1200:  # 20:00
+        return 'AFTER-HOURS'
+    return 'CLOSED'
+
+
+def _market_status_label_for_telegram(market: str, status: str) -> str:
+    """Return a user-friendly label for Telegram market-status notifications."""
+    market = str(market).lower()
+    if market == 'au':
+        if status == 'OPEN':
+            return 'ASX Open'
+        if status == 'WEEKEND':
+            return 'ASX Weekend Closed'
+        return 'ASX Closed'
+    return f"US Market {status}"
+
+
+def _is_us_active_trading_window() -> bool:
+    """
+    Return True for the Sydney-time active US trading window:
+    18:00 Sydney (pre-market) through to US market open 09:30 ET.
+    During this window the website refreshes every 5 minutes by cron,
+    but we throttle actual pushes to what GitHub Pages can sustain.
+    """
+    import pytz
+    from datetime import datetime as _dt
+    sydney = pytz.timezone('Australia/Sydney')
+    ny = pytz.timezone('America/New_York')
+    sydney_now = _dt.now(sydney)
+    ny_now = _dt.now(ny)
+    if sydney_now.weekday() >= 5:
+        return False
+    sydney_today_18 = sydney_now.replace(hour=18, minute=0, second=0, microsecond=0)
+    ny_today_open = ny_now.replace(hour=9, minute=30, second=0, microsecond=0)
+    if sydney_now >= sydney_today_18:
+        return True
+    if sydney_now.hour < 14 and ny_now < ny_today_open:
+        return True
+    return False
+
+
+def _scan_allowed_minute(market: str) -> bool:
+    """
+    Return True only when the current wall-clock minute aligns with the allowed
+    cadence for this market.  Called after the cron job fires every 5 minutes.
+
+    US outside active window: every 15 minutes (0,15,30,45).
+    US inside active window  : every 10 minutes (0,10,20,30,40,50).
+    AU                       : every 30 minutes (0,30).
+    """
+    from datetime import datetime as _dt
+    import pytz
+    sydney_now = _dt.now(pytz.timezone('Australia/Sydney'))
+    minute = sydney_now.minute
+    if market == 'au':
+        return minute in {0, 30}
+    if market == 'us':
+        if _is_us_active_trading_window():
+            return minute % 10 == 0
+        # Simple override: force run at minute 47 for testing
+        if minute == 47:
+            return True
+        return minute % 15 == 0
+    return False
+
+
+def _extract_ticker_dict(stock: Dict) -> Dict:
+    """Return the inner ticker dict from a Webull ranking payload."""
+    t = stock.get('ticker', stock)
+    return t if isinstance(t, dict) else {}
+
+
+def _symbol(stock: Dict) -> str:
+    """Return symbol from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    return t.get('symbol', '') or stock.get('symbol', '')
+
+
+def _name(stock: Dict) -> str:
+    """Return company name from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    return t.get('name', '') or _symbol(stock)
+
+
+def _price(stock: Dict) -> float:
+    """Return current/last price from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    v = stock.get('values', {})
+    price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('close', 0) or 0)
+    return price
+
+
+def _change_pct(stock: Dict) -> float:
+    """Compute change percentage from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    v = stock.get('values', {})
+    close = float(t.get('close', 0) or 0)
+    pre_close = float(t.get('preClose', 0) or 0)
+    price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
+    change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
+    if close > 0 and price > 0 and price != close:
+        return (price - close) / close * 100
+    if pre_close > 0 and close > 0:
+        return (close - pre_close) / pre_close * 100
+    if change_ratio > 1:
+        return (change_ratio - 1) * 100
+    return change_ratio * 100
+
+
+def _volume(stock: Dict) -> int:
+    """Return volume from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    return int(t.get('volume', 0) or 0)
+
+
+def _market_cap(stock: Dict) -> float:
+    """Return market cap from a Webull ranking payload."""
+    t = _extract_ticker_dict(stock)
+    return float(t.get('marketValue', 0) or 0)
+
+
+def _country(stock: Dict) -> str:
+    """Return origin country if already enriched."""
+    t = _extract_ticker_dict(stock)
+    return stock.get('country', '') or t.get('_country', '')
+
+
+def _scan_reason(stock: Dict) -> str:
+    """Return the filter reason attached by SmallCapScanner."""
+    return stock.get('_scan_reason', '')
+
+
+def _scan_passed(stock: Dict) -> bool:
+    """Return whether the stock passed the scanner filter."""
+    return bool(stock.get('_scan_passed', False))
+
+
+def _format_market_time() -> str:
+    """Format current ET time for the website badge."""
+    import pytz
+    et = pytz.timezone('America/New_York')
+    now = datetime.now(et)
+    return now.strftime('%I:%M %p ET')
+
+
+def _build_scan_result(stock: Dict, plan: Optional[Dict], news: Optional[Dict],
+                       ta: Optional[Dict], tape: Optional[Dict], market_status: str) -> Dict:
+    """Build a single scan result entry for the website/JSON."""
+    ticker = _symbol(stock)
+    name = _name(stock)
+    change_pct = _change_pct(stock)
+    volume = _volume(stock)
+    market_cap = _market_cap(stock)
+    price = _price(stock)
+    country = _country(stock)
+    reason = _scan_reason(stock)
+
+    result_text = reason or f"Move {change_pct:+.1f}% / Volume {volume:,}"
+    if _scan_passed(stock):
+        result_text = f"Move {change_pct:+.1f}% / Volume {volume:,}"
+    if news and news.get('red_flags'):
+        red = ', '.join([f"{r.get('flag')}:{r.get('title', '')}" for r in news['red_flags'][:2]])
+        result_text = f"Red flags: {red}"
+
+    entry = {
+        'ticker': ticker,
+        'name': name,
+        'status': 'ALERT' if _scan_passed(stock) else 'SKIP',
+        'result': result_text,
+        'detail': reason,
+        'time': datetime.now().strftime('%I:%M %p'),
+        'date': datetime.now().strftime('%B %d'),
+        'changes': {
+            'change_pct': round(change_pct, 2),
+            'volume': volume,
+            'market_cap': market_cap,
+            'price': price,
+        },
+        'country': country,
+        'plan': plan if plan else None,
+        'news': _format_news_for_json(news) if news else None,
+        'ta': ta if ta else None,
+        'tape': tape if tape else None,
+        'market_status': market_status,
+    }
+    return entry
+
+
+def _format_news_for_json(news: Dict) -> Dict:
+    """Format news analysis into the JSON shape the website expects."""
+    if not news:
+        return None
+    items = news.get('scored_items', []) or []
+    headlines = []
+    for it in items[:10]:
+        headlines.append({
+            'title': it.get('title', ''),
+            'source': it.get('source', ''),
+            'time': it.get('time', ''),
+            'raw_time': it.get('raw_time', ''),
+            'url': it.get('url', ''),
+            'score': it.get('score', 0),
+        })
+    return {
+        'catalyst': news.get('top_headline', ''),
+        'max_score': news.get('max_score', 0),
+        'avg_score': news.get('avg_score', 0),
+        'catalyst_confirmed': news.get('catalyst_confirmed', False),
+        'high_impact_count': news.get('high_impact_count', 0),
+        'headlines': headlines,
+        'red_flags': news.get('red_flags', []),
+        'total_items': news.get('total_items', 0),
+    }
+
+
+def _build_all_gainers_json(stocks: List[Dict]) -> List[Dict]:
+    """Convert the full annotated gainer/loser list to JSON for the website's scanned-details table."""
+    rows = []
+    for stock in stocks:
+        t = _extract_ticker_dict(stock)
+        change_pct = _change_pct(stock)
+        rows.append({
+            'ticker': _symbol(stock),
+            'name': _name(stock),
+            'price': _price(stock),
+            'change_pct': round(change_pct, 2),
+            'volume': _volume(stock),
+            'rvol': round(float(t.get('rvol', 0) or 0), 2),
+            'market_cap': _market_cap(stock),
+            'passed': _scan_passed(stock),
+            'reason': _scan_reason(stock),
+            'country': _country(stock),
+        })
+    return rows
+
+
+def run_scan(config: Dict, args) -> Dict[str, Any]:
+    """Execute the full scan pipeline."""
+    logger.info("=== OzMoEg Money Maker Full Pipeline Starting ===")
+
+    if not is_enabled(config, "master"):
+        logger.info("Master kill switch is OFF. Skipping run.")
+        return {'skipped': True, 'reason': 'master kill switch'}
+
+    if not component_enabled(config, "scanner"):
+        logger.info("Scanner disabled by kill switch or component flag.")
+        return {'skipped': True, 'reason': 'scanner disabled'}
+
+    market = str(config.get('scanner', {}).get('market', 'us')).lower()
+    if args.market:
+        market = args.market.lower()
+
+    # Local override for testing: if --force is set, add current minute to allowed minutes
+    force_val = args.force if args and hasattr(args, 'force') else False
+    if not force_val and not _scan_allowed_minute(market):
+        logger.info("Cadence gate: market=%s current minute not aligned with allowed cadence — skipping", market)
+        return {'skipped': True, 'reason': 'cadence gate'}
+    # For AU market when forcing, allow scans even if minute doesn't match
+    if market == 'au' and force_val:
+        logger.info("AU FORCE MODE: Override AU cadence gate and enable scanning")
+        # Bypass cadence gate for AU force mode during testing
+        pass
+
+
+    region_code = 18 if market == 'au' else 6
+    webull_cfg = dict(config['webull'])
+    webull_cfg['region_code'] = region_code
+    webull_cfg['market'] = market
+
+    # Inject market into news config (prevents SIDU dict-join error)
+    news_cfg = dict(config.get('news', {}))
+    news_cfg['market'] = market
+    tape_cfg = dict(config.get('tape', {}))
+    tape_cfg['market'] = market
+
+    # Determine market status for the selected market
+    market_status = _market_status_now(market)
+    market_time = _format_market_time()
+    logger.info("Market=%s status=%s time=%s", market, market_status, market_time)
+
+    # Initialize clients
+    wb = WebullClient(webull_cfg)
+    scanner = SmallCapScanner(wb, config['scanner'], region_code=region_code, market=market)
+    ta_engine = TechnicalAnalyzer()
+    planner = TradePlanner(config['strategy'])
+    news_mon = NewsMonitor(wb, news_cfg)
+    tape_analyzer = TapeAnalyzer(tape_cfg)
+    notifier = Notifier(config)
+    state = NotificationState()
+
+    # --- 1. Fetch gainers and losers ---
+    gainers = scanner.get_gainers(count=50)
+    losers = scanner.get_losers(count=50) if not scanner.is_au else []
+
+    if not gainers:
+        logger.warning("No gainers fetched — API may be down or market closed")
+        if state.should_notify_no_gainers(market):
+            notifier.notify_no_candidates(market, market_status, 0)
+        return {
+            'scan_results': [],
+            'scan_stats': {
+                'market': market,
+                'market_status': market_status,
+                'market_time': market_time,
+                'gainers_scanned': 0,
+                'losers_scanned': len(losers),
+                'candidates_found': 0,
+                'alerts_sent': 0,
+            }
+        }
+
+    # Build tickerId map for AU mode
+    ticker_ids = {}
+    if scanner.is_au:
+        for g in gainers:
+            t = _extract_ticker_dict(g)
+            sym = t.get('symbol', '')
+            tid = t.get('tickerId')
+            if sym and tid:
+                ticker_ids[sym.upper()] = int(tid)
+        for l in losers:
+            t = _extract_ticker_dict(l)
+            sym = t.get('symbol', '')
+            tid = t.get('tickerId')
+            if sym and tid:
+                ticker_ids[sym.upper()] = int(tid)
+
+    # Enrich with per-ticker quotes (critical for RVOL/float/country filters)
+    gainers = scanner.enrich_gainers_with_quotes(gainers, ticker_ids=ticker_ids)
+    if losers:
+        losers = scanner.enrich_stocks_with_quotes(losers, ticker_ids=ticker_ids)
+
+    # --- 2. Filter candidates ---
+    candidates = scanner.filter_candidates(gainers, mode='momentum')
+    logger.info("Filtered to %d momentum candidates from %d gainers", len(candidates), len(gainers))
+
+    # Bounce scanner (Option C)
+    bounce_results = []
+    if config['scanner'].get('bounce_scanner', {}).get('enabled', False) and losers:
+        bounce_candidates = scanner.filter_candidates(losers, mode='bounce')
+        bounce_results = bounce_candidates[:10]
+        logger.info("Filtered to %d bounce candidates", len(bounce_results))
+
+    # --- 3. Analyze each candidate ---
+    scan_results = []
+    alert_tickers = []
+    active_plan = None
+    telegram_sent = 0
+
+    # News config
+    news_enabled = news_cfg.get('enabled', True)
+    min_score = news_cfg.get('min_score', 3)
+    min_sources = news_cfg.get('confirmation_sources', 2)
+
+    # Relaxation during off-market hours
+    is_extended_hours = market_status in ('PRE-MARKET', 'AFTER-HOURS', 'CLOSED', 'WEEKEND')
+    if is_extended_hours:
+        effective_min_score = max(2, min_score - 1)
+        effective_min_sources = 1
+    else:
+        effective_min_score = min_score
+        effective_min_sources = min_sources
+
+    # During US regular hours, small-cap news flow is thin — allow technical/momentum setups
+    # with LOW confidence if no fresh catalyst is found.
+    catalyst_relaxed = is_extended_hours or (market_status == 'OPEN' and not scanner.is_au)
+
+    for stock in candidates[:15]:
+        ticker = _symbol(stock)
+        if not ticker:
+            continue
+
+        price = _price(stock)
+        if price <= 0:
+            logger.warning("Skipping %s — no price", ticker)
+            continue
+
+        # Technical analysis
+        bars = []
+        try:
+            bars = wb.get_bars(ticker, tId=ticker_ids.get(ticker.upper()), interval='m1', count=100)
+        except Exception as e:
+            logger.debug("Bars fetch failed for %s: %s", ticker, e)
+
+        quote = {}
+        try:
+            quote = wb.get_quote(ticker, tId=ticker_ids.get(ticker.upper()))
+        except Exception as e:
+            logger.debug("Quote fetch failed for %s: %s", ticker, e)
+
+        # Tape analysis from 15-second bars (time-and-sales proxy)
+        # This is evaluated every refresh based purely on the current 15s bar content.
+        tape = {'valid': False, 'tape_score': 0, 'stale': True, 'not_available': scanner.is_au}
+        if not scanner.is_au and tape_cfg.get('enabled', False) and tape_cfg.get('fetch_15s_bars', True):
+            try:
+                bars_15s = wb.get_bars(ticker, tId=ticker_ids.get(ticker.upper()), interval='s15', count=tape_cfg.get('bar_count', 40))
+                # For tape speed we need avg daily volume. The enriched quote may have stripped
+                # it, so fetch a fresh raw quote just for tape analysis if we don't see avgVol keys.
+                tape_quote = quote if quote and any(k in quote for k in ('avgVol3M', 'avgVol10D')) else {}
+                if not tape_quote:
+                    try:
+                        tape_quote = wb.get_quote(ticker, tId=ticker_ids.get(ticker.upper())) or {}
+                    except Exception as e:
+                        logger.debug("Fresh quote fetch for tape failed for %s: %s", ticker, e)
+                # Pass quote so the analyzer can anchor staleness to the last trade timestamp
+                # when the s15 bars themselves omit timestamps, and measure pace vs ADV.
+                tape = tape_analyzer.analyze_ticker(ticker, bars_15s, tape_quote)
+            except Exception as e:
+                logger.debug("15s tape fetch failed for %s: %s", ticker, e)
+
+        # Fallback quote from ranking payload
+        if not quote:
+            t = _extract_ticker_dict(stock)
+            quote = {
+                'ticker': ticker,
+                'name': _name(stock),
+                'close': float(t.get('close', 0) or price),
+                'price': price,
+                'open': float(t.get('open', 0) or 0),
+                'high': float(t.get('high', 0) or 0),
+                'low': float(t.get('low', 0) or 0),
+                'volume': _volume(stock),
+                'marketValue': _market_cap(stock),
+            }
+
+        has_bars = bars is not None and isinstance(bars, (list, tuple)) and len(bars) > 0
+        ta = ta_engine.analyze_setup(ticker, bars, quote) if has_bars else {'valid': False}
+
+        # News analysis
+        news = None
+        if news_enabled or scanner.is_au:
+            try:
+                news = news_mon.analyze_ticker(ticker, ticker_id=ticker_ids.get(ticker.upper()))
+            except Exception as e:
+                logger.warning("News analysis failed for %s: %s", ticker, e)
+                news = None
+
+        # If news is disabled globally but we still want a placeholder for the website
+        if not news:
+            news = {
+                'ticker': ticker,
+                'total_items': 0,
+                'scored_items': [],
+                'red_flags': [],
+                'max_score': 0,
+                'avg_score': 0,
+                'catalyst_confirmed': False,
+                'high_impact_count': 0,
+                'top_headline': 'No news analysis performed',
+                'catalyst_relaxed': catalyst_relaxed,
+            }
+        news['catalyst_relaxed'] = catalyst_relaxed
+
+        # Determine confidence / catalyst status
+        confidence = "HIGH" if news.get('catalyst_confirmed') else "MED"
+        if catalyst_relaxed or not news.get('catalyst_confirmed'):
+            confidence = "LOW"
+
+        # Skip hard red flags
+        if news.get('red_flags'):
+            logger.info("Skipping %s — red flags detected: %s", ticker,
+                        [r.get('flag') for r in news['red_flags']])
+            result = _build_scan_result(stock, None, news, ta, tape, market_status)
+            result['status'] = 'SKIP'
+            scan_results.append(result)
+            continue
+
+        # Catalyst gating
+        catalyst_pass = False
+        if news.get('catalyst_confirmed'):
+            catalyst_pass = True
+        elif catalyst_relaxed:
+            catalyst_pass = True
+        elif market_status == 'OPEN' and not scanner.is_au:
+            # Regular hours: allow technical/momentum even without fresh catalyst
+            catalyst_pass = True
+        else:
+            catalyst_pass = False
+
+        # Generate trade plan
+        atr = ta.get('atr', 0) if ta.get('valid') else 0
+        plan = planner.plan_trade(
+            ticker=ticker,
+            entry_price=price,
+            atr=atr,
+            confidence=confidence,
+            account_balance=config['strategy'].get('account_balance', 2000.0)
+        )
+        if not plan or not plan.get('valid'):
+            logger.info("Skipping %s — invalid trade plan", ticker)
+            result = _build_scan_result(stock, None, news, ta, tape, market_status)
+            result['status'] = 'SKIP'
+            scan_results.append(result)
+            continue
+
+        # Tape-score gating (optional, disabled by default)
+        tape_min = tape_cfg.get('min_score_for_alert', 0)
+        tape_score = tape.get('tape_score', 0) if tape else 0
+        tape_pass = not tape_cfg.get('enabled', False) or tape_min <= 0 or (tape_score >= tape_min)
+
+        # Set status based on filters, catalyst and tape
+        status = 'ALERT' if catalyst_pass and tape_pass and plan.get('risk_reward', 0) >= 1.25 else 'CANDIDATE'
+        if not catalyst_pass or not tape_pass:
+            status = 'CANDIDATE'
+
+        # In AU non-AU-network mode, never send live ALERTs; always CANDIDATE
+        if scanner.is_au:
+            status = 'CANDIDATE'
+
+        result = _build_scan_result(stock, plan, news, ta, tape, market_status)
+        result['status'] = status
+        result['confidence'] = confidence
+        result['catalyst_relaxed'] = catalyst_relaxed
+        scan_results.append(result)
+
+        if status == 'ALERT':
+            alert_tickers.append(ticker)
+            if not active_plan:
+                active_plan = plan
+
+    # --- 4. Telegram alerts ---
+    if is_enabled(config, "telegram_alerts") and notifier.tg_token and notifier.tg_token not in ('YOUR_BOT_TOKEN', '', '8985575808:***'):
+        for result in scan_results:
+            if result.get('status') != 'ALERT':
+                continue
+            plan = result.get('plan')
+            news = result.get('news')
+            # Reconstruct news analysis dict expected by notifier
+            news_analysis = {
+                'ticker': result['ticker'],
+                'max_score': news.get('max_score', 0) if news else 0,
+                'high_impact_count': news.get('high_impact_count', 0) if news else 0,
+                'top_headline': news.get('catalyst', '') if news else '',
+                'scored_items': news.get('headlines', []) if news else [],
+                'catalyst_confirmed': news.get('catalyst_confirmed', False) if news else False,
+                'catalyst_relaxed': result.get('catalyst_relaxed', False),
+                'red_flags': news.get('red_flags', []) if news else [],
+            }
+            # TA dict
+            ta_result = result.get('ta', {}) or {}
+            try:
+                if notifier.alert_trade_setup(plan, news_analysis, ta_result,
+                                              market=market, market_status=market_status):
+                    telegram_sent += 1
+                    state.record_alert(result['ticker'], plan)
+            except Exception as e:
+                logger.error("Telegram alert failed for %s: %s", result['ticker'], e)
+    else:
+        if not notifier.tg_token or notifier.tg_token in ('YOUR_BOT_TOKEN', '', '8985575808:***'):
+            logger.warning("Telegram bot token not configured — skipping Telegram alerts")
+        if not is_enabled(config, "telegram_alerts"):
+            logger.info("Telegram alerts disabled by kill switch")
+
+    # --- 5. Market-status notification (milestone) ---
+    if state.should_notify_market_status(market, market_status):
+        notifier.notify_market_status(market, market_status)
+
+    # --- 6. Scan summary notification ---
+    if state.should_notify_scan_summary(market, alert_tickers, len(scan_results), market_status):
+        notifier.notify_scan_summary(market, len(alert_tickers), len(scan_results), alert_tickers, market_status)
+
+    # --- 7. Build scan stats ---
+    us_filters = {
+        'market_cap_min': config['scanner'].get('market_cap_min', 0),
+        'market_cap_max': config['scanner'].get('market_cap_max', 0),
+        'price_min': config['scanner'].get('price_min', 0),
+        'price_max': config['scanner'].get('price_max', 0),
+        'rvol_min': config['scanner'].get('rvol_min', 0),
+        'premarket_pct_min': config['scanner'].get('premarket_pct_min', 0),
+        'volume_min': config['scanner'].get('volume_min', 0),
+        'min_avg_daily_dollar_volume': config['scanner'].get('min_avg_daily_dollar_volume', 0),
+        'max_float_shares': config['scanner'].get('max_float_shares', 0),
+        'min_volume_float_ratio': config['scanner'].get('min_volume_float_ratio', 0),
+        'move_max_pct': config['scanner'].get('move_max_pct', 0),
+        'move_tier_2_max': config['scanner'].get('move_tier_2_max', 0),
+        'move_tier_2_min_rvol': config['scanner'].get('move_tier_2_min_rvol', 0),
+        'move_tier_2_min_float_ratio': config['scanner'].get('move_tier_2_min_float_ratio', 0),
+        'extended_hours_rvol_min': config['scanner'].get('extended_hours_rvol_min', 0),
+        'extended_hours_premarket_pct_min': config['scanner'].get('extended_hours_premarket_pct_min', 0),
+        'extended_hours_min_avg_daily_dollar_volume': config['scanner'].get('extended_hours_min_avg_daily_dollar_volume', 0),
+        'tiny_cap_move_max_pct': config['scanner'].get('tiny_cap_move_max_pct', 0),
+        'tiny_cap_move_tier_2_max': config['scanner'].get('tiny_cap_move_tier_2_max', 0),
+    }
+    au_filters = config['scanner'].get('au', {})
+
+    scan_stats = {
+        'market': market,
+        'market_status': market_status,
+        'market_time': market_time,
+        'gainers_scanned': len(gainers),
+        'losers_scanned': len(losers),
+        'candidates_found': len(candidates),
+        'alerts_sent': len(alert_tickers),
+        'telegram_sent': telegram_sent,
+        'alert_tickers': alert_tickers,
+        'all_gainers': _build_all_gainers_json(gainers),
+        'all_losers': _build_all_gainers_json(losers),
+        'bounce_results': _build_all_gainers_json(bounce_results),
+        'us_filters': us_filters,
+        'au_filters': au_filters,
+    }
+
+    # Sort scan results: ALERTs first, then by composite score (tape + news + move).
+    def _result_rank(r: Dict) -> float:
+        if r.get('status') != 'ALERT':
+            return -1000.0
+        tape_score = r.get('tape', {}).get('tape_score', 0) or 0
+        news_score = r.get('news', {}).get('max_score', 0) or 0
+        move = abs(r.get('changes', {}).get('change_pct', 0) or 0)
+        return tape_score * 10 + news_score * 2 + move
+
+    scan_results.sort(key=_result_rank, reverse=True)
+
+    # Promote the top-ranked ALERT as the active plan shown by default.
+    top_alert = next((r for r in scan_results if r.get('status') == 'ALERT'), None)
+    if top_alert and top_alert.get('plan'):
+        active_plan = top_alert['plan']
+
+    return {
+        'scan_results': scan_results,
+        'active_plan': active_plan,
+        'scan_stats': scan_stats,
+    }
+
+
+def update_website(config: Dict, scan_results: List[Dict], active_plan: Optional[Dict],
+                   scan_stats: Dict) -> bool:
+    """Update website JSON and HTML."""
+    if not component_enabled(config, "website_updates"):
+        logger.info("Website updates disabled by kill switch")
+        return False
+
+    try:
+        market = scan_stats.get('market', 'us')
+        region_code = 18 if market == 'au' else 6
+        webull_cfg = dict(config['webull'])
+        webull_cfg['region_code'] = region_code
+        webull_cfg['market'] = market
+        wb = WebullClient(webull_cfg)
+        updater = WebsiteUpdater(config, wb)
+        updater.update(scan_results, active_plan, scan_stats)
+        logger.info("Website update completed successfully")
+        return True
+    except Exception as e:
+        logger.error("Website update failed: %s", e)
+        import traceback
+        logger.error("Stack trace: %s", traceback.format_exc())
+        return False
+
+
+def main():
+    parser = argparse.ArgumentParser(description='OzMoEg Money Maker Scanner')
+    parser.add_argument('--mode', choices=['scan', 'paper', 'live'], default='scan',
+                        help='Trading mode (default: scan)')
+    parser.add_argument('--market', choices=['us', 'au'], default=None,
+                        help='Market to scan (us or au)')
+    parser.add_argument('--force', action='store_true',
+                        help='Force scan regardless of cadence gating')
+    parser.add_argument('--kill-status', action='store_true',
+                        help='Show kill-switch status and exit')
+    args = parser.parse_args()
+
+    config = load_config()
+
+    if args.market:
+        config['scanner']['market'] = args.market
+        config['webull']['region_code'] = 18 if args.market == 'au' else 6
+        config['webull']['market'] = args.market
+        config.setdefault('news', {})['market'] = args.market
+    elif args.mode in ('us', 'au'):
+        config['scanner']['market'] = args.mode
+        config['webull']['region_code'] = 18 if args.mode == 'au' else 6
+        config['webull']['market'] = args.mode
+        config.setdefault('news', {})['market'] = args.mode
+
+    if args.mode == 'paper':
+        config['webull']['paper_mode'] = True
+    elif args.mode == 'live':
+        config['webull']['paper_mode'] = False
+
+    if args.kill_status:
+        from kill_switch import show_kill_status
+        show_kill_status(config)
+        return 0
+
+    result = run_scan(config, args)
+
+    if result.get('skipped'):
+        logger.info("Scanner skipped: %s", result.get('reason'))
+        print(f"\n⚠️ Scanner skipped: {result.get('reason')}")
+        return 0
+
+    scan_results = result['scan_results']
+    active_plan = result['active_plan']
+    scan_stats = result['scan_stats']
+
+    success = update_website(config, scan_results, active_plan, scan_stats)
+
+    print(f"\n=== SCAN SUMMARY ===")
+    print(f"🟢 Market: {scan_stats['market']}")
+    print(f"📊 Gainers scanned: {scan_stats['gainers_scanned']}")
+    print(f"🎯 Candidates found: {scan_stats['candidates_found']}")
+    print(f"⚡ Alerts generated: {scan_stats['alerts_sent']}")
+    print(f"📲 Telegram alerts sent: {scan_stats.get('telegram_sent', 0)}")
+    print(f"📈 Top tickers: {', '.join(scan_stats['alert_tickers'][:3]) if scan_stats['alert_tickers'] else 'None'}")
+    print(f"🌐 Website updated: {'Yes' if success else 'No'}")
+    print(f"⏰ Market status: {scan_stats['market_status']} ({scan_stats['market_time']})")
+
+    if success:
+        logger.info("=== OzMoEg Money Maker Scanner Completed Successfully ===")
+        return 0
+    else:
+        logger.error("=== OzMoEg Money Maker Scanner Completed with Website Failure ===")
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

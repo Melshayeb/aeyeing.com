@@ -1,0 +1,260 @@
+#!/usr/bin/env python3
+"""
+OzMoEg Money Maker — Main Entry Point
+
+Simple, reliable workflow:
+1. Check kill switch
+2. Run scanner to get gainers
+3. Update website with results
+4. Log and exit
+"""
+import argparse
+import logging
+import sys
+import json
+import os
+from pathlib import Path
+from datetime import datetime
+
+from kill_switch import load_config, is_enabled, component_enabled
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler(
+            Path.home() / ".hermes/skills/ozmoeg-money-maker/logs/ozmoeg.log",
+            encoding='utf-8'
+        )
+    ]
+)
+
+logger = logging.getLogger(__name__)
+
+def run_scanner(config):
+    """Simple scanner workflow: get gainers and return them."""
+    logger.info("=== OzMoEg Money Maker Scanner Starting ===")
+    
+    # Check kill switch
+    if not is_enabled(config, "master"):
+        logger.info("Master kill switch is OFF. Skipping run.")
+        return None, None
+    
+    if not component_enabled(config, "scanner"):
+        logger.info("Scanner disabled by kill switch or component flag.")
+        return None, None
+    
+    # Initialize Webull client
+    market = str(config.get('scanner', {}).get('market', 'us')).lower()
+    region_code = 18 if market == 'au' else 6
+    webull_cfg = dict(config['webull'])
+    webull_cfg['region_code'] = region_code
+    webull_cfg['market'] = market
+    
+    try:
+        from webull_client import WebullClient
+        wb = WebullClient(webull_cfg)
+        
+        # Get gainers using scanner
+        from scanner import SmallCapScanner
+        scanner = SmallCapScanner(wb, config['scanner'])
+        gainers = scanner.get_gainers(count=50)
+        
+        if not gainers:
+            logger.warning("No gainers fetched — API may be down or market closed")
+            return [], {}
+        
+        # Filter candidates using momentum strategy
+        candidates = scanner.filter_candidates(gainers, mode='momentum')
+        logger.info("Filtered to %d candidates from %d gainers", len(candidates), len(gainers))
+        
+        # Build scan results with proper data for website display
+        scan_results = []
+        
+        for stock in candidates[:15]:
+            # Extract ticker information based on actual stock structure
+            ticker_data = stock.get('ticker', {})
+            ticker = ticker_data.get('symbol')
+            if not ticker:
+                ticker = stock.get('symbol')
+            if not ticker:
+                continue
+                
+            # Try to get name from the ticker dict
+            name = ticker_data.get('name', ticker)
+            
+            # Extract change percentage from raw values
+            change_pct = stock.get('change_pct', 0) or 0
+            
+            # Calculate price and volume
+            raw_change = ticker_data.get('changeRatio', 0) or 0
+            raw_volume = ticker_data.get('volume', 0) or 0
+            raw_market_cap = ticker_data.get('marketValue', 0) or 0
+            raw_price = ticker_data.get('close', 0) or ticker_data.get('pprice', 0) or 0
+            
+            # Add country from stock if available (Webull provides this in enriched data)
+            country = stock.get('country') or ticker_data.get('_country') or ''
+            
+            # Create a detailed result entry matching website expectations
+            result_entry = {
+                'ticker': ticker,
+                'name': name,
+                'status': 'ALERT',
+                'result': f"Move {change_pct:+.1f}% / Volume {int(raw_volume):,}",
+                'detail': f"Filtered from {len(gainers)} gainers",
+                'time': datetime.now().strftime('%I:%M %p'),
+                'date': datetime.now().strftime('%B %d'),
+                'changes': {
+                    'change_pct': change_pct,
+                    'volume': raw_volume,
+                    'market_cap': raw_market_cap,
+                    'price': raw_price
+                },
+                'country': country
+            }
+            scan_results.append(result_entry)
+        
+        alerts_sent = len(scan_results)  # Each candidate becomes an alert
+        
+        return scan_results, {
+            'gainers_scanned': len(gainers),
+            'candidates_found': len(candidates),
+            'alerts_sent': alerts_sent,
+            'market': market
+        }
+        
+    except Exception as e:
+        logger.error("Error in run_scanner: %s", e)
+        import traceback
+        logger.error("Stack trace: %s", traceback.format_exc())
+        return None, None
+
+def update_website(config, scan_results, scan_stats):
+    """Update the website with scan results."""
+    if not scan_results:
+        logger.info("No scan results to update website")
+        return False
+    
+    try:
+        # Import website updater
+        from website_updater import WebsiteUpdater
+        from webull_client import WebullClient
+        
+        market = str(config.get('scanner', {}).get('market', 'us')).lower()
+        region_code = 18 if market == 'au' else 6
+        webull_cfg = dict(config['webull'])
+        webull_cfg['region_code'] = region_code
+        webull_cfg['market'] = market
+        
+        wb = WebullClient(webull_cfg)
+        
+        # Initialize website updater
+        website_updater = WebsiteUpdater(config, wb)
+        
+        # Prepare data for website updater
+        active_plan = None  # Simplified - not implementing trade planning in this version
+        
+        logger.info("Updating website with %d scan results", len(scan_results))
+        
+        # Call update method with proper arguments
+        website_updater.update(scan_results, active_plan, scan_stats)
+        
+        logger.info("Website update completed successfully")
+        return True
+        
+    except Exception as e:
+        logger.error("Error in update_website: %s", e)
+        import traceback
+        logger.error("Stack trace: %s", traceback.format_exc())
+        # Fallback: try writing JSON directly if website_updater fails
+        return write_json_fallback(scan_results, scan_stats)
+
+def write_json_fallback(scan_results, scan_stats):
+    """Fallback method to write scan results directly to JSON if website_updater fails."""
+    try:
+        # Ensure output directory exists
+        output_path = Path.home() / "Desktop/aeyeing.com"
+        output_path.mkdir(parents=True, exist_ok=True)
+        
+        # Create the data structure for the website
+        json_data = {
+            'last_updated': datetime.now().isoformat(),
+            'scan_results': scan_results,
+            'pre_market_results': [],
+            'scan_stats': scan_stats or {}
+        }
+        
+        # Write to the JSON file
+        json_file = output_path / "ozmoeg-latest.json"
+        with open(json_file, 'w') as f:
+            json.dump(json_data, f, indent=2)
+        
+        logger.info("Fallback JSON written to %s", json_file)
+        return True
+        
+    except Exception as e:
+        logger.error("Error in fallback JSON writing: %s", e)
+        return False
+
+def main():
+    """Main entry point."""
+    parser = argparse.ArgumentParser(description='OzMoEg Money Maker Scanner')
+    parser.add_argument('--mode', choices=['scan', 'paper', 'live'], default='scan',
+                       help='Trading mode (default: scan)')
+    parser.add_argument('--market', choices=['us', 'au'], default='us',
+                       help='Market to scan (us or au, default: us)')
+    parser.add_argument('--force', action='store_true',
+                       help='Force scan regardless of cadence gating')
+    parser.add_argument('--kill-status', action='store_true',
+                       help='Show kill-switch status and exit')
+    args = parser.parse_args()
+    
+    config = load_config()
+    
+    # Override market from CLI args if provided
+    if args.market:
+        config['scanner']['market'] = args.market
+        config['webull']['region_code'] = 18 if args.market == 'au' else 6
+    elif args.mode == 'us' or args.mode == 'au':
+        config['scanner']['market'] = args.mode
+        config['webull']['region_code'] = 18 if args.mode == 'au' else 6
+    elif args.mode == 'paper':
+        config['webull']['paper_mode'] = True
+    elif args.mode == 'live':
+        config['webull']['paper_mode'] = False
+    
+    if args.kill_status:
+        from kill_switch import show_kill_status
+        show_kill_status(config)
+        return
+    
+    # Run scanner
+    scan_results, scan_stats = run_scanner(config)
+    
+    if scan_results is not None and scan_stats:
+        # Update website
+        success = update_website(config, scan_results, scan_stats)
+        
+        if success:
+            logger.info("=== OzMoEg Money Maker Scanner Completed Successfully ===")
+            print(f"\n=== SCAN SUMMARY ===")
+            print(f"🟢 Market: {scan_stats['market']}")
+            print(f"📊 Gainers scanned: {scan_stats['gainers_scanned']}")
+            print(f"🎯 Candidates found: {scan_stats['candidates_found']}")
+            print(f"⚡ Alerts sent: {scan_stats['alerts_sent']}")
+            print(f"📈 Top tickers: {', '.join([r['ticker'] for r in scan_results[:3]])}")
+            print(f"🌐 Website updated successfully")
+            return True
+        else:
+            logger.error("=== OzMoEg Money Maker Scanner Failed ===")
+            print(f"\n❌ WEBSITE UPDATE FAILED")
+            return False
+    else:
+        logger.info("Scanner skipped due to kill switch or no data")
+        return False
+
+if __name__ == "__main__":
+    success = main()
+    sys.exit(0 if success else 1)
