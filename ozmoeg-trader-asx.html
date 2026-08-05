@@ -4031,15 +4031,17 @@
                     return float != null && float > 0 && price != null && price > 0;
                 });
 
-                const minPrice = 0.20;
-                const maxPrice = 28;
-                const maxFloat = 20_000_000;
+                // AUS Bubble View uses dynamic axes based on actual float/price data,
+                // because ASX small-cap floats and prices span very different ranges than US.
+                const dataPrices = rows.map(r => getPrice(r)).filter(v => v != null && v > 0);
+                const dataFloats = rows.map(r => getFloat(r)).filter(v => v != null && v > 0);
+                const minPrice = Math.max(0.001, (Math.min(...dataPrices) || 0.20) * 0.85);
+                const maxPrice = (Math.max(...dataPrices) || 28) * 1.15;
+                const maxFloat = Math.max(2_000_000, (Math.max(...dataFloats) || 20_000_000) * 1.15);
 
-                // In-bounds bubbles keep the X-axis fixed at 20M.  Tickers with floats > 20M are
-                // NOT rendered as bubbles; instead we draw their label on the right edge at the
-                // same Y (price) so the chart scale and recommended trade zone stay reasonable.
-                const inRows = rows.filter(r => (getFloat(r) || 0) <= maxFloat);
-                const overflowRows = rows.filter(r => (getFloat(r) || 0) > maxFloat);
+                // With dynamic axes all qualifying rows are rendered as bubbles.
+                const inRows = rows;
+                const overflowRows = [];
 
                 if (!inRows.length && !overflowRows.length) {
                     setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
