@@ -1870,7 +1870,8 @@
 </footer>
 <script>
         // ── Market region toggle (US / AUS) ─────────────────────────────
-        let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
+                // Force AUS market on the canonical ASX page
+        let currentMarket = 'AUS';
         // If the URL path indicates the AUS market (e.g., /ozmoeg-trader-au.html), force the market to AUS
         if (window.location.pathname.toLowerCase().includes('trader-au')) {
             currentMarket = 'AUS';
