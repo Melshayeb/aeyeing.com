@@ -1472,16 +1472,16 @@
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
-        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.5rem; padding: 0.35rem 0.55rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.6rem; font-size: 0.68rem; height: 42px; box-sizing: border-box; overflow: hidden; }
-        .bubble-market-group { display: flex; flex-direction: column; justify-content: center; gap: 0; flex-shrink: 0; height: 100%; }
-        .bubble-market-label { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent-teal); font-weight: 600; white-space: nowrap; line-height: 1.1; }
-        .bubble-market-status { color: var(--text-secondary); font-size: 0.62rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
-        .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 0.95rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0.5px; width: 6ch; text-align: center; flex-shrink: 0; line-height: 1; }
+        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.5rem; padding: 0.35rem 0.55rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; font-size: 0.66rem; height: 44px; box-sizing: border-box; overflow: hidden; }
+        .bubble-market-group { display: flex; flex-direction: column; justify-content: center; gap: 0.05rem; flex-shrink: 0; height: 100%; }
+        .bubble-market-label { font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent-teal); font-weight: 600; white-space: nowrap; line-height: 1.1; }
+        .bubble-market-status { color: var(--text-secondary); font-size: 0.6rem; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
+        .bubble-countdown-timer { font-family: 'Roboto Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0.5px; min-width: 6.8ch; width: auto; text-align: center; flex-shrink: 0; line-height: 1; }
         .bubble-countdown-timer.closed { color: var(--text-secondary); }
-        .bubble-countdown-next { color: var(--text-muted); font-size: 0.55rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
+        .bubble-countdown-next { color: var(--text-muted); font-size: 0.54rem; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 105px; }
         .bubble-market-timeline { flex: 1 1 100px; min-width: 90px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
-        .bubble-market-timeline .market-timeline-labels span { font-size: 0.55rem; }
-        @media (max-width: 720px) { .bubble-market-bar { flex-wrap: wrap; height: auto; min-height: 42px; gap: 0.4rem; padding: 0.4rem; } .bubble-market-timeline { width: 100%; min-width: auto; flex-basis: 100%; } .bubble-countdown-next { max-width: none; } .bubble-market-status { max-width: none; } }
+        .bubble-market-timeline .market-timeline-labels span { font-size: 0.56rem; }
+        @media (max-width: 720px) { .bubble-market-bar { flex-wrap: wrap; height: auto; min-height: 44px; gap: 0.35rem 0.6rem; padding: 0.35rem; } .bubble-market-timeline { width: 100%; min-width: auto; flex-basis: 100%; } .bubble-countdown-next { max-width: 150px; } .bubble-market-status { max-width: 130px; } }
     
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
@@ -2371,12 +2371,18 @@
             const bubbleStatus = document.getElementById('bubble-market-status');
             const bubbleTimer = document.getElementById('bubble-countdown-timer');
             const bubbleNext = document.getElementById('bubble-countdown-next');
-            if (bubbleStatus) bubbleStatus.textContent = statusText;
+            if (bubbleStatus) {
+                bubbleStatus.textContent = statusText;
+                bubbleStatus.title = statusText;
+            }
             if (bubbleTimer) {
                 bubbleTimer.textContent = timerStr;
                 bubbleTimer.className = isOpen ? 'bubble-countdown-timer' : 'bubble-countdown-timer closed';
             }
-            if (bubbleNext && nextText) bubbleNext.textContent = nextText;
+            if (bubbleNext && nextText) {
+                bubbleNext.textContent = nextText;
+                bubbleNext.title = nextText;
+            }
         }
 
         function updateCountdown() {
