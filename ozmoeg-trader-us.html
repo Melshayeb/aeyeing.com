@@ -4557,7 +4557,26 @@
         (async function init() {
             resetScannerToggleToLive();
             toggleSound(soundEnabled);
-            await loadLiveData();
+            try {
+                await loadLiveData();
+            } catch (e) {
+                console.error('Initial loadLiveData failed:', e);
+            }
+            // If the first fetch raced the DOM or silently left the placeholder, force a re-render.
+            setTimeout(() => {
+                const tableRows = document.querySelectorAll('#scanner-table tbody tr, #scanner-table tr');
+                const stillLoading = [...tableRows].some(r => r.textContent.includes('Loading scanner'));
+                if (stillLoading && window._lastLiveResults && window._lastLiveResults.length) {
+                    console.warn('First auto-load left placeholder; forcing re-render');
+                    renderScannerView();
+                    renderPlanRules();
+                    const sel = document.getElementById('alert-selector');
+                    if (sel && !sel.value) {
+                        sel.value = (window._lastLiveResults[0] || {}).ticker || '';
+                        renderSelectedAlert();
+                    }
+                }
+            }, 1500);
             resetRefreshTimer();
         })();
 
