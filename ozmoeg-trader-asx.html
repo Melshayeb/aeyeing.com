@@ -2251,7 +2251,7 @@
         //   PRE-MARKET / OPEN / AFTER-HOURS inside Sydney active window : every 1 minute
         //   OPEN / AFTER-HOURS outside Sydney active window             : every 10 minutes
         //   CLOSED / WEEKEND (outside Sydney active window)             : no auto-fetch
-        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
+        const CLOSED_REFRESH_INTERVAL_MS = 60000;          // disabled when markets are closed
         const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside Sydney window
         const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during Sydney active window (17:00-23:59)
         let liveResults = [];
