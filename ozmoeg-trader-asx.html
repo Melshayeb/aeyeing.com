@@ -2563,7 +2563,11 @@
         }
 
         function getDefaultSnapshotFile() {
-            return currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            // Primary data source is the local OzMoEg data server exposed through the
+            // existing cloudflared tunnel. This bypasses GitHub Pages / raw-GitHub caching
+            // and gives true 1-minute freshness without waiting for a Pages deploy.
+            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
@@ -2593,15 +2597,20 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
+            // 1. Local data server via cloudflared tunnel (fastest, uncached, 1-min fresh).
+            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
+            // 2. Main site (GitHub Pages + Cloudflare cache).
             const main = await tryFetch(getManifestFile(), 'main');
+            // 3. Raw GitHub fallback (5-min cache, but survives Pages failures).
             const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            if (tunnel) return tunnel;
             if (!main && !raw) return null;
             if (!main) return raw;
             if (!raw) return main;
-            // Raw GitHub is uncached, so prefer it whenever it is at least as fresh as the CDN.
-            const mainTs = new Date(main.last_updated).getTime() || 0;
-            const rawTs = new Date(raw.last_updated).getTime() || 0;
-            if (rawTs >= mainTs) {
+            // Fall back through main site, then raw GitHub.
+            const mainTs = main ? new Date(main.last_updated).getTime() || 0 : 0;
+            const rawTs = raw ? new Date(raw.last_updated).getTime() || 0 : 0;
+            if (main && rawTs >= mainTs) {
                 console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
                 return raw;
             }
