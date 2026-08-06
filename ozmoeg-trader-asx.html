@@ -2323,12 +2323,11 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Primary data source is the canonical aeyeing.com URL so the browser never treats
-            // the request as cross-origin. GitHub Pages + Cloudflare cache is bypassed by the
-            // per-request cache buster and the rolling filename in the manifest. The tunnel is
-            // kept as a fallback only (see fetchManifestRaw).
+            // Relative path so the JSON source matches whatever hostname serves the page
+            // (canonical aeyeing.com or the trip-planner tunnel). This avoids cross-origin
+            // blocks and CDN cache issues, and keeps data ~1-minute fresh.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://aeyeing.com/' + file;
+            return '/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
@@ -2338,10 +2337,7 @@
             const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             const tryFetch = async (url, desc) => {
                 try {
-                    const res = await fetch(url + '?_=' + buster, {
-                        cache: 'no-store',
-                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                    });
+                    const res = await fetch(url + '?_=' + buster, { cache: 'no-store' });
                     if (!res.ok) {
                         console.warn('Manifest fetch failed for', desc, res.status);
                         return null;
@@ -4206,7 +4202,7 @@
                 try {
                     const snapshotFile = getDefaultSnapshotFile();
                     const ts = Date.now();
-                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
                     if (res.ok) {
                         const data = await res.json();
                         // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
@@ -4263,10 +4259,7 @@
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                const res = await fetch(snapshotFile + '?_=' + cacheBuster, {
-                    cache: 'no-store',
-                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                });
+                const res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
                     console.warn('Could not load', snapshotFile, res.status);
@@ -4557,10 +4550,11 @@
 
         // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
-        (async function init() {
-            resetScannerToggleToLive();
-            toggleSound(soundEnabled);
+        async function runInitialLoad() {
+            window._initAttempt = (window._initAttempt || 0) + 1;
             try {
+                resetScannerToggleToLive();
+                toggleSound(soundEnabled);
                 await loadLiveData();
             } catch (e) {
                 console.error('Initial loadLiveData failed:', e);
@@ -4569,19 +4563,27 @@
             setTimeout(() => {
                 const tableRows = document.querySelectorAll('#scanner-table tbody tr, #scanner-table tr');
                 const stillLoading = [...tableRows].some(r => r.textContent.includes('Loading scanner'));
-                if (stillLoading && window._lastLiveResults && window._lastLiveResults.length) {
-                    console.warn('First auto-load left placeholder; forcing re-render');
-                    renderScannerView();
-                    renderPlanRules();
-                    const sel = document.getElementById('alert-selector');
-                    if (sel && !sel.value) {
-                        sel.value = (window._lastLiveResults[0] || {}).ticker || '';
-                        renderSelectedAlert();
+                if (stillLoading) {
+                    if (window._lastLiveResults && window._lastLiveResults.length) {
+                        console.warn('First auto-load left placeholder; forcing re-render');
+                        renderScannerView();
+                        renderPlanRules();
+                        const sel = document.getElementById('alert-selector');
+                        if (sel && !sel.value) {
+                            sel.value = (window._lastLiveResults[0] || {}).ticker || '';
+                            renderSelectedAlert();
+                        }
+                    } else if (window._initAttempt < 4) {
+                        console.warn('No results yet, retrying initial load...');
+                        runInitialLoad();
                     }
+                } else {
+                    window._initDone = true;
                 }
             }, 1500);
             resetRefreshTimer();
-        })();
+        }
+        runInitialLoad();
 
 </script>
 <!-- BUBBLE VIEW MODAL -->
