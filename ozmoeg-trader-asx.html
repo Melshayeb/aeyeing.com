@@ -2323,11 +2323,10 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Relative path so the JSON source matches whatever hostname serves the page
-            // (canonical aeyeing.com or the trip-planner tunnel). This avoids cross-origin
-            // blocks and CDN cache issues, and keeps data ~1-minute fresh.
+            // Always fetch from the tunnel endpoint: it is fresh every minute, sends CORS
+            // headers, and avoids GitHub Pages' 10-minute JSON cache / missing /ozmoeg/ path.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return '/ozmoeg/' + file;
+            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
