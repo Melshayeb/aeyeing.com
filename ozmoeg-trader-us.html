@@ -2325,59 +2325,32 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Primary data source is the canonical aeyeing.com URL so the browser never treats
-            // the request as cross-origin. GitHub Pages + Cloudflare cache is bypassed by the
-            // per-request cache buster and the rolling filename in the manifest. The tunnel is
-            // kept as a fallback only (see fetchManifestRaw).
+            // Primary data source is the local OzMoEg data server exposed through the
+            // existing cloudflared tunnel. This bypasses GitHub Pages deploy latency and
+            // Cloudflare's 10-minute JSON cache, giving true ~1-minute freshness.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://aeyeing.com/' + file;
+            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
-            // Try the main site first; fall back to raw GitHub content when the CDN fronting
-            // aeyeing.com caches the manifest beyond the scan cadence. Both are served with
-            // permissive CORS so this works from any browser.
-            const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
-            const tryFetch = async (url, desc) => {
+            // Manifest is tiny; fetch from the tunnel so we can detect a freshly-written snapshot.
+            const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
+            const urls = [
+                'https://trip-planner.aeyeing.com/ozmoeg/' + file,
+                'https://aeyeing.com/' + file
+            ];
+            let lastErr = null;
+            for (const url of urls) {
                 try {
-                    const res = await fetch(url + '?_=' + buster, {
-                        cache: 'no-store',
-                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                    });
-                    if (!res.ok) {
-                        console.warn('Manifest fetch failed for', desc, res.status);
-                        return null;
-                    }
-                    const manifest = await res.json();
-                    if (!manifest || !manifest.latest || !manifest.last_updated) {
-                        console.warn('Manifest malformed for', desc);
-                        return null;
-                    }
-                    return manifest;
+                    const res = await fetch(url + '?_=' + Date.now(), { cache: 'no-store' });
+                    if (res.ok) return await res.json();
                 } catch (e) {
-                    console.warn('Manifest fetch exception for', desc, e);
-                    return null;
+                    lastErr = e;
+                    console.warn('Manifest fetch failed for', url, e.name, e.message);
                 }
-            };
-            const market = currentMarket === 'AUS' ? '-au' : '';
-            // 1. Local data server via cloudflared tunnel (fastest, uncached, 1-min fresh).
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            // 2. Main site (GitHub Pages + Cloudflare cache).
-            const main = await tryFetch(getManifestFile(), 'main');
-            // 3. Raw GitHub fallback (5-min cache, but survives Pages failures).
-            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-            if (tunnel) return tunnel;
-            if (!main && !raw) return null;
-            if (!main) return raw;
-            if (!raw) return main;
-            // Fall back through main site, then raw GitHub.
-            const mainTs = main ? new Date(main.last_updated).getTime() || 0 : 0;
-            const rawTs = raw ? new Date(raw.last_updated).getTime() || 0 : 0;
-            if (main && rawTs >= mainTs) {
-                console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
-                return raw;
             }
-            return main;
+            console.warn('All manifest fetch attempts failed', lastErr);
+            return null;
         }
 
         async function pollManifest() {
@@ -4206,7 +4179,7 @@
                 try {
                     const snapshotFile = getDefaultSnapshotFile();
                     const ts = Date.now();
-                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
                     if (res.ok) {
                         const data = await res.json();
                         // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
@@ -4251,22 +4224,18 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // The manifest tells us the JSON timestamp; the snapshot URL always comes from the
-                // canonical aeyeing.com domain so the browser never blocks it as cross-origin.
+                // Manifest is only used for timestamp tracking; the snapshot always comes from the
+                // tunnel so we bypass GitHub Pages/Cloudflare's 10-minute JSON cache.
                 const manifest = await fetchManifestRaw();
                 let snapshotFile = forcedSnapshotFile || getDefaultSnapshotFile();
                 if (manifest && manifest.latest) {
-                    // Track manifest success, but keep the canonical URL for the actual data fetch
-                    // to avoid cross-origin blocks on the tunnel for the large JSON payload.
                     window._lastManifestFetchSuccessAt = new Date();
                 }
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                const res = await fetch(snapshotFile + '?_=' + cacheBuster, {
-                    cache: 'no-store',
-                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                });
+                // Simple GET, no custom headers, to avoid a CORS preflight on the tunnel.
+                const res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
                     console.warn('Could not load', snapshotFile, res.status);
