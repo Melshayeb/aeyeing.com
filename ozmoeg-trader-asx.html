@@ -7,7 +7,36 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-
+<script>
+    // Auto-reload guard: compare the loaded page age with the fresh tunnel-served HTML.
+    (function(){
+        const now = Date.now();
+        const reloadKey = 'ozmoeg-reloaded-v3';
+        const lastReload = parseInt(sessionStorage.getItem(reloadKey) || '0', 10);
+        if (now - lastReload < 20000) return;
+        try {
+            const isAU = (location.search.match(/[?&]view=(au|aus)/i) || [])[1];
+            const htmlUrl = isAU
+                ? 'https://trip-planner.aeyeing.com/ozmoeg-trader-asx.html'
+                : 'https://trip-planner.aeyeing.com/ozmoeg-trader-us.html';
+            fetch(htmlUrl, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                .then(function(r){
+                    var serverTs = r.headers.get('last-modified');
+                    if (!serverTs) return;
+                    var serverTime = new Date(serverTs).getTime();
+                    var pageTime = new Date(document.lastModified).getTime();
+                    if (serverTime > pageTime + 3000) {
+                        sessionStorage.setItem(reloadKey, now.toString());
+                        var url = new URL(location.href);
+                        url.searchParams.set('_', now.toString());
+                        location.replace(url.toString());
+                    }
+                })
+                .catch(function(){});
+        } catch(e){ /* ignore */ }
+    })();
+</script>
+<title>OzMoEg Trader — Live Small-Cap Monitor</title></script>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
 <link href="images/logo.png" rel="icon" type="image/png"/>
@@ -1496,7 +1525,7 @@
 <div class="news-ticker-body">
 <div class="news-ticker-scroll" id="news-ticker">
 <!-- NEWS_TICKER_ITEMS -->
-<div class="news-item skip"><span class="score">INFO</span><span class="time">Loading news…</span></div>
+<div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — Waiting for live scan data…</div>
 <!-- END_NEWS_TICKER_ITEMS -->
 </div>
 </div>
@@ -1516,7 +1545,9 @@
 </div>
 <button class="bubble-view-btn" id="bubble-view-btn" title="Open interactive bubble chart" type="button">🫧 Bubble View</button>
 <span id="scanner-timestamp"></span>
-<span class="badge" id="scanner-badge">Loading scanner…</span>
+<span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
+🟢 AUS OPEN 01:31 PM AEST | Scanned: 50 | 14 candidates | 0 alerts (skipped: 0)
+                    <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
 </select>
@@ -1538,8 +1569,147 @@
 </thead>
 <tbody>
 <!-- SCANNER_TABLE_BODY -->
-<tr><td colspan="8" style="text-align:center;color:var(--text-secondary);padding:2rem;">Loading scanner results…</td></tr>
-<!-- END_SCANNER_TABLE_BODY -->
+                            <tr>
+                                <td class="ticker-cell">SDV <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>SCIDEV LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-04T23:51:18.000Z">3h ago</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>190.09M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">AI1 <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>ADISYN LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-04T23:44:33.000Z">4h ago</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>1177.02M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">KYP <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>KINATICO LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>436.63M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">WAU <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>WA GOLD LIMITED</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>1263.10M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">GWR <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>GWR GROUP LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>323.61M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">CTQ <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>CARETEQ LIMITED</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>733.12M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">CXU <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>CAULDRON ENERGY LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>2036.98M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">MYE <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>MASTERMYNE GROUP</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>308.66M</td>
+                                <td><span class="sec-filings-mini" title="8-K (Jul 30), 8-K (May 07)">8-K (Jul 30), 8-K (May 07)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">MHM <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>MOUNT HOPE</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>41.31M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">MTM <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>METALLIUM LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>738.25M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">5GG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>PENTANET</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>433.17M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">PKP <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>PEAK PROCESSING LTD</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>1334.39M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">1AD <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>ADALTA LIMITED</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>3212.17M</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td class="ticker-cell">RTR <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+                                <td>RUMBLE RES LIMITED</td>
+                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
+                                <td class="news-age-cell"><span class="news-age missing" title="No qualifying news headlines">—</span></td>
+                                <td><span class="tape-mini tape-missing" title="RVOL 0.0x vs ADV (0 today / 0 avg). Last: unknown">— missing</span></td>
+                                <td>Passed filters</td>
+                                <td>1326.94M</td>
+                                <td>—</td>
+                            </tr>
+                    <!-- END_SCANNER_TABLE_BODY -->
 </tbody>
 </table>
 </div>
@@ -1547,8 +1717,40 @@
 <div class="bouncers-section" id="bouncers-section">
 </div>
 <!-- END_BOUNCERS_SECTION -->
-<!-- SCANNED_GAINERS_TABLE --><!-- END_SCANNED_GAINERS_TABLE -->
-<!-- SCANNED_LOSERS_TABLE --><!-- END_SCANNED_LOSERS_TABLE -->
+<!-- SCANNED_GAINERS_TABLE -->
+                        <details class="scanned-details" id="scanned-gainers-details">
+                            <summary>🔍 Show all 50 scanned gainers with filter reasons</summary>
+                            <div class="table-wrap">
+                                <table class="scanned-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No gainers data available for this scan</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    <!-- END_SCANNED_GAINERS_TABLE -->
+<!-- SCANNED_LOSERS_TABLE -->
+                        <details class="scanned-details" id="scanned-losers-details">
+                            <summary>🔻 Show all 50 scanned losers with filter reasons</summary>
+                            <div class="table-wrap">
+                                <table class="scanned-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No losers data available for this scan</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    <!-- END_SCANNED_LOSERS_TABLE -->
 </div>
 <!-- TRADE PLAN -->
 <div class="trade-plan-card active" id="trade-plan-card">
@@ -2319,15 +2521,15 @@
         }
 
         function getManifestFile() {
-            return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
+            return currentMarket === 'AUS'
+                ? 'https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest-au.json'
+                : 'https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest.json';
         }
 
         function getDefaultSnapshotFile() {
-            // Primary data source is the local OzMoEg data server exposed through the
-            // existing cloudflared tunnel. This bypasses GitHub Pages / raw-GitHub caching
-            // and gives true 1-minute freshness without waiting for a Pages deploy.
-            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
+            return currentMarket === 'AUS'
+                ? 'https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-latest-au.json'
+                : 'https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-latest.json';
         }
 
         async function fetchManifestRaw() {
@@ -2357,20 +2559,15 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
-            // 1. Local data server via cloudflared tunnel (fastest, uncached, 1-min fresh).
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            // 2. Main site (GitHub Pages + Cloudflare cache).
             const main = await tryFetch(getManifestFile(), 'main');
-            // 3. Raw GitHub fallback (5-min cache, but survives Pages failures).
-            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-            if (tunnel) return tunnel;
+            const raw = null; // raw GitHub fallback disabled; tunnel is single source of truth
             if (!main && !raw) return null;
             if (!main) return raw;
             if (!raw) return main;
-            // Fall back through main site, then raw GitHub.
-            const mainTs = main ? new Date(main.last_updated).getTime() || 0 : 0;
-            const rawTs = raw ? new Date(raw.last_updated).getTime() || 0 : 0;
-            if (main && rawTs >= mainTs) {
+            // Raw GitHub is uncached, so prefer it whenever it is at least as fresh as the CDN.
+            const mainTs = new Date(main.last_updated).getTime() || 0;
+            const rawTs = new Date(raw.last_updated).getTime() || 0;
+            if (rawTs >= mainTs) {
                 console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
                 return raw;
             }
