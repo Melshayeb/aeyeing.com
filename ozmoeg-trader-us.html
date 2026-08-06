@@ -3604,7 +3604,7 @@
             const isPre = view === 'premarket';
             const isWatchlist = view === 'watchlist';
             const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
-                         isPre ? (window._lastPreMarketResults || []) :
+                         isPre ? ((window._lastPreMarketResults && window._lastPreMarketResults.length) ? window._lastPreMarketResults : (window._lastLiveResults || [])) :
                          (window._lastLiveResults || []);
             displayedResults = rows;
             if (window.rebuildBubbleChart) {
