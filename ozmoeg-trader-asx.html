@@ -2323,11 +2323,12 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Primary data source is the local OzMoEg data server exposed through the
-            // existing cloudflared tunnel. This bypasses GitHub Pages / raw-GitHub caching
-            // and gives true 1-minute freshness without waiting for a Pages deploy.
+            // Primary data source is the canonical aeyeing.com URL so the browser never treats
+            // the request as cross-origin. GitHub Pages + Cloudflare cache is bypassed by the
+            // per-request cache buster and the rolling filename in the manifest. The tunnel is
+            // kept as a fallback only (see fetchManifestRaw).
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
+            return 'https://aeyeing.com/' + file;
         }
 
         async function fetchManifestRaw() {
@@ -4250,11 +4251,13 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file tells us the exact unique snapshot filename written by the backend.
+                // The manifest tells us the JSON timestamp; the snapshot URL always comes from the
+                // canonical aeyeing.com domain so the browser never blocks it as cross-origin.
                 const manifest = await fetchManifestRaw();
                 let snapshotFile = forcedSnapshotFile || getDefaultSnapshotFile();
                 if (manifest && manifest.latest) {
-                    snapshotFile = manifest.latest;
+                    // Track manifest success, but keep the canonical URL for the actual data fetch
+                    // to avoid cross-origin blocks on the tunnel for the large JSON payload.
                     window._lastManifestFetchSuccessAt = new Date();
                 }
 
