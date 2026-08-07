@@ -1546,8 +1546,40 @@
 <div class="bouncers-section" id="bouncers-section">
 </div>
 <!-- END_BOUNCERS_SECTION -->
-<!-- SCANNED_GAINERS_TABLE --><!-- END_SCANNED_GAINERS_TABLE -->
-<!-- SCANNED_LOSERS_TABLE --><!-- END_SCANNED_LOSERS_TABLE -->
+<!-- SCANNED_GAINERS_TABLE -->
+<details class="scanned-details" id="scanned-gainers-details">
+<summary>🔍 Show all 50 scanned gainers with filter reasons</summary>
+<div class="table-wrap">
+<table class="scanned-table">
+<thead>
+<tr>
+<th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No gainers data available for this scan</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<!-- END_SCANNED_GAINERS_TABLE -->
+<!-- SCANNED_LOSERS_TABLE -->
+<details class="scanned-details" id="scanned-losers-details">
+<summary>🔻 Show all 50 scanned losers with filter reasons</summary>
+<div class="table-wrap">
+<table class="scanned-table">
+<thead>
+<tr>
+<th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No losers data available for this scan</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<!-- END_SCANNED_LOSERS_TABLE -->
 </div>
 <!-- TRADE PLAN -->
 <div class="trade-plan-card active" id="trade-plan-card">
@@ -4487,7 +4519,7 @@
                         if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
                         return `${(n/1e3).toFixed(0)}K`;
                     }
-                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
+                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span>${escapeHtml(reason)}</td></tr>`;
                 };
 
                 const gainersDetails = document.getElementById('scanned-gainers-details');
