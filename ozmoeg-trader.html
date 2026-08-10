@@ -781,6 +781,18 @@
         }
         .result-pass { color: var(--accent-green); font-weight: 600; }
         .result-skip { color: var(--text-secondary); }
+        .result-halt {
+            background: rgba(158, 158, 158, 0.2);
+            color: #9e9e9e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 600; font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
         .result-alert {
             background: rgba(0,230,118,0.15);
             color: var(--accent-green);
@@ -898,7 +910,15 @@
             font-size: 0.7rem;
             font-weight: 600;
         }
-        .scan-skip {
+       
+        .scan-halt {
+            background: rgba(158,158,158,0.2);
+            color: #9e9e9e;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        } .scan-skip {
             background: rgba(255,255,255,0.08);
             color: var(--text-secondary);
             padding: 0.15rem 0.4rem;
@@ -2976,7 +2996,7 @@
             if (!sel) return;
             const previousTicker = sel.value;
             sel.innerHTML = '';
-            let selectable = entries.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            let selectable = entries.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
             selectable.forEach(r => { r._maxScore = getAlertMaxScore(r); });
             // Sort High impact (≥4) first, then Medium (≥2), then Low
             selectable.sort((a, b) => b._maxScore - a._maxScore);
@@ -3023,11 +3043,11 @@
             const activeRows = getActiveScannerView() === 'premarket'
                 ? (window._lastPreMarketResults || [])
                 : (window._lastLiveResults || []);
-            const selectable = activeRows.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+            const selectable = activeRows.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
             // First try the active view; fall back to any source that contains this ticker.
             let r = selectable.find(a => a.ticker === ticker);
             if (!r && ticker) {
-                const fallback = allSources.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
+                const fallback = allSources.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
                 r = fallback.find(a => a.ticker === ticker);
             }
 
@@ -3447,6 +3467,7 @@
             let statusClass = 'result-skip';
             let emoji = '⏭️';
             if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
+            else if (r.status === 'ALERT/HALT') { statusClass = 'result-halt'; emoji = '🛑'; }
             else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
             else if (r.status === 'WATCHLIST') { statusClass = 'result-candidate'; emoji = '⏰'; }
             const imp = impactLabel(getAlertMaxScore(r), r);
@@ -3655,8 +3676,8 @@
                 }
             } else if (isPre) {
                 const sorted = [...rows].sort((a, b) => {
-                    const aAlert = a.status === 'ALERT' ? 1 : 0;
-                    const bAlert = b.status === 'ALERT' ? 1 : 0;
+                    const aAlert = (a.status === 'ALERT' || a.status === 'ALERT/HALT') ? 1 : 0;
+                    const bAlert = (b.status === 'ALERT' || b.status === 'ALERT/HALT') ? 1 : 0;
                     if (aAlert !== bAlert) return bAlert - aAlert;
                     if (aAlert) {
                         const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
@@ -3858,15 +3879,18 @@
 
             function getBubbleColor(r, changePct) {
                 // Glow cyan wins for extreme movers, then ALERT, then penny stock.
+                // Halted alerts turn grey until trading resumes.
+                if (r?.status === 'ALERT/HALT') return 'rgba(158,158,158,0.55)';
                 if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
-                if (r?.status === 'ALERT') return 'rgba(248,113,113,0.55)';
+                if (r?.status === 'ALERT' || r?.status === 'ALERT/HALT') return 'rgba(248,113,113,0.55)';
                 if (r?.is_penny_stock || getPrice(r) < 1) return 'rgba(248,113,113,0.55)';
                 return 'rgba(45,212,191,0.55)';
             }
 
             function getBubbleBorderColor(r, changePct) {
                 if (Math.abs(changePct) > 80) return '#22d3ee';
-                if (r?.status === 'ALERT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
+                if (r?.status === 'ALERT/HALT') return '#9e9e9e';
+                if (r?.status === 'ALERT' || r?.status === 'ALERT/HALT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
                 return '#2dd4bf';
             }
 
@@ -4237,7 +4261,7 @@
                                         const price = getPrice(r);
                                         const fl = getFloat(r);
                                         const change = getChangePct(r);
-                                        const status = r?.status === 'ALERT' ? ` | Alert: ${getAlertLevel(r) || 'Active'}` : '';
+                                        const status = (r?.status === 'ALERT' || r?.status === 'ALERT/HALT') ? ` | Alert: ${getAlertLevel(r) || 'Active'}` : '';
                                         lines.push(`$${formatPrice(price)} | Float ${formatFloat(fl)} | Change ${change >= 0 ? '+' : ''}${change.toFixed(1)}%${status}`);
                                         lines.push(`Vol ${formatVolume(getVolume(r))} | News ${getNewsAge(r)} | SEC ${getSecFilings(r) || '—'}`);
                                         return lines;
@@ -4402,8 +4426,8 @@
 
                 // Update badge — prefer real-time US market status when the JSON scan is stale
                 // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
-                const alerts = results.filter(r => r.status === 'ALERT').length;
-                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
+                const alerts = results.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT').length;
+                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'ALERT/HALT' && r.status !== 'INFO').length;
 
                 // Detect genuinely new ALERT tickers since the previous scan and play a chirp.
                 // We compare against the previous fetch's alert list so repeated rows stay silent.
@@ -4413,7 +4437,7 @@
                     ...(preMarketWatchlist || [])
                 ];
                 const prevAlertTickers = new Set(window._lastAlertTickers || []);
-                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
+                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
                 const currentAlertTickers = currentAlerts.map(r => r.ticker);
                 const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
@@ -4549,7 +4573,7 @@
                 const ticker = document.getElementById('news-ticker');
                 if (ticker) {
                     const NEWS_TICKER_MAX_AGE_HOURS = 24;
-                    const actionable = results.filter(r => ['ALERT','CANDIDATE','BOUNCE'].includes(r.status));
+                    const actionable = results.filter(r => ['ALERT','ALERT/HALT','CANDIDATE','BOUNCE'].includes(r.status));
                     const recentItems = actionable.filter(r => {
                         if (!r.news || !Array.isArray(r.news.headlines) || r.news.headlines.length === 0) return true;
                         const newestMin = Math.min(...r.news.headlines.map(h => newsAgeMinutes(h)));
