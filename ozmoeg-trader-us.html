@@ -3630,8 +3630,8 @@
             const isPre = view === 'premarket';
             const isWatchlist = view === 'watchlist';
             const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
-                         isPre ? ((window._lastPreMarketResults && window._lastPreMarketResults.length) ? window._lastPreMarketResults : (window._lastLiveResults || [])) :
-                         (window._lastLiveResults || []);
+                         isPre ? ((window._lastPreMarketResults && window._lastPreMarketResults.length) ? window._lastPreMarketResults : (window._lastLiveResults || [])).filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT') :
+                         (window._lastLiveResults || []).filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
             displayedResults = rows;
             if (window.rebuildBubbleChart) {
                 const modal = document.getElementById('bubble-modal');
@@ -3716,7 +3716,7 @@
                     } else if (isClosed) {
                         msg = `The US market is currently ${marketLabel}. Live scan results will resume when the market opens.`;
                     } else {
-                        msg = 'No candidates met the alert criteria in the latest scan.';
+                        msg = 'No active alerts in the latest scan.';
                     }
                     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
                     populateAlertSelector([]);
@@ -3821,6 +3821,8 @@
                 // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
                 const allRows = (window._lastBubbleViewResults || window._lastLiveResults || []);
                 const rows = allRows.filter(r => {
+                    // Bubble chart shows actionable alerts only.
+                    if (r.status !== 'ALERT' && r.status !== 'ALERT/HALT') return false;
                     // Exclude watchlist rows with no real float or price data.
                     const float = getFloat(r);
                     const price = getPrice(r);
@@ -4388,7 +4390,7 @@
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
                 const marketLabel = marketFromData;
                 const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
-                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
+                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${alerts} active alert${alerts === 1 ? '' : 's'}${timeAgo}`;
 
                 liveResults = results;
                 liveLastUpdated = lastUpdated;
