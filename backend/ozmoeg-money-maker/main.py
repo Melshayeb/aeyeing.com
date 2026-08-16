@@ -680,6 +680,23 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             tape_data = tape_analyzer.analyze_ticker(ticker, None, gainer.get('ticker', gainer))
             gainer['tape'] = tape_data
 
+            # Targeted AKAN-like filter: a US ALERT must have either a real catalyst or live
+            # intraday tape momentum. Without either, it is a gap-and-fade CANDIDATE.
+            if market == 'us' and status == 'ALERT':
+                news_score = 0
+                try:
+                    news_score = int(news_data.get('max_score', 0) or 0)
+                except (TypeError, ValueError):
+                    news_score = 0
+                tape_momentum = (
+                    float(tape_data.get('price_velocity_pct', 0) or 0) > 0 or
+                    float(tape_data.get('volume_acceleration', 0) or 0) > 0 or
+                    int(tape_data.get('large_bar_count', 0) or 0) > 0
+                )
+                if news_score == 0 and not tape_momentum:
+                    status = 'CANDIDATE'
+                    result_summary = _scan_reason(gainer) or change_str
+
             # Fetch recent SEC EDGAR filings for the alert/candidate row.
             # Rate-limited internally; if it fails we simply leave the field blank.
             sec_filings_summary = ''
