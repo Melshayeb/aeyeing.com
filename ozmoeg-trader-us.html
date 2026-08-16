@@ -2300,14 +2300,10 @@
         setInterval(updateCountdown, 1000);
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
-        // Intervals are driven by Sydney wall-clock time and US market status:
-        //   CATALYST WATCHLIST (Sydney 17:00 → 17:59): every 1 minute, news-only mode
-        //   PRE-MARKET / OPEN / AFTER-HOURS inside Sydney active window : every 1 minute
-        //   OPEN / AFTER-HOURS outside Sydney active window             : every 10 minutes
-        //   CLOSED / WEEKEND (outside Sydney active window)             : no auto-fetch
-        const CLOSED_REFRESH_INTERVAL_MS = 60000;          // disabled when markets are closed
-        const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside Sydney window
-        const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during Sydney active window (17:00-23:59)
+        // Current behaviour: 1-minute refresh whenever the US market is open, pre-market, or after-hours.
+        // Auto-refresh is disabled only when the US market is CLOSED or WEEKEND.
+        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed or weekend
+        const ACTIVE_REFRESH_INTERVAL_MS = 60000;      // 1 min refresh during active market hours
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
@@ -2346,14 +2342,8 @@
 
         function getRefreshIntervalMs() {
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
-                // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
-                return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
-            }
-            if (isActiveTradingWindow()) return ACTIVE_REFRESH_INTERVAL_MS;
-            // US OPEN / AFTER-HOURS outside the Sydney 17:00-23:59 window refresh every 10 minutes.
-            // PRE-MARKET outside the window is treated the same way: the website is not in active mode.
-            return IDLE_REFRESH_INTERVAL_MS;
+            // Disabled only when the US market is closed or weekend. All other phases refresh every minute.
+            return (usStatus === 'CLOSED' || usStatus === 'WEEKEND') ? CLOSED_REFRESH_INTERVAL_MS : ACTIVE_REFRESH_INTERVAL_MS;
         }
 
         // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
@@ -2366,10 +2356,12 @@
         let nextPollAt = computeNextPollAt();
 
         function computeNextPollAt() {
+            const interval = getRefreshIntervalMs();
+            if (interval === 0) return Infinity; // markets closed or weekend
             const now = Date.now();
-            // Align to the next minute boundary plus a small offset.
-            const nextMinute = Math.ceil(now / MANIFEST_POLL_INTERVAL_MS) * MANIFEST_POLL_INTERVAL_MS;
-            return nextMinute + MANIFEST_POLL_OFFSET_MS;
+            // Align to the next boundary for the current refresh cadence.
+            const nextBoundary = Math.ceil(now / interval) * interval;
+            return nextBoundary + MANIFEST_POLL_OFFSET_MS;
         }
 
         function getManifestFile() {
@@ -2428,6 +2420,7 @@
                 console.warn('Manifest poll failed:', e);
             } finally {
                 window._pollingManifest = false;
+                nextPollAt = computeNextPollAt();
             }
         }
 
@@ -2474,19 +2467,16 @@
                             (usStatus === 'OPEN' && isActiveTradingWindow());
 
             let modeLabel;
-            const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
-            if (isActiveTradingWindow() && usStatus === 'CLOSED') {
-                modeLabel = `(1-min catalyst watchlist mode)`;
-            } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
+            if (usStatus === 'PRE-MARKET') {
                 modeLabel = `(1-min pre-market mode)`;
             } else if (usStatus === 'OPEN') {
-                modeLabel = `(${pollMin}-min open market mode)`;
+                modeLabel = `(1-min open market mode)`;
             } else if (usStatus === 'AFTER-HOURS') {
-                modeLabel = `(${pollMin}-min after-hours mode)`;
-            } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
-                modeLabel = `(${pollMin}-min pre-market mode)`;
+                modeLabel = `(1-min after-hours mode)`;
+            } else if (usStatus === 'CLOSED') {
+                modeLabel = `(markets closed)`;
             } else {
-                modeLabel = `(${pollMin}-min markets closed)`;
+                modeLabel = `(markets closed)`;
             }
 
             const interval = getRefreshIntervalMs();
@@ -2509,7 +2499,7 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
+            active = usStatus === 'PRE-MARKET' || usStatus === 'OPEN' || usStatus === 'AFTER-HOURS';
             const txt = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
             if (label) { label.classList.toggle('active-refresh', active); label.textContent = txt; }
             if (bubbleNext) { bubbleNext.classList.toggle('active-refresh', active); bubbleNext.textContent = txt; }
