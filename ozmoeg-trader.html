@@ -4660,9 +4660,9 @@
 
                 const minPrice = 0.20;
                 const maxPrice = 28;
-                const maxFloat = 20_000_000;
+                const maxFloat = 15_000_000;
 
-                // In-bounds bubbles keep the X-axis fixed at 20M.  Tickers with floats > 20M are
+                // In-bounds bubbles keep the X-axis fixed at 15M.  Tickers with floats > 15M are
                 // NOT rendered as bubbles; instead we draw their label on the right edge at the
                 // same Y (price) so the chart scale and recommended trade zone stay reasonable.
                 const inRows = rows.filter(r => (getFloat(r) || 0) <= maxFloat);
