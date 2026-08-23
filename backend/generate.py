@@ -17,30 +17,43 @@ from template import build_skeleton
 
 def generate_excel(trip: Dict, output_path: str = None, pace: str = "relaxed") -> str:
     """Generate a complete trip Excel file from the trip request dict.
-    Raises ValueError if any city can only be served by the generic placeholder
-    template, so we never ship fake-looking curated data to users."""
-    from llm_places import load_cached
+    For unknown cities it first tries the LLM to produce real data. Only if
+    the LLM also fails does it raise ValueError, so users never receive
+    fake-looking placeholder trips."""
+    from llm_places import load_cached, generate_city_dataset
     from sources import _builtin_city_places
 
-    # Verify every requested city has real data before building the workbook.
-    unsupported = []
-    for c in trip.get("cities", []):
-        city = c["city"]
-        country = trip.get("destination_country", "")
-        has_builtin = bool(_builtin_city_places(city, country, "attractions", 1))
+    def _has_real_data(city, country):
+        if _builtin_city_places(city, country, "attractions", 1):
+            return True
         cached = load_cached(city, country)
-        is_generic = (
-            cached and cached.get("_source") == "generic_template"
-        ) or (
-            cached and not cached.get("_source")
-            and not any(
+        if not cached:
+            return False
+        if cached.get("_source") == "generic_template":
+            return False
+        # Legacy cached files without _source: assume real if any non-zero coords
+        if not cached.get("_source"):
+            return any(
                 p.get("lat", 0) != 0.0 and p.get("lon", 0) != 0.0
                 for key, places in cached.items()
                 if key != "hotels" and isinstance(places, list)
                 for p in places
             )
-        )
-        if not has_builtin and (cached is None or is_generic):
+        return True
+
+    # For unknown cities, try LLM generation first before giving up.
+    unsupported = []
+    for c in trip.get("cities", []):
+        city = c["city"]
+        country = trip.get("destination_country", "")
+        if _has_real_data(city, country):
+            continue
+        print(f"[generate] No cached data for {city}, trying LLM...")
+        try:
+            generate_city_dataset(city, country, ages=[t["age"] for t in trip.get("travelers", [])], timeout_ollama=60, timeout_cloud=60)
+        except Exception as e:
+            print(f"[generate] LLM failed for {city}: {e}")
+        if not _has_real_data(city, country):
             unsupported.append(city)
     if unsupported:
         raise ValueError(

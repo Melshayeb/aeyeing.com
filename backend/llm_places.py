@@ -1,7 +1,7 @@
 """Generate curated English place datasets for unknown cities via LLM.
 
 Three-tier fallback:
-1. Local Ollama endpoint (http://192.168.1.108:11434/v1 by default).
+1. Local Ollama endpoint read from Hermes config.yaml / env.
 2. Cloud OpenAI-compatible fallback if Ollama is unreachable/empty.
 3. Generic safe template if both fail.
 
@@ -19,10 +19,59 @@ from typing import Dict, List, Optional
 CACHE_DIR = Path(__file__).parent / "cached_cities"
 CACHE_DIR.mkdir(exist_ok=True)
 
-OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://192.168.1.108:11434/v1")
+
+def _load_hermes_config():
+    """Read Hermes config.yaml if available to find the active Ollama endpoint."""
+    candidates = [
+        Path(os.environ.get("HERMES_CONFIG", "")),
+        Path.home() / "AppData" / "Local" / "hermes" / "config.yaml",
+        Path.home() / ".config" / "hermes" / "config.yaml",
+    ]
+    for path in candidates:
+        if not path or not path.exists():
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+            # Extract the top-level `model:` block by indentation.
+            in_model_block = False
+            model_lines = []
+            for line in lines:
+                stripped = line.lstrip()
+                if not stripped or stripped.startswith("#"):
+                    continue
+                indent = len(line) - len(stripped)
+                if stripped == "model:" or stripped.startswith("model:") and stripped[len("model:")].isspace():
+                    in_model_block = True
+                    continue
+                if in_model_block:
+                    if indent <= 0 and stripped.endswith(":"):
+                        break  # next top-level key
+                    model_lines.append(stripped)
+
+            cfg_model = {}
+            for line in model_lines:
+                if ":" not in line:
+                    continue
+                k, v = line.split(":", 1)
+                cfg_model[k.strip()] = v.strip().strip('"').strip("'")
+
+            base_url = cfg_model.get("base_url", "")
+            if base_url:
+                base_url = base_url.rstrip("/")
+                if not base_url.endswith("/v1"):
+                    base_url += "/v1"
+                return base_url
+        except Exception:
+            continue
+    return ""
+
+
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", _load_hermes_config()) or "http://127.0.0.1:11434/v1"
 CLOUD_BASE_URL = os.environ.get("CLOUD_BASE_URL", "")
 CLOUD_API_KEY = os.environ.get("CLOUD_API_KEY", "")
 CLOUD_MODEL = os.environ.get("CLOUD_MODEL", "kimi-k2.7-code:cloud")
+
+print(f"[llm_places] Ollama endpoint: {OLLAMA_BASE_URL}")
 
 _LOCK = threading.Lock()
 
@@ -197,7 +246,7 @@ def _generic_template(city: str, country: str) -> Dict:
     }
 
 
-def generate_city_dataset(city: str, country: str, ages: List[int] = None, timeout_ollama: int = 15, timeout_cloud: int = 45) -> Dict:
+def generate_city_dataset(city: str, country: str, ages: List[int] = None, timeout_ollama: int = 60, timeout_cloud: int = 60) -> Dict:
     """Return a full dataset for a city, using cache/LLM/generic template.
     Ollama gets only a short timeout so an unreachable local endpoint does not
     block the whole trip planner for two minutes."""
