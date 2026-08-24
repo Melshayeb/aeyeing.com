@@ -2489,18 +2489,22 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Always fetch from the tunnel endpoint: it is fresh every minute, sends CORS
-            // headers, and avoids GitHub Pages' 10-minute JSON cache / missing /ozmoeg/ path.
+            // Prefer the public rolling JSON (always available via GitHub Pages/Cloudflare).
+            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            return 'https://aeyeing.com/' + file;
+        }
+
+        function getTunnelSnapshotFile() {
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
-            // Manifest is tiny; fetch from the tunnel so we can detect a freshly-written snapshot.
+            // Manifest is tiny; prefer public copy, then tunnel.
             const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
             const urls = [
-                'https://trip-planner.aeyeing.com/ozmoeg/' + file,
-                'https://aeyeing.com/' + file
+                'https://aeyeing.com/' + file,
+                'https://trip-planner.aeyeing.com/ozmoeg/' + file
             ];
             let lastErr = null;
             for (const url of urls) {
