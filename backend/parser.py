@@ -46,6 +46,17 @@ _COUNTRY_ALIASES = {
     "usa": "United States", "us": "United States", "america": "United States",
     "uk": "United Kingdom", "britain": "United Kingdom", "england": "United Kingdom",
     "u.k": "United Kingdom", "u.s": "United States",
+    "armenia": "Armenia", "azerbaijan": "Azerbaijan", "georgia": "Georgia",
+    "kazakhstan": "Kazakhstan", "uzbekistan": "Uzbekistan", "serbia": "Serbia",
+    "croatia": "Croatia", "slovenia": "Slovenia", "estonia": "Estonia",
+    "latvia": "Latvia", "lithuania": "Lithuania", "morocco": "Morocco",
+    "tunisia": "Tunisia", "jordan": "Jordan", "lebanon": "Lebanon",
+    "oman": "Oman", "bahrain": "Bahrain", "qatar": "Qatar", "kuwait": "Kuwait",
+    "saudi arabia": "Saudi Arabia", "pakistan": "Pakistan", "sri lanka": "Sri Lanka",
+    "bangladesh": "Bangladesh", "myanmar": "Myanmar", "cambodia": "Cambodia",
+    "vietnam": "Vietnam", "laos": "Laos", "nepal": "Nepal", "bhutan": "Bhutan",
+    "maldives": "Maldives", "madagascar": "Madagascar", "tanzania": "Tanzania",
+    "kenya": "Kenya", "ethiopia": "Ethiopia", "ghana": "Ghana", "senegal": "Senegal",
 }
 
 
