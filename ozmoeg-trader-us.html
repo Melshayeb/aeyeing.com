@@ -3936,7 +3936,7 @@
                 const overflowRows = rows.filter(r => (getFloat(r) || 0) > maxFloat);
 
                 if (!inRows.length && !overflowRows.length) {
-                    setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
+                    setBubbleStatus(activeRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
                     return;
                 }
 
