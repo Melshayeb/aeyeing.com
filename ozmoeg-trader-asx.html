@@ -2356,14 +2356,6 @@
             return IDLE_REFRESH_INTERVAL_MS;
         }
 
-        // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
-        // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
-        // race where the frontend refreshes on a wall-clock boundary before the backend scan
-        // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
-        const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
-        const MANIFEST_POLL_OFFSET_MS = 5000;    // poll at :05 past each minute
-        let refreshTimerId = null;
-        let nextPollAt = computeNextPollAt();
 
         function computeNextPollAt() {
             const now = Date.now();
@@ -4294,6 +4286,15 @@
             window.rebuildBubbleChart = buildBubbleChart;
             window.bubbleChart = bubbleChart;
         })();
+
+        // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
+        // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
+        // race where the frontend refreshes on a wall-clock boundary before the backend scan
+        // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
+        const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
+        const MANIFEST_POLL_OFFSET_MS = 5000;    // poll at :05 past each minute
+        let refreshTimerId = null;
+        let nextPollAt = computeNextPollAt();
 
         async function loadLiveData(forcedSnapshotFile) {
             if (window._loadingLiveData) return;
