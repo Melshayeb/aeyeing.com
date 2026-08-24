@@ -3906,13 +3906,15 @@
             }
 
             function buildBubbleChart() {
-                // Bubble View must always show the LIVE scanner results, not the active page view
-                // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
-                const allRows = (window._lastBubbleViewResults || window._lastLiveResults || []);
-                const rows = allRows.filter(r => {
+                // Bubble chart should match whatever the active scanner table is currently showing
+                // (Live, Pre/After, or Watchlist) so the user sees the same alerts in both views.
+                const activeRows = (typeof displayedResults !== 'undefined' && displayedResults && displayedResults.length)
+                    ? displayedResults
+                    : (window._lastBubbleViewResults || window._lastLiveResults || []);
+                const rows = activeRows.filter(r => {
                     // Bubble chart shows actionable alerts only.
                     if (r.status !== 'ALERT' && r.status !== 'ALERT/HALT') return false;
-                    // Exclude watchlist rows with no real float or price data.
+                    // Exclude rows with no real float or price data.
                     const float = getFloat(r);
                     const price = getPrice(r);
                     return float != null && float > 0 && price != null && price > 0;
