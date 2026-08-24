@@ -4402,7 +4402,7 @@
                     const view = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
                     if (view === 'live') {
                         // Live tab uses the main scan_results snapshot.
-                        const snapshotFile = getPublicSnapshotFile();
+                        const snapshotFile = getDefaultSnapshotFile();
                         const ts = Date.now();
                         const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
                         if (res.ok) {
@@ -4416,7 +4416,7 @@
                         }
                     } else {
                         // Pre/After and Watchlist views use the same JSON but different arrays.
-                        const snapshotFile = getPublicSnapshotFile();
+                        const snapshotFile = getDefaultSnapshotFile();
                         const ts = Date.now();
                         const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
                         if (res.ok) {
@@ -4470,7 +4470,7 @@
                 // Manifest is only used for timestamp tracking; the snapshot always comes from the
                 // tunnel so we bypass GitHub Pages/Cloudflare's 10-minute JSON cache.
                 const manifest = await fetchManifestRaw();
-                let snapshotFile = forcedSnapshotFile || getTunnelSnapshotFile();
+                let snapshotFile = forcedSnapshotFile || getDefaultSnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }

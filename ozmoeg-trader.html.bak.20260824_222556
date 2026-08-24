@@ -7,6 +7,74 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
+<script>
+    // Auto-reload guard: GitHub Pages/Cloudflare cache aeyeing.com for ~10 minutes,
+    // so a stale copy can linger after a deployment. We compare the CDN Last-Modified
+    // with the loaded page and also compare the raw GitHub manifest timestamp with the
+    // CDN manifest timestamp. If raw GitHub is ahead, force-reload with a cache-busting
+    // URL until the browser actually has the latest HTML that uses raw GitHub as its
+    // primary data source.
+    (function(){
+        const now = Date.now();
+        const reloadKey = 'ozmoeg-reloaded-v2';
+        const lastReload = parseInt(sessionStorage.getItem(reloadKey) || '0', 10);
+        // Allow another reload if at least 20 seconds have passed (prevents infinite loops).
+        if (now - lastReload < 20000) return;
+
+        function reloadFresh() {
+            sessionStorage.setItem(reloadKey, now.toString());
+            var url = new URL(location.href);
+            url.searchParams.set('_', now.toString());
+            url.searchParams.set('force', '1');
+            location.replace(url.toString());
+        }
+
+        function checkRawGithub() {
+            try {
+                var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
+                var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + now;
+                fetch(rawUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                    .then(function(r){ return r.json(); })
+                    .then(function(raw){
+                        if (!raw || !raw.last_updated) return;
+                        var rawTs = new Date(raw.last_updated).getTime();
+                        // Also fetch the CDN manifest to see if the current HTML/JS is stale.
+                        var cdnUrl = 'https://aeyeing.com/ozmoeg-manifest' + market + '.json?_=' + now;
+                        fetch(cdnUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                            .then(function(r){ return r.json(); })
+                            .then(function(cdn){
+                                var cdnTs = cdn && cdn.last_updated ? new Date(cdn.last_updated).getTime() : 0;
+                                // If raw GitHub is more than 2 minutes ahead of the CDN manifest,
+                                // the current page is using stale cached data.
+                                if (rawTs && cdnTs && rawTs > cdnTs + 120000) {
+                                    console.warn('CDN manifest is stale; reloading from fresh URL');
+                                    reloadFresh();
+                                }
+                            })
+                            .catch(function(){});
+                    })
+                    .catch(function(){});
+            } catch(e){ /* ignore */ }
+        }
+
+        // First check: compare loaded HTML Last-Modified with server.
+        try {
+            fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
+                .then(function(r){
+                    var serverTs = r.headers.get('last-modified');
+                    if (!serverTs) { checkRawGithub(); return; }
+                    var serverTime = new Date(serverTs).getTime();
+                    var pageTime = new Date(document.lastModified).getTime();
+                    if (serverTime > pageTime + 3000) {
+                        reloadFresh();
+                    } else {
+                        checkRawGithub();
+                    }
+                })
+                .catch(function(){ checkRawGithub(); });
+        } catch (e) { checkRawGithub(); }
+    })();
+</script>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
 <link href="images/logo.png" rel="icon" type="image/png"/>
@@ -713,18 +781,6 @@
         }
         .result-pass { color: var(--accent-green); font-weight: 600; }
         .result-skip { color: var(--text-secondary); }
-        .result-halt {
-            background: rgba(158, 158, 158, 0.2);
-            color: #9e9e9e;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 600; font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
         .result-alert {
             background: rgba(0,230,118,0.15);
             color: var(--accent-green);
@@ -837,14 +893,6 @@
         .scan-pass {
             background: rgba(0,230,118,0.15);
             color: var(--accent-green);
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        .scan-halt {
-            background: rgba(158,158,158,0.2);
-            color: #9e9e9e;
             padding: 0.15rem 0.4rem;
             border-radius: 4px;
             font-size: 0.7rem;
@@ -1424,16 +1472,7 @@
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
-        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; } .bubble-market-bar { margin-top: 0.5rem; padding: 0.35rem 0.55rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.6rem; font-size: 0.66rem; height: 46px; box-sizing: border-box; overflow: hidden; }
-        .bubble-market-group { display: flex; flex-direction: column; justify-content: center; gap: 0.05rem; flex-shrink: 0; height: 100%; }
-        .bubble-market-label { font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent-teal); font-weight: 600; white-space: nowrap; line-height: 1.1; }
-        .bubble-market-status { color: var(--text-secondary); font-size: 0.62rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; }
-        .bubble-countdown-timer { font-family: 'Roboto Mono', 'SF Mono', Consolas, monospace; font-size: 0.9rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0; width: 7.6ch; text-align: center; flex-shrink: 0; line-height: 1; }
-        .bubble-countdown-timer.closed { color: var(--text-secondary); }
-        .bubble-market-timeline { flex: 1 1 120px; min-width: 110px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
-        .bubble-market-timeline .market-timeline-labels span { font-size: 0.56rem; }
-        @media (max-width: 720px) { .bubble-market-bar { height: auto; min-height: 46px; gap: 0.4rem 0.6rem; padding: 0.4rem; } .bubble-market-status { max-width: 110px; } .bubble-market-timeline { flex: 1 1 100%; min-width: 140px; } }
-    
+        .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
         .bubble-chart-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--text-secondary); text-align: center; pointer-events: none; }
@@ -1445,27 +1484,24 @@
 </head>
 <body>
 <div id="ozmoeg-cloudflare-fallback" style="display:none;background:#b91c1c;color:#fff;padding:12px 16px;text-align:center;font-family:sans-serif;font-size:14px;position:relative;z-index:99999;">
-  <strong>⚠️ Cloudflare is blocking this page.</strong>
-  <a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader-us.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
+<strong>⚠️ Cloudflare is blocking this page.</strong>
+<a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
 </div>
 <script>
 (function(){
   var fallback = document.getElementById('ozmoeg-cloudflare-fallback');
   function showFallback(){ if(fallback) fallback.style.display='block'; }
-  // If body has no visible content after 4 seconds, show fallback
   setTimeout(function(){
     var body = document.body;
     if(!body || body.children.length <= 2 || body.innerText.trim().length < 50){
       showFallback();
     }
   }, 4000);
-  // If data fetch fails and page stays empty, show fallback
   window.addEventListener('error', function(e){
     if(e && e.message && /fetch|network|cloudflare/i.test(e.message)) showFallback();
   });
 })();
 </script>
-
 <header class="header">
 <div class="header-brand">
 <div class="header-logo">O</div>
@@ -1537,52 +1573,8 @@
 <div class="news-ticker-body">
 <div class="news-ticker-scroll" id="news-ticker">
 <!-- NEWS_TICKER_ITEMS -->
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 Xiao-I Lawsuit Ruling: Securities Claims Narrowed, IPO Disclosure Claim Moves Forward <span class="source">Webull</span> <span class="time">4h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 12 Information Technology Stocks Moving In Friday's Intraday Session <span class="source">Webull</span> <span class="time">6h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 12 Information Technology Stocks Moving In Thursday's Intraday Session <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 Xiao-I receives Nasdaq notice of non-compliance <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 Xiao-I to implement ADS ratio change <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 12 Information Technology Stocks Moving In Tuesday's Intraday Session <span class="source">Webull</span> <span class="time">3d ago · 18 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 12 Information Technology Stocks Moving In Tuesday's Pre-Market Session <span class="source">Webull</span> <span class="time">3d ago · 18 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>AIXI</strong> — 📰 Weekly Report: what happened at AIXI last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>HAO</strong> — 📰 12 Communication Services Stocks Moving In Friday's After-Market Session <span class="source">Webull</span> <span class="time">2h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>HAO</strong> — 📰 Haoxi Health Technology announces 1-for-20 reverse share split <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>HAO</strong> — 📰 Weekly Report: what happened at HAO last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>HAO</strong> — 📰 Haoxi Health Technology Ltd trading halted, news pending <span class="source">Webull</span> <span class="time">5d ago · 16 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 FDA Approves 11 Philip Morris Zyn Ultra Pouches <span class="source">Webull</span> <span class="time">4h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 Picard Medical Issues Investor Presentation Under Regulation FD <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 Picard Medical Q2 EPS $(3.05) Misses $(1.50) Estimate, Sales $2.954M Beat $1.550M Estimate <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 Picard Medical reports Q2 results <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 *Picard Medical 2Q Loss $5.7M >PMI <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 *Picard Medical 2Q Rev $3M >PMI <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 Press Release: Picard Medical Reports Second Quarter 2026 Financial Results <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PMI</strong> — 📰 Weekly Report: what happened at PMI last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PLAG</strong> — 📰 Planet Green Faces Termination of Equity Sales Agreement <span class="source">Webull</span> <span class="time">2h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PLAG</strong> — 📰 Planet Green Holdings’ ATM Sales Agreement To Be Terminated By Curvature Securities; No Shares Sold Under Program <span class="source">Webull</span> <span class="time">3h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PLAG</strong> — 📰 12 Consumer Staples Stocks Moving In Monday's After-Market Session <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PLAG</strong> — 📰 Weekly Report: what happened at PLAG last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>PLAG</strong> — 📰 Planet Green Holdings Corp. Reports Quarterly Results for the Period Ended June 30, 2026 <span class="source">Webull</span> <span class="time">6d ago · 15 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Friday's After-Market Session <span class="source">Webull</span> <span class="time">2h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Friday's Intraday Session <span class="source">Webull</span> <span class="time">6h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Thursday's After-Market Session <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 11 Industrials Stocks Moving In Wednesday's Intraday Session <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Wednesday's Pre-Market Session <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Tuesday's Intraday Session <span class="source">Webull</span> <span class="time">3d ago · 18 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 12 Industrials Stocks Moving In Monday's Intraday Session <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>CDTG</strong> — 📰 Weekly Report: what happened at CDTG last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>OLOX</strong> — 📰 Olenox mines 15.3 bitcoin in July <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>OLOX</strong> — 📰 Olenox Industries Q2 EPS $(3.11) Up From $(298.05) YoY, Sales $2.118M Up From $721.351K YoY <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>OLOX</strong> — 📰 Olenox signs LOI with Wildboy Industries, Odin International <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>OLOX</strong> — 📰 Olenox Signs LOI to Expand Integrated Energy and Data-Infrastructure Platform <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>OLOX</strong> — 📰 Weekly Report: what happened at OLOX last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 Bit Origin Executes 1-for-5 Reverse Stock Split to Maintain Nasdaq Listing <span class="source">Webull</span> <span class="time">2h ago · 21 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 Bit Origin Ltd trading halted, news pending <span class="source">Webull</span> <span class="time">1d ago · 20 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 Bit Origin To Implement 1-For-5 Reverse Stock Split To Meet Nasdaq Requirements <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 Bit Origin announces 1-for-5 reverse stock split <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 *Bit Origin: Split Intended to Support Co Efforts to Maintain Compliance With Nasdaq's Minimum Bid Price Requirement Under Nasdaq Listing Rule 5550(A)(2) >BTOG <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 *Bit Origin Announces 1-For-5 Reverse Stk Split Effective Aug 21 >BTOG <span class="source">Webull</span> <span class="time">2d ago · 19 Aug</span></div>
-<div class="news-item"><span class="score impact-low">🌱 0</span><strong>BTOG</strong> — 📰 Weekly Report: what happened at BTOG last week (0810-0814)? <span class="source">Webull</span> <span class="time">4d ago · 17 Aug</span></div>
-                    <!-- END_NEWS_TICKER_ITEMS -->
+<div class="news-item skip"><span class="score">INFO</span><span class="time">Now</span> — Waiting for live scan data…</div>
+<!-- END_NEWS_TICKER_ITEMS -->
 </div>
 </div>
 </div>
@@ -1596,12 +1588,14 @@
 <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
 <div class="scanner-toggle" id="scanner-toggle">
 <button class="active" data-view="live" title="Current market scan">📊 Live</button>
-<button data-view="premarket" title="Saved pre-market/after-hours watchlist" class="active">🌅 Pre/After</button>
+<button data-view="premarket" title="Saved pre-market/after-hours watchlist">🌅 Pre/After</button>
 <button data-view="watchlist" title="Sydney 17:00 catalyst watchlist">⏰ Watchlist</button>
 </div>
 <button class="bubble-view-btn" id="bubble-view-btn" title="Open interactive bubble chart" type="button">🫧 Bubble View</button>
 <span id="scanner-timestamp"></span>
-<span class="badge" id="scanner-badge">Loading scanner…</span>
+<span class="badge" id="scanner-badge"><!-- SCANNER_BADGE -->
+🟡 US PRE-MARKET 10:25 PM AEST | Scanned: 50 | 2 candidates | 2 alerts (skipped: 0)
+                    <!-- END_SCANNER_BADGE --></span>
 <select class="alert-selector" id="alert-selector">
 <option value="">Select an alert…</option>
 </select>
@@ -1623,63 +1617,27 @@
 </thead>
 <tbody>
 <!-- SCANNER_TABLE_BODY -->
-                            <tr>
-                                <td class="ticker-cell">PMI</td>
-                                <td>Picard Medical, Inc. <span class="country-badge">United States</span></td>
-                                <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T19:45:00.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-high" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🔥 aggressive tape</span></td>
-                                <td>+44.2% · Entry $4.63 · T1 $4.82 · T2 $4.91 · T3 $5.09</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">PLAG</td>
-                                <td>Planet Green <span class="country-badge">United States</span></td>
-                                <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T21:06:32.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-high" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🔥 aggressive tape</span></td>
-                                <td>+16.9% · Entry $0.80 · T1 $0.83 · T2 $0.85 · T3 $0.88</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">CDTG</td>
-                                <td>CDT Environmental Technology Investment Holdings Ltd <span class="country-badge">China / Cayman-China</span></td>
-                                <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T21:06:01.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-high" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🔥 aggressive tape</span></td>
-                                <td>+15.3% · Entry $1.36 · T1 $1.41 · T2 $1.44 · T3 $1.50</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">OLOX</td>
-                                <td>Olenox Industries Inc <span class="country-badge">United States</span></td>
-                                <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-20T12:45:42.000+0000">2d ago</span></td>
-                                <td><span class="tape-mini tape-high" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🔥 aggressive tape</span></td>
-                                <td>+6.2% · Entry $2.22 · T1 $2.31 · T2 $2.35 · T3 $2.44</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">BTOG</td>
-                                <td>Bit Origin Limited <span class="country-badge">Singapore</span></td>
-                                <td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T21:09:03.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-high" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🔥 aggressive tape</span></td>
-                                <td>+5.9% · Entry $3.95 · T1 $4.11 · T2 $4.19 · T3 $4.34 | sticky</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">AIXI</td>
-                                <td>Xiao-I Corporation <span class="country-badge">China / Cayman-China</span></td>
-                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T19:27:53.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-low" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🌱 quiet tape</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                            <tr>
-                                <td class="ticker-cell">HAO</td>
-                                <td>Haoxi Health Technology Limited <span class="country-badge">China / Cayman-China</span></td>
-                                <td><span class="result-candidate">🔬 CANDIDATE</span></td>
-                                <td class="news-age-cell"><span class="news-age" title="First published: 2026-08-21T21:06:02.000+0000">1d ago</span></td>
-                                <td><span class="tape-mini tape-low" title="15s bars: vol accel 0.0%, velocity 0.0%, buy pressure 0.0%, large bars 0">🌱 quiet tape</span></td>
-                                <td>Passed filters</td>
-                            </tr>
-                    <!-- END_SCANNER_TABLE_BODY -->
+<tr>
+<td class="ticker-cell">BTCT <span class="country-badge">Singapore</span> <span class="country-badge">NANO CAP</span></td>
+<td>BTC Digital</td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
+<td class="news-age-cell"><span class="news-age" title="First published: 2026-08-24T11:35:16.000+0000">49m ago</span></td>
+<td><span class="tape-mini tape-high" title="RVOL 3.23x vs ADV (21,731,439 today / 6,722,719 avg). Last: 2026-08-24T12:24:35.260000+00:00 · stale 0m">🔥 high volume</span></td>
+<td>+50.9% · Entry $1.72 · T1 $1.79 · T2 $1.82 · T3 $1.89</td>
+<td>15.23M</td>
+<td>—</td>
+</tr>
+<tr>
+<td class="ticker-cell">SDOT <span class="country-badge">United States</span> <span class="country-badge">NANO CAP</span></td>
+<td>Sadot Group</td>
+<td><span class="result-alert">🚨 ALERT</span> <span class="impact-mini impact-low">🌱 Low (0)</span></td>
+<td class="news-age-cell"><span class="news-age" title="First published: 2026-08-24T11:26:18.000+0000">58m ago</span></td>
+<td><span class="tape-mini tape-low" title="RVOL 0.9x vs ADV (3,313,593 today / 3,689,485 avg). Last: 2026-08-24T12:24:35.294000+00:00 · stale 0m">🌱 low volume</span></td>
+<td>+78.7% · Entry $23.55 · T1 $24.49 · T2 $24.96 · T3 $25.91</td>
+<td>1.04M</td>
+<td><span class="sec-filings-mini" title="8-K (Aug 21), 8-K (Aug 20), 8-K (Aug 18)">8-K (Aug 21), 8-K (Aug 20), 8-K (Aug 18)</span></td>
+</tr>
+<!-- END_SCANNER_TABLE_BODY -->
 </tbody>
 </table>
 </div>
@@ -1688,22 +1646,571 @@
 </div>
 <!-- END_BOUNCERS_SECTION -->
 <!-- SCANNED_GAINERS_TABLE -->
-                        <details class="scanned-details" id="scanned-gainers-details">
-                            <summary>🔍 Show all 50 scanned gainers with filter reasons</summary>
-                            <div class="table-wrap">
-                                <table class="scanned-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Filter</th><th>Reason</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                            <tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No gainers data available for this scan</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </details>
-                    <!-- END_SCANNED_GAINERS_TABLE -->
+<details class="scanned-details" id="scanned-gainers-details">
+<summary>🔍 Show all 50 scanned gainers with filter reasons</summary>
+<div class="table-wrap">
+<table class="scanned-table">
+<thead>
+<tr>
+<th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="ticker-cell">SDOT <span class="country-badge">NANO CAP</span></td>
+<td>Sadot Group</td>
+<td>$23.55</td>
+<td>+78.7%</td>
+<td>3,313,593</td>
+<td>1.1x</td>
+<td>$17.4M</td>
+<td>1.04M</td>
+<td>Passed filters</td>
+</tr>
+<tr>
+<td class="ticker-cell">BTCT <span class="country-badge">NANO CAP</span></td>
+<td>BTC Digital</td>
+<td>$1.72</td>
+<td>+50.9%</td>
+<td>21,731,439</td>
+<td>0.5x</td>
+<td>$17.8M</td>
+<td>15.23M</td>
+<td>Passed filters</td>
+</tr>
+<tr>
+<td class="ticker-cell">RITR <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Reitar Logtech Holdings Limited</td>
+<td>$0.12</td>
+<td>+39.4%</td>
+<td>134,364,821</td>
+<td>1.8x</td>
+<td>$5.2M</td>
+<td>17.29M</td>
+<td>Filtered: price $0.116, tiny price $0.116, tiny rvol 1.8x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PMI <span class="country-badge">NANO CAP</span></td>
+<td>Picard Medical, Inc.</td>
+<td>$4.40</td>
+<td>+37.1%</td>
+<td>2,850,047</td>
+<td>1.8x</td>
+<td>$7.5M</td>
+<td>1.36M</td>
+<td>Filtered: tiny rvol 1.8x</td>
+</tr>
+<tr>
+<td class="ticker-cell">LUCY <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Lucyd Inc</td>
+<td>$0.93</td>
+<td>+35.4%</td>
+<td>14,687,071</td>
+<td>81.7x</td>
+<td>$5.9M</td>
+<td>8.12M</td>
+<td>Filtered: tiny price $0.926, tiny avg $vol, avg $vol $0.2M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">CYPH <span class="country-badge">MICRO CAP</span></td>
+<td>Cypherpunk Technologies Inc</td>
+<td>$1.80</td>
+<td>+26.8%</td>
+<td>2,168,314</td>
+<td>0.3x</td>
+<td>$153.0M</td>
+<td>99.93M</td>
+<td>Filtered: vol/float 0.02x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">NSSC <span class="country-badge">SMALL CAP</span></td>
+<td>Napco Security</td>
+<td>$45.88</td>
+<td>+20.5%</td>
+<td>25,754</td>
+<td>0.1x</td>
+<td>$1360.9M</td>
+<td>33.97M</td>
+<td>Filtered: vol 25,754, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PLAG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Planet Green</td>
+<td>$0.80</td>
+<td>+16.9%</td>
+<td>5,453,493</td>
+<td>1.4x</td>
+<td>$9.7M</td>
+<td>11.64M</td>
+<td>Filtered: tiny price $0.800, tiny rvol 1.4x, tiny vol/float 0.47x</td>
+</tr>
+<tr>
+<td class="ticker-cell">HVII <span class="country-badge">MICRO CAP</span></td>
+<td>Hennessy Capital Investment Corp VII</td>
+<td>$7.45</td>
+<td>+16.6%</td>
+<td>18,533</td>
+<td>0.2x</td>
+<td>$166.2M</td>
+<td>19.19M</td>
+<td>Filtered: vol 18,533, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">BOLD <span class="country-badge">MICRO CAP</span></td>
+<td>BOUNDLESS BIO INC</td>
+<td>$3.50</td>
+<td>+16.7%</td>
+<td>193</td>
+<td>0.0x</td>
+<td>$68.2M</td>
+<td>20.20M</td>
+<td>Filtered: vol 193, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">DXST <span class="country-badge">NANO CAP</span></td>
+<td>Decent Holding Inc.</td>
+<td>$2.94</td>
+<td>+16.7%</td>
+<td>4,125,129</td>
+<td>8.5x</td>
+<td>$4.6M</td>
+<td>1.22M</td>
+<td>Filtered: tiny avg $vol, avg $vol $1.4M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">SUPX <span class="country-badge">SMALL CAP</span></td>
+<td>SuperX AI Technology Limited</td>
+<td>$9.90</td>
+<td>+16.2%</td>
+<td>20,309</td>
+<td>0.1x</td>
+<td>$368.4M</td>
+<td>21.76M</td>
+<td>Filtered: vol 20,309, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">AMOD <span class="country-badge">NANO CAP</span></td>
+<td>Alpha Modus</td>
+<td>$5.30</td>
+<td>+14.5%</td>
+<td>1,495</td>
+<td>0.1x</td>
+<td>$23.0M</td>
+<td>613.86K</td>
+<td>Filtered: vol 1,495, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">PHAT <span class="country-badge">SMALL CAP</span></td>
+<td>Phathom Pharmaceuticals, Inc.</td>
+<td>$10.10</td>
+<td>+13.9%</td>
+<td>1,411</td>
+<td>0.0x</td>
+<td>$717.6M</td>
+<td>63.61M</td>
+<td>Filtered: vol 1,411, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PPCB <span class="country-badge">NANO CAP</span></td>
+<td>Propanc Bio</td>
+<td>$1.22</td>
+<td>+13.0%</td>
+<td>322</td>
+<td>0.0x</td>
+<td>$3.8M</td>
+<td>2.58M</td>
+<td>Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 322, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">PUSA <span class="country-badge">MICRO CAP</span></td>
+<td>Aureus Greenway Holdings Inc.</td>
+<td>$3.86</td>
+<td>+12.5%</td>
+<td>211,005</td>
+<td>0.5x</td>
+<td>$92.4M</td>
+<td>19.89M</td>
+<td>Filtered: vol/float 0.01x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">MZTI <span class="country-badge">SMALL CAP</span></td>
+<td>The Marzetti Company</td>
+<td>$125.42</td>
+<td>+12.4%</td>
+<td>72</td>
+<td>0.0x</td>
+<td>$3061.1M</td>
+<td>19.42M</td>
+<td>Filtered: price $125.420, vol 72, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">LGL <span class="country-badge">MICRO CAP</span></td>
+<td>LGL Group</td>
+<td>$8.50</td>
+<td>+11.8%</td>
+<td>227</td>
+<td>0.0x</td>
+<td>$95.9M</td>
+<td>6.73M</td>
+<td>Filtered: vol 227, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">AVAT <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Avalanche Treasury Corp</td>
+<td>$0.55</td>
+<td>+11.8%</td>
+<td>110,217</td>
+<td>0.2x</td>
+<td>$21.4M</td>
+<td>23.82M</td>
+<td>Filtered: vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">OLOX <span class="country-badge">NANO CAP</span></td>
+<td>Olenox Industries Inc</td>
+<td>$2.33</td>
+<td>+11.5%</td>
+<td>5,140,291</td>
+<td>11.1x</td>
+<td>$3.5M</td>
+<td>1.32M</td>
+<td>Filtered: tiny avg $vol, avg $vol $1.1M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">DEFT <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Defi Technologies</td>
+<td>$0.64</td>
+<td>+11.3%</td>
+<td>141,538</td>
+<td>0.0x</td>
+<td>$223.1M</td>
+<td>378.67M</td>
+<td>Filtered: float 378.7M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">EW <span class="country-badge">SMALL CAP</span></td>
+<td>Edwards Lifesciences Corp</td>
+<td>$99.66</td>
+<td>+11.0%</td>
+<td>1</td>
+<td>0.0x</td>
+<td>$51755.0M</td>
+<td>574.28M</td>
+<td>Filtered: price $99.660, mktcap $51755.0M, vol 1, float 574.3M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">JLHL <span class="country-badge">MICRO CAP</span></td>
+<td>JULONG HOLDING LTD</td>
+<td>$7.25</td>
+<td>+9.8%</td>
+<td>49,280</td>
+<td>0.2x</td>
+<td>$141.6M</td>
+<td>1.45M</td>
+<td>Filtered: vol 49,280, vol/float 0.03x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">AREN <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>The Arena Group Holdings</td>
+<td>$0.99</td>
+<td>+9.7%</td>
+<td>268</td>
+<td>0.0x</td>
+<td>$43.1M</td>
+<td>13.13M</td>
+<td>Filtered: vol 268, vol/float 0.00x &lt; 0.1x, avg $vol $0.2M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">BRNX <span class="country-badge">NANO CAP</span></td>
+<td>Brenx Ltd</td>
+<td>$4.09</td>
+<td>+9.7%</td>
+<td>47,350</td>
+<td>0.0x</td>
+<td>$2.7M</td>
+<td>716.55K</td>
+<td>Filtered: tiny rvol 0.0x, tiny vol/float 0.07x, vol 47,350, vol/float 0.07x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">SDEV <span class="country-badge">MICRO CAP</span></td>
+<td>Stablecoin Development Corporation</td>
+<td>$1.25</td>
+<td>+9.6%</td>
+<td>766,120</td>
+<td>0.4x</td>
+<td>$57.7M</td>
+<td>248.0</td>
+<td>Filtered: vol/float 0.02x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">DOGZ <span class="country-badge">NANO CAP</span></td>
+<td>Dogness International Corp</td>
+<td>$1.15</td>
+<td>+9.5%</td>
+<td>3,632</td>
+<td>0.0x</td>
+<td>$18.5M</td>
+<td>16.20M</td>
+<td>Filtered: vol 3,632, vol/float 0.00x &lt; 0.1x, avg $vol $0.2M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">QTRX <span class="country-badge">MICRO CAP</span></td>
+<td>Quanterix</td>
+<td>$3.27</td>
+<td>+9.4%</td>
+<td>238</td>
+<td>0.0x</td>
+<td>$141.4M</td>
+<td>41.79M</td>
+<td>Filtered: vol 238, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">CHCI <span class="country-badge">MICRO CAP</span></td>
+<td>Comstock Hldg Cos Inc</td>
+<td>$19.99</td>
+<td>+9.4%</td>
+<td>38</td>
+<td>0.0x</td>
+<td>$188.0M</td>
+<td>3.73M</td>
+<td>Filtered: vol 38, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">GOAI <span class="country-badge">MICRO CAP</span></td>
+<td>Eva Live Inc</td>
+<td>$2.42</td>
+<td>+8.5%</td>
+<td>56,517</td>
+<td>0.7x</td>
+<td>$87.5M</td>
+<td>15.44M</td>
+<td>Filtered: vol/float 0.00x &lt; 0.1x, avg $vol $0.2M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">HURA <span class="country-badge">MICRO CAP</span></td>
+<td>TuHURA Biosciences</td>
+<td>$2.17</td>
+<td>+8.5%</td>
+<td>1,178</td>
+<td>0.0x</td>
+<td>$127.5M</td>
+<td>41.66M</td>
+<td>Filtered: vol 1,178, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">PPSI <span class="country-badge">NANO CAP</span></td>
+<td>Pioneer Pwr Solutions Inc</td>
+<td>$3.19</td>
+<td>+8.4%</td>
+<td>127</td>
+<td>0.0x</td>
+<td>$32.6M</td>
+<td>8.60M</td>
+<td>Filtered: vol 127, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">RPGL <span class="country-badge">NANO CAP</span></td>
+<td>REPUBLIC PWR GROUP LTD</td>
+<td>$2.49</td>
+<td>+8.2%</td>
+<td>6,587</td>
+<td>0.0x</td>
+<td>$37.1M</td>
+<td>16.06M</td>
+<td>Filtered: vol 6,587, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">BMEA <span class="country-badge">MICRO CAP</span></td>
+<td>Biomea Fusion, Inc.</td>
+<td>$1.48</td>
+<td>+8.0%</td>
+<td>121,662</td>
+<td>0.2x</td>
+<td>$99.3M</td>
+<td>67.30M</td>
+<td>Filtered: vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">GLAS <span class="country-badge">SMALL CAP</span></td>
+<td>Glass House Brands Inc</td>
+<td>$10.55</td>
+<td>+7.8%</td>
+<td>2</td>
+<td>0.0x</td>
+<td>$918.3M</td>
+<td>81.08M</td>
+<td>Filtered: vol 2, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">CDIO <span class="country-badge">NANO CAP</span></td>
+<td>Cardio Diagnostics Holdings Inc</td>
+<td>$2.18</td>
+<td>+7.4%</td>
+<td>9</td>
+<td>0.0x</td>
+<td>$6.0M</td>
+<td>2.71M</td>
+<td>Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 9, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">AVX <span class="country-badge">NANO CAP</span></td>
+<td>Avax One Technology Ltd.</td>
+<td>$3.48</td>
+<td>+7.2%</td>
+<td>6</td>
+<td>0.0x</td>
+<td>$24.0M</td>
+<td>5.89M</td>
+<td>Filtered: vol 6, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">HUMA <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Humacyte Inc</td>
+<td>$0.69</td>
+<td>+7.1%</td>
+<td>75,159</td>
+<td>0.0x</td>
+<td>$178.4M</td>
+<td>262.18M</td>
+<td>Filtered: float 262.2M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">EPOW <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>E-Power Inc.</td>
+<td>$0.48</td>
+<td>+7.1%</td>
+<td>423</td>
+<td>0.0x</td>
+<td>$26.1M</td>
+<td>44.51M</td>
+<td>Filtered: vol 423, vol/float 0.00x &lt; 0.1x, avg $vol $0.1M &lt; $0.2M</td>
+</tr>
+<tr>
+<td class="ticker-cell">HPAI <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Helport AI Ltd</td>
+<td>$0.47</td>
+<td>+7.1%</td>
+<td>10,839</td>
+<td>0.0x</td>
+<td>$16.6M</td>
+<td>8.10M</td>
+<td>Filtered: vol 10,839, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">QNC <span class="country-badge">SMALL CAP</span></td>
+<td>Quantum Emotion Corp</td>
+<td>$2.28</td>
+<td>+7.0%</td>
+<td>1,022</td>
+<td>0.0x</td>
+<td>$467.4M</td>
+<td>212.12M</td>
+<td>Filtered: vol 1,022, float 212.1M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">JAGX <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Jaguar Health Inc</td>
+<td>$0.93</td>
+<td>+7.0%</td>
+<td>6,450</td>
+<td>0.0x</td>
+<td>$4.5M</td>
+<td>4.75M</td>
+<td>Filtered: tiny price $0.928, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 6,450, vol/float 0.00x &lt; 0.1x, avg $vol $0.3M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">AROC <span class="country-badge">SMALL CAP</span></td>
+<td>Archrock Inc</td>
+<td>$34.00</td>
+<td>+6.9%</td>
+<td>344</td>
+<td>0.0x</td>
+<td>$5575.8M</td>
+<td>170.57M</td>
+<td>Filtered: mktcap $5575.8M, vol 344, float 170.6M &gt; 100M, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">AARD <span class="country-badge">MICRO CAP</span></td>
+<td>Aardvark Therapeutics</td>
+<td>$7.29</td>
+<td>+6.9%</td>
+<td>240</td>
+<td>0.0x</td>
+<td>$149.3M</td>
+<td>18.36M</td>
+<td>Filtered: vol 240, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">GOVX <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Geovax Labs Inc</td>
+<td>$0.69</td>
+<td>+6.9%</td>
+<td>177,646</td>
+<td>0.1x</td>
+<td>$4.8M</td>
+<td>7.37M</td>
+<td>Filtered: tiny price $0.690, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x &lt; 0.1x, avg $vol $1.5M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">CLGN <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Collplant Biotechnologies Ltd</td>
+<td>$0.33</td>
+<td>+6.9%</td>
+<td>555</td>
+<td>0.0x</td>
+<td>$5.9M</td>
+<td>13.27M</td>
+<td>Filtered: tiny price $0.334, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 555, vol/float 0.00x &lt; 0.1x, avg $vol $0.0M &lt; $2.0M</td>
+</tr>
+<tr>
+<td class="ticker-cell">HYPD <span class="country-badge">NANO CAP</span></td>
+<td>Hyperion DeFi Inc</td>
+<td>$3.39</td>
+<td>+6.6%</td>
+<td>1,718</td>
+<td>0.0x</td>
+<td>$49.4M</td>
+<td>13.21M</td>
+<td>Filtered: vol 1,718, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">VWAV <span class="country-badge">NANO CAP</span></td>
+<td>VisionWave Holdings, Inc</td>
+<td>$1.17</td>
+<td>+6.5%</td>
+<td>37,306</td>
+<td>0.0x</td>
+<td>$31.7M</td>
+<td>13.34M</td>
+<td>Filtered: vol 37,306, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">NCTY <span class="country-badge">MICRO CAP</span></td>
+<td>The9 Ltd</td>
+<td>$6.16</td>
+<td>+6.6%</td>
+<td>22,035</td>
+<td>0.1x</td>
+<td>$88.3M</td>
+<td>12.22M</td>
+<td>Filtered: vol 22,035, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+<tr>
+<td class="ticker-cell">CVU <span class="country-badge">MICRO CAP</span></td>
+<td>Cpi Aerostruct</td>
+<td>$5.74</td>
+<td>+6.5%</td>
+<td>361</td>
+<td>0.0x</td>
+<td>$71.4M</td>
+<td>10.04M</td>
+<td>Filtered: vol 361, vol/float 0.00x &lt; 0.1x</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<!-- END_SCANNED_GAINERS_TABLE -->
 <!-- SCANNED_LOSERS_TABLE -->
 <details class="scanned-details" id="scanned-losers-details">
 <summary>🔻 Show all 50 scanned losers with filter reasons</summary>
@@ -1715,7 +2222,556 @@
 </tr>
 </thead>
 <tbody>
-<tr><td colspan="9" style="text-align:center;color:var(--text-secondary)">No losers data available for this scan</td></tr>
+<tr>
+<td class="ticker-cell">FLZH <span class="country-badge">MICRO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Flash Sports &amp; Media Holdings, Inc.</td>
+<td>$0.28</td>
+<td>-71.3%</td>
+<td>2,487,148</td>
+<td>21.5x</td>
+<td>$55.0M</td>
+<td>197.87M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RFAI <span class="country-badge">SMALL CAP</span></td>
+<td>Rf Acquisition Corp Ii</td>
+<td>$41.00</td>
+<td>-29.3%</td>
+<td>12,315</td>
+<td>0.0x</td>
+<td>$483.9M</td>
+<td>11.80M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RGNX <span class="country-badge">SMALL CAP</span></td>
+<td>Regenxbio</td>
+<td>$8.34</td>
+<td>-22.2%</td>
+<td>113,945</td>
+<td>0.1x</td>
+<td>$707.7M</td>
+<td>84.85M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">KNRX <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>KNOREX LTD.</td>
+<td>$0.41</td>
+<td>-21.9%</td>
+<td>367,473</td>
+<td>0.0x</td>
+<td>$15.8M</td>
+<td>38.97M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">ZSTK <span class="country-badge">MICRO CAP</span></td>
+<td>ZeroStack Corp</td>
+<td>$3.86</td>
+<td>-18.0%</td>
+<td>12,059</td>
+<td>0.0x</td>
+<td>$82.4M</td>
+<td>21.34M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">MGRX <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Mangoceuticals, Inc.</td>
+<td>$0.36</td>
+<td>-15.6%</td>
+<td>48,657</td>
+<td>0.0x</td>
+<td>$9.1M</td>
+<td>25.57M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RMCO <span class="country-badge">NANO CAP</span></td>
+<td>Royalty Management Holding</td>
+<td>$2.40</td>
+<td>-15.2%</td>
+<td>7</td>
+<td>0.0x</td>
+<td>$42.9M</td>
+<td>17.89M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">EBON <span class="country-badge">NANO CAP</span></td>
+<td>Ebang International Holdings Inc.</td>
+<td>$1.97</td>
+<td>-15.1%</td>
+<td>1,633</td>
+<td>0.1x</td>
+<td>$15.2M</td>
+<td>7.71M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">TCGX <span class="country-badge">MICRO CAP</span></td>
+<td>TCGX Acquisition Corp</td>
+<td>$11.86</td>
+<td>-14.7%</td>
+<td>9</td>
+<td>0.0x</td>
+<td>$137.3M</td>
+<td>11.57M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">AMCI <span class="country-badge">MICRO CAP</span></td>
+<td>AMC ROBOTICS</td>
+<td>$5.60</td>
+<td>-13.8%</td>
+<td>2,320</td>
+<td>0.0x</td>
+<td>$146.9M</td>
+<td>26.23M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">FCUV <span class="country-badge">NANO CAP</span></td>
+<td>Focus Unvl Inc</td>
+<td>$7.52</td>
+<td>-13.7%</td>
+<td>417</td>
+<td>0.0x</td>
+<td>$6.1M</td>
+<td>813.95K</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">EDVA <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Endovia Health Sciences Inc</td>
+<td>$0.41</td>
+<td>-13.5%</td>
+<td>17,168</td>
+<td>0.0x</td>
+<td>$3.0M</td>
+<td>7.41M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">TRUG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>TruGolf Holdings</td>
+<td>$0.74</td>
+<td>-13.4%</td>
+<td>55,768</td>
+<td>0.0x</td>
+<td>$1.2M</td>
+<td>1.61M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">KAPA <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>KAIROS PHARMA LTD</td>
+<td>$0.25</td>
+<td>-12.8%</td>
+<td>57,134</td>
+<td>0.2x</td>
+<td>$6.9M</td>
+<td>27.16M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">GDTC <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>CytoMed Therapeutics Ltd</td>
+<td>$0.90</td>
+<td>-12.6%</td>
+<td>12</td>
+<td>0.0x</td>
+<td>$12.2M</td>
+<td>13.54M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">AAOI <span class="country-badge">SMALL CAP</span></td>
+<td>Applied Optoelec</td>
+<td>$109.15</td>
+<td>-12.6%</td>
+<td>287,016</td>
+<td>0.0x</td>
+<td>$10555.9M</td>
+<td>96.71M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">JXG <span class="country-badge">MICRO CAP</span></td>
+<td>JX LUXVENTURE LIMITED</td>
+<td>$7.01</td>
+<td>-12.4%</td>
+<td>880</td>
+<td>0.0x</td>
+<td>$96.5M</td>
+<td>13.76M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">ZKH <span class="country-badge">SMALL CAP</span></td>
+<td>ZKH GROUP LTD</td>
+<td>$2.55</td>
+<td>-12.1%</td>
+<td>26,894</td>
+<td>0.0x</td>
+<td>$462.5M</td>
+<td>181.37M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">EJH <span class="country-badge">NANO CAP</span></td>
+<td>E-Home Household Svc Hldgs Ltd</td>
+<td>$1.11</td>
+<td>-11.7%</td>
+<td>118,820</td>
+<td>0.1x</td>
+<td>$4.0M</td>
+<td>3.62M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">NTHI <span class="country-badge">MICRO CAP</span></td>
+<td>NeOnc Technologies Holdings Inc</td>
+<td>$4.15</td>
+<td>-11.2%</td>
+<td>592</td>
+<td>0.0x</td>
+<td>$121.3M</td>
+<td>29.22M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">WETO <span class="country-badge">NANO CAP</span></td>
+<td>Wetour Robotics Limited</td>
+<td>$23.15</td>
+<td>-11.0%</td>
+<td>5,805</td>
+<td>0.0x</td>
+<td>$28.0M</td>
+<td>1.21M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">MTEK <span class="country-badge">NANO CAP</span></td>
+<td>Maris Tech Ltd.</td>
+<td>$1.07</td>
+<td>-10.8%</td>
+<td>30</td>
+<td>0.0x</td>
+<td>$11.6M</td>
+<td>10.88M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">BTTC <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Black TITAN Corp</td>
+<td>$0.54</td>
+<td>-10.6%</td>
+<td>100,290</td>
+<td>0.0x</td>
+<td>$6.5M</td>
+<td>12.06M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">SKK <span class="country-badge">NANO CAP</span></td>
+<td>SKK Holdings</td>
+<td>$4.80</td>
+<td>-10.6%</td>
+<td>534</td>
+<td>0.0x</td>
+<td>$21.3M</td>
+<td>4.43M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">SMTK <span class="country-badge">NANO CAP</span></td>
+<td>Smartkem</td>
+<td>$3.95</td>
+<td>-10.4%</td>
+<td>8,113</td>
+<td>0.0x</td>
+<td>$2.3M</td>
+<td>577.49K</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">TNON <span class="country-badge">NANO CAP</span></td>
+<td>Tenon Medical, Inc.</td>
+<td>$6.13</td>
+<td>-10.2%</td>
+<td>21,249</td>
+<td>0.0x</td>
+<td>$4.6M</td>
+<td>743.22K</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">BTMD <span class="country-badge">MICRO CAP</span></td>
+<td>Biote</td>
+<td>$1.45</td>
+<td>-10.2%</td>
+<td>9</td>
+<td>0.0x</td>
+<td>$57.8M</td>
+<td>40.00M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">AIFU <span class="country-badge">MICRO CAP</span></td>
+<td>AIFU Inc.</td>
+<td>$16.62</td>
+<td>-10.2%</td>
+<td>76</td>
+<td>0.0x</td>
+<td>$114.2M</td>
+<td>6.87M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">IBG <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Innovation Beverage Group Ltd</td>
+<td>$0.90</td>
+<td>-10.0%</td>
+<td>8,504</td>
+<td>0.0x</td>
+<td>$4.5M</td>
+<td>5.00M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">FVN <span class="country-badge">MICRO CAP</span></td>
+<td>Future Vision II Acquisition Corp</td>
+<td>$11.72</td>
+<td>-9.8%</td>
+<td>109</td>
+<td>0.0x</td>
+<td>$98.1M</td>
+<td>8.37M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">SNSC <span class="country-badge">MICRO CAP</span></td>
+<td>SUNSCOUT HLDG LTD</td>
+<td>$1.60</td>
+<td>-9.6%</td>
+<td>7,538</td>
+<td>0.0x</td>
+<td>$62.0M</td>
+<td>38.72M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">ADXN <span class="country-badge">NANO CAP</span></td>
+<td>Addex Therapeutics Ltd</td>
+<td>$4.47</td>
+<td>-9.5%</td>
+<td>23,562</td>
+<td>0.0x</td>
+<td>$6.3M</td>
+<td>1.40M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">LFVN <span class="country-badge">MICRO CAP</span></td>
+<td>Lifevantage Corp</td>
+<td>$6.07</td>
+<td>-9.3%</td>
+<td>500</td>
+<td>0.0x</td>
+<td>$84.4M</td>
+<td>13.90M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">FBDT <span class="country-badge">MICRO CAP</span></td>
+<td>First Breach Inc</td>
+<td>$3.63</td>
+<td>-9.0%</td>
+<td>4,016</td>
+<td>0.0x</td>
+<td>$183.5M</td>
+<td>50.56M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">VCRE <span class="country-badge">SMALL CAP</span></td>
+<td>Vicore Pharma Hldg AB</td>
+<td>$11.38</td>
+<td>-9.0%</td>
+<td>424</td>
+<td>0.1x</td>
+<td>$351.9M</td>
+<td>30.92M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">LGCL <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Lucas GC Limited</td>
+<td>$0.05</td>
+<td>-8.8%</td>
+<td>8,728,789</td>
+<td>0.2x</td>
+<td>$2.4M</td>
+<td>46.90M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">EXYN <span class="country-badge">NANO CAP</span></td>
+<td>EXYN TECHNOLOGIES INC</td>
+<td>$2.02</td>
+<td>-8.6%</td>
+<td>37,841</td>
+<td>0.0x</td>
+<td>$17.6M</td>
+<td>8.70M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">DSC <span class="country-badge">SMALL CAP</span></td>
+<td>DSC Holdings Ltd</td>
+<td>$7.80</td>
+<td>-8.6%</td>
+<td>38</td>
+<td>0.0x</td>
+<td>$427.1M</td>
+<td>54.76M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">UTSI <span class="country-badge">NANO CAP</span></td>
+<td>Utstarcom Holdings</td>
+<td>$2.15</td>
+<td>-8.5%</td>
+<td>34</td>
+<td>0.0x</td>
+<td>$22.3M</td>
+<td>10.38M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">KOF <span class="country-badge">SMALL CAP</span></td>
+<td>Coca-Cola Femsa</td>
+<td>$102.95</td>
+<td>-8.2%</td>
+<td>1</td>
+<td>0.0x</td>
+<td>$188553.9M</td>
+<td>1.83B</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">PODC <span class="country-badge">MICRO CAP</span></td>
+<td>PodcastOne Inc</td>
+<td>$2.48</td>
+<td>-8.2%</td>
+<td>10</td>
+<td>0.0x</td>
+<td>$81.7M</td>
+<td>32.95M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">JZ <span class="country-badge">NANO CAP</span></td>
+<td>Jianzhi Education Technology Group Co Ltd</td>
+<td>$2.02</td>
+<td>-8.2%</td>
+<td>9,245</td>
+<td>0.0x</td>
+<td>$31.7M</td>
+<td>15.69M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">OSTX <span class="country-badge">MICRO CAP</span></td>
+<td>OS THERAPIES INCORPORATED</td>
+<td>$1.46</td>
+<td>-8.2%</td>
+<td>9,513</td>
+<td>0.0x</td>
+<td>$73.3M</td>
+<td>50.23M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">JATT <span class="country-badge">MICRO CAP</span></td>
+<td>Jatt Ii Acquisition Corp</td>
+<td>$12.20</td>
+<td>-7.9%</td>
+<td>53</td>
+<td>0.0x</td>
+<td>$103.3M</td>
+<td>8.46M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">INTS <span class="country-badge">NANO CAP</span></td>
+<td>INTENSITY THERAPEUTICS INC</td>
+<td>$4.48</td>
+<td>-7.8%</td>
+<td>9</td>
+<td>0.0x</td>
+<td>$15.9M</td>
+<td>3.54M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">SLE <span class="country-badge">NANO CAP</span></td>
+<td>Super League Gaming Inc</td>
+<td>$3.72</td>
+<td>-7.7%</td>
+<td>9,471</td>
+<td>0.0x</td>
+<td>$8.1M</td>
+<td>2.16M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">NXGL <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>Nexgel Inc</td>
+<td>$0.30</td>
+<td>-7.6%</td>
+<td>9,648,690</td>
+<td>11.9x</td>
+<td>$3.2M</td>
+<td>10.55M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">CUPR <span class="country-badge">NANO CAP</span></td>
+<td>Cuprina Holdings (Cayman) Limited</td>
+<td>$2.66</td>
+<td>-7.5%</td>
+<td>101</td>
+<td>0.0x</td>
+<td>$7.7M</td>
+<td>2.90M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">GBR <span class="country-badge">NANO CAP</span> <span class="country-badge">PENNY</span></td>
+<td>New Concep</td>
+<td>$0.75</td>
+<td>-7.5%</td>
+<td>17</td>
+<td>0.0x</td>
+<td>$4.2M</td>
+<td>5.55M</td>
+<td>Bounce scanner disabled</td>
+</tr>
+<tr>
+<td class="ticker-cell">RNA <span class="country-badge">MICRO CAP</span></td>
+<td>Atrium Therapeutics, Inc</td>
+<td>$12.22</td>
+<td>-7.4%</td>
+<td>8</td>
+<td>0.0x</td>
+<td>$225.8M</td>
+<td>18.48M</td>
+<td>Bounce scanner disabled</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1811,15 +2867,11 @@
 </footer>
 <script>
         // ── Market region toggle (US / AUS) ─────────────────────────────
-                // Force US market on the canonical US page
-        let currentMarket = 'US';
-        // The main US page must always default to US, even if the user previously visited the AU page.
-        if (window.location.pathname.toLowerCase().includes('trader-au')) {
+        let currentMarket = localStorage.getItem('ozmoeg-market') || 'US'; // 'US' or 'AUS'
+        // If the URL path indicates the AUS market (e.g., /au), force the market to AUS
+        if (window.location.pathname.includes('/au')) {
             currentMarket = 'AUS';
             localStorage.setItem('ozmoeg-market', 'AUS');
-        } else {
-            currentMarket = 'US';
-            localStorage.setItem('ozmoeg-market', 'US');
         }
 
         function setMarketButtons() {
@@ -1839,12 +2891,8 @@
         }
 
         function switchMarket(market) {
-            localStorage.setItem('ozmoeg-market', market);
-            if (market !== 'US') {
-                window.location.href = 'https://aeyeing.com/ozmoeg-trader-asx.html';
-                return;
-            }
             currentMarket = market;
+            localStorage.setItem('ozmoeg-market', market);
             setMarketButtons();
             updateHeaderText();
             updateDateTime();
@@ -1994,8 +3042,6 @@
                 const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
                 if (etWeekdayNum === 0 || etWeekdayNum === 6) {
                     status = "🔴 Weekend — Markets Closed";
-                } else if (etHour < 4) {
-                    status = "🔴 US Closed — Pre-market at 4:00 AM ET";
                 } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
                     status = "🟡 Pre-Market — Scanning for setups";
                 } else if (etHour < 16) {
@@ -2280,34 +3326,6 @@
             timeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
                 seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
             });
-
-            const bubbleTimeline = document.getElementById('bubble-market-timeline');
-            const bubbleNotch = document.getElementById('bubble-market-timeline-notch');
-            if (bubbleTimeline && bubbleNotch && phase) {
-                bubbleTimeline.style.display = 'block';
-                bubbleNotch.style.left = `${left}%`;
-                bubbleTimeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
-                    span.classList.toggle('active', span.dataset.phase === phase);
-                });
-                bubbleTimeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
-                    seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
-                });
-            } else if (bubbleTimeline) {
-                bubbleTimeline.style.display = 'none';
-            }
-        }
-
-        function mirrorBubbleCountdown(statusText, timerStr, nextText, isOpen, shortStatus) {
-            const bubbleStatus = document.getElementById('bubble-market-status');
-            const bubbleTimer = document.getElementById('bubble-countdown-timer');
-            if (bubbleStatus) {
-                bubbleStatus.textContent = shortStatus || '🔴 CLOSED';
-                bubbleStatus.title = statusText || '';
-            }
-            if (bubbleTimer) {
-                bubbleTimer.textContent = timerStr;
-                bubbleTimer.className = isOpen ? 'bubble-countdown-timer' : 'bubble-countdown-timer closed';
-            }
         }
 
         function updateCountdown() {
@@ -2341,7 +3359,6 @@
                     document.getElementById('countdown-timer').className = 'countdown-timer open';
                     const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                     document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
-                    mirrorBubbleCountdown('🟢 ASX OPEN', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, `Closes at ${closeStr} today (Sydney time)`, true, '🟢 OPEN');
                     return;
                 }
 
@@ -2377,7 +3394,6 @@
                 document.getElementById('countdown-timer').textContent = timerStr;
                 document.getElementById('countdown-timer').className = 'countdown-timer closed';
                 document.getElementById('countdown-next').textContent = `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
-                mirrorBubbleCountdown(statusText, timerStr, `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`, false, '🔴 CLOSED');
                 return;
             }
 
@@ -2399,8 +3415,6 @@
             document.getElementById('countdown-status').textContent = phaseInfo.statusText;
             document.getElementById('countdown-timer').textContent = timerStr;
             document.getElementById('countdown-timer').className = isOpen ? 'countdown-timer open' : 'countdown-timer closed';
-            const shortStatusUS = phaseInfo.phase === 'open' ? '🟢 OPEN' : phaseInfo.phase === 'pre' ? '🟡 PRE-MARKET' : phaseInfo.phase === 'post' ? '🟡 AFTER-HOURS' : '🔴 CLOSED';
-            mirrorBubbleCountdown(phaseInfo.statusText, timerStr, null, isOpen, shortStatusUS);
 
             const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
             const sydneyDay = dayNames[target.getDay()];
@@ -2421,16 +3435,20 @@
         setInterval(updateCountdown, 1000);
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
-        // Current behaviour: 1-minute refresh whenever the US market is open, pre-market, or after-hours.
-        // Auto-refresh is disabled only when the US market is CLOSED or WEEKEND.
-        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed or weekend
-        const ACTIVE_REFRESH_INTERVAL_MS = 60000;      // 1 min refresh during active market hours
+        // Intervals are driven by Sydney wall-clock time and US market status:
+        //   CATALYST WATCHLIST (Sydney 17:00 → 17:59): every 1 minute, news-only mode
+        //   PRE-MARKET / OPEN / AFTER-HOURS inside Sydney active window : every 1 minute
+        //   OPEN / AFTER-HOURS outside Sydney active window             : every 10 minutes
+        //   CLOSED / WEEKEND (outside Sydney active window)             : no auto-fetch
+        const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
+        const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside Sydney window
+        const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during Sydney active window (17:00-23:59)
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
         let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
-        let currentMarketStatus = (typeof getCurrentUSMarketStatus === 'function' ? getCurrentUSMarketStatus() : 'OPEN') || 'OPEN';
+        let currentMarketStatus = 'OPEN';
         let soundEnabled = localStorage.getItem('ozmoeg-sound-enabled') !== 'false';
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
@@ -2461,31 +3479,16 @@
             }
         }
 
-        function isCatalystWatchlistWindow(now = new Date()) {
-            const parts = new Intl.DateTimeFormat('en-AU', {
-                timeZone: 'Australia/Sydney',
-                hour: 'numeric', minute: 'numeric', hour12: false, weekday: 'short'
-            }).formatToParts(now);
-            let h = 0, m = 0;
-            let wd = '';
-            for (const p of parts) {
-                if (p.type === 'hour') h = parseInt(p.value, 10);
-                if (p.type === 'minute') m = parseInt(p.value, 10);
-                if (p.type === 'weekday') wd = p.value;
-            }
-            const wdNum = {'Mon':1,'Tue':2,'Wed':3,'Thu':4,'Fri':5,'Sat':6,'Sun':0}[wd];
-            const mins = h * 60 + m;
-            return wdNum >= 1 && wdNum <= 5 && mins >= 17*60 && mins < 18*60;
-        }
-
         function getRefreshIntervalMs() {
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            const watchlistWindow = typeof isCatalystWatchlistWindow === 'function' && isCatalystWatchlistWindow();
-            // Refresh every minute during the Sydney 17:00-17:59 catalyst-watchlist window,
-            // even though the US market is still closed. Otherwise disabled when closed/weekend.
-            return ((usStatus === 'CLOSED' || usStatus === 'WEEKEND') && !watchlistWindow)
-                ? CLOSED_REFRESH_INTERVAL_MS
-                : ACTIVE_REFRESH_INTERVAL_MS;
+            if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
+                // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
+                return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
+            }
+            if (isActiveTradingWindow()) return ACTIVE_REFRESH_INTERVAL_MS;
+            // US OPEN / AFTER-HOURS outside the Sydney 17:00-23:59 window refresh every 10 minutes.
+            // PRE-MARKET outside the window is treated the same way: the website is not in active mode.
+            return IDLE_REFRESH_INTERVAL_MS;
         }
 
         // Refresh strategy: poll the manifest every minute. Only fetch the full snapshot when
@@ -2498,12 +3501,10 @@
         let nextPollAt = computeNextPollAt();
 
         function computeNextPollAt() {
-            const interval = getRefreshIntervalMs();
-            if (interval === 0) return Infinity; // markets closed or weekend
             const now = Date.now();
-            // Align to the next boundary for the current refresh cadence.
-            const nextBoundary = Math.ceil(now / interval) * interval;
-            return nextBoundary + MANIFEST_POLL_OFFSET_MS;
+            // Align to the next minute boundary plus a small offset.
+            const nextMinute = Math.ceil(now / MANIFEST_POLL_INTERVAL_MS) * MANIFEST_POLL_INTERVAL_MS;
+            return nextMinute + MANIFEST_POLL_OFFSET_MS;
         }
 
         function getManifestFile() {
@@ -2511,35 +3512,58 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Prefer the public rolling JSON (always available via GitHub Pages/Cloudflare).
+            // Always use the public rolling JSON as the primary source. Dated snapshots from the
+            // manifest are informational only; they often do not exist on GitHub Pages and break
+            // the page for visitors served by a different Cloudflare edge.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://aeyeing.com/' + file;
+            return `https://aeyeing.com/${file}`;
         }
 
         function getTunnelSnapshotFile() {
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
+            return `https://trip-planner.aeyeing.com/ozmoeg/${file}`;
         }
 
         async function fetchManifestRaw() {
-            // Manifest is tiny; prefer public copy, then tunnel.
-            const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
-            const urls = [
-                'https://aeyeing.com/' + file,
-                'https://trip-planner.aeyeing.com/ozmoeg/' + file
-            ];
-            let lastErr = null;
-            for (const url of urls) {
+            // Try the main site first; fall back to raw GitHub content when the CDN fronting
+            // aeyeing.com caches the manifest beyond the scan cadence. Both are served with
+            // permissive CORS so this works from any browser.
+            const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+            const tryFetch = async (url, desc) => {
                 try {
-                    const res = await fetch(url + '?_=' + Date.now(), { cache: 'no-store' });
-                    if (res.ok) return await res.json();
+                    const res = await fetch(url + '?_=' + buster, {
+                        cache: 'no-store',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                    if (!res.ok) {
+                        console.warn('Manifest fetch failed for', desc, res.status);
+                        return null;
+                    }
+                    const manifest = await res.json();
+                    if (!manifest || !manifest.latest || !manifest.last_updated) {
+                        console.warn('Manifest malformed for', desc);
+                        return null;
+                    }
+                    return manifest;
                 } catch (e) {
-                    lastErr = e;
-                    console.warn('Manifest fetch failed for', url, e.name, e.message);
+                    console.warn('Manifest fetch exception for', desc, e);
+                    return null;
                 }
+            };
+            const market = currentMarket === 'AUS' ? '-au' : '';
+            const main = await tryFetch(getManifestFile(), 'main');
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            if (!main && !raw) return null;
+            if (!main) return raw;
+            if (!raw) return main;
+            // Raw GitHub is uncached, so prefer it whenever it is at least as fresh as the CDN.
+            const mainTs = new Date(main.last_updated).getTime() || 0;
+            const rawTs = new Date(raw.last_updated).getTime() || 0;
+            if (rawTs >= mainTs) {
+                console.log('Using raw-github manifest (uncached):', raw.latest, raw.last_updated);
+                return raw;
             }
-            console.warn('All manifest fetch attempts failed', lastErr);
-            return null;
+            return main;
         }
 
         async function pollManifest() {
@@ -2581,7 +3605,6 @@
                 console.warn('Manifest poll failed:', e);
             } finally {
                 window._pollingManifest = false;
-                nextPollAt = computeNextPollAt();
             }
         }
 
@@ -2624,23 +3647,23 @@
             }
             if (!label && !bubbleNext) return;
             const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            const watchlistWindow = typeof isCatalystWatchlistWindow === 'function' && isCatalystWatchlistWindow();
-            let active = watchlistWindow ||
-                            ((usStatus === 'PRE-MARKET' || usStatus === 'OPEN' || usStatus === 'AFTER-HOURS') && isActiveTradingWindow());
+            let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
+                            (usStatus === 'OPEN' && isActiveTradingWindow());
 
             let modeLabel;
-            if (watchlistWindow) {
-                modeLabel = `(1-min watchlist update mode)`;
-            } else if (usStatus === 'PRE-MARKET') {
+            const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
+            if (isActiveTradingWindow() && usStatus === 'CLOSED') {
+                modeLabel = `(1-min catalyst watchlist mode)`;
+            } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
                 modeLabel = `(1-min pre-market mode)`;
             } else if (usStatus === 'OPEN') {
-                modeLabel = `(1-min open market mode)`;
+                modeLabel = `(${pollMin}-min open market mode)`;
             } else if (usStatus === 'AFTER-HOURS') {
-                modeLabel = `(1-min after-hours mode)`;
-            } else if (usStatus === 'CLOSED') {
-                modeLabel = `(markets closed)`;
+                modeLabel = `(${pollMin}-min after-hours mode)`;
+            } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
+                modeLabel = `(${pollMin}-min pre-market mode)`;
             } else {
-                modeLabel = `(markets closed)`;
+                modeLabel = `(${pollMin}-min markets closed)`;
             }
 
             const interval = getRefreshIntervalMs();
@@ -2663,7 +3686,7 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            active = watchlistWindow || usStatus === 'PRE-MARKET' || usStatus === 'OPEN' || usStatus === 'AFTER-HOURS';
+            active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
             const txt = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
             if (label) { label.classList.toggle('active-refresh', active); label.textContent = txt; }
             if (bubbleNext) { bubbleNext.classList.toggle('active-refresh', active); bubbleNext.textContent = txt; }
@@ -3061,7 +4084,7 @@
             if (!sel) return;
             const previousTicker = sel.value;
             sel.innerHTML = '';
-            let selectable = entries.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
+            let selectable = entries.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
             selectable.forEach(r => { r._maxScore = getAlertMaxScore(r); });
             // Sort High impact (≥4) first, then Medium (≥2), then Low
             selectable.sort((a, b) => b._maxScore - a._maxScore);
@@ -3108,11 +4131,11 @@
             const activeRows = getActiveScannerView() === 'premarket'
                 ? (window._lastPreMarketResults || [])
                 : (window._lastLiveResults || []);
-            const selectable = activeRows.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
+            const selectable = activeRows.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
             // First try the active view; fall back to any source that contains this ticker.
             let r = selectable.find(a => a.ticker === ticker);
             if (!r && ticker) {
-                const fallback = allSources.filter(r => r.plan && ((r.status === 'ALERT' || r.status === 'ALERT/HALT') || r.status === 'CANDIDATE'));
+                const fallback = allSources.filter(r => r.plan && (r.status === 'ALERT' || r.status === 'CANDIDATE'));
                 r = fallback.find(a => a.ticker === ticker);
             }
 
@@ -3532,7 +4555,6 @@
             let statusClass = 'result-skip';
             let emoji = '⏭️';
             if (r.status === 'ALERT') { statusClass = 'result-alert'; emoji = '🚨'; }
-            else if (r.status === 'ALERT/HALT') { statusClass = 'result-halt'; emoji = '🛑'; }
             else if (r.status === 'CANDIDATE') { statusClass = 'result-candidate'; emoji = '🔬'; }
             else if (r.status === 'WATCHLIST') { statusClass = 'result-candidate'; emoji = '⏰'; }
             const imp = impactLabel(getAlertMaxScore(r), r);
@@ -3542,8 +4564,14 @@
             const tape = r.tape || {};
             const isAuMarket = currentMarket === 'AUS';
             const isWatchlist = r.status === 'WATCHLIST';
-            const floatShares = getFloat(r);
+            const floatShares = parseFloat(r.float_shares || 0);
 
+            function formatFloat(n) {
+                if (!isFinite(n) || n <= 0) return '—';
+                if (n >= 1e9) return `${(n/1e9).toFixed(2)}B`;
+                if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
+                return `${(n/1e3).toFixed(0)}K`;
+            }
             const floatCell = isWatchlist ? `<span class="float-cell float-pending" title="Catalyst watchlist — no live float data yet">— pending</span>` : `<span class="float-cell" title="Outstanding shares proxy (Webull does not expose true free float)">${formatFloat(floatShares)}</span>`;
 
             function formatTapeTime(iso) {
@@ -3694,84 +4722,6 @@
             if (age === 'just now') return 0;
             return Number.POSITIVE_INFINITY;
         }
-
-        // Shared table/bubble helpers (must be in main script scope; renderScannerRow uses them too)
-        function formatFloat(n) {
-            if (n == null || isNaN(n)) return '—';
-            if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(2).replace(/\.0+$/, '') + 'B';
-            if (n >= 1_000_000) return (n / 1_000_000).toFixed(2).replace(/\.0+$/, '') + 'M';
-            if (n >= 1_000) return (n / 1_000).toFixed(2).replace(/\.0+$/, '') + 'K';
-            return n.toFixed(0);
-        }
-
-        function formatPrice(p) {
-            if (p == null || isNaN(p)) return '—';
-            return p < 1 ? p.toFixed(3) : p.toFixed(2);
-        }
-
-        function formatVolume(v) {
-            if (v == null || isNaN(v)) return '—';
-            if (v >= 1_000_000_000) return (v / 1_000_000_000).toFixed(2) + 'B';
-            if (v >= 1_000_000) return (v / 1_000_000).toFixed(2) + 'M';
-            if (v >= 1_000) return (v / 1_000).toFixed(1) + 'K';
-            return v.toString();
-        }
-
-        function getPrice(r) {
-            // The scan-row price is fresher than the quote object, which can be stale (e.g. KUST $1.18).
-            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            if (live?.price != null) return live.price;
-            if (r?.price != null) return r.price;
-            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-            if (q.price != null) return q.price;
-            return 0;
-        }
-
-        function getChangePct(r) {
-            // The live quote object can lag the scan row (e.g. KUST showing stale $1.18 / 9%).
-            // Prefer the scan row's own change_pct so the bubble size/color matches the scanner table.
-            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            if (live?.change_pct != null) return live.change_pct;
-            if (r?.change_pct != null) return r.change_pct;
-            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-            if (q.changeRatio != null) return q.changeRatio * 100;
-            return 0;
-        }
-
-        function getFloat(r) {
-            if (r?.float_shares != null && r.float_shares > 0) return r.float_shares;
-            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            if (live?.float_shares != null && live.float_shares > 0) return live.float_shares;
-            const price = getPrice(r);
-            const mcap = r?.market_cap || live?.market_cap || 0;
-            if (mcap > 0 && price > 0) return Math.round(mcap / price);
-            return 0;
-        }
-
-        function getVolume(r) {
-            const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            if (live?.volume != null) return live.volume;
-            if (r?.volume != null) return r.volume;
-            const q = (window._lastLiveQuotes || {})[r.ticker] || {};
-            if (q.volume != null) return q.volume;
-            return 0;
-        }
-
-        function getSecFilings(r) {
-            if (r?.sec_filings && r.sec_filings !== '—') return r.sec_filings;
-            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            if (live?.sec_filings && live.sec_filings !== '—') return live.sec_filings;
-            return '—';
-        }
-
-        function getNewsAge(r) {
-            const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
-            const target = live || r;
-            if (!target || !target.news || !Array.isArray(target.news.headlines) || !target.news.headlines.length) return '—';
-            const newest = target.news.headlines.slice().sort((a, b) => newsAgeMinutes(a) - newsAgeMinutes(b))[0];
-            return computeNewsAge(newest?.raw_time) || computeNewsAge(newest?.time) || '—';
-        }
-
         function getActiveScannerView() {
             const toggle = document.getElementById('scanner-toggle');
             if (!toggle) return 'live';
@@ -3784,8 +4734,8 @@
             const isPre = view === 'premarket';
             const isWatchlist = view === 'watchlist';
             const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
-                         isPre ? ((window._lastPreMarketResults && window._lastPreMarketResults.length) ? window._lastPreMarketResults : (window._lastLiveResults || [])).filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT') :
-                         (window._lastLiveResults || []).filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
+                         isPre ? (window._lastPreMarketResults || []) :
+                         (window._lastLiveResults || []);
             displayedResults = rows;
             if (window.rebuildBubbleChart) {
                 const modal = document.getElementById('bubble-modal');
@@ -3813,8 +4763,8 @@
                 }
             } else if (isPre) {
                 const sorted = [...rows].sort((a, b) => {
-                    const aAlert = (a.status === 'ALERT' || a.status === 'ALERT/HALT') ? 1 : 0;
-                    const bAlert = (b.status === 'ALERT' || b.status === 'ALERT/HALT') ? 1 : 0;
+                    const aAlert = a.status === 'ALERT' ? 1 : 0;
+                    const bAlert = b.status === 'ALERT' ? 1 : 0;
                     if (aAlert !== bAlert) return bAlert - aAlert;
                     if (aAlert) {
                         const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
@@ -3841,8 +4791,8 @@
                 // During pre/after-hours these are the extended-hours candidates, not an empty state.
                 if (rows.length) {
                     const sorted = [...rows].sort((a, b) => {
-                        const aAlert = (a.status === 'ALERT' || a.status === 'ALERT/HALT') ? 1 : 0;
-                        const bAlert = (b.status === 'ALERT' || b.status === 'ALERT/HALT') ? 1 : 0;
+                        const aAlert = a.status === 'ALERT' ? 1 : 0;
+                        const bAlert = b.status === 'ALERT' ? 1 : 0;
                         if (aAlert !== bAlert) return bAlert - aAlert;
                         if (aAlert) {
                             const scoreDiff = getAlertMaxScore(b) - getAlertMaxScore(a);
@@ -3870,7 +4820,7 @@
                     } else if (isClosed) {
                         msg = `The US market is currently ${marketLabel}. Live scan results will resume when the market opens.`;
                     } else {
-                        msg = 'No active alerts in the latest scan.';
+                        msg = 'No candidates met the alert criteria in the latest scan.';
                     }
                     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">${msg}</td></tr>`;
                     populateAlertSelector([]);
@@ -3916,6 +4866,79 @@
                 return countryShortMap[country] || (country.match(/\b([A-Z])\S*\s*\b([A-Z])\S*/) ? RegExp.$1 + RegExp.$2 : country.slice(0, 2).toUpperCase());
             }
 
+            function formatFloat(n) {
+                if (n == null || isNaN(n)) return '—';
+                if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(2).replace(/\.0+$/, '') + 'B';
+                if (n >= 1_000_000) return (n / 1_000_000).toFixed(2).replace(/\.0+$/, '') + 'M';
+                if (n >= 1_000) return (n / 1_000).toFixed(2).replace(/\.0+$/, '') + 'K';
+                return n.toFixed(0);
+            }
+
+            function formatPrice(p) {
+                if (p == null || isNaN(p)) return '—';
+                return p < 1 ? p.toFixed(3) : p.toFixed(2);
+            }
+
+            function formatVolume(v) {
+                if (v == null || isNaN(v)) return '—';
+                if (v >= 1_000_000_000) return (v / 1_000_000_000).toFixed(2) + 'B';
+                if (v >= 1_000_000) return (v / 1_000_000).toFixed(2) + 'M';
+                if (v >= 1_000) return (v / 1_000).toFixed(1) + 'K';
+                return v.toString();
+            }
+
+            function getPrice(r) {
+                // The scan-row price is fresher than the quote object, which can be stale (e.g. KUST $1.18).
+                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                if (live?.price != null) return live.price;
+                if (r?.price != null) return r.price;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.price != null) return q.price;
+                return 0;
+            }
+
+            function getChangePct(r) {
+                // The live quote object can lag the scan row (e.g. KUST showing stale $1.18 / 9%).
+                // Prefer the scan row's own change_pct so the bubble size/color matches the scanner table.
+                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                if (live?.change_pct != null) return live.change_pct;
+                if (r?.change_pct != null) return r.change_pct;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.changeRatio != null) return q.changeRatio * 100;
+                return 0;
+            }
+
+            function getFloat(r) {
+                if (r?.float_shares != null) return r.float_shares;
+                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                if (live?.float_shares != null) return live.float_shares;
+                return 0;
+            }
+
+            function getVolume(r) {
+                const live = (window._lastBubbleViewResults || window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                if (live?.volume != null) return live.volume;
+                if (r?.volume != null) return r.volume;
+                const q = (window._lastLiveQuotes || {})[r.ticker] || {};
+                if (q.volume != null) return q.volume;
+                return 0;
+            }
+
+            function getSecFilings(r) {
+                if (r?.sec_filings && r.sec_filings !== '—') return r.sec_filings;
+                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                if (live?.sec_filings && live.sec_filings !== '—') return live.sec_filings;
+                return '—';
+            }
+
+            function getNewsAge(r) {
+                const live = (window._lastLiveResults || []).find(x => x.ticker === r.ticker);
+                const target = live || r;
+                if (!target || !target.news || !Array.isArray(target.news.headlines) || !target.news.headlines.length) return '—';
+                const newest = target.news.headlines.slice().sort((a, b) => newsAgeMinutes(a) - newsAgeMinutes(b))[0];
+                return computeNewsAge(newest?.raw_time) || computeNewsAge(newest?.time) || '—';
+            }
+
             function getAlertLevel(r) {
                 const max = (typeof getAlertMaxScore === 'function') ? getAlertMaxScore(r) : null;
                 if (max == null) return '';
@@ -3940,18 +4963,15 @@
 
             function getBubbleColor(r, changePct) {
                 // Glow cyan wins for extreme movers, then ALERT, then penny stock.
-                // Halted alerts turn grey until trading resumes.
-                if (r?.status === 'ALERT/HALT') return 'rgba(158,158,158,0.55)';
                 if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
-                if (r?.status === 'ALERT' || r?.status === 'ALERT/HALT') return 'rgba(248,113,113,0.55)';
+                if (r?.status === 'ALERT') return 'rgba(248,113,113,0.55)';
                 if (r?.is_penny_stock || getPrice(r) < 1) return 'rgba(248,113,113,0.55)';
                 return 'rgba(45,212,191,0.55)';
             }
 
             function getBubbleBorderColor(r, changePct) {
                 if (Math.abs(changePct) > 80) return '#22d3ee';
-                if (r?.status === 'ALERT/HALT') return '#9e9e9e';
-                if (r?.status === 'ALERT' || r?.status === 'ALERT/HALT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
+                if (r?.status === 'ALERT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
                 return '#2dd4bf';
             }
 
@@ -3971,37 +4991,17 @@
             }
 
             function buildBubbleChart() {
-                // Bubble chart must match the active scanner table view (Live, Pre/After, or Watchlist).
-                const view = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
-                let activeRows = [];
-                if (view === 'premarket') {
-                    activeRows = window._lastPreMarketResults || window._lastLiveResults || [];
-                } else if (view === 'watchlist') {
-                    activeRows = window._lastPreMarketWatchlist || window._lastPreMarketResults || window._lastLiveResults || [];
-                } else {
-                    activeRows = window._lastLiveResults || window._lastBubbleViewResults || [];
-                }
-                const rows = activeRows.filter(r => {
-                    // Bubble chart shows actionable alerts only.
-                    if (r.status !== 'ALERT' && r.status !== 'ALERT/HALT') return false;
-                    // Exclude rows with no real float or price data.
+                // Bubble View must always show the LIVE scanner results, not the active page view
+                // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
+                const allRows = (window._lastBubbleViewResults || window._lastLiveResults || []);
+                const rows = allRows.filter(r => {
+                    // Exclude watchlist rows with no real float or price data.
                     const float = getFloat(r);
                     const price = getPrice(r);
                     return float != null && float > 0 && price != null && price > 0;
                 });
-
-                const minPrice = 0.20;
-                const maxPrice = 28;
-                const maxFloat = 15_000_000;
-
-                // In-bounds bubbles keep the X-axis fixed at 15M.  Tickers with floats > 15M are
-                // NOT rendered as bubbles; instead we draw their label on the right edge at the
-                // same Y (price) so the chart scale and recommended trade zone stay reasonable.
-                const inRows = rows.filter(r => (getFloat(r) || 0) <= maxFloat);
-                const overflowRows = rows.filter(r => (getFloat(r) || 0) > maxFloat);
-
-                if (!inRows.length && !overflowRows.length) {
-                    setBubbleStatus(activeRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
+                if (!rows.length) {
+                    setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
                     return;
                 }
 
@@ -4010,9 +5010,15 @@
 
                 if (bubbleChart) { bubbleChart.destroy(); bubbleChart = null; }
 
+                const minPrice = 0.20;
+                const maxPrice = 28;
+                // Expand X-axis to fit the actual scanner dataset so no tickers are clipped.
+                const dataMaxFloat = Math.max(1, ...rows.map(r => getFloat(r) || 0));
+                const maxFloat = Math.max(12_500_000, dataMaxFloat * 1.15);
+
                 const maxChange = Math.max(1, ...rows.map(r => Math.abs(getChangePct(r)) || 0));
 
-                const dataPoints = inRows.map(r => {
+                const dataPoints = rows.map(r => {
                     const price = Math.max(minPrice, getPrice(r) || minPrice);
                     const floatShares = getFloat(r) || 0;
                     const changePct = getChangePct(r);
@@ -4024,7 +5030,7 @@
                         y: price,
                         r: Math.max(6, Math.min(45, radius)),
                         ticker: r.ticker,
-                        country: shortCountry(r.country || 'United States'),
+                        country: shortCountry(r.country),
                         raw: r,
                         trueX: floatShares,
                         trueY: price,
@@ -4194,98 +5200,14 @@
                     }
                 };
 
-                const overflowLabelPlugin = {
-                    id: 'overflowBubbleLabels',
-                    afterDatasetsDraw(chart) {
-                        if (!overflowRows.length) return;
-                        const { ctx, chartArea: { right, top, bottom }, scales: { x, y } } = chart;
-                        if (!x || !y) return;
-                        ctx.save();
-
-                        const labelH = 24;
-                        const pad = 4;
-                        const leader = 16;
-                        const items = overflowRows.map(r => {
-                            const price = Math.max(minPrice, getPrice(r) || minPrice);
-                            return {
-                                ticker: r.ticker,
-                                country: shortCountry(r.country || 'United States'),
-                                float: getFloat(r),
-                                price,
-                                targetY: y.getPixelForValue(price),
-                                color: getBubbleColor(r, getChangePct(r)),
-                                border: getBubbleBorderColor(r, getChangePct(r)),
-                            };
-                        });
-
-                        // Resolve overlaps by pushing labels apart vertically.
-                        items.sort((a, b) => a.targetY - b.targetY);
-                        for (let i = 1; i < items.length; i++) {
-                            if (items[i].targetY - items[i - 1].targetY < labelH + 2) {
-                                items[i].targetY = items[i - 1].targetY + labelH + 2;
-                            }
-                        }
-
-                        items.forEach(item => {
-                            const by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
-                            ctx.font = "bold 12px 'Inter', sans-serif";
-                            const w1 = ctx.measureText(item.ticker).width;
-                            ctx.font = "600 9px 'Inter', sans-serif";
-                            const w2 = ctx.measureText(item.country).width;
-                            const labelW = Math.max(w1, w2) + pad * 2 + 6;
-                            const lx = right + leader + 8;
-                            const ly = by - labelH / 2;
-
-                            // Leader line + arrow pointing right (toward the off-chart bubble).
-                            ctx.strokeStyle = item.border || 'rgba(148,163,184,0.55)';
-                            ctx.lineWidth = 0.8;
-                            ctx.setLineDash([3, 3]);
-                            ctx.beginPath();
-                            ctx.moveTo(right, by);
-                            ctx.lineTo(right + leader, by);
-                            ctx.stroke();
-                            ctx.setLineDash([]);
-
-                            // Arrowhead at the far end, pointing right.
-                            ctx.fillStyle = item.border || '#94a3b8';
-                            ctx.beginPath();
-                            ctx.moveTo(right + leader, by - 3);
-                            ctx.lineTo(right + leader + 5, by);
-                            ctx.lineTo(right + leader, by + 3);
-                            ctx.closePath();
-                            ctx.fill();
-
-                            // Label box
-                            ctx.fillStyle = 'rgba(17,24,39,0.9)';
-                            ctx.fillRect(lx, ly, labelW, labelH);
-                            ctx.strokeStyle = item.border || 'rgba(255,255,255,0.2)';
-                            ctx.lineWidth = 0.8;
-                            ctx.strokeRect(lx, ly, labelW, labelH);
-
-                            // Text
-                            ctx.textAlign = 'left';
-                            ctx.textBaseline = 'middle';
-                            ctx.fillStyle = '#fff';
-                            ctx.shadowColor = 'rgba(0,0,0,0.85)';
-                            ctx.shadowBlur = 2;
-                            ctx.font = "bold 12px 'Inter', sans-serif";
-                            ctx.fillText(item.ticker, lx + pad, by - 3);
-                            ctx.font = "600 9px 'Inter', sans-serif";
-                            ctx.fillText(item.country, lx + pad, by + 8);
-                            ctx.shadowBlur = 0;
-                        });
-                        ctx.restore();
-                    }
-                };
-
                 const config = {
                     type: 'bubble',
-                    data: { datasets: [{ data: dataPoints, backgroundColor: inRows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: inRows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
+                    data: { datasets: [{ data: dataPoints, backgroundColor: rows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: rows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: false,
-                        layout: { padding: { top: 10, right: 100, bottom: 78, left: 10 } },
+                        layout: { padding: { top: 10, right: 70, bottom: 78, left: 10 } },
                         scales: {
                             x: {
                                 type: 'linear',
@@ -4331,7 +5253,7 @@
                                         const price = getPrice(r);
                                         const fl = getFloat(r);
                                         const change = getChangePct(r);
-                                        const status = (r?.status === 'ALERT' || r?.status === 'ALERT/HALT') ? ` | Alert: ${getAlertLevel(r) || 'Active'}` : '';
+                                        const status = r?.status === 'ALERT' ? ` | Alert: ${getAlertLevel(r) || 'Active'}` : '';
                                         lines.push(`$${formatPrice(price)} | Float ${formatFloat(fl)} | Change ${change >= 0 ? '+' : ''}${change.toFixed(1)}%${status}`);
                                         lines.push(`Vol ${formatVolume(getVolume(r))} | News ${getNewsAge(r)} | SEC ${getSecFilings(r) || '—'}`);
                                         return lines;
@@ -4340,7 +5262,7 @@
                             }
                         }
                     },
-                    plugins: [pluginBackground, labelPlugin, overflowLabelPlugin, pluginLegend]
+                    plugins: [pluginBackground, labelPlugin, pluginLegend]
                 };
 
                 bubbleChart = new Chart(ctx, config);
@@ -4383,53 +5305,28 @@
                 const modal = document.getElementById('bubble-modal');
                 if (!modal) return;
                 modal.hidden = false;
-                // Render the chart from whatever the active scanner table is currently showing.
-                // Re-fetch only if we have no displayed rows yet.
-                setTimeout(() => {
-                    if (typeof displayedResults !== 'undefined' && displayedResults && displayedResults.length) {
-                        buildBubbleChart();
-                    } else {
-                        refreshBubbleData();
-                    }
-                }, 80);
+                // Small delay ensures the modal layout (and canvas size) is settled
+                // before Chart.js measures the container, and lets any in-flight
+                // scan refresh complete so _lastLiveResults is current.
+                setTimeout(() => refreshBubbleData(), 80);
             }
 
             async function refreshBubbleData() {
-                // Refresh the data source that matches the active scanner tab, then rebuild.
+                // Re-fetch the latest snapshot directly so Bubble View always reflects
+                // the most recent LIVE scanner output, never the watchlist/premarket fallback view.
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
-                    const view = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
-                    if (view === 'live') {
-                        // Live tab uses the main scan_results snapshot.
-                        const snapshotFile = getPublicSnapshotFile();
-                        const ts = Date.now();
-                        const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
-                        if (res.ok) {
-                            const data = await res.json();
-                            const results = data?.scan_results || [];
-                            if (results.length) {
-                                window._lastLiveResults = results;
-                                window._lastBubbleViewResults = results;
-                                window._lastLiveQuotes = data?.live_quotes || {};
-                            }
-                        }
-                    } else {
-                        // Pre/After and Watchlist views use the same JSON but different arrays.
-                        const snapshotFile = getPublicSnapshotFile();
-                        const ts = Date.now();
-                        const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
-                        if (res.ok) {
-                            const data = await res.json();
-                            if (view === 'premarket') {
-                                const results = data?.pre_market_results || [];
-                                if (results.length) window._lastPreMarketResults = results;
-                            } else if (view === 'watchlist') {
-                                const results = data?.pre_market_watchlist || [];
-                                if (results.length) window._lastPreMarketWatchlist = results;
-                            }
-                            window._lastLiveResults = data?.scan_results || window._lastLiveResults || [];
-                            window._lastBubbleViewResults = data?.scan_results || window._lastBubbleViewResults || [];
+                    const snapshotFile = getDefaultSnapshotFile();
+                    const ts = Date.now();
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+                    if (res.ok) {
+                        const data = await res.json();
+                        // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
+                        const results = data?.scan_results || [];
+                        if (results.length) {
+                            window._lastBubbleViewResults = results;
+                            window._lastLiveQuotes = data?.live_quotes || {};
                         }
                     }
                 } catch (err) {
@@ -4467,32 +5364,34 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest is only used for timestamp tracking; the snapshot always comes from the
-                // tunnel so we bypass GitHub Pages/Cloudflare's 10-minute JSON cache.
+                // Manifest file is informational only; do not use dated snapshots that may be missing
+                // on GitHub Pages for some Cloudflare edges. Always load the public rolling JSON.
                 const manifest = await fetchManifestRaw();
-                let snapshotFile = forcedSnapshotFile || getTunnelSnapshotFile();
+                let snapshotFile = forcedSnapshotFile || getDefaultSnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                // Simple GET, no custom headers, to avoid a CORS preflight on the tunnel.
-                let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                let res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
                 window._lastFetchAttemptAt = new Date();
+                // Fallback to tunnel if the public rolling JSON is not reachable.
                 if (!res.ok) {
-                    const defaultFile = getDefaultSnapshotFile();
-                    if (snapshotFile !== defaultFile) {
-                        console.warn('Could not load', snapshotFile, res.status, '- falling back to', defaultFile);
-                        snapshotFile = defaultFile;
-                        res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
-                        window._lastFetchAttemptAt = new Date();
-                    }
-                    if (!res.ok) {
-                        console.warn('Could not load', snapshotFile, res.status);
-                        setMarketLoading(currentMarket, false);
-                        return;
-                    }
+                    console.warn('Could not load public JSON', snapshotFile, res.status, 'trying tunnel fallback');
+                    snapshotFile = getTunnelSnapshotFile();
+                    res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                        cache: 'no-store',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                }
+                if (!res.ok) {
+                    console.warn('Could not load', snapshotFile, res.status);
+                    setMarketLoading(currentMarket, false);
+                    return;
                 }
                 const data = await res.json();
                 window._lastFetchSuccessAt = new Date();
@@ -4528,8 +5427,8 @@
 
                 // Update badge — prefer real-time US market status when the JSON scan is stale
                 // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
-                const alerts = results.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT').length;
-                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'ALERT/HALT' && r.status !== 'INFO').length;
+                const alerts = results.filter(r => r.status === 'ALERT').length;
+                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
 
                 // Detect genuinely new ALERT tickers since the previous scan and play a chirp.
                 // We compare against the previous fetch's alert list so repeated rows stay silent.
@@ -4539,7 +5438,7 @@
                     ...(preMarketWatchlist || [])
                 ];
                 const prevAlertTickers = new Set(window._lastAlertTickers || []);
-                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
+                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
                 const currentAlertTickers = currentAlerts.map(r => r.ticker);
                 const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
                 if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
@@ -4574,8 +5473,8 @@
                 const lastScanAgeMin = window._lastScanTimestamp
                     ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
                     : 0;
+                let marketStatus = rawStatus;
                 const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus;
-                let marketStatus = rawStatus && rawStatus !== 'None' ? rawStatus : realTimeStatus;
                 if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
                     marketStatus = realTimeStatus;
                 }
@@ -4585,7 +5484,7 @@
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
                 const marketLabel = marketFromData;
                 const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
-                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${alerts} active alert${alerts === 1 ? '' : 's'}${timeAgo}`;
+                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
 
                 liveResults = results;
                 liveLastUpdated = lastUpdated;
@@ -4593,15 +5492,7 @@
                 window._lastPreMarketResults = preMarketResults;
                 window._lastPreMarketWatchlist = preMarketWatchlist;
                 window._lastLiveResults = results;
-                // Bubble view results mirror the active table view, defaulting to live scan_results.
-                const activeViewForBubble = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
-                if (activeViewForBubble === 'premarket') {
-                    window._lastBubbleViewResults = preMarketResults.length ? preMarketResults : results;
-                } else if (activeViewForBubble === 'watchlist') {
-                    window._lastBubbleViewResults = preMarketWatchlist.length ? preMarketWatchlist : (preMarketResults.length ? preMarketResults : results);
-                } else {
-                    window._lastBubbleViewResults = data.scan_results || results || [];
-                }
+                window._lastBubbleViewResults = data.scan_results || results || [];
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
 
@@ -4683,7 +5574,7 @@
                 const ticker = document.getElementById('news-ticker');
                 if (ticker) {
                     const NEWS_TICKER_MAX_AGE_HOURS = 24;
-                    const actionable = results.filter(r => ['ALERT','ALERT/HALT','CANDIDATE','BOUNCE'].includes(r.status));
+                    const actionable = results.filter(r => ['ALERT','CANDIDATE','BOUNCE'].includes(r.status));
                     const recentItems = actionable.filter(r => {
                         if (!r.news || !Array.isArray(r.news.headlines) || r.news.headlines.length === 0) return true;
                         const newestMin = Math.min(...r.news.headlines.map(h => newsAgeMinutes(h)));
@@ -4731,11 +5622,7 @@
                     const capSize = (stock.cap_size || '').trim();
                     const capBadge = capSize ? ` <span class="country-badge">${escapeHtml(capSize.toUpperCase().replace(/-/g, ' '))}</span>` : '';
                     const pennyBadge = stock.is_penny_stock ? ` <span class="country-badge">PENNY</span>` : '';
-                    const floatShares = (() => {
-                        let fl = parseFloat(stock.float_shares || 0);
-                        if (!fl && mktCap > 0 && price > 0) fl = Math.round(mktCap / price);
-                        return fl;
-                    })();
+                    const floatShares = parseFloat(stock.float_shares || 0);
                     const passed = stock.passed;
                     const badgeClass = passed ? 'scan-pass' : 'scan-skip';
                     const badgeText = passed ? 'PASS' : 'SKIP';
@@ -4748,7 +5635,7 @@
                         if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
                         return `${(n/1e3).toFixed(0)}K`;
                     }
-                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span>${escapeHtml(reason)}</td></tr>`;
+                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
                 };
 
                 const gainersDetails = document.getElementById('scanned-gainers-details');
@@ -4786,40 +5673,12 @@
 
         // Initialise: load data first, then anchor the refresh countdown to the JSON timestamp.
         // This prevents a brief flash of "15:00" before the first fetch completes.
-        async function runInitialLoad() {
-            window._initAttempt = (window._initAttempt || 0) + 1;
-            try {
-                resetScannerToggleToLive();
-                toggleSound(soundEnabled);
-                await loadLiveData();
-            } catch (e) {
-                console.error('Initial loadLiveData failed:', e);
-            }
-            // If the first fetch raced the DOM or silently left the placeholder, force a re-render.
-            setTimeout(() => {
-                const tableRows = document.querySelectorAll('#scanner-table tbody tr, #scanner-table tr');
-                const stillLoading = [...tableRows].some(r => r.textContent.includes('Loading scanner'));
-                if (stillLoading) {
-                    if (window._lastLiveResults && window._lastLiveResults.length) {
-                        console.warn('First auto-load left placeholder; forcing re-render');
-                        renderScannerView();
-                        renderPlanRules();
-                        const sel = document.getElementById('alert-selector');
-                        if (sel && !sel.value) {
-                            sel.value = (window._lastLiveResults[0] || {}).ticker || '';
-                            renderSelectedAlert();
-                        }
-                    } else if (window._initAttempt < 4) {
-                        console.warn('No results yet, retrying initial load...');
-                        runInitialLoad();
-                    }
-                } else {
-                    window._initDone = true;
-                }
-            }, 1500);
+        (async function init() {
+            resetScannerToggleToLive();
+            toggleSound(soundEnabled);
+            await loadLiveData();
             resetRefreshTimer();
-        }
-        runInitialLoad();
+        })();
 
 </script>
 <!-- BUBBLE VIEW MODAL -->
@@ -4839,52 +5698,16 @@
 <span id="bubble-next-refresh">Next refresh: —</span>
 </div>
 <p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
-<div class="bubble-chart-wrap"><canvas id="bubble-chart-canvas"></canvas><div class="bubble-chart-status" id="bubble-chart-status"><div class="bubble-chart-status-icon">🫧</div><div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div></div></div>
-<!-- Compact market status bar for Bubble View -->
-<div class="bubble-market-bar" id="bubble-market-bar">
-<div class="bubble-market-group">
-<div class="bubble-market-label" id="bubble-market-label">🇺🇸 US Market</div>
-<div class="bubble-market-status" id="bubble-market-status">Checking market hours…</div>
-</div>
-<div class="bubble-market-group bubble-market-timer-group">
-<div class="bubble-countdown-timer" id="bubble-countdown-timer">--:--:--</div>
-</div>
-<div class="bubble-market-timeline" id="bubble-market-timeline">
-<div class="market-timeline-track">
-<div class="market-timeline-segment pre" data-phase="pre"></div>
-<div class="market-timeline-segment open" data-phase="open"></div>
-<div class="market-timeline-segment post" data-phase="post"></div>
-<div class="market-timeline-segment closed" data-phase="closed"></div>
-<div class="market-timeline-notch" id="bubble-market-timeline-notch"></div>
-</div>
-<div class="market-timeline-labels">
-<span data-phase="pre">Pre</span>
-<span data-phase="open">Open</span>
-<span data-phase="post">After</span>
-<span data-phase="closed">Closed</span>
+<div class="bubble-chart-wrap">
+<canvas id="bubble-chart-canvas"></canvas>
+<div class="bubble-chart-status" id="bubble-chart-status">
+<div class="bubble-chart-status-icon">🫧</div>
+<div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div>
 </div>
 </div>
 </div>
-</div></div></div><!-- END BUBBLE VIEW MODAL -->
-<script>
-(function(){
-  function showFallback(msg){
-    var el = document.getElementById('emergency-fallback');
-    if(!el){
-      el = document.createElement('div');
-      el.id='emergency-fallback';
-      el.style='position:fixed;top:0;left:0;right:0;background:#b91c1c;color:#fff;padding:12px;font-family:sans-serif;z-index:99999;text-align:center;';
-      (document.body || document.documentElement).appendChild(el);
-    }
-    el.innerHTML = msg + ' <a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader-us.html" style="color:#fde047;text-decoration:underline;" target="_top">Click here for backup origin link</a>';
-  }
-  setTimeout(function(){
-    var bodyText = document.body ? document.body.innerText.trim() : '';
-    if(bodyText.length < 50){
-      showFallback('⚠️ Page failed to load via aeyeing.com (CDN/cache issue).');
-    }
-  }, 3000);
-})();
-</script>
+</div>
+</div>
+<!-- END BUBBLE VIEW MODAL -->
 </body>
 </html>
