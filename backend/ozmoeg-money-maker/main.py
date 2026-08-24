@@ -657,8 +657,6 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 plan.get('risk_reward') is not None
             )
             status = 'ALERT' if is_live_setup else 'CANDIDATE'
-            if market == 'au' and not config.get('webull', {}).get('use_official_api'):
-                status = 'CANDIDATE'
 
             # Build a concise result summary for the table
             entry = plan.get('entry') or plan.get('entry_price') or _price(gainer) or 0
