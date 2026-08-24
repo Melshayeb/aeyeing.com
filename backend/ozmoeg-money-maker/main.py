@@ -630,7 +630,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
         # Create entries for regular candidates in parallel.
         # Each candidate still needs TA, news and a trade plan, but we run them
         # concurrently with a small thread pool instead of blocking sequentially.
-        def _build_regular_result(gainer):
+        def _build_regular_result(gainer, bars_1m=None):
             ticker = _symbol(gainer)
             name = _name(gainer)
 
@@ -678,7 +678,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # Tape / volume indicator (15s proxy). Pass the inner ticker dict which holds
             # volume and average-volume fields enriched by the scanner quote batch.
             tape_analyzer = TapeAnalyzer(config.get('tape', {}))
-            tape_data = tape_analyzer.analyze_ticker(ticker, None, gainer.get('ticker', gainer))
+            tape_data = tape_analyzer.analyze_ticker(ticker, bars_1m, gainer.get('ticker', gainer))
             gainer['tape'] = tape_data
 
             # Targeted AKAN-like filter: a US ALERT must have either a real catalyst or live
@@ -732,8 +732,36 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'skip_news_check': (market_status.lower() in ('open', 'after-hours'))
             }
 
+        # Pre-fetch 1-minute bars for regular candidates to feed live tape momentum metrics.
+        # We fetch in parallel (slower calls are usually fine in a small pool) and attach bars
+        # to each gainer so the tape analyzer can compute real price_velocity / volume_acceleration.
+        bars_by_ticker: Dict[str, Any] = {}
+        if market == 'us' and config.get('tape', {}).get('fetch_15s_bars', True):
+            try:
+                max_bars = int(config.get('tape', {}).get('bar_count', 40))
+            except Exception:
+                max_bars = 40
+            def _fetch_bars(tkr):
+                try:
+                    df = client.get_bars(tkr, interval='m1', count=max_bars)
+                    if df is not None and not (isinstance(df, (list, tuple)) and len(df) == 0):
+                        return tkr, df
+                except Exception as e:
+                    logger.debug("Bar fetch failed for %s: %s", tkr, e)
+                return tkr, None
+            with ThreadPoolExecutor(max_workers=6) as bar_ex:
+                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in regular_candidates]
+                for future in as_completed(bar_futures):
+                    try:
+                        tkr, df = future.result(timeout=10)
+                        if df is not None:
+                            bars_by_ticker[tkr] = df
+                    except Exception as e:
+                        logger.debug("Bar fetch future failed: %s", e)
+            logger.info("Fetched 1m bars for %d/%d regular candidates", len(bars_by_ticker), len(regular_candidates))
+
         with ThreadPoolExecutor(max_workers=8) as ex:
-            futures = [ex.submit(_build_regular_result, g) for g in regular_candidates]
+            futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
             for future in as_completed(futures):
                 try:
                     result = future.result(timeout=30)
