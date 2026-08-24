@@ -12,7 +12,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Default paths and keys
-CONFIG_PATH = Path.home() / ".hermes" / "skills" / "ozmoeg-money-maker" / "config.yaml"
+# Prefer the config.yaml that lives next to this script so the skill can be run
+# from any directory (e.g. Desktop/aeyeing.com/backend/ozmoeg-money-maker).
+SCRIPT_DIR = Path(__file__).resolve().parent
+CONFIG_PATH_LOCAL = SCRIPT_DIR / "config.yaml"
+CONFIG_PATH_HERMES = Path.home() / ".hermes" / "skills" / "ozmoeg-money-maker" / "config.yaml"
+CONFIG_PATH = CONFIG_PATH_LOCAL if CONFIG_PATH_LOCAL.exists() else CONFIG_PATH_HERMES
 KILL_SWITCH_KEY = "kill_switch_enabled"
 KILL_SWITCH_SECTION = "kill_switch"
 
@@ -29,14 +34,15 @@ def _load_config() -> dict:
     global _cached_config
     if _cached_config is not None:
         return _cached_config
+    cfg_path = CONFIG_PATH_LOCAL if CONFIG_PATH_LOCAL.exists() else CONFIG_PATH_HERMES
     try:
-        if CONFIG_PATH.exists():
-            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+        if cfg_path.exists():
+            with open(cfg_path, "r", encoding="utf-8") as f:
                 _cached_config = yaml.safe_load(f) or {}
         else:
             _cached_config = {}
     except Exception as e:
-        logger.warning("Failed to load config: %s", e)
+        logger.warning("Failed to load config from %s: %s", cfg_path, e)
         _cached_config = {}
     return _cached_config
 
