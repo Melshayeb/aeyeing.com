@@ -173,13 +173,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(data)
-        elif parsed.path in (
-            "/ozmoeg-latest.json", "/ozmoeg-latest-au.json",
-            "/ozmoeg-manifest.json", "/ozmoeg-manifest-au.json",
-            "/ozmoeg/ozmoeg-latest.json", "/ozmoeg/ozmoeg-latest-au.json",
-            "/ozmoeg/ozmoeg-manifest.json", "/ozmoeg/ozmoeg-manifest-au.json",
-        ):
-            # Serve OzMoEg live scanner JSON through the tunnel.
+        elif parsed.path.split("/")[-1].startswith(("ozmoeg-latest", "ozmoeg-manifest")) and parsed.path.split("/")[-1].endswith(".json"):
+            # Serve OzMoEg live scanner JSON through the tunnel (rolling latest + any dated snapshot).
             base_dir = Path.home() / "Desktop" / "aeyeing.com"
             file_name = parsed.path.split("/")[-1]
             file_path = base_dir / file_name
