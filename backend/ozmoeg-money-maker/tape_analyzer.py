@@ -57,6 +57,89 @@ class TapeAnalyzer:
         df = df.dropna(subset=list(needed))
         return df
 
+    def _bar_metrics(self, df: pd.DataFrame, end_price: float) -> Dict[str, Any]:
+        """Compute tape-style momentum metrics from the most recent bars."""
+        empty = {
+            'volume_acceleration': 0.0,
+            'price_velocity_pct': 0.0,
+            'buy_pressure_pct': 0.0,
+            'large_bar_count': 0,
+            'vwap_distance_pct': 0.0,
+            'median_range': 0.0,
+        }
+        if df.empty or len(df) < 4:
+            return empty
+
+        df = df.copy().reset_index(drop=True)
+        ranges = df['high'] - df['low']
+        median_range = float(ranges.median())
+
+        # Volume acceleration: last half of bars vs prior half
+        half = max(1, len(df) // 2)
+        recent_volume = float(df['volume'].iloc[-half:].sum())
+        prior_volume = float(df['volume'].iloc[:max(1, len(df) - half)].sum())
+        volume_acceleration = 0.0
+        if prior_volume > 0:
+            volume_acceleration = round((recent_volume / prior_volume) - 1.0, 3)
+
+        # Price velocity over the most recent window (last 25% of bars, min 5)
+        recent_window = max(5, len(df) // 4)
+        start_price = float(df.iloc[-recent_window]['open'])
+        if start_price > 0:
+            price_velocity_pct = round(((end_price - start_price) / start_price) * 100, 3)
+        else:
+            price_velocity_pct = 0.0
+
+        # Buy pressure: close position within each bar
+        denom = (df['high'] - df['low']).replace(0, np.nan)
+        close_pos = (df['close'] - df['low']) / denom
+        buy_pressure_pct = round(float(close_pos.mean()) * 100, 2) if not close_pos.empty and not close_pos.isna().all() else 50.0
+
+        # Large bars: range > 2x median range
+        large_bar_count = int((ranges > 2.0 * median_range).sum())
+
+        # VWAP distance
+        vwap = self._calculate_vwap(df)
+        vwap_distance_pct = 0.0
+        if vwap and vwap > 0 and end_price > 0:
+            vwap_distance_pct = round(((end_price - vwap) / vwap) * 100, 3)
+
+        return {
+            'volume_acceleration': volume_acceleration,
+            'price_velocity_pct': price_velocity_pct,
+            'buy_pressure_pct': buy_pressure_pct,
+            'large_bar_count': large_bar_count,
+            'vwap_distance_pct': vwap_distance_pct,
+            'median_range': round(median_range, 4),
+        }
+
+    def _latest_bar_age_seconds(self, df: pd.DataFrame, now_epoch: float) -> Optional[float]:
+        """Return age in seconds of the latest bar timestamp, if available."""
+        latest_ts = None
+        for col in ('timestamp', 'time', 'ts', 'tradeTime', 'trade_time'):
+            if col in df.columns:
+                try:
+                    val = df[col].max()
+                    latest_ts = float(pd.to_numeric(val, errors='coerce'))
+                    if pd.isna(latest_ts):
+                        latest_ts = self._parse_timestamp(val)
+                    if latest_ts and latest_ts > 1_000_000_000_000:
+                        latest_ts = latest_ts / 1000.0
+                    break
+                except Exception:
+                    continue
+        if latest_ts and latest_ts > 1_000_000_000:
+            return max(0.0, now_epoch - latest_ts)
+        # Try index if DatetimeIndex
+        if hasattr(df.index, 'max'):
+            try:
+                ts = pd.to_datetime(df.index.max())
+                if pd.notna(ts):
+                    return max(0.0, now_epoch - ts.timestamp())
+            except Exception:
+                pass
+        return None
+
     def analyze_ticker(self, ticker: str, bars_15s, quote: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Volume-based activity indicator.
@@ -155,6 +238,28 @@ class TapeAnalyzer:
                 volume_indicator = 'missing'
                 tape_score = 0.0
 
+            # Merge live bar momentum when fresh bars are available (1m fallback is ok).
+            last_price = float(quote.get('price', quote.get('close', quote.get('pprice', 0))) or 0)
+            bar_df = self._to_dataframe(bars_15s)
+            metrics = {
+                'volume_acceleration': 0.0,
+                'price_velocity_pct': 0.0,
+                'buy_pressure_pct': 0.0,
+                'large_bar_count': 0,
+                'vwap_distance_pct': 0.0,
+                'median_range': 0.0,
+            }
+            if not bar_df.empty:
+                bar_age = self._latest_bar_age_seconds(bar_df, now_epoch)
+                if bar_age is not None:
+                    stale_age_seconds = max(stale_age_seconds or 0, int(bar_age))
+                # Suppress stale/after-hours bar momentum to avoid gap-and-fade false positives.
+                if bar_age is None or bar_age <= 300:
+                    metrics = self._bar_metrics(bar_df, last_price or float(bar_df.iloc[-1]['close']))
+                    # Boost tape score if bars show real intraday momentum.
+                    if metrics.get('large_bar_count', 0) > 0 or metrics.get('price_velocity_pct', 0) != 0:
+                        tape_score = max(tape_score, 4.0)
+
             return {
                 'ticker': ticker,
                 'valid': True,
@@ -166,16 +271,16 @@ class TapeAnalyzer:
                 'volume': int(volume),
                 'adv': int(adv),
                 'recent_pct_of_adv': round((volume / adv) * 100, 2),
-                'volume_acceleration': 0.0,
-                'price_velocity_pct': 0.0,
-                'buy_pressure_pct': 0.0,
-                'large_bar_count': 0,
-                'vwap_distance_pct': 0.0,
+                'volume_acceleration': metrics['volume_acceleration'],
+                'price_velocity_pct': metrics['price_velocity_pct'],
+                'buy_pressure_pct': metrics['buy_pressure_pct'],
+                'large_bar_count': metrics['large_bar_count'],
+                'vwap_distance_pct': metrics['vwap_distance_pct'],
                 'recent_volume': int(volume),
                 'prior_volume': 0,
-                'median_range': 0.0,
-                'last_price': float(quote.get('price', quote.get('close', quote.get('pprice', 0))) or 0),
-                'vwap': None,
+                'median_range': metrics['median_range'],
+                'last_price': last_price,
+                'vwap': self._calculate_vwap(bar_df) if not bar_df.empty else None,
                 'last_trade_time': last_trade_time,
                 'stale_age_seconds': stale_age_seconds,
             }
