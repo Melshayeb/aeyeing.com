@@ -1944,7 +1944,9 @@
         }
 
         function findNextScanWindow(fromTime) {
-            // The scanner's active window starts at 17:00 Sydney on weekdays.
+            // The scanner's active window starts at ASX 10:00 for AU, or 17:00 Sydney for US.
+            const isAu = currentMarket === 'AUS';
+            const targetHour = isAu ? 10 : 17;
             let probe = new Date(fromTime);
             let safety = 0;
             while (safety++ < 10080) { // Max 1 week
@@ -1957,7 +1959,7 @@
                 const sm = parseInt(sydney.find(p => p.type === 'minute').value);
                 const sw = sydney.find(p => p.type === 'weekday').value;
                 const swn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[sw];
-                if (swn >= 1 && swn <= 5 && sh === 17 && sm === 0) {
+                if (swn >= 1 && swn <= 5 && sh === targetHour && sm === 0) {
                     return probe;
                 }
             }
@@ -2331,35 +2333,54 @@
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
 
-        // Active = Sydney window for the website 1-minute refresh: 17:00 to 23:59 Sydney time.
+        // Active = Sydney refresh window. For AU/ASX: 10:00 to 16:00 Sydney time.
+        // For US: 17:00 to 23:59 Sydney time (when US market is active).
         // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
         function isActiveTradingWindow(now = new Date()) {
             try {
+                const isAu = currentMarket === 'AUS';
+                const tz = isAu ? 'Australia/Sydney' : 'Australia/Melbourne';
                 const fmt = new Intl.DateTimeFormat('en-AU', {
-                    timeZone: 'Australia/Melbourne',
+                    timeZone: tz,
                     hour: 'numeric',
                     minute: 'numeric',
                     hour12: false,
+                    weekday: 'long',
                 });
                 const parts = fmt.formatToParts(now);
-                let h = 0, m = 0;
+                let h = 0, m = 0, wd = '';
                 for (const p of parts) {
                     if (p.type === 'hour') h = parseInt(p.value, 10);
                     if (p.type === 'minute') m = parseInt(p.value, 10);
+                    if (p.type === 'weekday') wd = p.value;
                 }
                 const mins = h * 60 + m;
+                const weekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[wd];
+                if (weekdayNum < 1 || weekdayNum > 5) return false;
+                if (isAu) {
+                    const start = 10 * 60;  // ASX open 10:00 Sydney
+                    const end = 16 * 60;    // ASX close 16:00 Sydney
+                    return mins >= start && mins < end;
+                }
                 const start = 17 * 60;      // Sydney 17:00
                 const end = 24 * 60;        // Sydney 24:00 (exclusive)
                 return mins >= start && mins < end;
             } catch (e) {
-                // Fallback: assume active only if US market status is PRE-MARKET.
-                return currentMarketStatus === 'PRE-MARKET';
+                // Fallback: assume active only if market status is PRE-MARKET or OPEN.
+                return currentMarketStatus === 'PRE-MARKET' || currentMarketStatus === 'OPEN';
             }
         }
 
         function getRefreshIntervalMs() {
-            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
+            const isAu = currentMarket === 'AUS';
+            const status = isAu && typeof getCurrentAUSMarketStatus === 'function'
+                ? getCurrentAUSMarketStatus()
+                : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus);
+            if (isAu) {
+                // ASX open: poll every minute. ASX closed/weekend: no auto-polling.
+                return status === 'OPEN' ? ACTIVE_REFRESH_INTERVAL_MS : 0;
+            }
+            if (status === 'CLOSED' || status === 'WEEKEND') {
                 // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
                 return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
             }
@@ -2372,6 +2393,11 @@
 
         function computeNextPollAt() {
             const now = Date.now();
+            // When ASX is closed, count down to the next ASX open instead of polling every minute.
+            if (currentMarket === 'AUS' && getRefreshIntervalMs() === 0) {
+                const nextOpen = findNextScanWindow(new Date(now));
+                return nextOpen ? nextOpen.getTime() : now + CLOSED_REFRESH_INTERVAL_MS;
+            }
             // Align to the next minute boundary plus a small offset.
             const nextMinute = Math.ceil(now / MANIFEST_POLL_INTERVAL_MS) * MANIFEST_POLL_INTERVAL_MS;
             return nextMinute + MANIFEST_POLL_OFFSET_MS;
@@ -2497,21 +2523,28 @@
                 if (bubbleLast) { bubbleLast.textContent = text; bubbleLast.style.color = color; }
             }
             if (!label && !bubbleNext) return;
-            const usStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus;
-            let active = (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
-                            (usStatus === 'OPEN' && isActiveTradingWindow());
+            const marketStatus = currentMarket === 'AUS' && typeof getCurrentAUSMarketStatus === 'function'
+                ? getCurrentAUSMarketStatus()
+                : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus);
+            let active = isActiveTradingWindow();
 
             let modeLabel;
             const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
-            if (isActiveTradingWindow() && usStatus === 'CLOSED') {
+            if (currentMarket === 'AUS') {
+                if (marketStatus === 'OPEN') {
+                    modeLabel = `(${pollMin}-min ASX open mode)`;
+                } else {
+                    modeLabel = `(ASX closed)`;
+                }
+            } else if (isActiveTradingWindow() && marketStatus === 'CLOSED') {
                 modeLabel = `(1-min catalyst watchlist mode)`;
-            } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
+            } else if (marketStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
                 modeLabel = `(1-min pre-market mode)`;
-            } else if (usStatus === 'OPEN') {
+            } else if (marketStatus === 'OPEN') {
                 modeLabel = `(${pollMin}-min open market mode)`;
-            } else if (usStatus === 'AFTER-HOURS') {
+            } else if (marketStatus === 'AFTER-HOURS') {
                 modeLabel = `(${pollMin}-min after-hours mode)`;
-            } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
+            } else if (marketStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
                 modeLabel = `(${pollMin}-min pre-market mode)`;
             } else {
                 modeLabel = `(${pollMin}-min markets closed)`;
@@ -2527,7 +2560,7 @@
                 } else {
                     openText = 'market closed';
                 }
-                const txt = `⏸ No scans — ${usStatus.toLowerCase()} (${openText})`;
+                const txt = `⏸ No scans — ${marketStatus.toLowerCase()} (${openText})`;
                 if (label) { label.textContent = txt; label.classList.remove('active-refresh'); }
                 if (bubbleNext) { bubbleNext.textContent = txt; bubbleNext.classList.remove('active-refresh'); }
                 return;
@@ -2537,7 +2570,7 @@
             const totalSeconds = Math.ceil(remaining / 1000);
             const m = Math.floor(totalSeconds / 60);
             const s = totalSeconds % 60;
-            active = isActiveTradingWindow() || usStatus === 'PRE-MARKET' || usStatus === 'OPEN';
+            active = isActiveTradingWindow();
             const txt = `${active ? '⚡ ' : ''}Next refresh: ${m}:${String(s).padStart(2, '0')} ${modeLabel}`;
             if (label) { label.classList.toggle('active-refresh', active); label.textContent = txt; }
             if (bubbleNext) { bubbleNext.classList.toggle('active-refresh', active); bubbleNext.textContent = txt; }
