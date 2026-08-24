@@ -7,9 +7,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="no-cache" name="cache-control"/>
 <title>OzMoEg Trader — Live Small-Cap Monitor</title>
-<!-- deploy-build: 20260824-2052 -->
 <meta content="OzMoEg Money Maker — Live small-cap trading monitor with US and AUS market views, news, candidates, and trade plans." name="description"/>
 <link href="images/logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -2491,23 +2489,18 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Prefer the public rolling JSON (always available via GitHub Pages/Cloudflare).
-            // Fall back to the tunnel endpoint only if the public copy fails.
-            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://aeyeing.com/' + file;
-        }
-
-        function getTunnelSnapshotFile() {
+            // Always fetch from the tunnel endpoint: it is fresh every minute, sends CORS
+            // headers, and avoids GitHub Pages' 10-minute JSON cache / missing /ozmoeg/ path.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
-            // Manifest is tiny; prefer public copy, then tunnel.
+            // Manifest is tiny; fetch from the tunnel so we can detect a freshly-written snapshot.
             const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
             const urls = [
-                'https://aeyeing.com/' + file,
-                'https://trip-planner.aeyeing.com/ozmoeg/' + file
+                'https://trip-planner.aeyeing.com/ozmoeg/' + file,
+                'https://aeyeing.com/' + file
             ];
             let lastErr = null;
             for (const url of urls) {
@@ -4443,21 +4436,19 @@
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                // Simple GET, no custom headers, to avoid a CORS preflight.
+                // Simple GET, no custom headers, to avoid a CORS preflight on the tunnel.
                 let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
-                    const tunnelFile = getTunnelSnapshotFile();
-                    if (snapshotFile !== tunnelFile) {
-                        console.warn('Could not load', snapshotFile, res.status, '- falling back to tunnel', tunnelFile);
-                        snapshotFile = tunnelFile;
+                    const defaultFile = getDefaultSnapshotFile();
+                    if (snapshotFile !== defaultFile) {
+                        console.warn('Could not load', snapshotFile, res.status, '- falling back to', defaultFile);
+                        snapshotFile = defaultFile;
                         res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                         window._lastFetchAttemptAt = new Date();
                     }
                     if (!res.ok) {
                         console.warn('Could not load', snapshotFile, res.status);
-                        const badge = document.getElementById('scanner-badge');
-                        if (badge) badge.textContent = '⚠️ Data feed unavailable. Check connection or try again shortly.';
                         setMarketLoading(currentMarket, false);
                         return;
                     }
