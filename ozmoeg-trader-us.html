@@ -4318,20 +4318,55 @@
                 const modal = document.getElementById('bubble-modal');
                 if (!modal) return;
                 modal.hidden = false;
-                // Small delay ensures the modal layout (and canvas size) is settled
-                // before Chart.js measures the container, and lets any in-flight
-                // scan refresh complete so _lastLiveResults is current.
-                setTimeout(() => refreshBubbleData(), 80);
+                // Render the chart from whatever the active scanner table is currently showing.
+                // Re-fetch only if we have no displayed rows yet.
+                setTimeout(() => {
+                    if (typeof displayedResults !== 'undefined' && displayedResults && displayedResults.length) {
+                        buildBubbleChart();
+                    } else {
+                        refreshBubbleData();
+                    }
+                }, 80);
             }
 
             async function refreshBubbleData() {
-                // Refresh the same snapshot the active table is using, then rebuild the chart.
-                // This keeps the bubble view in sync with the current scanner tab (Live / Pre/After / Watchlist).
+                // Refresh the data source that matches the active scanner tab, then rebuild.
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
-                    // Re-run the same load path so all global result arrays stay consistent.
-                    await loadLiveData();
+                    const view = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
+                    if (view === 'live') {
+                        // Live tab uses the main scan_results snapshot.
+                        const snapshotFile = getDefaultSnapshotFile();
+                        const ts = Date.now();
+                        const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
+                        if (res.ok) {
+                            const data = await res.json();
+                            const results = data?.scan_results || [];
+                            if (results.length) {
+                                window._lastLiveResults = results;
+                                window._lastBubbleViewResults = results;
+                                window._lastLiveQuotes = data?.live_quotes || {};
+                            }
+                        }
+                    } else {
+                        // Pre/After and Watchlist views use the same JSON but different arrays.
+                        const snapshotFile = getDefaultSnapshotFile();
+                        const ts = Date.now();
+                        const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
+                        if (res.ok) {
+                            const data = await res.json();
+                            if (view === 'premarket') {
+                                const results = data?.pre_market_results || [];
+                                if (results.length) window._lastPreMarketResults = results;
+                            } else if (view === 'watchlist') {
+                                const results = data?.pre_market_watchlist || [];
+                                if (results.length) window._lastPreMarketWatchlist = results;
+                            }
+                            window._lastLiveResults = data?.scan_results || window._lastLiveResults || [];
+                            window._lastBubbleViewResults = data?.scan_results || window._lastBubbleViewResults || [];
+                        }
+                    }
                 } catch (err) {
                     console.warn('Bubble View refresh failed:', err);
                 } finally {
@@ -4484,7 +4519,15 @@
                 window._lastPreMarketResults = preMarketResults;
                 window._lastPreMarketWatchlist = preMarketWatchlist;
                 window._lastLiveResults = results;
-                window._lastBubbleViewResults = data.scan_results || results || [];
+                // Bubble view results mirror the active table view, defaulting to live scan_results.
+                const activeViewForBubble = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
+                if (activeViewForBubble === 'premarket') {
+                    window._lastBubbleViewResults = preMarketResults.length ? preMarketResults : results;
+                } else if (activeViewForBubble === 'watchlist') {
+                    window._lastBubbleViewResults = preMarketWatchlist.length ? preMarketWatchlist : (preMarketResults.length ? preMarketResults : results);
+                } else {
+                    window._lastBubbleViewResults = data.scan_results || results || [];
+                }
                 window._lastAllGainers = allGainers;
                 window._lastLiveQuotes = data.live_quotes || {};
 
