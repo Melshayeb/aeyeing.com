@@ -733,32 +733,66 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             }
 
         # Pre-fetch 1-minute bars for regular candidates to feed live tape momentum metrics.
-        # We fetch in parallel (slower calls are usually fine in a small pool) and attach bars
-        # to each gainer so the tape analyzer can compute real price_velocity / volume_acceleration.
+        # Webull unauthenticated bars are often stale in pre-market, so we fall back to Yahoo Finance
+        # 1m pre-market bars which carry live price action even when volume is not yet reported.
         bars_by_ticker: Dict[str, Any] = {}
         if market == 'us' and config.get('tape', {}).get('fetch_15s_bars', True):
             try:
                 max_bars = int(config.get('tape', {}).get('bar_count', 40))
             except Exception:
                 max_bars = 40
-            def _fetch_bars(tkr):
+
+            def _is_bar_fresh(df):
+                if df is None or (isinstance(df, (list, tuple)) and len(df) == 0):
+                    return False
+                if hasattr(df, 'empty') and df.empty:
+                    return False
                 try:
-                    df = client.get_bars(tkr, interval='m1', count=max_bars)
-                    if df is not None and not (isinstance(df, (list, tuple)) and len(df) == 0):
+                    idx = df.index[-1] if hasattr(df.index, '__len__') else None
+                    if idx is not None:
+                        ts = pd.to_datetime(idx)
+                        now_utc = pd.Timestamp.utcnow()
+                        return (now_utc - ts).total_seconds() <= 600
+                except Exception:
+                    pass
+                return False
+
+            def _fetch_yahoo_bars(tkr):
+                try:
+                    import yfinance as yf
+                    df = yf.Ticker(tkr).history(period='1d', interval='1m', prepost=True)
+                    if df is not None and not df.empty:
+                        # Normalize column names to lower case to match the tape analyzer's expectations.
+                        df = df.rename(columns=str.lower).copy()
+                        df['source'] = 'yahoo'
                         return tkr, df
                 except Exception as e:
-                    logger.debug("Bar fetch failed for %s: %s", tkr, e)
+                    logger.debug("Yahoo bar fetch failed for %s: %s", tkr, e)
                 return tkr, None
+
+            def _fetch_bars(tkr):
+                # Try Webull first for live volume-aware bars.
+                try:
+                    df = client.get_bars(tkr, interval='m1', count=max_bars)
+                    if df is not None and _is_bar_fresh(df):
+                        if 'source' not in df.columns:
+                            df['source'] = 'webull'
+                        return tkr, df
+                except Exception as e:
+                    logger.debug("Webull bar fetch failed for %s: %s", tkr, e)
+                # Fall back to Yahoo Finance for live pre-market price action.
+                return _fetch_yahoo_bars(tkr)
+
             with ThreadPoolExecutor(max_workers=6) as bar_ex:
                 bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in regular_candidates]
                 for future in as_completed(bar_futures):
                     try:
-                        tkr, df = future.result(timeout=10)
+                        tkr, df = future.result(timeout=20)
                         if df is not None:
                             bars_by_ticker[tkr] = df
                     except Exception as e:
                         logger.debug("Bar fetch future failed: %s", e)
-            logger.info("Fetched 1m bars for %d/%d regular candidates", len(bars_by_ticker), len(regular_candidates))
+            logger.info("Fetched live 1m bars for %d/%d regular candidates", len(bars_by_ticker), len(regular_candidates))
 
         with ThreadPoolExecutor(max_workers=8) as ex:
             futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
