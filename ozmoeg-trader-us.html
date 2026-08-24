@@ -2510,23 +2510,25 @@
             return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
         }
 
-        function getDefaultSnapshotFile() {
-            // Prefer the public rolling JSON (always available via GitHub Pages/Cloudflare).
-            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return 'https://aeyeing.com/' + file;
-        }
-
         function getTunnelSnapshotFile() {
+            // Tunnel JSON is updated immediately by the OzMoEg backend and is the fastest live source.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
+        function getPublicSnapshotFile() {
+            // Public GitHub Pages rolling JSON — used as a fallback when the tunnel is unreachable.
+            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            return 'https://aeyeing.com/' + file;
+        }
+
         async function fetchManifestRaw() {
-            // Manifest is tiny; prefer public copy, then tunnel.
+            // Prefer tunnel manifest (fastest), then public, then raw GitHub. CORS allows all three.
             const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
             const urls = [
+                'https://trip-planner.aeyeing.com/ozmoeg/' + file,
                 'https://aeyeing.com/' + file,
-                'https://trip-planner.aeyeing.com/ozmoeg/' + file
+                'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/' + file
             ];
             let lastErr = null;
             for (const url of urls) {
