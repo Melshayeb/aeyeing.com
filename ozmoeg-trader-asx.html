@@ -1890,7 +1890,7 @@
             const lastScanAgeMin = window._lastScanTimestamp
                 ? Math.max(0, (now.getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
                 : Infinity;
-            const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : status;
+            const realTimeStatus = (currentMarket === 'AUS' && typeof getCurrentAUSMarketStatus === 'function') ? getCurrentAUSMarketStatus() : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : status);
             if (lastScanAgeMin > 90 && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(realTimeStatus)) {
                 status = realTimeStatus;
             }
@@ -2019,6 +2019,28 @@
             }
             if (minutes < 960) return 'OPEN'; // 16:00
             if (minutes < 1200) return 'AFTER-HOURS'; // 20:00
+            return 'CLOSED';
+        }
+
+        function getCurrentAUSMarketStatus(now = new Date()) {
+            // ASX active session: Sydney time 10:00–16:00, Mon–Fri. No pre/after market display.
+            const fmt = new Intl.DateTimeFormat('en-AU', {
+                timeZone: 'Australia/Sydney',
+                weekday: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
+            });
+            const parts = fmt.formatToParts(now);
+            let weekday = 0, hour = 0, minute = 0;
+            for (const p of parts) {
+                if (p.type === 'weekday') weekday = parseInt(p.value, 10);
+                if (p.type === 'hour') hour = parseInt(p.value, 10);
+                if (p.type === 'minute') minute = parseInt(p.value, 10);
+            }
+            if (weekday === 0 || weekday >= 6) return 'WEEKEND';
+            const minutes = hour * 60 + minute;
+            if (minutes >= 600 && minutes < 960) return 'OPEN'; // 10:00 - 16:00
             return 'CLOSED';
         }
 
@@ -2291,7 +2313,7 @@
         let userSelectedScannerView = null;
         let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
-        let currentMarketStatus = (typeof getCurrentUSMarketStatus === 'function' ? getCurrentUSMarketStatus() : 'OPEN') || 'OPEN';
+        let currentMarketStatus = (typeof getCurrentAUSMarketStatus === 'function' ? getCurrentAUSMarketStatus() : 'OPEN') || 'OPEN';
         let soundEnabled = localStorage.getItem('ozmoeg-sound-enabled') !== 'false';
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
@@ -4397,7 +4419,7 @@
                 const lastScanAgeMin = window._lastScanTimestamp
                     ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
                     : 0;
-                const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus;
+                const realTimeStatus = (currentMarket === 'AUS' && typeof getCurrentAUSMarketStatus === 'function') ? getCurrentAUSMarketStatus() : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus);
                 let marketStatus = rawStatus && rawStatus !== 'None' ? rawStatus : realTimeStatus;
                 if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
                     marketStatus = realTimeStatus;
