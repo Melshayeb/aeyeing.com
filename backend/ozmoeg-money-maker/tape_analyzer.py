@@ -82,11 +82,12 @@ class TapeAnalyzer:
         if prior_volume > 0:
             volume_acceleration = round((recent_volume / prior_volume) - 1.0, 3)
 
-        # Price velocity over the most recent window (last 25% of bars, min 5)
+        # Price velocity over the most recent window (last 25% of bars, min 5).
+        # Use absolute velocity so breakouts AND sharp pullbacks both register as tape momentum.
         recent_window = max(5, len(df) // 4)
         start_price = float(df.iloc[-recent_window]['open'])
         if start_price > 0:
-            price_velocity_pct = round(((end_price - start_price) / start_price) * 100, 3)
+            price_velocity_pct = round(abs((end_price - start_price) / start_price) * 100, 3)
         else:
             price_velocity_pct = 0.0
 
@@ -98,11 +99,11 @@ class TapeAnalyzer:
         # Large bars: range > 2x median range
         large_bar_count = int((ranges > 2.0 * median_range).sum())
 
-        # VWAP distance
+        # VWAP distance also as absolute deviation (magnitude, not direction)
         vwap = self._calculate_vwap(df)
         vwap_distance_pct = 0.0
         if vwap and vwap > 0 and end_price > 0:
-            vwap_distance_pct = round(((end_price - vwap) / vwap) * 100, 3)
+            vwap_distance_pct = round(abs((end_price - vwap) / vwap) * 100, 3)
 
         return {
             'volume_acceleration': volume_acceleration,
