@@ -2291,7 +2291,7 @@
         let userSelectedScannerView = null;
         let scannerFirstLoadDone = false;
         let liveLastUpdated = new Date();
-        let currentMarketStatus = 'OPEN';
+        let currentMarketStatus = (typeof getCurrentUSMarketStatus === 'function' ? getCurrentUSMarketStatus() : 'OPEN') || 'OPEN';
         let soundEnabled = localStorage.getItem('ozmoeg-sound-enabled') !== 'false';
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
@@ -4397,8 +4397,8 @@
                 const lastScanAgeMin = window._lastScanTimestamp
                     ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
                     : 0;
-                let marketStatus = rawStatus;
                 const realTimeStatus = getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus;
+                let marketStatus = rawStatus && rawStatus !== 'None' ? rawStatus : realTimeStatus;
                 if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
                     marketStatus = realTimeStatus;
                 }
