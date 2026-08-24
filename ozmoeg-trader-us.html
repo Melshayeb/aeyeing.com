@@ -1444,6 +1444,28 @@
     </style>
 </head>
 <body>
+<div id="ozmoeg-cloudflare-fallback" style="display:none;background:#b91c1c;color:#fff;padding:12px 16px;text-align:center;font-family:sans-serif;font-size:14px;position:relative;z-index:99999;">
+  <strong>⚠️ Cloudflare is blocking this page.</strong>
+  <a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader-us.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
+</div>
+<script>
+(function(){
+  var fallback = document.getElementById('ozmoeg-cloudflare-fallback');
+  function showFallback(){ if(fallback) fallback.style.display='block'; }
+  // If body has no visible content after 4 seconds, show fallback
+  setTimeout(function(){
+    var body = document.body;
+    if(!body || body.children.length <= 2 || body.innerText.trim().length < 50){
+      showFallback();
+    }
+  }, 4000);
+  // If data fetch fails and page stays empty, show fallback
+  window.addEventListener('error', function(e){
+    if(e && e.message && /fetch|network|cloudflare/i.test(e.message)) showFallback();
+  });
+})();
+</script>
+
 <header class="header">
 <div class="header-brand">
 <div class="header-logo">O</div>
