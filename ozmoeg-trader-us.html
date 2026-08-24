@@ -3906,11 +3906,16 @@
             }
 
             function buildBubbleChart() {
-                // Bubble chart should match whatever the active scanner table is currently showing
-                // (Live, Pre/After, or Watchlist) so the user sees the same alerts in both views.
-                const activeRows = (typeof displayedResults !== 'undefined' && displayedResults && displayedResults.length)
-                    ? displayedResults
-                    : (window._lastBubbleViewResults || window._lastLiveResults || []);
+                // Bubble chart must match the active scanner table view (Live, Pre/After, or Watchlist).
+                const view = (typeof getActiveScannerView === 'function' ? getActiveScannerView() : 'live') || 'live';
+                let activeRows = [];
+                if (view === 'premarket') {
+                    activeRows = window._lastPreMarketResults || window._lastLiveResults || [];
+                } else if (view === 'watchlist') {
+                    activeRows = window._lastPreMarketWatchlist || window._lastPreMarketResults || window._lastLiveResults || [];
+                } else {
+                    activeRows = window._lastLiveResults || window._lastBubbleViewResults || [];
+                }
                 const rows = activeRows.filter(r => {
                     // Bubble chart shows actionable alerts only.
                     if (r.status !== 'ALERT' && r.status !== 'ALERT/HALT') return false;
@@ -4320,23 +4325,13 @@
             }
 
             async function refreshBubbleData() {
-                // Re-fetch the latest snapshot directly so Bubble View always reflects
-                // the most recent LIVE scanner output, never the watchlist/premarket fallback view.
+                // Refresh the same snapshot the active table is using, then rebuild the chart.
+                // This keeps the bubble view in sync with the current scanner tab (Live / Pre/After / Watchlist).
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
-                    const snapshotFile = getDefaultSnapshotFile();
-                    const ts = Date.now();
-                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
-                    if (res.ok) {
-                        const data = await res.json();
-                        // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
-                        const results = data?.scan_results || [];
-                        if (results.length) {
-                            window._lastBubbleViewResults = results;
-                            window._lastLiveQuotes = data?.live_quotes || {};
-                        }
-                    }
+                    // Re-run the same load path so all global result arrays stay consistent.
+                    await loadLiveData();
                 } catch (err) {
                     console.warn('Bubble View refresh failed:', err);
                 } finally {
