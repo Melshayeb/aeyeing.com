@@ -295,7 +295,10 @@ def _country(stock: Dict) -> str:
     t = _extract_ticker_dict(stock)
     return stock.get('country', '') or t.get('_country', '')
 def _rvol(stock: Dict) -> float:
-    """Return an approximate relative volume if already computed, else 0."""
+    """Return computed relative volume from the inner ticker dict if present."""
+    t = stock.get('ticker', stock) if isinstance(stock, dict) else stock
+    if isinstance(t, dict):
+        return float(t.get('_rvol', t.get('rvol', stock.get('_rvol', stock.get('rvol', 0)))) or 0)
     return float(stock.get('_rvol', stock.get('rvol', 0)) or 0)
 def _scan_reason(stock: Dict) -> str:
     """Return the filter reason attached by SmallCapScanner."""
