@@ -4483,7 +4483,7 @@
                 let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
-                    const defaultFile = getDefaultSnapshotFile();
+                    const defaultFile = getPublicSnapshotFile();
                     if (snapshotFile !== defaultFile) {
                         console.warn('Could not load', snapshotFile, res.status, '- falling back to', defaultFile);
                         snapshotFile = defaultFile;
