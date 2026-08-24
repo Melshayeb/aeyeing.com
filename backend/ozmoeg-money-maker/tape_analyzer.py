@@ -256,6 +256,13 @@ class TapeAnalyzer:
                 # Suppress stale/after-hours bar momentum to avoid gap-and-fade false positives.
                 if bar_age is None or bar_age <= 300:
                     metrics = self._bar_metrics(bar_df, last_price or float(bar_df.iloc[-1]['close']))
+                    source = 'unknown'
+                    if 'source' in bar_df.columns:
+                        try:
+                            source = str(bar_df['source'].iloc[-1])
+                        except Exception:
+                            pass
+                    logger.debug("Tape metrics for %s (source=%s, bar_age=%s): %s", ticker, source, bar_age, metrics)
                     # Boost tape score if bars show real intraday momentum.
                     if metrics.get('large_bar_count', 0) > 0 or metrics.get('price_velocity_pct', 0) != 0:
                         tape_score = max(tape_score, 4.0)
