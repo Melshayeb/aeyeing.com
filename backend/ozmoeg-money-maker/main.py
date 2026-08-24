@@ -683,6 +683,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
             # Targeted AKAN-like filter: a US ALERT must have either a real catalyst or live
             # intraday tape momentum. Without either, it is a gap-and-fade CANDIDATE.
+            # Additionally require a minimum dollar-volume threshold so low-conviction
+            # micro-cap noise (e.g., corrupted float data) does not become an ALERT.
             if market == 'us' and status == 'ALERT':
                 news_score = 0
                 try:
@@ -694,9 +696,16 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     float(tape_data.get('volume_acceleration', 0) or 0) > 0 or
                     int(tape_data.get('large_bar_count', 0) or 0) > 0
                 )
+                price = float(_price(gainer) or 0)
+                volume = int(_volume(gainer) or 0)
+                dollar_volume = price * volume
+                min_alert_dollar_volume = float(config.get('scanner', {}).get('min_alert_dollar_volume', 1_000_000))
                 if news_score == 0 and not tape_momentum:
                     status = 'CANDIDATE'
                     result_summary = _scan_reason(gainer) or change_str
+                elif news_score == 0 and tape_momentum and dollar_volume < min_alert_dollar_volume:
+                    status = 'CANDIDATE'
+                    result_summary = f"Tape momentum but low dollar volume ${dollar_volume:,.0f}"
 
             # Fetch recent SEC EDGAR filings for the alert/candidate row.
             # Rate-limited internally; if it fails we simply leave the field blank.

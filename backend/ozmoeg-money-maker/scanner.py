@@ -308,7 +308,14 @@ class SmallCapScanner:
 
         volume = int(t.get('volume', 0) or t.get('amount', 0) or 0)
         market_cap_raw = float(t.get('marketValue', 0) or 0)
-        outstanding_shares = int(t.get('outstandingShares', 0) or 0)
+        outstanding_shares_raw = int(t.get('outstandingShares', 0) or 0)
+        total_shares = int(t.get('totalShares', 0) or 0)
+        # Webull occasionally reports outstandingShares as an implausibly small number
+        # (e.g., 248 for a 50M-share company). Use totalShares as a sanity-checked
+        # float proxy when outstandingShares looks corrupt.
+        outstanding_shares = outstanding_shares_raw
+        if outstanding_shares_raw < 1_000 or (total_shares > 0 and outstanding_shares_raw < total_shares * 0.01):
+            outstanding_shares = total_shares
         avg_vol_10d = float(t.get('avgVol10D', 0) or 0)
         avg_vol_3m = float(t.get('avgVol3M', 0) or 0)
 
