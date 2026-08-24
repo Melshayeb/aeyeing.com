@@ -33,14 +33,14 @@
             try {
                 var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
                 var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + now;
-                fetch(rawUrl, { cache: 'no-store' })
+                fetch(rawUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
                     .then(function(r){ return r.json(); })
                     .then(function(raw){
                         if (!raw || !raw.last_updated) return;
                         var rawTs = new Date(raw.last_updated).getTime();
                         // Also fetch the CDN manifest to see if the current HTML/JS is stale.
                         var cdnUrl = 'https://aeyeing.com/ozmoeg-manifest' + market + '.json?_=' + now;
-                        fetch(cdnUrl, { cache: 'no-store' })
+                        fetch(cdnUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
                             .then(function(r){ return r.json(); })
                             .then(function(cdn){
                                 var cdnTs = cdn && cdn.last_updated ? new Date(cdn.last_updated).getTime() : 0;
@@ -59,7 +59,7 @@
 
         // First check: compare loaded HTML Last-Modified with server.
         try {
-            fetch(location.href, { method: 'HEAD', cache: 'no-store' })
+            fetch(location.href, { method: 'HEAD', cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
                 .then(function(r){
                     var serverTs = r.headers.get('last-modified');
                     if (!serverTs) { checkRawGithub(); return; }
@@ -5316,7 +5316,7 @@
                 try {
                     const snapshotFile = getTunnelSnapshotFile();
                     const ts = Date.now();
-                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
                         const data = await res.json();
                         // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
@@ -5371,13 +5371,17 @@
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                let res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                    cache: 'no-store'
+                });
                 window._lastFetchAttemptAt = new Date();
                 // Fallback to public rolling JSON if the tunnel endpoint is not reachable.
                 if (!res.ok) {
                     console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying public fallback');
                     snapshotFile = getPublicSnapshotFile();
-                    res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                    res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                        cache: 'no-store'
+                    });
                 }
                 if (!res.ok) {
                     console.warn('Could not load', snapshotFile, res.status);
