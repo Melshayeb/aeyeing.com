@@ -2026,15 +2026,16 @@
             // ASX active session: Sydney time 10:00–16:00, Mon–Fri. No pre/after market display.
             const fmt = new Intl.DateTimeFormat('en-AU', {
                 timeZone: 'Australia/Sydney',
-                weekday: 'numeric',
+                weekday: 'short',
                 hour: 'numeric',
                 minute: 'numeric',
                 hour12: false,
             });
             const parts = fmt.formatToParts(now);
+            const dayMap = {'Mon':1,'Tue':2,'Wed':3,'Thu':4,'Fri':5,'Sat':6,'Sun':0};
             let weekday = 0, hour = 0, minute = 0;
             for (const p of parts) {
-                if (p.type === 'weekday') weekday = parseInt(p.value, 10);
+                if (p.type === 'weekday') weekday = dayMap[p.value] || 0;
                 if (p.type === 'hour') hour = parseInt(p.value, 10);
                 if (p.type === 'minute') minute = parseInt(p.value, 10);
             }
