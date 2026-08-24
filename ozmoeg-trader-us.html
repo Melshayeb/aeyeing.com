@@ -4437,12 +4437,21 @@
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 // Simple GET, no custom headers, to avoid a CORS preflight on the tunnel.
-                const res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
-                    console.warn('Could not load', snapshotFile, res.status);
-                    setMarketLoading(currentMarket, false);
-                    return;
+                    const defaultFile = getDefaultSnapshotFile();
+                    if (snapshotFile !== defaultFile) {
+                        console.warn('Could not load', snapshotFile, res.status, '- falling back to', defaultFile);
+                        snapshotFile = defaultFile;
+                        res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                        window._lastFetchAttemptAt = new Date();
+                    }
+                    if (!res.ok) {
+                        console.warn('Could not load', snapshotFile, res.status);
+                        setMarketLoading(currentMarket, false);
+                        return;
+                    }
                 }
                 const data = await res.json();
                 window._lastFetchSuccessAt = new Date();
