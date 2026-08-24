@@ -2491,18 +2491,23 @@
         }
 
         function getDefaultSnapshotFile() {
-            // Always fetch from the tunnel endpoint: it is fresh every minute, sends CORS
-            // headers, and avoids GitHub Pages' 10-minute JSON cache / missing /ozmoeg/ path.
+            // Prefer the public rolling JSON (always available via GitHub Pages/Cloudflare).
+            // Fall back to the tunnel endpoint only if the public copy fails.
+            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            return 'https://aeyeing.com/' + file;
+        }
+
+        function getTunnelSnapshotFile() {
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return 'https://trip-planner.aeyeing.com/ozmoeg/' + file;
         }
 
         async function fetchManifestRaw() {
-            // Manifest is tiny; fetch from the tunnel so we can detect a freshly-written snapshot.
+            // Manifest is tiny; prefer public copy, then tunnel.
             const file = currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
             const urls = [
-                'https://trip-planner.aeyeing.com/ozmoeg/' + file,
-                'https://aeyeing.com/' + file
+                'https://aeyeing.com/' + file,
+                'https://trip-planner.aeyeing.com/ozmoeg/' + file
             ];
             let lastErr = null;
             for (const url of urls) {
@@ -4438,19 +4443,21 @@
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                // Simple GET, no custom headers, to avoid a CORS preflight on the tunnel.
+                // Simple GET, no custom headers, to avoid a CORS preflight.
                 let res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                 window._lastFetchAttemptAt = new Date();
                 if (!res.ok) {
-                    const defaultFile = getDefaultSnapshotFile();
-                    if (snapshotFile !== defaultFile) {
-                        console.warn('Could not load', snapshotFile, res.status, '- falling back to', defaultFile);
-                        snapshotFile = defaultFile;
+                    const tunnelFile = getTunnelSnapshotFile();
+                    if (snapshotFile !== tunnelFile) {
+                        console.warn('Could not load', snapshotFile, res.status, '- falling back to tunnel', tunnelFile);
+                        snapshotFile = tunnelFile;
                         res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
                         window._lastFetchAttemptAt = new Date();
                     }
                     if (!res.ok) {
                         console.warn('Could not load', snapshotFile, res.status);
+                        const badge = document.getElementById('scanner-badge');
+                        if (badge) badge.textContent = '⚠️ Data feed unavailable. Check connection or try again shortly.';
                         setMarketLoading(currentMarket, false);
                         return;
                     }
