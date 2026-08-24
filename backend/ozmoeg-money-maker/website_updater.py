@@ -287,6 +287,8 @@ class WebsiteUpdater:
         """
         logger.warning("_update_html is deprecated and no longer writes HTML files.")
         return
+
+    def _git_push(self):
         """Push updated website files to GitHub Pages.
 
         Uses a directory lock, a minimum cool-down between pushes, and checks
