@@ -4290,10 +4290,30 @@
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                const res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store' });
+                // If the tunnel is down, fall back to the same sources we use for the manifest.
+                const snapshotUrls = [snapshotFile];
+                if (snapshotFile.startsWith('https://trip-planner.aeyeing.com/')) {
+                    const fileName = snapshotFile.split('/').pop();
+                    snapshotUrls.push('https://aeyeing.com/' + fileName);
+                    snapshotUrls.push('https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/' + fileName);
+                }
+                let res = null;
+                let lastFetchErr = null;
+                for (const url of snapshotUrls) {
+                    try {
+                        res = await fetch(url + '?_=' + cacheBuster, { cache: 'no-store' });
+                        if (res.ok) {
+                            if (url !== snapshotFile) console.log('Using fallback snapshot URL:', url);
+                            break;
+                        }
+                    } catch (e) {
+                        lastFetchErr = e;
+                        console.warn('Snapshot fetch failed for', url, e.name, e.message);
+                    }
+                }
                 window._lastFetchAttemptAt = new Date();
-                if (!res.ok) {
-                    console.warn('Could not load', snapshotFile, res.status);
+                if (!res || !res.ok) {
+                    console.warn('Could not load snapshot from any URL; last err:', lastFetchErr);
                     setMarketLoading(currentMarket, false);
                     return;
                 }
