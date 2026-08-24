@@ -2035,7 +2035,10 @@
             const dayMap = {'Mon':1,'Tue':2,'Wed':3,'Thu':4,'Fri':5,'Sat':6,'Sun':0};
             let weekday = 0, hour = 0, minute = 0;
             for (const p of parts) {
-                if (p.type === 'weekday') weekday = dayMap[p.value] || 0;
+                if (p.type === 'weekday') {
+                    const shortDay = p.value.replace(/[^a-zA-Z]/g, '').slice(0, 3);
+                    weekday = dayMap[shortDay] || 0;
+                }
                 if (p.type === 'hour') hour = parseInt(p.value, 10);
                 if (p.type === 'minute') minute = parseInt(p.value, 10);
             }
