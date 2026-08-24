@@ -353,6 +353,9 @@ class SmallCapScanner:
         else:
             rvol = float(t.get('rvol') or 0)
 
+        # Persist computed RVOL so downstream website tables show the real value.
+        t['_rvol'] = float(rvol)
+
         # ── BOUNCE MODE (Option C): large losers / pullbacks ─────────────────
         if mode == 'bounce':
             bc = self.cfg.get('bounce_scanner', {})
