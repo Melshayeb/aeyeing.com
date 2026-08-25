@@ -5550,10 +5550,12 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file is informational only; do not use dated snapshots that may be missing
-                // on GitHub Pages for some Cloudflare edges. Always load the public rolling JSON.
                 const manifest = await fetchManifestRaw();
-                let snapshotFile = forcedSnapshotFile || getPrimarySnapshotFile();
+                // The manifest points to a uniquely-named snapshot file that is freshly deployed
+                // every scan. A never-before-seen filename defeats Cloudflare edges and mobile
+                // carrier caches, so WiFi and LTE stay in sync. Fall back to the rolling files
+                // only if the manifest snapshot is missing.
+                let snapshotFile = forcedSnapshotFile || (manifest && manifest.latest && `https://aeyeing.com/${manifest.latest}`) || getPrimarySnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
@@ -5564,10 +5566,10 @@
                     cache: 'no-store'
                 });
                 window._lastFetchAttemptAt = new Date();
-                // Fallback to public rolling JSON if the tunnel endpoint is not reachable.
+                // Fallback to rolling public JSON if the unique snapshot is not reachable.
                 if (!res.ok) {
-                    console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying public fallback');
-                    snapshotFile = getPublicSnapshotFile();
+                    console.warn('Could not load snapshot JSON', snapshotFile, res.status, 'trying rolling fallback');
+                    snapshotFile = getPrimarySnapshotFile();
                     res = await fetch(snapshotFile + '?_=' + cacheBuster, {
                         cache: 'no-store'
                     });
