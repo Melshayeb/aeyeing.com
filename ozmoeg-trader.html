@@ -4812,10 +4812,8 @@
             const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
                          isPre ? (window._lastPreMarketResults || []) :
                          (window._lastLiveResults || []);
-            // AUS market: alerts only; US market: keep all rows (alerts + candidates).
-            const displayRows = currentMarket === 'AUS'
-                ? rows.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT')
-                : rows;
+            // Show ALERT / ALERT/HALT rows only; filter out CANDIDATE rows.
+            const displayRows = rows.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
             displayedResults = displayRows;
             if (window.rebuildBubbleChart) {
                 const modal = document.getElementById('bubble-modal');
@@ -5092,7 +5090,7 @@
 
                 const minPrice = 0.20;
                 const maxPrice = 28;
-                // X-axis: US static 15M; AUS dynamic based on data.
+                // X-axis: static 15M for US-style float view; dynamic with 12.5M floor for AUS.
                 const dataMaxFloat = Math.max(1, ...rows.map(r => getFloat(r) || 0));
                 const maxFloat = currentMarket === 'US'
                     ? 15_000_000
