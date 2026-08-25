@@ -5126,8 +5126,6 @@
 
                 if (bubbleChart) { bubbleChart.destroy(); bubbleChart = null; }
 
-                const minPrice = 0.20;
-                const maxPrice = 28;
                 // X-axis: US static 15M; AUS dynamic from data, floored at 5M and capped at 500M.
                 const dataMaxFloat = Math.max(1, ...rows.map(r => getFloat(r) || 0));
                 const maxFloat = currentMarket === 'US'
