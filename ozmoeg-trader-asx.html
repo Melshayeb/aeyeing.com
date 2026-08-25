@@ -2465,18 +2465,32 @@
             updateRefreshCountdown();
             try {
                 const manifest = await fetchManifestRaw();
+                let shouldRefresh = false;
+                let snapshotArg = null;
                 if (!manifest) {
-                    console.warn('No manifest available from any source');
-                    return;
+                    console.warn('No manifest available from any source; falling back to rolling JSON refresh');
+                    shouldRefresh = true;
+                } else {
+                    const latest = manifest.latest;
+                    const lastUpdated = manifest.last_updated;
+                    const lastLoaded = window._lastLoadedSnapshot;
+                    const lastLoadedTs = window._lastLoadedSnapshotTs;
+                    const isNewSnapshot = latest && (!lastLoaded || latest !== lastLoaded);
+                    const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
+                    if (isNewSnapshot || isNewerTimestamp) {
+                        shouldRefresh = true;
+                        snapshotArg = latest;
+                    }
                 }
-                const latest = manifest.latest;
-                const lastUpdated = manifest.last_updated;
-                const lastLoaded = window._lastLoadedSnapshot;
-                const lastLoadedTs = window._lastLoadedSnapshotTs;
-                const isNewSnapshot = !lastLoaded || latest !== lastLoaded;
-                const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
-                if (isNewSnapshot || isNewerTimestamp) {
-                    await loadLiveData(latest);
+                // Fallback: if the rolling JSON source is updated more frequently than the manifest,
+                // force a refresh at least every poll interval so the page never goes stale.
+                const lastDataFetch = window._lastFetchSuccessAt ? new Date(window._lastFetchSuccessAt).getTime() : 0;
+                if (!shouldRefresh && Date.now() - lastDataFetch >= MANIFEST_POLL_INTERVAL_MS - 5000) {
+                    console.log('Manifest unchanged but rolling JSON may have updated; forcing refresh');
+                    shouldRefresh = true;
+                }
+                if (shouldRefresh) {
+                    await loadLiveData(snapshotArg);
                 }
             } catch (e) {
                 console.warn('Manifest poll failed:', e);
@@ -3611,9 +3625,10 @@
             const view = getActiveScannerView();
             const isPre = view === 'premarket';
             const isWatchlist = view === 'watchlist';
-            const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
+            const rawRows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
                          isPre ? ((window._lastPreMarketResults && window._lastPreMarketResults.length) ? window._lastPreMarketResults : (window._lastLiveResults || [])) :
                          (window._lastLiveResults || []);
+            const rows = rawRows.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
             displayedResults = rows;
             if (window.rebuildBubbleChart) {
                 const modal = document.getElementById('bubble-modal');
