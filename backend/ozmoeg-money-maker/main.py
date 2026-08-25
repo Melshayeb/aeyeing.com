@@ -796,21 +796,27 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # the scanner stays within the 1-minute cadence target. We only need
             # bars for the top candidates that may become ALERTs; the tape
             # analyzer already falls back to quote-based rvol when bars are absent.
+            # Skip bars entirely during PRE-MARKET because Webull's pre-market m1
+            # feed is consistently the bottleneck; quote-based tape handles it fine.
             max_bar_candidates = min(5, len(regular_candidates))
             bar_candidates = regular_candidates[:max_bar_candidates]
             bar_total_budget = 10  # seconds for the whole bar window
-            with ThreadPoolExecutor(max_workers=3) as bar_ex:
-                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
-                done, pending = wait(bar_futures, timeout=bar_total_budget)
-                for future in done:
-                    try:
-                        tkr, df = future.result(timeout=1)
-                        if df is not None:
-                            bars_by_ticker[tkr] = df
-                    except Exception as e:
-                        logger.debug("Bar fetch future failed: %s", e)
-                for fut in pending:
-                    fut.cancel()
+            skip_bars = market_status == 'PRE-MARKET'
+            if skip_bars:
+                logger.info("Skipping 1m bar fetch during PRE-MARKET to maintain 1-min cadence")
+            else:
+                with ThreadPoolExecutor(max_workers=3) as bar_ex:
+                    bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
+                    done, pending = wait(bar_futures, timeout=bar_total_budget)
+                    for future in done:
+                        try:
+                            tkr, df = future.result(timeout=1)
+                            if df is not None:
+                                bars_by_ticker[tkr] = df
+                        except Exception as e:
+                            logger.debug("Bar fetch future failed: %s", e)
+                    for fut in pending:
+                        fut.cancel()
             logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
 
         with ThreadPoolExecutor(max_workers=8) as ex:
