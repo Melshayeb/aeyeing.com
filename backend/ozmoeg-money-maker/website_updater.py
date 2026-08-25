@@ -28,9 +28,7 @@ class WebsiteUpdater:
         self.config = config
         self.is_au = str(config.get('market', 'us')).lower() == 'au'
         self.repo_path = config.get('website_repo_path', str(Path.home() / "Desktop/aeyeing.com"))
-        self.html_file = Path(self.repo_path) / (
-            "ozmoeg-trader-asx.html" if self.is_au else "ozmoeg-trader-us.html"
-        )
+        self.html_file = Path(self.repo_path) / "ozmoeg-trader.html"
         self.scan_results_file = Path(self.repo_path) / ("ozmoeg-latest-au.json" if self.is_au else "ozmoeg-latest.json")
         self.wb = webull_client
 
