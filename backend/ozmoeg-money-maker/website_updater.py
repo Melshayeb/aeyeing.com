@@ -341,6 +341,25 @@ class WebsiteUpdater:
             pass
 
         try:
+            # Clean up old unique snapshot files from the deployable repo, keeping only the
+            # latest few minutes. Unique filenames defeat caches, but committing every minute
+            # forever would bloat the repo and slow Pages builds.
+            try:
+                repo_root = Path(self.repo_path)
+                cutoff = datetime.now(timezone.utc) - timedelta(minutes=15)
+                for snap in repo_root.glob('ozmoeg-latest_*.json'):
+                    try:
+                        # US:  ozmoeg-latest_20260825_093337.json
+                        # AUS: ozmoeg-latest-au_20260825_093337.json
+                        ts_str = snap.name.replace('ozmoeg-latest', '').replace('-au', '').replace('_', '', 1).replace('.json', '')
+                        ts = datetime.strptime(ts_str, '%Y%m%d_%H%M%S').replace(tzinfo=timezone.utc)
+                        if ts < cutoff:
+                            snap.unlink(missing_ok=True)
+                    except Exception:
+                        pass
+            except Exception as e:
+                logger.warning("Snapshot cleanup failed: %s", e)
+
             subprocess.run(['git', '-C', self.repo_path, 'add', '.'], check=False, capture_output=True, text=True, creationflags=windows_hide_flags(),)
             result = subprocess.run(['git', '-C', self.repo_path, 'commit', '-m', self.config.get('website_commit_message', 'Auto-update OzMoEg trader dashboard')], 
                                     check=False, capture_output=True, text=True, creationflags=windows_hide_flags(),)
