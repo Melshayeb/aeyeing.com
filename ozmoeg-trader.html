@@ -1473,6 +1473,14 @@
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
         .bubble-modal-hint { font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin: 0; }
+        .bubble-market-bar { margin-top: 0.5rem; padding: 0.35rem 0.55rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-wrap: nowrap; align-items: center; gap: 0.6rem; font-size: 0.66rem; height: 46px; box-sizing: border-box; overflow: hidden; }
+        .bubble-market-group { display: flex; flex-direction: column; justify-content: center; gap: 0.05rem; flex-shrink: 0; height: 100%; }
+        .bubble-market-label { font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent-teal); font-weight: 600; white-space: nowrap; line-height: 1.1; }
+        .bubble-market-status { color: var(--text-secondary); font-size: 0.62rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; }
+        .bubble-countdown-timer { font-family: 'Roboto Mono', 'SF Mono', Consolas, monospace; font-size: 0.9rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0; width: 7.6ch; text-align: center; flex-shrink: 0; line-height: 1; }
+        .bubble-countdown-timer.closed { color: var(--text-secondary); }
+        .bubble-market-timeline { flex: 1 1 120px; min-width: 110px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+        @media (max-width: 720px) { .bubble-market-bar { height: auto; min-height: 46px; gap: 0.4rem 0.6rem; padding: 0.4rem; } .bubble-market-status { max-width: 110px; } .bubble-market-timeline { flex: 1 1 100%; min-width: 140px; } }
         .bubble-chart-wrap { flex: 1; position: relative; min-height: 0; }
         .bubble-chart-wrap canvas { width: 100% !important; height: 100% !important; }
         .bubble-chart-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--text-secondary); text-align: center; pointer-events: none; }
@@ -3385,39 +3393,80 @@
         }
 
         function updateTimeline(phase, phaseStart, phaseEnd, now) {
+            // Update main header timeline
             const timeline = document.getElementById('market-timeline');
             const notch = document.getElementById('market-timeline-notch');
-            if (!timeline || !notch) return;
-
-            if (!phase) {
-                timeline.style.display = 'none';
-                return;
+            if (timeline && notch) {
+                if (!phase) {
+                    timeline.style.display = 'none';
+                } else {
+                    timeline.style.display = 'block';
+                    const segments = ['pre', 'open', 'post', 'closed'];
+                    const segIndex = segments.indexOf(phase);
+                    const segCount = segments.length;
+                    const segWidth = 100 / segCount;
+                    let progress = 0;
+                    if (phaseStart !== null && phaseEnd !== null && phaseEnd > phaseStart) {
+                        const et = getETParts(now);
+                        const minutes = et.hour * 60 + et.minute;
+                        progress = Math.max(0, Math.min(1, (minutes - phaseStart) / (phaseEnd - phaseStart)));
+                    }
+                    const left = segWidth * segIndex + segWidth * progress;
+                    notch.style.left = `${left}%`;
+                    timeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
+                        span.classList.toggle('active', span.dataset.phase === phase);
+                    });
+                    timeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
+                        seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
+                    });
+                }
             }
-            timeline.style.display = 'block';
 
-            // Segment order and positions (each 25%)
-            const segments = ['pre', 'open', 'post', 'closed'];
-            const segIndex = segments.indexOf(phase);
-            const segCount = segments.length;
-            const segWidth = 100 / segCount;
-            const segCenter = segWidth * segIndex + segWidth / 2;
-
-            let progress = 0;
-            if (phaseStart !== null && phaseEnd !== null && phaseEnd > phaseStart) {
-                const et = getETParts(now);
-                const minutes = et.hour * 60 + et.minute;
-                progress = Math.max(0, Math.min(1, (minutes - phaseStart) / (phaseEnd - phaseStart)));
+            // Mirror to Bubble View timeline
+            const bubbleTimeline = document.getElementById('bubble-market-timeline');
+            const bubbleNotch = document.getElementById('bubble-market-timeline-notch');
+            if (bubbleTimeline && bubbleNotch) {
+                if (!phase) {
+                    bubbleTimeline.style.display = 'none';
+                    return;
+                }
+                bubbleTimeline.style.display = 'block';
+                const segments = ['pre', 'open', 'post', 'closed'];
+                const segIndex = segments.indexOf(phase);
+                const segCount = segments.length;
+                const segWidth = 100 / segCount;
+                let progress = 0;
+                if (phaseStart !== null && phaseEnd !== null && phaseEnd > phaseStart) {
+                    const et = getETParts(now);
+                    const minutes = et.hour * 60 + et.minute;
+                    progress = Math.max(0, Math.min(1, (minutes - phaseStart) / (phaseEnd - phaseStart)));
+                }
+                const left = segWidth * segIndex + segWidth * progress;
+                bubbleNotch.style.left = `${left}%`;
+                bubbleTimeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
+                    span.classList.toggle('active', span.dataset.phase === phase);
+                });
+                bubbleTimeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
+                    seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
+                });
             }
-            const left = segWidth * segIndex + segWidth * progress;
-            notch.style.left = `${left}%`;
+        }
 
-            // Highlight active label and dim other segments slightly
-            timeline.querySelectorAll('.market-timeline-labels span').forEach(span => {
-                span.classList.toggle('active', span.dataset.phase === phase);
-            });
-            timeline.querySelectorAll('.market-timeline-segment').forEach(seg => {
-                seg.style.opacity = seg.dataset.phase === phase ? '1' : '0.45';
-            });
+        function mirrorBubbleCountdown(statusText, timerStr, isOpen, shortStatus) {
+            const bubbleLabel = document.getElementById('bubble-market-label');
+            const bubbleStatus = document.getElementById('bubble-market-status');
+            const bubbleTimer = document.getElementById('bubble-countdown-timer');
+            if (bubbleLabel) {
+                bubbleLabel.textContent = currentMarket === 'AUS' ? '🇦🇺 ASX Market' : '🇺🇸 US Market';
+            }
+            if (bubbleStatus) {
+                bubbleStatus.textContent = shortStatus || '🔴 CLOSED';
+                bubbleStatus.title = statusText || '';
+            }
+            if (bubbleTimer) {
+                bubbleTimer.textContent = timerStr;
+                bubbleTimer.className = isOpen ? 'bubble-countdown-timer' : 'bubble-countdown-timer closed';
+            }
         }
 
         function updateCountdown() {
@@ -3451,6 +3500,7 @@
                     document.getElementById('countdown-timer').className = 'countdown-timer open';
                     const closeStr = marketCloseTarget.toLocaleTimeString('en-AU', {hour: '2-digit', minute:'2-digit'});
                     document.getElementById('countdown-next').textContent = `Closes at ${closeStr} today (Sydney time)`;
+                    mirrorBubbleCountdown('ASX OPEN — Closing in', `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`, true, '🟢 ASX OPEN');
                     return;
                 }
 
@@ -3486,6 +3536,7 @@
                 document.getElementById('countdown-timer').textContent = timerStr;
                 document.getElementById('countdown-timer').className = 'countdown-timer closed';
                 document.getElementById('countdown-next').textContent = `Opens ${sydneyDay} ${sydneyDate} at ${sydneyTime} (Sydney time)`;
+                mirrorBubbleCountdown(statusText, timerStr, false, statusText);
                 return;
             }
 
@@ -3520,6 +3571,13 @@
             else nextLabel = 'Pre-market';
             document.getElementById('countdown-next').textContent =
                 `${nextLabel} ${sydneyDay} ${sydneyDate} at ${sydneyTime} Sydney / ${etTime} ET`;
+            // Short status text for Bubble View bar
+            let shortStatus;
+            if (phaseInfo.phase === 'pre') shortStatus = '🟡 US PRE-MARKET';
+            else if (phaseInfo.phase === 'open') shortStatus = '🟢 US OPEN';
+            else if (phaseInfo.phase === 'post') shortStatus = '🟠 US AFTER-HOURS';
+            else shortStatus = '🔴 US CLOSED';
+            mirrorBubbleCountdown(phaseInfo.statusText, timerStr, isOpen, shortStatus);
         }
         updateHeaderText();
         setMarketButtons();
@@ -5819,16 +5877,41 @@
 </div>
 <div class="bubble-modal-body">
 <div class="bubble-modal-meta">
-<span id="bubble-last-refresh">Last refresh: —</span>
-<span id="bubble-next-refresh">Next refresh: —</span>
+  <span id="bubble-last-refresh">Last refresh: —</span>
+  <span id="bubble-next-refresh">Next refresh: —</span>
 </div>
 <p class="bubble-modal-hint">X = Float (shares) · Y = Price ($) · Size = |price change %| · Bubbles drift slowly to avoid overlap. Hover for details.</p>
-<div class="bubble-chart-wrap">
-<canvas id="bubble-chart-canvas"></canvas>
-<div class="bubble-chart-status" id="bubble-chart-status">
-<div class="bubble-chart-status-icon">🫧</div>
-<div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div>
+<!-- Compact market status bar for Bubble View -->
+<div class="bubble-market-bar" id="bubble-market-bar">
+  <div class="bubble-market-group">
+    <div class="bubble-market-label" id="bubble-market-label">🇺🇸 US Market</div>
+    <div class="bubble-market-status" id="bubble-market-status">Checking market hours…</div>
+  </div>
+  <div class="bubble-market-group bubble-market-timer-group">
+    <div class="bubble-countdown-timer" id="bubble-countdown-timer">--:--:--</div>
+  </div>
+  <div class="bubble-market-timeline" id="bubble-market-timeline">
+    <div class="market-timeline-track">
+      <div class="market-timeline-segment pre" data-phase="pre"></div>
+      <div class="market-timeline-segment open" data-phase="open"></div>
+      <div class="market-timeline-segment post" data-phase="post"></div>
+      <div class="market-timeline-segment closed" data-phase="closed"></div>
+      <div class="market-timeline-notch" id="bubble-market-timeline-notch"></div>
+    </div>
+    <div class="market-timeline-labels">
+      <span data-phase="pre">Pre</span>
+      <span data-phase="open">Open</span>
+      <span data-phase="post">After</span>
+      <span data-phase="closed">Closed</span>
+    </div>
+  </div>
 </div>
+<div class="bubble-chart-wrap">
+  <canvas id="bubble-chart-canvas"></canvas>
+  <div class="bubble-chart-status" id="bubble-chart-status">
+    <div class="bubble-chart-status-icon">🫧</div>
+    <div class="bubble-chart-status-text" id="bubble-chart-status-text">Waiting for scanner data…</div>
+  </div>
 </div>
 </div>
 </div>
