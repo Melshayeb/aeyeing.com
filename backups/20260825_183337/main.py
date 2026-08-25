@@ -792,23 +792,16 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 # Fall back to Yahoo Finance for live pre-market price action.
                 return _fetch_yahoo_bars(tkr)
 
-            # Cap concurrent bar fetches and enforce a tight timeout so the
-            # scanner stays within the 1-minute cadence target. We only need
-            # bars for the top candidates that may become ALERTs; fallback
-            # quote-based tape metrics handle the rest.
-            max_bar_candidates = min(5, len(regular_candidates))
-            bar_candidates = regular_candidates[:max_bar_candidates]
-            bar_timeout = 8  # seconds per ticker; total bar window < ~20s
-            with ThreadPoolExecutor(max_workers=3) as bar_ex:
-                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
+            with ThreadPoolExecutor(max_workers=6) as bar_ex:
+                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in regular_candidates]
                 for future in as_completed(bar_futures):
                     try:
-                        tkr, df = future.result(timeout=bar_timeout)
+                        tkr, df = future.result(timeout=20)
                         if df is not None:
                             bars_by_ticker[tkr] = df
                     except Exception as e:
                         logger.debug("Bar fetch future failed: %s", e)
-            logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
+            logger.info("Fetched live 1m bars for %d/%d regular candidates", len(bars_by_ticker), len(regular_candidates))
 
         with ThreadPoolExecutor(max_workers=8) as ex:
             futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
