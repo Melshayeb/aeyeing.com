@@ -147,13 +147,10 @@ class WebsiteUpdater:
             snapshot_name = f"{base_name}_{timestamp_utc.strftime('%Y%m%d_%H%M%S')}.json"
             snapshot_file = self.scan_results_file.parent / snapshot_name
             manifest_file = self.scan_results_file.parent / (base_name.replace('-latest', '-manifest') + '.json')
-            # Keep the rolling latest file and a uniquely-named snapshot. Only the rolling
-            # file is committed/pushed by the auto-updater; the snapshot is retained locally
-            # for history. The manifest always points to the rolling file so it never 404s.
+            # Keep both the rolling latest file and the unique snapshot
             self.scan_results_file.write_text(json.dumps(data, indent=2))
             snapshot_file.write_text(json.dumps(data, indent=2))
-            rolling_name = self.scan_results_file.name
-            manifest_file.write_text(json.dumps({"latest": rolling_name, "last_updated": timestamp}, indent=2))
+            manifest_file.write_text(json.dumps({"latest": snapshot_name, "last_updated": timestamp}, indent=2))
             logger.info("Wrote scan snapshot %s and manifest %s", snapshot_file, manifest_file)
 
             # HTML is now fully client-side rendered from the JSON snapshot.
