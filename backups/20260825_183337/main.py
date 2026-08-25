@@ -18,7 +18,7 @@ import time
 import pytz
 from pathlib import Path
 from datetime import datetime, timezone as dt_timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait
 from typing import Dict, Any, List, Optional
 
 from kill_switch import load_config, is_enabled, component_enabled
@@ -792,16 +792,26 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 # Fall back to Yahoo Finance for live pre-market price action.
                 return _fetch_yahoo_bars(tkr)
 
-            with ThreadPoolExecutor(max_workers=6) as bar_ex:
-                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in regular_candidates]
-                for future in as_completed(bar_futures):
+            # Cap concurrent bar fetches and enforce a hard total-time budget so
+            # the scanner stays within the 1-minute cadence target. We only need
+            # bars for the top candidates that may become ALERTs; the tape
+            # analyzer already falls back to quote-based rvol when bars are absent.
+            max_bar_candidates = min(5, len(regular_candidates))
+            bar_candidates = regular_candidates[:max_bar_candidates]
+            bar_total_budget = 10  # seconds for the whole bar window
+            with ThreadPoolExecutor(max_workers=3) as bar_ex:
+                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
+                done, pending = wait(bar_futures, timeout=bar_total_budget)
+                for future in done:
                     try:
-                        tkr, df = future.result(timeout=20)
+                        tkr, df = future.result(timeout=1)
                         if df is not None:
                             bars_by_ticker[tkr] = df
                     except Exception as e:
                         logger.debug("Bar fetch future failed: %s", e)
-            logger.info("Fetched live 1m bars for %d/%d regular candidates", len(bars_by_ticker), len(regular_candidates))
+                for fut in pending:
+                    fut.cancel()
+            logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
 
         with ThreadPoolExecutor(max_workers=8) as ex:
             futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
