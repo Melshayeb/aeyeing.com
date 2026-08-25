@@ -18,7 +18,7 @@ import time
 import pytz
 from pathlib import Path
 from datetime import datetime, timezone as dt_timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait
 from typing import Dict, Any, List, Optional
 
 from kill_switch import load_config, is_enabled, component_enabled
@@ -799,22 +799,18 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             max_bar_candidates = min(5, len(regular_candidates))
             bar_candidates = regular_candidates[:max_bar_candidates]
             bar_total_budget = 10  # seconds for the whole bar window
-            bar_start = time.time()
             with ThreadPoolExecutor(max_workers=3) as bar_ex:
                 bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
-                for future in as_completed(bar_futures, timeout=bar_total_budget):
+                done, pending = wait(bar_futures, timeout=bar_total_budget)
+                for future in done:
                     try:
                         tkr, df = future.result(timeout=1)
                         if df is not None:
                             bars_by_ticker[tkr] = df
                     except Exception as e:
                         logger.debug("Bar fetch future failed: %s", e)
-                    if (time.time() - bar_start) >= bar_total_budget:
-                        break
-                # Cancel any slow/remaining futures so the pool shuts down promptly.
-                for fut in bar_futures:
-                    if not fut.done():
-                        fut.cancel()
+                for fut in pending:
+                    fut.cancel()
             logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
 
         with ThreadPoolExecutor(max_workers=8) as ex:
