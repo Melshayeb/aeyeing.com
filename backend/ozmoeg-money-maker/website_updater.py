@@ -347,16 +347,17 @@ class WebsiteUpdater:
             try:
                 repo_root = Path(self.repo_path)
                 cutoff = datetime.now(timezone.utc) - timedelta(minutes=15)
-                for snap in repo_root.glob('ozmoeg-latest_*.json'):
-                    try:
-                        # US:  ozmoeg-latest_20260825_093337.json
-                        # AUS: ozmoeg-latest-au_20260825_093337.json
-                        ts_str = snap.name.replace('ozmoeg-latest', '').replace('-au', '').replace('_', '', 1).replace('.json', '')
-                        ts = datetime.strptime(ts_str, '%Y%m%d_%H%M%S').replace(tzinfo=timezone.utc)
-                        if ts < cutoff:
-                            snap.unlink(missing_ok=True)
-                    except Exception:
-                        pass
+                # US:  ozmoeg-latest_20260825_093337.json
+                # AUS: ozmoeg-latest-au_20260825_093337.json
+                for pattern in ['ozmoeg-latest_*.json', 'ozmoeg-latest-au_*.json']:
+                    for snap in repo_root.glob(pattern):
+                        try:
+                            ts_str = snap.name.replace('ozmoeg-latest', '').replace('-au', '').replace('_', '', 1).replace('.json', '')
+                            ts = datetime.strptime(ts_str, '%Y%m%d_%H%M%S').replace(tzinfo=timezone.utc)
+                            if ts < cutoff:
+                                snap.unlink(missing_ok=True)
+                        except Exception:
+                            pass
             except Exception as e:
                 logger.warning("Snapshot cleanup failed: %s", e)
 
