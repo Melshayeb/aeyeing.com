@@ -4812,8 +4812,10 @@
             const rows = isWatchlist ? (window._lastPreMarketWatchlist || []) :
                          isPre ? (window._lastPreMarketResults || []) :
                          (window._lastLiveResults || []);
-            // Show ALERT / ALERT/HALT rows only; filter out CANDIDATE rows.
-            const displayRows = rows.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT');
+            // AUS/ASX market: show ALERT / ALERT/HALT rows only; US market keeps all rows.
+            const displayRows = currentMarket === 'AUS'
+                ? rows.filter(r => r.status === 'ALERT' || r.status === 'ALERT/HALT')
+                : rows;
             displayedResults = displayRows;
             if (window.rebuildBubbleChart) {
                 const modal = document.getElementById('bubble-modal');
