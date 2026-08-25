@@ -3664,19 +3664,22 @@
         }
 
         function getPrimarySnapshotFile() {
-            // Raw GitHub rolling JSON is the freshest source and bypasses GitHub Pages/Cloudflare edge cache.
-            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
-        }
-
-        function getPublicSnapshotFile() {
-            // Public GitHub Pages rolling JSON — used as a fallback when raw GitHub is unreachable.
+            // Public GitHub Pages rolling JSON is now the primary source.
+            // aeyeing.com goes through Cloudflare with Cache-Control DYNAMIC and is not edge-cached,
+            // so it stays fresh even on mobile/LTE networks. Raw GitHub raw.githubusercontent.com
+            // has a 5-minute max-age and can serve stale copies on some CDN edges.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return `https://aeyeing.com/${file}`;
         }
 
+        function getPublicSnapshotFile() {
+            // Raw GitHub rolling JSON — fallback when the public site is unreachable.
+            const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+            return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
+        }
+
         async function fetchManifestRaw() {
-            // Prefer the tunnel manifest (fastest), then public, then raw GitHub. CORS allows all three.
+            // Prefer the public manifest (freshest), then raw GitHub. CORS allows both.
             const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             const tryFetch = async (url, desc) => {
                 try {
