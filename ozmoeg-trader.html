@@ -3723,32 +3723,29 @@
             try {
                 const manifest = await fetchManifestRaw();
                 let shouldRefresh = false;
-                let snapshotArg = null;
                 if (!manifest) {
                     console.warn('No manifest available from any source; falling back to rolling JSON refresh');
                     shouldRefresh = true;
                 } else {
-                    const latest = manifest.latest;
                     const lastUpdated = manifest.last_updated;
-                    const lastLoaded = window._lastLoadedSnapshot;
                     const lastLoadedTs = window._lastLoadedSnapshotTs;
-                    const isNewSnapshot = latest && (!lastLoaded || latest !== lastLoaded);
                     const isNewerTimestamp = lastUpdated && (!lastLoadedTs || new Date(lastUpdated).getTime() > new Date(lastLoadedTs).getTime());
-                    // If the manifest points to a fresh dated snapshot, use it.
-                    if (isNewSnapshot || isNewerTimestamp) {
+                    // Manifest is informational only: it tells us *whether* a new scan happened.
+                    // We never load the dated snapshot it names, because GitHub Pages can lag
+                    // behind the live tunnel rolling JSON.
+                    if (isNewerTimestamp) {
                         shouldRefresh = true;
-                        snapshotArg = latest;
                     }
                 }
-                // Fallback: if the rolling JSON source is updated more frequently than the manifest,
-                // force a refresh at least every poll interval so the page never goes stale.
+                // Force a refresh at least every poll interval so the page never goes stale,
+                // even if the manifest hasn't changed.
                 const lastDataFetch = window._lastFetchSuccessAt ? new Date(window._lastFetchSuccessAt).getTime() : 0;
                 if (!shouldRefresh && Date.now() - lastDataFetch >= MANIFEST_POLL_INTERVAL_MS - 5000) {
                     console.log('Manifest unchanged but rolling JSON may have updated; forcing refresh');
                     shouldRefresh = true;
                 }
                 if (shouldRefresh) {
-                    await loadLiveData(snapshotArg);
+                    await loadLiveData();
                 }
             } catch (e) {
                 console.warn('Manifest poll failed:', e);
@@ -5543,15 +5540,15 @@
             window.bubbleChart = bubbleChart;
         })();
 
-        async function loadLiveData(forcedSnapshotFile) {
+        async function loadLiveData() {
             if (window._loadingLiveData) return;
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file is informational only; do not use dated snapshots that may be missing
-                // on GitHub Pages for some Cloudflare edges. Always load the public rolling JSON.
+                // Manifest file is informational only. We always load the live tunnel
+                // rolling JSON first; GitHub Pages dated snapshots can lag behind.
                 const manifest = await fetchManifestRaw();
-                let snapshotFile = forcedSnapshotFile || getTunnelSnapshotFile();
+                const snapshotFile = getTunnelSnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
