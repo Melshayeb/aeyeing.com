@@ -465,6 +465,14 @@ class SmallCapScanner:
                 fails.append(f'tiny price ${price:.3f}')
             if rvol < tiny_rvol_min:
                 fails.append(f'tiny rvol {rvol:.1f}x')
+            # High-RVOL override: if the ticker is trading with extreme relative volume today,
+            # the historical average dollar-volume floor is no longer meaningful — today's
+            # liquidity proves the move is real. Waive the tiny-cap avg $vol gate when RVOL
+            # is high enough, but keep price/RVOL/VFR gates intact.
+            rvol_override_threshold = float(self.cfg.get('tiny_cap_rvol_override', 10.0))
+            if rvol >= rvol_override_threshold:
+                tiny_avg_dv_min = 0.0
+
             if avg_vol_10d > 0 and (avg_vol_10d * price) < tiny_avg_dv_min:
                 fails.append(f'tiny avg $vol')
             if outstanding_shares > 0 and min_volume_float_ratio > 0 and tiny_vfr_min > 0:
