@@ -3664,16 +3664,18 @@
         }
 
         function getPrimarySnapshotFile() {
-            // Cloudflare tunnel JSON is the primary live source (no Pages build queue delay).
-            // aeyeing.com GitHub Pages rolling JSON is the fallback.
+            // Public GitHub Pages rolling JSON is now the primary source.
+            // aeyeing.com goes through Cloudflare with Cache-Control DYNAMIC and is not edge-cached,
+            // so it stays fresh even on mobile/LTE networks. Raw GitHub raw.githubusercontent.com
+            // has a 5-minute max-age and can serve stale copies on some CDN edges.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return `https://trip-planner.aeyeing.com/ozmoeg/${file}`;
+            return `https://aeyeing.com/${file}`;
         }
 
         function getPublicSnapshotFile() {
-            // Public GitHub Pages rolling JSON — fallback when the tunnel is unreachable.
+            // Raw GitHub rolling JSON — fallback when the public site is unreachable.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return `https://aeyeing.com/${file}`;
+            return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
         }
 
         async function fetchManifestRaw() {
@@ -3700,12 +3702,9 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
-            // Primary: Cloudflare tunnel manifest (live, no Pages build delay).
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            // Fallback: public GitHub Pages manifest (may lag behind when Pages queue is backed up).
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
             const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-            const candidates = [tunnel, main, raw].filter(Boolean);
+            const candidates = [main, raw].filter(Boolean);
             if (!candidates.length) return null;
             // Use whichever manifest has the newest last_updated timestamp.
             let newest = candidates[0];
