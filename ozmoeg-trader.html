@@ -3663,9 +3663,8 @@
             return currentMarket === 'AUS' ? 'ozmoeg-manifest-au.json' : 'ozmoeg-manifest.json';
         }
 
-        function getPrimarySnapshotFile() {
-            // Cloudflare tunnel JSON is the primary live source (no Pages build queue delay).
-            // aeyeing.com GitHub Pages rolling JSON is the fallback.
+        function getTunnelSnapshotFile() {
+            // Tunnel JSON is updated immediately by the OzMoEg backend and is the fastest live source.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return `https://trip-planner.aeyeing.com/ozmoeg/${file}`;
         }
@@ -3677,7 +3676,7 @@
         }
 
         async function fetchManifestRaw() {
-            // Prefer the public manifest (freshest), then raw GitHub. CORS allows both.
+            // Prefer the tunnel manifest (fastest), then public, then raw GitHub. CORS allows all three.
             const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             const tryFetch = async (url, desc) => {
                 try {
@@ -3700,9 +3699,7 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
-            // Primary: Cloudflare tunnel manifest (live, no Pages build delay).
             const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            // Fallback: public GitHub Pages manifest (may lag behind when Pages queue is backed up).
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
             const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
             const candidates = [tunnel, main, raw].filter(Boolean);
@@ -5504,9 +5501,9 @@
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
-                    const snapshotFile = getPrimarySnapshotFile();
+                    const snapshotFile = getTunnelSnapshotFile();
                     const ts = Date.now();
-                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store' });
+                    const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
                         const data = await res.json();
                         // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
@@ -5551,12 +5548,10 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
+                // Manifest file is informational only; do not use dated snapshots that may be missing
+                // on GitHub Pages for some Cloudflare edges. Always load the public rolling JSON.
                 const manifest = await fetchManifestRaw();
-                // The manifest points to a uniquely-named snapshot file that is freshly deployed
-                // every scan. A never-before-seen filename defeats Cloudflare edges and mobile
-                // carrier caches, so WiFi and LTE stay in sync. Fall back to the rolling files
-                // only if the manifest snapshot is missing.
-                let snapshotFile = forcedSnapshotFile || (manifest && manifest.latest && `https://aeyeing.com/${manifest.latest}`) || getPrimarySnapshotFile();
+                let snapshotFile = forcedSnapshotFile || getTunnelSnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
@@ -5567,10 +5562,10 @@
                     cache: 'no-store'
                 });
                 window._lastFetchAttemptAt = new Date();
-                // Fallback to rolling public JSON if the unique snapshot is not reachable.
+                // Fallback to public rolling JSON if the tunnel endpoint is not reachable.
                 if (!res.ok) {
-                    console.warn('Could not load snapshot JSON', snapshotFile, res.status, 'trying rolling fallback');
-                    snapshotFile = getPrimarySnapshotFile();
+                    console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying public fallback');
+                    snapshotFile = getPublicSnapshotFile();
                     res = await fetch(snapshotFile + '?_=' + cacheBuster, {
                         cache: 'no-store'
                     });
