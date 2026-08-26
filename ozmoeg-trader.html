@@ -3795,10 +3795,27 @@
             const usStatus = currentMarket === 'AUS'
                 ? getCurrentAUSMarketStatus()
                 : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus);
+
+            // Detect backend offline: no fresh JSON scan for >15 minutes.
+            let offline = false;
+            if (jsonDataTime) {
+                const jsonAgeMin = Math.max(0, (Date.now() - new Date(jsonDataTime).getTime()) / 60000);
+                offline = jsonAgeMin > 15;
+            } else if (lastFetchTime) {
+                offline = (Date.now() - new Date(lastFetchTime).getTime()) / 60000 > 15;
+            }
+
             let active = currentMarket === 'AUS'
-                ? (usStatus === 'OPEN' && isActiveTradingWindow())
-                : ((usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
-                   (usStatus === 'OPEN' && isActiveTradingWindow()));
+                ? (usStatus === 'OPEN' && isActiveTradingWindow() && !offline)
+                : (((usStatus === 'PRE-MARKET' && isActiveTradingWindow()) ||
+                   (usStatus === 'OPEN' && isActiveTradingWindow())) && !offline);
+
+            if (offline) {
+                const txt = `⏸ Scanner offline — last update ${jsonDataTime ? formatScanTimestamp(new Date(jsonDataTime)) : 'unknown'}`;
+                if (label) { label.textContent = txt; label.classList.remove('active-refresh'); }
+                if (bubbleNext) { bubbleNext.textContent = txt; bubbleNext.classList.remove('active-refresh'); }
+                return;
+            }
 
             let modeLabel;
             const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
