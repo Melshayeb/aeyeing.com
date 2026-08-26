@@ -542,6 +542,13 @@ class SmallCapScanner:
                 if market_cap_raw < 10_000_000 and market_cap_raw >= mkt_min:
                     effective_min = float(self.cfg.get('tiny_cap_min_avg_daily_dollar_volume', min_avg_daily_dollar_volume))
 
+                # High-RVOL override: when a tiny/nano-cap is trading with extreme relative
+                # volume, the historical average dollar-volume floor is no longer meaningful.
+                # Waive the avg $vol gate but keep the hyper-scalp floor if enabled.
+                rvol_override_threshold = float(self.cfg.get('tiny_cap_rvol_override', 10.0))
+                if rvol >= rvol_override_threshold:
+                    effective_min = 0.0
+
                 if is_hyper_scalp:
                     # Keep a minimum floor so we never accept completely dead names
                     effective_min = max(hs_floor, min(effective_min, hs_floor))
