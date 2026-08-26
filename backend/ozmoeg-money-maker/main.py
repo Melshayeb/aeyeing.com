@@ -838,7 +838,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             for future in as_completed(futures):
                 try:
                     result = future.result(timeout=30)
-                    scan_results.append(result)
+                    if result is not None:
+                        scan_results.append(result)
                 except Exception as e:
                     logger.warning("Failed to build regular result: %s", e)
 
