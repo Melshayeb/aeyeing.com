@@ -540,9 +540,12 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
         # If we still have no losers but have gainers, ask for losers explicitly.
         if all_gainers and not all_losers:
-            loser_resp = client.active_gainer_loser(direction='loser', rank_type=rank_type) or {"gainer_list": [], "loser_list": []}
-            all_losers = loser_resp.get('loser_list', [])
-            logger.info("Explicit loser fetch returned %d losers", len(all_losers))
+            for loser_rank_type in (rank_type, '1d'):
+                loser_resp = client.active_gainer_loser(direction='loser', rank_type=loser_rank_type) or {"gainer_list": [], "loser_list": []}
+                all_losers = loser_resp.get('loser_list', [])
+                logger.info("Explicit loser fetch (rank_type=%s) returned %d losers", loser_rank_type, len(all_losers))
+                if all_losers:
+                    break
 
         # Build scanner, feeding the current market_status so that the scanner uses
         # the same relaxed/regular thresholds as the website promises. The explicit
