@@ -5452,24 +5452,19 @@
                                 targetY: y.getPixelForValue(clampedY),
                                 color: getBubbleColor(r, changePct),
                                 border: getBubbleBorderColor(r, changePct),
-                                side: floatShares > maxFloat ? 'left' : (price > maxPrice ? 'top' : 'bottom')
+                                side: floatShares > maxFloat ? 'right' : (price > maxPrice ? 'top' : 'bottom')
                             };
                         });
 
-                        // Sort all overflow items by their Y position so stacked labels stay near the bubble's level.
-                        items.sort((a, b) => a.targetY - b.targetY);
-
-                        // Resolve vertical overlaps globally.
-                        for (let i = 1; i < items.length; i++) {
-                            if (items[i].targetY - items[i - 1].targetY < labelH + 2) {
-                                items[i].targetY = items[i - 1].targetY + labelH + 2;
+                        // Resolve vertical overlaps for right-side labels.
+                        const rightItems = items.filter(i => i.side === 'right').sort((a, b) => a.targetY - b.targetY);
+                        for (let i = 1; i < rightItems.length; i++) {
+                            if (rightItems[i].targetY - rightItems[i - 1].targetY < labelH + 2) {
+                                rightItems[i].targetY = rightItems[i - 1].targetY + labelH + 2;
                             }
                         }
 
                         items.forEach(item => {
-                            const by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
-                            const isXOverflow = item.side === 'left';
-
                             ctx.font = "bold 12px 'Inter', sans-serif";
                             const w1 = ctx.measureText(item.ticker).width;
                             ctx.font = "600 9px 'Inter', sans-serif";
@@ -5477,15 +5472,16 @@
                             const w2 = ctx.measureText(line2).width;
                             const labelW = Math.max(w1, w2) + pad * 2 + 6;
 
-                            let lx, ly, arrowToX, arrowToY, arrowFromX, arrowFromY;
+                            let lx, ly, arrowFromX, arrowFromY, arrowToX, arrowToY;
 
-                            if (isXOverflow) {
-                                // Place label on the LEFT side inside the chart area.
-                                lx = left + margin;
+                            if (item.side === 'right') {
+                                // Place label inside chart, just left of the right border.
+                                const by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
+                                lx = right - labelW - margin;
                                 ly = by - labelH / 2;
                                 arrowFromX = lx + labelW;
                                 arrowFromY = by;
-                                arrowToX = left;
+                                arrowToX = right - 4;
                                 arrowToY = by;
                             } else if (item.side === 'top') {
                                 const bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
@@ -5494,7 +5490,7 @@
                                 arrowFromX = bx;
                                 arrowFromY = ly + labelH;
                                 arrowToX = bx;
-                                arrowToY = top;
+                                arrowToY = top + 4;
                             } else { // bottom
                                 const bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
                                 ly = bottom - margin - labelH;
@@ -5502,7 +5498,7 @@
                                 arrowFromX = bx;
                                 arrowFromY = ly;
                                 arrowToX = bx;
-                                arrowToY = bottom;
+                                arrowToY = bottom - 4;
                             }
 
                             // Store hit box for hover tooltips.
@@ -5521,18 +5517,18 @@
                             // Arrowhead at the chart edge pointing toward the clipped bubble.
                             ctx.fillStyle = item.border || '#94a3b8';
                             ctx.beginPath();
-                            if (isXOverflow) {
-                                ctx.moveTo(left - 5, by - 3);
-                                ctx.lineTo(left, by);
-                                ctx.lineTo(left - 5, by + 3);
+                            if (item.side === 'right') {
+                                ctx.moveTo(right - 9, item.targetY - 3);
+                                ctx.lineTo(right - 4, item.targetY);
+                                ctx.lineTo(right - 9, item.targetY + 3);
                             } else if (item.side === 'top') {
-                                ctx.moveTo(item.targetX - 3, top - 5);
-                                ctx.lineTo(item.targetX, top);
-                                ctx.lineTo(item.targetX + 3, top - 5);
+                                ctx.moveTo(item.targetX - 3, top + 9);
+                                ctx.lineTo(item.targetX, top + 4);
+                                ctx.lineTo(item.targetX + 3, top + 9);
                             } else {
-                                ctx.moveTo(item.targetX - 3, bottom + 5);
-                                ctx.lineTo(item.targetX, bottom);
-                                ctx.lineTo(item.targetX + 3, bottom + 5);
+                                ctx.moveTo(item.targetX - 3, bottom - 9);
+                                ctx.lineTo(item.targetX, bottom - 4);
+                                ctx.lineTo(item.targetX + 3, bottom - 9);
                             }
                             ctx.closePath();
                             ctx.fill();
@@ -5598,9 +5594,6 @@
                         }
                     }
                 };
-
-                
-
                 const config = {
                     type: 'bubble',
                     data: { datasets: [{ data: dataPoints, backgroundColor: inRows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: inRows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
