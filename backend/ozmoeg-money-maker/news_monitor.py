@@ -29,7 +29,14 @@ class NewsMonitor:
             "supply contract", "strategic partnership", "technology partnership",
             "patent", "patents", "patent protection", "patent awarded",
             "granted patent", "wins patent", "new patent", "patent portfolio",
-            "intellectual property"
+            "intellectual property",
+            "preclinical data", "clinical data", "positive data",
+            "preclinical results", "clinical results", "positive results",
+            "efficacy data", "efficacy results",
+            "breakthrough data", "breakthrough results",
+            "oncology data", "cancer data",
+            "oncology results", "cancer results",
+            "pancreatic", "drug candidate"
         ],
         3: [
             "earnings beat", "beats earnings", "guidance raise", "raises guidance",
