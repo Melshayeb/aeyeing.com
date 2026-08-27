@@ -5189,15 +5189,6 @@
                     const price = getPrice(r);
                     return float != null && float > 0 && price != null && price > 0;
                 });
-                if (!rows.length) {
-                    setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
-                    return;
-                }
-
-                const ctx = document.getElementById('bubble-chart-canvas');
-                if (!ctx) return;
-
-                if (bubbleChart) { bubbleChart.destroy(); bubbleChart = null; }
 
                 // X-axis: US static 15M; AUS dynamic from data, floored at 5M and capped at 500M.
                 const dataMaxFloat = Math.max(1, ...rows.map(r => getFloat(r) || 0));
@@ -5214,9 +5205,31 @@
                 const minPrice = currentMarket === 'US' ? 0.20 : paddedMin;
                 const maxPrice = currentMarket === 'US' ? 28 : paddedMax;
 
+                // Split rows into in-bounds bubbles and overflow labels.
+                const inRows = rows.filter(r => {
+                    const f = getFloat(r) || 0;
+                    const p = getPrice(r) || minPrice;
+                    return f <= maxFloat && p >= minPrice && p <= maxPrice;
+                });
+                const overflowRows = rows.filter(r => {
+                    const f = getFloat(r) || 0;
+                    const p = getPrice(r) || minPrice;
+                    return f > maxFloat || p < minPrice || p > maxPrice;
+                });
+
+                if (!inRows.length && !overflowRows.length) {
+                    setBubbleStatus(allRows.length ? 'No qualifying alerts yet — try refreshing the scanner.' : 'Waiting for scanner data…');
+                    return;
+                }
+
+                const ctx = document.getElementById('bubble-chart-canvas');
+                if (!ctx) return;
+
+                if (bubbleChart) { bubbleChart.destroy(); bubbleChart = null; }
+
                 const maxChange = Math.max(1, ...rows.map(r => Math.abs(getChangePct(r)) || 0));
 
-                const dataPoints = rows.map(r => {
+                const dataPoints = inRows.map(r => {
                     const price = Math.max(minPrice, getPrice(r) || minPrice);
                     const floatShares = getFloat(r) || 0;
                     const changePct = getChangePct(r);
@@ -5398,14 +5411,142 @@
                     }
                 };
 
+                const overflowLabelPlugin = {
+                    id: 'overflowBubbleLabels',
+                    afterDatasetsDraw(chart) {
+                        if (!overflowRows.length) return;
+                        const { ctx, chartArea: { left, right, top, bottom }, scales: { x, y } } = chart;
+                        if (!x || !y) return;
+                        ctx.save();
+
+                        const labelH = 24;
+                        const pad = 4;
+                        const leader = 16;
+                        const items = overflowRows.map(r => {
+                            const price = getPrice(r) || minPrice;
+                            const floatShares = getFloat(r) || 0;
+                            const changePct = getChangePct(r);
+                            return {
+                                ticker: r.ticker,
+                                country: shortCountry(r.country),
+                                float: floatShares,
+                                price,
+                                changePct,
+                                targetX: x.getPixelForValue(Math.min(floatShares, maxFloat)),
+                                targetY: y.getPixelForValue(Math.max(minPrice, Math.min(price, maxPrice))),
+                                color: getBubbleColor(r, changePct),
+                                border: getBubbleBorderColor(r, changePct),
+                                side: floatShares > maxFloat ? 'right' : (price > maxPrice ? 'top' : 'bottom')
+                            };
+                        });
+
+                        // Resolve vertical overlaps for right-side labels.
+                        const rightItems = items.filter(i => i.side === 'right').sort((a, b) => a.targetY - b.targetY);
+                        for (let i = 1; i < rightItems.length; i++) {
+                            if (rightItems[i].targetY - rightItems[i - 1].targetY < labelH + 2) {
+                                rightItems[i].targetY = rightItems[i - 1].targetY + labelH + 2;
+                            }
+                        }
+
+                        items.forEach(item => {
+                            ctx.font = "bold 12px 'Inter', sans-serif";
+                            const w1 = ctx.measureText(item.ticker).width;
+                            ctx.font = "600 9px 'Inter', sans-serif";
+                            const w2 = ctx.measureText(`${item.country} ${formatFloatM(item.float)}M`).width;
+                            const labelW = Math.max(w1, w2) + pad * 2 + 6;
+
+                            let by, bx, lx, ly;
+                            let arrowFromX, arrowFromY, arrowToX, arrowToY;
+
+                            if (item.side === 'right') {
+                                by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
+                                bx = right;
+                                lx = bx + leader + 8;
+                                ly = by - labelH / 2;
+                                arrowFromX = lx;
+                                arrowFromY = by;
+                                arrowToX = bx + 2;
+                                arrowToY = by;
+                            } else if (item.side === 'top') {
+                                bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
+                                by = top;
+                                ly = by - leader - labelH - 8;
+                                lx = bx - labelW / 2;
+                                arrowFromX = bx;
+                                arrowFromY = ly + labelH;
+                                arrowToX = bx;
+                                arrowToY = by + 2;
+                            } else { // bottom
+                                bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
+                                by = bottom;
+                                ly = by + leader + 8;
+                                lx = bx - labelW / 2;
+                                arrowFromX = bx;
+                                arrowFromY = ly;
+                                arrowToX = bx;
+                                arrowToY = by - 2;
+                            }
+
+                            // Leader line / arrow
+                            ctx.strokeStyle = item.border || 'rgba(148,163,184,0.55)';
+                            ctx.lineWidth = 0.8;
+                            ctx.setLineDash([3, 3]);
+                            ctx.beginPath();
+                            ctx.moveTo(arrowFromX, arrowFromY);
+                            ctx.lineTo(arrowToX, arrowToY);
+                            ctx.stroke();
+                            ctx.setLineDash([]);
+
+                            // Arrowhead at chart edge
+                            ctx.fillStyle = item.border || '#94a3b8';
+                            ctx.beginPath();
+                            if (item.side === 'right') {
+                                ctx.moveTo(bx + 5, by - 3);
+                                ctx.lineTo(bx, by);
+                                ctx.lineTo(bx + 5, by + 3);
+                            } else if (item.side === 'top') {
+                                ctx.moveTo(bx - 3, by - 5);
+                                ctx.lineTo(bx, by);
+                                ctx.lineTo(bx + 3, by - 5);
+                            } else {
+                                ctx.moveTo(bx - 3, by + 5);
+                                ctx.lineTo(bx, by);
+                                ctx.lineTo(bx + 3, by + 5);
+                            }
+                            ctx.closePath();
+                            ctx.fill();
+
+                            // Label box
+                            ctx.fillStyle = 'rgba(17,24,39,0.9)';
+                            ctx.fillRect(lx, ly, labelW, labelH);
+                            ctx.strokeStyle = item.border || 'rgba(255,255,255,0.2)';
+                            ctx.lineWidth = 0.8;
+                            ctx.strokeRect(lx, ly, labelW, labelH);
+
+                            // Text
+                            ctx.textAlign = 'left';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillStyle = '#fff';
+                            ctx.shadowColor = 'rgba(0,0,0,0.85)';
+                            ctx.shadowBlur = 2;
+                            ctx.font = "bold 12px 'Inter', sans-serif";
+                            ctx.fillText(item.ticker, lx + pad, ly + 8);
+                            ctx.font = "600 9px 'Inter', sans-serif";
+                            ctx.fillText(`${item.country} ${formatFloatM(item.float)}M`, lx + pad, ly + 18);
+                            ctx.shadowBlur = 0;
+                        });
+                        ctx.restore();
+                    }
+                };
+
                 const config = {
                     type: 'bubble',
-                    data: { datasets: [{ data: dataPoints, backgroundColor: rows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: rows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
+                    data: { datasets: [{ data: dataPoints, backgroundColor: inRows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: inRows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: false,
-                        layout: { padding: { top: 10, right: 70, bottom: 78, left: 10 } },
+                        layout: { padding: { top: 10, right: 110, bottom: 78, left: 10 } },
                         scales: {
                             x: {
                                 type: 'linear',
@@ -5460,7 +5601,7 @@
                             }
                         }
                     },
-                    plugins: [pluginBackground, labelPlugin, pluginLegend]
+                    plugins: [pluginBackground, labelPlugin, overflowLabelPlugin, pluginLegend]
                 };
 
                 bubbleChart = new Chart(ctx, config);
