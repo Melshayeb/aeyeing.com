@@ -5412,132 +5412,183 @@
                 };
 
                 const overflowLabelPlugin = {
-                    id: 'overflowBubbleLabels',
-                    afterDatasetsDraw(chart) {
-                        if (!overflowRows.length) return;
-                        const { ctx, chartArea: { left, right, top, bottom }, scales: { x, y } } = chart;
-                        if (!x || !y) return;
-                        ctx.save();
+                                    id: 'overflowBubbleLabels',
+                                    afterDatasetsDraw(chart) {
+                                        if (!overflowRows.length) return;
+                                        const { ctx, chartArea: { left, right, top, bottom }, scales: { x, y } } = chart;
+                                        if (!x || !y) return;
+                                        ctx.save();
 
-                        const labelH = 24;
-                        const pad = 4;
-                        const leader = 16;
-                        const items = overflowRows.map(r => {
-                            const price = getPrice(r) || minPrice;
-                            const floatShares = getFloat(r) || 0;
-                            const changePct = getChangePct(r);
-                            return {
-                                ticker: r.ticker,
-                                country: shortCountry(r.country),
-                                float: floatShares,
-                                price,
-                                changePct,
-                                targetX: x.getPixelForValue(Math.min(floatShares, maxFloat)),
-                                targetY: y.getPixelForValue(Math.max(minPrice, Math.min(price, maxPrice))),
-                                color: getBubbleColor(r, changePct),
-                                border: getBubbleBorderColor(r, changePct),
-                                side: floatShares > maxFloat ? 'right' : (price > maxPrice ? 'top' : 'bottom')
-                            };
-                        });
+                                        const labelH = 28;
+                                        const pad = 5;
+                                        const leader = 14;
+                                        const margin = 8;
+                                        const hitBoxes = chart._overflowHitBoxes = [];
 
-                        // Resolve vertical overlaps for right-side labels.
-                        const rightItems = items.filter(i => i.side === 'right').sort((a, b) => a.targetY - b.targetY);
-                        for (let i = 1; i < rightItems.length; i++) {
-                            if (rightItems[i].targetY - rightItems[i - 1].targetY < labelH + 2) {
-                                rightItems[i].targetY = rightItems[i - 1].targetY + labelH + 2;
-                            }
-                        }
+                                        const items = overflowRows.map(r => {
+                                            const price = getPrice(r) || minPrice;
+                                            const floatShares = getFloat(r) || 0;
+                                            const changePct = getChangePct(r);
+                                            const clampedX = Math.min(floatShares, maxFloat);
+                                            const clampedY = Math.max(minPrice, Math.min(price, maxPrice));
+                                            return {
+                                                row: r,
+                                                ticker: r.ticker,
+                                                country: shortCountry(r.country),
+                                                float: floatShares,
+                                                price,
+                                                changePct,
+                                                targetX: x.getPixelForValue(clampedX),
+                                                targetY: y.getPixelForValue(clampedY),
+                                                color: getBubbleColor(r, changePct),
+                                                border: getBubbleBorderColor(r, changePct),
+                                                side: floatShares > maxFloat ? 'left' : (price > maxPrice ? 'top' : 'bottom')
+                                            };
+                                        });
 
-                        items.forEach(item => {
-                            ctx.font = "bold 12px 'Inter', sans-serif";
-                            const w1 = ctx.measureText(item.ticker).width;
-                            ctx.font = "600 9px 'Inter', sans-serif";
-                            const w2 = ctx.measureText(`${item.country} ${formatFloatM(item.float)}M`).width;
-                            const labelW = Math.max(w1, w2) + pad * 2 + 6;
+                                        // Sort all overflow items by their Y position so stacked labels stay near the bubble's level.
+                                        items.sort((a, b) => a.targetY - b.targetY);
 
-                            let by, bx, lx, ly;
-                            let arrowFromX, arrowFromY, arrowToX, arrowToY;
+                                        // Resolve vertical overlaps globally.
+                                        for (let i = 1; i < items.length; i++) {
+                                            if (items[i].targetY - items[i - 1].targetY < labelH + 2) {
+                                                items[i].targetY = items[i - 1].targetY + labelH + 2;
+                                            }
+                                        }
 
-                            if (item.side === 'right') {
-                                by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
-                                bx = right;
-                                lx = bx + leader + 8;
-                                ly = by - labelH / 2;
-                                arrowFromX = lx;
-                                arrowFromY = by;
-                                arrowToX = bx + 2;
-                                arrowToY = by;
-                            } else if (item.side === 'top') {
-                                bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
-                                by = top;
-                                ly = by - leader - labelH - 8;
-                                lx = bx - labelW / 2;
-                                arrowFromX = bx;
-                                arrowFromY = ly + labelH;
-                                arrowToX = bx;
-                                arrowToY = by + 2;
-                            } else { // bottom
-                                bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
-                                by = bottom;
-                                ly = by + leader + 8;
-                                lx = bx - labelW / 2;
-                                arrowFromX = bx;
-                                arrowFromY = ly;
-                                arrowToX = bx;
-                                arrowToY = by - 2;
-                            }
+                                        items.forEach(item => {
+                                            const by = Math.max(top + labelH / 2 + 2, Math.min(bottom - labelH / 2 - 2, item.targetY));
+                                            const isXOverflow = item.side === 'left';
 
-                            // Leader line / arrow
-                            ctx.strokeStyle = item.border || 'rgba(148,163,184,0.55)';
-                            ctx.lineWidth = 0.8;
-                            ctx.setLineDash([3, 3]);
-                            ctx.beginPath();
-                            ctx.moveTo(arrowFromX, arrowFromY);
-                            ctx.lineTo(arrowToX, arrowToY);
-                            ctx.stroke();
-                            ctx.setLineDash([]);
+                                            ctx.font = "bold 12px 'Inter', sans-serif";
+                                            const w1 = ctx.measureText(item.ticker).width;
+                                            ctx.font = "600 9px 'Inter', sans-serif";
+                                            const line2 = `${item.country} ${formatFloatM(item.float)} · $${formatPrice(item.price)}`;
+                                            const w2 = ctx.measureText(line2).width;
+                                            const labelW = Math.max(w1, w2) + pad * 2 + 6;
 
-                            // Arrowhead at chart edge
-                            ctx.fillStyle = item.border || '#94a3b8';
-                            ctx.beginPath();
-                            if (item.side === 'right') {
-                                ctx.moveTo(bx + 5, by - 3);
-                                ctx.lineTo(bx, by);
-                                ctx.lineTo(bx + 5, by + 3);
-                            } else if (item.side === 'top') {
-                                ctx.moveTo(bx - 3, by - 5);
-                                ctx.lineTo(bx, by);
-                                ctx.lineTo(bx + 3, by - 5);
-                            } else {
-                                ctx.moveTo(bx - 3, by + 5);
-                                ctx.lineTo(bx, by);
-                                ctx.lineTo(bx + 3, by + 5);
-                            }
-                            ctx.closePath();
-                            ctx.fill();
+                                            let lx, ly, arrowToX, arrowToY, arrowFromX, arrowFromY;
 
-                            // Label box
-                            ctx.fillStyle = 'rgba(17,24,39,0.9)';
-                            ctx.fillRect(lx, ly, labelW, labelH);
-                            ctx.strokeStyle = item.border || 'rgba(255,255,255,0.2)';
-                            ctx.lineWidth = 0.8;
-                            ctx.strokeRect(lx, ly, labelW, labelH);
+                                            if (isXOverflow) {
+                                                // Place label on the LEFT side inside the chart area.
+                                                lx = left + margin;
+                                                ly = by - labelH / 2;
+                                                arrowFromX = lx + labelW;
+                                                arrowFromY = by;
+                                                arrowToX = left;
+                                                arrowToY = by;
+                                            } else if (item.side === 'top') {
+                                                const bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
+                                                ly = top + margin;
+                                                lx = bx - labelW / 2;
+                                                arrowFromX = bx;
+                                                arrowFromY = ly + labelH;
+                                                arrowToX = bx;
+                                                arrowToY = top;
+                                            } else { // bottom
+                                                const bx = Math.max(left + labelW / 2 + 2, Math.min(right - labelW / 2 - 2, item.targetX));
+                                                ly = bottom - margin - labelH;
+                                                lx = bx - labelW / 2;
+                                                arrowFromX = bx;
+                                                arrowFromY = ly;
+                                                arrowToX = bx;
+                                                arrowToY = bottom;
+                                            }
 
-                            // Text
-                            ctx.textAlign = 'left';
-                            ctx.textBaseline = 'middle';
-                            ctx.fillStyle = '#fff';
-                            ctx.shadowColor = 'rgba(0,0,0,0.85)';
-                            ctx.shadowBlur = 2;
-                            ctx.font = "bold 12px 'Inter', sans-serif";
-                            ctx.fillText(item.ticker, lx + pad, ly + 8);
-                            ctx.font = "600 9px 'Inter', sans-serif";
-                            ctx.fillText(`${item.country} ${formatFloatM(item.float)}M`, lx + pad, ly + 18);
-                            ctx.shadowBlur = 0;
-                        });
-                        ctx.restore();
-                    }
-                };
+                                            // Store hit box for hover tooltips.
+                                            hitBoxes.push({ x: lx, y: ly, w: labelW, h: labelH, item });
+
+                                            // Leader line / arrow
+                                            ctx.strokeStyle = item.border || 'rgba(148,163,184,0.55)';
+                                            ctx.lineWidth = 0.8;
+                                            ctx.setLineDash([3, 3]);
+                                            ctx.beginPath();
+                                            ctx.moveTo(arrowFromX, arrowFromY);
+                                            ctx.lineTo(arrowToX, arrowToY);
+                                            ctx.stroke();
+                                            ctx.setLineDash([]);
+
+                                            // Arrowhead at the chart edge pointing toward the clipped bubble.
+                                            ctx.fillStyle = item.border || '#94a3b8';
+                                            ctx.beginPath();
+                                            if (isXOverflow) {
+                                                ctx.moveTo(left - 5, by - 3);
+                                                ctx.lineTo(left, by);
+                                                ctx.lineTo(left - 5, by + 3);
+                                            } else if (item.side === 'top') {
+                                                ctx.moveTo(item.targetX - 3, top - 5);
+                                                ctx.lineTo(item.targetX, top);
+                                                ctx.lineTo(item.targetX + 3, top - 5);
+                                            } else {
+                                                ctx.moveTo(item.targetX - 3, bottom + 5);
+                                                ctx.lineTo(item.targetX, bottom);
+                                                ctx.lineTo(item.targetX + 3, bottom + 5);
+                                            }
+                                            ctx.closePath();
+                                            ctx.fill();
+
+                                            // Label box
+                                            ctx.fillStyle = 'rgba(17,24,39,0.92)';
+                                            ctx.fillRect(lx, ly, labelW, labelH);
+                                            ctx.strokeStyle = item.border || 'rgba(255,255,255,0.2)';
+                                            ctx.lineWidth = 0.8;
+                                            ctx.strokeRect(lx, ly, labelW, labelH);
+
+                                            // Text
+                                            ctx.textAlign = 'left';
+                                            ctx.textBaseline = 'middle';
+                                            ctx.fillStyle = '#fff';
+                                            ctx.shadowColor = 'rgba(0,0,0,0.85)';
+                                            ctx.shadowBlur = 2;
+                                            ctx.font = "bold 12px 'Inter', sans-serif";
+                                            ctx.fillText(item.ticker, lx + pad, ly + 9);
+                                            ctx.font = "600 9px 'Inter', sans-serif";
+                                            ctx.fillText(line2, lx + pad, ly + 20);
+                                            ctx.shadowBlur = 0;
+                                        });
+                                        ctx.restore();
+                                    },
+                                    afterEvent(chart, args) {
+                                        const { event } = args;
+                                        if (!chart._overflowHitBoxes || !chart._overflowHitBoxes.length) return;
+                                        const canvas = chart.canvas;
+                                        const rect = canvas.getBoundingClientRect();
+                                        const mx = event.x;
+                                        const my = event.y;
+                                        const hit = chart._overflowHitBoxes.find(b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h);
+                                        let tip = document.getElementById('overflow-bubble-tooltip');
+                                        if (!tip) {
+                                            tip = document.createElement('div');
+                                            tip.id = 'overflow-bubble-tooltip';
+                                            tip.style.cssText = 'position:fixed;display:none;pointer-events:none;z-index:10000;background:rgba(17,24,39,0.95);border:1px solid #374151;border-radius:6px;padding:10px;color:#fff;font-family:Inter,sans-serif;font-size:12px;max-width:260px;box-shadow:0 4px 12px rgba(0,0,0,0.4);';
+                                            document.body.appendChild(tip);
+                                        }
+                                        if (hit) {
+                                            const r = hit.item.row;
+                                            const price = getPrice(r);
+                                            const fl = getFloat(r);
+                                            const change = hit.item.changePct;
+                                            const status = r?.status ? ` | ${r.status}` : '';
+                                            const alertLevel = (r?.status === 'ALERT' || r?.status === 'ALERT/HALT') ? ` · Alert ${getAlertLevel(r) || 'Active'}` : '';
+                                            const lines = [
+                                                `<strong>${hit.item.ticker} ${hit.item.country}</strong>`,
+                                                `$${formatPrice(price)} · Float ${formatFloat(fl)} · ${change >= 0 ? '+' : ''}${change.toFixed(1)}%${status}${alertLevel}`,
+                                                `Vol ${formatVolume(getVolume(r))} · News ${getNewsAge(r)} · SEC ${getSecFilings(r) || '—'}`
+                                            ];
+                                            tip.innerHTML = lines.join('<br>');
+                                            tip.style.display = 'block';
+                                            // Position tooltip near mouse but keep inside viewport
+                                            const x = Math.min(rect.left + mx + 14, window.innerWidth - 270);
+                                            const y = Math.min(rect.top + my + 14, window.innerHeight - 100);
+                                            tip.style.left = x + 'px';
+                                            tip.style.top = y + 'px';
+                                        } else {
+                                            tip.style.display = 'none';
+                                        }
+                                    }
+                                };
+
+                
 
                 const config = {
                     type: 'bubble',
