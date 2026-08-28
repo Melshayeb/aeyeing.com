@@ -836,6 +836,66 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                         fut.cancel()
             logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
 
+        # ── Top-gainer tape exemption (Option B) ─────────────────────────────
+        # Tickers in the top-10 gainer list with >25% move that failed normal scanner
+        # gates may still be explosive. Fetch 1m bars for them, run tape analysis, and
+        # promote those with live tape momentum to CANDIDATE. They are dropped on the
+        # next scan if momentum dies or they fall out of the top 10.
+        exempt_candidates: List[Dict[str, Any]] = []
+        if market == 'us':
+            exempt_move_min = float(config.get('scanner', {}).get('exempt_min_change_pct', 25.0))
+            exempt_top_n = int(config.get('scanner', {}).get('exempt_top_n', 10))
+            exempt_momentum_min = float(config.get('scanner', {}).get('exempt_min_tape_momentum', 0.0))
+            exempt_rvol_floor = float(config.get('tape', {}).get('dead_rvol_floor', 15.0))
+
+            # Identify rejected top gainers not already normal candidates
+            processed_tickers = {_symbol(g) for g in regular_candidates}
+            top_gainers_sorted = sorted(
+                all_gainers,
+                key=lambda x: abs(_change_pct(x) or 0),
+                reverse=True
+            )
+            exempt_gainers = [
+                g for g in top_gainers_sorted[:exempt_top_n]
+                if _symbol(g) not in processed_tickers
+                and abs(_change_pct(g) or 0) > exempt_move_min
+            ]
+
+            if exempt_gainers:
+                # Fetch 1m bars for exemption candidates (always, including PRE-MARKET)
+                exempt_bar_budget = 10
+                with ThreadPoolExecutor(max_workers=3) as bar_ex:
+                    exempt_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in exempt_gainers]
+                    done, pending = wait(exempt_futures, timeout=exempt_bar_budget)
+                    for future in done:
+                        try:
+                            tkr, df = future.result(timeout=1)
+                            if df is not None:
+                                bars_by_ticker[tkr] = df
+                        except Exception as e:
+                            logger.debug("Exempt bar fetch future failed: %s", e)
+                    for fut in pending:
+                        fut.cancel()
+
+                tape_analyzer = TapeAnalyzer(config.get('tape', {}))
+                for g in exempt_gainers:
+                    tkr = _symbol(g)
+                    tape_data = tape_analyzer.analyze_ticker(tkr, bars_by_ticker.get(tkr), g.get('ticker', g))
+                    has_momentum = (
+                        float(tape_data.get('price_velocity_pct', 0) or 0) > exempt_momentum_min or
+                        float(tape_data.get('volume_acceleration', 0) or 0) > exempt_momentum_min or
+                        int(tape_data.get('large_bar_count', 0) or 0) > 0 or
+                        float(tape_data.get('rvol', 0) or 0) >= exempt_rvol_floor
+                    )
+                    if has_momentum:
+                        g['_scan_passed'] = True
+                        g['_scan_reason'] = f"Top gainer tape exempt ({_change_pct(g):.1f}%, rvol {tape_data.get('rvol', 0):.1f}x)"
+                        g['tape'] = tape_data
+                        exempt_candidates.append(g)
+                        logger.info("Top-gainer tape exemption: %s +%.1f%% RVOL %.1fx", tkr, _change_pct(g), tape_data.get('rvol', 0) or 0)
+                    else:
+                        logger.debug("Top-gainer tape exemption rejected %s: no momentum", tkr)
+
         with ThreadPoolExecutor(max_workers=8) as ex:
             futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
             for future in as_completed(futures):
@@ -845,6 +905,64 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                         scan_results.append(result)
                 except Exception as e:
                     logger.warning("Failed to build regular result: %s", e)
+
+        # Build results for exempt candidates in parallel with source tag
+        def _build_exempt_result(gainer):
+            ticker = _symbol(gainer)
+            name = _name(gainer)
+            analyzer = TechnicalAnalyzer(config.get('analyzer', {}))
+            analysis = analyzer.analyze(gainer)
+            news_monitor = NewsMonitor(client, config.get('news', {}))
+            news_data = news_monitor.analyze(ticker)
+            planner = TradePlanner(config.get('strategy', {}))
+            entry_price = _price(gainer)
+            atr_val = analysis.get('atr', 0) or 0
+            confidence = 'HIGH' if analysis.get('near_demand') else 'MED'
+            account_balance = config.get('strategy', {}).get('account_balance', 10000.0)
+            plan = planner.plan_trade(ticker, entry_price, atr_val, confidence=confidence, account_balance=account_balance)
+            tape_data = gainer.get('tape') or {}
+            change_pct = _change_pct(gainer)
+            change_str = f"{('+' if change_pct >= 0 else '')}{change_pct:.1f}%"
+            sec_filings_summary = ''
+            try:
+                sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
+            except Exception as e:
+                logger.debug("SEC filings lookup failed for exempt %s: %s", ticker, e)
+            return {
+                'ticker': ticker,
+                'name': name,
+                'status': 'CANDIDATE',
+                'source': 'top_gainer_exempt',
+                'price': _price(gainer),
+                'change_pct': change_pct,
+                'volume': _volume(gainer),
+                'market_cap': _market_cap(gainer),
+                'float_shares': _float_shares(gainer),
+                'country': _country(gainer),
+                'cap_size': _cap_size(_market_cap(gainer)),
+                'is_penny_stock': _is_penny_stock(_price(gainer)),
+                'scan_reason': gainer.get('_scan_reason', f"Top gainer tape exempt ({change_str})"),
+                'scan_passed': True,
+                'sec_filings': sec_filings_summary,
+                'result': f"Top-10 gainer tape momentum · {change_str}",
+                'plan': plan,
+                'ta': analysis,
+                'news': news_data,
+                'tape': tape_data,
+                'date': datetime.now().strftime('%Y-%m-%d'),
+                'time': datetime.now().strftime('%H:%M:%S'),
+                'skip_news_check': (market_status.lower() in ('open', 'after-hours'))
+            }
+
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            futures = [ex.submit(_build_exempt_result, g) for g in exempt_candidates]
+            for future in as_completed(futures):
+                try:
+                    result = future.result(timeout=30)
+                    if result is not None:
+                        scan_results.append(result)
+                except Exception as e:
+                    logger.warning("Failed to build exempt result: %s", e)
 
         # Create entries for bounce candidates (never alert)
         for gainer in bounce_candidates:
@@ -876,6 +994,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             })
 
         # Telegram is suppressed when market is closed and reduced to active-hours only.
+        # ALERTs are sent as a pre-market summary; CANDIDATEs are reported individually
+        # when the user has enabled candidate pass-through.
         sent_alerts_summary = []
         tg_allowed = _is_telegram_notification_allowed(market, market_status)
         if tg_allowed and market == 'us' and config.get('scanner', {}).get('enabled', True):
@@ -883,6 +1003,17 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # Send a single pre-market summary of unique ALERT triggers instead of one message per ticker.
             summary_sent = notifier.send_pre_market_summary(scan_results, market=market, market_status=market_status)
             sent_alerts_summary.append({'summary': summary_sent})
+
+            # Candidate pass-through (new): notify when a candidate appears or changes.
+            # Only send during the same PRE-MARKET window as ALERTs and only if enabled.
+            if is_enabled(config, "telegram_candidate_notifications"):
+                candidates = [r for r in (scan_results or []) if r.get('status') == 'CANDIDATE' and r.get('plan')]
+                for cand in candidates:
+                    try:
+                        notifier.send_alert(cand, market=market, market_status=market_status)
+                        sent_alerts_summary.append({'candidate': cand.get('ticker')})
+                    except Exception as e:
+                        logger.warning("Candidate Telegram send failed for %s: %s", cand.get('ticker'), e)
         elif not tg_allowed:
             logger.info("Telegram notifications suppressed: market=%s status=%s", market, market_status)
 

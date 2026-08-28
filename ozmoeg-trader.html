@@ -5151,16 +5151,21 @@
             }
 
             function getBubbleColor(r, changePct) {
-                // Glow cyan wins for extreme movers, then ALERT, then penny stock.
+                // Glow cyan wins for extreme movers, then ALERT, then CANDIDATE light grey, then penny stock.
                 if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
                 if (r?.status === 'ALERT') return 'rgba(248,113,113,0.55)';
+                if (r?.status === 'CANDIDATE') return 'rgba(156,163,175,0.45)';
                 if (r?.is_penny_stock || getPrice(r) < 1) return 'rgba(248,113,113,0.55)';
                 return 'rgba(45,212,191,0.55)';
             }
 
             function getBubbleBorderColor(r, changePct) {
                 if (Math.abs(changePct) > 80) return '#22d3ee';
-                if (r?.status === 'ALERT' || r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
+                if (r?.status === 'ALERT' || r?.status === 'CANDIDATE') {
+                    if (r?.status === 'CANDIDATE') return '#9ca3af';
+                    return '#f87171';
+                }
+                if (r?.is_penny_stock || getPrice(r) < 1) return '#f87171';
                 return '#2dd4bf';
             }
 
