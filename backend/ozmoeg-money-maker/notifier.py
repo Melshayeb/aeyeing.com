@@ -276,7 +276,7 @@ class Notifier:
         return True
 
     def alert_trade_setup(self, plan: Dict[str, Any], news_analysis: Dict[str, Any],
-                          ta: Dict[str, Any], market: str = 'us', market_status: str = ''):
+                          ta: Dict[str, Any], market: str = 'us', market_status: str = '', result: Dict[str, Any] = None):
         """Send a trade setup alert to Telegram — only for fresh, high-conviction setups.
 
         Telegram alerts are further gated to active trading windows by the caller;
@@ -550,7 +550,7 @@ class Notifier:
         if not plan or not plan.get('ticker'):
             logger.warning("send_alert called with invalid plan — skipping")
             return False
-        return self.alert_trade_setup(plan, news, ta, market=market, market_status=market_status)
+        return self.alert_trade_setup(plan, news, ta, market=market, market_status=market_status, result=result)
 
     def notify_market_status(self, market: str, status: str):
         """Milestone alert: market open / closed / pre / after-hours transition.
