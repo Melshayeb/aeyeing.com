@@ -712,10 +712,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
             # Dead-ticker filter: drop candidates that have no live tape momentum and no fresh news.
             # A flatlined pre-market gapper is not actionable and should not appear in the table.
-            # During PRE-MARKET we deliberately skip bar fetches to maintain cadence, so tape momentum
-            # will be zero for regular candidates even when the stock is gapping. Do not kill them on
-            # that basis; rely on the top-gainer exemption (which does fetch bars) for momentum proof.
-            if market == 'us' and status == 'CANDIDATE' and market_status != 'PRE-MARKET':
+            if market == 'us' and status == 'CANDIDATE':
                 has_momentum = (
                     float(tape_data.get('price_velocity_pct', 0) or 0) > 0 or
                     float(tape_data.get('volume_acceleration', 0) or 0) > 0 or
@@ -816,27 +813,23 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # the scanner stays within the 1-minute cadence target. We only need
             # bars for the top candidates that may become ALERTs; the tape
             # analyzer already falls back to quote-based rvol when bars are absent.
-            # Skip bars entirely during PRE-MARKET because Webull's pre-market m1
-            # feed is consistently the bottleneck; quote-based tape handles it fine.
+            # Fetch 1m bars for regular candidates in all market phases, including PRE-MARKET.
+            # Live tape momentum is required to keep the dead-ticker filter honest.
             max_bar_candidates = min(5, len(regular_candidates))
             bar_candidates = regular_candidates[:max_bar_candidates]
             bar_total_budget = 10  # seconds for the whole bar window
-            skip_bars = market_status == 'PRE-MARKET'
-            if skip_bars:
-                logger.info("Skipping 1m bar fetch during PRE-MARKET to maintain 1-min cadence")
-            else:
-                with ThreadPoolExecutor(max_workers=3) as bar_ex:
-                    bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
-                    done, pending = wait(bar_futures, timeout=bar_total_budget)
-                    for future in done:
-                        try:
-                            tkr, df = future.result(timeout=1)
-                            if df is not None:
-                                bars_by_ticker[tkr] = df
-                        except Exception as e:
-                            logger.debug("Bar fetch future failed: %s", e)
-                    for fut in pending:
-                        fut.cancel()
+            with ThreadPoolExecutor(max_workers=3) as bar_ex:
+                bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
+                done, pending = wait(bar_futures, timeout=bar_total_budget)
+                for future in done:
+                    try:
+                        tkr, df = future.result(timeout=1)
+                        if df is not None:
+                            bars_by_ticker[tkr] = df
+                    except Exception as e:
+                        logger.debug("Bar fetch future failed: %s", e)
+                for fut in pending:
+                    fut.cancel()
             logger.info("Fetched live 1m bars for %d/%d top regular candidates", len(bars_by_ticker), len(bar_candidates))
 
         # ── Top-gainer tape exemption (Option B) ─────────────────────────────
