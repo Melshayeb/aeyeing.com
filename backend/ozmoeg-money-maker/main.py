@@ -1034,8 +1034,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                         sent_alerts_summary.append({'candidate_new': cand.get('ticker')})
                     except Exception as e:
                         logger.warning("Candidate Telegram send failed for %s: %s", cand.get('ticker'), e)
-                # Send a concise summary of existing candidates
-                if existing_candidates:
+                # Send a concise summary of existing candidates only when there is something new to report
+                if new_candidates and existing_candidates:
                     summary_msg = f"Still candidates: {', '.join(existing_candidates)}"
                     try:
                         notifier.send_telegram(summary_msg, disable_notification=True)
