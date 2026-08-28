@@ -712,7 +712,10 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
             # Dead-ticker filter: drop candidates that have no live tape momentum and no fresh news.
             # A flatlined pre-market gapper is not actionable and should not appear in the table.
-            if market == 'us' and status == 'CANDIDATE':
+            # During PRE-MARKET we deliberately skip bar fetches to maintain cadence, so tape momentum
+            # will be zero for regular candidates even when the stock is gapping. Do not kill them on
+            # that basis; rely on the top-gainer exemption (which does fetch bars) for momentum proof.
+            if market == 'us' and status == 'CANDIDATE' and market_status != 'PRE-MARKET':
                 has_momentum = (
                     float(tape_data.get('price_velocity_pct', 0) or 0) > 0 or
                     float(tape_data.get('volume_acceleration', 0) or 0) > 0 or
