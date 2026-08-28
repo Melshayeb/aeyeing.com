@@ -885,7 +885,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                         float(tape_data.get('price_velocity_pct', 0) or 0) > exempt_momentum_min or
                         float(tape_data.get('volume_acceleration', 0) or 0) > exempt_momentum_min or
                         int(tape_data.get('large_bar_count', 0) or 0) > 0 or
-                        float(tape_data.get('rvol', 0) or 0) >= exempt_rvol_floor
+                        float(tape_data.get('rvol', 0) or 0) >= exempt_rvol_floor or
+                        float(tape_data.get('buy_pressure_pct', 0) or 0) > 50.0
                     )
                     if has_momentum:
                         g['_scan_passed'] = True
@@ -1004,16 +1005,42 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             summary_sent = notifier.send_pre_market_summary(scan_results, market=market, market_status=market_status)
             sent_alerts_summary.append({'summary': summary_sent})
 
-            # Candidate pass-through (new): notify when a candidate appears or changes.
-            # Only send during the same PRE-MARKET window as ALERTs and only if enabled.
+            # Candidate pass-through: notify only for NEW candidates/triggers or re-entries.
+            # Existing ones are summarized at the end to avoid Telegram noise every scan.
             if is_enabled(config, "telegram_candidate_notifications"):
                 candidates = [r for r in (scan_results or []) if r.get('status') == 'CANDIDATE' and r.get('plan')]
-                for cand in candidates:
+                candidate_tickers = [c.get('ticker') for c in candidates]
+                # Load previous candidate list from JSON lock file
+                import json as _json
+                state_dir = Path.home() / '.hermes' / 'skills' / 'ozmoeg-money-maker'
+                state_dir.mkdir(parents=True, exist_ok=True)
+                prev_state_path = state_dir / '.candidate_telegram_state.json'
+                prev_state = {'candidates': []}
+                if prev_state_path.exists():
+                    try:
+                        prev_state = _json.loads(prev_state_path.read_text(encoding='utf-8'))
+                    except Exception:
+                        prev_state = {'candidates': []}
+                prev_candidates = set(prev_state.get('candidates', []))
+                new_candidates = [c for c in candidates if c.get('ticker') not in prev_candidates]
+                existing_candidates = [c.get('ticker') for c in candidates if c.get('ticker') in prev_candidates]
+                # Send individual messages for new candidates
+                for cand in new_candidates:
                     try:
                         notifier.send_alert(cand, market=market, market_status=market_status)
-                        sent_alerts_summary.append({'candidate': cand.get('ticker')})
+                        sent_alerts_summary.append({'candidate_new': cand.get('ticker')})
                     except Exception as e:
                         logger.warning("Candidate Telegram send failed for %s: %s", cand.get('ticker'), e)
+                # Send a concise summary of existing candidates
+                if existing_candidates:
+                    summary_msg = f"Still candidates: {', '.join(existing_candidates)}"
+                    try:
+                        notifier.send_telegram(summary_msg, disable_notification=True)
+                        sent_alerts_summary.append({'candidate_summary': existing_candidates})
+                    except Exception as e:
+                        logger.warning("Candidate summary Telegram send failed: %s", e)
+                # Persist current candidate list for next scan
+                prev_state_path.write_text(_json.dumps({'candidates': candidate_tickers}, indent=2), encoding='utf-8')
         elif not tg_allowed:
             logger.info("Telegram notifications suppressed: market=%s status=%s", market, market_status)
 

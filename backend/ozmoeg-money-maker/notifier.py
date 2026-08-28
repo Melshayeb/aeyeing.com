@@ -164,14 +164,14 @@ class Notifier:
         ages = [a for a in ages if a is not None]
         return min(ages) if ages else None
 
-    def send_telegram(self, message: str, parse_mode: str = 'HTML') -> bool:
+    def send_telegram(self, message: str, parse_mode: str = 'HTML', disable_notification: bool = False) -> bool:
         """Send a Telegram message."""
         if not self.tg_token or not self.tg_chat:
             logger.warning("Telegram not configured — skipping")
             return False
         try:
             url = f"https://api.telegram.org/bot{self.tg_token}/sendMessage"
-            payload = {'chat_id': self.tg_chat, 'text': message, 'parse_mode': parse_mode}
+            payload = {'chat_id': self.tg_chat, 'text': message, 'parse_mode': parse_mode, 'disable_notification': disable_notification}
             resp = requests.post(url, json=payload, timeout=15)
             data = resp.json()
             if not data.get('ok'):
