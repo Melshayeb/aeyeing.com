@@ -23,7 +23,7 @@ KILL_SWITCH_SECTION = "kill_switch"
 
 VALID_SWITCHES = [
     "master", "scanner", "news", "strategy",
-    "telegram_alerts", "email_alerts", "website_updates", "okx_sentiment",
+    "telegram_alerts", "telegram_candidate_notifications", "email_alerts", "website_updates", "okx_sentiment",
 ]
 
 # Global config cache
