@@ -286,17 +286,33 @@ class Notifier:
         # window 18:00 → US market open). The caller already checks this; this guard
         # prevents accidental direct calls. Market open / after-hours / closed =>
         # no Telegram per user policy.
+        # CANDIDATE pass-through bypasses the status guard only when explicitly enabled.
+        is_candidate = result.get('status') == 'CANDIDATE'
         status = str(market_status).upper()
-        if market == 'us' and status != 'PRE-MARKET':
-            logger.info("Telegram trade alert suppressed for %s — market status %s", plan.get('ticker'), status)
-            return False
-        if market == 'au':
-            logger.info("Telegram trade alert suppressed for %s — AU market (website-only)", plan.get('ticker'))
-            return False
+        if is_candidate:
+            if not is_enabled(self.cfg, "telegram_candidate_notifications"):
+                return False
+            # Candidate messages are not the same as alerts; we still gate them to the
+            # pre-market window to avoid noise during the day.
+            if market == 'us' and status != 'PRE-MARKET':
+                logger.info("Candidate Telegram suppressed for %s — market status %s", plan.get('ticker'), status)
+                return False
+            if market == 'au':
+                logger.info("Candidate Telegram suppressed for %s — AU market", plan.get('ticker'))
+                return False
+        else:
+            if market == 'us' and status != 'PRE-MARKET':
+                logger.info("Telegram trade alert suppressed for %s — market status %s", plan.get('ticker'), status)
+                return False
+            if market == 'au':
+                logger.info("Telegram trade alert suppressed for %s — AU market (website-only)", plan.get('ticker'))
+                return False
 
         ticker = plan['ticker']
         
-        # Duplicate check — skip if same setup/catalyst already alerted recently
+        # Duplicate check — skip if same setup/catalyst already alerted recently.
+        # For CANDIDATE pass-through we use the same signature so we do not spam
+        # the channel if the candidate snapshot is unchanged.
         if self._is_duplicate(ticker, plan, market=market, market_status=market_status,
                               news_headline=news_analysis.get('top_headline', '')):
             return  # Skip sending — already alerted
@@ -309,9 +325,21 @@ class Notifier:
         news_headline = news_analysis.get('top_headline', 'N/A')
         news_items = news_analysis.get('scored_items', [])[:3]
 
-        # Quality gate (shared with summary builder)
-        if not self._alert_passes_quality_gate(plan, news_analysis):
-            return
+        # Quality gate.
+        if is_candidate:
+            # Candidate pass-through uses a reduced gate: freshness + R:R only, no
+            # minimum impact score, so tape/momentum-only exempt candidates can pass.
+            news_age = self._youngest_news_age_minutes(news_analysis)
+            max_age = TG_MAX_RELAXED_NEWS_AGE_MINUTES if news_analysis.get('catalyst_relaxed', False) else TG_MAX_NEWS_AGE_MINUTES
+            if news_age is None or news_age > max_age:
+                logger.info("Candidate quality gate — news age %s min exceeds limit %s", news_age, max_age)
+                return False
+            if plan.get('risk_reward', 0) < 1.5:
+                logger.info("Candidate quality gate — poor R:R %.2f", plan.get('risk_reward', 0))
+                return False
+        else:
+            if not self._alert_passes_quality_gate(plan, news_analysis):
+                return
 
         # Build filters applied text
         filters_text = self._build_filters_applied(plan, news_analysis, ta)
@@ -338,6 +366,7 @@ class Notifier:
 📰 <b>Catalyst:</b> {safe_headline}
 🕐 <b>News age:</b> {age_text}
 💥 <b>Impact Score:</b> {impact_score}/5 | <b>Sources:</b> {sources}
+🔖 <b>Status:</b> {result.get('status', 'ALERT')}
 
 📰 <b>News/Announcements:</b>
 {safe_news_text}
