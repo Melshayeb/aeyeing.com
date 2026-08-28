@@ -84,7 +84,7 @@ class TapeAnalyzer:
 
         # Price velocity over the most recent window (last 25% of bars, min 5).
         # Use absolute velocity so breakouts AND sharp pullbacks both register as tape momentum.
-        recent_window = max(5, len(df) // 4)
+        recent_window = min(len(df) - 1, max(5, len(df) // 4))
         start_price = float(df.iloc[-recent_window]['open'])
         if start_price > 0:
             price_velocity_pct = round(abs((end_price - start_price) / start_price) * 100, 3)

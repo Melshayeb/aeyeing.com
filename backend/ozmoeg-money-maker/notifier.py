@@ -418,6 +418,21 @@ class Notifier:
 
         return tg_sent
 
+    def _build_filters_applied(self, plan: Dict[str, Any], news_analysis: Dict[str, Any],
+                                ta: Dict[str, Any]) -> str:
+        """Build a concise filters/rules summary for Telegram messages."""
+        parts = []
+        if plan:
+            parts.append(f"Entry ${plan.get('entry')} · Stop ${plan.get('stop')} · R:R {plan.get('risk_reward')}:1")
+        if news_analysis:
+            parts.append(f"Catalyst score {news_analysis.get('max_score', 0)}/5 · {news_analysis.get('high_impact_count', 0)} high-impact source(s)")
+        if ta:
+            if ta.get('valid'):
+                parts.append(f"TA valid · ATR ${ta.get('atr', 0):.3f}")
+            else:
+                parts.append(f"TA: {ta.get('error', 'no bar data')}")
+        return ' · '.join(parts) if parts else 'Momentum/tape gating only'
+
     def send_pre_market_summary(self, results: List[Dict[str, Any]], market: str = 'us',
                                   market_status: str = '') -> bool:
         """Send a single Telegram summary of quality-gated ALERT triggers during US pre-market.
