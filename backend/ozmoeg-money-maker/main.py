@@ -877,13 +877,14 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 for g in exempt_gainers:
                     tkr = _symbol(g)
                     tape_data = tape_analyzer.analyze_ticker(tkr, bars_by_ticker.get(tkr), g.get('ticker', g))
-                    has_momentum = (
-                        float(tape_data.get('price_velocity_pct', 0) or 0) > exempt_momentum_min or
-                        float(tape_data.get('volume_acceleration', 0) or 0) > exempt_momentum_min or
-                        int(tape_data.get('large_bar_count', 0) or 0) > 0 or
-                        float(tape_data.get('rvol', 0) or 0) >= exempt_rvol_floor or
-                        float(tape_data.get('buy_pressure_pct', 0) or 0) > 50.0
-                    )
+                    price_velocity_pct = float(tape_data.get('price_velocity_pct', 0) or 0)
+                    volume_acceleration = float(tape_data.get('volume_acceleration', 0) or 0)
+                    large_bar_count = int(tape_data.get('large_bar_count', 0) or 0)
+                    rvol = float(tape_data.get('rvol', 0) or 0)
+                    buy_pressure_pct = float(tape_data.get('buy_pressure_pct', 0) or 0)
+                    has_price_move = price_velocity_pct >= 5.0 or large_bar_count >= 5
+                    has_volume_confirm = volume_acceleration >= 0.5 or rvol >= exempt_rvol_floor or buy_pressure_pct >= 70.0
+                    has_momentum = has_price_move and has_volume_confirm
                     if has_momentum:
                         g['_scan_passed'] = True
                         g['_scan_reason'] = f"Top gainer tape exempt ({_change_pct(g):.1f}%, rvol {tape_data.get('rvol', 0):.1f}x)"
