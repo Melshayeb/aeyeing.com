@@ -100,6 +100,45 @@ def _yfinance_avg_volume(ticker: str, days: int = 10) -> int:
         return 0
 
 
+@lru_cache(maxsize=256)
+def _yfinance_fundamentals(ticker: str) -> Dict[str, Any]:
+    """Fetch market cap, shares outstanding, and float from Yahoo Finance as fallback.
+
+    Webull public/unauthenticated quotes sometimes return zero market cap or missing
+    share count for newly active or corporate-action tickers (e.g. SGLD). yfinance's
+    .info dict usually has the real values. Returns a dict with keys:
+      market_cap, shares_outstanding, float_shares, avg_volume_10d
+    Missing/unknown values are omitted.
+    """
+    result: Dict[str, Any] = {}
+    if not _YFINANCE_AVAILABLE or not yf or not ticker:
+        return result
+    try:
+        tk = yf.Ticker(ticker)
+        info = tk.info or {}
+        fast = tk.fast_info or {}
+        mc = info.get("marketCap") or info.get("totalDebt")  # fallback key some versions use
+        if not mc or not isinstance(mc, (int, float)) or mc <= 0:
+            mc = fast.get("marketCap")
+        if mc and isinstance(mc, (int, float)) and mc > 0:
+            result["market_cap"] = float(mc)
+        shares = info.get("sharesOutstanding") or fast.get("shares")
+        if shares and isinstance(shares, (int, float)) and shares > 0:
+            result["shares_outstanding"] = int(shares)
+        flt = info.get("floatShares")
+        if flt and isinstance(flt, (int, float)) and flt > 0:
+            result["float_shares"] = int(flt)
+        hist = tk.history(period="15d", interval="1d")
+        if hist is not None and not hist.empty and "Volume" in hist.columns:
+            avg10 = int(hist["Volume"].dropna().tail(10).mean())
+            if avg10 > 0:
+                result["avg_volume_10d"] = avg10
+        return result
+    except Exception as e:
+        logger.debug("yfinance fundamentals fallback failed for %s: %s", ticker, e)
+        return result
+
+
 logger = logging.getLogger(__name__)
 
 class SmallCapScanner:
@@ -343,6 +382,10 @@ class SmallCapScanner:
                 if webull_avg_dollar > 0 and webull_avg_dollar < threshold * 0.5:
                     needs_yf = True
 
+            # Also fetch fundamentals from yfinance when Webull omits market cap or share count.
+            # This rescues corporate-action tickers like SGLD that Webull lists with $0.0M mktcap.
+            needs_yf_fundamentals = (market_cap_raw <= 0) or (outstanding_shares <= 0) or (avg_vol_10d == 0 and avg_vol_3m == 0)
+
             if needs_yf:
                 yf_avg = _yfinance_avg_volume(symbol, days=10)
                 if yf_avg > 0:
@@ -352,6 +395,21 @@ class SmallCapScanner:
                     # Clear the 3-month value so RVOL definitely uses the yfinance 10-day average
                     if 'avgVol3M' in t:
                         del t['avgVol3M']
+
+            if needs_yf_fundamentals:
+                yf_info = _yfinance_fundamentals(symbol)
+                if yf_info.get('market_cap') and market_cap_raw <= 0:
+                    market_cap_raw = float(yf_info['market_cap'])
+                    t['marketValue'] = market_cap_raw
+                    t['_market_cap_source'] = 'yfinance'
+                if yf_info.get('shares_outstanding') and outstanding_shares <= 0:
+                    outstanding_shares = int(yf_info['shares_outstanding'])
+                    t['outstandingShares'] = outstanding_shares
+                    t['_shares_source'] = 'yfinance'
+                if yf_info.get('avg_volume_10d') and avg_vol_10d <= 0 and avg_vol_3m <= 0:
+                    avg_vol_10d = float(yf_info['avg_volume_10d'])
+                    t['avgVol10D'] = int(yf_info['avg_volume_10d'])
+                    t['_avg_vol_source'] = 'yfinance'
 
         if avg_vol_10d > 0:
             rvol = volume / avg_vol_10d
