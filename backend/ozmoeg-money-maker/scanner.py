@@ -533,6 +533,15 @@ class SmallCapScanner:
 
             if avg_vol_10d > 0 and (avg_vol_10d * price) < tiny_avg_dv_min:
                 fails.append(f'tiny avg $vol')
+            # Tiny-cap high-move volume-value override: a strong percentage move with real
+            # current dollar volume proves liquidity even when the 10-day RVOL looks low
+            # (e.g. recent dilution, reverse split, or Webull stale avg volume). Waive the
+            # tiny-cap RVOL floor but keep all other gates.
+            tiny_cap_override_min_change = float(self.cfg.get('tiny_cap_override_min_change_pct', 25.0))
+            tiny_cap_override_min_dollar_volume = float(self.cfg.get('tiny_cap_override_min_dollar_volume', 1_000_000))
+            if abs(change_pct) >= tiny_cap_override_min_change and (price * volume) >= tiny_cap_override_min_dollar_volume:
+                # Remove the tiny rvol fail if it was the only reason this ticker was rejected.
+                fails = [f for f in fails if not f.startswith('tiny rvol')]
             if outstanding_shares > 0 and min_volume_float_ratio > 0 and tiny_vfr_min > 0:
                 vfr = volume / outstanding_shares
                 if vfr < tiny_vfr_min:
