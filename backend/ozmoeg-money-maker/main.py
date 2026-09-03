@@ -716,9 +716,12 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # Dead-ticker filter: drop candidates that have no live tape momentum and no fresh news.
             # A flatlined pre-market gapper is not actionable and should not appear in the table.
             if market == 'us' and status == 'CANDIDATE':
-                has_price_move = float(tape_data.get('price_velocity_pct', 0) or 0) > 0 or int(tape_data.get('large_bar_count', 0) or 0) > 0
-                has_volume_confirm = float(tape_data.get('volume_acceleration', 0) or 0) > 0 or float(tape_data.get('rvol', 0) or 0) >= float(config.get('tape', {}).get('dead_rvol_floor', 15.0))
-                has_momentum = has_price_move and has_volume_confirm
+                has_momentum = (
+                    float(tape_data.get('price_velocity_pct', 0) or 0) > 0 or
+                    float(tape_data.get('volume_acceleration', 0) or 0) > 0 or
+                    int(tape_data.get('large_bar_count', 0) or 0) > 0 or
+                    float(tape_data.get('rvol', 0) or 0) >= float(config.get('tape', {}).get('dead_rvol_floor', 15.0))
+                )
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
                 if not has_momentum and not has_fresh_news:
                     logger.info("Dropping dead candidate %s: no live tape momentum or fresh news", ticker)
