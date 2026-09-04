@@ -1,14 +1,567 @@
 {
-  "last_updated": "2026-09-04T21:01:39.974363Z",
+  "last_updated": "2026-09-04T21:16:42.420193Z",
   "scan_results": [
+    {
+      "ticker": "ATER",
+      "name": "Aterian Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.723,
+      "change_pct": 15.513660329126052,
+      "volume": 46623538,
+      "market_cap": 11245488.97,
+      "float_shares": 15381182,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "S-3 (Jul 20), 8-K (Jul 20), 8-K (Jul 10)",
+      "result": "+15.5% \u00b7 Entry $0.72 \u00b7 T1 $0.75 \u00b7 T2 $0.77 \u00b7 T3 $0.80",
+      "plan": {
+        "valid": true,
+        "ticker": "ATER",
+        "entry": 0.723,
+        "stop": 0.7085,
+        "targets": {
+          "t1": 0.752,
+          "t2": 0.7665,
+          "t3": 0.7955
+        },
+        "risk_per_share": 0.0145,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 414,
+        "position_value": 299.32,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.7085"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "ATER",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T17:06:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:41:28.944+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T17:06:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:41:28.944+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "ATER",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 45.66,
+        "volume_indicator": "high",
+        "volume": 46623538,
+        "adv": 1020993,
+        "recent_pct_of_adv": 4566.49,
+        "volume_acceleration": -0.959,
+        "price_velocity_pct": 3.723,
+        "buy_pressure_pct": 50.42,
+        "large_bar_count": 189,
+        "vwap_distance_pct": 22.255,
+        "recent_volume": 46623538,
+        "prior_volume": 0,
+        "median_range": 0.005,
+        "last_price": 0.6259,
+        "vwap": 0.8050705607128295,
+        "last_trade_time": "2026-09-04T21:14:26.065000+00:00",
+        "stale_age_seconds": 132
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 0.688
+    },
+    {
+      "ticker": "IPEX",
+      "name": "Inflection Point Acquisition Corp",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 9.25,
+      "change_pct": 19.35483870967742,
+      "volume": 262836,
+      "market_cap": 34361678.75,
+      "float_shares": 1290015,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 03), 8-K (Aug 31), 8-K (Aug 31)",
+      "result": "+19.4% \u00b7 Entry $9.25 \u00b7 T1 $9.62 \u00b7 T2 $9.80 \u00b7 T3 $10.18",
+      "plan": {
+        "valid": true,
+        "ticker": "IPEX",
+        "entry": 9.25,
+        "stop": 9.065,
+        "targets": {
+          "t1": 9.62,
+          "t2": 9.805,
+          "t3": 10.175
+        },
+        "risk_per_share": 0.185,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 32,
+        "position_value": 296.0,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$9.065"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "IPEX",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T16:05:40.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T15:55:21.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Shareholders Approve GOWell Merger",
+            "source": "Webull",
+            "time": "22h ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T22:29:39.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T20:00:16.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T19:55:18.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Lifts Sponsor Share Lock-Ups",
+            "source": "Webull",
+            "time": "3d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T21:47:32.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Extends Redemption Deadline",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T13:52:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T16:05:40.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T15:55:21.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Shareholders Approve GOWell Merger",
+            "source": "Webull",
+            "time": "22h ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T22:29:39.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T20:00:16.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T19:55:18.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Lifts Sponsor Share Lock-Ups",
+            "source": "Webull",
+            "time": "3d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T21:47:32.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Extends Redemption Deadline",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T13:52:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 5.0,
+        "catalyst_confirmed": true,
+        "high_impact_count": 7,
+        "top_headline": "Inflection Point Acquisition Corp V trading resumes",
+        "news_filter_reason": "catalyst confirmed (7 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "IPEX",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 10.26,
+        "volume_indicator": "high",
+        "volume": 262836,
+        "adv": 25615,
+        "recent_pct_of_adv": 1026.1,
+        "volume_acceleration": -0.765,
+        "price_velocity_pct": 4.167,
+        "buy_pressure_pct": 47.01,
+        "large_bar_count": 64,
+        "vwap_distance_pct": 13.742,
+        "recent_volume": 262836,
+        "prior_volume": 0,
+        "median_range": 0.0234,
+        "last_price": 7.75,
+        "vwap": 8.98465438387026,
+        "last_trade_time": "2026-09-04T21:14:27.814000+00:00",
+        "stale_age_seconds": 130
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 9.4
+    },
+    {
+      "ticker": "AKAN",
+      "name": "AKANDA CORP",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 3.66,
+      "change_pct": 9.253731343283583,
+      "volume": 21520310,
+      "market_cap": 1811817.35,
+      "float_shares": 537667,
+      "country": "United Kingdom",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+9.3% \u00b7 Entry $3.66 \u00b7 T1 $3.81 \u00b7 T2 $3.88 \u00b7 T3 $4.03",
+      "plan": {
+        "valid": true,
+        "ticker": "AKAN",
+        "entry": 3.66,
+        "stop": 3.5868,
+        "targets": {
+          "t1": 3.8064,
+          "t2": 3.8796,
+          "t3": 4.026
+        },
+        "risk_per_share": 0.0732,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 81,
+        "position_value": 296.46,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.5868"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "AKAN",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+            "source": "Webull",
+            "time": "6h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T14:57:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "9h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T12:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T08:39:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T14:15:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:11:13.251+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+            "source": "Webull",
+            "time": "6h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T14:57:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "9h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T12:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T08:39:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T14:15:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:11:13.251+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "AKAN",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 20.54,
+        "volume_indicator": "high",
+        "volume": 21520310,
+        "adv": 1047847,
+        "recent_pct_of_adv": 2053.76,
+        "volume_acceleration": -0.822,
+        "price_velocity_pct": 11.842,
+        "buy_pressure_pct": 48.81,
+        "large_bar_count": 179,
+        "vwap_distance_pct": 21.032,
+        "recent_volume": 21520310,
+        "prior_volume": 0,
+        "median_range": 0.0329,
+        "last_price": 3.35,
+        "vwap": 4.24223562401906,
+        "last_trade_time": "2026-09-04T21:14:27.464000+00:00",
+        "stale_age_seconds": 130
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 3.6
+    },
     {
       "ticker": "CMND",
       "name": "Clearmind Medici",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.27,
-      "change_pct": 9.482758620689664,
-      "volume": 15362968,
+      "price": 1.26,
+      "change_pct": 8.620689655172423,
+      "volume": 15371135,
       "market_cap": 1723239.16,
       "float_shares": 1484176,
       "country": "Canada",
@@ -17,23 +570,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+9.5% \u00b7 Entry $1.27 \u00b7 T1 $1.32 \u00b7 T2 $1.35 \u00b7 T3 $1.40",
+      "result": "+8.6% \u00b7 Entry $1.26 \u00b7 T1 $1.31 \u00b7 T2 $1.34 \u00b7 T3 $1.39",
       "plan": {
         "valid": true,
         "ticker": "CMND",
-        "entry": 1.27,
-        "stop": 1.2446,
+        "entry": 1.26,
+        "stop": 1.2348,
         "targets": {
-          "t1": 1.3208,
-          "t2": 1.3462,
-          "t3": 1.397
+          "t1": 1.3104,
+          "t2": 1.3356,
+          "t3": 1.386
         },
-        "risk_per_share": 0.0254,
+        "risk_per_share": 0.0252,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 236,
-        "position_value": 299.72,
+        "shares": 238,
+        "position_value": 299.88,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +594,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.2446"
+          "hard_stop": "$1.2348"
         }
       },
       "ta": {
@@ -239,164 +792,37 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 11.14,
+        "rvol": 11.15,
         "volume_indicator": "high",
-        "volume": 15362968,
+        "volume": 15371135,
         "adv": 1379182,
-        "recent_pct_of_adv": 1113.92,
+        "recent_pct_of_adv": 1114.51,
         "volume_acceleration": -0.924,
-        "price_velocity_pct": 9.728,
-        "buy_pressure_pct": 52.29,
-        "large_bar_count": 114,
+        "price_velocity_pct": 9.375,
+        "buy_pressure_pct": 52.67,
+        "large_bar_count": 116,
         "vwap_distance_pct": 22.791,
-        "recent_volume": 15362968,
+        "recent_volume": 15371135,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 1.16,
-        "vwap": 1.502405896043492,
-        "last_trade_time": "2026-09-04T20:59:26.397000+00:00",
-        "stale_age_seconds": 129
+        "vwap": 1.5024058960434918,
+        "last_trade_time": "2026-09-04T21:14:24.608000+00:00",
+        "stale_age_seconds": 133
       },
       "date": "2026-09-05",
-      "time": "07:01:37",
+      "time": "07:16:39",
       "skip_news_check": true,
-      "previous_price": 1.237
-    },
-    {
-      "ticker": "ATER",
-      "name": "Aterian Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.68,
-      "change_pct": 8.643553283272094,
-      "volume": 46039679,
-      "market_cap": 11245488.97,
-      "float_shares": 15381182,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "S-3 (Jul 20), 8-K (Jul 20), 8-K (Jul 10)",
-      "result": "+8.6% \u00b7 Entry $0.68 \u00b7 T1 $0.71 \u00b7 T2 $0.72 \u00b7 T3 $0.75",
-      "plan": {
-        "valid": true,
-        "ticker": "ATER",
-        "entry": 0.68,
-        "stop": 0.6664,
-        "targets": {
-          "t1": 0.7072,
-          "t2": 0.7208,
-          "t3": 0.748
-        },
-        "risk_per_share": 0.0136,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 441,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6664"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "ATER",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 03 Sep",
-            "raw_time": "2026-09-03T17:06:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:41:28.944+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 03 Sep",
-            "raw_time": "2026-09-03T17:06:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:41:28.944+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "ATER",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 45.09,
-        "volume_indicator": "high",
-        "volume": 46039679,
-        "adv": 1020993,
-        "recent_pct_of_adv": 4509.3,
-        "volume_acceleration": -0.957,
-        "price_velocity_pct": 4.047,
-        "buy_pressure_pct": 50.1,
-        "large_bar_count": 182,
-        "vwap_distance_pct": 22.255,
-        "recent_volume": 46039679,
-        "prior_volume": 0,
-        "median_range": 0.005,
-        "last_price": 0.6259,
-        "vwap": 0.8050705607128295,
-        "last_trade_time": "2026-09-04T20:59:20.591000+00:00",
-        "stale_age_seconds": 135
-      },
-      "date": "2026-09-05",
-      "time": "07:01:37",
-      "skip_news_check": true,
-      "previous_price": 0.667
+      "previous_price": 1.26
     },
     {
       "ticker": "CDTG",
       "name": "CDT Environmental Technology Investment Holdings Ltd",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.42,
-      "change_pct": 7.575757575757565,
-      "volume": 85693681,
+      "price": 1.44,
+      "change_pct": 9.090909090909081,
+      "volume": 86043457,
       "market_cap": 3987755.64,
       "float_shares": 2838045,
       "country": "China / Cayman-China",
@@ -405,23 +831,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+7.6% \u00b7 Entry $1.42 \u00b7 T1 $1.48 \u00b7 T2 $1.51 \u00b7 T3 $1.56",
+      "result": "+9.1% \u00b7 Entry $1.44 \u00b7 T1 $1.50 \u00b7 T2 $1.53 \u00b7 T3 $1.58",
       "plan": {
         "valid": true,
         "ticker": "CDTG",
-        "entry": 1.42,
-        "stop": 1.3916,
+        "entry": 1.44,
+        "stop": 1.4112,
         "targets": {
-          "t1": 1.4768,
-          "t2": 1.5052,
-          "t3": 1.562
+          "t1": 1.4976,
+          "t2": 1.5264,
+          "t3": 1.584
         },
-        "risk_per_share": 0.0284,
+        "risk_per_share": 0.0288,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 211,
-        "position_value": 299.62,
+        "shares": 208,
+        "position_value": 299.52,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -429,7 +855,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.3916"
+          "hard_stop": "$1.4112"
         }
       },
       "ta": {
@@ -443,7 +869,7 @@
           {
             "title": "Dow Falls Over 100 Points; US Economy Adds 162,000 Jobs In August",
             "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
+            "time": "7h ago \u00b7 04 Sep",
             "raw_time": "2026-09-04T14:07:18.000+0000",
             "url": "",
             "score": 0,
@@ -463,7 +889,7 @@
           {
             "title": "Dow Falls Over 100 Points; US Economy Adds 162,000 Jobs In August",
             "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
+            "time": "7h ago \u00b7 04 Sep",
             "raw_time": "2026-09-04T14:07:18.000+0000",
             "url": "",
             "score": 0,
@@ -493,220 +919,592 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 21.31,
+        "rvol": 21.4,
         "volume_indicator": "high",
-        "volume": 85693681,
+        "volume": 86043457,
         "adv": 4020795,
-        "recent_pct_of_adv": 2131.26,
-        "volume_acceleration": -0.867,
-        "price_velocity_pct": 3.109,
-        "buy_pressure_pct": 50.34,
-        "large_bar_count": 116,
+        "recent_pct_of_adv": 2139.96,
+        "volume_acceleration": -0.876,
+        "price_velocity_pct": 2.724,
+        "buy_pressure_pct": 50.68,
+        "large_bar_count": 117,
         "vwap_distance_pct": 2.002,
-        "recent_volume": 85693681,
+        "recent_volume": 86043457,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.32,
         "vwap": 1.3469671069220108,
-        "last_trade_time": "2026-09-04T20:59:26.424000+00:00",
-        "stale_age_seconds": 129
+        "last_trade_time": "2026-09-04T21:14:27.679000+00:00",
+        "stale_age_seconds": 131
       },
       "date": "2026-09-05",
-      "time": "07:01:37",
+      "time": "07:16:40",
       "skip_news_check": true,
-      "previous_price": 1.39
-    },
-    {
-      "ticker": "AKAN",
-      "name": "AKANDA CORP",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 3.596,
-      "change_pct": 7.343283582089552,
-      "volume": 21453456,
-      "market_cap": 1811817.35,
-      "float_shares": 537667,
-      "country": "United Kingdom",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+7.3% \u00b7 Entry $3.60 \u00b7 T1 $3.74 \u00b7 T2 $3.81 \u00b7 T3 $3.96",
-      "plan": {
-        "valid": true,
-        "ticker": "AKAN",
-        "entry": 3.596,
-        "stop": 3.5241,
-        "targets": {
-          "t1": 3.7398,
-          "t2": 3.8117,
-          "t3": 3.9555
-        },
-        "risk_per_share": 0.0719,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 83,
-        "position_value": 298.47,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$3.5241"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "AKAN",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-            "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T14:57:43.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
-            "source": "Webull",
-            "time": "8h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T12:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T08:39:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
-            "source": "Webull",
-            "time": "2d ago \u00b7 02 Sep",
-            "raw_time": "2026-09-02T14:15:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:11:13.251+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-            "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T14:57:43.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
-            "source": "Webull",
-            "time": "8h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T12:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T08:39:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
-            "source": "Webull",
-            "time": "2d ago \u00b7 02 Sep",
-            "raw_time": "2026-09-02T14:15:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:11:13.251+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "AKAN",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 20.47,
-        "volume_indicator": "high",
-        "volume": 21453456,
-        "adv": 1047847,
-        "recent_pct_of_adv": 2047.38,
-        "volume_acceleration": -0.814,
-        "price_velocity_pct": 12.533,
-        "buy_pressure_pct": 48.89,
-        "large_bar_count": 178,
-        "vwap_distance_pct": 21.032,
-        "recent_volume": 21453456,
-        "prior_volume": 0,
-        "median_range": 0.03,
-        "last_price": 3.35,
-        "vwap": 4.242235624019061,
-        "last_trade_time": "2026-09-04T20:59:21.223000+00:00",
-        "stale_age_seconds": 135
-      },
-      "date": "2026-09-05",
-      "time": "07:01:37",
-      "skip_news_check": true,
-      "previous_price": 3.6
+      "previous_price": 1.41
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "ATER",
+      "name": "Aterian Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.723,
+      "change_pct": 15.513660329126052,
+      "volume": 46623538,
+      "market_cap": 11245488.97,
+      "float_shares": 15381182,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "S-3 (Jul 20), 8-K (Jul 20), 8-K (Jul 10)",
+      "result": "+15.5% \u00b7 Entry $0.72 \u00b7 T1 $0.75 \u00b7 T2 $0.77 \u00b7 T3 $0.80",
+      "plan": {
+        "valid": true,
+        "ticker": "ATER",
+        "entry": 0.723,
+        "stop": 0.7085,
+        "targets": {
+          "t1": 0.752,
+          "t2": 0.7665,
+          "t3": 0.7955
+        },
+        "risk_per_share": 0.0145,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 414,
+        "position_value": 299.32,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.7085"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "ATER",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T17:06:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:41:28.944+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T17:06:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:41:28.944+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "ATER",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 45.66,
+        "volume_indicator": "high",
+        "volume": 46623538,
+        "adv": 1020993,
+        "recent_pct_of_adv": 4566.49,
+        "volume_acceleration": -0.959,
+        "price_velocity_pct": 3.723,
+        "buy_pressure_pct": 50.42,
+        "large_bar_count": 189,
+        "vwap_distance_pct": 22.255,
+        "recent_volume": 46623538,
+        "prior_volume": 0,
+        "median_range": 0.005,
+        "last_price": 0.6259,
+        "vwap": 0.8050705607128295,
+        "last_trade_time": "2026-09-04T21:14:26.065000+00:00",
+        "stale_age_seconds": 132
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 0.688
+    },
+    {
+      "ticker": "IPEX",
+      "name": "Inflection Point Acquisition Corp",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 9.25,
+      "change_pct": 19.35483870967742,
+      "volume": 262836,
+      "market_cap": 34361678.75,
+      "float_shares": 1290015,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 03), 8-K (Aug 31), 8-K (Aug 31)",
+      "result": "+19.4% \u00b7 Entry $9.25 \u00b7 T1 $9.62 \u00b7 T2 $9.80 \u00b7 T3 $10.18",
+      "plan": {
+        "valid": true,
+        "ticker": "IPEX",
+        "entry": 9.25,
+        "stop": 9.065,
+        "targets": {
+          "t1": 9.62,
+          "t2": 9.805,
+          "t3": 10.175
+        },
+        "risk_per_share": 0.185,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 32,
+        "position_value": 296.0,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$9.065"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "IPEX",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T16:05:40.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T15:55:21.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Shareholders Approve GOWell Merger",
+            "source": "Webull",
+            "time": "22h ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T22:29:39.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T20:00:16.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T19:55:18.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Lifts Sponsor Share Lock-Ups",
+            "source": "Webull",
+            "time": "3d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T21:47:32.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Extends Redemption Deadline",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T13:52:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T16:05:40.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "5h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T15:55:21.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Shareholders Approve GOWell Merger",
+            "source": "Webull",
+            "time": "22h ago \u00b7 03 Sep",
+            "raw_time": "2026-09-03T22:29:39.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading resumes",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T20:00:16.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition Corp V trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T19:55:18.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Lifts Sponsor Share Lock-Ups",
+            "source": "Webull",
+            "time": "3d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T21:47:32.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Inflection Point Acquisition V Extends Redemption Deadline",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T13:52:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 5.0,
+        "catalyst_confirmed": true,
+        "high_impact_count": 7,
+        "top_headline": "Inflection Point Acquisition Corp V trading resumes",
+        "news_filter_reason": "catalyst confirmed (7 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "IPEX",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 10.26,
+        "volume_indicator": "high",
+        "volume": 262836,
+        "adv": 25615,
+        "recent_pct_of_adv": 1026.1,
+        "volume_acceleration": -0.765,
+        "price_velocity_pct": 4.167,
+        "buy_pressure_pct": 47.01,
+        "large_bar_count": 64,
+        "vwap_distance_pct": 13.742,
+        "recent_volume": 262836,
+        "prior_volume": 0,
+        "median_range": 0.0234,
+        "last_price": 7.75,
+        "vwap": 8.98465438387026,
+        "last_trade_time": "2026-09-04T21:14:27.814000+00:00",
+        "stale_age_seconds": 130
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 9.4
+    },
+    {
+      "ticker": "AKAN",
+      "name": "AKANDA CORP",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 3.66,
+      "change_pct": 9.253731343283583,
+      "volume": 21520310,
+      "market_cap": 1811817.35,
+      "float_shares": 537667,
+      "country": "United Kingdom",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+9.3% \u00b7 Entry $3.66 \u00b7 T1 $3.81 \u00b7 T2 $3.88 \u00b7 T3 $4.03",
+      "plan": {
+        "valid": true,
+        "ticker": "AKAN",
+        "entry": 3.66,
+        "stop": 3.5868,
+        "targets": {
+          "t1": 3.8064,
+          "t2": 3.8796,
+          "t3": 4.026
+        },
+        "risk_per_share": 0.0732,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 81,
+        "position_value": 296.46,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.5868"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "AKAN",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+            "source": "Webull",
+            "time": "6h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T14:57:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "9h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T12:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T08:39:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T14:15:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:11:13.251+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+            "source": "Webull",
+            "time": "6h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T14:57:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
+            "source": "Webull",
+            "time": "9h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T12:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 04 Sep",
+            "raw_time": "2026-09-04T08:39:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
+            "source": "Webull",
+            "time": "2d ago \u00b7 02 Sep",
+            "raw_time": "2026-09-02T14:15:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 31 Aug",
+            "raw_time": "2026-08-31T09:11:13.251+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "AKAN",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 20.54,
+        "volume_indicator": "high",
+        "volume": 21520310,
+        "adv": 1047847,
+        "recent_pct_of_adv": 2053.76,
+        "volume_acceleration": -0.822,
+        "price_velocity_pct": 11.842,
+        "buy_pressure_pct": 48.81,
+        "large_bar_count": 179,
+        "vwap_distance_pct": 21.032,
+        "recent_volume": 21520310,
+        "prior_volume": 0,
+        "median_range": 0.0329,
+        "last_price": 3.35,
+        "vwap": 4.24223562401906,
+        "last_trade_time": "2026-09-04T21:14:27.464000+00:00",
+        "stale_age_seconds": 130
+      },
+      "date": "2026-09-05",
+      "time": "07:16:39",
+      "skip_news_check": true,
+      "previous_price": 3.6
+    },
+    {
       "ticker": "CMND",
       "name": "Clearmind Medici",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.27,
-      "change_pct": 9.482758620689664,
-      "volume": 15362968,
+      "price": 1.26,
+      "change_pct": 8.620689655172423,
+      "volume": 15371135,
       "market_cap": 1723239.16,
       "float_shares": 1484176,
       "country": "Canada",
@@ -715,23 +1513,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+9.5% \u00b7 Entry $1.27 \u00b7 T1 $1.32 \u00b7 T2 $1.35 \u00b7 T3 $1.40",
+      "result": "+8.6% \u00b7 Entry $1.26 \u00b7 T1 $1.31 \u00b7 T2 $1.34 \u00b7 T3 $1.39",
       "plan": {
         "valid": true,
         "ticker": "CMND",
-        "entry": 1.27,
-        "stop": 1.2446,
+        "entry": 1.26,
+        "stop": 1.2348,
         "targets": {
-          "t1": 1.3208,
-          "t2": 1.3462,
-          "t3": 1.397
+          "t1": 1.3104,
+          "t2": 1.3356,
+          "t3": 1.386
         },
-        "risk_per_share": 0.0254,
+        "risk_per_share": 0.0252,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 236,
-        "position_value": 299.72,
+        "shares": 238,
+        "position_value": 299.88,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -739,7 +1537,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.2446"
+          "hard_stop": "$1.2348"
         }
       },
       "ta": {
@@ -937,164 +1735,37 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 11.14,
+        "rvol": 11.15,
         "volume_indicator": "high",
-        "volume": 15362968,
+        "volume": 15371135,
         "adv": 1379182,
-        "recent_pct_of_adv": 1113.92,
+        "recent_pct_of_adv": 1114.51,
         "volume_acceleration": -0.924,
-        "price_velocity_pct": 9.728,
-        "buy_pressure_pct": 52.29,
-        "large_bar_count": 114,
+        "price_velocity_pct": 9.375,
+        "buy_pressure_pct": 52.67,
+        "large_bar_count": 116,
         "vwap_distance_pct": 22.791,
-        "recent_volume": 15362968,
+        "recent_volume": 15371135,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 1.16,
-        "vwap": 1.502405896043492,
-        "last_trade_time": "2026-09-04T20:59:26.397000+00:00",
-        "stale_age_seconds": 129
+        "vwap": 1.5024058960434918,
+        "last_trade_time": "2026-09-04T21:14:24.608000+00:00",
+        "stale_age_seconds": 133
       },
       "date": "2026-09-05",
-      "time": "07:01:37",
+      "time": "07:16:39",
       "skip_news_check": true,
-      "previous_price": 1.237
-    },
-    {
-      "ticker": "ATER",
-      "name": "Aterian Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.68,
-      "change_pct": 8.643553283272094,
-      "volume": 46039679,
-      "market_cap": 11245488.97,
-      "float_shares": 15381182,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "S-3 (Jul 20), 8-K (Jul 20), 8-K (Jul 10)",
-      "result": "+8.6% \u00b7 Entry $0.68 \u00b7 T1 $0.71 \u00b7 T2 $0.72 \u00b7 T3 $0.75",
-      "plan": {
-        "valid": true,
-        "ticker": "ATER",
-        "entry": 0.68,
-        "stop": 0.6664,
-        "targets": {
-          "t1": 0.7072,
-          "t2": 0.7208,
-          "t3": 0.748
-        },
-        "risk_per_share": 0.0136,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 441,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6664"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "ATER",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 03 Sep",
-            "raw_time": "2026-09-03T17:06:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:41:28.944+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 03 Sep",
-            "raw_time": "2026-09-03T17:06:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:41:28.944+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "ATER",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 45.09,
-        "volume_indicator": "high",
-        "volume": 46039679,
-        "adv": 1020993,
-        "recent_pct_of_adv": 4509.3,
-        "volume_acceleration": -0.957,
-        "price_velocity_pct": 4.047,
-        "buy_pressure_pct": 50.1,
-        "large_bar_count": 182,
-        "vwap_distance_pct": 22.255,
-        "recent_volume": 46039679,
-        "prior_volume": 0,
-        "median_range": 0.005,
-        "last_price": 0.6259,
-        "vwap": 0.8050705607128295,
-        "last_trade_time": "2026-09-04T20:59:20.591000+00:00",
-        "stale_age_seconds": 135
-      },
-      "date": "2026-09-05",
-      "time": "07:01:37",
-      "skip_news_check": true,
-      "previous_price": 0.667
+      "previous_price": 1.26
     },
     {
       "ticker": "CDTG",
       "name": "CDT Environmental Technology Investment Holdings Ltd",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.42,
-      "change_pct": 7.575757575757565,
-      "volume": 85693681,
+      "price": 1.44,
+      "change_pct": 9.090909090909081,
+      "volume": 86043457,
       "market_cap": 3987755.64,
       "float_shares": 2838045,
       "country": "China / Cayman-China",
@@ -1103,23 +1774,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+7.6% \u00b7 Entry $1.42 \u00b7 T1 $1.48 \u00b7 T2 $1.51 \u00b7 T3 $1.56",
+      "result": "+9.1% \u00b7 Entry $1.44 \u00b7 T1 $1.50 \u00b7 T2 $1.53 \u00b7 T3 $1.58",
       "plan": {
         "valid": true,
         "ticker": "CDTG",
-        "entry": 1.42,
-        "stop": 1.3916,
+        "entry": 1.44,
+        "stop": 1.4112,
         "targets": {
-          "t1": 1.4768,
-          "t2": 1.5052,
-          "t3": 1.562
+          "t1": 1.4976,
+          "t2": 1.5264,
+          "t3": 1.584
         },
-        "risk_per_share": 0.0284,
+        "risk_per_share": 0.0288,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 211,
-        "position_value": 299.62,
+        "shares": 208,
+        "position_value": 299.52,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1127,7 +1798,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.3916"
+          "hard_stop": "$1.4112"
         }
       },
       "ta": {
@@ -1141,7 +1812,7 @@
           {
             "title": "Dow Falls Over 100 Points; US Economy Adds 162,000 Jobs In August",
             "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
+            "time": "7h ago \u00b7 04 Sep",
             "raw_time": "2026-09-04T14:07:18.000+0000",
             "url": "",
             "score": 0,
@@ -1161,7 +1832,7 @@
           {
             "title": "Dow Falls Over 100 Points; US Economy Adds 162,000 Jobs In August",
             "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
+            "time": "7h ago \u00b7 04 Sep",
             "raw_time": "2026-09-04T14:07:18.000+0000",
             "url": "",
             "score": 0,
@@ -1191,247 +1862,66 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 21.31,
+        "rvol": 21.4,
         "volume_indicator": "high",
-        "volume": 85693681,
+        "volume": 86043457,
         "adv": 4020795,
-        "recent_pct_of_adv": 2131.26,
-        "volume_acceleration": -0.867,
-        "price_velocity_pct": 3.109,
-        "buy_pressure_pct": 50.34,
-        "large_bar_count": 116,
+        "recent_pct_of_adv": 2139.96,
+        "volume_acceleration": -0.876,
+        "price_velocity_pct": 2.724,
+        "buy_pressure_pct": 50.68,
+        "large_bar_count": 117,
         "vwap_distance_pct": 2.002,
-        "recent_volume": 85693681,
+        "recent_volume": 86043457,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.32,
         "vwap": 1.3469671069220108,
-        "last_trade_time": "2026-09-04T20:59:26.424000+00:00",
-        "stale_age_seconds": 129
+        "last_trade_time": "2026-09-04T21:14:27.679000+00:00",
+        "stale_age_seconds": 131
       },
       "date": "2026-09-05",
-      "time": "07:01:37",
+      "time": "07:16:40",
       "skip_news_check": true,
-      "previous_price": 1.39
-    },
-    {
-      "ticker": "AKAN",
-      "name": "AKANDA CORP",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 3.596,
-      "change_pct": 7.343283582089552,
-      "volume": 21453456,
-      "market_cap": 1811817.35,
-      "float_shares": 537667,
-      "country": "United Kingdom",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+7.3% \u00b7 Entry $3.60 \u00b7 T1 $3.74 \u00b7 T2 $3.81 \u00b7 T3 $3.96",
-      "plan": {
-        "valid": true,
-        "ticker": "AKAN",
-        "entry": 3.596,
-        "stop": 3.5241,
-        "targets": {
-          "t1": 3.7398,
-          "t2": 3.8117,
-          "t3": 3.9555
-        },
-        "risk_per_share": 0.0719,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 83,
-        "position_value": 298.47,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$3.5241"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "AKAN",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-            "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T14:57:43.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
-            "source": "Webull",
-            "time": "8h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T12:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T08:39:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
-            "source": "Webull",
-            "time": "2d ago \u00b7 02 Sep",
-            "raw_time": "2026-09-02T14:15:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:11:13.251+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-            "source": "Webull",
-            "time": "6h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T14:57:43.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's Pre-Market Session",
-            "source": "Webull",
-            "time": "8h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T12:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Samsara Shares Are Trading Higher By Around 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 04 Sep",
-            "raw_time": "2026-09-04T08:39:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Short Interest Alert: Most and least shorted sub-$2B healthcare stocks in Aug 2026",
-            "source": "Webull",
-            "time": "2d ago \u00b7 02 Sep",
-            "raw_time": "2026-09-02T14:15:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AKAN last week (0824-0828)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 31 Aug",
-            "raw_time": "2026-08-31T09:11:13.251+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Akanda Corp. Subsidiary First Towers & Fiber Turns Mexican Fiber Build Into Cash Flow",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "AKAN",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 20.47,
-        "volume_indicator": "high",
-        "volume": 21453456,
-        "adv": 1047847,
-        "recent_pct_of_adv": 2047.38,
-        "volume_acceleration": -0.814,
-        "price_velocity_pct": 12.533,
-        "buy_pressure_pct": 48.89,
-        "large_bar_count": 178,
-        "vwap_distance_pct": 21.032,
-        "recent_volume": 21453456,
-        "prior_volume": 0,
-        "median_range": 0.03,
-        "last_price": 3.35,
-        "vwap": 4.242235624019061,
-        "last_trade_time": "2026-09-04T20:59:21.223000+00:00",
-        "stale_age_seconds": 135
-      },
-      "date": "2026-09-05",
-      "time": "07:01:37",
-      "skip_news_check": true,
-      "previous_price": 3.6
+      "previous_price": 1.41
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "CMND",
-    "name": "Clearmind Medici",
+    "ticker": "ATER",
+    "name": "Aterian Inc",
     "status": "ALERT",
     "source": "regular",
-    "price": 1.27,
-    "change_pct": 9.482758620689664,
-    "volume": 15362968,
-    "market_cap": 1723239.16,
-    "float_shares": 1484176,
-    "country": "Canada",
+    "price": 0.723,
+    "change_pct": 15.513660329126052,
+    "volume": 46623538,
+    "market_cap": 11245488.97,
+    "float_shares": 15381182,
+    "country": "United States",
     "cap_size": "nano-cap",
-    "is_penny_stock": false,
+    "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+9.5% \u00b7 Entry $1.27 \u00b7 T1 $1.32 \u00b7 T2 $1.35 \u00b7 T3 $1.40",
+    "sec_filings": "S-3 (Jul 20), 8-K (Jul 20), 8-K (Jul 10)",
+    "result": "+15.5% \u00b7 Entry $0.72 \u00b7 T1 $0.75 \u00b7 T2 $0.77 \u00b7 T3 $0.80",
     "plan": {
       "valid": true,
-      "ticker": "CMND",
-      "entry": 1.27,
-      "stop": 1.2446,
+      "ticker": "ATER",
+      "entry": 0.723,
+      "stop": 0.7085,
       "targets": {
-        "t1": 1.3208,
-        "t2": 1.3462,
-        "t3": 1.397
+        "t1": 0.752,
+        "t2": 0.7665,
+        "t3": 0.7955
       },
-      "risk_per_share": 0.0254,
+      "risk_per_share": 0.0145,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 236,
-      "position_value": 299.72,
+      "shares": 414,
+      "position_value": 299.32,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1439,7 +1929,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.2446"
+        "hard_stop": "$0.7085"
       }
     },
     "ta": {
@@ -1447,90 +1937,23 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "CMND",
+      "ticker": "ATER",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Clearmind Medicine to acquire 51% stake in Charging Robotics",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T12:00:19.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Clearmind Medicine signs agreement to acquire 51% stake in Charging Robotics",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T11:39:51.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Clearmind Medicine Stock Slides Friday: What's Happening?",
-          "source": "Webull",
-          "time": "8h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T12:59:42.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Clearmind Medicine Signs Definitive Agreement to Acquire 51% Stake in Wireless Charging Co for Automated Parking and Robotaxis",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T11:32:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Psychedelic: Clearmind initiates Phase IIa of CMND-100 trial",
+          "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
           "source": "Webull",
           "time": "1d ago \u00b7 03 Sep",
-          "raw_time": "2026-09-03T14:05:29.000+0000",
+          "raw_time": "2026-09-03T17:06:08.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "Clearmind Advances CMND-100 Into Phase 2a Trial For Alcohol Use Disorder; Stock Down",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T13:29:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Clearmind Medicine initiates next stage of CMND-100 trial for treatment of AUD",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T11:46:18.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Clearmind Medicine Initiates Phase lla, Double-Blind, Placebo-Controlled Phase I/IIa Clinical Trial Evaluating CMND-100 For Treatment Of AUD",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T11:38:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at CMND last week (0824-0828)?",
+          "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
           "source": "Webull",
           "time": "4d ago \u00b7 31 Aug",
-          "raw_time": "2026-08-31T09:34:01.699+0000",
+          "raw_time": "2026-08-31T09:41:28.944+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1538,138 +1961,71 @@
       ],
       "headlines": [
         {
-          "title": "Clearmind Medicine to acquire 51% stake in Charging Robotics",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T12:00:19.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Clearmind Medicine signs agreement to acquire 51% stake in Charging Robotics",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T11:39:51.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Clearmind Medicine Stock Slides Friday: What's Happening?",
-          "source": "Webull",
-          "time": "8h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T12:59:42.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Clearmind Medicine Signs Definitive Agreement to Acquire 51% Stake in Wireless Charging Co for Automated Parking and Robotaxis",
-          "source": "Webull",
-          "time": "9h ago \u00b7 04 Sep",
-          "raw_time": "2026-09-04T11:32:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Psychedelic: Clearmind initiates Phase IIa of CMND-100 trial",
+          "title": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
           "source": "Webull",
           "time": "1d ago \u00b7 03 Sep",
-          "raw_time": "2026-09-03T14:05:29.000+0000",
+          "raw_time": "2026-09-03T17:06:08.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "Clearmind Advances CMND-100 Into Phase 2a Trial For Alcohol Use Disorder; Stock Down",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T13:29:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Clearmind Medicine initiates next stage of CMND-100 trial for treatment of AUD",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T11:46:18.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Clearmind Medicine Initiates Phase lla, Double-Blind, Placebo-Controlled Phase I/IIa Clinical Trial Evaluating CMND-100 For Treatment Of AUD",
-          "source": "Webull",
-          "time": "3d ago \u00b7 01 Sep",
-          "raw_time": "2026-09-01T11:38:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at CMND last week (0824-0828)?",
+          "title": "Weekly Report: what happened at ATER last week (0824-0828)?",
           "source": "Webull",
           "time": "4d ago \u00b7 31 Aug",
-          "raw_time": "2026-08-31T09:34:01.699+0000",
+          "raw_time": "2026-08-31T09:41:28.944+0000",
           "url": "",
           "score": 0,
           "keywords": []
         }
       ],
       "red_flags": [],
-      "max_score": 3,
-      "avg_score": 0.7,
-      "catalyst_confirmed": true,
-      "high_impact_count": 2,
-      "top_headline": "Clearmind Medicine to acquire 51% stake in Charging Robotics",
-      "news_filter_reason": "catalyst confirmed (2 items, score \u22653)"
+      "max_score": 0,
+      "avg_score": 0.0,
+      "catalyst_confirmed": false,
+      "high_impact_count": 0,
+      "top_headline": "12 Consumer Discretionary Stocks Moving In Thursday's Intraday Session",
+      "news_filter_reason": "low catalyst score (max 0/5)"
     },
     "tape": {
-      "ticker": "CMND",
+      "ticker": "ATER",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 11.14,
+      "rvol": 45.66,
       "volume_indicator": "high",
-      "volume": 15362968,
-      "adv": 1379182,
-      "recent_pct_of_adv": 1113.92,
-      "volume_acceleration": -0.924,
-      "price_velocity_pct": 9.728,
-      "buy_pressure_pct": 52.29,
-      "large_bar_count": 114,
-      "vwap_distance_pct": 22.791,
-      "recent_volume": 15362968,
+      "volume": 46623538,
+      "adv": 1020993,
+      "recent_pct_of_adv": 4566.49,
+      "volume_acceleration": -0.959,
+      "price_velocity_pct": 3.723,
+      "buy_pressure_pct": 50.42,
+      "large_bar_count": 189,
+      "vwap_distance_pct": 22.255,
+      "recent_volume": 46623538,
       "prior_volume": 0,
-      "median_range": 0.01,
-      "last_price": 1.16,
-      "vwap": 1.502405896043492,
-      "last_trade_time": "2026-09-04T20:59:26.397000+00:00",
-      "stale_age_seconds": 129
+      "median_range": 0.005,
+      "last_price": 0.6259,
+      "vwap": 0.8050705607128295,
+      "last_trade_time": "2026-09-04T21:14:26.065000+00:00",
+      "stale_age_seconds": 132
     },
     "date": "2026-09-05",
-    "time": "07:01:37",
+    "time": "07:16:39",
     "skip_news_check": true,
-    "previous_price": 1.237
+    "previous_price": 0.688
   },
-  "total_candidates": 4,
-  "alerts_generated": 4,
+  "total_candidates": 5,
+  "alerts_generated": 5,
   "all_gainers": [
     {
       "ticker": "BRNX",
       "name": "Brenx Ltd",
-      "price": 2.66,
-      "change_pct": 18.749999999999993,
-      "volume": 2951876,
-      "rvol": 0.8571603627984906,
+      "price": 2.795,
+      "change_pct": 24.776785714285698,
+      "volume": 3070901,
+      "rvol": 0.8917226249606175,
       "market_cap": 3796860.48,
       "float_shares": 1690686,
       "cap_size": "nano-cap",
@@ -1678,138 +2034,40 @@
       "reason": "Filtered: tiny rvol 0.9x"
     },
     {
-      "ticker": "SMXT",
-      "name": "SolarMax Technology",
-      "price": 3.07,
-      "change_pct": 16.730038022813687,
-      "volume": 18499,
-      "rvol": 1.1393114491593275,
-      "market_cap": 12472025.45,
-      "float_shares": 3269023,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 18,499, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
-      "ticker": "NCEW",
-      "name": "NEW CENTY LOGISTICS BVI LTD",
-      "price": 18.9,
-      "change_pct": 16.379310344827587,
-      "volume": 315,
-      "rvol": 0.37058823529411766,
-      "market_cap": 51968000.0,
-      "float_shares": 643750,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 315, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
       "ticker": "IPEX",
       "name": "Inflection Point Acquisition Corp",
-      "price": 9.0,
-      "change_pct": 16.129032258064516,
-      "volume": 163679,
-      "rvol": 9.221352112676056,
+      "price": 9.25,
+      "change_pct": 19.35483870967742,
+      "volume": 262836,
+      "rvol": 7.450844766980383,
       "market_cap": 34361678.75,
       "float_shares": 1290015,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: avg $vol $0.2M < $0.2M"
-    },
-    {
-      "ticker": "ISPC",
-      "name": "Ispecimen Inc.",
-      "price": 1.779,
-      "change_pct": 15.51948051948051,
-      "volume": 1352124,
-      "rvol": 17.098179059180577,
-      "market_cap": 3878628.6,
-      "float_shares": 2517537,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny vol/float 0.54x"
-    },
-    {
-      "ticker": "ALTI",
-      "name": "AlTi Global",
-      "price": 3.36,
-      "change_pct": 11.999999999999995,
-      "volume": 1415604,
-      "rvol": 5.374901755305213,
-      "market_cap": 467830296.0,
-      "float_shares": 53859382,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x"
-    },
-    {
-      "ticker": "DLXY",
-      "name": "DELIXY HLDGS LTD",
-      "price": 0.445,
-      "change_pct": 10.69651741293532,
-      "volume": 46795,
-      "rvol": 0.0711805212248617,
-      "market_cap": 6572700.0,
-      "float_shares": 5000000,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: tiny price $0.445, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.01x, vol 46,795, vol/float 0.01x < 0.1x, avg $vol $0.3M < $2.0M"
-    },
-    {
-      "ticker": "CMND",
-      "name": "Clearmind Medici",
-      "price": 1.27,
-      "change_pct": 9.482758620689664,
-      "volume": 15362968,
-      "rvol": 7.453930412371134,
-      "market_cap": 1723239.16,
-      "float_shares": 1484176,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": true,
       "reason": "Passed filters"
     },
     {
-      "ticker": "NSAI",
-      "name": "Northstrive Acquisition Corp I",
-      "price": 10.7,
-      "change_pct": 8.519269776876266,
-      "volume": 496264,
-      "rvol": 7.006310796120343,
-      "market_cap": 100885055.0,
-      "float_shares": 9331750,
-      "cap_size": "micro-cap",
+      "ticker": "ISPC",
+      "name": "Ispecimen Inc.",
+      "price": 1.81,
+      "change_pct": 17.532467532467532,
+      "volume": 2485342,
+      "rvol": 31.428199291856348,
+      "market_cap": 3878628.6,
+      "float_shares": 2517537,
+      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: vol/float 0.05x < 0.1x"
-    },
-    {
-      "ticker": "CRCT",
-      "name": "Cricut, Inc.",
-      "price": 6.03,
-      "change_pct": 8.844765342960292,
-      "volume": 923371,
-      "rvol": 1.2736661190585554,
-      "market_cap": 1160322064.64,
-      "float_shares": 47688788,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
+      "reason": "Filtered: tiny vol/float 0.99x"
     },
     {
       "ticker": "ATER",
       "name": "Aterian Inc",
-      "price": 0.68,
-      "change_pct": 8.643553283272094,
-      "volume": 46039679,
-      "rvol": 7.46319947517326,
+      "price": 0.723,
+      "change_pct": 15.513660329126052,
+      "volume": 46623538,
+      "rvol": 7.557845143366889,
       "market_cap": 11245488.97,
       "float_shares": 15381182,
       "cap_size": "nano-cap",
@@ -1818,12 +2076,96 @@
       "reason": "Passed filters"
     },
     {
+      "ticker": "ALTI",
+      "name": "AlTi Global",
+      "price": 3.39,
+      "change_pct": 13.000000000000004,
+      "volume": 1422801,
+      "rvol": 5.402228018817419,
+      "market_cap": 467830296.0,
+      "float_shares": 53859382,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.03x < 0.1x"
+    },
+    {
+      "ticker": "AKAN",
+      "name": "AKANDA CORP",
+      "price": 3.66,
+      "change_pct": 9.253731343283583,
+      "volume": 21520310,
+      "rvol": 6.969459181644419,
+      "market_cap": 1811817.35,
+      "float_shares": 537667,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
+      "ticker": "DLXY",
+      "name": "DELIXY HLDGS LTD",
+      "price": 0.439,
+      "change_pct": 9.203980099502482,
+      "volume": 49640,
+      "rvol": 0.07550809004385371,
+      "market_cap": 6572700.0,
+      "float_shares": 5000000,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: tiny price $0.439, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.01x, vol 49,640, vol/float 0.01x < 0.1x, avg $vol $0.3M < $2.0M"
+    },
+    {
+      "ticker": "CDTG",
+      "name": "CDT Environmental Technology Investment Holdings Ltd",
+      "price": 1.44,
+      "change_pct": 9.090909090909081,
+      "volume": 86043457,
+      "rvol": 5.684033231629515,
+      "market_cap": 3987755.64,
+      "float_shares": 2838045,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
+      "ticker": "CRCT",
+      "name": "Cricut, Inc.",
+      "price": 6.03,
+      "change_pct": 8.844765342960292,
+      "volume": 923371,
+      "rvol": 1.231540647852872,
+      "market_cap": 1160322064.64,
+      "float_shares": 47688788,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
+    },
+    {
+      "ticker": "CMND",
+      "name": "Clearmind Medici",
+      "price": 1.26,
+      "change_pct": 8.620689655172423,
+      "volume": 15371135,
+      "rvol": 7.457892944199478,
+      "market_cap": 1723239.16,
+      "float_shares": 1484176,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "GNLX",
       "name": "Genelux Corp",
       "price": 2.64,
       "change_pct": 8.196721311475418,
-      "volume": 272062,
-      "rvol": 0.796098834215085,
+      "volume": 287973,
+      "rvol": 0.8426570766421649,
       "market_cap": 110398617.4,
       "float_shares": 39421678,
       "cap_size": "micro-cap",
@@ -1850,14 +2192,14 @@
       "name": "Intelligent Living Application Group Inc.",
       "price": 3.13,
       "change_pct": 7.93103448275862,
-      "volume": 308,
-      "rvol": 0.35,
+      "volume": 312,
+      "rvol": 0.35454545454545455,
       "market_cap": 6023149.2,
       "float_shares": 976948,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.00x, vol 308, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
+      "reason": "Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.00x, vol 312, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
       "ticker": "AHG",
@@ -1874,34 +2216,6 @@
       "reason": "Filtered: vol 2,648, float 546.5M > 100M, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "GTBP",
-      "name": "Gt Biopharma Inc",
-      "price": 0.259,
-      "change_pct": 7.4688796680498,
-      "volume": 1155801,
-      "rvol": 2.274992815611185,
-      "market_cap": 10871388.78,
-      "float_shares": 42548702,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "AKAN",
-      "name": "AKANDA CORP",
-      "price": 3.596,
-      "change_pct": 7.343283582089552,
-      "volume": 21453456,
-      "rvol": 6.947808182001307,
-      "market_cap": 1811817.35,
-      "float_shares": 537667,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "NSRX",
       "name": "Nasus Pharma Ltd.",
       "price": 3.735,
@@ -1916,18 +2230,32 @@
       "reason": "Filtered: vol 829, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "INBS",
-      "name": "Intelligent Bio Solutions Inc",
-      "price": 2.39,
-      "change_pct": 7.174887892376688,
-      "volume": 91685,
-      "rvol": 0.13203275869765888,
-      "market_cap": 6751258.1,
-      "float_shares": 2937001,
-      "cap_size": "nano-cap",
+      "ticker": "NCEW",
+      "name": "NEW CENTY LOGISTICS BVI LTD",
+      "price": 17.41,
+      "change_pct": 7.204433497536956,
+      "volume": 389,
+      "rvol": 0.4576470588235294,
+      "market_cap": 51968000.0,
+      "float_shares": 643750,
+      "cap_size": "micro-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $1.7M < $2.0M"
+      "reason": "Filtered: vol 389, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "GTBP",
+      "name": "Gt Biopharma Inc",
+      "price": 0.258,
+      "change_pct": 7.0539419087137,
+      "volume": 1157680,
+      "rvol": 2.2786912996067286,
+      "market_cap": 10871388.78,
+      "float_shares": 42548702,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.03x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "NCRA",
@@ -1958,46 +2286,32 @@
       "reason": "Filtered: price $390.620, mktcap $9761.6M, vol 28, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "ATGL",
-      "name": "Alpha Technology Group Limited",
-      "price": 6.63,
-      "change_pct": 6.9354838709677376,
-      "volume": 4113,
-      "rvol": 0.4841101694915254,
-      "market_cap": 102067500.0,
-      "float_shares": 2675000,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 4,113, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "CDTG",
-      "name": "CDT Environmental Technology Investment Holdings Ltd",
-      "price": 1.42,
-      "change_pct": 7.575757575757565,
-      "volume": 85693681,
-      "rvol": 5.660927019060366,
-      "market_cap": 3987755.64,
-      "float_shares": 2838045,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "SCAG",
       "name": "Scage Future",
       "price": 0.298,
       "change_pct": 6.428571428571414,
       "volume": 217014,
-      "rvol": 0.8313343012453887,
+      "rvol": 0.8308314286698749,
       "market_cap": 20330706.2,
       "float_shares": 20616904,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "DVLT",
+      "name": "Datavault AI Inc",
+      "price": 0.217,
+      "change_pct": 6.32043116119549,
+      "volume": 247233017,
+      "rvol": 4.80663119592533,
+      "market_cap": 193839608.28,
+      "float_shares": 685248639,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: float 685.2M > 100M"
     },
     {
       "ticker": "GMEX",
@@ -2014,6 +2328,20 @@
       "reason": "Filtered: mktcap $0.0M, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "CHAI",
+      "name": "Core AI Holdings Inc",
+      "price": 0.287,
+      "change_pct": 6.256941873380219,
+      "volume": 1344625,
+      "rvol": 0.03357607909404304,
+      "market_cap": 6986635.1,
+      "float_shares": 12939178,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: tiny price $0.287, tiny rvol 0.0x, tiny vol/float 0.10x"
+    },
+    {
       "ticker": "BTOC",
       "name": "Armlogi Holding Corp.",
       "price": 0.308,
@@ -2028,32 +2356,18 @@
       "reason": "Filtered: vol 26,184, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "VSME",
-      "name": "VS MEDIA Holdings",
-      "price": 1.06,
-      "change_pct": 2.8128031037827483,
-      "volume": 19412,
-      "rvol": 0.9934493346980553,
-      "market_cap": 2835233.07,
-      "float_shares": 2741857,
+      "ticker": "CDT",
+      "name": "CDT Equity",
+      "price": 0.663,
+      "change_pct": 6.063029915213574,
+      "volume": 721511,
+      "rvol": 0.9045152361168743,
+      "market_cap": 8560035.64,
+      "float_shares": 13516414,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
+      "is_penny_stock": true,
       "passed": false,
-      "reason": "Filtered: tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.01x, vol 19,412, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "EBON",
-      "name": "Ebang International Holdings Inc.",
-      "price": 2.32,
-      "change_pct": 4.504504504504489,
-      "volume": 1945,
-      "rvol": 0.46497728902701413,
-      "market_cap": 14527542.36,
-      "float_shares": 4982663,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 1,945, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+      "reason": "Filtered: tiny price $0.663, tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.05x, vol/float 0.05x < 0.1x, avg $vol $0.5M < $2.0M"
     },
     {
       "ticker": "PLUT",
@@ -2070,40 +2384,26 @@
       "reason": "Filtered: vol 14, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "YSXT",
-      "name": "YSX Tech. Co, Ltd",
-      "price": 1.65,
-      "change_pct": 5.769230769230759,
-      "volume": 84386,
-      "rvol": 1.7072854917352864,
-      "market_cap": 49736700.0,
-      "float_shares": 13412682,
+      "ticker": "SSM",
+      "name": "Sono Group N.V.",
+      "price": 3.28,
+      "change_pct": 5.806451612903216,
+      "volume": 166859,
+      "rvol": 0.02978463399274283,
+      "market_cap": 4416985.4,
+      "float_shares": 1037184,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "LOOP",
-      "name": "Loop Industries",
-      "price": 0.505,
-      "change_pct": 5.8478306434709655,
-      "volume": 136673,
-      "rvol": 0.5270031618724454,
-      "market_cap": 23082275.0,
-      "float_shares": 24414106,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: tiny rvol 0.0x, tiny vol/float 0.16x"
     },
     {
       "ticker": "SGLY",
       "name": "Singularity Future Tech Ltd",
       "price": 1.459,
       "change_pct": 5.724637681159434,
-      "volume": 113283,
-      "rvol": 0.27353793403196985,
+      "volume": 113483,
+      "rvol": 0.27402086251026225,
       "market_cap": 7457227.44,
       "float_shares": 5403788,
       "cap_size": "nano-cap",
@@ -2112,26 +2412,12 @@
       "reason": "Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.6M < $2.0M"
     },
     {
-      "ticker": "MTVA",
-      "name": "MetaVia Inc",
-      "price": 1.85,
-      "change_pct": 5.71428571428572,
-      "volume": 80668,
-      "rvol": 1.1081378097697676,
-      "market_cap": 11529176.75,
-      "float_shares": 4703265,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
       "ticker": "SNSC",
       "name": "SUNSCOUT HLDG LTD",
       "price": 1.13,
       "change_pct": 5.607476635514002,
       "volume": 77170,
-      "rvol": 0.6808957436295616,
+      "rvol": 0.6808897359203084,
       "market_cap": 40767000.0,
       "float_shares": 7100000,
       "cap_size": "nano-cap",
@@ -2172,8 +2458,8 @@
       "name": "Glucotrack",
       "price": 3.139,
       "change_pct": 5.335570469798651,
-      "volume": 68108,
-      "rvol": 0.7372112657761999,
+      "volume": 68119,
+      "rvol": 0.7373303314354989,
       "market_cap": 2378469.12,
       "float_shares": 720043,
       "cap_size": "nano-cap",
@@ -2182,18 +2468,46 @@
       "reason": "Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.09x, vol/float 0.09x < 0.1x, avg $vol $0.3M < $2.0M"
     },
     {
-      "ticker": "DVLT",
-      "name": "Datavault AI Inc",
-      "price": 0.215,
-      "change_pct": 5.340519353258203,
-      "volume": 246874554,
-      "rvol": 4.799662064296826,
-      "market_cap": 193839608.28,
-      "float_shares": 685248639,
-      "cap_size": "micro-cap",
+      "ticker": "SMXT",
+      "name": "SolarMax Technology",
+      "price": 2.77,
+      "change_pct": 5.323193916349815,
+      "volume": 18502,
+      "rvol": 1.1393558716669745,
+      "market_cap": 12472025.45,
+      "float_shares": 3269023,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol 18,502, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "BIOT",
+      "name": "Instinct Bio Technical Co",
+      "price": 0.417,
+      "change_pct": 5.303030303030294,
+      "volume": 176915,
+      "rvol": 1.460164574409257,
+      "market_cap": 11402610.91,
+      "float_shares": 25285342,
+      "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
-      "reason": "Filtered: float 685.2M > 100M"
+      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "MI",
+      "name": "NFT LIMITED",
+      "price": 2.49,
+      "change_pct": 5.06329113924051,
+      "volume": 18419,
+      "rvol": 0.08844615392002919,
+      "market_cap": 1210427.73,
+      "float_shares": 376075,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.05x, vol 18,419, vol/float 0.05x < 0.1x, avg $vol $0.5M < $2.0M"
     },
     {
       "ticker": "FURY",
@@ -2210,26 +2524,12 @@
       "reason": "Filtered: move 5.0% / rvol 0.5, float 175.9M > 100M, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "SUNB",
-      "name": "Sunbelt Rentals Holdings Inc",
-      "price": 71.96,
-      "change_pct": 4.913252660737703,
-      "volume": 21678378,
-      "rvol": 1.7880780871213855,
-      "market_cap": 28108430501.57,
-      "float_shares": 408793139,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: price $71.960, mktcap $28108.4M, float 408.8M > 100M, vol/float 0.05x < 0.1x"
-    },
-    {
       "ticker": "OMEX",
       "name": "Odyssey Marine Expl Inc",
       "price": 0.856,
       "change_pct": 4.914817992401033,
-      "volume": 222589,
-      "rvol": 0.8544420900701706,
+      "volume": 222594,
+      "rvol": 0.8544612833387074,
       "market_cap": 47886304.29,
       "float_shares": 52598983,
       "cap_size": "nano-cap",
@@ -2238,18 +2538,18 @@
       "reason": "Filtered: move 4.9% / rvol 0.9, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "CNTB",
-      "name": "Connect Biopharma Holdings Ltd",
-      "price": 1.93,
-      "change_pct": 4.891304347826079,
-      "volume": 2402394,
-      "rvol": 1.6469767987117023,
-      "market_cap": 115872728.56,
-      "float_shares": 43489203,
-      "cap_size": "micro-cap",
+      "ticker": "PAVS",
+      "name": "Paranovus Entertainment Technology Ord Shs Class A",
+      "price": 4.93,
+      "change_pct": 4.87130397787705,
+      "volume": 21437,
+      "rvol": 0.8088518280949326,
+      "market_cap": 4087994.31,
+      "float_shares": 856897,
+      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: vol/float 0.06x < 0.1x"
+      "reason": "Filtered: tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.03x, move 4.9%, vol 21,437, vol/float 0.03x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
       "ticker": "RAND",
@@ -2280,12 +2580,40 @@
       "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
+      "ticker": "ATGL",
+      "name": "Alpha Technology Group Limited",
+      "price": 6.5,
+      "change_pct": 4.838709677419352,
+      "volume": 4131,
+      "rvol": 0.486228813559322,
+      "market_cap": 102067500.0,
+      "float_shares": 2675000,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: move 4.8% / rvol 0.5, vol 4,131, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "LOOP",
+      "name": "Loop Industries",
+      "price": 0.5,
+      "change_pct": 4.799832320268282,
+      "volume": 136868,
+      "rvol": 0.36745356089100806,
+      "market_cap": 23082275.0,
+      "float_shares": 24414106,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: move 4.8% / rvol 0.4, vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
       "ticker": "CLGN",
       "name": "Collplant Biotechnologies Ltd",
       "price": 3.72,
       "change_pct": 4.788732394366209,
-      "volume": 236154,
-      "rvol": 0.09153578672736132,
+      "volume": 236158,
+      "rvol": 0.09153733716964435,
       "market_cap": 6712414.55,
       "float_shares": 1327464,
       "cap_size": "nano-cap",
@@ -2299,7 +2627,7 @@
       "price": 0.383,
       "change_pct": 4.902766365379356,
       "volume": 26560,
-      "rvol": 0.05874936406467739,
+      "rvol": 0.05873169609885323,
       "market_cap": 11107478.56,
       "float_shares": 14046733,
       "cap_size": "nano-cap",
@@ -2308,18 +2636,18 @@
       "reason": "Filtered: move 4.8% / rvol 0.1, vol 26,560, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "VACI",
-      "name": "Viking Acquisition Corp I",
-      "price": 7.39,
-      "change_pct": 4.6742209631728056,
-      "volume": 88785,
-      "rvol": 1.858087604378126,
-      "market_cap": 221166269.02,
-      "float_shares": 15643333,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
+      "ticker": "TCRX",
+      "name": "Tscan Therapeutics, Inc.",
+      "price": 0.41,
+      "change_pct": 4.725415070242646,
+      "volume": 1653375,
+      "rvol": 0.8868938452369904,
+      "market_cap": 26535578.33,
+      "float_shares": 63382900,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x"
+      "reason": "Filtered: move 4.7% / rvol 0.9, vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "EEIQ",
@@ -2340,8 +2668,8 @@
       "name": "Aeon Biopharma",
       "price": 0.252,
       "change_pct": 4.651162790697681,
-      "volume": 757639,
-      "rvol": 0.5023858119120843,
+      "volume": 758576,
+      "rvol": 0.5030071309119796,
       "market_cap": 12011775.83,
       "float_shares": 24265218,
       "cap_size": "nano-cap",
@@ -2350,28 +2678,56 @@
       "reason": "Filtered: move 4.7% / rvol 0.5, vol/float 0.03x < 0.1x"
     },
     {
+      "ticker": "NVNI",
+      "name": "Nvni Group Limited",
+      "price": 0.973,
+      "change_pct": 4.623655913978487,
+      "volume": 14172,
+      "rvol": 0.21194945038510432,
+      "market_cap": 10873683.69,
+      "float_shares": 9493431,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: move 4.6% / rvol 0.2, vol 14,172, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "ARAI",
       "name": "Arrive AI Inc",
       "price": 0.25,
       "change_pct": 4.60251046025105,
       "volume": 370718,
-      "rvol": 1.1901021184522682,
+      "rvol": 1.1900639142759004,
       "market_cap": 12398413.95,
       "float_shares": 21910039,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "KRAQ",
+      "name": "KRAKacqsn",
+      "price": 10.46,
+      "change_pct": 4.495504495504506,
+      "volume": 2929,
+      "rvol": 0.03906687651719263,
+      "market_cap": 431629500.0,
+      "float_shares": 34500000,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: move 4.5% / rvol 0.0, vol 2,929, vol/float 0.00x < 0.1x"
     }
   ],
   "all_losers": [
     {
       "ticker": "FCUV",
       "name": "Focus Unvl Inc",
-      "price": 8.1,
-      "change_pct": -52.352941176470594,
-      "volume": 974865,
-      "rvol": 2.7218473153284957,
+      "price": 9.61,
+      "change_pct": -43.47058823529412,
+      "volume": 1002277,
+      "rvol": 2.712170002273047,
       "market_cap": 11946665.0,
       "float_shares": 702745,
       "cap_size": "nano-cap",
@@ -2382,14 +2738,42 @@
     {
       "ticker": "BTAI",
       "name": "Bioxcel Therapeutics Inc",
-      "price": 0.058,
-      "change_pct": -21.515561569688757,
-      "volume": 39711867,
-      "rvol": 1.225000665528754,
+      "price": 0.057,
+      "change_pct": -22.86874154262516,
+      "volume": 39995906,
+      "rvol": 1.2222642452518884,
       "market_cap": 2313476.0,
       "float_shares": 31305499,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ONCO",
+      "name": "Onconetix",
+      "price": 0.863,
+      "change_pct": -15.392156862745102,
+      "volume": 6166547,
+      "rvol": 8.226483030214903,
+      "market_cap": 4028089.0,
+      "float_shares": 4380522,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "BIAF",
+      "name": "bioAffinity Tech",
+      "price": 13.03,
+      "change_pct": -14.669286182056322,
+      "volume": 19497509,
+      "rvol": 1.4828714828069127,
+      "market_cap": 9173238.0,
+      "float_shares": 592327,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2408,20 +2792,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "NCT",
-      "name": "Intercont Limited",
-      "price": 0.343,
-      "change_pct": -14.249999999999998,
-      "volume": 12920744,
-      "rvol": 2.1713934047555146,
-      "market_cap": 3857735.0,
-      "float_shares": 9437740,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "TAP A",
       "name": "Molson Coors",
       "price": 41.45,
@@ -2436,54 +2806,12 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "ONCO",
-      "name": "Onconetix",
-      "price": 0.884,
-      "change_pct": -13.333333333333334,
-      "volume": 6110508,
-      "rvol": 8.151724193133111,
-      "market_cap": 4028089.0,
-      "float_shares": 4380522,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "AURE",
-      "name": "Aurelion Inc",
-      "price": 1.31,
-      "change_pct": -11.00543478260869,
-      "volume": 6283,
-      "rvol": 0.3644431554524362,
-      "market_cap": 55358480.0,
-      "float_shares": 22348486,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "GIPR",
-      "name": "Generation Incom",
-      "price": 0.48,
-      "change_pct": -10.946196660482384,
-      "volume": 13817537,
-      "rvol": 0.30670818220212975,
-      "market_cap": 1637557.0,
-      "float_shares": 3038140,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "JAGX",
       "name": "Jaguar Health Inc",
-      "price": 0.534,
-      "change_pct": -10.522788203753345,
-      "volume": 2645087,
-      "rvol": 6.722632542062725,
+      "price": 0.522,
+      "change_pct": -12.53351206434316,
+      "volume": 2661472,
+      "rvol": 6.764275911147258,
       "market_cap": 3084441.0,
       "float_shares": 5168300,
       "cap_size": "nano-cap",
@@ -2492,26 +2820,12 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "BIAF",
-      "name": "bioAffinity Tech",
-      "price": 13.71,
-      "change_pct": -10.216110019646358,
-      "volume": 19348124,
-      "rvol": 1.4715100952338072,
-      "market_cap": 9173238.0,
-      "float_shares": 592327,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "NAMS",
       "name": "NewAmsterdam Pharma Company N.V",
-      "price": 23.03,
-      "change_pct": -9.330708661417313,
-      "volume": 634969,
-      "rvol": 0.6336699765480764,
+      "price": 22.42,
+      "change_pct": -11.732283464566917,
+      "volume": 650397,
+      "rvol": 0.6490664138516042,
       "market_cap": 3036244092.0,
       "float_shares": 116903979,
       "cap_size": "small-cap",
@@ -2520,14 +2834,70 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "VTAK",
-      "name": "Catheter Precision",
-      "price": 0.191,
-      "change_pct": -9.047619047619044,
-      "volume": 873710,
-      "rvol": 0.291298713292598,
-      "market_cap": 3984130.0,
-      "float_shares": 3609471,
+      "ticker": "NCT",
+      "name": "Intercont Limited",
+      "price": 0.355,
+      "change_pct": -11.25000000000001,
+      "volume": 12957849,
+      "rvol": 2.1728054417689573,
+      "market_cap": 3857735.0,
+      "float_shares": 9437740,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "GRI",
+      "name": "GRI Bio",
+      "price": 2.56,
+      "change_pct": -11.111111111111107,
+      "volume": 7404385,
+      "rvol": 7.6272847701220465,
+      "market_cap": 6296011.0,
+      "float_shares": 2186115,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "AURE",
+      "name": "Aurelion Inc",
+      "price": 1.31,
+      "change_pct": -11.00543478260869,
+      "volume": 6333,
+      "rvol": 0.3673433874709977,
+      "market_cap": 55358480.0,
+      "float_shares": 22348486,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "TRBG",
+      "name": "Turbogen Ltd",
+      "price": 6.66,
+      "change_pct": -9.264305177111714,
+      "volume": 652902,
+      "rvol": 0.9413371011692787,
+      "market_cap": 186846966.0,
+      "float_shares": 14126471,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "POAS",
+      "name": "PHAOS TECHNOLOGY HLDGS (CAYMAN",
+      "price": 0.15,
+      "change_pct": -8.869987849331714,
+      "volume": 849458,
+      "rvol": 4.779942941709385,
+      "market_cap": 5196751.0,
+      "float_shares": 16446750,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2542,48 +2912,6 @@
       "rvol": 1.8371809116413433,
       "market_cap": 35541018.0,
       "float_shares": 24014202,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "SLN",
-      "name": "Silence Therapeutics Plc",
-      "price": 13.31,
-      "change_pct": -8.773132282385191,
-      "volume": 454578,
-      "rvol": 0.7881074277432095,
-      "market_cap": 878454504.0,
-      "float_shares": 62154086,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "TRBG",
-      "name": "Turbogen Ltd",
-      "price": 6.7,
-      "change_pct": -8.719346049046317,
-      "volume": 650364,
-      "rvol": 0.937677878862152,
-      "market_cap": 186846966.0,
-      "float_shares": 14126471,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "GRI",
-      "name": "GRI Bio",
-      "price": 2.63,
-      "change_pct": -8.680555555555555,
-      "volume": 7391066,
-      "rvol": 7.613564818248494,
-      "market_cap": 6296011.0,
-      "float_shares": 2186115,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -2618,6 +2946,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "GIPR",
+      "name": "Generation Incom",
+      "price": 0.495,
+      "change_pct": -8.163265306122454,
+      "volume": 13953168,
+      "rvol": 0.30971878658554897,
+      "market_cap": 1637557.0,
+      "float_shares": 3038140,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "LVLU",
       "name": "Lulu'S Fashion Lounge Holdings, Inc.",
       "price": 11.94,
@@ -2627,6 +2969,20 @@
       "market_cap": 34286617.0,
       "float_shares": 2871576,
       "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "SLN",
+      "name": "Silence Therapeutics Plc",
+      "price": 13.46,
+      "change_pct": -7.745030843043174,
+      "volume": 455697,
+      "rvol": 0.7900474517031122,
+      "market_cap": 878454504.0,
+      "float_shares": 62154086,
+      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -2650,10 +3006,24 @@
       "name": "Scienjoy Holding Corp",
       "price": 0.97,
       "change_pct": -7.44274809160306,
-      "volume": 60555,
-      "rvol": 0.7896589945882506,
+      "volume": 61655,
+      "rvol": 0.8040033904935776,
       "market_cap": 44500980.0,
       "float_shares": 39537710,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "VTAK",
+      "name": "Catheter Precision",
+      "price": 0.195,
+      "change_pct": -7.142857142857137,
+      "volume": 874150,
+      "rvol": 0.2914454112059202,
+      "market_cap": 3984130.0,
+      "float_shares": 3609471,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2674,15 +3044,15 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "MTEX",
-      "name": "Mannatech",
-      "price": 8.35,
-      "change_pct": -7.222222222222226,
-      "volume": 76686,
-      "rvol": 1.5442517972572947,
-      "market_cap": 17367030.0,
-      "float_shares": 1929670,
-      "cap_size": "nano-cap",
+      "ticker": "IONS",
+      "name": "Ionis Pharmaceuticals",
+      "price": 53.9,
+      "change_pct": -7.212945429505948,
+      "volume": 2344648,
+      "rvol": 1.035051806712469,
+      "market_cap": 9653647264.0,
+      "float_shares": 166184322,
+      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -2702,20 +3072,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "DSS",
-      "name": "Dss Inc",
-      "price": 0.771,
-      "change_pct": -7.108433734939752,
-      "volume": 9516367,
-      "rvol": 0.7911222645774617,
-      "market_cap": 8335289.0,
-      "float_shares": 10042518,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "INDP",
       "name": "Indaptus Therapeutics Inc",
       "price": 1.134,
@@ -2730,14 +3086,14 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "LGHL",
-      "name": "Lion Group Holding Ltd",
-      "price": 0.405,
-      "change_pct": -6.960716747070984,
-      "volume": 616590,
-      "rvol": 0.08085008569644903,
-      "market_cap": 401728.0,
-      "float_shares": 8257974,
+      "ticker": "DSS",
+      "name": "Dss Inc",
+      "price": 0.772,
+      "change_pct": -6.987951807228909,
+      "volume": 9517944,
+      "rvol": 0.7912533650080398,
+      "market_cap": 8335289.0,
+      "float_shares": 10042518,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2748,8 +3104,8 @@
       "name": "Intelligent Group Limited",
       "price": 2.81,
       "change_pct": -6.95364238410596,
-      "volume": 7581,
-      "rvol": 1.3375088214537756,
+      "volume": 8081,
+      "rvol": 1.4257233592095977,
       "market_cap": 4643243.0,
       "float_shares": 1462500,
       "cap_size": "nano-cap",
@@ -2767,6 +3123,20 @@
       "market_cap": 4697135.0,
       "float_shares": 1380396,
       "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "RPRX",
+      "name": "Royalty Pharma Plc",
+      "price": 59.56,
+      "change_pct": -6.879299562226389,
+      "volume": 3380177,
+      "rvol": 1.3447483761422303,
+      "market_cap": 36777077007.0,
+      "float_shares": 445277344,
+      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -2804,8 +3174,8 @@
       "name": "Golden Heaven Gr",
       "price": 1.16,
       "change_pct": -6.451612903225811,
-      "volume": 280346,
-      "rvol": 5.134918309033629,
+      "volume": 280367,
+      "rvol": 5.13530295259726,
       "market_cap": 73768716.0,
       "float_shares": 59419326,
       "cap_size": "micro-cap",
@@ -2828,43 +3198,15 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "AIMD",
-      "name": "Ainos Inc",
-      "price": 1.5,
-      "change_pct": -6.250000000000005,
-      "volume": 46672,
-      "rvol": 1.9437757694390072,
-      "market_cap": 11814516.0,
-      "float_shares": 7384073,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "TANH",
       "name": "Tantech Holdings",
       "price": 20.51,
       "change_pct": -6.2185642432555985,
-      "volume": 70719,
-      "rvol": 0.3014385882653822,
+      "volume": 70831,
+      "rvol": 0.30191598644530165,
       "market_cap": 14601439.0,
       "float_shares": 667646,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "IONS",
-      "name": "Ionis Pharmaceuticals",
-      "price": 54.6,
-      "change_pct": -6.007918746772253,
-      "volume": 2299920,
-      "rvol": 1.0153064985849225,
-      "market_cap": 9653647264.0,
-      "float_shares": 166184322,
-      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -2902,8 +3244,8 @@
       "name": "Corvex Inc",
       "price": 13.87,
       "change_pct": -5.902306648575312,
-      "volume": 227818,
-      "rvol": 0.25115867829093297,
+      "volume": 228287,
+      "rvol": 0.2516757288317965,
       "market_cap": 407521275.0,
       "float_shares": 27647305,
       "cap_size": "small-cap",
@@ -2954,26 +3296,12 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "SGRX",
-      "name": "Sangrix Inc",
-      "price": 1.98,
-      "change_pct": -5.714285714285719,
-      "volume": 14396579,
-      "rvol": 6.5489511682420485,
-      "market_cap": 1747603.0,
-      "float_shares": 882628,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "OKUR",
       "name": "OnKure Therapeutics",
       "price": 3.38,
       "change_pct": -5.586592178770954,
-      "volume": 165527,
-      "rvol": 0.8868594757934892,
+      "volume": 165540,
+      "rvol": 0.8869291271082917,
       "market_cap": 144976786.0,
       "float_shares": 40496309,
       "cap_size": "micro-cap",
@@ -2982,15 +3310,29 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "RDI",
-      "name": "Reading Intl Inc",
-      "price": 2.21,
-      "change_pct": -5.555555555555551,
-      "volume": 267545,
-      "rvol": 2.150856178149369,
-      "market_cap": 53562897.0,
-      "float_shares": 21209537,
+      "ticker": "XTND",
+      "name": "Xtend AI Robotics Inc",
+      "price": 5.85,
+      "change_pct": -5.492730210016167,
+      "volume": 3639102,
+      "rvol": 1.0017893509941358,
+      "market_cap": 125226194.0,
+      "float_shares": 21406187,
       "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "AMGN",
+      "name": "Amgen Inc",
+      "price": 413.9,
+      "change_pct": -5.3358644191844204,
+      "volume": 1619883,
+      "rvol": 0.778974535791416,
+      "market_cap": 236380531546.0,
+      "float_shares": 540632005,
+      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -3006,20 +3348,6 @@
       "float_shares": 38529284,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "AMGN",
-      "name": "Amgen Inc",
-      "price": 413.93,
-      "change_pct": -5.329003041877275,
-      "volume": 1615172,
-      "rvol": 0.7767090949922265,
-      "market_cap": 236380531546.0,
-      "float_shares": 540632005,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -3064,34 +3392,49 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "YMT",
+      "name": "Yimutian Inc",
+      "price": 2.01,
+      "change_pct": -5.1886792452830335,
+      "volume": 283525,
+      "rvol": 0.35126984933277006,
+      "market_cap": 1010332.0,
+      "float_shares": 419442,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ELTK",
+      "name": "Eltek Ltd",
+      "price": 7.82,
+      "change_pct": -5.097087378640776,
+      "volume": 3360,
+      "rvol": 1.1487179487179486,
+      "market_cap": 55379614.0,
+      "float_shares": 6720827,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
     }
   ],
   "live_quotes": {
-    "AKAN": {
-      "price": 3.35,
-      "open": 4.36,
-      "high": 4.44,
-      "low": 3.27,
-      "close": 3.35,
-      "preClose": 3.67,
-      "volume": 21456377,
-      "changeRatio": -0.0872,
-      "marketValue": 1811817.35,
-      "name": "AKANDA CORP",
-      "_timestamp": "2026-09-04T21:01:39.439367Z"
-    },
-    "CMND": {
-      "price": 1.16,
-      "open": 1.495,
-      "high": 1.555,
-      "low": 1.16,
-      "close": 1.16,
-      "preClose": 1.7,
-      "volume": 15364032,
-      "changeRatio": -0.3176,
-      "marketValue": 1723239.16,
-      "name": "Clearmind Medici",
-      "_timestamp": "2026-09-04T21:01:39.439367Z"
+    "ATER": {
+      "price": 0.6259,
+      "open": 0.6719,
+      "high": 0.9554,
+      "low": 0.603,
+      "close": 0.6259,
+      "preClose": 0.618,
+      "volume": 46770759,
+      "changeRatio": 0.0128,
+      "marketValue": 11245488.97,
+      "name": "Aterian Inc",
+      "_timestamp": "2026-09-04T21:16:41.884120Z"
     },
     "CDTG": {
       "price": 1.32,
@@ -3100,39 +3443,65 @@
       "low": 0.9139,
       "close": 1.32,
       "preClose": 0.8997,
-      "volume": 85758640,
+      "volume": 86070294,
       "changeRatio": 0.4672,
       "marketValue": 3987755.64,
       "name": "CDT Environmental Technology Investment Holdings Ltd",
-      "_timestamp": "2026-09-04T21:01:39.439367Z"
+      "_timestamp": "2026-09-04T21:16:41.884120Z"
     },
-    "ATER": {
-      "price": 0.6259,
-      "open": 0.6719,
-      "high": 0.9554,
-      "low": 0.603,
-      "close": 0.6259,
-      "preClose": 0.618,
-      "volume": 46047185,
-      "changeRatio": 0.0128,
-      "marketValue": 11245488.97,
-      "name": "Aterian Inc",
-      "_timestamp": "2026-09-04T21:01:39.439367Z"
+    "CMND": {
+      "price": 1.16,
+      "open": 1.495,
+      "high": 1.555,
+      "low": 1.16,
+      "close": 1.16,
+      "preClose": 1.7,
+      "volume": 15372380,
+      "changeRatio": -0.3176,
+      "marketValue": 1723239.16,
+      "name": "Clearmind Medici",
+      "_timestamp": "2026-09-04T21:16:41.884120Z"
+    },
+    "IPEX": {
+      "price": 7.75,
+      "open": 10.84,
+      "high": 11.15,
+      "low": 6.0,
+      "close": 7.75,
+      "preClose": 10.92,
+      "volume": 270262,
+      "changeRatio": -0.2903,
+      "marketValue": 34361678.75,
+      "name": "Inflection Point Acquisition Corp",
+      "_timestamp": "2026-09-04T21:16:41.884120Z"
+    },
+    "AKAN": {
+      "price": 3.35,
+      "open": 4.36,
+      "high": 4.44,
+      "low": 3.27,
+      "close": 3.35,
+      "preClose": 3.67,
+      "volume": 21522227,
+      "changeRatio": -0.0872,
+      "marketValue": 1811817.35,
+      "name": "AKANDA CORP",
+      "_timestamp": "2026-09-04T21:16:41.884120Z"
     }
   },
   "previous_live_quotes": {
-    "CMND": {
-      "price": 1.16,
-      "open": 1.495,
-      "high": 1.555,
-      "low": 1.16,
-      "close": 1.16,
-      "preClose": 1.7,
-      "volume": 15361139,
-      "changeRatio": -0.3176,
-      "marketValue": 1723239.16,
-      "name": "Clearmind Medici",
-      "_timestamp": "2026-09-04T20:58:40.048490Z"
+    "IPEX": {
+      "price": 7.75,
+      "open": 10.84,
+      "high": 11.15,
+      "low": 6.0,
+      "close": 7.75,
+      "preClose": 10.92,
+      "volume": 261417,
+      "changeRatio": -0.2903,
+      "marketValue": 34361678.75,
+      "name": "Inflection Point Acquisition Corp",
+      "_timestamp": "2026-09-04T21:13:11.950607Z"
     },
     "ATER": {
       "price": 0.6259,
@@ -3141,24 +3510,24 @@
       "low": 0.603,
       "close": 0.6259,
       "preClose": 0.618,
-      "volume": 46028054,
+      "volume": 46330331,
       "changeRatio": 0.0128,
       "marketValue": 11245488.97,
       "name": "Aterian Inc",
-      "_timestamp": "2026-09-04T20:58:40.048490Z"
+      "_timestamp": "2026-09-04T21:13:11.950607Z"
     },
-    "AKAN": {
-      "price": 3.35,
-      "open": 4.36,
-      "high": 4.44,
-      "low": 3.27,
-      "close": 3.35,
-      "preClose": 3.67,
-      "volume": 21452185,
-      "changeRatio": -0.0872,
-      "marketValue": 1811817.35,
-      "name": "AKANDA CORP",
-      "_timestamp": "2026-09-04T20:58:40.048490Z"
+    "CMND": {
+      "price": 1.16,
+      "open": 1.495,
+      "high": 1.555,
+      "low": 1.16,
+      "close": 1.16,
+      "preClose": 1.7,
+      "volume": 15365870,
+      "changeRatio": -0.3176,
+      "marketValue": 1723239.16,
+      "name": "Clearmind Medici",
+      "_timestamp": "2026-09-04T21:13:11.950607Z"
     },
     "CDTG": {
       "price": 1.32,
@@ -3167,18 +3536,31 @@
       "low": 0.9139,
       "close": 1.32,
       "preClose": 0.8997,
-      "volume": 85666769,
+      "volume": 85999960,
       "changeRatio": 0.4672,
       "marketValue": 3987755.64,
       "name": "CDT Environmental Technology Investment Holdings Ltd",
-      "_timestamp": "2026-09-04T20:58:40.048490Z"
+      "_timestamp": "2026-09-04T21:13:11.950607Z"
+    },
+    "AKAN": {
+      "price": 3.35,
+      "open": 4.36,
+      "high": 4.44,
+      "low": 3.27,
+      "close": 3.35,
+      "preClose": 3.67,
+      "volume": 21518679,
+      "changeRatio": -0.0872,
+      "marketValue": 1811817.35,
+      "name": "AKANDA CORP",
+      "_timestamp": "2026-09-04T21:13:11.950607Z"
     }
   },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "07:01 AM AEST",
+    "market_time": "07:16 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
