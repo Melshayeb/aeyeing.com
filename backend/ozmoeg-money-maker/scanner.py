@@ -539,13 +539,23 @@ class SmallCapScanner:
             # tiny-cap RVOL floor but keep all other gates.
             tiny_cap_override_min_change = float(self.cfg.get('tiny_cap_override_min_change_pct', 25.0))
             tiny_cap_override_min_dollar_volume = float(self.cfg.get('tiny_cap_override_min_dollar_volume', 1_000_000))
+            tiny_cap_override_high_move_min = float(self.cfg.get('tiny_cap_override_high_move_min', 100.0))
+            tiny_cap_override_high_move_min_vfr = float(self.cfg.get('tiny_cap_override_high_move_min_vfr', 0.5))
             if abs(change_pct) >= tiny_cap_override_min_change and (price * volume) >= tiny_cap_override_min_dollar_volume:
                 # Remove the tiny rvol fail if it was the only reason this ticker was rejected.
                 fails = [f for f in fails if not f.startswith('tiny rvol')]
             if outstanding_shares > 0 and min_volume_float_ratio > 0 and tiny_vfr_min > 0:
                 vfr = volume / outstanding_shares
                 if vfr < tiny_vfr_min:
-                    fails.append(f'tiny vol/float {vfr:.2f}x')
+                    # Exception: extreme percentage movers (>100%) with at least half the float
+                    # trading hands are genuinely liquid for their size; don't penalise them
+                    # for being low-float in the first place.
+                    high_move_override = (
+                        abs(change_pct) >= tiny_cap_override_high_move_min and
+                        vfr >= tiny_cap_override_high_move_min_vfr
+                    )
+                    if not high_move_override:
+                        fails.append(f'tiny vol/float {vfr:.2f}x')
 
         # Momentum: accept if change >= min OR rvol >= min (relaxed for sub-$10M tiny-caps).
         if not self.is_au and market_cap_raw < 10_000_000 and market_cap_raw >= mkt_min:
