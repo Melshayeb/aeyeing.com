@@ -723,8 +723,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 recent_pct_of_adv = float(tape_data.get('recent_pct_of_adv', 0) or 0)
                 # For tiny-float stocks, volume/float ratio can confirm real turnover even when
                 # the 10-day RVOL looks low because the average denominator is huge.
-                outstanding = float(result.get('float_shares', 0) or result.get('outstanding_shares', 0) or 0)
-                vfr = (volume / outstanding * 100.0) if outstanding > 0 else 0.0
+                outstanding = float(_float_shares(gainer) or 0)
+                current_volume = int(_volume(gainer) or 0)
+                vfr = (current_volume / outstanding * 100.0) if outstanding > 0 else 0.0
                 has_price_move = price_velocity_pct >= 10.0 or large_bar_count >= 10
                 # Volume confirmation: accelerating intraday volume, turnover ≥2x recent ADV,
                 # RVOL ≥2x, or — for low-float names — at least 1.0x of the entire float traded.
