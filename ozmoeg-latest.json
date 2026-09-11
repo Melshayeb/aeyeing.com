@@ -1,35 +1,648 @@
 {
-  "last_updated": "2026-09-11T21:56:36.823698Z",
-  "scan_results": [],
-  "pre_market_results": [],
+  "last_updated": "2026-09-11T21:59:41.165594Z",
+  "scan_results": [
+    {
+      "ticker": "SWRD",
+      "name": "Stewards Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 3.18,
+      "change_pct": 7.43243243243244,
+      "volume": 27483761,
+      "market_cap": 625003890.48,
+      "float_shares": 88471631,
+      "country": "United States",
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 09), 8-K (Sep 04), 8-K (Sep 04)",
+      "result": "+7.4% \u00b7 Entry $3.18 \u00b7 T1 $3.31 \u00b7 T2 $3.37 \u00b7 T3 $3.50",
+      "plan": {
+        "valid": true,
+        "ticker": "SWRD",
+        "entry": 3.18,
+        "stop": 3.1164,
+        "targets": {
+          "t1": 3.3072,
+          "t2": 3.3708,
+          "t3": 3.498
+        },
+        "risk_per_share": 0.0636,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 94,
+        "position_value": 298.92,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.1164"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SWRD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+            "source": "Webull",
+            "time": "1d ago \u00b7 10 Sep",
+            "raw_time": "2026-09-10T15:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards Inc uplists to Nasdaq Capital Market",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:18:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:05:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:01:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+            "source": "Webull",
+            "time": "2d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T16:57:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 07 Sep",
+            "raw_time": "2026-09-07T10:00:24.329+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+            "source": "Webull",
+            "time": "1d ago \u00b7 10 Sep",
+            "raw_time": "2026-09-10T15:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards Inc uplists to Nasdaq Capital Market",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:18:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:05:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:01:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+            "source": "Webull",
+            "time": "2d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T16:57:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 07 Sep",
+            "raw_time": "2026-09-07T10:00:24.329+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Stewards Inc Adopts Amended and Restated Governance Bylaws",
+            "flag": "restated"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: restated"
+      },
+      "tape": {
+        "ticker": "SWRD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 44.08,
+        "volume_indicator": "high",
+        "volume": 27483761,
+        "adv": 623497,
+        "recent_pct_of_adv": 4408.0,
+        "volume_acceleration": -0.885,
+        "price_velocity_pct": 3.643,
+        "buy_pressure_pct": 47.24,
+        "large_bar_count": 159,
+        "vwap_distance_pct": 26.027,
+        "recent_volume": 27483761,
+        "prior_volume": 0,
+        "median_range": 0.03,
+        "last_price": 2.96,
+        "vwap": 4.001485478398527,
+        "last_trade_time": "2026-09-11T21:57:32.808000+00:00",
+        "stale_age_seconds": 125
+      },
+      "date": "2026-09-12",
+      "time": "07:59:39",
+      "skip_news_check": true,
+      "previous_price": null
+    }
+  ],
+  "pre_market_results": [
+    {
+      "ticker": "SWRD",
+      "name": "Stewards Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 3.18,
+      "change_pct": 7.43243243243244,
+      "volume": 27483761,
+      "market_cap": 625003890.48,
+      "float_shares": 88471631,
+      "country": "United States",
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 09), 8-K (Sep 04), 8-K (Sep 04)",
+      "result": "+7.4% \u00b7 Entry $3.18 \u00b7 T1 $3.31 \u00b7 T2 $3.37 \u00b7 T3 $3.50",
+      "plan": {
+        "valid": true,
+        "ticker": "SWRD",
+        "entry": 3.18,
+        "stop": 3.1164,
+        "targets": {
+          "t1": 3.3072,
+          "t2": 3.3708,
+          "t3": 3.498
+        },
+        "risk_per_share": 0.0636,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 94,
+        "position_value": 298.92,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.1164"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SWRD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+            "source": "Webull",
+            "time": "1d ago \u00b7 10 Sep",
+            "raw_time": "2026-09-10T15:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards Inc uplists to Nasdaq Capital Market",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:18:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:05:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:01:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+            "source": "Webull",
+            "time": "2d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T16:57:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 07 Sep",
+            "raw_time": "2026-09-07T10:00:24.329+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+            "source": "Webull",
+            "time": "1d ago \u00b7 10 Sep",
+            "raw_time": "2026-09-10T15:40:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards Inc uplists to Nasdaq Capital Market",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:18:01.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:05:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T22:01:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+            "source": "Webull",
+            "time": "2d ago \u00b7 09 Sep",
+            "raw_time": "2026-09-09T16:57:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 07 Sep",
+            "raw_time": "2026-09-07T10:00:24.329+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Stewards Inc Adopts Amended and Restated Governance Bylaws",
+            "flag": "restated"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: restated"
+      },
+      "tape": {
+        "ticker": "SWRD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 44.08,
+        "volume_indicator": "high",
+        "volume": 27483761,
+        "adv": 623497,
+        "recent_pct_of_adv": 4408.0,
+        "volume_acceleration": -0.885,
+        "price_velocity_pct": 3.643,
+        "buy_pressure_pct": 47.24,
+        "large_bar_count": 159,
+        "vwap_distance_pct": 26.027,
+        "recent_volume": 27483761,
+        "prior_volume": 0,
+        "median_range": 0.03,
+        "last_price": 2.96,
+        "vwap": 4.001485478398527,
+        "last_trade_time": "2026-09-11T21:57:32.808000+00:00",
+        "stale_age_seconds": 125
+      },
+      "date": "2026-09-12",
+      "time": "07:59:39",
+      "skip_news_check": true,
+      "previous_price": null
+    }
+  ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
-  "active_plan": null,
-  "total_candidates": 0,
-  "alerts_generated": 0,
+  "active_plan": {
+    "ticker": "SWRD",
+    "name": "Stewards Inc",
+    "status": "ALERT",
+    "source": "regular",
+    "price": 3.18,
+    "change_pct": 7.43243243243244,
+    "volume": 27483761,
+    "market_cap": 625003890.48,
+    "float_shares": 88471631,
+    "country": "United States",
+    "cap_size": "small-cap",
+    "is_penny_stock": false,
+    "scan_reason": "Passed filters",
+    "scan_passed": true,
+    "sec_filings": "8-K (Sep 09), 8-K (Sep 04), 8-K (Sep 04)",
+    "result": "+7.4% \u00b7 Entry $3.18 \u00b7 T1 $3.31 \u00b7 T2 $3.37 \u00b7 T3 $3.50",
+    "plan": {
+      "valid": true,
+      "ticker": "SWRD",
+      "entry": 3.18,
+      "stop": 3.1164,
+      "targets": {
+        "t1": 3.3072,
+        "t2": 3.3708,
+        "t3": 3.498
+      },
+      "risk_per_share": 0.0636,
+      "risk_amount": 20.0,
+      "daily_risk_budget": 60.0,
+      "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+      "shares": 94,
+      "position_value": 298.92,
+      "risk_reward": 2.0,
+      "confidence": "MED",
+      "strategy": "Demand zone + candlestick confirmation scalp",
+      "exit_rules": {
+        "momentum_based": true,
+        "time_based": false,
+        "trail_breakeven_at": "+1%",
+        "hard_stop": "$3.1164"
+      }
+    },
+    "ta": {
+      "valid": false,
+      "error": "No bar data"
+    },
+    "news": {
+      "ticker": "SWRD",
+      "total_items": 20,
+      "scored_items": [
+        {
+          "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+          "source": "Webull",
+          "time": "1d ago \u00b7 10 Sep",
+          "raw_time": "2026-09-10T15:40:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards Inc uplists to Nasdaq Capital Market",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:18:01.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:05:10.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:01:15.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+          "source": "Webull",
+          "time": "2d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T16:57:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+          "source": "Webull",
+          "time": "4d ago \u00b7 07 Sep",
+          "raw_time": "2026-09-07T10:00:24.329+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "headlines": [
+        {
+          "title": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+          "source": "Webull",
+          "time": "1d ago \u00b7 10 Sep",
+          "raw_time": "2026-09-10T15:40:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards Inc uplists to Nasdaq Capital Market",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:18:01.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards to begin trading on Nasdaq Capital Market on September 10",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:05:10.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards To Begin Trading On The Nasdaq Under Its Existing Ticker Symbol, \"SWRD,\" At Market Open On Thursday, Sept. 10, 2026",
+          "source": "Webull",
+          "time": "1d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T22:01:15.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Stewards to Begin Trading on Nasdaq Capital Market Under Symbol \u201cSWRD\u201d",
+          "source": "Webull",
+          "time": "2d ago \u00b7 09 Sep",
+          "raw_time": "2026-09-09T16:57:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at SWRD last week (0831-0904)?",
+          "source": "Webull",
+          "time": "4d ago \u00b7 07 Sep",
+          "raw_time": "2026-09-07T10:00:24.329+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "red_flags": [
+        {
+          "title": "Stewards Inc Adopts Amended and Restated Governance Bylaws",
+          "flag": "restated"
+        }
+      ],
+      "max_score": 0,
+      "avg_score": 0.0,
+      "catalyst_confirmed": false,
+      "high_impact_count": 0,
+      "top_headline": "Stewards Down Over 51%, on Pace for Largest Percent Decrease Since December 2023 -- Data Talk",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: restated"
+    },
+    "tape": {
+      "ticker": "SWRD",
+      "valid": true,
+      "stale": false,
+      "no_move": false,
+      "tape_score": 8.0,
+      "rvol": 44.08,
+      "volume_indicator": "high",
+      "volume": 27483761,
+      "adv": 623497,
+      "recent_pct_of_adv": 4408.0,
+      "volume_acceleration": -0.885,
+      "price_velocity_pct": 3.643,
+      "buy_pressure_pct": 47.24,
+      "large_bar_count": 159,
+      "vwap_distance_pct": 26.027,
+      "recent_volume": 27483761,
+      "prior_volume": 0,
+      "median_range": 0.03,
+      "last_price": 2.96,
+      "vwap": 4.001485478398527,
+      "last_trade_time": "2026-09-11T21:57:32.808000+00:00",
+      "stale_age_seconds": 125
+    },
+    "date": "2026-09-12",
+    "time": "07:59:39",
+    "skip_news_check": true,
+    "previous_price": null
+  },
+  "total_candidates": 1,
+  "alerts_generated": 1,
   "all_gainers": [
     {
       "ticker": "NCT",
       "name": "Intercont Limited",
-      "price": 0.408,
-      "change_pct": 36.136136136136116,
-      "volume": 17706853,
-      "rvol": 2.1288807731507036,
+      "price": 0.407,
+      "change_pct": 35.802469135802454,
+      "volume": 18025518,
+      "rvol": 2.1671936112126713,
       "market_cap": 2890408.1,
       "float_shares": 8539500,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
-      "reason": "Filtered: tiny price $0.408"
+      "reason": "Filtered: tiny price $0.407"
     },
     {
       "ticker": "SOAR",
       "name": "Volato Group Inc-A",
-      "price": 0.249,
-      "change_pct": 30.50314465408805,
-      "volume": 12590460,
-      "rvol": 1.1977578108032285,
+      "price": 0.258,
+      "change_pct": 35.22012578616353,
+      "volume": 14640914,
+      "rvol": 1.3928219541461027,
       "market_cap": 10233223.72,
       "float_shares": 35598148,
       "cap_size": "nano-cap",
@@ -40,10 +653,10 @@
     {
       "ticker": "CRBP",
       "name": "Corbus Pharmaceu",
-      "price": 10.2,
-      "change_pct": 25.615763546798032,
-      "volume": 2006484,
-      "rvol": 2.6885612297401593,
+      "price": 10.17,
+      "change_pct": 25.246305418719224,
+      "volume": 2013858,
+      "rvol": 2.698441921790584,
       "market_cap": 157051299.16,
       "float_shares": 17345099,
       "cap_size": "micro-cap",
@@ -56,8 +669,8 @@
       "name": "Scinai Immunotherapeutics Ltd.",
       "price": 2.05,
       "change_pct": 23.49397590361445,
-      "volume": 3256861,
-      "rvol": 6.31681426570931,
+      "volume": 3264759,
+      "rvol": 6.332132757677671,
       "market_cap": 1172931.1,
       "float_shares": 625876,
       "cap_size": "nano-cap",
@@ -68,10 +681,10 @@
     {
       "ticker": "VSME",
       "name": "VS MEDIA Holdings",
-      "price": 1.22,
-      "change_pct": 14.018691588785037,
-      "volume": 8221469,
-      "rvol": 12.220889527736611,
+      "price": 1.24,
+      "change_pct": 15.887850467289713,
+      "volume": 8250608,
+      "rvol": 12.264203502398404,
       "market_cap": 2943063.8,
       "float_shares": 2741857,
       "cap_size": "nano-cap",
@@ -82,10 +695,10 @@
     {
       "ticker": "FGL",
       "name": "Founder Group Ltd",
-      "price": 6.08,
-      "change_pct": 11.559633027522933,
-      "volume": 1992810,
-      "rvol": 2.509084178797791,
+      "price": 6.04,
+      "change_pct": 10.825688073394492,
+      "volume": 1996974,
+      "rvol": 2.5143269397837926,
       "market_cap": 385345.8,
       "float_shares": 72664,
       "cap_size": "nano-cap",
@@ -140,8 +753,8 @@
       "name": "Trilogy Metals",
       "price": 3.54,
       "change_pct": 8.256880733944955,
-      "volume": 1222828,
-      "rvol": 0.9309039640923513,
+      "volume": 1229505,
+      "rvol": 0.9359869731240751,
       "market_cap": 564387739.53,
       "float_shares": 146819215,
       "cap_size": "small-cap",
@@ -192,6 +805,20 @@
       "reason": "Filtered: tiny price $0.486, tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.01x, vol 41,979, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "SWRD",
+      "name": "Stewards Inc",
+      "price": 3.18,
+      "change_pct": 7.43243243243244,
+      "volume": 27483761,
+      "rvol": 6.728338168766618,
+      "market_cap": 625003890.48,
+      "float_shares": 88471631,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "LESL",
       "name": "Leslie'S, Inc.",
       "price": 0.539,
@@ -218,20 +845,6 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol 33,465, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "AEHL",
-      "name": "Antelope Enterprise Hldgs Ltd",
-      "price": 8.38,
-      "change_pct": 7.298335467349568,
-      "volume": 806617,
-      "rvol": 0.2248475565138492,
-      "market_cap": 10878080.4,
-      "float_shares": 1391281,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
     },
     {
       "ticker": "ATHR",
@@ -262,34 +875,6 @@
       "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
-      "ticker": "MRKR",
-      "name": "Marker Therapeut",
-      "price": 1.23,
-      "change_pct": 6.956521739130442,
-      "volume": 59367,
-      "rvol": 0.7439846608852574,
-      "market_cap": 19174096.05,
-      "float_shares": 15757330,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "IMNN",
-      "name": "Imunon Inc",
-      "price": 1.572,
-      "change_pct": 6.9387755102040884,
-      "volume": 129228,
-      "rvol": 0.6531119702827686,
-      "market_cap": 8248762.41,
-      "float_shares": 5305174,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.3M < $2.0M"
-    },
-    {
       "ticker": "FRGT",
       "name": "Freight Tech",
       "price": 0.93,
@@ -302,20 +887,6 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: mktcap $0.5M, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "DBGI",
-      "name": "Digital Brands Group Inc",
-      "price": 6.39,
-      "change_pct": 6.499999999999995,
-      "volume": 3015224,
-      "rvol": 0.601773133015312,
-      "market_cap": 5601054.0,
-      "float_shares": 916298,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.6x"
     },
     {
       "ticker": "IBO",
@@ -346,20 +917,6 @@
       "reason": "Filtered: tiny avg $vol, tiny vol/float 0.03x, vol 25,564, vol/float 0.03x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "TJGC",
-      "name": "TJGC GROUP",
-      "price": 11.9,
-      "change_pct": 6.344950848972304,
-      "volume": 1717612,
-      "rvol": 0.9203724760397254,
-      "market_cap": 113019257.37,
-      "float_shares": 5873356,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "MI",
       "name": "NFT LIMITED",
       "price": 2.18,
@@ -386,6 +943,20 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: tiny rvol 0.0x, tiny vol/float 0.18x"
+    },
+    {
+      "ticker": "NCRA",
+      "name": "Nocera",
+      "price": 2.37,
+      "change_pct": 6.278026905829602,
+      "volume": 578279,
+      "rvol": 2.77623670161693,
+      "market_cap": 5298810.04,
+      "float_shares": 1938946,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.30x, avg $vol $0.5M < $2.0M"
     },
     {
       "ticker": "BMHL",
@@ -416,6 +987,20 @@
       "reason": "Filtered: tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.06x, vol/float 0.06x < 0.1x, avg $vol $0.2M < $2.0M"
     },
     {
+      "ticker": "AKTX",
+      "name": "Akari Therapeutics Plc",
+      "price": 12.0,
+      "change_pct": 6.194690265486719,
+      "volume": 134116,
+      "rvol": 1.2094071816329106,
+      "market_cap": 22000896.6,
+      "float_shares": 1644192,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.08x < 0.1x"
+    },
+    {
       "ticker": "VIP",
       "name": "Vulcan Infrastructure & Pwr",
       "price": 1.89,
@@ -430,15 +1015,15 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
-      "ticker": "SWRD",
-      "name": "Stewards Inc",
-      "price": 3.131,
-      "change_pct": 5.777027027027021,
-      "volume": 27472885,
-      "rvol": 6.72567559991647,
-      "market_cap": 625003890.48,
-      "float_shares": 88471631,
-      "cap_size": "small-cap",
+      "ticker": "AEHL",
+      "name": "Antelope Enterprise Hldgs Ltd",
+      "price": 8.29,
+      "change_pct": 6.145966709346985,
+      "volume": 808265,
+      "rvol": 0.22530694278160057,
+      "market_cap": 10878080.4,
+      "float_shares": 1391281,
+      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": true,
       "reason": "Passed filters"
@@ -500,20 +1085,6 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "NCRA",
-      "name": "Nocera",
-      "price": 2.35,
-      "change_pct": 5.381165919282516,
-      "volume": 577447,
-      "rvol": 2.7722423858355416,
-      "market_cap": 5298810.04,
-      "float_shares": 1938946,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.30x, avg $vol $0.5M < $2.0M"
-    },
-    {
       "ticker": "ALGS",
       "name": "Aligos Therapeutics, Inc.",
       "price": 5.5,
@@ -528,6 +1099,20 @@
       "reason": "Filtered: vol 37,035, vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "TJGC",
+      "name": "TJGC GROUP",
+      "price": 11.85,
+      "change_pct": 5.898123324396785,
+      "volume": 1726367,
+      "rvol": 0.9250637922553362,
+      "market_cap": 113019257.37,
+      "float_shares": 5873356,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "MNY",
       "name": "MoneyHero Limited",
       "price": 0.8,
@@ -540,6 +1125,20 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "MRKR",
+      "name": "Marker Therapeut",
+      "price": 1.21,
+      "change_pct": 5.2173913043478315,
+      "volume": 59368,
+      "rvol": 0.7439971928417465,
+      "market_cap": 19174096.05,
+      "float_shares": 15757330,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "GNLX",
@@ -596,6 +1195,20 @@
       "is_penny_stock": false,
       "passed": true,
       "reason": "Passed filters"
+    },
+    {
+      "ticker": "DBGI",
+      "name": "Digital Brands Group Inc",
+      "price": 6.3,
+      "change_pct": 4.9999999999999964,
+      "volume": 3019527,
+      "rvol": 0.6026319182303955,
+      "market_cap": 5601054.0,
+      "float_shares": 916298,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.6x"
     },
     {
       "ticker": "KEQU",
@@ -716,8 +1329,8 @@
       "name": "Olema Pharmaceuticals, Inc.",
       "price": 7.8,
       "change_pct": -23.67906066536204,
-      "volume": 926698,
-      "rvol": 1.1300450945913318,
+      "volume": 927837,
+      "rvol": 1.1314340275152612,
       "market_cap": 894225543.0,
       "float_shares": 87497607,
       "cap_size": "small-cap",
@@ -782,20 +1395,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "CTNT",
-      "name": "Cheetah Net Supply Chain Service Inc.",
-      "price": 1.03,
-      "change_pct": -11.20689655172413,
-      "volume": 1893554,
-      "rvol": 1.357937342319536,
-      "market_cap": 3664893.0,
-      "float_shares": 2955935,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "AHG",
       "name": "AKSO HEALTH GROUP",
       "price": 0.75,
@@ -810,12 +1409,26 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "CTNT",
+      "name": "Cheetah Net Supply Chain Service Inc.",
+      "price": 1.04,
+      "change_pct": -10.344827586206886,
+      "volume": 1894210,
+      "rvol": 1.3584077840901756,
+      "market_cap": 3664893.0,
+      "float_shares": 2955935,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "MKDW",
       "name": "MKDWELL Tech Inc",
       "price": 6.98,
       "change_pct": -9.935483870967737,
-      "volume": 1430598,
-      "rvol": 7.819056311931921,
+      "volume": 1431864,
+      "rvol": 7.8259757437296065,
       "market_cap": 265037925.0,
       "float_shares": 34198442,
       "cap_size": "micro-cap",
@@ -852,6 +1465,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "PCLA",
+      "name": "PicoCELA",
+      "price": 9.31,
+      "change_pct": -7.9129574678536,
+      "volume": 5964900,
+      "rvol": 4.626180510152562,
+      "market_cap": 97195568.0,
+      "float_shares": 9613805,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "MYND",
       "name": "Mynd.ai, Inc.",
       "price": 0.35,
@@ -862,20 +1489,6 @@
       "float_shares": 47144605,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "PCLA",
-      "name": "PicoCELA",
-      "price": 9.33,
-      "change_pct": -7.715133531157265,
-      "volume": 5964685,
-      "rvol": 4.6260137632146945,
-      "market_cap": 97195568.0,
-      "float_shares": 9613805,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -912,8 +1525,8 @@
       "name": "Glucotrack",
       "price": 2.36,
       "change_pct": -7.450980392156861,
-      "volume": 741663,
-      "rvol": 5.148042230351156,
+      "volume": 741666,
+      "rvol": 5.148063053995711,
       "market_cap": 2035267.0,
       "float_shares": 798144,
       "cap_size": "nano-cap",
@@ -966,10 +1579,10 @@
     {
       "ticker": "TRUG",
       "name": "TruGolf Holdings",
-      "price": 0.606,
-      "change_pct": -7.240165314556866,
-      "volume": 431485980,
-      "rvol": 8.786587781790598,
+      "price": 0.607,
+      "change_pct": -7.087096280422473,
+      "volume": 431585681,
+      "rvol": 8.78861804842506,
       "market_cap": 1256757.0,
       "float_shares": 1903708,
       "cap_size": "nano-cap",
@@ -988,6 +1601,20 @@
       "float_shares": 1812786,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "AEON",
+      "name": "Aeon Biopharma",
+      "price": 0.305,
+      "change_pct": -6.699296420923839,
+      "volume": 30744901,
+      "rvol": 1.2912787270542139,
+      "market_cap": 16306684.0,
+      "float_shares": 49882790,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -1038,8 +1665,8 @@
       "name": "Agroz",
       "price": 0.226,
       "change_pct": -5.872553102873803,
-      "volume": 1491611,
-      "rvol": 0.07948150688493619,
+      "volume": 1509611,
+      "rvol": 0.08044064913042033,
       "market_cap": 5203803.0,
       "float_shares": 21673485,
       "cap_size": "nano-cap",
@@ -1076,16 +1703,16 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "AEON",
-      "name": "Aeon Biopharma",
-      "price": 0.308,
-      "change_pct": -5.781584582441122,
-      "volume": 30694730,
-      "rvol": 1.2891715566647228,
-      "market_cap": 16306684.0,
-      "float_shares": 49882790,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
+      "ticker": "BARK",
+      "name": "Bark Inc",
+      "price": 9.03,
+      "change_pct": -5.839416058394166,
+      "volume": 43391,
+      "rvol": 0.7500864334116997,
+      "market_cap": 86630852.0,
+      "float_shares": 9033457,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -1132,6 +1759,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "HMR",
+      "name": "Heidmar Maritime Hldgs Corp",
+      "price": 1.35,
+      "change_pct": -5.594405594405584,
+      "volume": 255700,
+      "rvol": 2.5733666116500946,
+      "market_cap": 84358555.0,
+      "float_shares": 58991997,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "MSS",
       "name": "Maison Solutions Inc.",
       "price": 1.7,
@@ -1150,8 +1791,8 @@
       "name": "Tessera Defense & Homeland",
       "price": 1.2,
       "change_pct": -5.511811023622052,
-      "volume": 2860734,
-      "rvol": 1.0105665421563066,
+      "volume": 2861316,
+      "rvol": 1.0107721361498534,
       "market_cap": 3467100.0,
       "float_shares": 2889250,
       "cap_size": "nano-cap",
@@ -1174,14 +1815,14 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "BDRX",
-      "name": "Biodexa Pharmaceuticals plc",
-      "price": 1.23,
-      "change_pct": -5.3846153846153895,
-      "volume": 141608631,
-      "rvol": 10.015878089296296,
-      "market_cap": 1337784.0,
-      "float_shares": 1029066,
+      "ticker": "UCAR",
+      "name": "U Power Limited",
+      "price": 4.7,
+      "change_pct": -5.4325955734406355,
+      "volume": 169939,
+      "rvol": 1.6819315505057504,
+      "market_cap": 8821436.0,
+      "float_shares": 1773097,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -1196,6 +1837,20 @@
       "rvol": 0.1832510496931666,
       "market_cap": 2669838.0,
       "float_shares": 721578,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "BDRX",
+      "name": "Biodexa Pharmaceuticals plc",
+      "price": 1.23,
+      "change_pct": -5.3846153846153895,
+      "volume": 141624002,
+      "rvol": 10.01696526923034,
+      "market_cap": 1337784.0,
+      "float_shares": 1029066,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -1230,12 +1885,40 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "CDT",
+      "name": "CDT Equity",
+      "price": 0.237,
+      "change_pct": -5.200000000000005,
+      "volume": 9783808,
+      "rvol": 1.6091617441589852,
+      "market_cap": 3423466.0,
+      "float_shares": 13693866,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ITP",
+      "name": "It Tech Packaging",
+      "price": 0.155,
+      "change_pct": -5.314599877825297,
+      "volume": 195971,
+      "rvol": 0.5157864538644965,
+      "market_cap": 2777239.0,
+      "float_shares": 16965420,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "TNON",
       "name": "Tenon Medical, Inc.",
       "price": 5.62,
       "change_pct": -5.227655986509268,
-      "volume": 108098368,
-      "rvol": 4.215718408846076,
+      "volume": 108109541,
+      "rvol": 4.2161541436555225,
       "market_cap": 6123187.0,
       "float_shares": 667047,
       "cap_size": "nano-cap",
@@ -1304,8 +1987,8 @@
       "name": "Gauzy Ltd",
       "price": 7.4,
       "change_pct": -5.1282051282051215,
-      "volume": 152470,
-      "rvol": 7.0256197585476,
+      "volume": 152485,
+      "rvol": 7.026310939083955,
       "market_cap": 7309824.0,
       "float_shares": 1149381,
       "cap_size": "nano-cap",
@@ -1340,80 +2023,9 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ATTT",
-      "name": "Atlas Trinity Tech Ltd",
-      "price": 2.81,
-      "change_pct": -5.067567567567564,
-      "volume": 381305,
-      "rvol": 0.4210876796197561,
-      "market_cap": 17389239.0,
-      "float_shares": 5874743,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "SGLY",
-      "name": "Singularity Future Tech Ltd",
-      "price": 1.51,
-      "change_pct": -5.031446540880507,
-      "volume": 637510,
-      "rvol": 0.9915868095358824,
-      "market_cap": 8592022.0,
-      "float_shares": 5403788,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "NSPR",
-      "name": "Inspiremd",
-      "price": 0.751,
-      "change_pct": -4.92467400936828,
-      "volume": 31962,
-      "rvol": 0.6269025576651498,
-      "market_cap": 36721754.0,
-      "float_shares": 46838962,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "PCSA",
-      "name": "Processa Pharmaceuticals Inc",
-      "price": 1.978,
-      "change_pct": -4.903846153846158,
-      "volume": 39335,
-      "rvol": 1.4232216513495912,
-      "market_cap": 5810242.0,
-      "float_shares": 2793386,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "CCHH",
-      "name": "CCH Holdings Ltd.",
-      "price": 1.17,
-      "change_pct": -4.878048780487809,
-      "volume": 13035,
-      "rvol": 0.4516788523510863,
-      "market_cap": 24373344.0,
-      "float_shares": 18843727,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
     }
   ],
-  "live_quotes": {},
-  "previous_live_quotes": {
+  "live_quotes": {
     "SWRD": {
       "price": 2.96,
       "open": 2.5,
@@ -1421,18 +2033,19 @@
       "low": 2.49,
       "close": 2.96,
       "preClose": 2.23,
-      "volume": 27469182,
+      "volume": 27495179,
       "changeRatio": 0.3274,
       "marketValue": 625003890.48,
       "name": "Stewards Inc",
-      "_timestamp": "2026-09-11T21:53:17.559381Z"
+      "_timestamp": "2026-09-11T21:59:40.636388Z"
     }
   },
+  "previous_live_quotes": {},
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "07:56 AM AEST",
+    "market_time": "07:59 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
