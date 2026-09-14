@@ -713,32 +713,17 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     status = 'CANDIDATE'
                     result_summary = f"Tape momentum but low dollar volume ${dollar_volume:,.0f}"
 
-            # Dead-ticker filter: drop candidates that have no live tape momentum and no fresh news.
-            # A flatlined pre-market gapper is not actionable and should not appear in the table.
+            # Dead-ticker filter: drop candidates that have genuinely flatlined (no volume,
+            # no momentum, no fresh catalyst). A scanner-passed ticker with reasonable RVOL
+            # or above-average turnover is not dead just because its 1m bars look quiet.
             if market == 'us' and status == 'CANDIDATE':
                 rvol = float(tape_data.get('rvol', 0) or 0)
-                price_velocity_pct = float(tape_data.get('price_velocity_pct', 0) or 0)
                 volume_acceleration = float(tape_data.get('volume_acceleration', 0) or 0)
-                large_bar_count = int(tape_data.get('large_bar_count', 0) or 0)
                 recent_pct_of_adv = float(tape_data.get('recent_pct_of_adv', 0) or 0)
-                # For tiny-float stocks, volume/float ratio can confirm real turnover even when
-                # the 10-day RVOL looks low because the average denominator is huge.
-                outstanding = float(_float_shares(gainer) or 0)
-                current_volume = int(_volume(gainer) or 0)
-                vfr = (current_volume / outstanding * 100.0) if outstanding > 0 else 0.0
-                has_price_move = price_velocity_pct >= 15.0
-                # Volume confirmation: accelerating intraday volume, turnover ≥2x recent ADV,
-                # RVOL ≥2x, or — for low-float names — at least 1.0x of the entire float traded.
-                has_volume_confirm = (
-                    volume_acceleration >= 0.5 or
-                    recent_pct_of_adv >= 200.0 or
-                    rvol >= 2.0 or
-                    vfr >= 1.0
-                )
-                has_momentum = has_price_move and has_volume_confirm
+                has_volume = rvol >= 1.0 or recent_pct_of_adv >= 100.0 or volume_acceleration >= 0.5
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
-                if not has_momentum and not has_fresh_news:
-                    logger.info("Dropping dead candidate %s: no live tape momentum or fresh news", ticker)
+                if not has_volume and not has_fresh_news:
+                    logger.info("Dropping dead candidate %s: no volume or fresh news", ticker)
                     return None
 
             # Fetch recent SEC EDGAR filings for the alert/candidate row.
