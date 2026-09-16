@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Prints & Orders | Aeyeing</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-kids.css?v=5">
+    <link rel="stylesheet" href="style-kids.css?v=6">
     <style>
         :root {
             --primary: #14B8A6;
@@ -565,30 +565,35 @@
 
         // Default prints
         const defaultPrints = [
-            { id: 'print-1', title: 'Articulated Dragon', category: 'Toys', desc: 'Flexible articulated dragon that moves like a real one. Great fidget toy!', size: '25cm', image: null },
-            { id: 'print-2', title: 'Miniature House', category: 'Decor', desc: 'Detailed miniature house with removable roof. Perfect for display!', size: '12cm', image: null },
-            { id: 'print-3', title: 'Tool Organizer', category: 'Functional', desc: 'Customizable desk organizer for tools, pens, and small items.', size: '20cm', image: null },
-            { id: 'print-4', title: 'Self-Watering Planter', category: 'Functional', desc: 'Smart planter with water reservoir. Keeps plants happy for days!', size: '15cm', image: null },
-            { id: 'print-5', title: 'Phone Stand + Controller', category: 'Gaming', desc: 'Gaming phone stand with built-in controller grips. Great for mobile gaming!', size: 'Universal', image: null },
-            { id: 'print-6', title: 'Custom Name Tag', category: 'Custom', desc: 'Personalized name tag with custom text. Great for desks, doors, gifts!', size: '10cm', image: null },
             { id: 'conan-1', title: 'Conan the Barbarian - Savage Blade', category: 'Collectibles', desc: 'Detailed Conan the Barbarian with savage blade. Perfect for collectors and fantasy fans!', size: '15cm', price: '', image: 'images/conan/conan-1.jpeg' },
             { id: 'conan-2', title: 'Conan the Barbarian - Orio Marble Edition', category: 'Collectibles', desc: 'Premium Orio Marble filament edition. Unique marble texture finish!', size: '15cm', price: '', image: 'images/conan/conan-2.jpeg' },
             { id: 'conan-3', title: 'Conan the Barbarian - Black Edition', category: 'Collectibles', desc: 'Sleek black edition. Bold and powerful look for any display!', size: '15cm', price: '', image: 'images/conan/conan-3.jpeg' },
             { id: 'conan-4', title: 'Conan the King - Throne', category: 'Collectibles', desc: 'Majestic Conan on throne. Intricate details and regal pose!', size: '18cm', price: '', image: 'images/conan/conan-4.jpeg' },
             { id: 'conan-5', title: 'Conan the Barbarian - Battle Ready', category: 'Collectibles', desc: 'Battle-ready stance with detailed armor and weapons!', size: '15cm', price: '', image: 'images/conan/conan-5.jpeg' },
             { id: 'conan-6', title: 'Conan the Barbarian - Classic Pose', category: 'Collectibles', desc: 'Classic heroic pose. The iconic barbarian in all his glory!', size: '15cm', price: '', image: 'images/conan/conan-6.jpeg' },
-            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' }
+            { id: 'conan-7', title: 'Conan the Barbarian - Dual Wield', category: 'Collectibles', desc: 'Dual wielding weapons. Maximum detail and action!', size: '15cm', price: '', image: 'images/conan/conan-7.jpeg' },
+            { id: 'new-1', title: 'Cat Glasses Holder', category: 'Functional', desc: 'Cute cat-shaped stand that keeps your glasses safe and easy to reach.', size: '12cm', image: 'images/3d-prints/cat-glasses-holder.jpeg' },
+            { id: 'new-2', title: 'Coffee Spill Coaster', category: 'Functional', desc: 'Funny spilled-coffee coaster that adds a playful twist to any desk.', size: '10cm', image: 'images/3d-prints/coffee-spill-coaster.jpeg' },
+            { id: 'new-3', title: 'Deer Figurine', category: 'Decor', desc: 'Elegant deer figurine with smooth curves, perfect for a shelf or desk.', size: '15cm', image: 'images/3d-prints/deer-figurine.jpeg' },
+            { id: 'new-4', title: 'Google Mini Holder', category: 'Functional', desc: 'Stylish holder for Google Nest Mini with tidy cable routing.', size: '8cm', image: 'images/3d-prints/google-mini-holder.jpeg' },
+            { id: 'new-5', title: 'Decorative Hand', category: 'Decor', desc: 'Artistic hand sculpture — great for holding jewelry or as a standalone accent.', size: '15cm', image: 'images/3d-prints/decorative-hand.jpeg' },
+            { id: 'new-6', title: 'Horse Figurine', category: 'Decor', desc: 'Graceful horse figurine with detailed mane and flowing posture.', size: '15cm', image: 'images/3d-prints/horse-figurine.jpeg' },
+            { id: 'new-7', title: 'Incense Burner', category: 'Functional', desc: 'Minimalist incense burner with a built-in ash-catching base.', size: '12cm', image: 'images/3d-prints/incense-burner.jpeg' },
+            { id: 'new-8', title: 'Batman Fridge Magnet', category: 'Functional', desc: 'Bold Batman magnet that adds superhero style to any fridge.', size: '6cm', image: 'images/3d-prints/batman-fridge-magnet.jpeg' },
+            { id: 'new-9', title: 'Spider-Man Keyring', category: 'Accessories', desc: 'Compact Spider-Man keyring, printed in durable, vibrant PLA.', size: '5cm', image: 'images/3d-prints/spiderman-keyring.jpeg' },
+            { id: 'new-10', title: 'Urban Batman Figure', category: 'Collectibles', desc: 'Detailed urban-style Batman figure for collectors and fans.', size: '15cm', image: 'images/3d-prints/urban-batman-figure.jpeg' },
+            { id: 'new-11', title: 'Yoga Figure', category: 'Decor', desc: 'Serene yoga pose figure that brings calm to any workspace or shelf.', size: '12cm', image: 'images/3d-prints/yoga-figure.jpeg' },
         ];
 
         function loadPrints() {
-            const stored = localStorage.getItem('aeyeingPrints');
+            const stored = localStorage.getItem('aeyeingPrints_v2');
             if (stored) return JSON.parse(stored);
-            localStorage.setItem('aeyeingPrints', JSON.stringify(defaultPrints));
+            localStorage.setItem('aeyeingPrints_v2', JSON.stringify(defaultPrints));
             return defaultPrints;
         }
 
         function savePrints(prints) {
-            localStorage.setItem('aeyeingPrints', JSON.stringify(prints));
+            localStorage.setItem('aeyeingPrints_v2', JSON.stringify(prints));
         }
 
         let prints = loadPrints();
