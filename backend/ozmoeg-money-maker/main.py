@@ -699,9 +699,19 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 large_bar_count = int(tape_data.get('large_bar_count', 0) or 0)
                 rvol = float(tape_data.get('rvol', 0) or 0)
                 buy_pressure_pct = float(tape_data.get('buy_pressure_pct', 0) or 0)
+                recent_pct_of_adv = float(tape_data.get('recent_pct_of_adv', 0) or 0)
                 has_price_move = price_velocity_pct >= 5.0 or large_bar_count >= 5
-                has_volume_confirm = volume_acceleration >= 0.5 or rvol >= 15.0 or buy_pressure_pct >= 70.0
+                has_volume_confirm = (
+                    volume_acceleration >= 0.5 or
+                    rvol >= 15.0 or
+                    buy_pressure_pct >= 70.0 or
+                    recent_pct_of_adv >= 200.0
+                )
                 tape_momentum = has_price_move and has_volume_confirm
+                # Fresh news alone is not enough for an ALERT; it must also show live tape
+                # movement (price velocity or large bars) so stale-news gaps don't sit in the
+                # ALERT table waiting for momentum that may never arrive.
+                has_price_movement = price_velocity_pct >= 5.0 or large_bar_count >= 5
                 price = float(_price(gainer) or 0)
                 volume = int(_volume(gainer) or 0)
                 dollar_volume = price * volume
@@ -709,6 +719,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 if news_score == 0 and not tape_momentum:
                     status = 'CANDIDATE'
                     result_summary = _scan_reason(gainer) or change_str
+                elif news_score > 0 and not has_price_movement:
+                    status = 'CANDIDATE'
+                    result_summary = f"News score {news_score} but no live price movement"
                 elif news_score == 0 and tape_momentum and dollar_volume < min_alert_dollar_volume:
                     status = 'CANDIDATE'
                     result_summary = f"Tape momentum but low dollar volume ${dollar_volume:,.0f}"
@@ -721,12 +734,13 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 # turnover even when the 10-day RVOL looks low due to a huge average denominator.
                 outstanding = float(_float_shares(gainer) or 0)
                 current_volume = int(_volume(gainer) or 0)
-                vfr = (current_volume / outstanding * 100.0) if outstanding > 0 else 0.0
+                vfr = (current_volume / outstanding) if outstanding > 0 else 0.0
+                min_vfr = float(config.get('scanner', {}).get('min_volume_float_ratio', 0.5))
                 has_volume = (
                     rvol >= 1.0 or
                     recent_pct_of_adv >= 100.0 or
                     volume_acceleration >= 0.5 or
-                    vfr >= 1.0
+                    vfr >= min_vfr
                 )
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
                 if not has_volume and not has_fresh_news:
@@ -764,7 +778,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'tape': tape_data,
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'time': datetime.now().strftime('%H:%M:%S'),
-                'skip_news_check': (market_status.lower() in ('open', 'after-hours'))
+                'skip_news_check': (market_status.lower() in ('open', 'after-hours')),
+                'red_flag': bool(news_data.get('red_flags') and len(news_data.get('red_flags')) > 0),
             }
 
         # Pre-fetch 1-minute bars for regular candidates to feed live tape momentum metrics.
@@ -958,7 +973,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'tape': tape_data,
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'time': datetime.now().strftime('%H:%M:%S'),
-                'skip_news_check': (market_status.lower() in ('open', 'after-hours'))
+                'skip_news_check': (market_status.lower() in ('open', 'after-hours')),
+                'red_flag': bool(news_data.get('red_flags') and len(news_data.get('red_flags')) > 0),
             }
 
         with ThreadPoolExecutor(max_workers=8) as ex:

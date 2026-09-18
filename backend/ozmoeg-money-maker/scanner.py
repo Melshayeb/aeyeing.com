@@ -567,14 +567,20 @@ class SmallCapScanner:
         if volume < volume_min:
             fails.append(f'vol {volume:,}')
 
-        # Upper move cap with tiered exception
+        # Upper move cap with tiered exception. In extended hours the only hard cap is
+        # the tier-2 maximum (default 800%); anything below that is acceptable. The
+        # legacy intra-day move_max_pct gate is ignored outside regular trading hours
+        # because pre/after-hours movers routinely gap >40% and >150% on real catalysts.
         if not self.is_au and move_max is not None and abs(change_pct) > move_max:
             if move_tier_2_max and abs(change_pct) <= move_tier_2_max:
-                # Allow if strong turnover and RVOL
-                tier_ok = rvol >= move_tier_2_min_rvol
+                # Allow if reasonable turnover. Volume/float is the primary confirmation;
+                # RVOL is a secondary check because stale 10-day averages can distort it.
+                tier_ok = True
                 if outstanding_shares > 0 and min_volume_float_ratio > 0:
                     vfr = volume / outstanding_shares
                     tier_ok = tier_ok and vfr >= move_tier_2_min_vfr
+                if move_tier_2_min_rvol > 0:
+                    tier_ok = tier_ok and rvol >= move_tier_2_min_rvol
                 if not tier_ok:
                     fails.append(f'move {change_pct:.1f}% tier-2 failed')
             else:
