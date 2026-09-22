@@ -21,6 +21,8 @@ logger = logging.getLogger(__name__)
 
 # Track recently sent alerts to prevent duplicates
 SENT_ALERTS_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.sent_alerts.json"
+SUMMARY_TICKERS_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.summary_tickers.json"
+CANDIDATE_STATE_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.candidate_telegram_state.json"
 DUPLICATE_WINDOW_SECONDS = 21600  # 6 hours — only re-send same setup if it stays valid all session
 
 # Telegram quality gate: only high-conviction, fresh-catalyst setups get channel alerts.
@@ -64,7 +66,7 @@ class Notifier:
 
     def _load_previous_summary_tickers(self):
         """Load the last set of tickers that made it into the pre-market summary."""
-        path = SENT_ALERTS_FILE.with_name('.summary_tickers.json')
+        path = SUMMARY_TICKERS_FILE
         if path.exists():
             try:
                 with open(path, 'r') as f:
@@ -76,7 +78,7 @@ class Notifier:
 
     def _save_previous_summary_tickers(self, tickers: List[str]):
         """Persist the current set of summary-eligible tickers."""
-        path = SENT_ALERTS_FILE.with_name('.summary_tickers.json')
+        path = SUMMARY_TICKERS_FILE
         path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, 'w') as f:
             json.dump(sorted(tickers), f)
