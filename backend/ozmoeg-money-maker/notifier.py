@@ -485,6 +485,12 @@ class Notifier:
         removed = [t for t in previous_alert_tickers if t not in current_alert_tickers]
         logger.info("Alert ticker set changed — added: %s, removed: %s", added, removed)
 
+        # Only send a notification when tickers are ADDED. When a ticker drops,
+        # we just update the baseline silently — no Telegram spam.
+        if not added:
+            logger.info("Pre-market summary suppressed — no newly added tickers (removed: %s)", removed)
+            return False
+
         unique = []
         for result in eligible_alerts:
             plan = result.get('plan') or {}
