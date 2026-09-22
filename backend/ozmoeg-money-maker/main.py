@@ -78,7 +78,24 @@ def _market_status_now(market: str = 'us', _now_override=None) -> str:
         if 600 <= minutes < 960:  # 10:00 - 16:00
             return 'OPEN'
         return 'CLOSED'
-
+    # US
+    et = pytz.timezone('America/New_York')
+    now = _now_override if _now_override else _dt.now(et)
+    if now.tzinfo is None:
+        now = et.localize(now)
+    weekday = now.weekday()
+    minutes = now.hour * 60 + now.minute
+    if weekday >= 5:
+        return 'WEEKEND'
+    if minutes < 570:  # 09:30
+        if minutes >= 240:  # 04:00
+            return 'PRE-MARKET'
+        return 'CLOSED'
+    if minutes < 960:  # 16:00
+        return 'OPEN'
+    if minutes < 1200:  # 20:00
+        return 'AFTER-HOURS'
+    return 'CLOSED'
 
 def _is_first_scan_after_us_market_close() -> bool:
     """
@@ -128,7 +145,6 @@ def _reset_telegram_state_after_close():
     """Clear Telegram dedup caches when a new US trading session starts."""
     if not _is_first_scan_after_us_market_close():
         return
-    import json
     files_to_reset = [SENT_ALERTS_FILE, SUMMARY_TICKERS_FILE, CANDIDATE_STATE_FILE]
     for f in files_to_reset:
         if f.exists():
@@ -140,24 +156,6 @@ def _reset_telegram_state_after_close():
     _record_telegram_session_marker()
     logger.info("Telegram dedup state reset for new US session")
 
-    # US
-    et = pytz.timezone('America/New_York')
-    now = _now_override if _now_override else _dt.now(et)
-    if now.tzinfo is None:
-        now = et.localize(now)
-    weekday = now.weekday()
-    minutes = now.hour * 60 + now.minute
-    if weekday >= 5:
-        return 'WEEKEND'
-    if minutes < 570:  # 09:30
-        if minutes >= 240:  # 04:00
-            return 'PRE-MARKET'
-        return 'CLOSED'
-    if minutes < 960:  # 16:00
-        return 'OPEN'
-    if minutes < 1200:  # 20:00
-        return 'AFTER-HOURS'
-    return 'CLOSED'
 def _market_status_label_for_telegram(market: str, status: str) -> str:
     """Return a user-friendly label for Telegram market-status notifications."""
     market = str(market).lower()
