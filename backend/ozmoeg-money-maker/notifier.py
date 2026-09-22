@@ -478,7 +478,6 @@ class Notifier:
 
         if current_alert_tickers == previous_alert_tickers:
             logger.info("Pre-market summary suppressed — alert ticker set unchanged (%s)", ', '.join(current_alert_tickers))
-            self._save_previous_summary_tickers(current_alert_tickers)
             return False
 
         added = [t for t in current_alert_tickers if t not in previous_alert_tickers]
@@ -489,6 +488,7 @@ class Notifier:
         # we just update the baseline silently — no Telegram spam.
         if not added:
             logger.info("Pre-market summary suppressed — no newly added tickers (removed: %s)", removed)
+            self._save_previous_summary_tickers(current_alert_tickers)
             return False
 
         unique = []

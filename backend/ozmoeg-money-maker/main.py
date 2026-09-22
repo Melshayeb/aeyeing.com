@@ -99,47 +99,40 @@ def _market_status_now(market: str = 'us', _now_override=None) -> str:
 
 def _is_first_scan_after_us_market_close() -> bool:
     """
-    Return True if this is the first scan of a new US trading day/session,
-    i.e. the previous state was recorded before the most recent US market close.
+    Return True once per US trading day — the first scan after a US market close
+    should reset Telegram dedup state so tickers can re-alert the next session.
 
-    US market close is 16:00 ET (Mon-Fri).  After that, any scan that runs is
-    considered a new session and we reset Telegram dedup state so tickers can
-    re-alert the next day.
+    We store the last reset date (US ET date). If it differs from today's US ET
+    date, we reset. This prevents repeated resets during the same session.
     """
     import pytz
     from datetime import datetime as _dt
     et = pytz.timezone('America/New_York')
     now = _dt.now(et)
+    # Only reset on trading days (Mon-Fri). On weekends, leave state untouched.
     if now.weekday() >= 5:
-        return False  # Weekend has no market close/session reset
+        return False
     state_dir = Path.home() / '.hermes/skills/ozmoeg-money-maker'
     marker = state_dir / '.telegram_session_marker.json'
-    today_close = now.replace(hour=16, minute=0, second=0, microsecond=0)
+    today_str = now.strftime('%Y-%m-%d')
     try:
         data = json.loads(marker.read_text(encoding='utf-8'))
-        last_session_utc = data.get('last_session_utc')
-        if not last_session_utc:
-            return True
-        last = _dt.fromisoformat(last_session_utc)
-        if last.tzinfo is None:
-            last = pytz.utc.localize(last)
-        # If the marker is from before today's close, we have crossed a close.
-        if last < today_close.astimezone(pytz.utc):
-            return True
-        return False
+        last_reset_date = data.get('last_reset_date', '')
+        return last_reset_date != today_str
     except FileNotFoundError:
         return True
     except Exception:
         return True
 
 def _record_telegram_session_marker():
-    """Persist the current time as the latest Telegram dedup session marker."""
+    """Persist today's US ET date as the latest Telegram dedup reset marker."""
     import pytz
     from datetime import datetime as _dt
     state_dir = Path.home() / '.hermes/skills/ozmoeg-money-maker'
     state_dir.mkdir(parents=True, exist_ok=True)
     marker = state_dir / '.telegram_session_marker.json'
-    marker.write_text(json.dumps({'last_session_utc': _dt.now(pytz.utc).isoformat()}, indent=2), encoding='utf-8')
+    today_str = _dt.now(pytz.timezone('America/New_York')).strftime('%Y-%m-%d')
+    marker.write_text(json.dumps({'last_reset_date': today_str}, indent=2), encoding='utf-8')
 
 def _reset_telegram_state_after_close():
     """Clear Telegram dedup caches when a new US trading session starts."""
