@@ -47,6 +47,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 SKILL_DIR = Path.home() / ".hermes/skills/ozmoeg-money-maker"
+TELEGRAM_STATE_DIR = SKILL_DIR
+
+# Telegram dedup state files. These are reset at the start of each US session
+# (first scan after US market close) so tickers can re-alert the next day.
+SENT_ALERTS_FILE = TELEGRAM_STATE_DIR / ".sent_alerts.json"
+SUMMARY_TICKERS_FILE = TELEGRAM_STATE_DIR / ".summary_tickers.json"
+CANDIDATE_STATE_FILE = TELEGRAM_STATE_DIR / ".candidate_telegram_state.json"
+
 def _market_status_now(market: str = 'us', _now_override=None) -> str:
     """Return market status for US or AU.
 
@@ -70,6 +78,68 @@ def _market_status_now(market: str = 'us', _now_override=None) -> str:
         if 600 <= minutes < 960:  # 10:00 - 16:00
             return 'OPEN'
         return 'CLOSED'
+
+
+def _is_first_scan_after_us_market_close() -> bool:
+    """
+    Return True if this is the first scan of a new US trading day/session,
+    i.e. the previous state was recorded before the most recent US market close.
+
+    US market close is 16:00 ET (Mon-Fri).  After that, any scan that runs is
+    considered a new session and we reset Telegram dedup state so tickers can
+    re-alert the next day.
+    """
+    import pytz
+    from datetime import datetime as _dt
+    et = pytz.timezone('America/New_York')
+    now = _dt.now(et)
+    if now.weekday() >= 5:
+        return False  # Weekend has no market close/session reset
+    state_dir = Path.home() / '.hermes/skills/ozmoeg-money-maker'
+    marker = state_dir / '.telegram_session_marker.json'
+    today_close = now.replace(hour=16, minute=0, second=0, microsecond=0)
+    try:
+        data = json.loads(marker.read_text(encoding='utf-8'))
+        last_session_utc = data.get('last_session_utc')
+        if not last_session_utc:
+            return True
+        last = _dt.fromisoformat(last_session_utc)
+        if last.tzinfo is None:
+            last = pytz.utc.localize(last)
+        # If the marker is from before today's close, we have crossed a close.
+        if last < today_close.astimezone(pytz.utc):
+            return True
+        return False
+    except FileNotFoundError:
+        return True
+    except Exception:
+        return True
+
+def _record_telegram_session_marker():
+    """Persist the current time as the latest Telegram dedup session marker."""
+    import pytz
+    from datetime import datetime as _dt
+    state_dir = Path.home() / '.hermes/skills/ozmoeg-money-maker'
+    state_dir.mkdir(parents=True, exist_ok=True)
+    marker = state_dir / '.telegram_session_marker.json'
+    marker.write_text(json.dumps({'last_session_utc': _dt.now(pytz.utc).isoformat()}, indent=2), encoding='utf-8')
+
+def _reset_telegram_state_after_close():
+    """Clear Telegram dedup caches when a new US trading session starts."""
+    if not _is_first_scan_after_us_market_close():
+        return
+    import json
+    files_to_reset = [SENT_ALERTS_FILE, SUMMARY_TICKERS_FILE, CANDIDATE_STATE_FILE]
+    for f in files_to_reset:
+        if f.exists():
+            try:
+                f.unlink()
+                logger.info("Reset Telegram state file: %s", f.name)
+            except Exception as e:
+                logger.warning("Failed to reset %s: %s", f.name, e)
+    _record_telegram_session_marker()
+    logger.info("Telegram dedup state reset for new US session")
+
     # US
     et = pytz.timezone('America/New_York')
     now = _now_override if _now_override else _dt.now(et)
@@ -473,6 +543,10 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
     market = config.get('scanner', {}).get('market', 'us')
     market_status = _market_status_now(market)
     logger.info("=== Running OzMoEg %s Scan (Market=%s, Status=%s) ===", scan_type, market, market_status)
+
+    # Reset Telegram dedup state at the start of a new US session (after market close)
+    if str(market).lower() == 'us':
+        _reset_telegram_state_after_close()
 
     # Check if this scan is allowed by cadence
     if not args.force and not _scan_allowed_minute(market, market_status):
@@ -1034,9 +1108,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 candidate_tickers = [c.get('ticker') for c in candidates]
                 # Load previous candidate list from JSON lock file
                 import json as _json
-                state_dir = Path.home() / '.hermes' / 'skills' / 'ozmoeg-money-maker'
-                state_dir.mkdir(parents=True, exist_ok=True)
-                prev_state_path = state_dir / '.candidate_telegram_state.json'
+                CANDIDATE_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+                prev_state_path = CANDIDATE_STATE_FILE
                 prev_state = {'candidates': []}
                 if prev_state_path.exists():
                     try:
@@ -1062,7 +1135,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     except Exception as e:
                         logger.warning("Candidate summary Telegram send failed: %s", e)
                 # Persist current candidate list for next scan
-                prev_state_path.write_text(_json.dumps({'candidates': candidate_tickers}, indent=2), encoding='utf-8')
+                CANDIDATE_STATE_FILE.write_text(_json.dumps({'candidates': candidate_tickers}, indent=2), encoding='utf-8')
         elif not tg_allowed:
             logger.info("Telegram notifications suppressed: market=%s status=%s", market, market_status)
 
