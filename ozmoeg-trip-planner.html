@@ -595,8 +595,16 @@ syncCities();
 
 async function checkApi() {
     const el = document.getElementById('apiStatus');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
     try {
-        const res = await fetch(`${API}/health`, { method: 'GET', mode: 'cors' });
+        const res = await fetch(`${API}/health`, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            signal: controller.signal
+        });
+        clearTimeout(timeout);
         if (res.ok) {
             el.className = 'api-status ok';
             el.textContent = 'Connected';
@@ -604,6 +612,8 @@ async function checkApi() {
         }
         throw new Error('API not healthy');
     } catch (e) {
+        clearTimeout(timeout);
+        // Try local fallback
         try {
             const localRes = await fetch(`${LOCAL_API}/health`, { method: 'GET', mode: 'cors' });
             if (localRes.ok) {
@@ -809,11 +819,16 @@ async function generateExcel(e) {
     try {
         const API_BASE = activeApi();
         const endpoint = email ? `${API_BASE}/generate-and-email` : `${API_BASE}/generate`;
+        const controller = new AbortController();
+        // Generating a new city via LLM can take ~30-40s over a slow connection.
+        const genTimeout = setTimeout(() => controller.abort(), email ? 30000 : 90000);
         const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(req)
+            body: JSON.stringify(req),
+            signal: controller.signal
         });
+        clearTimeout(genTimeout);
         if (!res.ok) {
             let msg = await res.text();
             try {
@@ -839,7 +854,13 @@ async function generateExcel(e) {
         setStatus('Plan generated. Click the download link.', 'ok');
     } catch (err) {
         hideLoading();
-        setStatus('Generation failed: ' + (err.message || err), 'error');
+        let userMsg = err.message || String(err);
+        if (userMsg.includes('aborted') || userMsg.includes('timeout') || userMsg.includes('The operation timed out')) {
+            userMsg = 'Request timed out. The server may be slow for new cities. Please wait a moment and try again.';
+        } else if (userMsg.includes('Failed to fetch') || userMsg.includes('NetworkError')) {
+            userMsg = 'Cannot reach the trip planner server. Please check your internet connection, disable any ad blockers for aeyeing.com, and try again.';
+        }
+        setStatus('Generation failed: ' + userMsg, 'error');
         console.error(err);
     } finally {
         btn.disabled = false;
