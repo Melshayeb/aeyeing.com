@@ -792,36 +792,24 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     result_summary = f"Tape momentum but low dollar volume ${dollar_volume:,.0f}"
 
             if market == 'us' and status == 'CANDIDATE':
-                price_velocity_pct = float(tape_data.get('price_velocity_pct', 0) or 0)
-                large_bar_count = int(tape_data.get('large_bar_count', 0) or 0)
                 rvol = float(tape_data.get('rvol', 0) or 0)
-                buy_pressure_pct = float(tape_data.get('buy_pressure_pct', 0) or 0)
                 volume_acceleration = float(tape_data.get('volume_acceleration', 0) or 0)
                 recent_pct_of_adv = float(tape_data.get('recent_pct_of_adv', 0) or 0)
+                # For low-float names, trading a meaningful portion of the float proves real
+                # turnover even when the 10-day RVOL looks low due to a huge average denominator.
                 outstanding = float(_float_shares(gainer) or 0)
                 current_volume = int(_volume(gainer) or 0)
                 vfr = (current_volume / outstanding) if outstanding > 0 else 0.0
                 min_vfr = float(config.get('scanner', {}).get('min_volume_float_ratio', 0.5))
-
-                # A real mover must show live price action (large bars / price velocity) plus
-                # meaningful volume confirmation. Tickers that sit with a big % gap but no
-                # 1m movement are stale gap-and-fade and should drop from the list.
-                has_live_price_move = price_velocity_pct >= 5.0 or large_bar_count >= 5
-                has_volume_confirm = (
-                    rvol >= 2.0 or
+                has_volume = (
+                    rvol >= 1.0 or
+                    recent_pct_of_adv >= 100.0 or
                     volume_acceleration >= 0.5 or
-                    buy_pressure_pct >= 70.0 or
-                    recent_pct_of_adv >= 200.0 or
                     vfr >= min_vfr
                 )
-                # Strong volume alone can keep a ticker if it is genuinely moving shares.
-                strong_volume_only = rvol >= 15.0 or (buy_pressure_pct >= 70.0 and rvol >= 5.0)
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
-
-                is_alive = (has_live_price_move and has_volume_confirm) or strong_volume_only or has_fresh_news
-                if not is_alive:
-                    logger.info("Dropping dead candidate %s: no live price movement or volume/news (pv=%.2f%% bars=%d rvol=%.2f)",
-                                ticker, price_velocity_pct, large_bar_count, rvol)
+                if not has_volume and not has_fresh_news:
+                    logger.info("Dropping dead candidate %s: no volume or fresh news", ticker)
                     return None
 
             # Fetch recent SEC EDGAR filings for the alert/candidate row.
