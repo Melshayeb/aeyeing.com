@@ -806,6 +806,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 # A real mover must show live price action (large bars / price velocity) plus
                 # meaningful volume confirmation. Tickers that sit with a big % gap but no
                 # 1m movement are stale gap-and-fade and should drop from the list.
+                # Fresh news alone can keep a ticker because it may be on the verge of moving.
                 has_live_price_move = price_velocity_pct >= 5.0 or large_bar_count >= 5
                 has_volume_confirm = (
                     rvol >= 2.0 or
@@ -814,13 +815,11 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     recent_pct_of_adv >= 200.0 or
                     vfr >= min_vfr
                 )
-                # Strong volume alone can keep a ticker if it is genuinely moving shares.
-                strong_volume_only = rvol >= 15.0 or (buy_pressure_pct >= 70.0 and rvol >= 5.0)
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
 
-                is_alive = (has_live_price_move and has_volume_confirm) or strong_volume_only or has_fresh_news
+                is_alive = (has_live_price_move and has_volume_confirm) or has_fresh_news
                 if not is_alive:
-                    logger.info("Dropping dead candidate %s: no live price movement or volume/news (pv=%.2f%% bars=%d rvol=%.2f)",
+                    logger.info("Dropping dead candidate %s: no live price movement (pv=%.2f%% bars=%d rvol=%.2f)",
                                 ticker, price_velocity_pct, large_bar_count, rvol)
                     return None
 
