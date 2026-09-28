@@ -1201,6 +1201,12 @@ def main():
     if result.get('skipped'):
         logger.info("Scanner skipped: %s", result.get('reason'))
         print(f"\n⚠️ Scanner skipped: {result.get('reason')}")
+        return 0
+
+    if result.get('error'):
+        logger.error("Scanner finished with error: %s", result['error'])
+        print(f"\n❌ Scanner failed: {result['error']}")
+        return 1
 
     return 0
 
