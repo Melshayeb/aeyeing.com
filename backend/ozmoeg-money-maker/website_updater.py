@@ -5,7 +5,6 @@ Writes latest scan results to the aeyeing.com website.
 Uses simple string markers for reliable updates.
 """
 import json
-from hermes_cli._subprocess_compat import windows_hide_flags
 import subprocess
 import html
 import re
@@ -15,6 +14,11 @@ from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 import logging
+
+try:
+    from hermes_cli._subprocess_compat import windows_hide_flags
+except Exception:
+    windows_hide_flags = None
 
 import pages_status
 _html_escape = html.escape
