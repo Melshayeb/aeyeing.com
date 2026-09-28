@@ -365,10 +365,11 @@ class WebsiteUpdater:
             except Exception as e:
                 logger.warning("Snapshot cleanup failed: %s", e)
 
-            subprocess.run(['git', '-C', self.repo_path, 'add', '.'], check=False, capture_output=True, text=True, creationflags=windows_hide_flags(),)
-            result = subprocess.run(['git', '-C', self.repo_path, 'commit', '-m', self.config.get('website_commit_message', 'Auto-update OzMoEg trader dashboard')], 
-                                    check=False, capture_output=True, text=True, creationflags=windows_hide_flags(),)
+            hide_flags = windows_hide_flags() if windows_hide_flags else 0
+            subprocess.run(['git', '-C', self.repo_path, 'add', '.'], check=False, capture_output=True, text=True, creationflags=hide_flags)
+            result = subprocess.run(['git', '-C', self.repo_path, 'commit', '-m', self.config.get('website_commit_message', 'Auto-update OzMoEg trader dashboard')],
+                                    check=False, capture_output=True, text=True, creationflags=hide_flags)
             if result.returncode == 0:
-                subprocess.run(['git', '-C', self.repo_path, 'push'], check=False, capture_output=True, text=True, creationflags=windows_hide_flags(),)
+                subprocess.run(['git', '-C', self.repo_path, 'push'], check=False, capture_output=True, text=True, creationflags=hide_flags)
         except Exception as e:
             logger.error("Git push failed: %s", e)
