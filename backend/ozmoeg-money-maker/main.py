@@ -982,17 +982,34 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                     large_bar_count = int(tape_data.get('large_bar_count', 0) or 0)
                     rvol = float(tape_data.get('rvol', 0) or 0)
                     buy_pressure_pct = float(tape_data.get('buy_pressure_pct', 0) or 0)
+                    recent_pct_of_adv = float(tape_data.get('recent_pct_of_adv', 0) or 0)
+                    current_dollar_volume = _price(g) * _volume(g)
                     has_price_move = price_velocity_pct >= 5.0 or large_bar_count >= 5
-                    has_volume_confirm = volume_acceleration >= 0.5 or rvol >= exempt_rvol_floor or buy_pressure_pct >= 70.0
+                    has_volume_confirm = (
+                        volume_acceleration >= 0.5 or
+                        rvol >= exempt_rvol_floor or
+                        buy_pressure_pct >= 70.0 or
+                        recent_pct_of_adv >= 200.0 or
+                        current_dollar_volume >= 5_000_000
+                    )
                     has_momentum = has_price_move and has_volume_confirm
-                    if has_momentum:
+                    # Fallback: if Webull did not return usable bars but the ticker is a top
+                    # gainer with enormous quote-level volume (RVOL + dollar volume), treat
+                    # it as a genuine momentum play anyway. Bar data can be missing during
+                    # pre-market for recent runners, but the quote-level move is real.
+                    strong_quote_momentum = (
+                        not has_price_move and
+                        (rvol >= 5.0 or recent_pct_of_adv >= 100.0) and
+                        current_dollar_volume >= 1_000_000
+                    )
+                    if has_momentum or strong_quote_momentum:
                         g['_scan_passed'] = True
                         g['_scan_reason'] = f"Top gainer tape exempt ({_change_pct(g):.1f}%, rvol {tape_data.get('rvol', 0):.1f}x)"
                         g['tape'] = tape_data
                         exempt_candidates.append(g)
                         logger.info("Top-gainer tape exemption: %s +%.1f%% RVOL %.1fx", tkr, _change_pct(g), tape_data.get('rvol', 0) or 0)
                     else:
-                        logger.debug("Top-gainer tape exemption rejected %s: no momentum", tkr)
+                        logger.info("Top-gainer tape exemption rejected %s: no momentum", tkr)
 
         with ThreadPoolExecutor(max_workers=8) as ex:
             futures = [ex.submit(_build_regular_result, g, bars_by_ticker.get(_symbol(g))) for g in regular_candidates]
