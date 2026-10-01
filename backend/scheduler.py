@@ -65,10 +65,25 @@ def _distance_between_places(p1: Dict, p2: Dict) -> float:
 
 
 def _score_place(place: Dict, weather: Dict, ages: List[int], interests: List[str],
-                 slot: str, used_places: set, reference_place: Dict = None) -> float:
+                 slot: str, used_places: set, reference_place: Dict = None,
+                 food_pref: List[str] = None) -> float:
     score = 0.0
     if place.get("interest_match"):
         score += 3
+    # Strong boost when selected interests match place tags.
+    if interests:
+        place_tags = [str(t).lower() for t in place.get("tags", [])]
+        for interest in interests:
+            interest = interest.lower()
+            if any(interest in tag for tag in place_tags):
+                score += 4
+    # Food preference match for food items.
+    if food_pref and place.get("_is_food"):
+        place_tags = [str(t).lower() for t in place.get("tags", [])]
+        for pref in food_pref:
+            pref = pref.lower()
+            if any(pref in tag for tag in place_tags):
+                score += 5
     best = [b.lower() for b in place.get("best_time", [])]
     if slot.lower() in best:
         score += 2
@@ -100,11 +115,13 @@ def _score_place(place: Dict, weather: Dict, ages: List[int], interests: List[st
 
 def _select_place(pool: List[Dict], weather: Dict, ages: List[int], interests: List[str],
                   slot: str, used_places: set, reference_place: Dict = None,
-                  allow_used_as_last_resort: bool = True) -> Optional[Dict]:
+                  allow_used_as_last_resort: bool = True,
+                  food_pref: List[str] = None) -> Optional[Dict]:
     """Pick the best place from pool, avoiding already-used places unless necessary."""
     if not pool:
         return None
-    scored = [(p, _score_place(p, weather, ages, interests, slot, used_places, reference_place=reference_place))
+    scored = [(p, _score_place(p, weather, ages, interests, slot, used_places,
+                               reference_place=reference_place, food_pref=food_pref))
               for p in pool]
     scored.sort(key=lambda x: x[1], reverse=True)
     best_unused = next((p for p, s in scored if p["name"] not in used_places), None)
@@ -153,6 +170,74 @@ def _price_amount(h):
     elif isinstance(price, (int, float)):
         return float(price)
     return 999999.0
+
+
+
+def _tag_matches(item_tags, target):
+    if not item_tags:
+        return False
+    target = target.lower()
+    return any(target in str(t).lower() for t in item_tags)
+
+
+def _ensure_coverage(sections, city_candidates, interests, food_pref):
+    """Inject at least one item per selected interest/food-preference tag into sections."""
+    # Collect every candidate item with its source section.
+    all_pools = {}
+    for kind in ("attractions", "museums", "neighborhoods", "markets", "day_trips", "food"):
+        all_pools[kind] = []
+        for candidates in city_candidates.values():
+            all_pools[kind].extend(candidates.get(kind, []))
+
+    # Helper to add an item to a section if not already present.
+    def _add_to_section(section, item):
+        if not any(r.get("name") == item.get("name") for r in sections.get(section, [])):
+            sections.setdefault(section, []).append({
+                "name": item.get("name", ""),
+                "city": item.get("city", ""),
+                "tags": item.get("tags", []),
+                "distance": item.get("distance", ""),
+            })
+
+    # Cover interests (search attractions first, then museums, neighborhoods, markets, day trips).
+    for interest in interests:
+        interest_lower = interest.lower()
+        # Prefer attraction, then museum, etc.
+        found = False
+        for section_kind in ("attractions", "museums", "neighborhoods", "markets", "day_trips"):
+            for item in all_pools.get(section_kind, []):
+                if _tag_matches(item.get("tags"), interest_lower):
+                    _add_to_section(section_kind, item)
+                    found = True
+                    break
+            if found:
+                break
+        if not found:
+            # Add a generic placeholder so the user sees the interest was requested.
+            sections.setdefault("attractions", []).append({
+                "name": f"{interest.title()} experience (add your own)",
+                "city": "",
+                "tags": [interest_lower],
+                "distance": "",
+            })
+
+    # Cover food preferences.
+    for pref in food_pref:
+        found = False
+        for item in all_pools.get("food", []):
+            if _tag_matches(item.get("tags"), pref):
+                _add_to_section("food", item)
+                found = True
+                break
+        if not found:
+            sections.setdefault("food", []).append({
+                "name": f"{pref.title()} dining option (add your own)",
+                "city": "",
+                "tags": [pref.lower()],
+                "distance": "",
+            })
+
+    return sections
 
 
 def build_plan_data(trip: Dict, pace: str = "relaxed") -> Dict:
@@ -474,6 +559,11 @@ def build_plan_data(trip: Dict, pace: str = "relaxed") -> Dict:
         "day_trips": _dedupe_rows(candidates["day_trips"] for candidates in city_candidates.values()),
     }
 
+    # Coverage guard: ensure every selected interest and food preference appears
+    # in the final sections at least once. If a tag is missing, search all
+    # candidate pools and inject the best matching item.
+    sections = _ensure_coverage(sections, city_candidates, interests, food_pref)
+
     hotel_rows = []
     for c in cities:
         city = c["city"]
@@ -513,6 +603,7 @@ def _dedupe_rows(iterables) -> List[Dict]:
                 rows.append({
                     "name": key,
                     "city": item.get("city", ""),
+                    "tags": item.get("tags", []),
                     "distance": item.get("distance", ""),
                 })
     return rows
@@ -548,13 +639,13 @@ def apply_plan_to_workbook(wb, ws, plan: Dict):
             selected_hotel_by_city[city] = h.get("name", city)
 
     for i, dp in enumerate(day_plan):
-        col = 4 + i
-        cell = ws.cell(row=3, column=col)
+        col = 5 + i
+        cell = ws.cell(row=3, column=col)  # col is 5-based now
         cell.value = dp["weather"]
 
     for i, dp in enumerate(day_plan):
-        col = 4 + i
-        cell = ws.cell(row=4, column=col)
+        col = 5 + i
+        cell = ws.cell(row=4, column=col)  # col is 5-based now
         cell.value = dp["city"]
 
     # Map food item names to rows in the Food section
@@ -593,12 +684,12 @@ def apply_plan_to_workbook(wb, ws, plan: Dict):
 
     # Replace main-sheet hotel row name with selected hotel name and colour it green.
     for i, dp in enumerate(day_plan):
-        col = 4 + i
+        col = 5 + i
         for city, hrow in hotel_rows.items():
             cell = ws.cell(row=hrow, column=1)
             if city in selected_hotel_by_city:
                 cell.value = selected_hotel_by_city[city]
-            cell = ws.cell(row=hrow, column=col)
+            cell = ws.cell(row=hrow, column=col)  # col is 5-based now
             if dp["city"] != city:
                 continue
             city_dates = [d["date"] for d in day_plan if d["city"] == city]
@@ -611,8 +702,8 @@ def apply_plan_to_workbook(wb, ws, plan: Dict):
 
         transport_row = 6 + len(plan["cities"])
         for i, dp in enumerate(day_plan):
-            col = 4 + i
-            cell = ws.cell(row=transport_row, column=col)
+            col = 5 + i
+            cell = ws.cell(row=transport_row, column=col)  # col is 5-based now
             city_dates = [d["date"] for d in day_plan if d["city"] == dp["city"]]
             if dp["date"] == city_dates[-1] and i < len(day_plan) - 1:
                 option = plan["transport_options"][0] if plan["transport_options"] else "Travel"
@@ -620,12 +711,12 @@ def apply_plan_to_workbook(wb, ws, plan: Dict):
                 cell.fill = green_fill
 
     for i, dp in enumerate(day_plan):
-        col = 4 + i
+        col = 5 + i
         for slot, place_name in dp["slots"].items():
             if place_name == "" or place_name not in item_rows:
                 continue
             row = item_rows[place_name]
-            cell = ws.cell(row=row, column=col)
+            cell = ws.cell(row=row, column=col)  # col is 5-based now
             # Use the stored slot marker (e.g. 'X' for full-day trips) when present.
             stored_marker = dp["slot_meta"].get(slot)
             if stored_marker:
@@ -639,7 +730,7 @@ def apply_plan_to_workbook(wb, ws, plan: Dict):
         fp = plan["food_plan"][i]
         for slot, food_name in fp.items():
             if food_name and food_name in food_rows:
-                fcell = ws.cell(row=food_rows[food_name], column=col)
+                fcell = ws.cell(row=food_rows[food_name], column=col)  # col is 5-based now
                 label = {"Morning": "Morning", "Afternoon": "Afternoon", "Evening": "Evening"}[slot]
                 fcell.value = label
                 fcell.fill = green_fill

@@ -585,13 +585,43 @@ if (document.getElementById('addCityBtn')) {
 }
 
 // Seed the default Melbourne example on first load if nothing is parsed.
+// Mark it as an example so it auto-clears when the user interacts.
 const rawEl = document.getElementById('citiesRaw');
+let defaultExample = null;
 if (!rawEl || !rawEl.value.trim()) {
-    addedCities = [{ city: 'Melbourne', start_date: '2026-08-10', end_date: '2026-08-14' }];
+    defaultExample = { city: 'Melbourne', start_date: '2026-08-10', end_date: '2026-08-14', _example: true };
+    addedCities = [defaultExample];
 } else {
     addedCities = parseCities(rawEl.value);
 }
 syncCities();
+
+function _clearExampleIfPresent() {
+    if (defaultExample) {
+        const idx = addedCities.findIndex(c => c._example);
+        if (idx !== -1) {
+            addedCities.splice(idx, 1);
+            defaultExample = null;
+            syncCities();
+        }
+    }
+}
+
+if (document.getElementById('addCityBtn')) {
+    document.getElementById('addCityBtn').addEventListener('click', () => {
+        _clearExampleIfPresent();
+        addCity();
+    });
+}
+
+// Auto-clear example when country changes, so the old default city doesn't linger.
+const countrySelect = document.getElementById('country');
+if (countrySelect) {
+    countrySelect.addEventListener('change', () => {
+        updateCityDropdown();
+        _clearExampleIfPresent();
+    });
+}
 
 async function checkApi() {
     const el = document.getElementById('apiStatus');
