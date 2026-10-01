@@ -492,6 +492,63 @@ def _builtin_city_places(city: str, country: str, kind: str, limit: int = 30) ->
     """Hard-coded high-quality fallback lists for popular cities."""
     city = city.lower()
     places = {
+        "singapore": {
+            "attractions": [
+                {"name": "Marina Bay Sands", "tags": ["views", "architecture", "photography"], "best_time": ["evening"], "lat": 1.2834, "lon": 103.8607},
+                {"name": "Gardens by the Bay", "tags": ["parks & outdoors", "nature & wildlife", "architecture"], "best_time": ["morning", "evening"], "lat": 1.2816, "lon": 103.8636},
+                {"name": "Universal Studios Singapore", "tags": ["kids friendly", "theme parks", "entertainment"], "best_time": ["morning", "afternoon"], "lat": 1.2540, "lon": 103.8238},
+                {"name": "Sentosa Island", "tags": ["beach", "parks & outdoors", "kids friendly"], "best_time": ["afternoon", "evening"], "lat": 1.2494, "lon": 103.8303},
+                {"name": "Singapore Zoo", "tags": ["nature & wildlife", "kids friendly", "parks & outdoors"], "best_time": ["morning"], "lat": 1.4043, "lon": 103.7930},
+                {"name": "Merlion Park", "tags": ["photography", "history & culture", "views"], "best_time": ["morning", "evening"], "lat": 1.2868, "lon": 103.8545},
+                {"name": "Singapore Flyer", "tags": ["views", "photography"], "best_time": ["evening"], "lat": 1.2892, "lon": 103.8631},
+                {"name": "Orchard Road", "tags": ["shopping", "photography", "food & drink"], "best_time": ["afternoon", "evening"], "lat": 1.3048, "lon": 103.8318},
+                {"name": "Jewel Changi Airport", "tags": ["architecture", "parks & outdoors", "shopping"], "best_time": ["morning", "afternoon"], "lat": 1.3644, "lon": 103.9915},
+                {"name": "Clarke Quay", "tags": ["nightlife", "food & drink", "photography"], "best_time": ["evening"], "lat": 1.2905, "lon": 103.8460},
+                {"name": "S.E.A. Aquarium", "tags": ["kids friendly", "nature & wildlife", "museums & art"], "best_time": ["morning", "afternoon"], "lat": 1.2588, "lon": 103.8205},
+                {"name": "Singapore Botanic Gardens", "tags": ["parks & outdoors", "nature & wildlife", "kids friendly"], "best_time": ["morning"], "lat": 1.3138, "lon": 103.8159},
+            ],
+            "museums": [
+                {"name": "National Museum of Singapore", "tags": ["history & culture", "museums & art"], "best_time": ["morning", "afternoon"], "lat": 1.2966, "lon": 103.8485},
+                {"name": "ArtScience Museum", "tags": ["museums & art", "architecture", "technology"], "best_time": ["morning", "afternoon"], "lat": 1.2863, "lon": 103.8593},
+                {"name": "National Gallery Singapore", "tags": ["museums & art", "art galleries", "history & culture"], "best_time": ["morning", "afternoon"], "lat": 1.2902, "lon": 103.8517},
+                {"name": "Asian Civilisations Museum", "tags": ["museums & art", "history & culture"], "best_time": ["morning", "afternoon"], "lat": 1.2875, "lon": 103.8528},
+            ],
+            "markets": [
+                {"name": "Chinatown Street Market", "tags": ["local markets", "food & drink", "shopping"], "lat": 1.2838, "lon": 103.8439},
+                {"name": "Bugis Street Market", "tags": ["local markets", "shopping", "budget eats"], "lat": 1.3006, "lon": 103.8558},
+                {"name": "Lau Pa Sat", "tags": ["local markets", "food & drink", "hawker"], "lat": 1.2807, "lon": 103.8504},
+                {"name": "Little India Arcade", "tags": ["local markets", "culture", "shopping"], "lat": 1.3066, "lon": 103.8514},
+            ],
+            "food": [
+                {"name": "Maxwell Food Centre", "tags": ["hawker", "local cuisine", "budget eats"], "best_time": ["morning", "afternoon", "evening"], "lat": 1.2805, "lon": 103.8448},
+                {"name": "Newton Food Centre", "tags": ["hawker", "seafood", "local cuisine"], "best_time": ["afternoon", "evening"], "lat": 1.3110, "lon": 103.8388},
+                {"name": "Tian Tian Hainanese Chicken Rice", "tags": ["local cuisine", "budget eats"], "best_time": ["morning", "afternoon"], "lat": 1.2804, "lon": 103.8447},
+                {"name": "Jumbo Seafood East Coast", "tags": ["seafood", "local cuisine", "dinner"], "best_time": ["evening"], "lat": 1.3061, "lon": 103.9256},
+                {"name": "Liao Fan Hawker Chan", "tags": ["hawker", "local cuisine", "budget eats"], "best_time": ["morning", "afternoon"], "lat": 1.2825, "lon": 103.8451},
+                {"name": "Tiong Bahru Bakery", "tags": ["sweets & desserts", "coffee & cafés"], "best_time": ["morning", "afternoon"], "lat": 1.2818, "lon": 103.8243},
+                {"name": "Candlenut", "tags": ["local cuisine", "fine dining", "dinner"], "best_time": ["evening"], "lat": 1.2942, "lon": 103.8054},
+                {"name": "Odette", "tags": ["fine dining", "french", "dinner"], "best_time": ["evening"], "lat": 1.2897, "lon": 103.8512},
+            ],
+            "neighborhoods": [
+                {"name": "Chinatown", "tags": ["history & culture", "food & drink", "local markets"], "lat": 1.2838, "lon": 103.8439},
+                {"name": "Little India", "tags": ["culture", "food & drink", "local markets"], "lat": 1.3066, "lon": 103.8514},
+                {"name": "Kampong Glam", "tags": ["history & culture", "shopping", "food & drink"], "lat": 1.3004, "lon": 103.8593},
+                {"name": "Tiong Bahru", "tags": ["arts", "coffee & cafés", "heritage"], "lat": 1.2819, "lon": 103.8238},
+                {"name": "Joo Chiat / Katong", "tags": ["heritage", "food & drink", "photography"], "lat": 1.3052, "lon": 103.9057},
+            ],
+            "day_trips": [
+                {"name": "Pulau Ubin", "tags": ["nature & wildlife", "hiking & adventure", "day trip"], "best_time": ["morning", "afternoon"], "lat": 1.4124, "lon": 103.9574},
+                {"name": "Johor Bahru", "tags": ["shopping", "culture", "day trip"], "best_time": ["morning", "afternoon"], "lat": 1.4927, "lon": 103.7414},
+                {"name": "Desaru Coast", "tags": ["beach", "kids friendly", "day trip"], "best_time": ["morning", "afternoon"], "lat": 1.5325, "lon": 104.2968},
+                {"name": "Malacca", "tags": ["history & culture", "food & drink", "day trip"], "best_time": ["morning", "afternoon"], "lat": 2.2008, "lon": 102.2438},
+            ],
+            "hotels": [
+                {"name": "Marina Bay Sands", "price": "~SGD 650", "location": "Marina Bay", "highlights": "Iconic infinity pool and skyline views"},
+                {"name": "Raffles Hotel Singapore", "price": "~SGD 950", "location": "Beach Road", "highlights": "Historic luxury colonial landmark"},
+                {"name": "Village Hotel Sentosa by Far East Hospitality", "price": "~SGD 250", "location": "Sentosa", "highlights": "Family-friendly resort near Universal Studios"},
+                {"name": "Hotel Indigo Singapore Katong", "price": "~SGD 200", "location": "Katong", "highlights": "Boutique heritage hotel with Peranakan style"},
+            ],
+        },
         "melbourne": {
             "attractions": [
                 {"name": "Federation Square", "tags": ["history & culture", "architecture", "photography"]},
