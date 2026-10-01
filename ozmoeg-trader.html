@@ -5202,9 +5202,14 @@
             }
 
             function buildBubbleChart() {
-                // Bubble View must always show the LIVE scanner results, not the active page view
-                // (which can fall back to pre-market/after-hours/watchlist rows with missing floats/prices).
-                const allRows = (window._lastBubbleViewResults || window._lastLiveResults || []);
+                // Bubble View must match the active scanner view (live / premarket / watchlist)
+                // so the bubbles always correspond to the tickers visible in the table.
+                const view = getActiveScannerView();
+                const isPre = view === 'premarket';
+                const isWatchlist = view === 'watchlist';
+                const allRows = isWatchlist ? (window._lastPreMarketWatchlist || window._lastBubbleViewResults || window._lastLiveResults || []) :
+                                isPre ? (window._lastPreMarketResults || window._lastBubbleViewResults || window._lastLiveResults || []) :
+                                (window._lastBubbleViewResults || window._lastLiveResults || []);
                 const rows = allRows.filter(r => {
                     // Exclude watchlist rows with no real float or price data.
                     const float = getFloat(r);
@@ -5729,7 +5734,7 @@
 
             async function refreshBubbleData() {
                 // Re-fetch the latest snapshot directly so Bubble View always reflects
-                // the most recent LIVE scanner output, never the watchlist/premarket fallback view.
+                // the most recent scanner output for the active view.
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
@@ -5738,12 +5743,12 @@
                     const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
                         const data = await res.json();
-                        // Use the live scan_results only; ignore pre_market_results / watchlist fallback rows.
-                        const results = data?.scan_results || [];
-                        if (results.length) {
-                            window._lastBubbleViewResults = results;
-                            window._lastLiveQuotes = data?.live_quotes || {};
-                        }
+                        // Store all available result sets; buildBubbleChart will pick the right one for the active view.
+                        window._lastLiveResults = data?.scan_results || [];
+                        window._lastPreMarketResults = data?.pre_market_results || [];
+                        window._lastPreMarketWatchlist = data?.pre_market_watchlist || [];
+                        window._lastBubbleViewResults = data?.scan_results || [];
+                        window._lastLiveQuotes = data?.live_quotes || {};
                     }
                 } catch (err) {
                     console.warn('Bubble View refresh failed:', err);
