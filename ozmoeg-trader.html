@@ -3677,11 +3677,13 @@
 
         async function fetchManifestRaw() {
             // Prefer the tunnel manifest (fastest), then public, then raw GitHub. CORS allows all three.
+            // Fetch all three in parallel with short timeouts so a slow source does not block the others.
             const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             const tryFetch = async (url, desc) => {
                 try {
                     const res = await fetch(url + '?_=' + buster, {
-                        cache: 'no-store'
+                        cache: 'no-store',
+                        signal: AbortSignal.timeout(4000)
                     });
                     if (!res.ok) {
                         console.warn('Manifest fetch failed for', desc, res.status);
@@ -3694,14 +3696,16 @@
                     }
                     return manifest;
                 } catch (e) {
-                    console.warn('Manifest fetch exception for', desc, e);
+                    console.warn('Manifest fetch exception for', desc, e.name || e.message);
                     return null;
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
-            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            const [tunnel, main, raw] = await Promise.all([
+                tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel'),
+                tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main'),
+                tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github'),
+            ]);
             const candidates = [tunnel, main, raw].filter(Boolean);
             if (!candidates.length) return null;
             // Use whichever manifest has the newest last_updated timestamp.
@@ -5785,18 +5789,14 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file is informational only. We always load the live tunnel
-                // rolling JSON first; GitHub Pages dated snapshots can lag behind.
-                const manifest = await fetchManifestRaw();
-                const snapshotFile = getTunnelSnapshotFile();
-                if (manifest && manifest.latest) {
-                    window._lastManifestFetchSuccessAt = new Date();
-                }
-
+                // Load the live tunnel rolling JSON immediately without blocking on the manifest.
+                // The manifest is informational only and used by the background poller.
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
+                let snapshotFile = getTunnelSnapshotFile();
                 let res = await fetch(snapshotFile + '?_=' + cacheBuster, {
-                    cache: 'no-store'
+                    cache: 'no-store',
+                    signal: AbortSignal.timeout(8000)
                 });
                 window._lastFetchAttemptAt = new Date();
                 // Fallback to public rolling JSON if the tunnel endpoint is not reachable.
@@ -5804,7 +5804,8 @@
                     console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying public fallback');
                     snapshotFile = getPublicSnapshotFile();
                     res = await fetch(snapshotFile + '?_=' + cacheBuster, {
-                        cache: 'no-store'
+                        cache: 'no-store',
+                        signal: AbortSignal.timeout(8000)
                     });
                 }
                 if (!res.ok) {
