@@ -21,6 +21,7 @@ except Exception:
     windows_hide_flags = None
 
 import pages_status
+import shutil
 _html_escape = html.escape
 
 logger = logging.getLogger(__name__)
@@ -365,11 +366,27 @@ class WebsiteUpdater:
             except Exception as e:
                 logger.warning("Snapshot cleanup failed: %s", e)
 
+            # Resolve a git executable. Cron/headless environments often do not have
+            # git on PATH, so prefer the Hermes-bundled git and fall back to PATH.
+            git_exe = shutil.which('git')
+            for candidate in [
+                r"C:\Users\elsha\AppData\Local\hermes\tools\git-2.53.0+3-win32-x64\cmd\git.exe",
+                r"C:\Users\elsha\AppData\Local\hermes\git\cmd\git.exe",
+                r"C:\Program Files\Git\cmd\git.exe",
+                r"C:\Program Files (x86)\Git\cmd\git.exe",
+            ]:
+                if os.path.exists(candidate):
+                    git_exe = candidate
+                    break
+            if not git_exe:
+                logger.error("Git executable not found; cannot push website update")
+                return
+
             hide_flags = windows_hide_flags() if windows_hide_flags else 0
-            subprocess.run(['git', '-C', self.repo_path, 'add', '.'], check=False, capture_output=True, text=True, creationflags=hide_flags)
-            result = subprocess.run(['git', '-C', self.repo_path, 'commit', '-m', self.config.get('website_commit_message', 'Auto-update OzMoEg trader dashboard')],
+            subprocess.run([git_exe, '-C', self.repo_path, 'add', '.'], check=False, capture_output=True, text=True, creationflags=hide_flags)
+            result = subprocess.run([git_exe, '-C', self.repo_path, 'commit', '-m', self.config.get('website_commit_message', 'Auto-update OzMoEg trader dashboard')],
                                     check=False, capture_output=True, text=True, creationflags=hide_flags)
             if result.returncode == 0:
-                subprocess.run(['git', '-C', self.repo_path, 'push'], check=False, capture_output=True, text=True, creationflags=hide_flags)
+                subprocess.run([git_exe, '-C', self.repo_path, 'push'], check=False, capture_output=True, text=True, creationflags=hide_flags)
         except Exception as e:
             logger.error("Git push failed: %s", e)
