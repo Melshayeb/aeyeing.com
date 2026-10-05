@@ -4554,11 +4554,13 @@
         async function loadLiveData() {
             if (window._loadingLiveData) return;
             window._loadingLiveData = true;
+            console.log('loadLiveData start for', currentMarket);
             try {
                 setMarketLoading(currentMarket, true);
                 // Manifest file is informational only. We now load raw GitHub first;
                 // it bypasses Cloudflare edge cache and mobile-carrier transparent proxies.
                 const manifest = await fetchManifestRaw();
+                console.log('manifest fetched', manifest ? manifest.latest : 'null');
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
@@ -4573,7 +4575,11 @@
                 let lastErr = null;
                 for (const snapshotFile of sources) {
                     try {
-                        res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+                        res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store', signal: (() => {
+                            const ctrl = new AbortController();
+                            setTimeout(() => ctrl.abort(), 8000);
+                            return ctrl.signal;
+                        })() });
                         if (res.ok) {
                             console.log('Loaded snapshot from', snapshotFile);
                             break;
@@ -4597,6 +4603,7 @@
                 const results = data.scan_results || [];
                 const preMarketResults = data.pre_market_results || [];
                 const preMarketWatchlist = data.pre_market_watchlist || [];
+                console.log('loadLiveData parsed', currentMarket, 'results', results.length, 'status', marketStatus);
                 const allGainers = data.all_gainers || [];
                 const stats = data.scan_stats || {};
                 window._lastScanStats = stats;
