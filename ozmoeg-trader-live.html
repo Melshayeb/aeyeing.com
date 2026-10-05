@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791172456" />
+<meta name="ozmoeg-version" content="1791172767" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
@@ -1763,7 +1763,31 @@
             updateHeaderText();
             updateDateTime();
             updateCountdown();
+            updateScannerStatusBadge(currentMarketStatus, 0, 0);
+            // Parse embedded data for new market immediately
+            try {
+                const embedded = document.getElementById('ozmoeg-embedded-data');
+                if (embedded) {
+                    const attr = currentMarket === 'AUS' ? 'data-au' : 'data-us';
+                    const embeddedData = JSON.parse(embedded.getAttribute(attr));
+                    if (embeddedData) {
+                        window._latestData = embeddedData;
+                        window._lastScanTimestamp = new Date(embeddedData.last_updated || Date.now());
+                        window._lastLiveResults = embeddedData.scan_results || [];
+                        window._lastPreMarketResults = embeddedData.pre_market_results || [];
+                        window._lastPreMarketWatchlist = embeddedData.pre_market_watchlist || [];
+                        window._lastAllGainers = embeddedData.all_gainers || [];
+                        window._lastAllLosers = embeddedData.all_losers || [];
+                        window._lastBounceResults = embeddedData.bounce_results || [];
+                        window._lastBubbleViewResults = embeddedData.scan_results || [];
+                        window._lastScanStats = embeddedData.scan_stats || {};
+                    }
+                }
+            } catch (e) { console.warn('Embedded switch failed', e.message); }
             renderScannerView(); // show empty/loading state immediately
+            renderScannedTables();
+            renderBouncers();
+            renderNewsTicker();
             loadLiveData().then(() => renderPlanRules());
         }
 
