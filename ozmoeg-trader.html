@@ -2018,7 +2018,10 @@
                 if (headerStatus) headerStatus.appendChild(warningEl);
             }
 
-            if (['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
+            // Only show the empty-list warning after we have attempted a live fetch;
+            // otherwise the first paint from embedded data can flash it before counts arrive.
+            const hasAttemptedLiveFetch = !!window._lastFetchSuccessAt || !!window._lastFetchErrorAt;
+            if (hasAttemptedLiveFetch && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
                 warningEl.textContent = '⚠️ Data source returned 0 gainers/losers. The website will stay on the last known data until the API connection is restored.';
                 warningEl.style.display = 'block';
             } else {
@@ -4819,6 +4822,7 @@
                 window._lastFetchSuccessAt = new Date();
             } catch (e) {
                 console.error('Live data refresh failed:', e);
+                window._lastFetchErrorAt = new Date();
             } finally {
                 window._loadingLiveData = false;
                 setMarketLoading(currentMarket, false);
