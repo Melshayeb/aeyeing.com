@@ -4554,324 +4554,97 @@
         async function loadLiveData() {
             if (window._loadingLiveData) return;
             window._loadingLiveData = true;
-            console.log('loadLiveData start for', currentMarket);
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file is informational only. We now load raw GitHub first;
-                // it bypasses Cloudflare edge cache and mobile-carrier transparent proxies.
-                const manifest = await fetchManifestRaw();
-                console.log('manifest fetched', manifest ? manifest.latest : 'null');
-                if (manifest && manifest.latest) {
-                    window._lastManifestFetchSuccessAt = new Date();
-                }
-
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
-                // Primary: tunnel (fastest, direct from the scanning PC). It is also Cloudflare-cached,
-                // but with cache-busting and no-store we get fresh data quickly.
-                // Fallbacks: raw GitHub (short 5-min cache), then aeyeing.com CDN.
-                let sources = [getTunnelSnapshotFile(), getPublicSnapshotFile(), 'https://aeyeing.com/' + (currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json')];
-                let res = null;
+                const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
+                const sources = [
+                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`,
+                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
+                    `https://aeyeing.com/${file}`
+                ];
+                let data = null;
                 let lastErr = null;
-                for (const snapshotFile of sources) {
+                for (const url of sources) {
                     try {
-                        res = await fetch(snapshotFile + '?_=' + cacheBuster, { cache: 'no-store', signal: (() => {
-                            const ctrl = new AbortController();
-                            setTimeout(() => ctrl.abort(), 8000);
-                            return ctrl.signal;
-                        })() });
+                        const ctrl = new AbortController();
+                        setTimeout(() => ctrl.abort(), 8000);
+                        const res = await fetch(url + '?_=' + cacheBuster, { cache: 'no-store', signal: ctrl.signal });
                         if (res.ok) {
-                            console.log('Loaded snapshot from', snapshotFile);
+                            data = await res.json();
+                            console.log('Loaded data from', url, 'results', data?.scan_results?.length);
                             break;
                         }
                     } catch (e) {
                         lastErr = e;
-                        console.warn('Snapshot source failed:', snapshotFile, e.message || e);
+                        console.warn('Source failed', url, e.message);
                     }
                 }
-                window._lastFetchAttemptAt = new Date();
-                if (!res.ok) {
-                    console.warn('Could not load', snapshotFile, res.status);
-                    setMarketLoading(currentMarket, false);
+                if (!data) {
+                    console.warn('All data sources failed', lastErr);
                     return;
                 }
-                const data = await res.json();
-                window._lastFetchSuccessAt = new Date();
-                // Remember what we just loaded so the manifest poller skips unchanged snapshots.
-                window._lastLoadedSnapshot = snapshotFile;
-                window._lastLoadedSnapshotTs = data.last_updated;
+                window._latestData = data;
+                window._lastScanTimestamp = new Date(data.last_updated || Date.now());
                 const results = data.scan_results || [];
                 const preMarketResults = data.pre_market_results || [];
                 const preMarketWatchlist = data.pre_market_watchlist || [];
-                console.log('loadLiveData parsed', currentMarket, 'results', results.length, 'status', marketStatus);
-                const allGainers = data.all_gainers || [];
-                const stats = data.scan_stats || {};
-                window._lastScanStats = stats;
+                window._lastLiveResults = results;
+                window._lastPreMarketResults = preMarketResults;
+                window._lastPreMarketWatchlist = preMarketWatchlist;
+                window._lastAllGainers = data.all_gainers || [];
+                window._lastBubbleViewResults = results;
+                window._lastScanStats = data.scan_stats || {};
                 window._lastLiveQuotes = data.live_quotes || {};
-                window._previousLiveQuotes = data.previous_live_quotes || {};
-                // The backend now ships the previous scan's live quotes in the JSON,
-                // so the tracker can compute real scan-to-scan P&L immediately without
-                // waiting for browser localStorage to cycle. Fallback to localStorage
-                // only when the backend snapshot is absent.
-                try {
-                    const prev = localStorage.getItem('ozmoeg-prev-live-quotes');
-                    window._prevLiveQuotes = window._previousLiveQuotes && Object.keys(window._previousLiveQuotes).length
-                        ? window._previousLiveQuotes
-                        : (prev ? JSON.parse(prev) : {});
-                } catch (e) {
-                    window._prevLiveQuotes = {};
-                }
 
-                const lastUpdated = new Date(data.last_updated || Date.now());
-
-                window._latestData = data;
-
-                window._lastScanTimestamp = lastUpdated;
-
-                // Update badge — prefer real-time US market status when the JSON scan is stale
-                // so weekend/closed sessions don't falsely show OPEN from Friday's last scan.
-                const alerts = results.filter(r => r.status === 'ALERT').length;
-                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
-
-                // Detect genuinely new ALERT tickers since the previous scan and play a chirp.
-                // We compare against the previous fetch's alert list so repeated rows stay silent.
-                const allResultsForSound = [
-                    ...(results || []),
-                    ...(preMarketResults || []),
-                    ...(preMarketWatchlist || [])
-                ];
-                const prevAlertTickers = new Set(window._lastAlertTickers || []);
-                const currentAlerts = allResultsForSound.filter(r => r.status === 'ALERT');
-                const currentAlertTickers = currentAlerts.map(r => r.ticker);
-                const newAlertTickers = currentAlertTickers.filter(t => !prevAlertTickers.has(t));
-                if (soundEnabled && window._soundInitialised && newAlertTickers.length > 0) {
-                    playNewAlertSound(newAlertTickers.length);
-                }
-                // Make newly-detected ALERT tickers visually flash in the scanner table
-                // alongside the sound, so the user can identify which ticker triggered it.
-                window._newAlertTickers = newAlertTickers;
-                if (newAlertTickers.length > 0) {
-                    setTimeout(() => { window._newAlertTickers = []; }, 5000);
-                }
-                window._lastAlertTickers = currentAlertTickers;
-
-                // Detect tickers that disappeared from the combined scanner list and play a drop sound.
-                // We track every ticker that was visible in any scanner view (live, pre/after, watchlist, bouncers).
-                const allResultsForDrop = [
-                    ...(results || []),
-                    ...(preMarketResults || []),
-                    ...(preMarketWatchlist || []),
-                    ...(data.bounce_results || [])
-                ];
-                const prevVisibleTickers = new Set(window._lastVisibleTickers || []);
-                const currentVisibleTickers = new Set(allResultsForDrop.map(r => r.ticker).filter(Boolean));
-                const droppedTickers = [...prevVisibleTickers].filter(t => !currentVisibleTickers.has(t));
-                if (soundEnabled && window._soundInitialised && droppedTickers.length > 0) {
-                    playDropSound(droppedTickers.length);
-                }
-                window._lastVisibleTickers = [...currentVisibleTickers];
-                window._soundInitialised = true;
-
+                const stats = data.scan_stats || {};
                 const rawStatus = stats.market_status || 'OPEN';
-                const lastScanAgeMin = window._lastScanTimestamp
-                    ? Math.max(0, (new Date().getTime() - new Date(window._lastScanTimestamp).getTime()) / 60000)
-                    : 0;
-                let marketStatus = rawStatus;
                 const realTimeStatus = currentMarket === 'AUS'
                     ? getCurrentAUSMarketStatus()
                     : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : rawStatus);
+                const lastScanAgeMin = (Date.now() - window._lastScanTimestamp.getTime()) / 60000;
+                let marketStatus = rawStatus;
                 if (lastScanAgeMin > 90 || realTimeStatus === 'CLOSED' || realTimeStatus === 'WEEKEND') {
                     marketStatus = realTimeStatus;
                 }
                 currentMarketStatus = marketStatus;
-                const marketTime = stats.market_time || '';
-                const marketFromData = (stats.market || 'us').toUpperCase() === 'AU' ? 'AUS' : 'US';
                 const statusEmoji = { 'OPEN': '🟢', 'PRE-MARKET': '🟡', 'AFTER-HOURS': '🟡', 'WEEKEND': '🔴', 'CLOSED': '🔴' }[marketStatus] || '⚪';
-                const marketLabel = marketFromData;
-                const timeAgo = lastUpdated ? ` · updated ${lastUpdated.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' })}` : '';
-                document.getElementById('scanner-badge').textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || allGainers.length || '—'} | ${candidates} candidates | ${alerts} alerts${timeAgo}`;
+                const marketLabel = currentMarket === 'AUS' ? 'AUS' : 'US';
+                const marketTime = stats.market_time || '';
+                const alerts = results.filter(r => r.status === 'ALERT').length;
+                const candidates = results.filter(r => r.status !== 'ALERT' && r.status !== 'INFO').length;
+                const tsText = window._lastScanTimestamp.toLocaleString('en-AU', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+                const badge = document.getElementById('scanner-badge');
+                if (badge) badge.textContent = `${statusEmoji} ${marketLabel} ${marketStatus} ${marketTime} | Scanned: ${stats.gainers_scanned || '—'} | ${candidates} candidates | ${alerts} alerts · updated ${tsText}`;
 
-                liveResults = results;
-                liveLastUpdated = lastUpdated;
-                // Preserve pre-market/after-hours watchlist and catalyst watchlist for US.
-                window._lastPreMarketResults = preMarketResults;
-                window._lastPreMarketWatchlist = preMarketWatchlist;
-                window._lastLiveResults = results;
-                window._lastBubbleViewResults = data.scan_results || results || [];
-                window._lastAllGainers = allGainers;
-                window._lastLiveQuotes = data.live_quotes || {};
-
-                // If Bubble View is open, rebuild it with the freshest live data.
-                const modal = document.getElementById('bubble-modal');
-                if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') {
-                    window.rebuildBubbleChart();
-                }
-
-                // Save current scan quotes to localStorage so next refresh can compare prev vs current
-                try {
-                    localStorage.setItem('ozmoeg-prev-live-quotes', JSON.stringify(data.live_quotes || {}));
-                } catch (e) { /* storage may be unavailable */ }
-
-                // Keep the selected alert consistent across auto-refresh: if the previously selected
-                // ticker is still present in the new scan (any status/source), re-render it after the
-                // scanner view refreshes so the tracker/news never gets stuck on the empty state.
-                const selectedTicker = (() => {
-                    const sel = document.getElementById('alert-selector');
-                    return sel ? sel.value : '';
-                })();
-
-                // Show Pre/After toggle only for US markets (ASX has no extended session).
-                const showPreAfterToggle = currentMarket !== 'AUS';
-                const watchBtn = document.querySelector('#scanner-toggle button[data-view="watchlist"]');
-                const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
+                // Default scanner view handling
                 const liveBtn = document.querySelector('#scanner-toggle button[data-view="live"]');
-                [preBtn, watchBtn].forEach(btn => {
-                    if (btn) btn.style.display = showPreAfterToggle ? 'inline-flex' : 'none';
-                });
-
+                const preBtn = document.querySelector('#scanner-toggle button[data-view="premarket"]');
                 if (!scannerFirstLoadDone) {
-                    // Use real-time market status for toggle defaults, not the stale JSON status.
-                    const effectiveStatus = currentMarketStatus || marketStatus;
-                    const isUsExtendedHours = currentMarket !== 'AUS' && (effectiveStatus === 'PRE-MARKET' || effectiveStatus === 'AFTER-HOURS');
-                    const isUsClosedWithWatchlist = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED') && window._lastPreMarketWatchlist.length > 0;
-                    const isCurrentlyClosed = currentMarket !== 'AUS' && (effectiveStatus === 'WEEKEND' || effectiveStatus === 'CLOSED');
-                    const isWatchlistWindow = currentMarket !== 'AUS' && isActiveTradingWindow() && effectiveStatus === 'CLOSED';
-                    if (isWatchlistWindow) {
-                        setScannerToggleActive('watchlist');
-                    } else if (isUsExtendedHours || isUsClosedWithWatchlist) {
-                        setScannerToggleActive('premarket');
-                    } else if (isCurrentlyClosed) {
-                        // During closed/weekend there is no live session to watch; grey out both toggles.
-                        setScannerToggleActive('premarket');
-                        if (liveBtn) {
-                            liveBtn.disabled = true;
-                            liveBtn.style.opacity = '0.5';
-                            liveBtn.style.cursor = 'not-allowed';
-                        }
-                        if (preBtn) {
-                            preBtn.disabled = true;
-                            preBtn.style.opacity = '0.5';
-                            preBtn.style.cursor = 'not-allowed';
-                        }
-                    } else {
+                    if (currentMarket === 'AUS') {
                         setScannerToggleActive('live');
+                    } else if (marketStatus === 'PRE-MARKET' || marketStatus === 'AFTER-HOURS') {
+                        setScannerToggleActive('premarket');
+                    } else if (marketStatus === 'OPEN') {
+                        setScannerToggleActive('live');
+                    } else {
+                        setScannerToggleActive('premarket');
+                        if (liveBtn) { liveBtn.disabled = true; liveBtn.style.opacity = '0.5'; }
+                        if (preBtn) { preBtn.disabled = true; preBtn.style.opacity = '0.5'; }
                     }
                     scannerFirstLoadDone = true;
                 }
-
-                // Re-render current view according to active toggle
                 renderScannerView();
                 renderPlanRules();
-
-                // Re-render the currently selected alert after the data refresh so the tracker,
-                // catalyst headline and news list always match the latest scan.
-                if (selectedTicker) {
-                    renderSelectedAlert();
-                }
-
-                // If watchlist rows exist but current view is live, surface a subtle hint.
-                if (currentMarket !== 'AUS' && window._lastPreMarketWatchlist?.length > 0 && getActiveScannerView() === 'live') {
-                    const badge = document.getElementById('scanner-badge');
-                    if (badge) badge.textContent = badge.textContent + ` · ⏰ ${window._lastPreMarketWatchlist.length} catalyst watchlist item(s)`;
-                }
-
-                // Update news ticker - only show actionable results with recent news (< 24h), not all 50 skipped scans
-                const ticker = document.getElementById('news-ticker');
-                if (ticker) {
-                    const NEWS_TICKER_MAX_AGE_HOURS = 24;
-                    const actionable = results.filter(r => ['ALERT','CANDIDATE','BOUNCE'].includes(r.status));
-                    const recentItems = actionable.filter(r => {
-                        if (!r.news || !Array.isArray(r.news.headlines) || r.news.headlines.length === 0) return true;
-                        const newestMin = Math.min(...r.news.headlines.map(h => newsAgeMinutes(h)));
-                        return newestMin < NEWS_TICKER_MAX_AGE_HOURS * 60;
-                    });
-                    const itemsToShow = recentItems.length ? recentItems : actionable;
-                    // Use the scan snapshot time for the news ticker so it matches the
-                    // "Last refresh" stamp (AEST) and does not drift into a different timezone.
-                    const scanTs = new Date(data.last_updated || Date.now());
-                    const tickerDate = scanTs.toLocaleDateString('en-AU', { timeZone: 'Australia/Sydney', month: 'short', day: 'numeric' });
-                    const tickerTime = scanTs.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney', hour: '2-digit', minute: '2-digit', hour12: true });
-                    window._lastNewsTickerTs = scanTs;
-                    if (itemsToShow.length) {
-                        const items = itemsToShow.map(r => {
-                            const imp = impactLabel(getAlertMaxScore(r), r);
-                            const impactTag = ` <span class="impact-mini ${imp.cls}">${imp.text}</span>`;
-
-                            const newsAge = formatNewsAgeInline(r.news);
-                            const catalyst = (r.news && r.news.top_headline) ? r.news.top_headline : (r.news && r.news.catalyst ? r.news.catalyst : '');
-
-                            const catalystPrefix = catalyst ? `<span style="color:var(--accent-amber)">📰 ${escapeHtml(catalyst)}</span> — ` : '';
-                            const country = (r.country || '').trim();
-                            const countryBadge = country ? `<span class="country-badge">${escapeHtml(country)}</span>` : '';
-                            return `<div class="news-item ${(r.status || 'SKIP').toLowerCase()}"><span class="score">${r.status}</span>${impactTag}${newsAge} <span class="date">${tickerDate}</span> <span class="time">${tickerTime}</span> — ${r.ticker}${countryBadge} (${r.name}) — ${catalystPrefix}${r.result || ''}</div>`;
-                        }).join('');
-                        ticker.innerHTML = items + '\n' + items;
-                    } else {
-                        const info = `<div class="news-item skip"><span class="score">INFO</span><span class="time">${tickerTime}</span> — No candidates passed filter criteria — Scan continues every minute</div>`;
-                        ticker.innerHTML = info + '\n' + info;
-                    }
-                }
-
-                // Update all-scanned gainers and losers details tables dynamically from JSON.
-                // This guarantees they always reflect the latest scan instead of stale server-rendered HTML.
-                const isAu = (stats.market || 'us').toLowerCase() === 'au';
-                const allLosers = data.all_losers || [];
-                const renderScannedRow = (stock, isLoser) => {
-                    const symbol = stock.ticker || '';
-                    const name = stock.name || symbol;
-                    const price = parseFloat(stock.price || 0);
-                    let changePct = parseFloat(stock.change_pct || 0);
-                    const volume = parseInt(stock.volume || 0);
-                    const mktCap = parseFloat(stock.market_cap || 0);
-                    const rvol = parseFloat(stock.rvol || 0);
-                    const capSize = (stock.cap_size || '').trim();
-                    const capBadge = capSize ? ` <span class="country-badge">${escapeHtml(capSize.toUpperCase().replace(/-/g, ' '))}</span>` : '';
-                    const pennyBadge = stock.is_penny_stock ? ` <span class="country-badge">PENNY</span>` : '';
-                    const floatShares = parseFloat(stock.float_shares || 0);
-                    const passed = stock.passed;
-                    const badgeClass = passed ? 'scan-pass' : 'scan-skip';
-                    const badgeText = passed ? 'PASS' : 'SKIP';
-                    const reason = stock.reason || '';
-                    const priceDecimals = isAu ? 3 : 2;
-                    const sign = changePct >= 0 ? '+' : '';
-                    function formatFloatAllScanned(n) {
-                        if (!isFinite(n) || n <= 0) return '—';
-                        if (n >= 1e9) return `${(n/1e9).toFixed(2)}B`;
-                        if (n >= 1e6) return `${(n/1e6).toFixed(1)}M`;
-                        return `${(n/1e3).toFixed(0)}K`;
-                    }
-                    return `<tr><td class="ticker-cell">${escapeHtml(symbol)}${capBadge}${pennyBadge}</td><td>${escapeHtml(name)}</td><td>$${price.toFixed(priceDecimals)}</td><td>${sign}${changePct.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>$${(mktCap/1e6).toFixed(1)}M</td><td>${formatFloatAllScanned(floatShares)}</td><td><span class="${badgeClass}">${badgeText}</span></td><td>${escapeHtml(reason)}</td></tr>`;
-                };
-
-                const gainersDetails = document.getElementById('scanned-gainers-details');
-                if (gainersDetails) {
-                    const table = gainersDetails.querySelector('table tbody');
-                    if (table) {
-                        table.innerHTML = allGainers.length
-                            ? allGainers.map(s => renderScannedRow(s, false)).join('')
-                            : '\u003ctr\u003e\u003ctd colspan="10" style="text-align:center;color:var(--text-secondary)"\u003eNo gainers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
-                    }
-                }
-                const losersDetails = document.getElementById('scanned-losers-details');
-                if (losersDetails) {
-                    const table = losersDetails.querySelector('table tbody');
-                    if (table) {
-                        table.innerHTML = allLosers.length
-                            ? allLosers.map(s => renderScannedRow(s, true)).join('')
-                            : '\u003ctr\u003e\u003ctd colspan="10" style="text-align:center;color:var(--text-secondary)"\u003eNo losers data available for this scan\u003c/td\u003e\u003c/tr\u003e';
-                    }
-                }
-
-                // Update header status badge to reflect actual market phase.
-                updateScannerStatusBadge(marketStatus, allGainers.length, allLosers.length);
-
+                if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') window.rebuildBubbleChart();
+                window._lastFetchSuccessAt = new Date();
             } catch (e) {
                 console.error('Live data refresh failed:', e);
             } finally {
                 window._loadingLiveData = false;
                 setMarketLoading(currentMarket, false);
-                // Reset the visible refresh countdown every time a fetch completes
-                // (success or failure) so the timer stays honest after manual refresh.
+                window._lastFetchAttemptAt = new Date();
                 resetRefreshTimer();
             }
         }
