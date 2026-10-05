@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta name="ozmoeg-version" content="2026-10-05-v4" />
+<meta name="ozmoeg-version" content="2026-10-05-v5-no-sw" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
@@ -14,13 +14,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-    // Register the fixed service worker (v2) after clearing any stale one.
-    // It only caches static HTML/JS/CSS and never caches live scan data.
+    // Service workers are disabled to prevent stale cached scan data. Any existing
+    // worker is unregistered so the browser always fetches fresh HTML and JSON.
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/ozmoeg-sw.js?v=2', { scope: '/' })
-                .then(function(reg) { console.log('OzMoEg SW v2 registered:', reg.scope); })
-                .catch(function(err) { console.warn('OzMoEg SW v2 registration failed:', err); });
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+                regs.forEach(function(r) { r.unregister(); });
+            });
         });
     }
 </script>
