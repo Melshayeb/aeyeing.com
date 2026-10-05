@@ -2,6 +2,14 @@
 
 <html lang="en">
 <head>
+<script>
+        // Immediately unregister any service worker so stale cached pages cannot intercept this request.
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+                regs.forEach(function(r) { r.unregister(); });
+            });
+        }
+    </script>
 <meta name="ozmoeg-version" content="1791169153" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
