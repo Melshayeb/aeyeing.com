@@ -180,14 +180,20 @@ def _is_us_active_trading_window() -> bool:
     return sydney_today_17 <= sydney_now <= sydney_today_2359
 
 def _is_catalyst_watchlist_window() -> bool:
-    """Return True during Sydney 17:00-17:59 (1 hour before US pre-market opens)."""
+    """Return True during Sydney 17:00-18:59 weekdays.
+
+    US pre-market opens at 04:00 ET. In Sydney that is 18:00 AEST (standard)
+    or 19:00 AEDT (DST). Running the catalyst watchlist from 17:00 through
+    18:59 covers the hour before pre-market in both offsets and keeps the
+    watchlist refreshed every minute until live pre-market data is available.
+    """
     import pytz
     from datetime import datetime as _dt
     sydney = pytz.timezone('Australia/Sydney')
     sydney_now = _dt.now(sydney)
     if sydney_now.weekday() >= 5:
         return False
-    return sydney_now.hour == 17
+    return 17 <= sydney_now.hour <= 18
 
 def _scan_allowed_minute(market: str, market_status: str) -> bool:
     """
