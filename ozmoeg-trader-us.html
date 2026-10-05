@@ -17,7 +17,7 @@
         (function(){
             const localVersion = parseInt(document.querySelector('meta[name="ozmoeg-version"]')?.content || '0', 10);
             if (!localVersion) return;
-            const remoteUrl = 'https://raw.githubusercontent.com/elshayeb/aeyeing.com/main/ozmoeg-version.json?_=' + Date.now();
+            const remoteUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-version.json?_=' + Date.now();
             fetch(remoteUrl, { cache: 'no-store' })
                 .then(r => r.json())
                 .then(remote => {
@@ -2391,7 +2391,7 @@
         // raw GitHub, show the hard-refresh banner so mobile users can clear months-old cache.
         (function staleDataCheck(){
             var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
-            var rawUrl = 'https://raw.githubusercontent.com/elshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + Date.now();
+            var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + Date.now();
             fetch(rawUrl, { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(raw){
                 if (!raw || !raw.last_updated) return;
                 var rawTs = new Date(raw.last_updated).getTime();
@@ -2503,7 +2503,7 @@
         function getPublicSnapshotFile() {
             // Raw GitHub rolling JSON — bypasses Cloudflare's 4-hour edge cache and mobile-carrier proxies.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return `https://raw.githubusercontent.com/elshayeb/aeyeing.com/main/${file}`;
+            return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
         }
 
         async function fetchManifestRaw() {
@@ -2531,7 +2531,7 @@
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
             const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            const raw = await tryFetch(`https://raw.githubusercontent.com/elshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
             const candidates = [tunnel, raw, main].filter(Boolean);
             if (!candidates.length) return null;
@@ -4695,7 +4695,7 @@
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
                     `https://aeyeing.com/${file}`,
-                    `https://raw.githubusercontent.com/elshayeb/aeyeing.com/main/${file}`,
+                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
                     `https://trip-planner.aeyeing.com/ozmoeg/${file}`
                 ];
                 let data = null;
