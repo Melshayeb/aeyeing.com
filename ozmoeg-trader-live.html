@@ -1728,6 +1728,8 @@
             // clear cached selection so the new market's top alert is selected
             localStorage.removeItem('ozmoeg-selected-alert');
             setMarketButtons();
+            // Reset market status so the new market is evaluated from scratch
+            currentMarketStatus = currentMarket === 'AUS' ? getCurrentAUSMarketStatus() : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : 'CLOSED');
             updateHeaderText();
             updateDateTime();
             updateCountdown();
@@ -4872,7 +4874,13 @@
         (async function init() {
             resetScannerToggleToLive();
             toggleSound(soundEnabled);
+            currentMarketStatus = currentMarket === 'AUS' ? getCurrentAUSMarketStatus() : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : 'CLOSED');
+            updateHeaderText();
+            updateDateTime();
+            updateCountdown();
+            renderScannerView();
             await loadLiveData();
+            renderScannerView();
             resetRefreshTimer();
         })();
 
