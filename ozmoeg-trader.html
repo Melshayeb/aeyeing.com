@@ -4566,16 +4566,28 @@
                 ];
                 let data = null;
                 let lastErr = null;
+                // Helper: fetch JSON via XHR (more reliable across browsers/extensions than fetch).
+                const fetchJson = (url) => new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', url + '?_=' + cacheBuster, true);
+                    xhr.setRequestHeader('Cache-Control', 'no-cache');
+                    xhr.timeout = 8000;
+                    xhr.onload = () => {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            try { resolve(JSON.parse(xhr.responseText)); } catch (e) { reject(e); }
+                        } else {
+                            reject(new Error('HTTP ' + xhr.status));
+                        }
+                    };
+                    xhr.onerror = () => reject(new Error('XHR error'));
+                    xhr.ontimeout = () => reject(new Error('XHR timeout'));
+                    xhr.send();
+                });
                 for (const url of sources) {
                     try {
-                        const ctrl = new AbortController();
-                        setTimeout(() => ctrl.abort(), 8000);
-                        const res = await fetch(url + '?_=' + cacheBuster, { cache: 'no-store', signal: ctrl.signal });
-                        if (res.ok) {
-                            data = await res.json();
-                            console.log('Loaded data from', url, 'results', data?.scan_results?.length);
-                            break;
-                        }
+                        data = await fetchJson(url);
+                        console.log('Loaded data from', url, 'results', data?.scan_results?.length);
+                        break;
                     } catch (e) {
                         lastErr = e;
                         console.warn('Source failed', url, e.message);
