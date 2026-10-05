@@ -3,12 +3,27 @@
 <html lang="en">
 <head>
 <script>
-    // Unregister any stale service worker so months-old cached scan data is never served again.
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(regs) {
-            regs.forEach(function(r) { r.unregister(); });
+    // Aggressive stale-service-worker killer: old ozmoeg-sw.js cached live data for months.
+    // We unregister every SW, then immediately reload once if any was removed so the
+    // browser starts with a clean page that is not controlled by stale code.
+    (function(){
+        if (!('serviceWorker' in navigator)) return;
+        var key = 'ozmoeg-sw-killed-v2';
+        var killed = sessionStorage.getItem(key);
+        navigator.serviceWorker.getRegistrations().then(function(regs){
+            if (regs.length === 0) return;
+            var hadSW = false;
+            Promise.all(regs.map(function(r){ hadSW = true; return r.unregister(); })).then(function(){
+                if (hadSW && !killed) {
+                    sessionStorage.setItem(key, '1');
+                    var url = new URL(location.href);
+                    url.searchParams.set('_', Date.now().toString());
+                    url.searchParams.set('force', '1');
+                    location.replace(url.toString());
+                }
+            });
         });
-    }
+    })();
 </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1515,6 +1530,10 @@
 <div id="ozmoeg-cloudflare-fallback" style="display:none;background:#b91c1c;color:#fff;padding:12px 16px;text-align:center;font-family:sans-serif;font-size:14px;position:relative;z-index:99999;">
 <strong>⚠️ Cloudflare is blocking this page.</strong>
 <a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
+</div>
+<div id="ozmoeg-stale-data-banner" style="display:none;background:#b45309;color:#fff;padding:10px 16px;text-align:center;font-family:sans-serif;font-size:13px;position:relative;z-index:99998;">
+<strong>⚠️ Stale data detected on this device.</strong> 
+<a href="javascript:void(0)" id="ozmoeg-hard-refresh" style="color:#fff;text-decoration:underline;font-weight:bold;">Tap here to hard-refresh</a>
 </div>
 <script>
 (function(){
@@ -3603,6 +3622,38 @@
         setMarketButtons();
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Stale-data self-check: if the loaded scan timestamp is suspiciously old compared to
+        // raw GitHub, show the hard-refresh banner so mobile users can clear months-old cache.
+        (function staleDataCheck(){
+            var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
+            var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + Date.now();
+            fetch(rawUrl, { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(raw){
+                if (!raw || !raw.last_updated) return;
+                var rawTs = new Date(raw.last_updated).getTime();
+                var check = function(){
+                    var loadedTs = window._lastScanTimestamp ? new Date(window._lastScanTimestamp).getTime() : 0;
+                    var banner = document.getElementById('ozmoeg-stale-data-banner');
+                    var link = document.getElementById('ozmoeg-hard-refresh');
+                    if (banner && link) {
+                        link.onclick = function(){
+                            sessionStorage.removeItem('ozmoeg-sw-killed-v2');
+                            sessionStorage.removeItem('ozmoeg-reloaded-v2');
+                            var url = new URL(location.href);
+                            url.searchParams.set('_', Date.now().toString());
+                            url.searchParams.set('force', '1');
+                            location.replace(url.toString());
+                        };
+                        // Show banner if loaded data is more than 10 minutes older than raw GitHub
+                        if (loadedTs && rawTs - loadedTs > 600000) {
+                            banner.style.display = 'block';
+                        }
+                    }
+                };
+                check();
+                setInterval(check, 60000);
+            }).catch(function(){});
+        })();
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
         // Intervals are driven by Sydney wall-clock time and US market status:
