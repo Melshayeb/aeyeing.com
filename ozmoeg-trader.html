@@ -3703,6 +3703,31 @@
             return active?.dataset.view || 'live';
         }
 
+        function renderNewsTicker() {
+            const ticker = document.getElementById('news-ticker');
+            if (!ticker) return;
+            const rows = [
+                ...(window._lastLiveResults || []),
+                ...(window._lastPreMarketResults || []),
+                ...(window._lastPreMarketWatchlist || [])
+            ];
+            if (!rows.length) return;
+            const items = [];
+            rows.forEach(r => {
+                const headlines = r.news?.headlines || [];
+                headlines.slice(0, 3).forEach(h => {
+                    const age = h.age || (h.time ? h.time.split('T')[0] : '');
+                    const title = (h.title || h.headline || '').replace(/[<>]/g, '');
+                    if (title) {
+                        items.push(`<div class="news-item"><span class="score">${escapeHtml(r.ticker)}</span><span class="time">${escapeHtml(age)}</span> — ${escapeHtml(title)}</div>`);
+                    }
+                });
+            });
+            if (items.length) {
+                ticker.innerHTML = items.join('');
+            }
+        }
+
         function renderScannerView() {
             const view = getActiveScannerView();
             const isPre = view === 'premarket';
@@ -3806,6 +3831,7 @@
                     if (tsEl) tsEl.textContent = '';
                 }
             }
+            renderNewsTicker();
         }
 
         function getYoungestNewsAgeMinutes(r) {
@@ -4662,6 +4688,7 @@
                     scannerFirstLoadDone = true;
                 }
                 renderScannerView();
+                renderNewsTicker();
                 renderPlanRules();
                 if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') window.rebuildBubbleChart();
                 window._lastFetchSuccessAt = new Date();
