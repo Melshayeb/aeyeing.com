@@ -23,6 +23,20 @@
             });
         });
     }
+    // Detect and recover from stale cached HTML (RMAX-era data should never be static).
+    (function(){
+        var body = document.body.innerHTML;
+        if (body.indexOf('RMAX') > -1 || body.indexOf('AMIX') > -1 || body.indexOf('DAIC') > -1) {
+            // Old static data is baked into the HTML; this is a cached copy. Force a real reload.
+            var url = new URL(location.href);
+            url.searchParams.set('_', Date.now().toString());
+            url.searchParams.set('force', '1');
+            if (!sessionStorage.getItem('ozmoeg-forced-reload')) {
+                sessionStorage.setItem('ozmoeg-forced-reload', '1');
+                location.replace(url.toString());
+            }
+        }
+    })();
 </script>
 <style>
         :root {
