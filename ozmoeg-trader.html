@@ -2,6 +2,14 @@
 
 <html lang="en">
 <head>
+<script>
+    // Unregister any stale service worker so months-old cached scan data is never served again.
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+            regs.forEach(function(r) { r.unregister(); });
+        });
+    }
+</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
@@ -80,6 +88,18 @@
 <link href="images/logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<script>
+    // Register the fixed service worker (v2) after clearing any stale one.
+    // It only caches static HTML/JS/CSS and never caches live scan data.
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/ozmoeg-sw.js?v=2', { scope: '/' })
+                .then(function(reg) { console.log('OzMoEg SW v2 registered:', reg.scope); })
+                .catch(function(err) { console.warn('OzMoEg SW v2 registration failed:', err); });
+        });
+    }
+</script>
 <style>
         :root {
             --bg-dark: #0a0e1a;
@@ -3670,13 +3690,13 @@
         }
 
         function getPublicSnapshotFile() {
-            // Public GitHub Pages rolling JSON — fallback when the tunnel is unreachable.
+            // Raw GitHub rolling JSON — bypasses Cloudflare's 4-hour edge cache and mobile-carrier proxies.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
-            return `https://aeyeing.com/${file}`;
+            return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
         }
 
         async function fetchManifestRaw() {
-            // Prefer the tunnel manifest (fastest), then public, then raw GitHub. CORS allows all three.
+            // Prefer raw GitHub (short 5-min cache, bypasses Cloudflare edge/mobile proxies), then tunnel, then CDN.
             const buster = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             const tryFetch = async (url, desc) => {
                 try {
@@ -3699,10 +3719,10 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
             const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
-            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-            const candidates = [tunnel, main, raw].filter(Boolean);
+            const candidates = [raw, tunnel, main].filter(Boolean);
             if (!candidates.length) return null;
             // Use whichever manifest has the newest last_updated timestamp.
             let newest = candidates[0];
@@ -5738,7 +5758,7 @@
                 const refreshBtn = document.getElementById('bubble-modal-refresh');
                 if (refreshBtn) { refreshBtn.textContent = '⏳ Refreshing…'; refreshBtn.disabled = true; }
                 try {
-                    const snapshotFile = getTunnelSnapshotFile();
+                    const snapshotFile = getPublicSnapshotFile();
                     const ts = Date.now();
                     const res = await fetch(snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
@@ -5785,24 +5805,32 @@
             window._loadingLiveData = true;
             try {
                 setMarketLoading(currentMarket, true);
-                // Manifest file is informational only. We always load the live tunnel
-                // rolling JSON first; GitHub Pages dated snapshots can lag behind.
+                // Manifest file is informational only. We now load raw GitHub first;
+                // it bypasses Cloudflare edge cache and mobile-carrier transparent proxies.
                 const manifest = await fetchManifestRaw();
-                const snapshotFile = getTunnelSnapshotFile();
                 if (manifest && manifest.latest) {
                     window._lastManifestFetchSuccessAt = new Date();
                 }
 
                 const ts = Date.now();
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
+                // Try raw GitHub first (short 5-min cache, bypasses Cloudflare edge/mobile proxies),
+                // then the tunnel, then the aeyeing.com CDN.
+                let snapshotFile = getPublicSnapshotFile();
                 let res = await fetch(snapshotFile + '?_=' + cacheBuster, {
                     cache: 'no-store'
                 });
                 window._lastFetchAttemptAt = new Date();
-                // Fallback to public rolling JSON if the tunnel endpoint is not reachable.
                 if (!res.ok) {
-                    console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying public fallback');
-                    snapshotFile = getPublicSnapshotFile();
+                    console.warn('Could not load raw GitHub JSON', snapshotFile, res.status, 'trying tunnel fallback');
+                    snapshotFile = getTunnelSnapshotFile();
+                    res = await fetch(snapshotFile + '?_=' + cacheBuster, {
+                        cache: 'no-store'
+                    });
+                }
+                if (!res.ok) {
+                    console.warn('Could not load tunnel JSON', snapshotFile, res.status, 'trying CDN fallback');
+                    snapshotFile = 'https://aeyeing.com/' + (currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json');
                     res = await fetch(snapshotFile + '?_=' + cacheBuster, {
                         cache: 'no-store'
                     });
