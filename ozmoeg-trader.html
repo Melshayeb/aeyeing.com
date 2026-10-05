@@ -1610,7 +1610,7 @@
 </table>
 </div>
 <!-- BOUNCERS_SECTION -->
-<div style="text-align:center;padding:16px;color:var(--text-secondary);">⏳ Loading bounce setups…</div>
+<div id="bouncers-section" style="text-align:center;padding:16px;color:var(--text-secondary);">⏳ Loading bounce setups…</div>
 <!-- END_BOUNCERS_SECTION -->
 <!-- SCANNED_GAINERS_TABLE -->
 <details class="scanned-details" id="scanned-gainers-details">
@@ -3748,20 +3748,20 @@
                 const mktcap = r.market_cap || 0;
                 const float_ = r.float || r.float_shares || 0;
                 const reason = r.reason || r.filter_reason || 'Passed filters';
-                return `&lt;tr&gt;&lt;td class="ticker-cell"&gt;${escapeHtml(ticker)}&lt;/td&gt;&lt;td&gt;${escapeHtml(name)}&lt;/td&gt;&lt;td&gt;${price ? '$'+price.toFixed(2) : '—'}&lt;/td&gt;&lt;td&gt;${change.toFixed(1)}%&lt;/td&gt;&lt;td&gt;${volume.toLocaleString()}&lt;/td&gt;&lt;td&gt;${rvol.toFixed(1)}x&lt;/td&gt;&lt;td&gt;${mktcap ? '$'+(mktcap/1e6).toFixed(1)+'M' : '—'}&lt;/td&gt;&lt;td&gt;${float_ ? (float_/1e6).toFixed(1)+'M' : '—'}&lt;/td&gt;&lt;td&gt;${escapeHtml(reason)}&lt;/td&gt;&lt;/tr&gt;`;
+                return `<tr><td class="ticker-cell">${escapeHtml(ticker)}</td><td>${escapeHtml(name)}</td><td>${price ? '$'+price.toFixed(2) : '—'}</td><td>${change.toFixed(1)}%</td><td>${volume.toLocaleString()}</td><td>${rvol.toFixed(1)}x</td><td>${mktcap ? '$'+(mktcap/1e6).toFixed(1)+'M' : '—'}</td><td>${float_ ? (float_/1e6).toFixed(1)+'M' : '—'}</td><td>${escapeHtml(reason)}</td></tr>`;
             };
             if (gainersWrap) {
                 if (gainers.length) {
-                    gainersWrap.innerHTML = `&lt;table class="scanned-table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Ticker&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Change&lt;/th&gt;&lt;th&gt;Volume&lt;/th&gt;&lt;th&gt;RVOL&lt;/th&gt;&lt;th&gt;Mkt Cap&lt;/th&gt;&lt;th&gt;Float&lt;/th&gt;&lt;th&gt;Reason&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${gainers.map(fmt).join('')}&lt;/tbody&gt;&lt;/table&gt;`;
+                    gainersWrap.innerHTML = `<table class="scanned-table"><thead><tr><th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th></tr></thead><tbody>${gainers.map(fmt).join('')}</tbody></table>`;
                 } else {
-                    gainersWrap.innerHTML = '&lt;div style="text-align:center;padding:24px;color:var(--text-secondary);"&gt;No scanned gainers available.&lt;/div&gt;';
+                    gainersWrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text-secondary);">No scanned gainers available.</div>';
                 }
             }
             if (losersWrap) {
                 if (losers.length) {
-                    losersWrap.innerHTML = `&lt;table class="scanned-table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Ticker&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Change&lt;/th&gt;&lt;th&gt;Volume&lt;/th&gt;&lt;th&gt;RVOL&lt;/th&gt;&lt;th&gt;Mkt Cap&lt;/th&gt;&lt;th&gt;Float&lt;/th&gt;&lt;th&gt;Reason&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${losers.map(fmt).join('')}&lt;/tbody&gt;&lt;/table&gt;`;
+                    losersWrap.innerHTML = `<table class="scanned-table"><thead><tr><th>Ticker</th><th>Name</th><th>Price</th><th>Change</th><th>Volume</th><th>RVOL</th><th>Mkt Cap</th><th>Float</th><th>Reason</th></tr></thead><tbody>${losers.map(fmt).join('')}</tbody></table>`;
                 } else {
-                    losersWrap.innerHTML = '&lt;div style="text-align:center;padding:24px;color:var(--text-secondary);"&gt;No scanned losers available.&lt;/div&gt;';
+                    losersWrap.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text-secondary);">No scanned losers available.</div>';
                 }
             }
         }
@@ -3771,12 +3771,12 @@
             if (!section) return;
             const bouncers = window._lastBounceResults || [];
             if (!bouncers.length) {
-                section.innerHTML = '&lt;div style="text-align:center;padding:16px;color:var(--text-secondary);"&gt;No bounce setups in current scan.&lt;/div&gt;';
+                section.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text-secondary);">No bounce setups in current scan.</div>';
                 return;
             }
             section.innerHTML = bouncers.map(r => {
                 const ticker = r.ticker || '';
-                return `&lt;div class="bounce-item"&gt;&lt;strong&gt;${escapeHtml(ticker)}&lt;/strong&gt; — ${escapeHtml(r.reason || 'Bounce setup')}&lt;/div&gt;`;
+                return `<div class="bounce-item"><strong>${escapeHtml(ticker)}</strong> — ${escapeHtml(r.reason || 'Bounce setup')}</div>`;
             }).join('');
         }
 
