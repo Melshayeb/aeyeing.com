@@ -10,23 +10,25 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791172956" />
+<meta name="ozmoeg-version" content="1791173191" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
         (function(){
             const localVersion = parseInt(document.querySelector('meta[name="ozmoeg-version"]')?.content || '0', 10);
-            if (!localVersion || sessionStorage.getItem('ozmoeg-version-checked') === '1791169153') return;
+            if (!localVersion) return;
             const remoteUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-version.json?_=' + Date.now();
             fetch(remoteUrl, { cache: 'no-store' })
                 .then(r => r.json())
                 .then(remote => {
                     if (remote.version && remote.version > localVersion) {
-                        sessionStorage.setItem('ozmoeg-version-checked', '1791169153');
+                        sessionStorage.setItem('ozmoeg-version-checked', remote.version.toString());
                         const url = new URL(location.href);
                         url.searchParams.set('_', Date.now().toString());
                         url.searchParams.set('force', '1');
                         location.replace(url.toString());
+                    } else {
+                        sessionStorage.setItem('ozmoeg-version-checked', localVersion.toString());
                     }
                 })
                 .catch(() => {});
@@ -4799,6 +4801,8 @@
                 renderBouncers();
                 renderPlanRules();
                 if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') window.rebuildBubbleChart();
+                // Update status badge with real data counts so stale/empty warning hides.
+                updateScannerStatusBadge(currentMarketStatus, (window._lastAllGainers || []).length, (window._lastAllLosers || []).length);
                 window._lastFetchSuccessAt = new Date();
             } catch (e) {
                 console.error('Live data refresh failed:', e);
