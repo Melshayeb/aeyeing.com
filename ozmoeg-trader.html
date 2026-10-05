@@ -16,6 +16,7 @@
             Promise.all(regs.map(function(r){ hadSW = true; return r.unregister(); })).then(function(){
                 if (hadSW && !killed) {
                     sessionStorage.setItem(key, '1');
+                    sessionStorage.removeItem('ozmoeg-reloaded-v2');
                     var url = new URL(location.href);
                     url.searchParams.set('_', Date.now().toString());
                     url.searchParams.set('force', '1');
@@ -25,6 +26,7 @@
         });
     })();
 </script>
+<meta name="ozmoeg-version" content="2026-10-05-v3" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
@@ -1532,8 +1534,9 @@
 <a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
 </div>
 <div id="ozmoeg-stale-data-banner" style="display:none;background:#b45309;color:#fff;padding:10px 16px;text-align:center;font-family:sans-serif;font-size:13px;position:relative;z-index:99998;">
-<strong>⚠️ Stale data detected on this device.</strong> 
-<a href="javascript:void(0)" id="ozmoeg-hard-refresh" style="color:#fff;text-decoration:underline;font-weight:bold;">Tap here to hard-refresh</a>
+<strong>⚠️ This device is showing old cached data.</strong> 
+<a href="javascript:void(0)" id="ozmoeg-hard-refresh" style="color:#fff;text-decoration:underline;font-weight:bold;">Tap here to force fresh data</a>
+<span style="font-size:11px; display:block; margin-top:4px;">If still old: iPhone Safari → Settings → Safari → Clear History and Website Data. Android Chrome → Settings → Privacy → Clear browsing data → Cached images and files.</span>
 </div>
 <script>
 (function(){
