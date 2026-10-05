@@ -10,25 +10,25 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791173191" />
+<meta name="ozmoeg-version" content="1791173687" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
         (function(){
             const localVersion = parseInt(document.querySelector('meta[name="ozmoeg-version"]')?.content || '0', 10);
             if (!localVersion) return;
+            const alreadyChecked = sessionStorage.getItem('ozmoeg-version-checked');
+            if (alreadyChecked) return; // already checked once this tab session
+            sessionStorage.setItem('ozmoeg-version-checked', localVersion.toString());
             const remoteUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-version.json?_=' + Date.now();
             fetch(remoteUrl, { cache: 'no-store' })
                 .then(r => r.json())
                 .then(remote => {
                     if (remote.version && remote.version > localVersion) {
-                        sessionStorage.setItem('ozmoeg-version-checked', remote.version.toString());
                         const url = new URL(location.href);
                         url.searchParams.set('_', Date.now().toString());
                         url.searchParams.set('force', '1');
                         location.replace(url.toString());
-                    } else {
-                        sessionStorage.setItem('ozmoeg-version-checked', localVersion.toString());
                     }
                 })
                 .catch(() => {});
