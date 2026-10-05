@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791171233" />
+<meta name="ozmoeg-version" content="1791172456" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
@@ -1507,7 +1507,7 @@
 <div class="sound-toggle" id="sound-toggle" onclick="toggleSound(!soundEnabled)" title="Toggle new-alert sound">🔊 Sound on</div>
 <div class="status-badge">
 <span class="status-dot" id="status-dot"></span>
-<span id="scanner-active-text">Scanner — checking market status...</span>
+<span id="scanner-active-text">Scanner — loading latest data...</span>
 </div>
 <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
 <span class="last-updated" id="page-refresh-label">Next refresh: —</span>
@@ -4792,6 +4792,10 @@
             updateHeaderText();
             updateDateTime();
             updateCountdown();
+
+            // Update scanner status badge immediately with current market status
+            updateScannerStatusBadge(currentMarketStatus, 0, 0);
+
             // Immediate embedded-data render so the page is never blank while fetching
             try {
                 const embedded = document.getElementById('ozmoeg-embedded-data');
@@ -4812,16 +4816,16 @@
                     }
                 }
             } catch (e) { console.warn('Embedded init failed', e.message); }
+
             renderScannerView();
-            renderNewsTicker();
-            renderScannedTables();
-            renderBouncers();
             renderNewsTicker();
             renderScannedTables();
             renderBouncers();
             await loadLiveData();
             renderScannerView();
             renderNewsTicker();
+            renderScannedTables();
+            renderBouncers();
             resetRefreshTimer();
         })();
 
