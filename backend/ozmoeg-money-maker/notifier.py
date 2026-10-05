@@ -241,7 +241,8 @@ class Notifier:
             return False
 
     def _alert_passes_quality_gate(self, plan: Dict[str, Any],
-                                   news_analysis: Dict[str, Any]) -> bool:
+                                   news_analysis: Dict[str, Any],
+                                   market_status: str = '') -> bool:
         """Return True only if the setup satisfies the Telegram quality gate.
 
         Pre-market (relaxed) alerts need:
@@ -256,7 +257,8 @@ class Notifier:
           - R:R >= 1.5
         """
         impact_score = news_analysis.get('max_score', 0)
-        relaxed = news_analysis.get('catalyst_relaxed', False)
+        status = str(market_status).upper()
+        relaxed = news_analysis.get('catalyst_relaxed', False) or status in ('PRE-MARKET', 'AFTER-HOURS')
         max_age = TG_MAX_RELAXED_NEWS_AGE_MINUTES if relaxed else TG_MAX_NEWS_AGE_MINUTES
         news_age = self._youngest_news_age_minutes(news_analysis)
 
@@ -332,7 +334,9 @@ class Notifier:
             # Candidate pass-through uses a reduced gate: freshness + R:R only, no
             # minimum impact score, so tape/momentum-only exempt candidates can pass.
             news_age = self._youngest_news_age_minutes(news_analysis)
-            max_age = TG_MAX_RELAXED_NEWS_AGE_MINUTES if news_analysis.get('catalyst_relaxed', False) else TG_MAX_NEWS_AGE_MINUTES
+            status = str(market_status).upper()
+            relaxed = news_analysis.get('catalyst_relaxed', False) or status in ('PRE-MARKET', 'AFTER-HOURS')
+            max_age = TG_MAX_RELAXED_NEWS_AGE_MINUTES if relaxed else TG_MAX_NEWS_AGE_MINUTES
             if news_age is None or news_age > max_age:
                 logger.info("Candidate quality gate — news age %s min exceeds limit %s", news_age, max_age)
                 return False
@@ -340,7 +344,7 @@ class Notifier:
                 logger.info("Candidate quality gate — poor R:R %.2f", plan.get('risk_reward', 0))
                 return False
         else:
-            if not self._alert_passes_quality_gate(plan, news_analysis):
+            if not self._alert_passes_quality_gate(plan, news_analysis, market_status=market_status):
                 return
 
         # Build filters applied text
@@ -468,7 +472,7 @@ class Notifier:
             ticker = plan.get('ticker')
             if not ticker:
                 continue
-            if not self._alert_passes_quality_gate(plan, news):
+            if not self._alert_passes_quality_gate(plan, news, market_status=market_status):
                 logger.info("Pre-market summary excludes %s — fails quality gate", ticker)
                 continue
             eligible_alerts.append(result)
