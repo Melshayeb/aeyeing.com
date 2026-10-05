@@ -4560,9 +4560,9 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
-                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`,
+                    `https://aeyeing.com/${file}`,
                     `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
-                    `https://aeyeing.com/${file}`
+                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`
                 ];
                 let data = null;
                 let lastErr = null;
