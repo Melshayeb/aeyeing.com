@@ -29,7 +29,7 @@ DUPLICATE_WINDOW_SECONDS = 21600  # 6 hours — only re-send same setup if it st
 TG_MIN_IMPACT_SCORE = 3          # Score 3+ passes; score 2 needs very fresh news (see below)
 TG_FRESH_AGE_MINUTES = 60        # Score 2 alerts are allowed only if news is this fresh (live market)
 TG_MAX_NEWS_AGE_MINUTES = 1440   # 24 hours for live-market alerts
-TG_MAX_RELAXED_NEWS_AGE_MINUTES = 1440  # 24 hours for pre/after-hours (relaxed) alerts
+TG_MAX_RELAXED_NEWS_AGE_MINUTES = 4320  # 72 hours for pre/after-hours (relaxed) alerts; covers weekend news
 
 class Notifier:
     """Alert dispatcher for Telegram and Email."""
