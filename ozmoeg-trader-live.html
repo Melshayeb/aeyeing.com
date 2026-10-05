@@ -4711,9 +4711,29 @@
             updateHeaderText();
             updateDateTime();
             updateCountdown();
+            // Immediate embedded-data render so the page is never blank while fetching
+            try {
+                const embedded = document.getElementById('ozmoeg-embedded-data');
+                if (embedded) {
+                    const attr = currentMarket === 'AUS' ? 'data-au' : 'data-us';
+                    const embeddedData = JSON.parse(embedded.getAttribute(attr));
+                    if (embeddedData) {
+                        window._latestData = embeddedData;
+                        window._lastScanTimestamp = new Date(embeddedData.last_updated || Date.now());
+                        window._lastLiveResults = embeddedData.scan_results || [];
+                        window._lastPreMarketResults = embeddedData.pre_market_results || [];
+                        window._lastPreMarketWatchlist = embeddedData.pre_market_watchlist || [];
+                        window._lastAllGainers = embeddedData.all_gainers || [];
+                        window._lastBubbleViewResults = embeddedData.scan_results || [];
+                        window._lastScanStats = embeddedData.scan_stats || {};
+                    }
+                }
+            } catch (e) { console.warn('Embedded init failed', e.message); }
             renderScannerView();
+            renderNewsTicker();
             await loadLiveData();
             renderScannerView();
+            renderNewsTicker();
             resetRefreshTimer();
         })();
 
