@@ -160,6 +160,9 @@ class WebsiteUpdater:
             manifest_file.write_text(json.dumps({"latest": snapshot_name, "last_updated": timestamp}, indent=2))
             logger.info("Wrote scan snapshot %s and manifest %s", snapshot_file, manifest_file)
 
+            # Refresh the embedded fallback in v7 so first paint is never stale.
+            self._update_embedded_snapshot(data)
+
             # HTML is now fully client-side rendered from the JSON snapshot.
             # Do not rewrite ozmoeg-trader*.html here; the marker-based updater was
             # corrupting the file (0-byte writes / malformed HTML) and overwriting
@@ -294,6 +297,43 @@ class WebsiteUpdater:
         """
         logger.warning("_update_html is deprecated and no longer writes HTML files.")
         return
+
+    def _update_embedded_snapshot(self, data: dict) -> bool:
+        """Refresh the embedded JSON fallback inside the canonical v7 trader HTML.
+
+        The page uses the embedded snapshot for its first paint; if we never update it,
+        users see old data while the live XHR is still in flight or when the network
+        is flaky. We rewrite only the <script id="ozmoeg-embedded-data"> attributes,
+        leaving the rest of the HTML untouched.
+        """
+        html_file = Path(self.repo_path) / "ozmoeg-trader-v7.html"
+        if not html_file.exists():
+            return False
+        try:
+            html = html_file.read_text(encoding="utf-8")
+            market = str(data.get("scan_stats", {}).get("market", "us")).lower()
+            attr = "data-au" if market == "au" else "data-us"
+            json_str = json.dumps(data, indent=2, ensure_ascii=False)
+            # Escape for safe HTML attribute content (same style the hand-edited file uses)
+            json_str = json_str.replace("&", "&amp;").replace("'", "&#39;").replace('"', "&quot;")
+            json_str = json_str.replace("\n", "\r\n")
+            start_tag = '<script id="ozmoeg-embedded-data" type="application/json" data-us="' if attr == "data-us" else '<script id="ozmoeg-embedded-data" type="application/json" data-au="'
+            end_tag = '"></script>'
+            start_idx = html.find(start_tag)
+            if start_idx == -1:
+                logger.warning("Could not find embedded %s block in %s", attr, html_file)
+                return False
+            end_idx = html.find(end_tag, start_idx + len(start_tag))
+            if end_idx == -1:
+                logger.warning("Could not find end of embedded %s block in %s", attr, html_file)
+                return False
+            new_html = html[:start_idx + len(start_tag)] + json_str + html[end_idx:]
+            html_file.write_text(new_html, encoding="utf-8")
+            logger.info("Refreshed embedded %s snapshot in %s", attr, html_file)
+            return True
+        except Exception as e:
+            logger.warning("Failed to refresh embedded snapshot: %s", e)
+            return False
 
     def _git_push(self):
         """Push updated website files to GitHub Pages.
