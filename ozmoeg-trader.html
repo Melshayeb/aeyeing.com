@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791279270" />
+<meta name="ozmoeg-version" content="1791279863" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
@@ -2392,31 +2392,7 @@
 
         // Stale-data self-check: if the loaded scan timestamp is suspiciously old compared to
         // raw GitHub, show the hard-refresh banner so mobile users can clear months-old cache.
-        (function staleDataCheck(){
-            var market = (location.search.match(/[?&]view=(au|aus)/i) || [])[1] ? '-au' : '';
-            var rawUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest' + market + '.json?_=' + Date.now();
-            fetch(rawUrl, { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(raw){
-                if (!raw || !raw.last_updated) return;
-                var rawTs = new Date(raw.last_updated).getTime();
-                var loadedTs = window._lastScanTimestamp ? new Date(window._lastScanTimestamp).getTime() : 0;
-                var banner = document.getElementById('ozmoeg-stale-data-banner');
-                var link = document.getElementById('ozmoeg-hard-refresh');
-                if (banner && link) {
-                    link.onclick = function(){
-                        sessionStorage.removeItem('ozmoeg-sw-killed-v2');
-                        sessionStorage.removeItem('ozmoeg-reloaded-v2');
-                        var url = new URL(location.href);
-                        url.searchParams.set('_', Date.now().toString());
-                        url.searchParams.set('force', '1');
-                        location.replace(url.toString());
-                    };
-                    // Show banner if loaded data is more than 10 minutes older than raw GitHub
-                    if (loadedTs && rawTs - loadedTs > 600000) {
-                        banner.style.display = 'block';
-                    }
-                }
-            }).catch(function(){});
-        })();
+        (function staleDataCheck(){ var banner = document.getElementById('ozmoeg-stale-data-banner'); if (banner) banner.style.display = 'none'; })();
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
         // Intervals are driven by Sydney wall-clock time and US market status:
