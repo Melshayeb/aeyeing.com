@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791281196" />
+<meta name="ozmoeg-version" content="1791281355" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -15825,7 +15825,6 @@
 
         // Stale-data self-check: if the loaded scan timestamp is suspiciously old compared to
         // raw GitHub, show the hard-refresh banner so mobile users can clear months-old cache.
-        (function staleDataCheck(){ var banner = document.getElementById('ozmoeg-stale-data-banner'); if (banner) banner.style.display = 'none'; })();
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
         // Intervals are driven by Sydney wall-clock time and US market status:
@@ -16924,10 +16923,7 @@
                     const title = escapeHtml(rf.title || '');
                     return `<li style="margin-bottom:0.25rem;"><strong>${flag.toUpperCase()}</strong>${title ? ': ' + title : ''}</li>`;
                 }).join('');
-                redFlagHtml = `<div class="red-flag-banner" style="margin:0.5rem 0;padding:0.6rem 0.8rem;background:rgba(255,76,76,0.12);border:1px solid rgba(255,76,76,0.45);border-radius:6px;color:var(--accent-red);font-size:0.85rem;">
-                    <strong style="display:block;margin-bottom:0.3rem;">⚠️ Red Flag Alert</strong>
-                    <ul style="margin:0;padding-left:1.2rem;">${rfItems}</ul>
-                </div>`;
+                redFlagHtml = ``;
             }
 
             const list = document.getElementById('news-list');
