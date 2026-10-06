@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791278811" />
+<meta name="ozmoeg-version" content="1791279270" />
     <script>
         // Self-healing cache bust: if this HTML is older than the latest deployed version,
         // force a real reload once. This breaks out of stale service-worker / browser cache.
@@ -4648,7 +4648,7 @@
                 try {
                     const snapshotFile = getPublicSnapshotFile();
                     const ts = Date.now();
-                    const res = await fetch('https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/' + snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+                    const res = await fetch('https://trip-planner.aeyeing.com/ozmoeg/' + snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
                         const data = await res.json();
                         // Store all available result sets; buildBubbleChart will pick the right one for the active view.
@@ -4697,7 +4697,6 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
-                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
                     `https://trip-planner.aeyeing.com/ozmoeg/${file}`
                 ];
                 let data = null;
