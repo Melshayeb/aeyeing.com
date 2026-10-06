@@ -317,8 +317,8 @@ class WebsiteUpdater:
             # Escape for safe HTML attribute content (same style the hand-edited file uses)
             json_str = json_str.replace("&", "&amp;").replace("'", "&#39;").replace('"', "&quot;")
             json_str = json_str.replace("\n", "\r\n")
-            start_tag = '<script id="ozmoeg-embedded-data" type="application/json" data-us="' if attr == "data-us" else '<script id="ozmoeg-embedded-data" type="application/json" data-au="'
-            end_tag = '"></script>'
+            start_tag = "<script id=\"ozmoeg-embedded-data\" type=\"application/json\" data-us='" if attr == "data-us" else "<script id=\"ozmoeg-embedded-data\" type=\"application/json\" data-au='"
+            end_tag = "'></script>"
             start_idx = html.find(start_tag)
             if start_idx == -1:
                 logger.warning("Could not find embedded %s block in %s", attr, html_file)
