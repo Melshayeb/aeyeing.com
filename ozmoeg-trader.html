@@ -6,12 +6,8 @@
     <title>Redirecting...</title>
     <script>
         if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-        if (!location.search.includes('redirected=1')) {
-            var url = '/ozmoeg-trader-v7.html?_=' + Date.now();
-            location.replace(url);
-        } else {
-            document.body.innerHTML = '<p>Please refresh the page.</p>';
-        }
+        var url = '/ozmoeg-trader-v7.html?_=' + Date.now();
+        location.replace(url);
     </script>
 </head>
 <body>Redirecting to latest OzMoEg Trader...</body>

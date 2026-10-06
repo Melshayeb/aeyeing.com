@@ -10,30 +10,8 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791280583" />
-    <script>
-        // Self-healing cache bust: if this HTML is older than the latest deployed version,
-        // force a real reload once. This breaks out of stale service-worker / browser cache.
-        (function(){
-            const localVersion = parseInt(document.querySelector('meta[name="ozmoeg-version"]')?.content || '0', 10);
-            if (!localVersion) return;
-            const alreadyChecked = sessionStorage.getItem('ozmoeg-version-checked');
-            if (alreadyChecked) return; // already checked once this tab session
-            sessionStorage.setItem('ozmoeg-version-checked', localVersion.toString());
-            const remoteUrl = 'https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-version.json?_=' + Date.now();
-            fetch(remoteUrl, { cache: 'no-store' })
-                .then(r => r.json())
-                .then(remote => {
-                    if (remote.version && remote.version > localVersion) {
-                        const url = new URL(location.href);
-                        url.searchParams.set('_', Date.now().toString());
-                        url.searchParams.set('force', '1');
-                        location.replace(url.toString());
-                    }
-                })
-                .catch(() => {});
-        })();
-    </script>
+<meta name="ozmoeg-version" content="1791281196" />
+    
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
@@ -14930,15 +14908,8 @@
 }'></script>
 </head>
 <body>
-<div id="ozmoeg-cloudflare-fallback" style="display:none;background:#b91c1c;color:#fff;padding:12px 16px;text-align:center;font-family:sans-serif;font-size:14px;position:relative;z-index:99999;">
-<strong>⚠️ Cloudflare is blocking this page.</strong>
-<a href="https://melshayeb.github.io/aeyeing.com/ozmoeg-trader.html" style="color:#fff;text-decoration:underline;font-weight:bold;">Click here for the direct OzMoEg page</a>
-</div>
-<div id="ozmoeg-stale-data-banner" style="display:none;background:#b45309;color:#fff;padding:10px 16px;text-align:center;font-family:sans-serif;font-size:13px;position:relative;z-index:99998;">
-<strong>⚠️ This device is showing old cached data.</strong> 
-<a href="javascript:void(0)" id="ozmoeg-hard-refresh" style="color:#fff;text-decoration:underline;font-weight:bold;">Tap here to force fresh data</a>
-<span style="font-size:11px; display:block; margin-top:4px;">If still old: iPhone Safari → Settings → Safari → Clear History and Website Data. Android Chrome → Settings → Privacy → Clear browsing data → Cached images and files.</span>
-</div>
+
+
 <script>
 (function(){
   var fallback = document.getElementById('ozmoeg-cloudflare-fallback');
@@ -14975,7 +14946,7 @@
 </div>
 <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
 <span class="last-updated" id="page-refresh-label">Next refresh: —</span>
-            <span class="last-updated" id="data-source-indicator" style="display:none;color:var(--accent-amber);font-weight:600;">📶 Offline — showing embedded snapshot</span>
+            
 </div></header>
 <a class="telegram-cta" href="https://t.me/+c92A0PlqVBg2ZTdl" rel="noopener" target="_blank" title="Join OzMoEg Money Maker Telegram Channel">
 <div class="telegram-icon">✈️</div>
@@ -18135,8 +18106,8 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
-                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`,
-                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`
+                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
+                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`
                 ];
                 let data = null;
                 let lastErr = null;
@@ -18175,8 +18146,7 @@
                             const attr = currentMarket === 'AUS' ? 'data-au' : 'data-us';
                             data = JSON.parse(embedded.getAttribute(attr));
                             console.log('Using embedded fallback data', data?.scan_results?.length);
-                            const indicator = document.getElementById('data-source-indicator');
-                            if (indicator) indicator.style.display = 'inline';
+                            
                         }
                     } catch (e) {
                         console.warn('Embedded fallback failed', e.message);
@@ -18259,8 +18229,7 @@
                 // Update status badge with real data counts so stale/empty warning hides.
                 updateScannerStatusBadge(currentMarketStatus, (window._lastAllGainers || []).length, (window._lastAllLosers || []).length);
                 window._lastFetchSuccessAt = new Date();
-                const indicator = document.getElementById('data-source-indicator');
-                if (indicator) indicator.style.display = 'none';
+                
             } catch (e) {
                 console.error('Live data refresh failed:', e);
                 window._lastFetchErrorAt = new Date();
