@@ -23699,10 +23699,11 @@
                 }
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            // Primary: own CDN (aeyeing.com), then raw GitHub, then legacy tunnel.
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
-            const candidates = [tunnel, raw, main].filter(Boolean);
+            const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
+            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
+            const candidates = [main, raw, tunnel].filter(Boolean);
             if (!candidates.length) return null;
             // Use whichever manifest has the newest last_updated timestamp.
             let newest = candidates[0];
@@ -25860,6 +25861,7 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
+                    `https://aeyeing.com/${file}`,
                     `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
                     `https://trip-planner.aeyeing.com/ozmoeg/${file}`
                 ];
@@ -25869,7 +25871,7 @@
                 const fetchJson = (url) => new Promise((resolve, reject) => {
                     const xhr = new XMLHttpRequest();
                     xhr.open('GET', url + '?_=' + cacheBuster, true);
-                    xhr.setRequestHeader('Cache-Control', 'no-cache');
+                    // xhr.setRequestHeader('Cache-Control', 'no-cache'); // removed: triggers CORS preflight on Cloudflare Pages (405)
                     xhr.timeout = 8000;
                     xhr.onload = () => {
                         if (xhr.status >= 200 && xhr.status < 300) {
