@@ -1,14 +1,265 @@
 {
-  "last_updated": "2026-10-07T22:44:06.695958Z",
+  "last_updated": "2026-10-07T22:47:12.957238Z",
   "scan_results": [
+    {
+      "ticker": "CPHI",
+      "name": "China Pharma",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.99,
+      "change_pct": 16.47058823529412,
+      "volume": 66660087,
+      "market_cap": 36568701.7,
+      "float_shares": 4460615,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Jul 23), 8-K (Jul 22)",
+      "result": "+16.5% \u00b7 Entry $0.99 \u00b7 T1 $1.03 \u00b7 T2 $1.05 \u00b7 T3 $1.09",
+      "plan": {
+        "valid": true,
+        "ticker": "CPHI",
+        "entry": 0.99,
+        "stop": 0.9702,
+        "targets": {
+          "t1": 1.0296,
+          "t2": 1.0494,
+          "t3": 1.089
+        },
+        "risk_per_share": 0.0198,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 303,
+        "position_value": 299.97,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.9702"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CPHI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:30:17.168+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:30:17.168+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "China Pharma Holdings, Inc. Announces Closing of $5.0 Million Registered Direct Offering",
+            "flag": "offering"
+          },
+          {
+            "title": "China Pharma prices 2.5M shares at $2.00 in registered direct offering",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "CPHI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 12.38,
+        "volume_indicator": "high",
+        "volume": 66660087,
+        "adv": 5384910,
+        "recent_pct_of_adv": 1237.91,
+        "volume_acceleration": -0.213,
+        "price_velocity_pct": 3.747,
+        "buy_pressure_pct": 47.67,
+        "large_bar_count": 132,
+        "vwap_distance_pct": 11.11,
+        "recent_volume": 66660087,
+        "prior_volume": 0,
+        "median_range": 0.0178,
+        "last_price": 0.85,
+        "vwap": 0.9562433285018618,
+        "last_trade_time": "2026-10-07T22:45:26.974000+00:00",
+        "stale_age_seconds": 102
+      },
+      "date": "2026-10-08",
+      "time": "09:47:10",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.01
+    },
+    {
+      "ticker": "MTEN",
+      "name": "Mingteng International",
+      "status": "CANDIDATE",
+      "source": "regular",
+      "price": 1.17,
+      "change_pct": 6.363636363636349,
+      "volume": 58105155,
+      "market_cap": 8414851.5,
+      "float_shares": 6109365,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B3 (Aug 20)",
+      "result": "News score 5 but no live price movement",
+      "plan": {
+        "valid": true,
+        "ticker": "MTEN",
+        "entry": 1.17,
+        "stop": 1.1466,
+        "targets": {
+          "t1": 1.2168,
+          "t2": 1.2402,
+          "t3": 1.287
+        },
+        "risk_per_share": 0.0234,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 256,
+        "position_value": 299.52,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.1466"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "MTEN",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+            "source": "Webull",
+            "time": "17h ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:18:50.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:39:07.663+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+            "source": "Webull",
+            "time": "17h ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:18:50.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:39:07.663+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 2.5,
+        "catalyst_confirmed": false,
+        "high_impact_count": 1,
+        "top_headline": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+        "news_filter_reason": "low catalyst score (max 5/5)"
+      },
+      "tape": {
+        "ticker": "MTEN",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 19.2,
+        "volume_indicator": "high",
+        "volume": 58105155,
+        "adv": 3026500,
+        "recent_pct_of_adv": 1919.88,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 58105155,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 1.1,
+        "vwap": null,
+        "last_trade_time": "2026-10-07T22:45:05.325000+00:00",
+        "stale_age_seconds": 124
+      },
+      "date": "2026-10-08",
+      "time": "09:47:10",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 1.17
+    },
     {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.138,
-      "change_pct": 28.023952095808387,
-      "volume": 47444495,
+      "price": 2.043,
+      "change_pct": 22.33532934131738,
+      "volume": 47497239,
       "market_cap": 3502970.29,
       "float_shares": 1213201,
       "country": "China / Hong Kong",
@@ -17,23 +268,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+28.0% \u00b7 Entry $2.14 \u00b7 T1 $2.22 \u00b7 T2 $2.27 \u00b7 T3 $2.35",
+      "result": "+22.3% \u00b7 Entry $2.04 \u00b7 T1 $2.12 \u00b7 T2 $2.17 \u00b7 T3 $2.25",
       "plan": {
         "valid": true,
         "ticker": "DKI",
-        "entry": 2.138,
-        "stop": 2.0952,
+        "entry": 2.043,
+        "stop": 2.0021,
         "targets": {
-          "t1": 2.2236,
-          "t2": 2.2664,
-          "t3": 2.352
+          "t1": 2.1248,
+          "t2": 2.1657,
+          "t3": 2.2475
         },
-        "risk_per_share": 0.0428,
+        "risk_per_share": 0.0409,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 140,
-        "position_value": 299.32,
+        "shares": 146,
+        "position_value": 298.28,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +292,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0952"
+          "hard_stop": "$2.0021"
         }
       },
       "ta": {
@@ -128,29 +379,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 47.19,
+        "rvol": 47.24,
         "volume_indicator": "high",
-        "volume": 47444495,
+        "volume": 47497239,
         "adv": 1005381,
-        "recent_pct_of_adv": 4719.06,
+        "recent_pct_of_adv": 4724.3,
         "volume_acceleration": -0.972,
-        "price_velocity_pct": 1.848,
-        "buy_pressure_pct": 47.88,
-        "large_bar_count": 150,
+        "price_velocity_pct": 4.395,
+        "buy_pressure_pct": 47.75,
+        "large_bar_count": 153,
         "vwap_distance_pct": 39.639,
-        "recent_volume": 47444495,
+        "recent_volume": 47497239,
         "prior_volume": 0,
         "median_range": 0.04,
         "last_price": 1.67,
         "vwap": 2.7666948004955594,
-        "last_trade_time": "2026-10-07T22:42:28.716000+00:00",
-        "stale_age_seconds": 95
+        "last_trade_time": "2026-10-07T22:45:29.103000+00:00",
+        "stale_age_seconds": 101
       },
       "date": "2026-10-08",
-      "time": "09:44:04",
+      "time": "09:47:10",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 2.15
+      "previous_price": 2.138
     },
     {
       "ticker": "MRNO",
@@ -159,7 +410,7 @@
       "source": "regular",
       "price": 0.371,
       "change_pct": 57.136806437950014,
-      "volume": 46007947,
+      "volume": 46130579,
       "market_cap": 19379638.59,
       "float_shares": 4117223,
       "country": "United Kingdom",
@@ -278,590 +529,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 7.38,
+        "rvol": 7.4,
         "volume_indicator": "high",
-        "volume": 46007947,
+        "volume": 46130579,
         "adv": 6233720,
-        "recent_pct_of_adv": 738.05,
+        "recent_pct_of_adv": 740.02,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 34.923,
-        "buy_pressure_pct": 44.51,
-        "large_bar_count": 37,
+        "price_velocity_pct": 33.305,
+        "buy_pressure_pct": 44.64,
+        "large_bar_count": 38,
         "vwap_distance_pct": 0.407,
-        "recent_volume": 46007947,
+        "recent_volume": 46130579,
         "prior_volume": 0,
-        "median_range": 0.0099,
+        "median_range": 0.0096,
         "last_price": 0.2361,
         "vwap": 0.23706555972916812,
-        "last_trade_time": "2026-10-07T22:42:29.841000+00:00",
-        "stale_age_seconds": 94
+        "last_trade_time": "2026-10-07T22:45:24.942000+00:00",
+        "stale_age_seconds": 105
       },
       "date": "2026-10-08",
-      "time": "09:44:04",
+      "time": "09:47:10",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 0.378
-    },
-    {
-      "ticker": "BFRG",
-      "name": "BULLFROG AI HLDGS INC",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.765,
-      "change_pct": 7.95935647756139,
-      "volume": 25090912,
-      "market_cap": 13138613.9,
-      "float_shares": 16030816,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Aug 20)",
-      "result": "+8.0% \u00b7 Entry $0.77 \u00b7 T1 $0.80 \u00b7 T2 $0.81 \u00b7 T3 $0.84",
-      "plan": {
-        "valid": true,
-        "ticker": "BFRG",
-        "entry": 0.765,
-        "stop": 0.7497,
-        "targets": {
-          "t1": 0.7956,
-          "t2": 0.8109,
-          "t3": 0.8415
-        },
-        "risk_per_share": 0.0153,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 392,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7497"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "BFRG",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-            "source": "Webull",
-            "time": "1d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T12:15:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at BFRG last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:23:33.892+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Axios Reported Earlier Sunday, Nvidia-Backed Reflection Prepares Powerful Open-Weight AI System To Challenge Chinese Upstarts, U.S. AI Giants",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T16:33:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "President Trump On Sunday, Announced Formation Of Super Intelligence Force To Coordinate Federal Government Super Intelligence Efforts, Led By Jay Clayton, Andrew Ferguson, Emil Michael, Scott Kupor",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T12:41:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-            "source": "Webull",
-            "time": "1d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T12:15:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at BFRG last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:23:33.892+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Axios Reported Earlier Sunday, Nvidia-Backed Reflection Prepares Powerful Open-Weight AI System To Challenge Chinese Upstarts, U.S. AI Giants",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T16:33:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "President Trump On Sunday, Announced Formation Of Super Intelligence Force To Coordinate Federal Government Super Intelligence Efforts, Led By Jay Clayton, Andrew Ferguson, Emil Michael, Scott Kupor",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T12:41:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "BFRG",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 4.79,
-        "volume_indicator": "high",
-        "volume": 25090912,
-        "adv": 5239278,
-        "recent_pct_of_adv": 478.9,
-        "volume_acceleration": -0.905,
-        "price_velocity_pct": 4.344,
-        "buy_pressure_pct": 49.9,
-        "large_bar_count": 198,
-        "vwap_distance_pct": 8.684,
-        "recent_volume": 25090912,
-        "prior_volume": 0,
-        "median_range": 0.0056,
-        "last_price": 0.7086,
-        "vwap": 0.7759883566632302,
-        "last_trade_time": "2026-10-07T22:41:30.538000+00:00",
-        "stale_age_seconds": 153
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.77
-    },
-    {
-      "ticker": "MTEN",
-      "name": "Mingteng International",
-      "status": "CANDIDATE",
-      "source": "regular",
-      "price": 1.17,
-      "change_pct": 6.363636363636349,
-      "volume": 58098162,
-      "market_cap": 8414851.5,
-      "float_shares": 6109365,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B3 (Aug 20)",
-      "result": "News score 5 but no live price movement",
-      "plan": {
-        "valid": true,
-        "ticker": "MTEN",
-        "entry": 1.17,
-        "stop": 1.1466,
-        "targets": {
-          "t1": 1.2168,
-          "t2": 1.2402,
-          "t3": 1.287
-        },
-        "risk_per_share": 0.0234,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 256,
-        "position_value": 299.52,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.1466"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "MTEN",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-            "source": "Webull",
-            "time": "17h ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:18:50.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:39:07.663+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-            "source": "Webull",
-            "time": "17h ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:18:50.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:39:07.663+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 5,
-        "avg_score": 2.5,
-        "catalyst_confirmed": false,
-        "high_impact_count": 1,
-        "top_headline": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-        "news_filter_reason": "low catalyst score (max 5/5)"
-      },
-      "tape": {
-        "ticker": "MTEN",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 19.2,
-        "volume_indicator": "high",
-        "volume": 58098162,
-        "adv": 3026500,
-        "recent_pct_of_adv": 1919.65,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 0.0,
-        "buy_pressure_pct": 0.0,
-        "large_bar_count": 0,
-        "vwap_distance_pct": 0.0,
-        "recent_volume": 58098162,
-        "prior_volume": 0,
-        "median_range": 0.0,
-        "last_price": 1.1,
-        "vwap": null,
-        "last_trade_time": "2026-10-07T22:42:29.746000+00:00",
-        "stale_age_seconds": 94
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 1.19
-    },
-    {
-      "ticker": "CPHI",
-      "name": "China Pharma",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.01,
-      "change_pct": 18.82352941176471,
-      "volume": 66613459,
-      "market_cap": 36568701.7,
-      "float_shares": 4460615,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Jul 23), 8-K (Jul 22)",
-      "result": "+18.8% \u00b7 Entry $1.01 \u00b7 T1 $1.05 \u00b7 T2 $1.07 \u00b7 T3 $1.11",
-      "plan": {
-        "valid": true,
-        "ticker": "CPHI",
-        "entry": 1.01,
-        "stop": 0.9898,
-        "targets": {
-          "t1": 1.0504,
-          "t2": 1.0706,
-          "t3": 1.111
-        },
-        "risk_per_share": 0.0202,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 297,
-        "position_value": 299.97,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.9898"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CPHI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:30:17.168+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:30:17.168+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "China Pharma Holdings, Inc. Announces Closing of $5.0 Million Registered Direct Offering",
-            "flag": "offering"
-          },
-          {
-            "title": "China Pharma prices 2.5M shares at $2.00 in registered direct offering",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "CPHI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 12.37,
-        "volume_indicator": "high",
-        "volume": 66613459,
-        "adv": 5384910,
-        "recent_pct_of_adv": 1237.04,
-        "volume_acceleration": -0.167,
-        "price_velocity_pct": 1.992,
-        "buy_pressure_pct": 47.97,
-        "large_bar_count": 132,
-        "vwap_distance_pct": 11.11,
-        "recent_volume": 66613459,
-        "prior_volume": 0,
-        "median_range": 0.0178,
-        "last_price": 0.85,
-        "vwap": 0.9562433285018617,
-        "last_trade_time": "2026-10-07T22:42:27.474000+00:00",
-        "stale_age_seconds": 96
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 1.002
-    },
-    {
-      "ticker": "IPW",
-      "name": "Ipower Inc",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 1.35,
-      "change_pct": 29.807692307692314,
-      "volume": 4198102,
-      "market_cap": 1313087.36,
-      "float_shares": 1252186,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (29.8%, rvol 4.1x)",
-      "scan_passed": true,
-      "sec_filings": "8-K (Sep 22), 424B3 (Sep 18), 8-K (Sep 15)",
-      "result": "Top-10 gainer tape momentum \u00b7 +29.8%",
-      "plan": {
-        "valid": true,
-        "ticker": "IPW",
-        "entry": 1.35,
-        "stop": 1.323,
-        "targets": {
-          "t1": 1.404,
-          "t2": 1.431,
-          "t3": 1.485
-        },
-        "risk_per_share": 0.027,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 222,
-        "position_value": 299.7,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.323"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "IPW",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:03:51.349+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "5d ago \u00b7 02 Oct",
-            "raw_time": "2026-10-02T21:05:54.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 01 Oct",
-            "raw_time": "2026-10-01T21:06:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:03:51.349+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "5d ago \u00b7 02 Oct",
-            "raw_time": "2026-10-02T21:05:54.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 01 Oct",
-            "raw_time": "2026-10-01T21:06:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at IPW last week (0928-1002)?",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "IPW",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 4.09,
-        "volume_indicator": "high",
-        "volume": 4198102,
-        "adv": 1025698,
-        "recent_pct_of_adv": 409.29,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 20.0,
-        "buy_pressure_pct": 51.51,
-        "large_bar_count": 34,
-        "vwap_distance_pct": 4.102,
-        "recent_volume": 4198102,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 1.04,
-        "vwap": 1.0844838952575793,
-        "last_trade_time": "2026-10-07T22:42:22.473000+00:00",
-        "stale_age_seconds": 100
-      },
-      "date": "2026-10-08",
-      "time": "09:44:05",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 1.34
+      "previous_price": 0.371
     },
     {
       "ticker": "AIXI",
@@ -870,7 +560,7 @@
       "source": "top_gainer_exempt",
       "price": 2.03,
       "change_pct": 53.78787878787876,
-      "volume": 12908956,
+      "volume": 12943943,
       "market_cap": 173595.84,
       "float_shares": 131512,
       "country": "China / Cayman-China",
@@ -1129,40 +819,623 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.92,
+        "rvol": 3.93,
         "volume_indicator": "high",
-        "volume": 12908956,
+        "volume": 12943943,
         "adv": 3295681,
-        "recent_pct_of_adv": 391.69,
-        "volume_acceleration": -0.654,
-        "price_velocity_pct": 40.271,
-        "buy_pressure_pct": 46.79,
-        "large_bar_count": 222,
+        "recent_pct_of_adv": 392.75,
+        "volume_acceleration": -0.657,
+        "price_velocity_pct": 34.328,
+        "buy_pressure_pct": 46.72,
+        "large_bar_count": 224,
         "vwap_distance_pct": 15.835,
-        "recent_volume": 12908956,
+        "recent_volume": 12943943,
         "prior_volume": 0,
         "median_range": 0.0099,
         "last_price": 1.32,
         "vwap": 1.5683490079087976,
-        "last_trade_time": "2026-10-07T22:42:22.803000+00:00",
-        "stale_age_seconds": 100
+        "last_trade_time": "2026-10-07T22:45:28.182000+00:00",
+        "stale_age_seconds": 101
       },
       "date": "2026-10-08",
-      "time": "09:44:05",
+      "time": "09:47:11",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.99
+      "previous_price": 2.03
+    },
+    {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.794,
+      "change_pct": 27.570694087403613,
+      "volume": 2049460,
+      "market_cap": 639666.62,
+      "float_shares": 930097,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (27.6%, rvol 15.8x)",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 06), 8-K (Oct 01), 8-K (Sep 28)",
+      "result": "Top-10 gainer tape momentum \u00b7 +27.6%",
+      "plan": {
+        "valid": true,
+        "ticker": "SHFS",
+        "entry": 0.794,
+        "stop": 0.7781,
+        "targets": {
+          "t1": 0.8258,
+          "t2": 0.8417,
+          "t3": 0.8735
+        },
+        "risk_per_share": 0.0159,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 377,
+        "position_value": 299.34,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.7781"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SHFS",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:30:00.000+0000",
+            "url": "",
+            "score": 1,
+            "keywords": [
+              "preliminary"
+            ]
+          },
+          {
+            "title": "Safe Harbor Reports Trailing 14-Day Average Deposit Balance Of ~$119.3M As Of September 30, Up 7.4% YoY",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:43:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SHFS last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:11:24.603+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "SHF Holdings Implements 1-for-12 Reverse Stock Split",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T10:34:03.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vicor Shares Are Trading Higher By Around 12%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T08:31:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:30:00.000+0000",
+            "url": "",
+            "score": 1,
+            "keywords": [
+              "preliminary"
+            ]
+          },
+          {
+            "title": "Safe Harbor Reports Trailing 14-Day Average Deposit Balance Of ~$119.3M As Of September 30, Up 7.4% YoY",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:43:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SHFS last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:11:24.603+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "SHF Holdings Implements 1-for-12 Reverse Stock Split",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T10:34:03.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vicor Shares Are Trading Higher By Around 12%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T08:31:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 1,
+        "avg_score": 0.2,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+        "news_filter_reason": "low catalyst score (max 1/5)"
+      },
+      "tape": {
+        "ticker": "SHFS",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 15.75,
+        "volume_indicator": "high",
+        "volume": 2049460,
+        "adv": 130128,
+        "recent_pct_of_adv": 1574.96,
+        "volume_acceleration": -0.588,
+        "price_velocity_pct": 3.475,
+        "buy_pressure_pct": 40.91,
+        "large_bar_count": 151,
+        "vwap_distance_pct": 3.118,
+        "recent_volume": 2049460,
+        "prior_volume": 0,
+        "median_range": 0.0002,
+        "last_price": 0.6224,
+        "vwap": 0.6035803038946363,
+        "last_trade_time": "2026-10-07T22:45:29.854000+00:00",
+        "stale_age_seconds": 99
+      },
+      "date": "2026-10-08",
+      "time": "09:47:11",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": null
+    },
+    {
+      "ticker": "IPW",
+      "name": "Ipower Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.37,
+      "change_pct": 31.730769230769234,
+      "volume": 4228458,
+      "market_cap": 1313087.36,
+      "float_shares": 1252186,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (31.7%, rvol 4.1x)",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 22), 424B3 (Sep 18), 8-K (Sep 15)",
+      "result": "Top-10 gainer tape momentum \u00b7 +31.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "IPW",
+        "entry": 1.37,
+        "stop": 1.3426,
+        "targets": {
+          "t1": 1.4248,
+          "t2": 1.4522,
+          "t3": 1.507
+        },
+        "risk_per_share": 0.0274,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 218,
+        "position_value": 298.66,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.3426"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "IPW",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:03:51.349+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 02 Oct",
+            "raw_time": "2026-10-02T21:05:54.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T21:06:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:03:51.349+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 02 Oct",
+            "raw_time": "2026-10-02T21:05:54.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T21:06:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at IPW last week (0928-1002)?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "IPW",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 4.12,
+        "volume_indicator": "high",
+        "volume": 4228458,
+        "adv": 1025698,
+        "recent_pct_of_adv": 412.25,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 21.805,
+        "buy_pressure_pct": 51.23,
+        "large_bar_count": 34,
+        "vwap_distance_pct": 4.102,
+        "recent_volume": 4228458,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 1.04,
+        "vwap": 1.0844838952575793,
+        "last_trade_time": "2026-10-07T22:45:26.698000+00:00",
+        "stale_age_seconds": 102
+      },
+      "date": "2026-10-08",
+      "time": "09:47:11",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 1.35
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "CPHI",
+      "name": "China Pharma",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.99,
+      "change_pct": 16.47058823529412,
+      "volume": 66660087,
+      "market_cap": 36568701.7,
+      "float_shares": 4460615,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Jul 23), 8-K (Jul 22)",
+      "result": "+16.5% \u00b7 Entry $0.99 \u00b7 T1 $1.03 \u00b7 T2 $1.05 \u00b7 T3 $1.09",
+      "plan": {
+        "valid": true,
+        "ticker": "CPHI",
+        "entry": 0.99,
+        "stop": 0.9702,
+        "targets": {
+          "t1": 1.0296,
+          "t2": 1.0494,
+          "t3": 1.089
+        },
+        "risk_per_share": 0.0198,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 303,
+        "position_value": 299.97,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.9702"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CPHI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:30:17.168+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:30:17.168+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "China Pharma Holdings, Inc. Announces Closing of $5.0 Million Registered Direct Offering",
+            "flag": "offering"
+          },
+          {
+            "title": "China Pharma prices 2.5M shares at $2.00 in registered direct offering",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "CPHI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 12.38,
+        "volume_indicator": "high",
+        "volume": 66660087,
+        "adv": 5384910,
+        "recent_pct_of_adv": 1237.91,
+        "volume_acceleration": -0.213,
+        "price_velocity_pct": 3.747,
+        "buy_pressure_pct": 47.67,
+        "large_bar_count": 132,
+        "vwap_distance_pct": 11.11,
+        "recent_volume": 66660087,
+        "prior_volume": 0,
+        "median_range": 0.0178,
+        "last_price": 0.85,
+        "vwap": 0.9562433285018618,
+        "last_trade_time": "2026-10-07T22:45:26.974000+00:00",
+        "stale_age_seconds": 102
+      },
+      "date": "2026-10-08",
+      "time": "09:47:10",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.01
+    },
+    {
+      "ticker": "MTEN",
+      "name": "Mingteng International",
+      "status": "CANDIDATE",
+      "source": "regular",
+      "price": 1.17,
+      "change_pct": 6.363636363636349,
+      "volume": 58105155,
+      "market_cap": 8414851.5,
+      "float_shares": 6109365,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B3 (Aug 20)",
+      "result": "News score 5 but no live price movement",
+      "plan": {
+        "valid": true,
+        "ticker": "MTEN",
+        "entry": 1.17,
+        "stop": 1.1466,
+        "targets": {
+          "t1": 1.2168,
+          "t2": 1.2402,
+          "t3": 1.287
+        },
+        "risk_per_share": 0.0234,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 256,
+        "position_value": 299.52,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.1466"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "MTEN",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+            "source": "Webull",
+            "time": "17h ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:18:50.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:39:07.663+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+            "source": "Webull",
+            "time": "17h ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:18:50.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:39:07.663+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 2.5,
+        "catalyst_confirmed": false,
+        "high_impact_count": 1,
+        "top_headline": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
+        "news_filter_reason": "low catalyst score (max 5/5)"
+      },
+      "tape": {
+        "ticker": "MTEN",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 19.2,
+        "volume_indicator": "high",
+        "volume": 58105155,
+        "adv": 3026500,
+        "recent_pct_of_adv": 1919.88,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 0.0,
+        "large_bar_count": 0,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 58105155,
+        "prior_volume": 0,
+        "median_range": 0.0,
+        "last_price": 1.1,
+        "vwap": null,
+        "last_trade_time": "2026-10-07T22:45:05.325000+00:00",
+        "stale_age_seconds": 124
+      },
+      "date": "2026-10-08",
+      "time": "09:47:10",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 1.17
+    },
+    {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.138,
-      "change_pct": 28.023952095808387,
-      "volume": 47444495,
+      "price": 2.043,
+      "change_pct": 22.33532934131738,
+      "volume": 47497239,
       "market_cap": 3502970.29,
       "float_shares": 1213201,
       "country": "China / Hong Kong",
@@ -1171,23 +1444,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+28.0% \u00b7 Entry $2.14 \u00b7 T1 $2.22 \u00b7 T2 $2.27 \u00b7 T3 $2.35",
+      "result": "+22.3% \u00b7 Entry $2.04 \u00b7 T1 $2.12 \u00b7 T2 $2.17 \u00b7 T3 $2.25",
       "plan": {
         "valid": true,
         "ticker": "DKI",
-        "entry": 2.138,
-        "stop": 2.0952,
+        "entry": 2.043,
+        "stop": 2.0021,
         "targets": {
-          "t1": 2.2236,
-          "t2": 2.2664,
-          "t3": 2.352
+          "t1": 2.1248,
+          "t2": 2.1657,
+          "t3": 2.2475
         },
-        "risk_per_share": 0.0428,
+        "risk_per_share": 0.0409,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 140,
-        "position_value": 299.32,
+        "shares": 146,
+        "position_value": 298.28,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1195,7 +1468,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0952"
+          "hard_stop": "$2.0021"
         }
       },
       "ta": {
@@ -1282,29 +1555,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 47.19,
+        "rvol": 47.24,
         "volume_indicator": "high",
-        "volume": 47444495,
+        "volume": 47497239,
         "adv": 1005381,
-        "recent_pct_of_adv": 4719.06,
+        "recent_pct_of_adv": 4724.3,
         "volume_acceleration": -0.972,
-        "price_velocity_pct": 1.848,
-        "buy_pressure_pct": 47.88,
-        "large_bar_count": 150,
+        "price_velocity_pct": 4.395,
+        "buy_pressure_pct": 47.75,
+        "large_bar_count": 153,
         "vwap_distance_pct": 39.639,
-        "recent_volume": 47444495,
+        "recent_volume": 47497239,
         "prior_volume": 0,
         "median_range": 0.04,
         "last_price": 1.67,
         "vwap": 2.7666948004955594,
-        "last_trade_time": "2026-10-07T22:42:28.716000+00:00",
-        "stale_age_seconds": 95
+        "last_trade_time": "2026-10-07T22:45:29.103000+00:00",
+        "stale_age_seconds": 101
       },
       "date": "2026-10-08",
-      "time": "09:44:04",
+      "time": "09:47:10",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 2.15
+      "previous_price": 2.138
     },
     {
       "ticker": "MRNO",
@@ -1313,7 +1586,7 @@
       "source": "regular",
       "price": 0.371,
       "change_pct": 57.136806437950014,
-      "volume": 46007947,
+      "volume": 46130579,
       "market_cap": 19379638.59,
       "float_shares": 4117223,
       "country": "United Kingdom",
@@ -1432,590 +1705,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 7.38,
+        "rvol": 7.4,
         "volume_indicator": "high",
-        "volume": 46007947,
+        "volume": 46130579,
         "adv": 6233720,
-        "recent_pct_of_adv": 738.05,
+        "recent_pct_of_adv": 740.02,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 34.923,
-        "buy_pressure_pct": 44.51,
-        "large_bar_count": 37,
+        "price_velocity_pct": 33.305,
+        "buy_pressure_pct": 44.64,
+        "large_bar_count": 38,
         "vwap_distance_pct": 0.407,
-        "recent_volume": 46007947,
+        "recent_volume": 46130579,
         "prior_volume": 0,
-        "median_range": 0.0099,
+        "median_range": 0.0096,
         "last_price": 0.2361,
         "vwap": 0.23706555972916812,
-        "last_trade_time": "2026-10-07T22:42:29.841000+00:00",
-        "stale_age_seconds": 94
+        "last_trade_time": "2026-10-07T22:45:24.942000+00:00",
+        "stale_age_seconds": 105
       },
       "date": "2026-10-08",
-      "time": "09:44:04",
+      "time": "09:47:10",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 0.378
-    },
-    {
-      "ticker": "BFRG",
-      "name": "BULLFROG AI HLDGS INC",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.765,
-      "change_pct": 7.95935647756139,
-      "volume": 25090912,
-      "market_cap": 13138613.9,
-      "float_shares": 16030816,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Aug 20)",
-      "result": "+8.0% \u00b7 Entry $0.77 \u00b7 T1 $0.80 \u00b7 T2 $0.81 \u00b7 T3 $0.84",
-      "plan": {
-        "valid": true,
-        "ticker": "BFRG",
-        "entry": 0.765,
-        "stop": 0.7497,
-        "targets": {
-          "t1": 0.7956,
-          "t2": 0.8109,
-          "t3": 0.8415
-        },
-        "risk_per_share": 0.0153,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 392,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7497"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "BFRG",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-            "source": "Webull",
-            "time": "1d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T12:15:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at BFRG last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:23:33.892+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Axios Reported Earlier Sunday, Nvidia-Backed Reflection Prepares Powerful Open-Weight AI System To Challenge Chinese Upstarts, U.S. AI Giants",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T16:33:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "President Trump On Sunday, Announced Formation Of Super Intelligence Force To Coordinate Federal Government Super Intelligence Efforts, Led By Jay Clayton, Andrew Ferguson, Emil Michael, Scott Kupor",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T12:41:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-            "source": "Webull",
-            "time": "1d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T12:15:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at BFRG last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:23:33.892+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Axios Reported Earlier Sunday, Nvidia-Backed Reflection Prepares Powerful Open-Weight AI System To Challenge Chinese Upstarts, U.S. AI Giants",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T16:33:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "President Trump On Sunday, Announced Formation Of Super Intelligence Force To Coordinate Federal Government Super Intelligence Efforts, Led By Jay Clayton, Andrew Ferguson, Emil Michael, Scott Kupor",
-            "source": "Webull",
-            "time": "3d ago \u00b7 04 Oct",
-            "raw_time": "2026-10-04T12:41:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Bullfrog AI provides update on commercial program with pharmaceutical company",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "BFRG",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 4.79,
-        "volume_indicator": "high",
-        "volume": 25090912,
-        "adv": 5239278,
-        "recent_pct_of_adv": 478.9,
-        "volume_acceleration": -0.905,
-        "price_velocity_pct": 4.344,
-        "buy_pressure_pct": 49.9,
-        "large_bar_count": 198,
-        "vwap_distance_pct": 8.684,
-        "recent_volume": 25090912,
-        "prior_volume": 0,
-        "median_range": 0.0056,
-        "last_price": 0.7086,
-        "vwap": 0.7759883566632302,
-        "last_trade_time": "2026-10-07T22:41:30.538000+00:00",
-        "stale_age_seconds": 153
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.77
-    },
-    {
-      "ticker": "MTEN",
-      "name": "Mingteng International",
-      "status": "CANDIDATE",
-      "source": "regular",
-      "price": 1.17,
-      "change_pct": 6.363636363636349,
-      "volume": 58098162,
-      "market_cap": 8414851.5,
-      "float_shares": 6109365,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B3 (Aug 20)",
-      "result": "News score 5 but no live price movement",
-      "plan": {
-        "valid": true,
-        "ticker": "MTEN",
-        "entry": 1.17,
-        "stop": 1.1466,
-        "targets": {
-          "t1": 1.2168,
-          "t2": 1.2402,
-          "t3": 1.287
-        },
-        "risk_per_share": 0.0234,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 256,
-        "position_value": 299.52,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.1466"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "MTEN",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-            "source": "Webull",
-            "time": "17h ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:18:50.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:39:07.663+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-            "source": "Webull",
-            "time": "17h ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:18:50.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at MTEN last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:39:07.663+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 5,
-        "avg_score": 2.5,
-        "catalyst_confirmed": false,
-        "high_impact_count": 1,
-        "top_headline": "Mingteng International Corporation (MTEN) Stock Rocketed Nearly 83% After Hours on $15 Million Acquisition Deal",
-        "news_filter_reason": "low catalyst score (max 5/5)"
-      },
-      "tape": {
-        "ticker": "MTEN",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 19.2,
-        "volume_indicator": "high",
-        "volume": 58098162,
-        "adv": 3026500,
-        "recent_pct_of_adv": 1919.65,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 0.0,
-        "buy_pressure_pct": 0.0,
-        "large_bar_count": 0,
-        "vwap_distance_pct": 0.0,
-        "recent_volume": 58098162,
-        "prior_volume": 0,
-        "median_range": 0.0,
-        "last_price": 1.1,
-        "vwap": null,
-        "last_trade_time": "2026-10-07T22:42:29.746000+00:00",
-        "stale_age_seconds": 94
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 1.19
-    },
-    {
-      "ticker": "CPHI",
-      "name": "China Pharma",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.01,
-      "change_pct": 18.82352941176471,
-      "volume": 66613459,
-      "market_cap": 36568701.7,
-      "float_shares": 4460615,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Jul 23), 8-K (Jul 22)",
-      "result": "+18.8% \u00b7 Entry $1.01 \u00b7 T1 $1.05 \u00b7 T2 $1.07 \u00b7 T3 $1.11",
-      "plan": {
-        "valid": true,
-        "ticker": "CPHI",
-        "entry": 1.01,
-        "stop": 0.9898,
-        "targets": {
-          "t1": 1.0504,
-          "t2": 1.0706,
-          "t3": 1.111
-        },
-        "risk_per_share": 0.0202,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 297,
-        "position_value": 299.97,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.9898"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CPHI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:30:17.168+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T10:30:17.168+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "China Pharma Holdings, Inc. Announces Closing of $5.0 Million Registered Direct Offering",
-            "flag": "offering"
-          },
-          {
-            "title": "China Pharma prices 2.5M shares at $2.00 in registered direct offering",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CPHI last week (0928-1002)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "CPHI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 12.37,
-        "volume_indicator": "high",
-        "volume": 66613459,
-        "adv": 5384910,
-        "recent_pct_of_adv": 1237.04,
-        "volume_acceleration": -0.167,
-        "price_velocity_pct": 1.992,
-        "buy_pressure_pct": 47.97,
-        "large_bar_count": 132,
-        "vwap_distance_pct": 11.11,
-        "recent_volume": 66613459,
-        "prior_volume": 0,
-        "median_range": 0.0178,
-        "last_price": 0.85,
-        "vwap": 0.9562433285018617,
-        "last_trade_time": "2026-10-07T22:42:27.474000+00:00",
-        "stale_age_seconds": 96
-      },
-      "date": "2026-10-08",
-      "time": "09:44:04",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 1.002
-    },
-    {
-      "ticker": "IPW",
-      "name": "Ipower Inc",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 1.35,
-      "change_pct": 29.807692307692314,
-      "volume": 4198102,
-      "market_cap": 1313087.36,
-      "float_shares": 1252186,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (29.8%, rvol 4.1x)",
-      "scan_passed": true,
-      "sec_filings": "8-K (Sep 22), 424B3 (Sep 18), 8-K (Sep 15)",
-      "result": "Top-10 gainer tape momentum \u00b7 +29.8%",
-      "plan": {
-        "valid": true,
-        "ticker": "IPW",
-        "entry": 1.35,
-        "stop": 1.323,
-        "targets": {
-          "t1": 1.404,
-          "t2": 1.431,
-          "t3": 1.485
-        },
-        "risk_per_share": 0.027,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 222,
-        "position_value": 299.7,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.323"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "IPW",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:03:51.349+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "5d ago \u00b7 02 Oct",
-            "raw_time": "2026-10-02T21:05:54.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 01 Oct",
-            "raw_time": "2026-10-01T21:06:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:03:51.349+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "5d ago \u00b7 02 Oct",
-            "raw_time": "2026-10-02T21:05:54.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 01 Oct",
-            "raw_time": "2026-10-01T21:06:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at IPW last week (0928-1002)?",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "IPW",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 4.09,
-        "volume_indicator": "high",
-        "volume": 4198102,
-        "adv": 1025698,
-        "recent_pct_of_adv": 409.29,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 20.0,
-        "buy_pressure_pct": 51.51,
-        "large_bar_count": 34,
-        "vwap_distance_pct": 4.102,
-        "recent_volume": 4198102,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 1.04,
-        "vwap": 1.0844838952575793,
-        "last_trade_time": "2026-10-07T22:42:22.473000+00:00",
-        "stale_age_seconds": 100
-      },
-      "date": "2026-10-08",
-      "time": "09:44:05",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 1.34
+      "previous_price": 0.371
     },
     {
       "ticker": "AIXI",
@@ -2024,7 +1736,7 @@
       "source": "top_gainer_exempt",
       "price": 2.03,
       "change_pct": 53.78787878787876,
-      "volume": 12908956,
+      "volume": 12943943,
       "market_cap": 173595.84,
       "float_shares": 131512,
       "country": "China / Cayman-China",
@@ -2283,67 +1995,399 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.92,
+        "rvol": 3.93,
         "volume_indicator": "high",
-        "volume": 12908956,
+        "volume": 12943943,
         "adv": 3295681,
-        "recent_pct_of_adv": 391.69,
-        "volume_acceleration": -0.654,
-        "price_velocity_pct": 40.271,
-        "buy_pressure_pct": 46.79,
-        "large_bar_count": 222,
+        "recent_pct_of_adv": 392.75,
+        "volume_acceleration": -0.657,
+        "price_velocity_pct": 34.328,
+        "buy_pressure_pct": 46.72,
+        "large_bar_count": 224,
         "vwap_distance_pct": 15.835,
-        "recent_volume": 12908956,
+        "recent_volume": 12943943,
         "prior_volume": 0,
         "median_range": 0.0099,
         "last_price": 1.32,
         "vwap": 1.5683490079087976,
-        "last_trade_time": "2026-10-07T22:42:22.803000+00:00",
-        "stale_age_seconds": 100
+        "last_trade_time": "2026-10-07T22:45:28.182000+00:00",
+        "stale_age_seconds": 101
       },
       "date": "2026-10-08",
-      "time": "09:44:05",
+      "time": "09:47:11",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.99
+      "previous_price": 2.03
+    },
+    {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.794,
+      "change_pct": 27.570694087403613,
+      "volume": 2049460,
+      "market_cap": 639666.62,
+      "float_shares": 930097,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (27.6%, rvol 15.8x)",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 06), 8-K (Oct 01), 8-K (Sep 28)",
+      "result": "Top-10 gainer tape momentum \u00b7 +27.6%",
+      "plan": {
+        "valid": true,
+        "ticker": "SHFS",
+        "entry": 0.794,
+        "stop": 0.7781,
+        "targets": {
+          "t1": 0.8258,
+          "t2": 0.8417,
+          "t3": 0.8735
+        },
+        "risk_per_share": 0.0159,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 377,
+        "position_value": 299.34,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.7781"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SHFS",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:30:00.000+0000",
+            "url": "",
+            "score": 1,
+            "keywords": [
+              "preliminary"
+            ]
+          },
+          {
+            "title": "Safe Harbor Reports Trailing 14-Day Average Deposit Balance Of ~$119.3M As Of September 30, Up 7.4% YoY",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:43:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SHFS last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:11:24.603+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "SHF Holdings Implements 1-for-12 Reverse Stock Split",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T10:34:03.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vicor Shares Are Trading Higher By Around 12%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T08:31:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:30:00.000+0000",
+            "url": "",
+            "score": 1,
+            "keywords": [
+              "preliminary"
+            ]
+          },
+          {
+            "title": "Safe Harbor Reports Trailing 14-Day Average Deposit Balance Of ~$119.3M As Of September 30, Up 7.4% YoY",
+            "source": "Webull",
+            "time": "1d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T12:43:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SHFS last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T10:11:24.603+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "SHF Holdings Implements 1-for-12 Reverse Stock Split",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T10:34:03.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Vicor Shares Are Trading Higher By Around 12%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T08:31:31.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 1,
+        "avg_score": 0.2,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Press Release: Safe Harbor Announces Preliminary Third Quarter 2026 Deposit Results",
+        "news_filter_reason": "low catalyst score (max 1/5)"
+      },
+      "tape": {
+        "ticker": "SHFS",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 15.75,
+        "volume_indicator": "high",
+        "volume": 2049460,
+        "adv": 130128,
+        "recent_pct_of_adv": 1574.96,
+        "volume_acceleration": -0.588,
+        "price_velocity_pct": 3.475,
+        "buy_pressure_pct": 40.91,
+        "large_bar_count": 151,
+        "vwap_distance_pct": 3.118,
+        "recent_volume": 2049460,
+        "prior_volume": 0,
+        "median_range": 0.0002,
+        "last_price": 0.6224,
+        "vwap": 0.6035803038946363,
+        "last_trade_time": "2026-10-07T22:45:29.854000+00:00",
+        "stale_age_seconds": 99
+      },
+      "date": "2026-10-08",
+      "time": "09:47:11",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": null
+    },
+    {
+      "ticker": "IPW",
+      "name": "Ipower Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.37,
+      "change_pct": 31.730769230769234,
+      "volume": 4228458,
+      "market_cap": 1313087.36,
+      "float_shares": 1252186,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (31.7%, rvol 4.1x)",
+      "scan_passed": true,
+      "sec_filings": "8-K (Sep 22), 424B3 (Sep 18), 8-K (Sep 15)",
+      "result": "Top-10 gainer tape momentum \u00b7 +31.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "IPW",
+        "entry": 1.37,
+        "stop": 1.3426,
+        "targets": {
+          "t1": 1.4248,
+          "t2": 1.4522,
+          "t3": 1.507
+        },
+        "risk_per_share": 0.0274,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 218,
+        "position_value": 298.66,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.3426"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "IPW",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:03:51.349+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 02 Oct",
+            "raw_time": "2026-10-02T21:05:54.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T21:06:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at IPW last week (0928-1002)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:03:51.349+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 02 Oct",
+            "raw_time": "2026-10-02T21:05:54.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 01 Oct",
+            "raw_time": "2026-10-01T21:06:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at IPW last week (0928-1002)?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "IPW",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 4.12,
+        "volume_indicator": "high",
+        "volume": 4228458,
+        "adv": 1025698,
+        "recent_pct_of_adv": 412.25,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 21.805,
+        "buy_pressure_pct": 51.23,
+        "large_bar_count": 34,
+        "vwap_distance_pct": 4.102,
+        "recent_volume": 4228458,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 1.04,
+        "vwap": 1.0844838952575793,
+        "last_trade_time": "2026-10-07T22:45:26.698000+00:00",
+        "stale_age_seconds": 102
+      },
+      "date": "2026-10-08",
+      "time": "09:47:11",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 1.35
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "DKI",
-    "name": "DARKIRIS INC.",
+    "ticker": "CPHI",
+    "name": "China Pharma",
     "status": "ALERT",
     "source": "regular",
-    "price": 2.138,
-    "change_pct": 28.023952095808387,
-    "volume": 47444495,
-    "market_cap": 3502970.29,
-    "float_shares": 1213201,
-    "country": "China / Hong Kong",
+    "price": 0.99,
+    "change_pct": 16.47058823529412,
+    "volume": 66660087,
+    "market_cap": 36568701.7,
+    "float_shares": 4460615,
+    "country": "China / Cayman-China",
     "cap_size": "nano-cap",
-    "is_penny_stock": false,
+    "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+28.0% \u00b7 Entry $2.14 \u00b7 T1 $2.22 \u00b7 T2 $2.27 \u00b7 T3 $2.35",
+    "sec_filings": "424B5 (Jul 23), 8-K (Jul 22)",
+    "result": "+16.5% \u00b7 Entry $0.99 \u00b7 T1 $1.03 \u00b7 T2 $1.05 \u00b7 T3 $1.09",
     "plan": {
       "valid": true,
-      "ticker": "DKI",
-      "entry": 2.138,
-      "stop": 2.0952,
+      "ticker": "CPHI",
+      "entry": 0.99,
+      "stop": 0.9702,
       "targets": {
-        "t1": 2.2236,
-        "t2": 2.2664,
-        "t3": 2.352
+        "t1": 1.0296,
+        "t2": 1.0494,
+        "t3": 1.089
       },
-      "risk_per_share": 0.0428,
+      "risk_per_share": 0.0198,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 140,
-      "position_value": 299.32,
+      "shares": 303,
+      "position_value": 299.97,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2351,7 +2395,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$2.0952"
+        "hard_stop": "$0.9702"
       }
     },
     "ta": {
@@ -2359,32 +2403,14 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "DKI",
+      "ticker": "CPHI",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "DarkIris Shareholders Approve Dual-Class Voting Boost and Contingent 50-to-1 Share Consolidations",
-          "source": "Webull",
-          "time": "1d ago \u00b7 06 Oct",
-          "raw_time": "2026-10-06T10:57:18.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at DKI last week (0928-1002)?",
+          "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
           "source": "Webull",
           "time": "2d ago \u00b7 05 Oct",
-          "raw_time": "2026-10-05T09:25:15.186+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Synaptics Shares Are Trading Higher By Over 14%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "5d ago \u00b7 02 Oct",
-          "raw_time": "2026-10-02T08:39:38.000+0000",
+          "raw_time": "2026-10-05T10:30:17.168+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2392,28 +2418,10 @@
       ],
       "headlines": [
         {
-          "title": "DarkIris Shareholders Approve Dual-Class Voting Boost and Contingent 50-to-1 Share Consolidations",
-          "source": "Webull",
-          "time": "1d ago \u00b7 06 Oct",
-          "raw_time": "2026-10-06T10:57:18.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at DKI last week (0928-1002)?",
+          "title": "Weekly Report: what happened at CPHI last week (0928-1002)?",
           "source": "Webull",
           "time": "2d ago \u00b7 05 Oct",
-          "raw_time": "2026-10-05T09:25:15.186+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Synaptics Shares Are Trading Higher By Over 14%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "5d ago \u00b7 02 Oct",
-          "raw_time": "2026-10-02T08:39:38.000+0000",
+          "raw_time": "2026-10-05T10:30:17.168+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2421,57 +2429,61 @@
       ],
       "red_flags": [
         {
-          "title": "DarkIris Inc. Files Third Amended and Restated Memorandum and Articles in Cayman Islands",
-          "flag": "restated"
+          "title": "China Pharma Holdings, Inc. Announces Closing of $5.0 Million Registered Direct Offering",
+          "flag": "offering"
+        },
+        {
+          "title": "China Pharma prices 2.5M shares at $2.00 in registered direct offering",
+          "flag": "offering"
         }
       ],
       "max_score": 0,
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "DarkIris Shareholders Approve Dual-Class Voting Boost and Contingent 50-to-1 Share Consolidations",
-      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: restated"
+      "top_headline": "Weekly Report: what happened at CPHI last week (0928-1002)?",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
     },
     "tape": {
-      "ticker": "DKI",
+      "ticker": "CPHI",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 47.19,
+      "rvol": 12.38,
       "volume_indicator": "high",
-      "volume": 47444495,
-      "adv": 1005381,
-      "recent_pct_of_adv": 4719.06,
-      "volume_acceleration": -0.972,
-      "price_velocity_pct": 1.848,
-      "buy_pressure_pct": 47.88,
-      "large_bar_count": 150,
-      "vwap_distance_pct": 39.639,
-      "recent_volume": 47444495,
+      "volume": 66660087,
+      "adv": 5384910,
+      "recent_pct_of_adv": 1237.91,
+      "volume_acceleration": -0.213,
+      "price_velocity_pct": 3.747,
+      "buy_pressure_pct": 47.67,
+      "large_bar_count": 132,
+      "vwap_distance_pct": 11.11,
+      "recent_volume": 66660087,
       "prior_volume": 0,
-      "median_range": 0.04,
-      "last_price": 1.67,
-      "vwap": 2.7666948004955594,
-      "last_trade_time": "2026-10-07T22:42:28.716000+00:00",
-      "stale_age_seconds": 95
+      "median_range": 0.0178,
+      "last_price": 0.85,
+      "vwap": 0.9562433285018618,
+      "last_trade_time": "2026-10-07T22:45:26.974000+00:00",
+      "stale_age_seconds": 102
     },
     "date": "2026-10-08",
-    "time": "09:44:04",
+    "time": "09:47:10",
     "skip_news_check": true,
     "red_flag": true,
-    "previous_price": 2.15
+    "previous_price": 1.01
   },
   "total_candidates": 7,
-  "alerts_generated": 4,
+  "alerts_generated": 3,
   "all_gainers": [
     {
       "ticker": "MRNO",
       "name": "Murano Global Investments",
       "price": 0.371,
       "change_pct": 57.136806437950014,
-      "volume": 46007947,
-      "rvol": 8.458893477352374,
+      "volume": 46130579,
+      "rvol": 8.481440256605852,
       "market_cap": 19379638.59,
       "float_shares": 4117223,
       "cap_size": "nano-cap",
@@ -2484,8 +2496,8 @@
       "name": "Xiao-I Corporation",
       "price": 2.03,
       "change_pct": 53.78787878787876,
-      "volume": 12908956,
-      "rvol": 0.6727696832447362,
+      "volume": 12943943,
+      "rvol": 0.6745930834412883,
       "market_cap": 173595.84,
       "float_shares": 131512,
       "cap_size": "nano-cap",
@@ -2496,10 +2508,10 @@
     {
       "ticker": "IPW",
       "name": "Ipower Inc",
-      "price": 1.35,
-      "change_pct": 29.807692307692314,
-      "volume": 4198102,
-      "rvol": 4.427733093705768,
+      "price": 1.37,
+      "change_pct": 31.730769230769234,
+      "volume": 4228458,
+      "rvol": 4.45974953013169,
       "market_cap": 1313087.36,
       "float_shares": 1252186,
       "cap_size": "nano-cap",
@@ -2508,12 +2520,26 @@
       "reason": "Filtered: tiny avg $vol, avg $vol $1.3M < $2.0M"
     },
     {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "price": 0.794,
+      "change_pct": 27.570694087403613,
+      "volume": 2049460,
+      "rvol": 3.423869825253099,
+      "market_cap": 639666.62,
+      "float_shares": 930097,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.6M"
+    },
+    {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
-      "price": 2.138,
-      "change_pct": 28.023952095808387,
-      "volume": 47444495,
-      "rvol": 7.4746804223046395,
+      "price": 2.043,
+      "change_pct": 22.33532934131738,
+      "volume": 47497239,
+      "rvol": 7.48299001742614,
       "market_cap": 3502970.29,
       "float_shares": 1213201,
       "cap_size": "nano-cap",
@@ -2524,10 +2550,10 @@
     {
       "ticker": "WOLF",
       "name": "Wolfspeed Inc",
-      "price": 38.43,
-      "change_pct": 22.505578578259477,
-      "volume": 6936399,
-      "rvol": 1.7739583772897285,
+      "price": 38.2,
+      "change_pct": 21.772394007013073,
+      "volume": 6945704,
+      "rvol": 1.7763380966081648,
       "market_cap": 1660431949.53,
       "float_shares": 52455411,
       "cap_size": "small-cap",
@@ -2536,26 +2562,12 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "SHFS",
-      "name": "SHF Holdings Inc",
-      "price": 0.758,
-      "change_pct": 21.78663239074551,
-      "volume": 1786526,
-      "rvol": 2.9846069030037756,
-      "market_cap": 639666.62,
-      "float_shares": 930097,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.6M"
-    },
-    {
       "ticker": "PROF",
       "name": "Profound Med Corp",
       "price": 6.9,
       "change_pct": 21.478873239436634,
-      "volume": 368409,
-      "rvol": 2.6117184176945982,
+      "volume": 368938,
+      "rvol": 2.615468594924146,
       "market_cap": 207505133.92,
       "float_shares": 34903073,
       "cap_size": "micro-cap",
@@ -2566,30 +2578,44 @@
     {
       "ticker": "CPHI",
       "name": "China Pharma",
-      "price": 1.01,
-      "change_pct": 18.82352941176471,
-      "volume": 66613459,
-      "rvol": 8.033020257571492,
+      "price": 0.99,
+      "change_pct": 16.47058823529412,
+      "volume": 66660087,
+      "rvol": 8.038643200355022,
       "market_cap": 36568701.7,
       "float_shares": 4460615,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
+      "is_penny_stock": true,
       "passed": true,
       "reason": "Passed filters"
     },
     {
       "ticker": "SBFM",
       "name": "Sunshine Biopharma Inc",
-      "price": 0.822,
-      "change_pct": 17.42857142857143,
-      "volume": 176510572,
-      "rvol": 7.844630858449426,
+      "price": 0.807,
+      "change_pct": 15.285714285714299,
+      "volume": 176724262,
+      "rvol": 7.854127848624848,
       "market_cap": 3017210.7,
       "float_shares": 4241802,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
-      "reason": "Filtered: tiny price $0.822"
+      "reason": "Filtered: tiny price $0.807"
+    },
+    {
+      "ticker": "GMEX",
+      "name": "GMEX ROBOTICS",
+      "price": 3.019,
+      "change_pct": 13.496240601503759,
+      "volume": 396160,
+      "rvol": 2.1104670985339244,
+      "market_cap": 2001724.48,
+      "float_shares": 751949,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.53x, avg $vol $0.6M < $2.0M"
     },
     {
       "ticker": "VNTG",
@@ -2604,20 +2630,6 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.03x < 0.1x"
-    },
-    {
-      "ticker": "WHLR",
-      "name": "Wheeler Real Estate Invt Tr",
-      "price": 0.764,
-      "change_pct": 10.88534107402033,
-      "volume": 2919754,
-      "rvol": 0.8974469785455216,
-      "market_cap": 391497.38,
-      "float_shares": 568211,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.4M"
     },
     {
       "ticker": "LRHC",
@@ -2648,20 +2660,6 @@
       "reason": "Filtered: tiny avg $vol, tiny vol/float 0.02x, vol 44,716, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "MEGL",
-      "name": "Magic Empire Global Ltd",
-      "price": 0.85,
-      "change_pct": 12.122411291386358,
-      "volume": 26941,
-      "rvol": 1.4191424357353561,
-      "market_cap": 51355681.74,
-      "float_shares": 65806987,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: vol 26,941, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
       "ticker": "ATOM",
       "name": "Atomera Inc",
       "price": 4.759,
@@ -2674,20 +2672,6 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x"
-    },
-    {
-      "ticker": "GMEX",
-      "name": "GMEX ROBOTICS",
-      "price": 2.89,
-      "change_pct": 8.646616541353383,
-      "volume": 375595,
-      "rvol": 2.0009109699965903,
-      "market_cap": 2001724.48,
-      "float_shares": 751949,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.50x, avg $vol $0.5M < $2.0M"
     },
     {
       "ticker": "EXYN",
@@ -2704,6 +2688,20 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "DYOR",
+      "name": "Insight Digital Partners II",
+      "price": 11.0,
+      "change_pct": 8.3743842364532,
+      "volume": 68,
+      "rvol": 0.009563994374120956,
+      "market_cap": 233450000.0,
+      "float_shares": 17250000,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol 68, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "LNAI",
       "name": "Lunai Bioworks",
       "price": 1.18,
@@ -2718,6 +2716,20 @@
       "reason": "Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, vol 19,978, vol/float 0.01x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
+      "ticker": "WHLR",
+      "name": "Wheeler Real Estate Invt Tr",
+      "price": 0.745,
+      "change_pct": 8.127721335268513,
+      "volume": 2921028,
+      "rvol": 0.8978385688817853,
+      "market_cap": 391497.38,
+      "float_shares": 568211,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.4M"
+    },
+    {
       "ticker": "AGMB",
       "name": "AgomAb Therapeutics NV",
       "price": 9.51,
@@ -2730,20 +2742,6 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "KAPA",
-      "name": "KAIROS PHARMA LTD",
-      "price": 0.94,
-      "change_pct": 8.045977011494248,
-      "volume": 1087282,
-      "rvol": 0.7656058230099587,
-      "market_cap": 2945283.21,
-      "float_shares": 2247517,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: tiny price $0.940, tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.48x, avg $vol $1.3M < $2.0M"
     },
     {
       "ticker": "BFRG",
@@ -2774,6 +2772,20 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "IBO",
+      "name": "Impact Biomedical, Inc.",
+      "price": 4.82,
+      "change_pct": 7.589285714285711,
+      "volume": 10738,
+      "rvol": 0.7928819316251938,
+      "market_cap": 38275681.92,
+      "float_shares": 938401,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol 10,738, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "BTOC",
       "name": "Armlogi Holding Corp.",
       "price": 0.232,
@@ -2786,6 +2798,20 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: tiny price $0.232, tiny rvol 1.3x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
+      "ticker": "FRGT",
+      "name": "Freight Tech",
+      "price": 0.271,
+      "change_pct": 7.411811335711452,
+      "volume": 12835294,
+      "rvol": 0.2451445024505676,
+      "market_cap": 155109.75,
+      "float_shares": 577638,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.2M"
     },
     {
       "ticker": "POLA",
@@ -2816,18 +2842,18 @@
       "reason": "Filtered: tiny price $0.600, tiny avg $vol, tiny vol/float 0.41x, avg $vol $0.5M < $2.0M"
     },
     {
-      "ticker": "FRGT",
-      "name": "Freight Tech",
-      "price": 0.27,
-      "change_pct": 7.015457788347203,
-      "volume": 12830843,
-      "rvol": 0.2450594916841288,
-      "market_cap": 155109.75,
-      "float_shares": 577638,
+      "ticker": "ERNA",
+      "name": "Ernexa",
+      "price": 2.56,
+      "change_pct": 7.112970711297067,
+      "volume": 636258,
+      "rvol": 5.4668854825405555,
+      "market_cap": 3901462.29,
+      "float_shares": 1150392,
       "cap_size": "nano-cap",
-      "is_penny_stock": true,
+      "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: mktcap $0.2M"
+      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.55x, avg $vol $0.3M < $2.0M"
     },
     {
       "ticker": "INLX",
@@ -2886,26 +2912,12 @@
       "reason": "Filtered: tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.03x, vol 19,913, vol/float 0.03x < 0.1x, avg $vol $0.3M < $2.0M"
     },
     {
-      "ticker": "PFSA",
-      "name": "Profusa Inc",
-      "price": 1.6,
-      "change_pct": 6.666666666666672,
-      "volume": 410817,
-      "rvol": 0.21980660173687114,
-      "market_cap": 908470.5,
-      "float_shares": 353058,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.9M"
-    },
-    {
       "ticker": "OBAI",
       "name": "Our Bond, Inc.",
       "price": 0.203,
       "change_pct": 6.842105263157901,
-      "volume": 467775,
-      "rvol": 0.5157421107526621,
+      "volume": 468275,
+      "rvol": 0.5162933823156493,
       "market_cap": 5695349.94,
       "float_shares": 19796239,
       "cap_size": "nano-cap",
@@ -2960,8 +2972,8 @@
       "name": "Mingteng International",
       "price": 1.17,
       "change_pct": 6.363636363636349,
-      "volume": 58098162,
-      "rvol": 6.081489088720218,
+      "volume": 58105155,
+      "rvol": 6.082221088696352,
       "market_cap": 8414851.5,
       "float_shares": 6109365,
       "cap_size": "nano-cap",
@@ -3026,20 +3038,6 @@
       "reason": "Filtered: vol 26,114, vol/float 0.01x < 0.1x"
     },
     {
-      "ticker": "ESRT",
-      "name": "Empire St Rlty Tr Inc",
-      "price": 4.739,
-      "change_pct": 6.017897091722598,
-      "volume": 6810165,
-      "rvol": 1.3186170075786692,
-      "market_cap": 773902941.03,
-      "float_shares": 162008169,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: float 162.0M > 100M, vol/float 0.04x < 0.1x"
-    },
-    {
       "ticker": "SONM",
       "name": "DNA X",
       "price": 4.1,
@@ -3094,6 +3092,20 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.02x, vol 15,123, vol/float 0.02x < 0.1x, avg $vol $0.3M < $2.0M"
+    },
+    {
+      "ticker": "KAPA",
+      "name": "KAIROS PHARMA LTD",
+      "price": 0.92,
+      "change_pct": 5.747126436781615,
+      "volume": 1087338,
+      "rvol": 0.7656452552143809,
+      "market_cap": 2945283.21,
+      "float_shares": 2247517,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: tiny price $0.920, tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.48x, avg $vol $1.3M < $2.0M"
     },
     {
       "ticker": "AVAH",
@@ -3170,10 +3182,10 @@
     {
       "ticker": "MDCX",
       "name": "Medicus Pharma Ltd",
-      "price": 0.116,
-      "change_pct": -27.590511860174782,
-      "volume": 4465317,
-      "rvol": 2.5726036299654496,
+      "price": 0.119,
+      "change_pct": -25.717852684144827,
+      "volume": 4474674,
+      "rvol": 2.5779944795211667,
       "market_cap": 10121533.0,
       "float_shares": 71710022,
       "cap_size": "nano-cap",
@@ -3184,12 +3196,12 @@
     {
       "ticker": "BBCI",
       "name": "Bradbury Cap Inc",
-      "price": 8.46,
-      "change_pct": -23.090909090909083,
-      "volume": 146888,
-      "rvol": 1.0559657232410515,
+      "price": 9.01,
+      "change_pct": -18.090909090909093,
+      "volume": 147591,
+      "rvol": 1.0610195322890232,
       "market_cap": 37601476.0,
-      "float_shares": 4444619,
+      "float_shares": 4173305,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -3200,8 +3212,8 @@
       "name": "China Sxt Pharmaceuticals Inc",
       "price": 2.35,
       "change_pct": -16.96113074204947,
-      "volume": 145950848,
-      "rvol": 9.262648471237153,
+      "volume": 145975714,
+      "rvol": 9.264226571125176,
       "market_cap": 3739281.0,
       "float_shares": 1321418,
       "cap_size": "nano-cap",
@@ -3214,8 +3226,8 @@
       "name": "Nexgel Inc",
       "price": 0.15,
       "change_pct": -15.349887133182847,
-      "volume": 633586,
-      "rvol": 0.8992647893720904,
+      "volume": 633592,
+      "rvol": 0.8992733053253094,
       "market_cap": 1727285.0,
       "float_shares": 9747663,
       "cap_size": "nano-cap",
@@ -3378,6 +3390,34 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "LPCN",
+      "name": "Lipocine Inc",
+      "price": 2.02,
+      "change_pct": -8.181818181818189,
+      "volume": 105546386,
+      "rvol": 10.00668645887315,
+      "market_cap": 18137356.0,
+      "float_shares": 8244253,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "MVIS",
+      "name": "Microvision",
+      "price": 1.4,
+      "change_pct": -7.89473684210527,
+      "volume": 3882555,
+      "rvol": 3.0817915333491555,
+      "market_cap": 45828041.0,
+      "float_shares": 30588853,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "JSPR",
       "name": "Jasper Therapeutics Inc",
       "price": 0.525,
@@ -3396,12 +3436,26 @@
       "name": "XChange TEC",
       "price": 2.03,
       "change_pct": -7.7272727272727435,
-      "volume": 1884904,
-      "rvol": 0.3349320266587487,
+      "volume": 1884905,
+      "rvol": 0.33493220435057103,
       "market_cap": 113405437.0,
       "float_shares": 46604623,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "NXAT",
+      "name": "Nexus Advanced Technologies",
+      "price": 0.641,
+      "change_pct": -7.503607503607494,
+      "volume": 11509705,
+      "rvol": 4.642646239037467,
+      "market_cap": 2242940.0,
+      "float_shares": 3236567,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -3434,30 +3488,16 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "MVIS",
-      "name": "Microvision",
-      "price": 1.409,
-      "change_pct": -7.302631578947367,
-      "volume": 3882305,
-      "rvol": 3.0815930949797474,
-      "market_cap": 45828041.0,
-      "float_shares": 30588853,
+      "ticker": "XHLD",
+      "name": "TEN Holdings, Inc.",
+      "price": 0.51,
+      "change_pct": -7.036091870215087,
+      "volume": 3714512,
+      "rvol": 0.1864668804364872,
+      "market_cap": 6572196.0,
+      "float_shares": 11979943,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "LPCN",
-      "name": "Lipocine Inc",
-      "price": 2.04,
-      "change_pct": -7.272727272727278,
-      "volume": 105539920,
-      "rvol": 10.006073427607037,
-      "market_cap": 18137356.0,
-      "float_shares": 8244253,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -3508,8 +3548,8 @@
       "name": "Wetour Robotics Limited",
       "price": 1.1,
       "change_pct": -6.77966101694914,
-      "volume": 21762491,
-      "rvol": 2.5885903099315555,
+      "volume": 21766280,
+      "rvol": 2.589041001384309,
       "market_cap": 1271805.0,
       "float_shares": 1077801,
       "cap_size": "nano-cap",
@@ -3546,48 +3586,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "BEAT",
-      "name": "Heartbeam Inc",
-      "price": 0.508,
-      "change_pct": -6.445672191528551,
-      "volume": 4980969,
-      "rvol": 0.11522705515706626,
-      "market_cap": 30597599.0,
-      "float_shares": 56349171,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "GCDT",
-      "name": "Green Circle DecarbonizeTechnology Limited",
-      "price": 0.681,
-      "change_pct": -6.3273727647867855,
-      "volume": 4301408,
-      "rvol": 1.809894526103811,
-      "market_cap": 1641954.0,
-      "float_shares": 1198534,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "NXAT",
-      "name": "Nexus Advanced Technologies",
-      "price": 0.65,
-      "change_pct": -6.204906204906195,
-      "volume": 11503705,
-      "rvol": 4.640226031270698,
-      "market_cap": 2242940.0,
-      "float_shares": 3236567,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "AMBR",
       "name": "Amber International",
       "price": 2.14,
@@ -3616,20 +3614,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "XHLD",
-      "name": "TEN Holdings, Inc.",
-      "price": 0.515,
-      "change_pct": -6.124681006197587,
-      "volume": 3702620,
-      "rvol": 0.18586990722919897,
-      "market_cap": 6572196.0,
-      "float_shares": 11979943,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "UONEK",
       "name": "Urban One Inc",
       "price": 3.73,
@@ -3638,20 +3622,6 @@
       "rvol": 0.539210139187507,
       "market_cap": 17213815.0,
       "float_shares": 3509280,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "NCT",
-      "name": "Intercont Limited",
-      "price": 1.43,
-      "change_pct": -5.921052631578952,
-      "volume": 1110945,
-      "rvol": 1.374263507971989,
-      "market_cap": 1559176.0,
-      "float_shares": 1017510,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -3668,6 +3638,20 @@
       "float_shares": 17155000,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "GCDT",
+      "name": "Green Circle DecarbonizeTechnology Limited",
+      "price": 0.685,
+      "change_pct": -5.777166437414021,
+      "volume": 4304794,
+      "rvol": 1.811319246303659,
+      "market_cap": 1641954.0,
+      "float_shares": 1198534,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -3812,14 +3796,14 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "LBGJ",
-      "name": "Li Bang International Corporation Inc.",
-      "price": 2.15,
-      "change_pct": -5.286343612334806,
-      "volume": 2543723,
-      "rvol": 7.529037604889671,
-      "market_cap": 1612667.0,
-      "float_shares": 621418,
+      "ticker": "NCT",
+      "name": "Intercont Limited",
+      "price": 1.44,
+      "change_pct": -5.263157894736847,
+      "volume": 1110948,
+      "rvol": 1.3742672190382648,
+      "market_cap": 1559176.0,
+      "float_shares": 1017510,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -3866,9 +3850,130 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "BKHA",
+      "name": "Black Hawk Acquisition Corp",
+      "price": 12.34,
+      "change_pct": -5.076923076923078,
+      "volume": 7347,
+      "rvol": 0.37921957262310313,
+      "market_cap": 53996501.0,
+      "float_shares": 4153577,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "LZMH",
+      "name": "LZ Technology Holdings Limited",
+      "price": 0.98,
+      "change_pct": -4.854368932038839,
+      "volume": 8236,
+      "rvol": 0.019796887206297697,
+      "market_cap": 9247855.0,
+      "float_shares": 7853500,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
     }
   ],
   "live_quotes": {
+    "DKI": {
+      "price": 1.67,
+      "open": 1.27,
+      "high": 3.64,
+      "low": 1.27,
+      "close": 1.67,
+      "preClose": 1.36,
+      "volume": 47521896,
+      "changeRatio": 0.2279,
+      "marketValue": 3502970.29,
+      "name": "DARKIRIS INC.",
+      "_timestamp": "2026-10-07T22:47:12.517291Z"
+    },
+    "AIXI": {
+      "price": 1.32,
+      "open": 1.59,
+      "high": 1.67,
+      "low": 1.28,
+      "close": 1.32,
+      "preClose": 1.85,
+      "volume": 12963929,
+      "changeRatio": -0.2865,
+      "marketValue": 173595.84,
+      "name": "Xiao-I Corporation",
+      "_timestamp": "2026-10-07T22:47:12.517318Z"
+    },
+    "SHFS": {
+      "price": 0.6224,
+      "open": 0.65,
+      "high": 0.66,
+      "low": 0.5505,
+      "close": 0.6224,
+      "preClose": 0.7001,
+      "volume": 2183595,
+      "changeRatio": -0.111,
+      "marketValue": 639666.62,
+      "name": "SHF Holdings Inc",
+      "_timestamp": "2026-10-07T22:47:12.517329Z"
+    },
+    "CPHI": {
+      "price": 0.85,
+      "open": 0.68,
+      "high": 1.28,
+      "low": 0.643,
+      "close": 0.85,
+      "preClose": 0.6411,
+      "volume": 66685891,
+      "changeRatio": 0.3258,
+      "marketValue": 36568701.7,
+      "name": "China Pharma",
+      "_timestamp": "2026-10-07T22:47:12.517337Z"
+    },
+    "MTEN": {
+      "price": 1.1,
+      "open": 1.25,
+      "high": 1.41,
+      "low": 1.01,
+      "close": 1.1,
+      "preClose": 0.9587,
+      "volume": 58108351,
+      "changeRatio": 0.1474,
+      "marketValue": 8414851.5,
+      "name": "Mingteng International",
+      "_timestamp": "2026-10-07T22:47:12.517344Z"
+    },
+    "IPW": {
+      "price": 1.04,
+      "open": 1.12,
+      "high": 1.13,
+      "low": 1.04,
+      "close": 1.04,
+      "preClose": 1.13,
+      "volume": 4244052,
+      "changeRatio": -0.0796,
+      "marketValue": 1313087.36,
+      "name": "Ipower Inc",
+      "_timestamp": "2026-10-07T22:47:12.517351Z"
+    },
+    "MRNO": {
+      "price": 0.2361,
+      "open": 0.2349,
+      "high": 0.252,
+      "low": 0.232,
+      "close": 0.2361,
+      "preClose": 0.244,
+      "volume": 46237055,
+      "changeRatio": -0.0324,
+      "marketValue": 19379638.59,
+      "name": "Murano Global Investments",
+      "_timestamp": "2026-10-07T22:47:12.517357Z"
+    }
+  },
+  "previous_live_quotes": {
     "MTEN": {
       "price": 1.1,
       "open": 1.25,
@@ -3961,104 +4066,11 @@
       "_timestamp": "2026-10-07T22:44:06.440566Z"
     }
   },
-  "previous_live_quotes": {
-    "MRNO": {
-      "price": 0.2361,
-      "open": 0.2349,
-      "high": 0.252,
-      "low": 0.232,
-      "close": 0.2361,
-      "preClose": 0.244,
-      "volume": 45915906,
-      "changeRatio": -0.0324,
-      "marketValue": 19379638.59,
-      "name": "Murano Global Investments",
-      "_timestamp": "2026-10-07T22:41:03.676519Z"
-    },
-    "DKI": {
-      "price": 1.67,
-      "open": 1.27,
-      "high": 3.64,
-      "low": 1.27,
-      "close": 1.67,
-      "preClose": 1.36,
-      "volume": 47425601,
-      "changeRatio": 0.2279,
-      "marketValue": 3502970.29,
-      "name": "DARKIRIS INC.",
-      "_timestamp": "2026-10-07T22:41:03.676570Z"
-    },
-    "IPW": {
-      "price": 1.04,
-      "open": 1.12,
-      "high": 1.13,
-      "low": 1.04,
-      "close": 1.04,
-      "preClose": 1.13,
-      "volume": 4194660,
-      "changeRatio": -0.0796,
-      "marketValue": 1313087.36,
-      "name": "Ipower Inc",
-      "_timestamp": "2026-10-07T22:41:03.676590Z"
-    },
-    "CPHI": {
-      "price": 0.85,
-      "open": 0.68,
-      "high": 1.28,
-      "low": 0.643,
-      "close": 0.85,
-      "preClose": 0.6411,
-      "volume": 66598730,
-      "changeRatio": 0.3258,
-      "marketValue": 36568701.7,
-      "name": "China Pharma",
-      "_timestamp": "2026-10-07T22:41:03.676607Z"
-    },
-    "BFRG": {
-      "price": 0.7086,
-      "open": 0.7945,
-      "high": 0.83,
-      "low": 0.6569,
-      "close": 0.7086,
-      "preClose": 0.689,
-      "volume": 25089912,
-      "changeRatio": 0.0284,
-      "marketValue": 13138613.9,
-      "name": "BULLFROG AI HLDGS INC",
-      "_timestamp": "2026-10-07T22:41:03.676622Z"
-    },
-    "MTEN": {
-      "price": 1.1,
-      "open": 1.25,
-      "high": 1.41,
-      "low": 1.01,
-      "close": 1.1,
-      "preClose": 0.9587,
-      "volume": 58096572,
-      "changeRatio": 0.1474,
-      "marketValue": 8414851.5,
-      "name": "Mingteng International",
-      "_timestamp": "2026-10-07T22:41:03.676636Z"
-    },
-    "AIXI": {
-      "price": 1.32,
-      "open": 1.59,
-      "high": 1.67,
-      "low": 1.28,
-      "close": 1.32,
-      "preClose": 1.85,
-      "volume": 12905779,
-      "changeRatio": -0.2865,
-      "marketValue": 173595.84,
-      "name": "Xiao-I Corporation",
-      "_timestamp": "2026-10-07T22:41:03.676649Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "09:43 AM AEST",
+    "market_time": "09:47 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
