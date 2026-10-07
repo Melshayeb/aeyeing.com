@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791339542" />
+<meta name="ozmoeg-version" content="1791339913" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1978,7 +1978,11 @@
             // Only show the empty-list warning after we have attempted a live fetch;
             // otherwise the first paint from embedded data can flash it before counts arrive.
             const hasAttemptedLiveFetch = !!window._lastFetchSuccessAt || !!window._lastFetchErrorAt;
-            if (hasAttemptedLiveFetch && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && gainersCount === 0 && losersCount === 0) {
+            const hasAnyResults = (window._lastLiveResults && window._lastLiveResults.length > 0) ||
+                                  (window._lastPreMarketResults && window._lastPreMarketResults.length > 0) ||
+                                  (window._lastPreMarketWatchlist && window._lastPreMarketWatchlist.length > 0) ||
+                                  gainersCount > 0 || losersCount > 0;
+            if (hasAttemptedLiveFetch && ['OPEN','PRE-MARKET','AFTER-HOURS'].includes(status) && !hasAnyResults) {
                 warningEl.textContent = '⚠️ Data source returned 0 gainers/losers. The website will stay on the last known data until the API connection is restored.';
                 warningEl.style.display = 'block';
             } else {
@@ -2056,6 +2060,13 @@
             // ASX: 10:00 - 16:00 Sydney, no pre/after market.
             if (minutes >= 600 && minutes < 960) return 'OPEN';
             return 'CLOSED';
+        }
+
+        function isASXOpenNow(now = new Date()) {
+            const syd = getSydneyParts(now);
+            if (syd.weekdayNum === 0 || syd.weekdayNum === 6) return false;
+            const minutes = syd.hour * 60 + syd.minute;
+            return minutes >= 600 && minutes < 960;
         }
 
         function getCurrentUSMarketStatus(now = new Date()) {
@@ -2399,6 +2410,11 @@
             const usStatus = currentMarket === 'AUS'
                 ? getCurrentAUSMarketStatus()
                 : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus);
+            if (currentMarket === 'AUS') {
+                // ASX live market: refresh once per hour. Outside market hours: follow closed rules.
+                if (isASXOpenNow()) return 60 * 60 * 1000;
+                return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
+            }
             if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
                 // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
                 return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
@@ -4627,9 +4643,9 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
-                    `https://aeyeing.com/${file}`,
                     `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
-                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`
+                    `https://trip-planner.aeyeing.com/ozmoeg/${file}`,
+                    `https://aeyeing.com/${file}`
                 ];
                 let data = null;
                 let lastErr = null;
