@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791339913" />
+<meta name="ozmoeg-version" content="1791349988" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -2383,25 +2383,34 @@
         // Active = Sydney window for the website 1-minute refresh: 17:00 to 23:59 Sydney time.
         // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
         function isActiveTradingWindow(now = new Date()) {
+            // Active window covers the full US market cycle in Sydney time:
+            // watchlist build 18:00 Sydney through after-hours end 11:00 next day.
             try {
                 const fmt = new Intl.DateTimeFormat('en-AU', {
                     timeZone: 'Australia/Melbourne',
                     hour: 'numeric',
                     minute: 'numeric',
                     hour12: false,
+                    weekday: 'short',
                 });
                 const parts = fmt.formatToParts(now);
-                let h = 0, m = 0;
+                let h = 0, m = 0, wd = '';
                 for (const p of parts) {
                     if (p.type === 'hour') h = parseInt(p.value, 10);
                     if (p.type === 'minute') m = parseInt(p.value, 10);
+                    if (p.type === 'weekday') wd = p.value;
                 }
                 const mins = h * 60 + m;
-                const start = 17 * 60;      // Sydney 17:00
-                const end = 24 * 60;        // Sydney 24:00 (exclusive)
-                return mins >= start && mins < end;
+                const weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(wd);
+                // Sydney 18:00 to next day 11:00 on Mon-Fri evenings/nights covers US Mon-Fri sessions.
+                if (weekday >= 1 && weekday <= 5) {
+                    if (mins >= 17 * 60) return true;            // 17:00-23:59
+                }
+                if (weekday >= 2 && weekday <= 6) {
+                    if (mins < 11 * 60) return true;             // 00:00-10:59
+                }
+                return false;
             } catch (e) {
-                // Fallback: assume active only if US market status is PRE-MARKET.
                 return currentMarketStatus === 'PRE-MARKET';
             }
         }
@@ -2419,9 +2428,8 @@
                 // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
                 return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
             }
+            // US pre-market, open, and after-hours: 1-minute refresh while in the US active window.
             if (isActiveTradingWindow()) return ACTIVE_REFRESH_INTERVAL_MS;
-            // US OPEN / AFTER-HOURS outside the Sydney 17:00-23:59 window refresh every 10 minutes.
-            // PRE-MARKET outside the window is treated the same way: the website is not in active mode.
             return IDLE_REFRESH_INTERVAL_MS;
         }
 
