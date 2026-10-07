@@ -1,0 +1,633 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aeyeing - Blending AI & Human Intelligence</title>
+    <meta name="description" content="Aeyeing explores the intersection of AI and human intelligence, sharing insights, projects, and innovations that shape the future.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Aeyeing - Blending AI & Human Intelligence">
+    <meta property="og:description" content="Exploring the intersection of AI and human intelligence">
+    <meta property="og:image" content="https://aeyeing.com/images/logo.png">
+    <meta property="og:url" content="https://aeyeing.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aeyeing - Blending AI & Human Intelligence">
+    <meta name="twitter:description" content="Exploring the intersection of AI and human intelligence">
+    <meta name="twitter:image" content="https://aeyeing.com/images/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo-text">Aeyeing</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#focus" class="nav-link">Focus Areas</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">&#128103;&#128102; Kids Lab &#9660;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="lara.html">Lara's Lab</a></li>
+                        <li><a href="adam.html">Adam's Lab</a></li>
+                    </ul>
+                </li>
+                <li><a href="prints.html" class="nav-link">&#128424;&#65039; 3D Prints</a></li>
+                <li><a href="ozmoeg-trader-v8.html?_=1791339542" class="nav-link">&#128200; OzMoEg Trader</a></li>
+                <li><a href="ozmoeg-trip-planner.html" class="nav-link">&#128747; Trip Planner</a></li>
+                <li><a href="#connect" class="nav-link">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <canvas id="gameCanvas" class="hero-canvas"></canvas>
+        <div class="game-ui-left">
+            <div class="speed-indicator" id="speedIndicator">MED</div>
+            <div class="click-hint">click=change</div>
+        </div>
+        <div class="title-container">
+            <p class="subtitle">Welcome to Aeyeing</p>
+            <img src="images/logo.png?v=3" alt="Aeyeing Logo" class="logo" id="heroLogo">
+            <h1>Blending Artificial & Human Intelligence</h1>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <h2>About</h2>
+        <p>Aeyeing explores the intersection of AI and human intelligence, sharing insights, projects, and innovations that shape the future.</p>
+    </section>
+
+    <!-- Focus Areas -->
+    <section id="focus" class="focus-areas">
+        <div class="focus-header">
+            <h2>Focus Areas</h2>
+        </div>
+        <div class="focus-grid">
+            <div class="focus-item">
+                <span>&#129302;</span>
+                <h3>Artificial Intelligence</h3>
+                <p>Advancing AI technologies for smarter solutions.</p>
+            </div>
+            <div class="focus-item">
+                <span>&#129504;</span>
+                <h3>Human Psychology</h3>
+                <p>Understanding the human mind to enhance AI interactions.</p>
+            </div>
+            <div class="focus-item">
+                <span>&#127757;</span>
+                <h3>Future Innovations</h3>
+                <p>Shaping the future with groundbreaking ideas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect -->
+    <section id="connect" class="connect">
+        <h2>Let's Connect</h2>
+        <p><a href="mailto:elshayeb@gmail.com">Email Me</a> | <a href="https://www.linkedin.com/in/mohamed-elshayeb-3b0ab89/">Connect on LinkedIn</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aeyeing | Updated by OzMo AI Assistant | All rights reserved.</p>
+    </footer>
+
+    <!-- Brick Breaker Game Script -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const subtitle = document.querySelector('.subtitle');
+        const h1 = document.querySelector('header.hero h1');
+        const speedIndicator = document.getElementById('speedIndicator');
+        const heroLogo = document.getElementById('heroLogo');
+        
+        let animationId;
+        let blinkState = 0;
+        let blinkTimer = 0;
+        let mouseY = 0;
+        let isMobile = window.innerWidth < 768;
+        
+        // Speed levels
+        const speeds = { slow: 2, medium: 4, fast: 7 };
+        const speedNames = ['SLW', 'MED', 'FST'];
+        let currentSpeedIndex = 1;
+        
+        // Game config - responsive
+        let config = getConfig();
+        
+        function getConfig() {
+            const mobile = window.innerWidth < 768;
+            return {
+                ballSize: mobile ? 8 : 14,
+                ballSpeed: speeds.medium,
+                paddleWidth: mobile ? 8 : 12,
+                paddleHeight: mobile ? 45 : 80,
+                brickRows: mobile ? 4 : 6,
+                brickCols: mobile ? 2 : 3,
+                brickWidth: mobile ? 22 : 40,
+                brickHeight: mobile ? 7 : 12,
+                brickPadding: mobile ? 3 : 6
+            };
+        }
+        
+        const colors = ['#14B8A6', '#3B82F6', '#A78BFA', '#F472B6', '#FBBF24', '#34D399'];
+        let currentColorIndex = 0;
+        
+        // Ball
+        const ball = {
+            x: 0, y: 0,
+            dx: config.ballSpeed, dy: config.ballSpeed,
+            color: colors[0]
+        };
+        
+        // Paddle (left side) - A shape
+        const paddle = {
+            x: isMobile ? 10 : 20,
+            y: 0,
+            w: config.paddleWidth,
+            h: config.paddleHeight
+        };
+        
+        // Bricks (right side)
+        let bricks = [];
+        
+        // Logo bounding box
+        let logoRect = { x: 0, y: 0, w: 0, h: 0 };
+        
+        function updateLogoRect() {
+            const logoEl = heroLogo.getBoundingClientRect();
+            const heroEl = canvas.getBoundingClientRect();
+            logoRect = {
+                x: logoEl.left - heroEl.left,
+                y: logoEl.top - heroEl.top,
+                w: logoEl.width,
+                h: logoEl.height
+            };
+        }
+        
+        function initBricks() {
+            bricks = [];
+            const startX = canvas.width - config.brickCols * (config.brickWidth + config.brickPadding) - (isMobile ? 10 : 20);
+            const startY = (canvas.height - (config.brickRows * (config.brickHeight + config.brickPadding))) / 2;
+            
+            for(let r = 0; r < config.brickRows; r++) {
+                for(let c = 0; c < config.brickCols; c++) {
+                    bricks.push({
+                        x: startX + c * (config.brickWidth + config.brickPadding),
+                        y: startY + r * (config.brickHeight + config.brickPadding),
+                        w: config.brickWidth,
+                        h: config.brickHeight,
+                        visible: true,
+                        color: colors[(r + c) % colors.length]
+                    });
+                }
+            }
+        }
+        
+        function resize() {
+            const hero = document.querySelector('header.hero');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+            isMobile = window.innerWidth < 768;
+            config = getConfig();
+            paddle.x = isMobile ? 10 : 20;
+            paddle.w = config.paddleWidth;
+            paddle.h = config.paddleHeight;
+            initBricks();
+            updateLogoRect();
+        }
+        
+        // Mouse tracking for paddle
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseY = e.clientY - rect.top;
+        });
+        
+        // Touch tracking
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            mouseY = e.touches[0].clientY - rect.top;
+        }, { passive: false });
+        
+        // Click to change speed
+        canvas.addEventListener('click', () => {
+            currentSpeedIndex = (currentSpeedIndex + 1) % 3;
+            const speedName = speedNames[currentSpeedIndex];
+            const speedValue = [speeds.slow, speeds.medium, speeds.fast][currentSpeedIndex];
+            
+            config.ballSpeed = speedValue;
+            
+            const angle = Math.atan2(ball.dy, ball.dx);
+            ball.dx = Math.cos(angle) * speedValue;
+            ball.dy = Math.sin(angle) * speedValue;
+            
+            speedIndicator.textContent = speedName;
+            speedIndicator.style.opacity = '1';
+            speedIndicator.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                speedIndicator.style.opacity = '0.7';
+                speedIndicator.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        function drawPaddle() {
+            ctx.save();
+            ctx.translate(paddle.x + paddle.w / 2, paddle.y + paddle.h / 2);
+            
+            ctx.shadowColor = '#14B8A6';
+            ctx.shadowBlur = isMobile ? 8 : 15;
+            
+            ctx.strokeStyle = '#14B8A6';
+            ctx.fillStyle = 'rgba(20, 184, 166, 0.3)';
+            ctx.lineWidth = isMobile ? 2 : 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            const w = paddle.w * 2;
+            const h = paddle.h;
+            
+            ctx.beginPath();
+            ctx.moveTo(-w/2, h/2);
+            ctx.lineTo(0, -h/2);
+            ctx.lineTo(w/2, h/2);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(-w/4, 0);
+            ctx.lineTo(w/4, 0);
+            ctx.stroke();
+            
+            ctx.shadowBlur = 3;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(-w/2 + 1, h/2 - 1);
+            ctx.lineTo(0, -h/2 + 1);
+            ctx.lineTo(w/2 - 1, h/2 - 1);
+            ctx.stroke();
+            
+            ctx.restore();
+        }
+        
+        function hexToRgb(hex) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `${r},${g},${b}`;
+        }
+        
+        function drawAIEye(x, y, size, blink) {
+            ctx.save();
+            ctx.translate(x, y);
+            
+            if(!blink) {
+                // Outer ring
+                ctx.beginPath();
+                ctx.arc(0, 0, size * 1.2, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${hexToRgb(ball.color)}, 0.25)`;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                
+                // Corner brackets
+                const corner = size * 0.7;
+                const bracketLen = size * 0.25;
+                ctx.strokeStyle = ball.color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.moveTo(-corner, -corner + bracketLen); ctx.lineTo(-corner, -corner); ctx.lineTo(-corner + bracketLen, -corner); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(corner - bracketLen, -corner); ctx.lineTo(corner, -corner); ctx.lineTo(corner, -corner + bracketLen); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(-corner, corner - bracketLen); ctx.lineTo(-corner, corner); ctx.lineTo(-corner + bracketLen, corner); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(corner - bracketLen, corner); ctx.lineTo(corner, corner); ctx.lineTo(corner, corner - bracketLen); ctx.stroke();
+                
+                // Main eye
+                ctx.beginPath();
+                ctx.arc(0, 0, size, 0, Math.PI * 2);
+                ctx.fillStyle = '#0f172a';
+                ctx.fill();
+                ctx.strokeStyle = ball.color;
+                ctx.lineWidth = 2;
+                ctx.shadowColor = ball.color;
+                ctx.shadowBlur = isMobile ? 6 : 10;
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+                
+                // Dashed inner ring
+                ctx.beginPath();
+                ctx.arc(0, 0, size * 0.65, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${hexToRgb(ball.color)}, 0.4)`;
+                ctx.lineWidth = 1;
+                ctx.setLineDash([2, 3]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // AI core
+                const irisX = (ball.dx / config.ballSpeed) * size * 0.15;
+                const irisY = (ball.dy / config.ballSpeed) * size * 0.15;
+                
+                ctx.shadowColor = ball.color;
+                ctx.shadowBlur = isMobile ? 8 : 12;
+                ctx.beginPath();
+                ctx.arc(irisX, irisY, size * 0.3, 0, Math.PI * 2);
+                ctx.fillStyle = ball.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                
+                ctx.beginPath();
+                ctx.arc(irisX, irisY, size * 0.15, 0, Math.PI * 2);
+                ctx.fillStyle = '#000000';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(irisX - size * 0.06, irisY - size * 0.06, size * 0.06, 0, Math.PI * 2);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fill();
+                
+                // Orbiting dots
+                if(!isMobile) {
+                    for(let i = 0; i < 6; i++) {
+                        const angle = (i / 6) * Math.PI * 2 + Date.now() / 3000;
+                        const dotR = size * 1.4;
+                        const dotX = Math.cos(angle) * dotR;
+                        const dotY = Math.sin(angle) * dotR;
+                        ctx.beginPath();
+                        ctx.arc(dotX, dotY, 1.5, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(${hexToRgb(ball.color)}, ${0.2 + (i % 3) * 0.15})`;
+                        ctx.fill();
+                    }
+                }
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(-size * 0.7, 0);
+                ctx.lineTo(size * 0.7, 0);
+                ctx.strokeStyle = ball.color;
+                ctx.lineWidth = 2;
+                ctx.shadowColor = ball.color;
+                ctx.shadowBlur = 8;
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+        }
+        
+        function update(timestamp) {
+            blinkTimer += 16;
+            if(blinkTimer > 2500) {
+                blinkState = 1;
+                if(blinkTimer > 2700) {
+                    blinkState = 0;
+                    blinkTimer = 0;
+                }
+            }
+            
+            updateLogoRect();
+            
+            paddle.y = mouseY - paddle.h / 2;
+            paddle.y = Math.max(0, Math.min(canvas.height - paddle.h, paddle.y));
+            
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+            
+            if(ball.y - config.ballSize < 0 || ball.y + config.ballSize > canvas.height) {
+                ball.dy = -ball.dy;
+            }
+            
+            if(ball.x + config.ballSize > canvas.width) {
+                ball.dx = -Math.abs(ball.dx);
+            }
+            
+            // Logo collision
+            if(ball.x + config.ballSize > logoRect.x &&
+               ball.x - config.ballSize < logoRect.x + logoRect.w &&
+               ball.y + config.ballSize > logoRect.y &&
+               ball.y - config.ballSize < logoRect.y + logoRect.h) {
+                
+                const centerX = logoRect.x + logoRect.w / 2;
+                const centerY = logoRect.y + logoRect.h / 2;
+                
+                if(Math.abs(ball.x - centerX) / (logoRect.w / 2) > Math.abs(ball.y - centerY) / (logoRect.h / 2)) {
+                    ball.dx = -ball.dx;
+                } else {
+                    ball.dy = -ball.dy;
+                }
+                
+                if(ball.x < centerX) ball.x = logoRect.x - config.ballSize;
+                else ball.x = logoRect.x + logoRect.w + config.ballSize;
+                
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+                ball.color = colors[currentColorIndex];
+            }
+            
+            // Paddle collision
+            if(ball.x - config.ballSize < paddle.x + paddle.w * 2 &&
+               ball.x + config.ballSize > paddle.x &&
+               ball.y > paddle.y &&
+               ball.y < paddle.y + paddle.h) {
+                
+                ball.dx = Math.abs(ball.dx);
+                const hitPos = (ball.y - paddle.y) / paddle.h;
+                ball.dy = (hitPos - 0.5) * 6;
+                
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+                ball.color = colors[currentColorIndex];
+            }
+            
+            // Reset if past paddle
+            if(ball.x + config.ballSize < 0) {
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
+                ball.dx = Math.abs(config.ballSpeed);
+                ball.dy = (Math.random() - 0.5) * config.ballSpeed * 2;
+            }
+            
+            // Brick collisions
+            let hitBrick = false;
+            bricks.forEach(brick => {
+                if(brick.visible && !hitBrick &&
+                   ball.x + config.ballSize > brick.x &&
+                   ball.x - config.ballSize < brick.x + brick.w &&
+                   ball.y + config.ballSize > brick.y &&
+                   ball.y - config.ballSize < brick.y + brick.h) {
+                    
+                    brick.visible = false;
+                    hitBrick = true;
+                    
+                    const overlapLeft = (ball.x + config.ballSize) - brick.x;
+                    const overlapRight = (brick.x + brick.w) - (ball.x - config.ballSize);
+                    const overlapTop = (ball.y + config.ballSize) - brick.y;
+                    const overlapBottom = (brick.y + brick.h) - (ball.y - config.ballSize);
+                    
+                    const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
+                    
+                    if(minOverlap === overlapLeft || minOverlap === overlapRight) {
+                        ball.dx = -ball.dx;
+                    } else {
+                        ball.dy = -ball.dy;
+                    }
+                    
+                    currentColorIndex = (currentColorIndex + 1) % colors.length;
+                    ball.color = colors[currentColorIndex];
+                }
+            });
+            
+            // Auto-restart when all bricks destroyed
+            if(bricks.every(b => !b.visible)) {
+                initBricks();
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
+                ball.dx = Math.abs(config.ballSpeed);
+                ball.dy = (Math.random() - 0.5) * config.ballSpeed * 2;
+                currentColorIndex = 0;
+                ball.color = colors[0];
+            }
+            
+            const centerX = canvas.width / 2;
+            const textZoneWidth = isMobile ? 150 : 300;
+            if(Math.abs(ball.x - centerX) < textZoneWidth / 2) {
+                subtitle.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
+                subtitle.style.color = ball.color;
+                h1.style.textShadow = `0 0 ${15 + Math.random() * 10}px ${ball.color}`;
+                h1.style.color = ball.color;
+            } else {
+                subtitle.style.textShadow = '';
+                subtitle.style.color = '';
+                h1.style.textShadow = '';
+                h1.style.color = '';
+            }
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawPaddle();
+            
+            bricks.forEach(brick => {
+                if(brick.visible) {
+                    ctx.fillStyle = brick.color;
+                    ctx.shadowColor = brick.color;
+                    ctx.shadowBlur = isMobile ? 4 : 8;
+                    ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+                    ctx.shadowBlur = 0;
+                    
+                    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+                    ctx.fillRect(brick.x, brick.y, brick.w, 2);
+                }
+            });
+            
+            // Trail
+            for(let i = 3; i > 0; i--) {
+                ctx.fillStyle = ball.color;
+                ctx.globalAlpha = 0.08 * i;
+                ctx.beginPath();
+                ctx.arc(ball.x - ball.dx * i * 2, ball.y - ball.dy * i * 2, config.ballSize * (0.25 + i * 0.08), 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+            
+            drawAIEye(ball.x, ball.y, config.ballSize, blinkState);
+        }
+        
+        function gameLoop(timestamp) {
+            update(timestamp);
+            draw();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+        
+        // Init
+        resize();
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        gameLoop(0);
+        
+        window.addEventListener('resize', resize);
+        
+        document.addEventListener('visibilitychange', () => {
+            if(document.hidden) {
+                cancelAnimationFrame(animationId);
+            } else {
+                gameLoop(0);
+            }
+        });
+    })();
+    </script>
+    
+    <!-- Mobile Nav Toggle Script -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        
+        // Mobile dropdown toggle
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.parentElement;
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Close menu when clicking links (but not dropdown toggle)
+        document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                // Also close all dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            });
+        });
+        
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

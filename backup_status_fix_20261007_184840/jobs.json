@@ -1,0 +1,943 @@
+{
+  "jobs": [
+    {
+      "id": "9febae308503",
+      "name": "Daily Obsidian Log Creator",
+      "prompt": "Daily Obsidian Log Creator\n\nToday is [current date]. Check and update the daily note at: C:/Users/elsha/AppData/Local/hermes/workspace/memory/[YYYY-MM-DD].md\n\nQUICK STEPS (5 min max):\n1. Check if memory/[YYYY-MM-DD].md already exists in workspace\n2. If exists and has content, verify and exit\n3. If not, create it with basic daily log template\n\nTemplate:\n# [YYYY-MM-DD] Daily Log\n\n## Morning\n- \n\n## Afternoon\n- \n\n## Evening\n- \n\n## Notes\n- ",
+      "skills": [],
+      "skill": null,
+      "model": "poolside/laguna-s-2.1:free",
+      "provider": "openrouter",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *",
+        "display": "0 0 * * *"
+      },
+      "schedule_display": "0 0 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 123
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:40:46.453258+10:00",
+      "next_run_at": "2026-10-08T00:00:00+11:00",
+      "last_run_at": "2026-10-07T00:01:28.834613+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T00:00:00+11:00",
+        "dispatched_at": "2026-10-07T00:00:59.252064+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "83d988a97d45",
+      "name": "Weekly MEMORY.md Update",
+      "prompt": "Weekly MEMORY Update\n\nReview the past 7 days of daily notes and update MEMORY.md with a curated weekly summary.\n\nSTEPS:\n1. Read the last 7 daily notes from workspace/memory/ (YYYY-MM-DD.md files)\n2. Extract key highlights: meals, training, school events, todos completed\n3. Update workspace/MEMORY.md with weekly summary\n4. Tag any overdue items",
+      "skills": [],
+      "skill": null,
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "provider": "openrouter",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * 0",
+        "display": "0 22 * * 0"
+      },
+      "schedule_display": "0 22 * * 0",
+      "repeat": {
+        "times": null,
+        "completed": 18
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:40:47.504497+10:00",
+      "next_run_at": "2026-10-11T22:00:00+11:00",
+      "last_run_at": "2026-10-04T23:03:46.006069+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-04T22:00:00+10:00",
+        "dispatched_at": "2026-10-04T23:00:15.338866+11:00",
+        "lateness_seconds": 15.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "c3780e1dadab",
+      "name": "Weekly Price Refresh",
+      "prompt": "Weekly Price Refresh — run the fixed batch script.\n\nExecute: weekly_price_refresh.bat\n\nThe batch file runs C:\\Users\\elsha\\Desktop\\Health project\\Scripts\\price_refresh_cdp.py which refreshes Woolworths, Coles and Aldi prices via the authenticated Chrome CDP browser, updates MEAL_PLAN_MASTER.xlsx PRICE_DATABASE, and emails the report to elshayeb@gmail.com using gog.exe.\n\nAfter execution, read C:\\Users\\elsha\\Desktop\\Health project\\Scripts\\refresh.log and report the exit code, any errors, and the store totals.",
+      "skills": [],
+      "skill": null,
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": "weekly_price_refresh.bat",
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * 4",
+        "display": "0 4 * * 4"
+      },
+      "schedule_display": "0 4 * * 4",
+      "repeat": {
+        "times": null,
+        "completed": 18
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:40:48.596126+10:00",
+      "next_run_at": "2026-10-08T04:00:00+10:00",
+      "last_run_at": "2026-10-01T04:10:00.621424+10:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "email:elshayeb@gmail.com",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-01T04:00:00+10:00",
+        "dispatched_at": "2026-10-01T04:00:50.564540+10:00",
+        "lateness_seconds": 50.6,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "4910a6823b4e",
+      "name": "Lara Morning Todo 7am",
+      "prompt": "# Lara's Morning To-Do List — MUST OUTPUT FULL REPORT TEXT + SEND VIA GOG.EXE\n\nLARA'S MORNING TO-DO LIST\n\nSTEPS:\n1. Navigate to Lara's Compass record: https://gwsc-vic.compass.education/Records/User.aspx?userId=24780 (browser pre-authenticated via CDP 18801)\n2. Extract TODAY'S schedule (not weekly) from the Schedule tab\n3. Extract recent Learning Tasks to identify follow-up items\n4. Extract any Chronicle/merit entries\n5. Generate a concise morning to-do list report focusing on TODAY\n\nREPORT FORMAT (following OpenClaw style):\n```\n═══════════════════════════════════════════════════════════════════════════════\nLARA'S MORNING TO-DO LIST\nStudent: Lara ELSHAYEB (Year 9, Form 9L)\nDate: [TODAY'S DATE]\n═══════════════════════════════════════════════════════════════════════════════\n\n📅 TODAY'S SCHEDULE\n[Extract today's periods with times, subjects, rooms, teachers]\n\n📋 TODAY'S TO-DO ITEMS\n• [Task 1 - from Learning Tasks with due date today or overdue]\n• [Task 2 - upcoming deadlines]\n• [Task 3 - follow-up from yesterday's report]\n\n🔔 NOTICES & REMINDERS\n• [Any news from homepage]\n• [Any chronicle entries]\n• [Upcoming events]\n```\n\nSAVE & SEND EMAIL:\n1. Save report to: C:/Users/elsha/AppData/Local/hermes/workspace/compass_reports/LARA_MORNING_TODO_YYYY-MM-DD.txt\n2. Send via gog.exe with:\n   - To: elshayeb@gmail.com\n   - Subject: \"Lara Morning Todo — [DATE]\" (e.g., \"Lara Morning Todo — 2026-06-25\")\n   - Body-file and attach pointing to the saved report file\n   - Use account: aeyeingserver@gmail.com\n\nOutput the FULL report text as your final message (dual delivery for verification).",
+      "skills": [],
+      "skill": null,
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "provider": "openrouter",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 7 * * 1,3",
+        "display": "15 7 * * 1,3"
+      },
+      "schedule_display": "15 7 * * 1,3",
+      "repeat": {
+        "times": null,
+        "completed": 59
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:40:49.640729+10:00",
+      "next_run_at": "2026-10-12T07:15:00+11:00",
+      "last_run_at": "2026-10-07T07:22:47.040264+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "browser",
+        "terminal",
+        "file",
+        "web"
+      ],
+      "workdir": "C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace",
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T07:15:00+11:00",
+        "dispatched_at": "2026-10-07T07:15:59.267866+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "d8e1a369c7bf",
+      "name": "Adam KGPS Compass Report (Sun/Tue/Fri 5pm)",
+      "prompt": "# Adam KGPS Full Compass Report\n\nGenerate Adam's COMPLETE daily Compass report using the `productivity:compass-full-extraction` skill instructions.\n\n## CRITICAL: Email Attachment Required\n- Send the report as a **file attachment** via `gog.exe`.\n- Also output the report text as your final cron response.\n\n## Budget: 120 calls\n\n## Extraction order\n1. Navigate to Adam's record page: https://kgps-vic.compass.education/Records/User.aspx?userId=3101\n2. Extract Student Info.\n3. Homepage News from https://kgps-vic.compass.education (try Unread/Saved tabs if empty).\n4. Attendance (use #attendance hash navigation fallback if tab click fails).\n5. Schedule (use #schedule hash navigation fallback if tab click fails).\n6. Learning Tasks — use skill's robust Step 5. **Important:** Ensure the browser is on Adam's record page and the grid reloads for userId=3101. If the grid shows Year 9 / Lara subjects, navigate back to Adam's record and retry.\n7. ClassDojo announcements from https://home.classdojo.com/#/story (3C / Miss ROBB).\n\n## Report Requirements\n- Follow the exact OpenClaw template from the skill.\n- Include ClassDojo announcements.\n- If extraction is incomplete, still send the report with [INCOMPLETE] markers and a 🚨 EXTRACTION ISSUES note.\n\n## Delivery — must actually run these tools\n1. Save report to `C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\compass_reports\\ADAM_KGPS_REPORT_YYYY-MM-DD.txt`\n   Use today's date for the filename.\n2. Send via gog.exe using the correct flag `--attach` (NOT `--attachment`):\n   Use bash/MSYS with `date` substitution, or compute the date in Python first.\n3. Also output the full report text as the final cron response.\n\n## Cron delivery setting\n- `deliver: local` is configured, so the cron system will NOT auto-email the final response. gog.exe is the only email path.\n",
+      "skills": [
+        "productivity:compass-full-extraction"
+      ],
+      "skill": "productivity:compass-full-extraction",
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 17 * * 0,2,5",
+        "display": "15 17 * * 0,2,5"
+      },
+      "schedule_display": "15 17 * * 0,2,5",
+      "repeat": {
+        "times": null,
+        "completed": 86
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:41:00.351643+10:00",
+      "next_run_at": "2026-10-09T17:15:00+11:00",
+      "last_run_at": "2026-10-06T17:18:08.822574+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "subject": "Adam Compass Report",
+      "origin": null,
+      "enabled_toolsets": [
+        "browser",
+        "file",
+        "terminal",
+        "web",
+        "send_message"
+      ],
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-06T17:15:00+11:00",
+        "dispatched_at": "2026-10-06T17:15:37.644173+11:00",
+        "lateness_seconds": 37.6,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "25b3e8e08dab",
+      "name": "Sports Daily Report (Sun/Tue/Fri 7:15pm)",
+      "prompt": "# Daily Sports Summary Report for Adam ELSHAYEB — MUST OUTPUT FULL REPORT TEXT + SEND VIA GOG.EXE\n\n## Adam's Basketball — Knox All Stars Basketball Club (NOT soccer)\n\nGenerate a daily sports report covering Adam's basketball activities.\n\n## CRITICAL: Dual Delivery Required\n1. **Email via gog.exe**: Custom subject + file attachment (PRIMARY)\n2. **Cron final message**: Full report text (for backup delivery)\n\n## TEMPLATE — Use EXACTLY this format (matches agreed OpenClaw template)\n═══════════════════════════════════════════════════════════════════════════════\n📊 DAILY SPORTS SUMMARY REPORT - Adam ELSHAYEB\nDate: {{FULL_DATE}}\n═══════════════════════════════════════════════════════════════════════════════\n\n🏀 BASKETBALL - Knox All Stars U10 Boys 8\n═══════════════════════════════════════════════════════════════════════════════\nSeason Status: ACTIVE - Winter Season 2026\n\n👤 COACH:\n• [Coach name]\n\n👥 TEAM ROSTER (from TeamApp):\n• [names]\n\n📅 NEXT GAME\n• Date: [Day, DD Mon YYYY]\n• Time: [HH:MM AM/PM]\n• Home/Away: [Home/Away]\n• Opponent: [Team name]\n• Venue: [Venue]\n• Court: [Court]\n\n📅 RECENT GAME HISTORY\n• [List last 3 games with date, opponent, venue/court, result/score]\n\n🏆 LADDER & TEAM RECORD\n• Current Position: [Nth of N]\n• Record: Played X, Won Y, Lost Z, Drawn 0\n• Points Average: [value]\n• Percentage: [value]%\n\n🏋️ TRAINING SCHEDULE\n• [Regular training details or holiday notices from TeamApp news]\n\n💬 RECENT TEAM CHAT ANNOUNCEMENTS (All Stars U10 Boys 8 — [N] members)\n📢 [Date] — [Author]\n• \"[message text]\"\n[repeat for each relevant message]\n\n📰 LATEST CLUB NEWS / ALL STAR NEWS (Knox All Stars Basketball Club)\n🏀 [Date] — [Author]: [Headline]\n• [bullet details]\n[repeat]\n\n⚽ SOCCER - Knox City FC U9 Kangaroos Albert\n═══════════════════════════════════════════════════════════════════════════════\nStatus: INACTIVE - Adam quit the team\nNo soccer activities tracked.\n\n📋 ACTION ITEMS\n═══════════════════════════════════════════════════════════════════════════════\n1. [action]\n[...]\n\n⚠️ ALERTS\n═══════════════════════════════════════════════════════════════════════════════\n🟢/🟡/🔴 [Alert text]\n[...]\n\n🌤 WEATHER CHECK — MELBOURNE (Bureau of Meteorology)\n═══════════════════════════════════════════════════════════════════════════════\n• [Game-day weather summary]\n\n═══════════════════════════════════════════════════════════════════════════════\n📱 QUICK LINKS\n═══════════════════════════════════════════════════════════════════════════════\n• TeamApp Club: https://knoxallstarsbasketballclub.teamapp.com/\n• Team Page: https://knoxallstarsbasketballclub.teamapp.com/teams/948772?_detail=v1\n• Team Chat: https://knoxallstarsbasketballclub.teamapp.com/clubs/638477/comments?_chat=v1&commentable%5Bid%5D=44251993&commentable%5Btype%5D=Room\n• PlayHQ Fixtures: https://www.playhq.com/basketball-victoria/org/all-stars-basketball-club-knox/796aaa86/junior-domestic-winter-2026/teams/all-stars-u10-boys-8/dfa06ee5\n• PlayHQ Ladder: https://www.playhq.com/basketball-victoria/org/all-stars-basketball-club-knox/796aaa86/junior-domestic-winter-2026/teams/all-stars-u10-boys-8/dfa06ee5/ladder\n\n═══════════════════════════════════════════════════════════════════════════════\n*Generated by Ozmo AI Assistant | {{FULL_DATE}}*\n*Data Sources: Knox All Stars TeamApp (chat, roster, news) + PlayHQ (fixtures/ladder) + BOM (weather)*\n═══════════════════════════════════════════════════════════════════════════════\n\n## DATA SOURCES — Extract ALL of the following\n\n1. **PlayHQ (PRIMARY fixtures/ladder)** — navigate directly to:\n   https://www.playhq.com/basketball-victoria/org/all-stars-basketball-club-knox/796aaa86/junior-domestic-winter-2026/teams/all-stars-u10-boys-8/dfa06ee5\n   - Full fixture list: round, date, time, opponent, home/away, venue, court, score.\n   - Visit /ladder page for position, record, percentage, points average.\n\n2. **TeamApp Team Chat** — The Hermes cloud browser may not have TeamApp cookies. Use the local Chrome CDP helper script:\n   ```\n   node \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\scripts\\cdp_teamapp_extract.js\" chat \"C:\\Users\\elsha\\AppData\\Local\\Temp\\teamapp_chat.txt\"\n   ```\n   Then read the file. Extract all recent coach/manager announcements (last 14 days). The chat URL is:\n   https://knoxallstarsbasketballclub.teamapp.com/clubs/638477/comments?_chat=v1&commentable%5Bid%5D=44251993&commentable%5Btype%5D=Room\n\n3. **TeamApp Roster** — use the helper script:\n   ```\n   node \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\scripts\\cdp_teamapp_extract.js\" roster \"C:\\Users\\elsha\\AppData\\Local\\Temp\\teamapp_roster.txt\"\n   ```\n\n4. **TeamApp All Star News** — use the helper script:\n   ```\n   node \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\scripts\\cdp_teamapp_extract.js\" news \"C:\\Users\\elsha\\AppData\\Local\\Temp\\teamapp_news.txt\"\n   ```\n   Extract club-wide announcements relevant to U10 / All Stars U10 Boys 8.\n\n5. **TeamApp Training/Games tab** — click \"Training/Games\" on the team page. If schedule entries appear, extract them. If blank, note that in the report.\n\n6. **Weather** — use `browser_navigate` to https://www.bom.gov.au/vic/forecasts/melbourne.shtml and extract the Melbourne forecast for the next game/training day.\n\n7. **Duplicate Prevention** — Before generating, check if a report for today's date already exists at `workspace/sports_reports/SPORTS_REPORT_YYYY-MM-DD.md`. If it exists and was created today, SKIP generating and instead just return: \"Sports report for today already generated. Previous report attached.\" Do NOT create duplicates.\n\n## DATA EXTRACTION FALLBACK\nIf the `cdp_teamapp_extract.js` script fails because `ws` is not installed, install it first:\n```\ncd \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\scripts\" && npm install ws\n```\nThen retry.\n\n## DELIVERY INSTRUCTIONS (CRITICAL)\n1. Save the complete report to:\n   C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\sports_reports\\SPORTS_REPORT_YYYY-MM-DD.md\n   Replace YYYY-MM-DD with today's date (e.g., 2026-06-22).\n\n2. Use the terminal tool to send the saved file via gog.exe with custom subject and attachment:\n   /c/OpenClaw/gog.exe send --to elshayeb@gmail.com --subject \"Adam Sports Report — YYYY-MM-DD\" --body-file \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\sports_reports\\SPORTS_REPORT_YYYY-MM-DD.md\" --attach \"C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\sports_reports\\SPORTS_REPORT_YYYY-MM-DD.md\" --account aeyeingserver@gmail.com\n   Wait for the command to complete and report the result.\n\n3. Your final response MUST still contain the FULL report text as backup delivery via the built-in email adapter.\n\nDo NOT say \"Report saved\" — output the FULL text.",
+      "skills": [],
+      "skill": null,
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 19 * * 0,2,5",
+        "display": "15 19 * * 0,2,5"
+      },
+      "schedule_display": "15 19 * * 0,2,5",
+      "repeat": {
+        "times": null,
+        "completed": 74
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:41:01.373037+10:00",
+      "next_run_at": "2026-10-09T19:15:00+11:00",
+      "last_run_at": "2026-10-06T19:24:41.003899+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "email:elshayeb@gmail.com",
+      "subject": "Sports Daily Report",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal",
+        "file",
+        "browser",
+        "web"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-06T19:15:00+11:00",
+        "dispatched_at": "2026-10-06T19:15:59.257236+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "ba968409e418",
+      "name": "Weekly Security Audit",
+      "prompt": "Weekly System Security and Health Check\n\n1. Run security audit of Openclaw/Hermes configurations\n2. Check for memory gaps in the last 7 days\n3. Verify all integrations are responsive:\n   - Telegram bot\n   - GitHub connection\n   - Home Assistant\n   - Compass school portal\n4. Report any issues found\n5. Update healthcheck log",
+      "skills": [],
+      "skill": null,
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "display": "0 9 * * 1"
+      },
+      "schedule_display": "0 9 * * 1",
+      "repeat": {
+        "times": null,
+        "completed": 18
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-06T23:41:02.393347+10:00",
+      "next_run_at": "2026-10-12T09:00:00+11:00",
+      "last_run_at": "2026-10-05T10:04:52.512160+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-05T09:00:00+10:00",
+        "dispatched_at": "2026-10-05T10:00:35.788356+11:00",
+        "lateness_seconds": 35.8,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "391286d6c8e8",
+      "name": "Lara Daily Schedule and Lesson Plans (6pm)",
+      "prompt": "# Lara GWSC Weekly Lesson Plan Report\n\n## Goal\nBuild Lara's weekly GWSC lesson-plan report as a single text file, formatted exactly as a **daily agenda** (the \"Claude\" template). The report is then emailed as an attachment to `elshayeb@gmail.com`.\n\n## Output file\n`C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace\\compass_reports\\LARA_LESSON_PLANS_<YYYY-MM-DD>.txt`\n\n## Canonical template rules (MUST follow)\n1. **One daily agenda per day.** Every class appears once, as a single block under its day. There is no separate \"Daily Schedule Overview\", no \"Core Lesson Tasks\" section, and no separate \"Derived Todo List\" section — the To-Do is part of each day's agenda.\n2. **One field per line, one label per line.** Never merge two fields onto one line and never glue a second label into the middle of a sentence.\n3. **Fixed field labels, in this exact order/spelling:** `Time`, `Period`, `Room`, `Teacher`, `Status`, `LI`, `SC`, `Activities`, `Resources`, `Notes`. Do not rename, reorder, or abbreviate. `Time` and `Period` are embedded in the subject heading; the remaining labels each get their own line below `Status`.\n4. **Subject heading format:**\n   ```\n   ### <emoji> Friendly Name (code) — P<n>, <HH:MM>\n   ```\n   Subject key:\n   - `9HUML`   → 🌍 Humanities\n   - `9HPEL`   → 🏋️ Health / PE\n   - `9SCIL`   → 🧪 Science\n   - `9ASMCTT` → 🎭 Drama\n   - `9DSEU2`  → 💼 DSE\n   - `9MATL`   → 🧮 Maths\n   - `9SMBP2`  → 💼 Small Business\n   - `9FSCS2`  → 🧪 Forensic Science\n   - `9ENGL`   → 📚 English\n5. **LI and Notes are a single paragraph** (one or two continuous sentences). **SC, Activities, and Resources are bullet lists** with one distinct item per bullet.\n6. **Empty fields are omitted entirely.** Do not print `(none)` or placeholder lines.\n7. **No plan published:** print only `Status: No plan published yet` and skip LI/SC/Activities/Resources/Notes.\n8. **Room precedence:** use the lesson-plan room if it differs from the timetable room.\n9. **Duplicate plans:** if the same subject is taught again later in the week with an identical plan, list it under its own day/period and write `Status: Plan ready (same plan as <day> <period>)`. Do not repeat the body.\n10. **Daily To-Do:** after each day's class blocks, add `To-Do — <Day>:` as a checklist (`- [ ]`). Pull bullets **verbatim** from that day's `Activities`. If a class has no `Activities` (no plan, or no set task), it contributes nothing. For English-style plans whose only actionable text is in `SC`, pull the `SC` bullets into the To-Do instead.\n11. **Deadlines section:** at the end of the report, add `## Deadlines This Week`. List only graded/assessed items; each deadline is listed once, in full.\n12. **No fabricated data.** Missing sessions are `No plan published yet`.\n13. **Do not re-extract** if `lesson_plan_results_<today>.json` already exists and contains the current week; reuse it and only reformat.\n\n## Worked example\nSee `C:\\Users\\elsha\\AppData\\Local\\hermes\\skills\\productivity\\compass-full-extraction\\references\\LARA_GWSC_TEMPLATE_EXAMPLE_2026-07-29.txt` for the exact Week 31 report that follows every rule above. Future reports must match this shape.\n\n## Weekly workflow\n1. Find or generate the current week's session mapping file:\n   `C:\\Users\\elsha\\AppData\\Local\\hermes\\skills\\productivity\\compass-full-extraction\\references\\lara-week-<N>-session-mapping.json`\n   If it is stale, regenerate it with `python3 generate-week-mapping.py` and then `python3 generate-efficient-js.py`.\n2. If `lesson_plan_results_<today>.json` does not already exist, extract lesson plans:\n   - Log in to Compass for Lara (targetUserId 24780).\n   - Use `lara-week-<N>-extraction-js.json` JS snippets via `browser_console` / `browser_cdp`.\n   - Merge results into `lesson_plan_results_<today>.json`.\n3. Run the formatter:\n   ```\n   python3 \"C:\\Users\\elsha\\AppData\\Local\\hermes\\skills\\productivity\\compass-full-extraction\\scripts\\assemble-lesson-plans.py\"\n   ```\n   It writes the report and prints the path.\n4. Send as an attachment:\n   ```\n   c:\\OpenClaw\\gog.exe -a aeyeingserver@gmail.com gmail send --to=\"elshayeb@gmail.com\" --subject=\"Lara GWSC Weekly Report — <Mon date>–<Fri date>\" --body-file=\"<report_path>\" --attach=\"<report_path>\" -j\n   ```\n\n## Verification before finishing\n- Confirm the report file exists and is > 5 KB.\n- Confirm every day Mon–Fri is present, each class is a single block, and labels follow the rules above.\n- Confirm `gog.exe` returned exit code 0 and a message id.\n",
+      "skills": [],
+      "skill": null,
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 18 * * 1,3",
+        "display": "15 18 * * 1,3"
+      },
+      "schedule_display": "15 18 * * 1,3",
+      "repeat": {
+        "times": null,
+        "completed": 67
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-07T01:30:26.592444+10:00",
+      "next_run_at": "2026-10-12T18:15:00+11:00",
+      "last_run_at": "2026-10-07T18:17:38.603148+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "subject": "Lara Daily Schedule & Tasks",
+      "origin": null,
+      "enabled_toolsets": [
+        "browser",
+        "file",
+        "terminal",
+        "web",
+        "send_message"
+      ],
+      "workdir": "C:\\Users\\elsha\\AppData\\Local\\hermes\\workspace",
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T18:15:00+11:00",
+        "dispatched_at": "2026-10-07T18:15:25.374691+11:00",
+        "lateness_seconds": 25.4,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "72f85e7d300d",
+      "name": "Lara GWSC Compass Report (Sun/Tue/Fri 5:20pm)",
+      "prompt": "Deterministic Lara GWSC full report runner (script sends via gog.exe).",
+      "skills": [],
+      "skill": null,
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": "lara_full_report_cron.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "20 17 * * 0,2,5",
+        "display": "20 17 * * 0,2,5"
+      },
+      "schedule_display": "20 17 * * 0,2,5",
+      "repeat": {
+        "times": null,
+        "completed": 88
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-07T19:05:34.817578+10:00",
+      "next_run_at": "2026-10-09T17:20:00+11:00",
+      "last_run_at": "2026-10-06T17:21:21.989382+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "subject": "Lara Compass Report",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": "C:/Users/elsha/AppData/Local/hermes/workspace",
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-06T17:20:00+11:00",
+        "dispatched_at": "2026-10-06T17:20:37.635070+11:00",
+        "lateness_seconds": 37.6,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "9506681c77fd",
+      "name": "Inbox Check 7am",
+      "prompt": "Check aeyeingserver@gmail.com inbox for overnight report emails. Report which Compass/Sports/Lesson Plan emails arrived with attachments.",
+      "skills": [],
+      "skill": null,
+      "model": "poolside/laguna-s-2.1:free",
+      "provider": "openrouter",
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "display": "0 7 * * *"
+      },
+      "schedule_display": "0 7 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 121
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-09T20:44:46.706115+10:00",
+      "next_run_at": "2026-10-08T07:00:00+11:00",
+      "last_run_at": "2026-10-07T07:05:29.950568+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "email:elshayeb@gmail.com",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T07:00:00+11:00",
+        "dispatched_at": "2026-10-07T07:00:59.260342+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "a54f7ddf3a1e",
+      "name": "OzMoEg - Daily Report",
+      "prompt": "Run the OzMoEg Money Maker daily report.\n1. cd ~/.hermes/skills/ozmoeg-money-maker && python main.py --mode report\n2. This generates a daily summary: P&L, trades executed, open positions\n3. The report is sent via Telegram and Email automatically\n4. Check logs/ozmoeg.log if any errors occur",
+      "skills": [
+        "ozmoeg-money-maker"
+      ],
+      "skill": "ozmoeg-money-maker",
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": "ozmoeg_us_scan.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 6 * * 1-5",
+        "display": "0 6 * * 1-5"
+      },
+      "schedule_display": "0 6 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 86
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-11T23:12:53.148118+10:00",
+      "next_run_at": "2026-10-08T06:00:00+11:00",
+      "last_run_at": "2026-10-07T06:02:26.154900+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null,
+      "fire_claim": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T06:00:00+11:00",
+        "dispatched_at": "2026-10-07T06:00:59.260545+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "a1ce36536b7a",
+      "name": "Browser CDP 18801 Watchdog",
+      "prompt": "Browser CDP watchdog",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "script": "browser_cdp_watchdog.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "* * * * *",
+        "display": "* * * * *"
+      },
+      "schedule_display": "* * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 163683
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-13T22:08:01.561286+10:00",
+      "next_run_at": "2026-10-07T18:49:00+11:00",
+      "last_run_at": "2026-10-07T18:48:26.082768+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T18:48:00+11:00",
+        "dispatched_at": "2026-10-07T18:48:25.376244+11:00",
+        "lateness_seconds": 25.4,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "ee2455159797",
+      "name": "OzMoEg Money Maker - US Market Scanner",
+      "prompt": "Run the OzMoEg Money Maker scanner for live US small-cap scalp setups during market hours.\n1. cd ~/.hermes/skills/ozmoeg-money-maker\n2. python main.py --market us --force\n3. Ensure the website is updated and pushed. If push fails, retry once after 30s.\n4. Report the snapshot filename, last_updated timestamp, and push result.\nUse only terminal and file tools.",
+      "skills": [
+        "ozmoeg-money-maker"
+      ],
+      "skill": "ozmoeg-money-maker",
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": "ozmoeg_us_scan.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/1 17-23 * * 1-5",
+        "display": "*/1 17-23 * * 1-5"
+      },
+      "schedule_display": "*/1 17-23 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 16451
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-15T22:43:40.470324+10:00",
+      "next_run_at": "2026-10-07T18:49:00+11:00",
+      "last_run_at": "2026-10-07T18:48:37.656118+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T18:48:00+11:00",
+        "dispatched_at": "2026-10-07T18:48:25.376244+11:00",
+        "lateness_seconds": 25.4,
+        "kind": "on_time"
+      },
+      "last_failure": {
+        "at": "2026-10-06T21:50:03.043080+11:00",
+        "detail": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 32, in <module>\n    from website_updater import WebsiteUpdater\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\website_updater.py\", line 320\n    pattern = r'(\\\\u003cscript id=\"ozmoeg-embedded-data\"[^\\\\u003e]*' + attr + r\"=\\\\').*?(\\\\'[^\\\\u003e]*\\\\u003e)\")\n                                                                                                                ^\nSyntaxError: unmatched ')'"
+      }
+    },
+    {
+      "id": "ca205d338268",
+      "name": "OzMoEg Money Maker - ASX Scanner (15min)",
+      "prompt": "Run the OzMoEg Money Maker scanner for the Australian (ASX) market during Sydney market hours.\n1. cd ~/.hermes/skills/ozmoeg-money-maker\n2. Activate virtualenv if present (scripts/setup.sh), otherwise use python main.py --market au --mode scan\n3. Run: python main.py --market au --mode scan\n4. Report the market status, number of candidates, and any alerts generated.\n\nIf the scanner fails, log the error and do not retry more than once. Do not send Telegram alerts for ASX (throttle noise).",
+      "skills": [
+        "ozmoeg-money-maker"
+      ],
+      "skill": "ozmoeg-money-maker",
+      "model": "kimi-k2.7-code:cloud",
+      "provider": "ollama-local",
+      "script": "ozmoeg_au_scan.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 10,13 * * 1-5",
+        "display": "30 10,13 * * 1-5"
+      },
+      "schedule_display": "30 10,13 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 521
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-17T13:49:08.724213+10:00",
+      "next_run_at": "2026-10-08T10:30:00+11:00",
+      "last_run_at": "2026-10-07T13:31:21.471201+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T13:30:00+11:00",
+        "dispatched_at": "2026-10-07T13:30:36.078651+11:00",
+        "lateness_seconds": 36.1,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "65839d4e5601",
+      "name": "Hermes Health Watchdog",
+      "prompt": "Run the Hermes health watchdog script to check gateway process, state.db integrity, CDP 18801, and Openclaw gateway. Alert via Telegram on issues.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "script": "hermes_health_watchdog.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/5 * * * *",
+        "display": "*/5 * * * *"
+      },
+      "schedule_display": "*/5 * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 13148
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-25T16:14:09.413544+10:00",
+      "next_run_at": "2026-10-07T18:50:00+11:00",
+      "last_run_at": "2026-10-07T18:45:28.542861+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "482657715",
+        "chat_name": "OzMo Shay",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T18:45:00+11:00",
+        "dispatched_at": "2026-10-07T18:45:25.378703+11:00",
+        "lateness_seconds": 25.4,
+        "kind": "on_time"
+      },
+      "last_failure": {
+        "at": "2026-10-07T14:00:52.481778+11:00",
+        "detail": "Script exited with code 1\nstdout:\n2026-10-07 14:00:51  Hermes gateway PID 19328; CDP 18801 alive; state.db ok (journal=wal, sessions=440, messages=137732, size=471.9MB); backups_total=0; backups_24h=0"
+      }
+    },
+    {
+      "id": "8bdd439f40ab",
+      "name": "Rebuild State DB Fallback",
+      "prompt": "Rebuild the state-recovered-no-fts.db fallback from the live state.db so it can be used for recovery if state.db corrupts again.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "script": "rebuild_state_recovered.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 106
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-25T16:16:24.059229+10:00",
+      "next_run_at": "2026-10-08T03:00:00+11:00",
+      "last_run_at": "2026-10-07T03:01:18.265017+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "482657715",
+        "chat_name": "OzMo Shay",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T03:00:00+11:00",
+        "dispatched_at": "2026-10-07T03:00:59.262094+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "2b5f7bbf6101",
+      "name": "OpenRouter Free Model Watchdog",
+      "prompt": "Run the updated OpenRouter capability watchdog: openrouter_model_watchdog.py. It now tests each candidate model live (JSON instruction following) and replaces any model that is either removed from OpenRouter or failing in practice.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "script": "openrouter_model_watchdog.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "display": "0 4 * * *"
+      },
+      "schedule_display": "0 4 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 100
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-07-03T19:57:43.337897+10:00",
+      "next_run_at": "2026-10-08T04:00:00+11:00",
+      "last_run_at": "2026-10-07T04:01:21.027317+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T04:00:00+11:00",
+        "dispatched_at": "2026-10-07T04:00:59.260860+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "f4744d29e043",
+      "name": "OzMoEg Money Maker - US Market Scanner Morning Continuation",
+      "prompt": "",
+      "skills": [
+        "ozmoeg-money-maker"
+      ],
+      "skill": "ozmoeg-money-maker",
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "script": "ozmoeg_us_scan.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/1 0-11 * * 2-6",
+        "display": "*/1 0-10 * * 2-6"
+      },
+      "schedule_display": "*/1 0-11 * * 2-6",
+      "repeat": {
+        "times": null,
+        "completed": 21576
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-07-18T02:30:00.172530+10:00",
+      "next_run_at": "2026-10-08T00:00:00+11:00",
+      "last_run_at": "2026-10-07T11:00:01.994167+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "fire_claim": null,
+      "failure_streak": 0,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T10:59:00+11:00",
+        "dispatched_at": "2026-10-07T10:59:59.257016+11:00",
+        "lateness_seconds": 59.3,
+        "kind": "on_time"
+      },
+      "last_failure": {
+        "at": "2026-10-07T00:31:18.191988+11:00",
+        "detail": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 1478, in getresponse\n    response.begin()\n    ~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 343, in begin\n    version, status, reason = self._read_status()\n                              ~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 304, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\socket.py\", line 729, in readinto\n    return self._sock.recv_into(b)\n           ~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\ssl.py\", line 1304, in recv_into\n    return self.read(nbytes, buffer)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\ssl.py\", line 1138, in read\n    return self._sslobj.read(len, buffer)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\nTimeoutError: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\adapters.py\", line 645, in send\n    resp = conn.urlopen(\n        method=request.method,\n    ...<9 lines>...\n        chunked=chunked,\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 842, in urlopen\n    retries = retries.increment(\n        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\util\\retry.py\", line 498, in increment\n    raise reraise(type(error), error, _stacktrace)\n          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\util\\util.py\", line 39, in reraise\n    raise value\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 788, in urlopen\n    response = self._make_request(\n        conn,\n    ...<10 lines>...\n        **response_kw,\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\n        self, url, f\"Read timed out. (read timeout={timeout_value})\"\n    ) from err\nurllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='quotes-gw.webullfintech.com', port=443): Read timed out. (read timeout=15)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 604, in run_scan\n    gainer_loser = client.active_gainer_loser(direction='gainer', rank_type=rank_type) or {\"gainer_list\": [], \"loser_list\": []}\n                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\webull_client.py\", line 247, in active_gainer_loser\n    raw = self._legacy_wb.active_gainer_loser(direction=direction, rank_type=rank_type, count=num)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\site-packages\\webull\\webull.py\", line 1012, in active_gainer_loser\n    response = requests.get(self._urls.active_gainers_losers(direction, self._region_code, rank_type, count), headers=headers, timeout=self.timeout)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPSConnectionPool(host='quotes-gw.webullfintech.com', port=443): Read timed out. (read timeout=15)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 1249, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 1234, in main\n    result = run_scan(config, args)\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 1198, in run_scan\n    return {\"scan_results\": [], \"active_plan\": None, \"scan_stats\": scan_stats, \"sent_alerts_summary\": {}, \"error\": str(e)}\n                                                                   ^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'scan_stats' where it is not associated with a value\nstdout:\n2026-10-07 00:31:02,298 [INFO] __main__: === Running OzMoEg regular Scan (Market=us, Status=OPEN) ===\n2026-10-07 00:31:02,298 [INFO] webull_client: Using legacy webull library (community API)\n2026-10-07 00:31:02,384 [INFO] webull_client: Legacy Webull client initialized for region_code=6\n2026-10-07 00:31:02,385 [ERROR] webull_client: Legacy Webull login failed: can only concatenate str (not \"list\") to str — continuing in unauthenticated mode (public data only)\n2026-10-07 00:31:02,385 [INFO] __main__: Starting US scan at 12:31 AM AEST (status=OPEN, rank=openMarket)\n2026-10-07 00:31:17,458 [ERROR] __main__: Error in run_scan: HTTPSConnectionPool(host='quotes-gw.webullfintech.com', port=443): Read timed out. (read timeout=15)\n2026-10-07 00:31:17,597 [ERROR] __main__: Stack trace: Traceback (most recent call last):\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 1478, in getresponse\n    response.begin()\n    ~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 343, in begin\n    version, status, reason = self._read_status()\n                              ~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\http\\client.py\", line 304, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\socket.py\", line 729, in readinto\n    return self._sock.recv_into(b)\n           ~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\ssl.py\", line 1304, in recv_into\n    return self.read(nbytes, buffer)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\ssl.py\", line 1138, in read\n    return self._sslobj.read(len, buffer)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\nTimeoutError: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\adapters.py\", line 645, in send\n    resp = conn.urlopen(\n        method=request.method,\n    ...<9 lines>...\n        chunked=chunked,\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 842, in urlopen\n    retries = retries.increment(\n        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\util\\retry.py\", line 498, in increment\n    raise reraise(type(error), error, _stacktrace)\n          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\util\\util.py\", line 39, in reraise\n    raise value\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 788, in urlopen\n    response = self._make_request(\n        conn,\n    ...<10 lines>...\n        **response_kw,\n    )\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\urllib3\\connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\n        self, url, f\"Read timed out. (read timeout={timeout_value})\"\n    ) from err\nurllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='quotes-gw.webullfintech.com', port=443): Read timed out. (read timeout=15)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\main.py\", line 604, in run_scan\n    gainer_loser = client.active_gainer_loser(direction='gainer', rank_type=rank_type) or {\"gainer_list\": [], \"loser_list\": []}\n                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\Desktop\\aeyeing.com\\backend\\ozmoeg-money-maker\\webull_client.py\", line 247, in active_gainer_loser\n    raw = self._legacy_wb.active_gainer_loser(direction=direction, rank_type=rank_type, count=num)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\tools\\python-3.14.7+202****0901-win32-x64\\Lib\\site-packages\\webull\\webull.py\", line 1012, in active_gainer_loser\n    response = requests.get(self._urls.active_gainers_losers(direction, self._region_code, rank_type, count), headers=headers, timeout=self.timeout)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"C:\\Users\\elsha\\AppData\\Local\\hermes\\installs\\fae1fe92fa00fe62\\environments\\6e43ade7477349c79c989349050dadd1\\venv\\Lib\\site-packages\\requests\\adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPSConnectionPool(host='quotes-gw.webullfintech.com', port=443): Read timed out. (read timeout=15)"
+      }
+    },
+    {
+      "id": "b9985ce0ba38",
+      "name": "FTS5 Guard - Drop corrupt FTS5 tables",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "fts5_guard.py",
+      "no_agent": true,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "* * * * *",
+        "display": "* * * * *"
+      },
+      "schedule_display": "* * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 43425
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-09-05T13:09:49.913648+10:00",
+      "next_run_at": "2026-10-07T18:49:00+11:00",
+      "last_run_at": "2026-10-07T18:48:27.682010+11:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "last_delivery_unverified": null,
+      "failure_streak": 0,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-07T18:48:00+11:00",
+        "dispatched_at": "2026-10-07T18:48:25.376244+11:00",
+        "lateness_seconds": 25.4,
+        "kind": "on_time"
+      },
+      "fire_claim": null
+    }
+  ],
+  "updated_at": "2026-10-07T18:48:37.659202+11:00"
+}
