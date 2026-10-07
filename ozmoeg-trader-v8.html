@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791354439" />
+<meta name="ozmoeg-version" content="1791359335" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1863,40 +1863,32 @@
             
             // Detect if Sydney is in DST (AEDT) or standard (AEST)
             const janOffset = new Date(now.getFullYear(), 0, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
-            const julOffset = new Date(now.getFullYear(), 6, 1).toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'});
             const isDst = now.toLocaleString('en-AU', {timeZone: 'Australia/Sydney', timeZoneName: 'short'}) === janOffset;
             const tzLabel = isDst ? 'Sydney AEDT' : 'Sydney AEST';
             document.querySelector('.timezone').textContent = tzLabel;
             
-            // Market status based on selected region
+            // Market status based on selected region — use the same helpers as the scanner badge so labels never disagree.
             let status;
             if (currentMarket === 'AUS') {
-                const syd = getSydneyParts(now);
-                if (syd.weekdayNum === 0 || syd.weekdayNum === 6) {
-                    status = "🔴 Weekend — ASX Closed";
-                } else if (syd.hour >= 10 && syd.hour < 16) {
+                const ausStatus = getCurrentAUSMarketStatus(now);
+                if (ausStatus === 'OPEN') {
                     status = "🟢 ASX Open — Live monitoring";
+                } else if (ausStatus === 'WEEKEND') {
+                    status = "🔴 Weekend — ASX Closed";
                 } else {
                     status = "🔴 ASX Closed — Next session at 10:00 Sydney";
                 }
             } else {
-                const etParts = new Intl.DateTimeFormat('en-US', {
-                    timeZone: 'America/New_York',
-                    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
-                }).formatToParts(now);
-                const etHour = parseInt(etParts.find(p => p.type === 'hour').value);
-                const etMin = parseInt(etParts.find(p => p.type === 'minute').value);
-                const etWeekday = etParts.find(p => p.type === 'weekday').value;
-                const etWeekdayNum = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[etWeekday];
-                if (etWeekdayNum === 0 || etWeekdayNum === 6) {
-                    status = "🔴 Weekend — Markets Closed";
-                } else if (etHour < 9 || (etHour === 9 && etMin < 30)) {
-                    status = "🟡 Pre-Market — Scanning for setups";
-                } else if (etHour < 16) {
-                    status = "🟢 Market Open — Live monitoring";
-                } else {
-                    status = "🟡 After Hours — Pre-market scan mode";
-                }
+                const usStatus = getCurrentUSMarketStatus(now);
+                const phase = getUSMarketPhase ? getUSMarketPhase(now) : null;
+                const statusMap = {
+                    'OPEN': "🟢 Market Open — Live monitoring",
+                    'PRE-MARKET': "🟡 Pre-Market — Scanning for setups",
+                    'AFTER-HOURS': "🟡 After Hours — Scanning for setups",
+                    'CLOSED': phase ? phase.statusText : "🔴 Closed — Pre-market in",
+                    'WEEKEND': "🔴 Weekend — Markets Closed"
+                };
+                status = statusMap[usStatus] || "⚪ Market Status Unknown";
             }
             document.getElementById('market-status').textContent = status;
         }
