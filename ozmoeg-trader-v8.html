@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791352076" />
+<meta name="ozmoeg-version" content="1791354439" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4674,9 +4674,9 @@
                 const cacheBuster = `${ts}_${Math.random().toString(36).slice(2, 10)}`;
                 const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
                 const sources = [
-                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`,
                     `https://trip-planner.aeyeing.com/ozmoeg/${file}`,
-                    `https://aeyeing.com/${file}`
+                    `https://aeyeing.com/${file}`,
+                    `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`
                 ];
                 let data = null;
                 let lastErr = null;
