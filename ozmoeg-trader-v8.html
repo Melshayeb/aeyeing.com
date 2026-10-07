@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791349988" />
+<meta name="ozmoeg-version" content="1791352076" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -3812,6 +3812,29 @@
             const tbody = document.querySelector('#scanner-table tbody');
             if (!tbody) return;
             const newAlertSet = new Set(window._newAlertTickers || []);
+            // Sound notifications for new alerts/drops. Track what was already displayed.
+            if (typeof window._previousAlertTickers === 'undefined') window._previousAlertTickers = new Set();
+            if (typeof window._previousDroppedTickers === 'undefined') window._previousDroppedTickers = new Set();
+            const currentAlertTickers = new Set();
+            const currentDroppedTickers = new Set();
+            for (const r of rows) {
+                if (r.status === 'ALERT') currentAlertTickers.add(r.ticker);
+                if (r.status === 'DROPPED' || r.status === 'HALT') currentDroppedTickers.add(r.ticker);
+            }
+            if (soundEnabled) {
+                let newAlertsCount = 0;
+                for (const t of currentAlertTickers) {
+                    if (!window._previousAlertTickers.has(t)) newAlertsCount++;
+                }
+                let newDropsCount = 0;
+                for (const t of currentDroppedTickers) {
+                    if (!window._previousDroppedTickers.has(t)) newDropsCount++;
+                }
+                if (newAlertsCount > 0) playNewAlertSound(newAlertsCount);
+                if (newDropsCount > 0) playDropSound(newDropsCount);
+            }
+            window._previousAlertTickers = currentAlertTickers;
+            window._previousDroppedTickers = currentDroppedTickers;
             const rowRenderer = (r) => renderScannerRow(r, { flash: newAlertSet.has(r.ticker) });
             if (isWatchlist) {
                 const sorted = [...rows].sort((a, b) => (getAlertMaxScore(b) || 0) - (getAlertMaxScore(a) || 0));
