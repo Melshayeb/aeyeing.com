@@ -1169,10 +1169,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                         sent_alerts_summary.append({'candidate_summary': existing_candidates})
                     except Exception as e:
                         logger.warning("Candidate summary Telegram send failed: %s", e)
-                # Persist current candidate list for next scan
-                # Persist only candidates that were actually sent, so a ticker that fails the quality gate can retry on the next scan.
-                sent_candidate_tickers = [c.get('ticker') for c in new_candidates if c.get('_telegram_sent')]
-                CANDIDATE_STATE_FILE.write_text(_json.dumps({'candidates': sent_candidate_tickers}, indent=2), encoding='utf-8')
+                # Persist the full current candidate list so the next scan only reports genuinely new additions.
+                current_candidate_tickers = [c.get('ticker') for c in candidates if c.get('ticker')]
+                CANDIDATE_STATE_FILE.write_text(_json.dumps({'candidates': current_candidate_tickers}, indent=2), encoding='utf-8')
         elif not tg_allowed:
             logger.info("Telegram notifications suppressed: market=%s status=%s", market, market_status)
 

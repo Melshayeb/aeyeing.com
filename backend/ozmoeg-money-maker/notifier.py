@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 SENT_ALERTS_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.sent_alerts.json"
 SUMMARY_TICKERS_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.summary_tickers.json"
 CANDIDATE_STATE_FILE = Path.home() / ".hermes/skills/ozmoeg-money-maker/.candidate_telegram_state.json"
-DUPLICATE_WINDOW_SECONDS = 21600  # 6 hours — only re-send same setup if it stays valid all session
+DUPLICATE_WINDOW_SECONDS = 7200  # 2 hours — only re-send same setup if it stays valid
 
 # Telegram quality gate: only high-conviction, fresh-catalyst setups get channel alerts.
 TG_MIN_IMPACT_SCORE = 3          # Score 3+ passes; score 2 needs very fresh news (see below)
@@ -86,36 +86,45 @@ class Notifier:
 
     def _alert_signature(self, ticker: str, plan: dict, market: str,
                          market_status: str, news_headline: str) -> str:
-        """Compute a stable signature for an alert setup."""
+        """Compute a stable signature for an alert setup.
+
+        Excludes market_status and the exact headline text so rotating news titles
+        or market-phase transitions do not cause duplicate Telegram pings for the
+        same underlying setup. A meaningful plan change (entry/stop/targets/R:R)
+        still creates a new signature and allows a re-alert.
+        """
+        def round_price(v):
+            try:
+                # Round to 2 decimals for stable comparison; ignore sub-penny noise.
+                return f"{float(v):.2f}"
+            except (TypeError, ValueError):
+                return str(v)
+
+        targets = plan.get('targets') or {}
         plan_key = {
-            'entry': str(plan.get('entry', '')),
-            'stop': str(plan.get('stop', '')),
+            'entry': round_price(plan.get('entry', '')),
+            'stop': round_price(plan.get('stop', '')),
             'targets': {
-                't1': str(plan.get('targets', {}).get('t1', '')),
-                't2': str(plan.get('targets', {}).get('t2', '')),
-                't3': str(plan.get('targets', {}).get('t3', '')),
+                't1': round_price(targets.get('t1', '')),
+                't2': round_price(targets.get('t2', '')),
+                't3': round_price(targets.get('t3', '')),
             },
-            'shares': str(plan.get('shares', '')),
-            'confidence': str(plan.get('confidence', '')),
             'risk_reward': str(plan.get('risk_reward', '')),
         }
         payload = {
             'ticker': ticker,
             'market': market,
-            'market_status': market_status,
             'plan': plan_key,
-            'catalyst': str(news_headline)[:200],
         }
         return hashlib.md5(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def _is_duplicate(self, ticker: str, plan: dict, market: str = 'us',
-                       market_status: str = '', news_headline: str = '') -> bool:
-        """Check if this alert was already sent recently and record it if not.
+                       market_status: str = '', news_headline: str = '', record: bool = True) -> bool:
+        """Check if this alert was already sent recently.
 
-        The dedup key now includes the full plan (entry/stop/targets), market,
-        market phase, and the current catalyst headline. This prevents the same
-        ticker from spamming Telegram when nothing has changed, while still
-        allowing a re-alert if the setup or catalyst genuinely updates.
+        Records the signature only when record=True (i.e., the alert is actually
+        about to be sent). This prevents an alert that fails the quality gate from
+        blocking a later, passing version of the same setup.
         """
         signature = self._alert_signature(ticker, plan, market, market_status, news_headline)
 
@@ -126,21 +135,18 @@ class Notifier:
                 logger.info("Duplicate alert for %s (%ds ago) — skipping", ticker, int(age))
                 return True
 
-        # Record this alert
+        if record:
+            self._record_alert(signature)
+        return False
+
+    def _record_alert(self, signature: str):
         self._sent_alerts[signature] = time.time()
         self._save_sent_alerts()
-        return False
 
     def _is_duplicate_readonly(self, ticker: str, plan: dict, market: str = 'us',
                                 market_status: str = '', news_headline: str = '') -> bool:
         """Check duplicate cache without recording a new send."""
-        signature = self._alert_signature(ticker, plan, market, market_status, news_headline)
-        if signature in self._sent_alerts:
-            age = time.time() - self._sent_alerts[signature]
-            if age < DUPLICATE_WINDOW_SECONDS:
-                logger.info("Duplicate alert (readonly) for %s (%ds ago)", ticker, int(age))
-                return True
-        return False
+        return self._is_duplicate(ticker, plan, market, market_status, news_headline, record=False)
 
     @staticmethod
     def _parse_age_minutes(age_str: str) -> Optional[int]:
@@ -314,11 +320,10 @@ class Notifier:
 
         ticker = plan['ticker']
         
-        # Duplicate check — skip if same setup/catalyst already alerted recently.
-        # For CANDIDATE pass-through we use the same signature so we do not spam
-        # the channel if the candidate snapshot is unchanged.
-        if self._is_duplicate(ticker, plan, market=market, market_status=market_status,
-                              news_headline=news_analysis.get('top_headline', '')):
+        # Duplicate check — skip if same setup already alerted recently.
+        # Use readonly mode here; we record only after the message is actually sent.
+        if self._is_duplicate_readonly(ticker, plan, market=market, market_status=market_status,
+                                       news_headline=news_analysis.get('top_headline', '')):
             return  # Skip sending — already alerted
         
         if not is_enabled(self.cfg, "telegram_alerts"):
@@ -422,6 +427,10 @@ class Notifier:
             subject = f"🚀 OzMoEg Alert — {ticker} | Impact {impact_score}/5 | Entry ${plan['entry']}"
             self.send_email(subject, email_html, body_text=tg_msg)
 
+        if tg_sent:
+            # Record only when Telegram delivery succeeded so a later passing setup can still alert.
+            self._record_alert(self._alert_signature(ticker, plan, market, market_status,
+                                                       news_analysis.get('top_headline', '')))
         return tg_sent
 
     def _build_filters_applied(self, plan: Dict[str, Any], news_analysis: Dict[str, Any],
