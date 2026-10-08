@@ -1,6 +1,179 @@
 {
-  "last_updated": "2026-10-08T23:13:04.235305Z",
+  "last_updated": "2026-10-08T23:15:56.623850Z",
   "scan_results": [
+    {
+      "ticker": "OLB",
+      "name": "OLB Group Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.655,
+      "change_pct": 19.307832422586515,
+      "volume": 404082753,
+      "market_cap": 13194078.57,
+      "float_shares": 18730792,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "S-1 (Sep 10), 8-K (Aug 12), 424B5 (Aug 07)",
+      "result": "+19.3% \u00b7 Entry $0.66 \u00b7 T1 $0.68 \u00b7 T2 $0.69 \u00b7 T3 $0.72",
+      "plan": {
+        "valid": true,
+        "ticker": "OLB",
+        "entry": 0.655,
+        "stop": 0.6419,
+        "targets": {
+          "t1": 0.6812,
+          "t2": 0.6943,
+          "t3": 0.7205
+        },
+        "risk_per_share": 0.0131,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 458,
+        "position_value": 299.99,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.6419"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "OLB",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+            "source": "Webull",
+            "time": "2d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T13:35:42.000+0000",
+            "url": "",
+            "score": 2,
+            "keywords": [
+              "share buyback"
+            ]
+          },
+          {
+            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T08:38:47.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:57:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:18:01.718+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+            "source": "Webull",
+            "time": "2d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T13:35:42.000+0000",
+            "url": "",
+            "score": 2,
+            "keywords": [
+              "share buyback"
+            ]
+          },
+          {
+            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T08:38:47.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:57:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:18:01.718+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "The OLB Group Board Authorizes Initial Repurchase Of Up To 1M Shares; Co. Suspends Its ATM Equity Offering Program, Effective Immediately",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 2,
+        "avg_score": 0.5,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "OLB Group announces 1M share buyback plan, suspends ATM program",
+        "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "OLB",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 15.77,
+        "volume_indicator": "high",
+        "volume": 404082753,
+        "adv": 25621251,
+        "recent_pct_of_adv": 1577.14,
+        "volume_acceleration": -0.846,
+        "price_velocity_pct": 2.368,
+        "buy_pressure_pct": 46.63,
+        "large_bar_count": 191,
+        "vwap_distance_pct": 5.813,
+        "recent_volume": 404082753,
+        "prior_volume": 0,
+        "median_range": 0.008,
+        "last_price": 0.549,
+        "vwap": 0.5828838368710103,
+        "last_trade_time": "2026-10-08T23:14:28.608000+00:00",
+        "stale_age_seconds": 86
+      },
+      "date": "2026-10-09",
+      "time": "10:15:55",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.646
+    },
     {
       "ticker": "VEEA",
       "name": "VEEA INC",
@@ -8,7 +181,7 @@
       "source": "regular",
       "price": 5.49,
       "change_pct": 41.86046511627907,
-      "volume": 4011524,
+      "volume": 4046089,
       "market_cap": 12038439.96,
       "float_shares": 1882414,
       "country": "United States",
@@ -287,27 +460,27 @@
         "tape_score": 4.0,
         "rvol": 0.61,
         "volume_indicator": "low",
-        "volume": 4011524,
+        "volume": 4046089,
         "adv": 6589306,
-        "recent_pct_of_adv": 60.88,
-        "volume_acceleration": -0.562,
-        "price_velocity_pct": 11.642,
-        "buy_pressure_pct": 52.36,
-        "large_bar_count": 151,
+        "recent_pct_of_adv": 61.4,
+        "volume_acceleration": -0.564,
+        "price_velocity_pct": 12.443,
+        "buy_pressure_pct": 52.27,
+        "large_bar_count": 149,
         "vwap_distance_pct": 1.254,
-        "recent_volume": 4011524,
+        "recent_volume": 4046089,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 3.87,
         "vwap": 3.919138354912533,
-        "last_trade_time": "2026-10-08T23:11:31.186000+00:00",
-        "stale_age_seconds": 91
+        "last_trade_time": "2026-10-08T23:14:31.263000+00:00",
+        "stale_age_seconds": 83
       },
       "date": "2026-10-09",
-      "time": "10:13:02",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 5.574
+      "previous_price": 5.49
     },
     {
       "ticker": "GRAN",
@@ -316,7 +489,7 @@
       "source": "regular",
       "price": 1.26,
       "change_pct": 7.6923076923077,
-      "volume": 5338144,
+      "volume": 5338780,
       "market_cap": 29140312.5,
       "float_shares": 9712250,
       "country": "China / Hong Kong",
@@ -395,211 +568,38 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 34.69,
+        "rvol": 34.7,
         "volume_indicator": "high",
-        "volume": 5338144,
+        "volume": 5338780,
         "adv": 153874,
-        "recent_pct_of_adv": 3469.17,
+        "recent_pct_of_adv": 3469.58,
         "volume_acceleration": -0.952,
-        "price_velocity_pct": 4.464,
+        "price_velocity_pct": 4.492,
         "buy_pressure_pct": 52.34,
         "large_bar_count": 103,
         "vwap_distance_pct": 7.031,
-        "recent_volume": 5338144,
+        "recent_volume": 5338780,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 1.17,
         "vwap": 1.2584899532735112,
-        "last_trade_time": "2026-10-08T23:10:16.359000+00:00",
-        "stale_age_seconds": 165
+        "last_trade_time": "2026-10-08T23:13:51.987000+00:00",
+        "stale_age_seconds": 122
       },
       "date": "2026-10-09",
-      "time": "10:13:02",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.27
-    },
-    {
-      "ticker": "OLB",
-      "name": "OLB Group Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.646,
-      "change_pct": 17.66848816029143,
-      "volume": 403880258,
-      "market_cap": 13194078.57,
-      "float_shares": 18730792,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "S-1 (Sep 10), 8-K (Aug 12), 424B5 (Aug 07)",
-      "result": "+17.7% \u00b7 Entry $0.65 \u00b7 T1 $0.67 \u00b7 T2 $0.68 \u00b7 T3 $0.71",
-      "plan": {
-        "valid": true,
-        "ticker": "OLB",
-        "entry": 0.646,
-        "stop": 0.6331,
-        "targets": {
-          "t1": 0.6718,
-          "t2": 0.6847,
-          "t3": 0.7105
-        },
-        "risk_per_share": 0.0129,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 464,
-        "position_value": 299.74,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6331"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "OLB",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
-            "source": "Webull",
-            "time": "2d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T13:35:42.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T08:38:47.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:57:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:18:01.718+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
-            "source": "Webull",
-            "time": "2d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T13:35:42.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T08:38:47.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:57:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:18:01.718+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "The OLB Group Board Authorizes Initial Repurchase Of Up To 1M Shares; Co. Suspends Its ATM Equity Offering Program, Effective Immediately",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 2,
-        "avg_score": 0.5,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "OLB Group announces 1M share buyback plan, suspends ATM program",
-        "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "OLB",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 15.76,
-        "volume_indicator": "high",
-        "volume": 403880258,
-        "adv": 25621251,
-        "recent_pct_of_adv": 1576.35,
-        "volume_acceleration": -0.845,
-        "price_velocity_pct": 3.234,
-        "buy_pressure_pct": 46.62,
-        "large_bar_count": 191,
-        "vwap_distance_pct": 5.813,
-        "recent_volume": 403880258,
-        "prior_volume": 0,
-        "median_range": 0.008,
-        "last_price": 0.549,
-        "vwap": 0.5828838368710103,
-        "last_trade_time": "2026-10-08T23:11:29.015000+00:00",
-        "stale_age_seconds": 93
-      },
-      "date": "2026-10-09",
-      "time": "10:13:03",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.641
+      "previous_price": 1.26
     },
     {
       "ticker": "XRTX",
       "name": "Xortx Therapeutics Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.3,
-      "change_pct": 24.32432432432431,
-      "volume": 10374937,
+      "price": 2.27,
+      "change_pct": 22.702702702702698,
+      "volume": 10388279,
       "market_cap": 3360645.25,
       "float_shares": 1788731,
       "country": "Canada",
@@ -608,23 +608,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+24.3% \u00b7 Entry $2.30 \u00b7 T1 $2.39 \u00b7 T2 $2.44 \u00b7 T3 $2.53",
+      "result": "+22.7% \u00b7 Entry $2.27 \u00b7 T1 $2.36 \u00b7 T2 $2.41 \u00b7 T3 $2.50",
       "plan": {
         "valid": true,
         "ticker": "XRTX",
-        "entry": 2.3,
-        "stop": 2.254,
+        "entry": 2.27,
+        "stop": 2.2246,
         "targets": {
-          "t1": 2.392,
-          "t2": 2.438,
-          "t3": 2.53
+          "t1": 2.3608,
+          "t2": 2.4062,
+          "t3": 2.497
         },
-        "risk_per_share": 0.046,
+        "risk_per_share": 0.0454,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 130,
-        "position_value": 299.0,
+        "shares": 132,
+        "position_value": 299.64,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -632,7 +632,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.254"
+          "hard_stop": "$2.2246"
         }
       },
       "ta": {
@@ -714,40 +714,213 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 28.08,
+        "rvol": 28.11,
         "volume_indicator": "high",
-        "volume": 10374937,
+        "volume": 10388279,
         "adv": 369533,
-        "recent_pct_of_adv": 2807.58,
+        "recent_pct_of_adv": 2811.19,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 17.04,
-        "buy_pressure_pct": 46.29,
+        "price_velocity_pct": 17.411,
+        "buy_pressure_pct": 46.12,
         "large_bar_count": 52,
         "vwap_distance_pct": 0.338,
-        "recent_volume": 10374937,
+        "recent_volume": 10388279,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.85,
         "vwap": 1.8562722481620835,
-        "last_trade_time": "2026-10-08T23:11:31.040000+00:00",
-        "stale_age_seconds": 91
+        "last_trade_time": "2026-10-08T23:14:30.341000+00:00",
+        "stale_age_seconds": 84
       },
       "date": "2026-10-09",
-      "time": "10:13:03",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 2.28
+      "previous_price": 2.3
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "OLB",
+      "name": "OLB Group Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.655,
+      "change_pct": 19.307832422586515,
+      "volume": 404082753,
+      "market_cap": 13194078.57,
+      "float_shares": 18730792,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "S-1 (Sep 10), 8-K (Aug 12), 424B5 (Aug 07)",
+      "result": "+19.3% \u00b7 Entry $0.66 \u00b7 T1 $0.68 \u00b7 T2 $0.69 \u00b7 T3 $0.72",
+      "plan": {
+        "valid": true,
+        "ticker": "OLB",
+        "entry": 0.655,
+        "stop": 0.6419,
+        "targets": {
+          "t1": 0.6812,
+          "t2": 0.6943,
+          "t3": 0.7205
+        },
+        "risk_per_share": 0.0131,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 458,
+        "position_value": 299.99,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.6419"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "OLB",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+            "source": "Webull",
+            "time": "2d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T13:35:42.000+0000",
+            "url": "",
+            "score": 2,
+            "keywords": [
+              "share buyback"
+            ]
+          },
+          {
+            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T08:38:47.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:57:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:18:01.718+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+            "source": "Webull",
+            "time": "2d ago \u00b7 06 Oct",
+            "raw_time": "2026-10-06T13:35:42.000+0000",
+            "url": "",
+            "score": 2,
+            "keywords": [
+              "share buyback"
+            ]
+          },
+          {
+            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T08:38:47.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+            "source": "Webull",
+            "time": "1d ago \u00b7 07 Oct",
+            "raw_time": "2026-10-07T05:57:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 05 Oct",
+            "raw_time": "2026-10-05T09:18:01.718+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "The OLB Group Board Authorizes Initial Repurchase Of Up To 1M Shares; Co. Suspends Its ATM Equity Offering Program, Effective Immediately",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 2,
+        "avg_score": 0.5,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "OLB Group announces 1M share buyback plan, suspends ATM program",
+        "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "OLB",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 15.77,
+        "volume_indicator": "high",
+        "volume": 404082753,
+        "adv": 25621251,
+        "recent_pct_of_adv": 1577.14,
+        "volume_acceleration": -0.846,
+        "price_velocity_pct": 2.368,
+        "buy_pressure_pct": 46.63,
+        "large_bar_count": 191,
+        "vwap_distance_pct": 5.813,
+        "recent_volume": 404082753,
+        "prior_volume": 0,
+        "median_range": 0.008,
+        "last_price": 0.549,
+        "vwap": 0.5828838368710103,
+        "last_trade_time": "2026-10-08T23:14:28.608000+00:00",
+        "stale_age_seconds": 86
+      },
+      "date": "2026-10-09",
+      "time": "10:15:55",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.646
+    },
+    {
       "ticker": "VEEA",
       "name": "VEEA INC",
       "status": "CANDIDATE",
       "source": "regular",
       "price": 5.49,
       "change_pct": 41.86046511627907,
-      "volume": 4011524,
+      "volume": 4046089,
       "market_cap": 12038439.96,
       "float_shares": 1882414,
       "country": "United States",
@@ -1026,27 +1199,27 @@
         "tape_score": 4.0,
         "rvol": 0.61,
         "volume_indicator": "low",
-        "volume": 4011524,
+        "volume": 4046089,
         "adv": 6589306,
-        "recent_pct_of_adv": 60.88,
-        "volume_acceleration": -0.562,
-        "price_velocity_pct": 11.642,
-        "buy_pressure_pct": 52.36,
-        "large_bar_count": 151,
+        "recent_pct_of_adv": 61.4,
+        "volume_acceleration": -0.564,
+        "price_velocity_pct": 12.443,
+        "buy_pressure_pct": 52.27,
+        "large_bar_count": 149,
         "vwap_distance_pct": 1.254,
-        "recent_volume": 4011524,
+        "recent_volume": 4046089,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 3.87,
         "vwap": 3.919138354912533,
-        "last_trade_time": "2026-10-08T23:11:31.186000+00:00",
-        "stale_age_seconds": 91
+        "last_trade_time": "2026-10-08T23:14:31.263000+00:00",
+        "stale_age_seconds": 83
       },
       "date": "2026-10-09",
-      "time": "10:13:02",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 5.574
+      "previous_price": 5.49
     },
     {
       "ticker": "GRAN",
@@ -1055,7 +1228,7 @@
       "source": "regular",
       "price": 1.26,
       "change_pct": 7.6923076923077,
-      "volume": 5338144,
+      "volume": 5338780,
       "market_cap": 29140312.5,
       "float_shares": 9712250,
       "country": "China / Hong Kong",
@@ -1134,211 +1307,38 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 34.69,
+        "rvol": 34.7,
         "volume_indicator": "high",
-        "volume": 5338144,
+        "volume": 5338780,
         "adv": 153874,
-        "recent_pct_of_adv": 3469.17,
+        "recent_pct_of_adv": 3469.58,
         "volume_acceleration": -0.952,
-        "price_velocity_pct": 4.464,
+        "price_velocity_pct": 4.492,
         "buy_pressure_pct": 52.34,
         "large_bar_count": 103,
         "vwap_distance_pct": 7.031,
-        "recent_volume": 5338144,
+        "recent_volume": 5338780,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 1.17,
         "vwap": 1.2584899532735112,
-        "last_trade_time": "2026-10-08T23:10:16.359000+00:00",
-        "stale_age_seconds": 165
+        "last_trade_time": "2026-10-08T23:13:51.987000+00:00",
+        "stale_age_seconds": 122
       },
       "date": "2026-10-09",
-      "time": "10:13:02",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.27
-    },
-    {
-      "ticker": "OLB",
-      "name": "OLB Group Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.646,
-      "change_pct": 17.66848816029143,
-      "volume": 403880258,
-      "market_cap": 13194078.57,
-      "float_shares": 18730792,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "S-1 (Sep 10), 8-K (Aug 12), 424B5 (Aug 07)",
-      "result": "+17.7% \u00b7 Entry $0.65 \u00b7 T1 $0.67 \u00b7 T2 $0.68 \u00b7 T3 $0.71",
-      "plan": {
-        "valid": true,
-        "ticker": "OLB",
-        "entry": 0.646,
-        "stop": 0.6331,
-        "targets": {
-          "t1": 0.6718,
-          "t2": 0.6847,
-          "t3": 0.7105
-        },
-        "risk_per_share": 0.0129,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 464,
-        "position_value": 299.74,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6331"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "OLB",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
-            "source": "Webull",
-            "time": "2d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T13:35:42.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T08:38:47.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:57:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:18:01.718+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
-            "source": "Webull",
-            "time": "2d ago \u00b7 06 Oct",
-            "raw_time": "2026-10-06T13:35:42.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T08:38:47.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
-            "source": "Webull",
-            "time": "1d ago \u00b7 07 Oct",
-            "raw_time": "2026-10-07T05:57:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 05 Oct",
-            "raw_time": "2026-10-05T09:18:01.718+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "The OLB Group Board Authorizes Initial Repurchase Of Up To 1M Shares; Co. Suspends Its ATM Equity Offering Program, Effective Immediately",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 2,
-        "avg_score": 0.5,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "OLB Group announces 1M share buyback plan, suspends ATM program",
-        "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "OLB",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 15.76,
-        "volume_indicator": "high",
-        "volume": 403880258,
-        "adv": 25621251,
-        "recent_pct_of_adv": 1576.35,
-        "volume_acceleration": -0.845,
-        "price_velocity_pct": 3.234,
-        "buy_pressure_pct": 46.62,
-        "large_bar_count": 191,
-        "vwap_distance_pct": 5.813,
-        "recent_volume": 403880258,
-        "prior_volume": 0,
-        "median_range": 0.008,
-        "last_price": 0.549,
-        "vwap": 0.5828838368710103,
-        "last_trade_time": "2026-10-08T23:11:29.015000+00:00",
-        "stale_age_seconds": 93
-      },
-      "date": "2026-10-09",
-      "time": "10:13:03",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.641
+      "previous_price": 1.26
     },
     {
       "ticker": "XRTX",
       "name": "Xortx Therapeutics Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.3,
-      "change_pct": 24.32432432432431,
-      "volume": 10374937,
+      "price": 2.27,
+      "change_pct": 22.702702702702698,
+      "volume": 10388279,
       "market_cap": 3360645.25,
       "float_shares": 1788731,
       "country": "Canada",
@@ -1347,23 +1347,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+24.3% \u00b7 Entry $2.30 \u00b7 T1 $2.39 \u00b7 T2 $2.44 \u00b7 T3 $2.53",
+      "result": "+22.7% \u00b7 Entry $2.27 \u00b7 T1 $2.36 \u00b7 T2 $2.41 \u00b7 T3 $2.50",
       "plan": {
         "valid": true,
         "ticker": "XRTX",
-        "entry": 2.3,
-        "stop": 2.254,
+        "entry": 2.27,
+        "stop": 2.2246,
         "targets": {
-          "t1": 2.392,
-          "t2": 2.438,
-          "t3": 2.53
+          "t1": 2.3608,
+          "t2": 2.4062,
+          "t3": 2.497
         },
-        "risk_per_share": 0.046,
+        "risk_per_share": 0.0454,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 130,
-        "position_value": 299.0,
+        "shares": 132,
+        "position_value": 299.64,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1371,7 +1371,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.254"
+          "hard_stop": "$2.2246"
         }
       },
       "ta": {
@@ -1453,67 +1453,67 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 28.08,
+        "rvol": 28.11,
         "volume_indicator": "high",
-        "volume": 10374937,
+        "volume": 10388279,
         "adv": 369533,
-        "recent_pct_of_adv": 2807.58,
+        "recent_pct_of_adv": 2811.19,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 17.04,
-        "buy_pressure_pct": 46.29,
+        "price_velocity_pct": 17.411,
+        "buy_pressure_pct": 46.12,
         "large_bar_count": 52,
         "vwap_distance_pct": 0.338,
-        "recent_volume": 10374937,
+        "recent_volume": 10388279,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.85,
         "vwap": 1.8562722481620835,
-        "last_trade_time": "2026-10-08T23:11:31.040000+00:00",
-        "stale_age_seconds": 91
+        "last_trade_time": "2026-10-08T23:14:30.341000+00:00",
+        "stale_age_seconds": 84
       },
       "date": "2026-10-09",
-      "time": "10:13:03",
+      "time": "10:15:55",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 2.28
+      "previous_price": 2.3
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "GRAN",
-    "name": "Grande Group Limited",
+    "ticker": "OLB",
+    "name": "OLB Group Inc",
     "status": "ALERT",
     "source": "regular",
-    "price": 1.26,
-    "change_pct": 7.6923076923077,
-    "volume": 5338144,
-    "market_cap": 29140312.5,
-    "float_shares": 9712250,
-    "country": "China / Hong Kong",
+    "price": 0.655,
+    "change_pct": 19.307832422586515,
+    "volume": 404082753,
+    "market_cap": 13194078.57,
+    "float_shares": 18730792,
+    "country": "United States",
     "cap_size": "nano-cap",
-    "is_penny_stock": false,
+    "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+7.7% \u00b7 Entry $1.26 \u00b7 T1 $1.31 \u00b7 T2 $1.34 \u00b7 T3 $1.39",
+    "sec_filings": "S-1 (Sep 10), 8-K (Aug 12), 424B5 (Aug 07)",
+    "result": "+19.3% \u00b7 Entry $0.66 \u00b7 T1 $0.68 \u00b7 T2 $0.69 \u00b7 T3 $0.72",
     "plan": {
       "valid": true,
-      "ticker": "GRAN",
-      "entry": 1.26,
-      "stop": 1.2348,
+      "ticker": "OLB",
+      "entry": 0.655,
+      "stop": 0.6419,
       "targets": {
-        "t1": 1.3104,
-        "t2": 1.3356,
-        "t3": 1.386
+        "t1": 0.6812,
+        "t2": 0.6943,
+        "t3": 0.7205
       },
-      "risk_per_share": 0.0252,
+      "risk_per_share": 0.0131,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 238,
-      "position_value": 299.88,
+      "shares": 458,
+      "position_value": 299.99,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1521,7 +1521,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.2348"
+        "hard_stop": "$0.6419"
       }
     },
     "ta": {
@@ -1529,14 +1529,43 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "GRAN",
+      "ticker": "OLB",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Weekly Report: what happened at GRAN last week (0928-1002)?",
+          "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+          "source": "Webull",
+          "time": "2d ago \u00b7 06 Oct",
+          "raw_time": "2026-10-06T13:35:42.000+0000",
+          "url": "",
+          "score": 2,
+          "keywords": [
+            "share buyback"
+          ]
+        },
+        {
+          "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+          "source": "Webull",
+          "time": "1d ago \u00b7 07 Oct",
+          "raw_time": "2026-10-07T08:38:47.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+          "source": "Webull",
+          "time": "1d ago \u00b7 07 Oct",
+          "raw_time": "2026-10-07T05:57:48.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
           "source": "Webull",
           "time": "3d ago \u00b7 05 Oct",
-          "raw_time": "2026-10-05T10:17:08.464+0000",
+          "raw_time": "2026-10-05T09:18:01.718+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1544,52 +1573,86 @@
       ],
       "headlines": [
         {
-          "title": "Weekly Report: what happened at GRAN last week (0928-1002)?",
+          "title": "OLB Group announces 1M share buyback plan, suspends ATM program",
+          "source": "Webull",
+          "time": "2d ago \u00b7 06 Oct",
+          "raw_time": "2026-10-06T13:35:42.000+0000",
+          "url": "",
+          "score": 2,
+          "keywords": [
+            "share buyback"
+          ]
+        },
+        {
+          "title": "Why Penguin Solutions Shares Are Trading Higher By Around 8%; Here Are 20 Stocks Moving Premarket",
+          "source": "Webull",
+          "time": "1d ago \u00b7 07 Oct",
+          "raw_time": "2026-10-07T08:38:47.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "OLB Group (OLB) Rally Cools After Hours as Shares Tumble 29%: Here's Why",
+          "source": "Webull",
+          "time": "1d ago \u00b7 07 Oct",
+          "raw_time": "2026-10-07T05:57:48.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at OLB last week (0928-1002)?",
           "source": "Webull",
           "time": "3d ago \u00b7 05 Oct",
-          "raw_time": "2026-10-05T10:17:08.464+0000",
+          "raw_time": "2026-10-05T09:18:01.718+0000",
           "url": "",
           "score": 0,
           "keywords": []
         }
       ],
-      "red_flags": [],
-      "max_score": 0,
-      "avg_score": 0.0,
+      "red_flags": [
+        {
+          "title": "The OLB Group Board Authorizes Initial Repurchase Of Up To 1M Shares; Co. Suspends Its ATM Equity Offering Program, Effective Immediately",
+          "flag": "offering"
+        }
+      ],
+      "max_score": 2,
+      "avg_score": 0.5,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Weekly Report: what happened at GRAN last week (0928-1002)?",
-      "news_filter_reason": "low catalyst score (max 0/5)"
+      "top_headline": "OLB Group announces 1M share buyback plan, suspends ATM program",
+      "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
     },
     "tape": {
-      "ticker": "GRAN",
+      "ticker": "OLB",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 34.69,
+      "rvol": 15.77,
       "volume_indicator": "high",
-      "volume": 5338144,
-      "adv": 153874,
-      "recent_pct_of_adv": 3469.17,
-      "volume_acceleration": -0.952,
-      "price_velocity_pct": 4.464,
-      "buy_pressure_pct": 52.34,
-      "large_bar_count": 103,
-      "vwap_distance_pct": 7.031,
-      "recent_volume": 5338144,
+      "volume": 404082753,
+      "adv": 25621251,
+      "recent_pct_of_adv": 1577.14,
+      "volume_acceleration": -0.846,
+      "price_velocity_pct": 2.368,
+      "buy_pressure_pct": 46.63,
+      "large_bar_count": 191,
+      "vwap_distance_pct": 5.813,
+      "recent_volume": 404082753,
       "prior_volume": 0,
-      "median_range": 0.01,
-      "last_price": 1.17,
-      "vwap": 1.2584899532735112,
-      "last_trade_time": "2026-10-08T23:10:16.359000+00:00",
-      "stale_age_seconds": 165
+      "median_range": 0.008,
+      "last_price": 0.549,
+      "vwap": 0.5828838368710103,
+      "last_trade_time": "2026-10-08T23:14:28.608000+00:00",
+      "stale_age_seconds": 86
     },
     "date": "2026-10-09",
-    "time": "10:13:02",
+    "time": "10:15:55",
     "skip_news_check": true,
-    "red_flag": false,
-    "previous_price": 1.27
+    "red_flag": true,
+    "previous_price": 0.646
   },
   "total_candidates": 4,
   "alerts_generated": 3,
@@ -1599,8 +1662,8 @@
       "name": "VEEA INC",
       "price": 5.49,
       "change_pct": 41.86046511627907,
-      "volume": 4011524,
-      "rvol": 0.20685489773931612,
+      "volume": 4046089,
+      "rvol": 0.20863724767424346,
       "market_cap": 12038439.96,
       "float_shares": 1882414,
       "cap_size": "nano-cap",
@@ -1611,10 +1674,10 @@
     {
       "ticker": "WORX",
       "name": "Scworx Corp",
-      "price": 5.23,
-      "change_pct": 24.52380952380953,
-      "volume": 2396901,
-      "rvol": 8.506949225931473,
+      "price": 5.24,
+      "change_pct": 24.761904761904763,
+      "volume": 2401523,
+      "rvol": 8.523353374172162,
       "market_cap": 2056525.8,
       "float_shares": 439306,
       "cap_size": "nano-cap",
@@ -1623,12 +1686,26 @@
       "reason": "Filtered: tiny avg $vol, avg $vol $1.5M < $2.0M"
     },
     {
+      "ticker": "ZBAO",
+      "name": "Zhibao Tech",
+      "price": 0.072,
+      "change_pct": 22.866894197952213,
+      "volume": 10555313,
+      "rvol": 0.8473687992084502,
+      "market_cap": 26326907.03,
+      "float_shares": 440482489,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: price $0.072, float 440.5M > 100M, vol/float 0.02x < 0.1x"
+    },
+    {
       "ticker": "XRTX",
       "name": "Xortx Therapeutics Inc",
-      "price": 2.3,
-      "change_pct": 24.32432432432431,
-      "volume": 10374937,
-      "rvol": 8.507317157169437,
+      "price": 2.27,
+      "change_pct": 22.702702702702698,
+      "volume": 10388279,
+      "rvol": 8.518257428470452,
       "market_cap": 3360645.25,
       "float_shares": 1788731,
       "cap_size": "nano-cap",
@@ -1637,26 +1714,12 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "ZBAO",
-      "name": "Zhibao Tech",
-      "price": 0.07,
-      "change_pct": 19.45392491467578,
-      "volume": 10089095,
-      "rvol": 0.8099413362019656,
-      "market_cap": 26326907.03,
-      "float_shares": 440482489,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: price $0.070, float 440.5M > 100M, vol/float 0.02x < 0.1x"
-    },
-    {
       "ticker": "OLB",
       "name": "OLB Group Inc",
-      "price": 0.646,
-      "change_pct": 17.66848816029143,
-      "volume": 403880258,
-      "rvol": 2.581901602429855,
+      "price": 0.655,
+      "change_pct": 19.307832422586515,
+      "volume": 404082753,
+      "rvol": 2.583196100377274,
       "market_cap": 13194078.57,
       "float_shares": 18730792,
       "cap_size": "nano-cap",
@@ -1665,26 +1728,12 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "SXTC",
-      "name": "China Sxt Pharmaceuticals Inc",
-      "price": 0.398,
-      "change_pct": 15.866084425036387,
-      "volume": 63902348,
-      "rvol": 2.3196305918920745,
-      "market_cap": 453866.89,
-      "float_shares": 880386,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.5M"
-    },
-    {
       "ticker": "WHLR",
       "name": "Wheeler Real Estate Invt Tr",
-      "price": 0.805,
-      "change_pct": 15.346038114343042,
-      "volume": 5860379,
-      "rvol": 1.4906588031445271,
+      "price": 0.8,
+      "change_pct": 14.629603094999297,
+      "volume": 5864938,
+      "rvol": 1.4918184403426564,
       "market_cap": 396554.46,
       "float_shares": 568211,
       "cap_size": "nano-cap",
@@ -1695,16 +1744,30 @@
     {
       "ticker": "HUM",
       "name": "Humana",
-      "price": 436.96,
-      "change_pct": 12.874560859681747,
-      "volume": 2664057,
-      "rvol": 1.658628137177566,
+      "price": 437.0,
+      "change_pct": 12.884893573052283,
+      "volume": 2666296,
+      "rvol": 1.6600221270205537,
       "market_cap": 46485488832.96,
       "float_shares": 119611268,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: price $436.960, mktcap $46485.5M, float 119.6M > 100M, vol/float 0.02x < 0.1x"
+      "reason": "Filtered: price $437.000, mktcap $46485.5M, float 119.6M > 100M, vol/float 0.02x < 0.1x"
+    },
+    {
+      "ticker": "SXTC",
+      "name": "China Sxt Pharmaceuticals Inc",
+      "price": 0.388,
+      "change_pct": 12.954876273653559,
+      "volume": 63951740,
+      "rvol": 2.3214235024467027,
+      "market_cap": 453866.89,
+      "float_shares": 880386,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.5M"
     },
     {
       "ticker": "ALIS",
@@ -1737,30 +1800,16 @@
     {
       "ticker": "NN",
       "name": "Nextnav Inc",
-      "price": 12.85,
-      "change_pct": 10.775862068965518,
-      "volume": 6950641,
-      "rvol": 1.894560142784872,
+      "price": 12.9,
+      "change_pct": 11.206896551724146,
+      "volume": 6950643,
+      "rvol": 1.8945606879317562,
       "market_cap": 1958194956.0,
       "float_shares": 129480916,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: float 129.5M > 100M, vol/float 0.05x < 0.1x"
-    },
-    {
-      "ticker": "CLOV",
-      "name": "Clover Health Investments Corp",
-      "price": 5.07,
-      "change_pct": 10.698689956331881,
-      "volume": 5392424,
-      "rvol": 1.2547176769816732,
-      "market_cap": 2432695684.54,
-      "float_shares": 416216095,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: float 416.2M > 100M, vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "BSAA",
@@ -1775,6 +1824,48 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol 11, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "CLOV",
+      "name": "Clover Health Investments Corp",
+      "price": 5.04,
+      "change_pct": 10.043668122270741,
+      "volume": 5405833,
+      "rvol": 1.257837704140266,
+      "market_cap": 2432695684.54,
+      "float_shares": 416216095,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: float 416.2M > 100M, vol/float 0.01x < 0.1x"
+    },
+    {
+      "ticker": "REFR",
+      "name": "Research Frontiers Inc",
+      "price": 0.684,
+      "change_pct": 9.897172236503874,
+      "volume": 106559,
+      "rvol": 0.595561194263422,
+      "market_cap": 21701710.01,
+      "float_shares": 29519518,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "LGO",
+      "name": "Largo Inc",
+      "price": 0.504,
+      "change_pct": 9.851787271142113,
+      "volume": 2976652,
+      "rvol": 2.4073751771168292,
+      "market_cap": 52569391.17,
+      "float_shares": 78707750,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.04x < 0.1x"
     },
     {
       "ticker": "WVVI",
@@ -1805,18 +1896,18 @@
       "reason": "Filtered: tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "LGO",
-      "name": "Largo Inc",
-      "price": 0.5,
-      "change_pct": 8.979947689625112,
-      "volume": 2974660,
-      "rvol": 2.405764141848744,
-      "market_cap": 52569391.17,
-      "float_shares": 78707750,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
+      "ticker": "SECZ",
+      "name": "Securitize Holdings, Inc.",
+      "price": 13.78,
+      "change_pct": 8.846761453396518,
+      "volume": 7934582,
+      "rvol": 1.9513856797881621,
+      "market_cap": 2066943572.1,
+      "float_shares": 142364590,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
       "passed": false,
-      "reason": "Filtered: vol/float 0.04x < 0.1x"
+      "reason": "Filtered: float 142.4M > 100M, vol/float 0.06x < 0.1x"
     },
     {
       "ticker": "EXOZ",
@@ -1847,20 +1938,6 @@
       "reason": "Filtered: tiny rvol 1.9x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "OTAI",
-      "name": "Starlink AI Acquisition Corp",
-      "price": 10.95,
-      "change_pct": 8.523290386521303,
-      "volume": 29418,
-      "rvol": 5.149308594433748,
-      "market_cap": 136227612.5,
-      "float_shares": 11001250,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 29,418, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
       "ticker": "NHTC",
       "name": "Natural Health Trends Corp",
       "price": 1.011,
@@ -1877,10 +1954,10 @@
     {
       "ticker": "GFUZ",
       "name": "Spring Valley Acquisition Corp. III",
-      "price": 9.43,
-      "change_pct": 8.266360505166462,
-      "volume": 664746,
-      "rvol": 4.062171923027566,
+      "price": 9.42,
+      "change_pct": 8.151549942594707,
+      "volume": 664857,
+      "rvol": 4.06285022885183,
       "market_cap": 553509359.91,
       "float_shares": 43063475,
       "cap_size": "small-cap",
@@ -1917,32 +1994,32 @@
       "reason": "Filtered: vol 10,092, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
+      "ticker": "GRI",
+      "name": "GRI Bio",
+      "price": 1.81,
+      "change_pct": 7.738095238095245,
+      "volume": 54495,
+      "rvol": 1.1402774580988053,
+      "market_cap": 3672673.2,
+      "float_shares": 2177913,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: tiny rvol 1.1x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $0.1M < $2.0M"
+    },
+    {
       "ticker": "GRAN",
       "name": "Grande Group Limited",
       "price": 1.26,
       "change_pct": 7.6923076923077,
-      "volume": 5338144,
-      "rvol": 8.011309779297221,
+      "volume": 5338780,
+      "rvol": 8.012264267040457,
       "market_cap": 29140312.5,
       "float_shares": 9712250,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": true,
       "reason": "Passed filters"
-    },
-    {
-      "ticker": "SECZ",
-      "name": "Securitize Holdings, Inc.",
-      "price": 13.63,
-      "change_pct": 7.66192733017378,
-      "volume": 7928759,
-      "rvol": 1.9499536044988266,
-      "market_cap": 2066943572.1,
-      "float_shares": 142364590,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: float 142.4M > 100M, vol/float 0.06x < 0.1x"
     },
     {
       "ticker": "CHR",
@@ -1959,6 +2036,20 @@
       "reason": "Filtered: tiny avg $vol, avg $vol $0.8M < $2.0M"
     },
     {
+      "ticker": "NIVF",
+      "name": "NewGenIvf Group",
+      "price": 0.087,
+      "change_pct": 7.274969173859418,
+      "volume": 19906398,
+      "rvol": 0.10610476817118027,
+      "market_cap": 226238.43,
+      "float_shares": 1548882,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: price $0.087, mktcap $0.2M"
+    },
+    {
       "ticker": "CDXS",
       "name": "Codexis Inc",
       "price": 1.461,
@@ -1971,20 +2062,6 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: float 101.7M > 100M, vol/float 0.01x < 0.1x"
-    },
-    {
-      "ticker": "WQEY",
-      "name": "Wiseqey Corp",
-      "price": 10.22,
-      "change_pct": 7.352941176470599,
-      "volume": 64305,
-      "rvol": 0.3463458772964501,
-      "market_cap": 38308841.76,
-      "float_shares": 4024038,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
     },
     {
       "ticker": "QETA",
@@ -2043,6 +2120,20 @@
       "reason": "Filtered: float 166.5M > 100M, vol/float 0.03x < 0.1x"
     },
     {
+      "ticker": "FRGT",
+      "name": "Freight Tech",
+      "price": 0.274,
+      "change_pct": 6.8642745709828406,
+      "volume": 8945636,
+      "rvol": 0.16898417319296838,
+      "market_cap": 157630.36,
+      "float_shares": 577638,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.2M"
+    },
+    {
       "ticker": "INLX",
       "name": "Intellinetics",
       "price": 5.38,
@@ -2055,20 +2146,6 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "AUID",
-      "name": "AUTHID INC",
-      "price": 0.364,
-      "change_pct": 7.058823529411754,
-      "volume": 197690,
-      "rvol": 0.09995510135565591,
-      "market_cap": 5684915.26,
-      "float_shares": 14886158,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: tiny price $0.364, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.7M < $2.0M"
     },
     {
       "ticker": "CALC",
@@ -2113,6 +2190,20 @@
       "reason": "Filtered: price $73.550, mktcap $29309.6M, float 425.0M > 100M, vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "NXAT",
+      "name": "Nexus Advanced Technologies",
+      "price": 0.67,
+      "change_pct": 6.755895474824728,
+      "volume": 811527,
+      "rvol": 0.253360703079877,
+      "market_cap": 2031269.45,
+      "float_shares": 2604189,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: tiny price $0.670, tiny rvol 0.3x, tiny vol/float 0.31x"
+    },
+    {
       "ticker": "MYSZ",
       "name": "My Size",
       "price": 1.44,
@@ -2139,6 +2230,34 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x"
+    },
+    {
+      "ticker": "STKE",
+      "name": "Sol Strategies Inc",
+      "price": 1.65,
+      "change_pct": 6.451612903225798,
+      "volume": 461573,
+      "rvol": 0.9651049006611438,
+      "market_cap": 61563985.0,
+      "float_shares": 30356907,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
+    },
+    {
+      "ticker": "WQEY",
+      "name": "Wiseqey Corp",
+      "price": 10.13,
+      "change_pct": 6.407563025210098,
+      "volume": 64632,
+      "rvol": 0.3481070949603322,
+      "market_cap": 38308841.76,
+      "float_shares": 4024038,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
     },
     {
       "ticker": "FSHP",
@@ -2237,72 +2356,16 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
-      "ticker": "FGC",
-      "name": "Fg Cmntys Holdings Inc",
-      "price": 6.91,
-      "change_pct": 5.981595092024549,
-      "volume": 104087,
-      "rvol": 1.9883663177198747,
-      "market_cap": 33223885.76,
-      "float_shares": 3824472,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x"
-    },
-    {
-      "ticker": "HPAI",
-      "name": "Helport AI Ltd",
-      "price": 0.325,
-      "change_pct": 6.035889070146824,
-      "volume": 93431,
-      "rvol": 0.6940763082043205,
-      "market_cap": 11538777.92,
-      "float_shares": 8093751,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
-      "ticker": "BRAI",
-      "name": "Braiin Limited",
-      "price": 4.599,
-      "change_pct": 5.967741935483879,
-      "volume": 32313,
-      "rvol": 0.6096907488820543,
-      "market_cap": 894422909.52,
-      "float_shares": 29679657,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol 32,313, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
-      "ticker": "SXTP",
-      "name": "60 degrees pharmaceuticals, Inc.",
-      "price": 1.03,
-      "change_pct": 5.912596401028277,
-      "volume": 93143,
-      "rvol": 0.19001407617454458,
-      "market_cap": 3420270.83,
-      "float_shares": 2834993,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $0.5M < $2.0M"
     }
   ],
   "all_losers": [
     {
       "ticker": "ALHC",
       "name": "Alignment Healthcare, Inc.",
-      "price": 6.68,
-      "change_pct": -23.3065442020666,
-      "volume": 10932386,
-      "rvol": 1.0683353817507748,
+      "price": 6.71,
+      "change_pct": -22.96211251435133,
+      "volume": 10933070,
+      "rvol": 1.0684022236461415,
       "market_cap": 1806760147.0,
       "float_shares": 207435149,
       "cap_size": "small-cap",
@@ -2369,14 +2432,28 @@
     {
       "ticker": "MOBX",
       "name": "Mobix Labs Inc",
-      "price": 1.02,
-      "change_pct": -9.734513274336273,
-      "volume": 12308554,
-      "rvol": 0.7547416496666329,
+      "price": 1.011,
+      "change_pct": -10.530973451327434,
+      "volume": 12310706,
+      "rvol": 0.754873607005414,
       "market_cap": 20285810.0,
       "float_shares": 17952045,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ENLV",
+      "name": "Enlivex Ltd",
+      "price": 0.25,
+      "change_pct": -9.747292418772572,
+      "volume": 32571605,
+      "rvol": 7.987410333046582,
+      "market_cap": 5514679.0,
+      "float_shares": 19908591,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2405,20 +2482,6 @@
       "float_shares": 1511651,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "XELB",
-      "name": "Xcel Brands",
-      "price": 0.581,
-      "change_pct": -9.218750000000007,
-      "volume": 19762469,
-      "rvol": 11.502179087972529,
-      "market_cap": 4198575.0,
-      "float_shares": 6560274,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2458,21 +2521,7 @@
       "volume": 83980,
       "rvol": 1.2036691987960442,
       "market_cap": 3921220.0,
-      "float_shares": 5303426,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "JZ",
-      "name": "Jianzhi Education Technology Group Co Ltd",
-      "price": 0.767,
-      "change_pct": -7.9894433781190015,
-      "volume": 286962875,
-      "rvol": 9.34343445854451,
-      "market_cap": 12010768.0,
-      "float_shares": 2377874,
+      "float_shares": 5423542,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2493,14 +2542,14 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "QNME",
-      "name": "Quanome Technologies Inc",
-      "price": 0.765,
-      "change_pct": -7.720144752714107,
-      "volume": 67718646,
-      "rvol": 6.567395314285049,
-      "market_cap": 28540446.0,
-      "float_shares": 34427559,
+      "ticker": "JZ",
+      "name": "Jianzhi Education Technology Group Co Ltd",
+      "price": 0.768,
+      "change_pct": -7.869481765834932,
+      "volume": 286975280,
+      "rvol": 9.343838362026652,
+      "market_cap": 12010768.0,
+      "float_shares": 2377874,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2515,20 +2564,6 @@
       "rvol": 7.077651195329651,
       "market_cap": 11979585.0,
       "float_shares": 9815000,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ENLV",
-      "name": "Enlivex Ltd",
-      "price": 0.256,
-      "change_pct": -7.581227436823111,
-      "volume": 32569619,
-      "rvol": 7.986923313849296,
-      "market_cap": 5514679.0,
-      "float_shares": 19908591,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -2563,20 +2598,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "GMEX",
-      "name": "GMEX ROBOTICS",
-      "price": 1.8,
-      "change_pct": -7.2164948453608195,
-      "volume": 775829,
-      "rvol": 1.7618262538179423,
-      "market_cap": 1459904.0,
-      "float_shares": 752439,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "CSAI",
       "name": "Cloudastructure Inc",
       "price": 2.396,
@@ -2587,6 +2608,20 @@
       "float_shares": 885528,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "QNME",
+      "name": "Quanome Technologies Inc",
+      "price": 0.77,
+      "change_pct": -7.1170084439083166,
+      "volume": 67735748,
+      "rvol": 6.569053876605756,
+      "market_cap": 28540446.0,
+      "float_shares": 34427559,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2619,34 +2654,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "EPSM",
-      "name": "Epsium Enterprise Ltd.",
-      "price": 1.171,
-      "change_pct": -7.063492063492061,
-      "volume": 184889,
-      "rvol": 3.463508298677457,
-      "market_cap": 16931922.0,
-      "float_shares": 2649034,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "KAPA",
-      "name": "KAIROS PHARMA LTD",
-      "price": 0.895,
-      "change_pct": -6.72225117248567,
-      "volume": 5795881,
-      "rvol": 3.3737526434383645,
-      "market_cap": 3248274.0,
-      "float_shares": 3385383,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "MFI",
       "name": "mF International Ltd",
       "price": 8.68,
@@ -2665,10 +2672,24 @@
       "name": "T Mobile Us",
       "price": 159.9,
       "change_pct": -6.66044013776195,
-      "volume": 4371816,
-      "rvol": 1.065500059102159,
+      "volume": 4372473,
+      "rvol": 1.065660183301995,
       "market_cap": 183759374023.0,
       "float_shares": 1072671613,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "T",
+      "name": "At&T",
+      "price": 23.23,
+      "change_pct": -6.594290309609974,
+      "volume": 53144044,
+      "rvol": 1.5866422412813792,
+      "market_cap": 170418831115.0,
+      "float_shares": 6852385650,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -2689,20 +2710,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "T",
-      "name": "At&T",
-      "price": 23.24,
-      "change_pct": -6.554081222356263,
-      "volume": 53140134,
-      "rvol": 1.5865255062590422,
-      "market_cap": 170418831115.0,
-      "float_shares": 6852385650,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "SWVL",
       "name": "SWVL HOLDINGS CORP",
       "price": 3.57,
@@ -2713,6 +2720,20 @@
       "float_shares": 17934390,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "XELB",
+      "name": "Xcel Brands",
+      "price": 0.6,
+      "change_pct": -6.250000000000005,
+      "volume": 19768292,
+      "rvol": 11.50556819835288,
+      "market_cap": 4198575.0,
+      "float_shares": 6560274,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2731,16 +2752,16 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "VZ",
-      "name": "Verizon Comms",
-      "price": 43.5,
-      "change_pct": -6.1488673139158605,
-      "volume": 22470005,
-      "rvol": 1.1677935499455627,
-      "market_cap": 192573830612.0,
-      "float_shares": 4154775202,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
+      "ticker": "KAPA",
+      "name": "KAIROS PHARMA LTD",
+      "price": 0.9,
+      "change_pct": -6.201146430432517,
+      "volume": 5799279,
+      "rvol": 3.375730601833715,
+      "market_cap": 3248274.0,
+      "float_shares": 3385383,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2754,6 +2775,20 @@
       "market_cap": 52062452.0,
       "float_shares": 8009608,
       "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "VZ",
+      "name": "Verizon Comms",
+      "price": 43.53,
+      "change_pct": -6.084142394822007,
+      "volume": 22484769,
+      "rvol": 1.1685608530223264,
+      "market_cap": 192573830612.0,
+      "float_shares": 4154775202,
+      "cap_size": "small-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -2791,8 +2826,8 @@
       "name": "Inno Holdings Inc",
       "price": 3.6,
       "change_pct": -6.005221932114882,
-      "volume": 13284498,
-      "rvol": 9.829170914913233,
+      "volume": 13285210,
+      "rvol": 9.829697722150616,
       "market_cap": 9653825.0,
       "float_shares": 2520581,
       "cap_size": "nano-cap",
@@ -2819,8 +2854,8 @@
       "name": "Onconetix",
       "price": 0.616,
       "change_pct": -5.85358398288247,
-      "volume": 46802722,
-      "rvol": 3.709956166405003,
+      "volume": 46807552,
+      "rvol": 3.7103390306384925,
       "market_cap": 2866175.0,
       "float_shares": 5241486,
       "cap_size": "nano-cap",
@@ -2839,6 +2874,20 @@
       "float_shares": 11079337,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "GMEX",
+      "name": "GMEX ROBOTICS",
+      "price": 1.83,
+      "change_pct": -5.670103092783499,
+      "volume": 776384,
+      "rvol": 1.76308660058362,
+      "market_cap": 1459904.0,
+      "float_shares": 752439,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -2885,20 +2934,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "RZAI",
-      "name": "Roze AI Inc",
-      "price": 11.62,
-      "change_pct": -5.451586655817738,
-      "volume": 533159,
-      "rvol": 1.3431321671134042,
-      "market_cap": 683857250.0,
-      "float_shares": 55643389,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "RFAI",
       "name": "Rf Acquisition Corp Ii",
       "price": 37.44,
@@ -2927,6 +2962,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "RZAI",
+      "name": "Roze AI Inc",
+      "price": 11.64,
+      "change_pct": -5.2888527257933164,
+      "volume": 533844,
+      "rvol": 1.344857816562204,
+      "market_cap": 683857250.0,
+      "float_shares": 55643389,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "TRAW",
       "name": "Traws Pharma",
       "price": 0.455,
@@ -2945,8 +2994,8 @@
       "name": "Volato Group Inc-A",
       "price": 0.292,
       "change_pct": -5.287058060330859,
-      "volume": 85138517,
-      "rvol": 0.5893631894576553,
+      "volume": 85138727,
+      "rvol": 0.5893646431624431,
       "market_cap": 16535130.0,
       "float_shares": 53633248,
       "cap_size": "nano-cap",
@@ -2973,8 +3022,8 @@
       "name": "Alpha Modus",
       "price": 2.21,
       "change_pct": -5.150214592274683,
-      "volume": 4490507,
-      "rvol": 0.1800006357433766,
+      "volume": 4490953,
+      "rvol": 0.18001851352055,
       "market_cap": 11486354.0,
       "float_shares": 56607824,
       "cap_size": "nano-cap",
@@ -2983,21 +3032,89 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "DKI",
-      "name": "DARKIRIS INC.",
-      "price": 0.708,
-      "change_pct": -5.055652407134245,
-      "volume": 78690511,
-      "rvol": 5.959145999113366,
-      "market_cap": 1564170.0,
-      "float_shares": 1667701,
+      "ticker": "INAB",
+      "name": "In8Bio, Inc.",
+      "price": 1.31,
+      "change_pct": -5.072463768115931,
+      "volume": 20948,
+      "rvol": 0.3831647491357392,
+      "market_cap": 13604568.0,
+      "float_shares": 9858383,
       "cap_size": "nano-cap",
-      "is_penny_stock": true,
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "LXEH",
+      "name": "Lixiang Education Holding Co . Ltd",
+      "price": 1.7,
+      "change_pct": -5.027932960893859,
+      "volume": 61317,
+      "rvol": 1.8181467753891771,
+      "market_cap": 3430833.0,
+      "float_shares": 1871667,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
     }
   ],
   "live_quotes": {
+    "XRTX": {
+      "price": 1.85,
+      "open": 1.75,
+      "high": 1.9,
+      "low": 1.72,
+      "close": 1.85,
+      "preClose": 1.745,
+      "volume": 10393145,
+      "changeRatio": 0.0602,
+      "marketValue": 3360645.25,
+      "name": "Xortx Therapeutics Inc",
+      "_timestamp": "2026-10-08T23:15:56.359483Z"
+    },
+    "VEEA": {
+      "price": 3.87,
+      "open": 4.49,
+      "high": 4.49,
+      "low": 3.61,
+      "close": 3.87,
+      "preClose": 4.71,
+      "volume": 4059850,
+      "changeRatio": -0.1783,
+      "marketValue": 12038439.96,
+      "name": "VEEA INC",
+      "_timestamp": "2026-10-08T23:15:56.359521Z"
+    },
+    "GRAN": {
+      "price": 1.17,
+      "open": 1.0,
+      "high": 1.63,
+      "low": 0.9718,
+      "close": 1.17,
+      "preClose": 0.9503,
+      "volume": 5339316,
+      "changeRatio": 0.2312,
+      "marketValue": 29140312.5,
+      "name": "Grande Group Limited",
+      "_timestamp": "2026-10-08T23:15:56.359537Z"
+    },
+    "OLB": {
+      "price": 0.549,
+      "open": 0.5098,
+      "high": 0.6952,
+      "low": 0.46,
+      "close": 0.549,
+      "preClose": 0.387,
+      "volume": 404114703,
+      "changeRatio": 0.4186,
+      "marketValue": 13194078.57,
+      "name": "OLB Group Inc",
+      "_timestamp": "2026-10-08T23:15:56.359548Z"
+    }
+  },
+  "previous_live_quotes": {
     "XRTX": {
       "price": 1.85,
       "open": 1.75,
@@ -3051,78 +3168,11 @@
       "_timestamp": "2026-10-08T23:13:03.977593Z"
     }
   },
-  "previous_live_quotes": {
-    "XRTX": {
-      "price": 1.85,
-      "open": 1.75,
-      "high": 1.9,
-      "low": 1.72,
-      "close": 1.85,
-      "preClose": 1.745,
-      "volume": 10343161,
-      "changeRatio": 0.0602,
-      "marketValue": 3360645.25,
-      "name": "Xortx Therapeutics Inc",
-      "_timestamp": "2026-10-08T23:10:01.508760Z"
-    },
-    "GRAN": {
-      "price": 1.17,
-      "open": 1.0,
-      "high": 1.63,
-      "low": 0.9718,
-      "close": 1.17,
-      "preClose": 0.9503,
-      "volume": 5335867,
-      "changeRatio": 0.2312,
-      "marketValue": 29140312.5,
-      "name": "Grande Group Limited",
-      "_timestamp": "2026-10-08T23:10:01.508793Z"
-    },
-    "VEEA": {
-      "price": 3.87,
-      "open": 4.49,
-      "high": 4.49,
-      "low": 3.61,
-      "close": 3.87,
-      "preClose": 4.71,
-      "volume": 3992797,
-      "changeRatio": -0.1783,
-      "marketValue": 12038439.96,
-      "name": "VEEA INC",
-      "_timestamp": "2026-10-08T23:10:01.508808Z"
-    },
-    "SAIQ": {
-      "price": 5.51,
-      "open": 3.8,
-      "high": 5.62,
-      "low": 3.572,
-      "close": 5.51,
-      "preClose": 3.89,
-      "volume": 6445801,
-      "changeRatio": 0.4165,
-      "marketValue": 24764358.89,
-      "name": "WISeSat.Space Holdings Corp",
-      "_timestamp": "2026-10-08T23:10:01.508819Z"
-    },
-    "OLB": {
-      "price": 0.549,
-      "open": 0.5098,
-      "high": 0.6952,
-      "low": 0.46,
-      "close": 0.549,
-      "preClose": 0.387,
-      "volume": 403845239,
-      "changeRatio": 0.4186,
-      "marketValue": 13194078.57,
-      "name": "OLB Group Inc",
-      "_timestamp": "2026-10-08T23:10:01.508829Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "10:12 AM AEST",
+    "market_time": "10:15 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
