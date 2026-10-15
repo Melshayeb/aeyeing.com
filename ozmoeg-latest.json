@@ -1,14 +1,794 @@
 {
-  "last_updated": "2026-10-15T22:22:06.522141Z",
+  "last_updated": "2026-10-15T22:24:47.456353Z",
   "scan_results": [
+    {
+      "ticker": "PMI",
+      "name": "Picard Medical, Inc.",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 11.22,
+      "change_pct": 12.200000000000006,
+      "volume": 1484921,
+      "market_cap": 23386340.0,
+      "float_shares": 1359560,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 13), 8-K (Oct 06), 8-K (Aug 20)",
+      "result": "+12.2% \u00b7 Entry $11.22 \u00b7 T1 $11.67 \u00b7 T2 $11.89 \u00b7 T3 $12.34",
+      "plan": {
+        "valid": true,
+        "ticker": "PMI",
+        "entry": 11.22,
+        "stop": 10.9956,
+        "targets": {
+          "t1": 11.6688,
+          "t2": 11.8932,
+          "t3": 12.342
+        },
+        "risk_per_share": 0.2244,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 26,
+        "position_value": 291.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$10.9956"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "PMI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Picard Medical Inc trading resumes",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T20:02:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Inc trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T19:35:25.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T21:06:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T18:18:53.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:06:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T09:37:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:27:52.433+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Picard Medical Inc trading resumes",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T20:02:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Inc trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T19:35:25.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T21:06:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T18:18:53.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:06:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T09:37:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:27:52.433+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Picard Medical Inc trading resumes",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "PMI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 4.0,
+        "rvol": 0.85,
+        "volume_indicator": "low",
+        "volume": 1484921,
+        "adv": 1753457,
+        "recent_pct_of_adv": 84.69,
+        "volume_acceleration": 1.576,
+        "price_velocity_pct": 33.268,
+        "buy_pressure_pct": 53.94,
+        "large_bar_count": 89,
+        "vwap_distance_pct": 33.369,
+        "recent_volume": 1484921,
+        "prior_volume": 0,
+        "median_range": 0.1168,
+        "last_price": 10.0,
+        "vwap": 15.008022461172876,
+        "last_trade_time": "2026-10-15T22:23:05.565000+00:00",
+        "stale_age_seconds": 99
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 11.4
+    },
+    {
+      "ticker": "JBDI",
+      "name": "JBDI Holdings Ltd",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.77,
+      "change_pct": 18.376068376068382,
+      "volume": 10788204,
+      "market_cap": 22264032.96,
+      "float_shares": 3484476,
+      "country": "Singapore",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+18.4% \u00b7 Entry $2.77 \u00b7 T1 $2.88 \u00b7 T2 $2.94 \u00b7 T3 $3.05",
+      "plan": {
+        "valid": true,
+        "ticker": "JBDI",
+        "entry": 2.77,
+        "stop": 2.7146,
+        "targets": {
+          "t1": 2.8808,
+          "t2": 2.9362,
+          "t3": 3.047
+        },
+        "risk_per_share": 0.0554,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 108,
+        "position_value": 299.16,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.7146"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "JBDI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T13:52:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:29:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T14:04:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:59:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:17:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T10:19:52.698+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T13:52:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:29:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T14:04:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:59:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:17:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T10:19:52.698+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "JBDI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 6.35,
+        "volume_indicator": "high",
+        "volume": 10788204,
+        "adv": 1699060,
+        "recent_pct_of_adv": 634.95,
+        "volume_acceleration": -0.871,
+        "price_velocity_pct": 3.972,
+        "buy_pressure_pct": 50.17,
+        "large_bar_count": 231,
+        "vwap_distance_pct": 10.244,
+        "recent_volume": 10788204,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 2.34,
+        "vwap": 2.6070561926011204,
+        "last_trade_time": "2026-10-15T22:23:19.958000+00:00",
+        "stale_age_seconds": 84
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.789
+    },
+    {
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.17,
+      "change_pct": 9.595959595959593,
+      "volume": 46675257,
+      "market_cap": 15538840.02,
+      "float_shares": 4387748,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 14), 8-K (Sep 25), 8-K (Sep 03)",
+      "result": "+9.6% \u00b7 Entry $2.17 \u00b7 T1 $2.26 \u00b7 T2 $2.30 \u00b7 T3 $2.39",
+      "plan": {
+        "valid": true,
+        "ticker": "NCPL",
+        "entry": 2.17,
+        "stop": 2.1266,
+        "targets": {
+          "t1": 2.2568,
+          "t2": 2.3002,
+          "t3": 2.387
+        },
+        "risk_per_share": 0.0434,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 138,
+        "position_value": 299.46,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.1266"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "NCPL",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:06:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
+            "source": "Webull",
+            "time": "15h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T06:57:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T22:09:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T21:27:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:17:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:01:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:06:42.828+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T08:29:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
+            "source": "Webull",
+            "time": "4d ago \u00b7 11 Oct",
+            "raw_time": "2026-10-11T06:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
+            "source": "Webull",
+            "time": "5d ago \u00b7 10 Oct",
+            "raw_time": "2026-10-10T13:59:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T17:21:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T14:08:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:06:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
+            "source": "Webull",
+            "time": "15h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T06:57:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T22:09:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T21:27:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:17:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:01:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:06:42.828+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T08:29:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
+            "source": "Webull",
+            "time": "4d ago \u00b7 11 Oct",
+            "raw_time": "2026-10-11T06:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
+            "source": "Webull",
+            "time": "5d ago \u00b7 10 Oct",
+            "raw_time": "2026-10-10T13:59:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T17:21:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T14:08:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "NCPL",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.09,
+        "volume_indicator": "high",
+        "volume": 46675257,
+        "adv": 22300523,
+        "recent_pct_of_adv": 209.3,
+        "volume_acceleration": -0.5,
+        "price_velocity_pct": 9.465,
+        "buy_pressure_pct": 48.33,
+        "large_bar_count": 161,
+        "vwap_distance_pct": 5.875,
+        "recent_volume": 46675257,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 1.98,
+        "vwap": 2.1035848270936897,
+        "last_trade_time": "2026-10-15T22:23:14.525000+00:00",
+        "stale_age_seconds": 89
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.14
+    },
     {
       "ticker": "TCRT",
       "name": "Alaunos Therapeutics, Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.94,
-      "change_pct": 34.8623853211009,
-      "volume": 15598773,
+      "price": 2.96,
+      "change_pct": 35.77981651376146,
+      "volume": 15778664,
       "market_cap": 6381154.3,
       "float_shares": 2449482,
       "country": "United States",
@@ -17,23 +797,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Oct 13), 8-K (Oct 09), 8-K (Sep 22)",
-      "result": "+34.9% \u00b7 Entry $2.94 \u00b7 T1 $3.06 \u00b7 T2 $3.12 \u00b7 T3 $3.23",
+      "result": "+35.8% \u00b7 Entry $2.96 \u00b7 T1 $3.08 \u00b7 T2 $3.14 \u00b7 T3 $3.26",
       "plan": {
         "valid": true,
         "ticker": "TCRT",
-        "entry": 2.94,
-        "stop": 2.8812,
+        "entry": 2.96,
+        "stop": 2.9008,
         "targets": {
-          "t1": 3.0576,
-          "t2": 3.1164,
-          "t3": 3.234
+          "t1": 3.0784,
+          "t2": 3.1376,
+          "t3": 3.256
         },
-        "risk_per_share": 0.0588,
+        "risk_per_share": 0.0592,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 102,
-        "position_value": 299.88,
+        "shares": 101,
+        "position_value": 298.96,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +821,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.8812"
+          "hard_stop": "$2.9008"
         }
       },
       "ta": {
@@ -432,843 +1212,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.57,
+        "rvol": 2.6,
         "volume_indicator": "high",
-        "volume": 15598773,
+        "volume": 15778664,
         "adv": 6075788,
-        "recent_pct_of_adv": 256.74,
-        "volume_acceleration": 1.448,
-        "price_velocity_pct": 1.864,
-        "buy_pressure_pct": 50.09,
-        "large_bar_count": 242,
+        "recent_pct_of_adv": 259.7,
+        "volume_acceleration": 1.446,
+        "price_velocity_pct": 1.632,
+        "buy_pressure_pct": 50.14,
+        "large_bar_count": 244,
         "vwap_distance_pct": 1.27,
-        "recent_volume": 15598773,
+        "recent_volume": 15778664,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 2.18,
         "vwap": 2.152653977385218,
-        "last_trade_time": "2026-10-15T22:20:24.509000+00:00",
-        "stale_age_seconds": 99
+        "last_trade_time": "2026-10-15T22:23:22.400000+00:00",
+        "stale_age_seconds": 81
       },
       "date": "2026-10-16",
-      "time": "09:22:04",
+      "time": "09:24:45",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 2.88
-    },
-    {
-      "ticker": "NCPL",
-      "name": "Netcapital Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.14,
-      "change_pct": 8.080808080808088,
-      "volume": 46664618,
-      "market_cap": 15538840.02,
-      "float_shares": 4387748,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 14), 8-K (Sep 25), 8-K (Sep 03)",
-      "result": "+8.1% \u00b7 Entry $2.14 \u00b7 T1 $2.23 \u00b7 T2 $2.27 \u00b7 T3 $2.35",
-      "plan": {
-        "valid": true,
-        "ticker": "NCPL",
-        "entry": 2.14,
-        "stop": 2.0972,
-        "targets": {
-          "t1": 2.2256,
-          "t2": 2.2684,
-          "t3": 2.354
-        },
-        "risk_per_share": 0.0428,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 140,
-        "position_value": 299.6,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0972"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "NCPL",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:06:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-            "source": "Webull",
-            "time": "15h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T06:57:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T22:09:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T21:27:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:17:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:01:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:06:42.828+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T08:29:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
-            "source": "Webull",
-            "time": "4d ago \u00b7 11 Oct",
-            "raw_time": "2026-10-11T06:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
-            "source": "Webull",
-            "time": "5d ago \u00b7 10 Oct",
-            "raw_time": "2026-10-10T13:59:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T17:21:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T14:08:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:06:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-            "source": "Webull",
-            "time": "15h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T06:57:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T22:09:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T21:27:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:17:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:01:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:06:42.828+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T08:29:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
-            "source": "Webull",
-            "time": "4d ago \u00b7 11 Oct",
-            "raw_time": "2026-10-11T06:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
-            "source": "Webull",
-            "time": "5d ago \u00b7 10 Oct",
-            "raw_time": "2026-10-10T13:59:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T17:21:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T14:08:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "NCPL",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.09,
-        "volume_indicator": "high",
-        "volume": 46664618,
-        "adv": 22300523,
-        "recent_pct_of_adv": 209.25,
-        "volume_acceleration": -0.494,
-        "price_velocity_pct": 9.174,
-        "buy_pressure_pct": 48.38,
-        "large_bar_count": 161,
-        "vwap_distance_pct": 5.875,
-        "recent_volume": 46664618,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 1.98,
-        "vwap": 2.1035848270936897,
-        "last_trade_time": "2026-10-15T22:20:24.606000+00:00",
-        "stale_age_seconds": 99
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.16
-    },
-    {
-      "ticker": "JBDI",
-      "name": "JBDI Holdings Ltd",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.789,
-      "change_pct": 19.1880341880342,
-      "volume": 10785944,
-      "market_cap": 22264032.96,
-      "float_shares": 3484476,
-      "country": "Singapore",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+19.2% \u00b7 Entry $2.79 \u00b7 T1 $2.90 \u00b7 T2 $2.96 \u00b7 T3 $3.07",
-      "plan": {
-        "valid": true,
-        "ticker": "JBDI",
-        "entry": 2.789,
-        "stop": 2.7332,
-        "targets": {
-          "t1": 2.9006,
-          "t2": 2.9564,
-          "t3": 3.068
-        },
-        "risk_per_share": 0.0558,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 107,
-        "position_value": 298.42,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.7332"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "JBDI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T13:52:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:29:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T14:04:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:59:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:17:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T10:19:52.698+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T13:52:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:29:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T14:04:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:59:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:17:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T10:19:52.698+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "JBDI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 6.35,
-        "volume_indicator": "high",
-        "volume": 10785944,
-        "adv": 1699060,
-        "recent_pct_of_adv": 634.82,
-        "volume_acceleration": -0.87,
-        "price_velocity_pct": 3.056,
-        "buy_pressure_pct": 50.1,
-        "large_bar_count": 231,
-        "vwap_distance_pct": 10.244,
-        "recent_volume": 10785944,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 2.34,
-        "vwap": 2.6070561926011204,
-        "last_trade_time": "2026-10-15T22:20:24.339000+00:00",
-        "stale_age_seconds": 99
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.76
-    },
-    {
-      "ticker": "PMI",
-      "name": "Picard Medical, Inc.",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 11.4,
-      "change_pct": 14.000000000000004,
-      "volume": 1484570,
-      "market_cap": 23386340.0,
-      "float_shares": 1359560,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 13), 8-K (Oct 06), 8-K (Aug 20)",
-      "result": "+14.0% \u00b7 Entry $11.40 \u00b7 T1 $11.86 \u00b7 T2 $12.08 \u00b7 T3 $12.54",
-      "plan": {
-        "valid": true,
-        "ticker": "PMI",
-        "entry": 11.4,
-        "stop": 11.172,
-        "targets": {
-          "t1": 11.856,
-          "t2": 12.084,
-          "t3": 12.54
-        },
-        "risk_per_share": 0.228,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 26,
-        "position_value": 296.4,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$11.172"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "PMI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Picard Medical Inc trading resumes",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T20:02:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Inc trading halted, volatility trading pause",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T19:35:25.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T21:06:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T18:18:53.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:06:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T09:37:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:27:52.433+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Picard Medical Inc trading resumes",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T20:02:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Inc trading halted, volatility trading pause",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T19:35:25.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T21:06:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T18:18:53.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:06:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T09:37:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:27:52.433+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Picard Medical Inc trading resumes",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "PMI",
-        "valid": true,
-        "stale": true,
-        "no_move": false,
-        "tape_score": 4.0,
-        "rvol": 0.85,
-        "volume_indicator": "low",
-        "volume": 1484570,
-        "adv": 1753457,
-        "recent_pct_of_adv": 84.67,
-        "volume_acceleration": 1.728,
-        "price_velocity_pct": 33.2,
-        "buy_pressure_pct": 53.94,
-        "large_bar_count": 88,
-        "vwap_distance_pct": 33.369,
-        "recent_volume": 1484570,
-        "prior_volume": 0,
-        "median_range": 0.1181,
-        "last_price": 10.0,
-        "vwap": 15.008022461172876,
-        "last_trade_time": "2026-10-15T22:15:44.649000+00:00",
-        "stale_age_seconds": 379
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": null
+      "previous_price": 2.94
     },
     {
       "ticker": "XXII",
       "name": "22Nd Century",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 1.059,
-      "change_pct": 68.84566326530613,
-      "volume": 8748526,
+      "price": 1.089,
+      "change_pct": 73.62882653061224,
+      "volume": 8984126,
       "market_cap": 447817.04,
       "float_shares": 529181,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (68.8%, rvol 43.2x)",
+      "scan_reason": "Top gainer tape exempt (73.6%, rvol 44.4x)",
       "scan_passed": true,
       "sec_filings": "8-K (Sep 01), 424B3 (Aug 14), 8-K (Aug 13)",
-      "result": "Top-10 gainer tape momentum \u00b7 +68.8%",
+      "result": "Top-10 gainer tape momentum \u00b7 +73.6%",
       "plan": {
         "valid": true,
         "ticker": "XXII",
-        "entry": 1.059,
-        "stop": 1.0378,
+        "entry": 1.089,
+        "stop": 1.0672,
         "targets": {
-          "t1": 1.1014,
-          "t2": 1.1226,
-          "t3": 1.165
+          "t1": 1.1326,
+          "t2": 1.1544,
+          "t3": 1.198
         },
-        "risk_per_share": 0.0212,
+        "risk_per_share": 0.0218,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 283,
-        "position_value": 299.7,
+        "shares": 275,
+        "position_value": 299.47,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1276,7 +1276,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.0378"
+          "hard_stop": "$1.0672"
         }
       },
       "ta": {
@@ -1340,40 +1340,820 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 43.22,
+        "rvol": 44.38,
         "volume_indicator": "high",
-        "volume": 8748526,
+        "volume": 8984126,
         "adv": 202418,
-        "recent_pct_of_adv": 4322.01,
+        "recent_pct_of_adv": 4438.4,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 39.113,
-        "buy_pressure_pct": 51.15,
+        "price_velocity_pct": 38.81,
+        "buy_pressure_pct": 50.92,
         "large_bar_count": 29,
         "vwap_distance_pct": 3.734,
-        "recent_volume": 8748526,
+        "recent_volume": 8984126,
         "prior_volume": 0,
-        "median_range": 0.0264,
+        "median_range": 0.026,
         "last_price": 0.6272,
         "vwap": 0.6046212105160905,
-        "last_trade_time": "2026-10-15T22:20:24.598000+00:00",
-        "stale_age_seconds": 98
+        "last_trade_time": "2026-10-15T22:23:23.557000+00:00",
+        "stale_age_seconds": 80
       },
       "date": "2026-10-16",
-      "time": "09:22:05",
+      "time": "09:24:46",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.12
+      "previous_price": 1.059
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "PMI",
+      "name": "Picard Medical, Inc.",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 11.22,
+      "change_pct": 12.200000000000006,
+      "volume": 1484921,
+      "market_cap": 23386340.0,
+      "float_shares": 1359560,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 13), 8-K (Oct 06), 8-K (Aug 20)",
+      "result": "+12.2% \u00b7 Entry $11.22 \u00b7 T1 $11.67 \u00b7 T2 $11.89 \u00b7 T3 $12.34",
+      "plan": {
+        "valid": true,
+        "ticker": "PMI",
+        "entry": 11.22,
+        "stop": 10.9956,
+        "targets": {
+          "t1": 11.6688,
+          "t2": 11.8932,
+          "t3": 12.342
+        },
+        "risk_per_share": 0.2244,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 26,
+        "position_value": 291.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$10.9956"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "PMI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Picard Medical Inc trading resumes",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T20:02:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Inc trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T19:35:25.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T21:06:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T18:18:53.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:06:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T09:37:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:27:52.433+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Picard Medical Inc trading resumes",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T20:02:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Inc trading halted, volatility trading pause",
+            "source": "Webull",
+            "time": "2h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T19:35:25.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T21:06:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T18:18:53.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:06:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T09:37:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:27:52.433+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Picard Medical Inc trading resumes",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "PMI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 4.0,
+        "rvol": 0.85,
+        "volume_indicator": "low",
+        "volume": 1484921,
+        "adv": 1753457,
+        "recent_pct_of_adv": 84.69,
+        "volume_acceleration": 1.576,
+        "price_velocity_pct": 33.268,
+        "buy_pressure_pct": 53.94,
+        "large_bar_count": 89,
+        "vwap_distance_pct": 33.369,
+        "recent_volume": 1484921,
+        "prior_volume": 0,
+        "median_range": 0.1168,
+        "last_price": 10.0,
+        "vwap": 15.008022461172876,
+        "last_trade_time": "2026-10-15T22:23:05.565000+00:00",
+        "stale_age_seconds": 99
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 11.4
+    },
+    {
+      "ticker": "JBDI",
+      "name": "JBDI Holdings Ltd",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.77,
+      "change_pct": 18.376068376068382,
+      "volume": 10788204,
+      "market_cap": 22264032.96,
+      "float_shares": 3484476,
+      "country": "Singapore",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+18.4% \u00b7 Entry $2.77 \u00b7 T1 $2.88 \u00b7 T2 $2.94 \u00b7 T3 $3.05",
+      "plan": {
+        "valid": true,
+        "ticker": "JBDI",
+        "entry": 2.77,
+        "stop": 2.7146,
+        "targets": {
+          "t1": 2.8808,
+          "t2": 2.9362,
+          "t3": 3.047
+        },
+        "risk_per_share": 0.0554,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 108,
+        "position_value": 299.16,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.7146"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "JBDI",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T13:52:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:29:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T14:04:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:59:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:17:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T10:19:52.698+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T13:52:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T17:29:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T14:04:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:59:11.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
+            "source": "Webull",
+            "time": "2d ago \u00b7 13 Oct",
+            "raw_time": "2026-10-13T13:17:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T10:19:52.698+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "JBDI",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 6.35,
+        "volume_indicator": "high",
+        "volume": 10788204,
+        "adv": 1699060,
+        "recent_pct_of_adv": 634.95,
+        "volume_acceleration": -0.871,
+        "price_velocity_pct": 3.972,
+        "buy_pressure_pct": 50.17,
+        "large_bar_count": 231,
+        "vwap_distance_pct": 10.244,
+        "recent_volume": 10788204,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 2.34,
+        "vwap": 2.6070561926011204,
+        "last_trade_time": "2026-10-15T22:23:19.958000+00:00",
+        "stale_age_seconds": 84
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.789
+    },
+    {
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.17,
+      "change_pct": 9.595959595959593,
+      "volume": 46675257,
+      "market_cap": 15538840.02,
+      "float_shares": 4387748,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 14), 8-K (Sep 25), 8-K (Sep 03)",
+      "result": "+9.6% \u00b7 Entry $2.17 \u00b7 T1 $2.26 \u00b7 T2 $2.30 \u00b7 T3 $2.39",
+      "plan": {
+        "valid": true,
+        "ticker": "NCPL",
+        "entry": 2.17,
+        "stop": 2.1266,
+        "targets": {
+          "t1": 2.2568,
+          "t2": 2.3002,
+          "t3": 2.387
+        },
+        "risk_per_share": 0.0434,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 138,
+        "position_value": 299.46,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.1266"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "NCPL",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:06:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
+            "source": "Webull",
+            "time": "15h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T06:57:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T22:09:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T21:27:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:17:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:01:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:06:42.828+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T08:29:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
+            "source": "Webull",
+            "time": "4d ago \u00b7 11 Oct",
+            "raw_time": "2026-10-11T06:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
+            "source": "Webull",
+            "time": "5d ago \u00b7 10 Oct",
+            "raw_time": "2026-10-10T13:59:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T17:21:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T14:08:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:06:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
+            "source": "Webull",
+            "time": "12h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T10:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
+            "source": "Webull",
+            "time": "15h ago \u00b7 15 Oct",
+            "raw_time": "2026-10-15T06:57:33.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T22:09:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T21:27:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:17:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Regains Nasdaq Compliance",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T20:01:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 14 Oct",
+            "raw_time": "2026-10-14T08:51:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:06:42.828+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T08:29:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
+            "source": "Webull",
+            "time": "4d ago \u00b7 11 Oct",
+            "raw_time": "2026-10-11T06:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
+            "source": "Webull",
+            "time": "5d ago \u00b7 10 Oct",
+            "raw_time": "2026-10-10T13:59:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T17:21:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
+            "source": "Webull",
+            "time": "6d ago \u00b7 09 Oct",
+            "raw_time": "2026-10-09T14:08:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "NCPL",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.09,
+        "volume_indicator": "high",
+        "volume": 46675257,
+        "adv": 22300523,
+        "recent_pct_of_adv": 209.3,
+        "volume_acceleration": -0.5,
+        "price_velocity_pct": 9.465,
+        "buy_pressure_pct": 48.33,
+        "large_bar_count": 161,
+        "vwap_distance_pct": 5.875,
+        "recent_volume": 46675257,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 1.98,
+        "vwap": 2.1035848270936897,
+        "last_trade_time": "2026-10-15T22:23:14.525000+00:00",
+        "stale_age_seconds": 89
+      },
+      "date": "2026-10-16",
+      "time": "09:24:45",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.14
+    },
+    {
       "ticker": "TCRT",
       "name": "Alaunos Therapeutics, Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.94,
-      "change_pct": 34.8623853211009,
-      "volume": 15598773,
+      "price": 2.96,
+      "change_pct": 35.77981651376146,
+      "volume": 15778664,
       "market_cap": 6381154.3,
       "float_shares": 2449482,
       "country": "United States",
@@ -1382,23 +2162,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Oct 13), 8-K (Oct 09), 8-K (Sep 22)",
-      "result": "+34.9% \u00b7 Entry $2.94 \u00b7 T1 $3.06 \u00b7 T2 $3.12 \u00b7 T3 $3.23",
+      "result": "+35.8% \u00b7 Entry $2.96 \u00b7 T1 $3.08 \u00b7 T2 $3.14 \u00b7 T3 $3.26",
       "plan": {
         "valid": true,
         "ticker": "TCRT",
-        "entry": 2.94,
-        "stop": 2.8812,
+        "entry": 2.96,
+        "stop": 2.9008,
         "targets": {
-          "t1": 3.0576,
-          "t2": 3.1164,
-          "t3": 3.234
+          "t1": 3.0784,
+          "t2": 3.1376,
+          "t3": 3.256
         },
-        "risk_per_share": 0.0588,
+        "risk_per_share": 0.0592,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 102,
-        "position_value": 299.88,
+        "shares": 101,
+        "position_value": 298.96,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1406,7 +2186,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.8812"
+          "hard_stop": "$2.9008"
         }
       },
       "ta": {
@@ -1797,843 +2577,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.57,
+        "rvol": 2.6,
         "volume_indicator": "high",
-        "volume": 15598773,
+        "volume": 15778664,
         "adv": 6075788,
-        "recent_pct_of_adv": 256.74,
-        "volume_acceleration": 1.448,
-        "price_velocity_pct": 1.864,
-        "buy_pressure_pct": 50.09,
-        "large_bar_count": 242,
+        "recent_pct_of_adv": 259.7,
+        "volume_acceleration": 1.446,
+        "price_velocity_pct": 1.632,
+        "buy_pressure_pct": 50.14,
+        "large_bar_count": 244,
         "vwap_distance_pct": 1.27,
-        "recent_volume": 15598773,
+        "recent_volume": 15778664,
         "prior_volume": 0,
         "median_range": 0.01,
         "last_price": 2.18,
         "vwap": 2.152653977385218,
-        "last_trade_time": "2026-10-15T22:20:24.509000+00:00",
-        "stale_age_seconds": 99
+        "last_trade_time": "2026-10-15T22:23:22.400000+00:00",
+        "stale_age_seconds": 81
       },
       "date": "2026-10-16",
-      "time": "09:22:04",
+      "time": "09:24:45",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 2.88
-    },
-    {
-      "ticker": "NCPL",
-      "name": "Netcapital Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.14,
-      "change_pct": 8.080808080808088,
-      "volume": 46664618,
-      "market_cap": 15538840.02,
-      "float_shares": 4387748,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 14), 8-K (Sep 25), 8-K (Sep 03)",
-      "result": "+8.1% \u00b7 Entry $2.14 \u00b7 T1 $2.23 \u00b7 T2 $2.27 \u00b7 T3 $2.35",
-      "plan": {
-        "valid": true,
-        "ticker": "NCPL",
-        "entry": 2.14,
-        "stop": 2.0972,
-        "targets": {
-          "t1": 2.2256,
-          "t2": 2.2684,
-          "t3": 2.354
-        },
-        "risk_per_share": 0.0428,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 140,
-        "position_value": 299.6,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0972"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "NCPL",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:06:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-            "source": "Webull",
-            "time": "15h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T06:57:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T22:09:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T21:27:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:17:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:01:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:06:42.828+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T08:29:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
-            "source": "Webull",
-            "time": "4d ago \u00b7 11 Oct",
-            "raw_time": "2026-10-11T06:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
-            "source": "Webull",
-            "time": "5d ago \u00b7 10 Oct",
-            "raw_time": "2026-10-10T13:59:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T17:21:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T14:08:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:06:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-            "source": "Webull",
-            "time": "12h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T10:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-            "source": "Webull",
-            "time": "15h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T06:57:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T22:09:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T21:27:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Bid Price Compliance Amid Filing Delays",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:17:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Regains Nasdaq Compliance",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T20:01:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at NCPL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:06:42.828+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why J-Star Holding Shares Are Trading Higher By Around 128%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T08:29:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Netcapital Inc. Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights \u2013 NCPL",
-            "source": "Webull",
-            "time": "4d ago \u00b7 11 Oct",
-            "raw_time": "2026-10-11T06:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit with SBS Law",
-            "source": "Webull",
-            "time": "5d ago \u00b7 10 Oct",
-            "raw_time": "2026-10-10T13:59:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Securities Class Action Filed Against Netcapital Inc. \u2013 NCPL Investors Encouraged to Contact Kirby McInerney LLP",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T17:21:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Investor Alert: Robbins LLP Informs Investors of the Netcapital Inc. Class Action Lawsuit",
-            "source": "Webull",
-            "time": "6d ago \u00b7 09 Oct",
-            "raw_time": "2026-10-09T14:08:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "NCPL",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.09,
-        "volume_indicator": "high",
-        "volume": 46664618,
-        "adv": 22300523,
-        "recent_pct_of_adv": 209.25,
-        "volume_acceleration": -0.494,
-        "price_velocity_pct": 9.174,
-        "buy_pressure_pct": 48.38,
-        "large_bar_count": 161,
-        "vwap_distance_pct": 5.875,
-        "recent_volume": 46664618,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 1.98,
-        "vwap": 2.1035848270936897,
-        "last_trade_time": "2026-10-15T22:20:24.606000+00:00",
-        "stale_age_seconds": 99
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.16
-    },
-    {
-      "ticker": "JBDI",
-      "name": "JBDI Holdings Ltd",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.789,
-      "change_pct": 19.1880341880342,
-      "volume": 10785944,
-      "market_cap": 22264032.96,
-      "float_shares": 3484476,
-      "country": "Singapore",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+19.2% \u00b7 Entry $2.79 \u00b7 T1 $2.90 \u00b7 T2 $2.96 \u00b7 T3 $3.07",
-      "plan": {
-        "valid": true,
-        "ticker": "JBDI",
-        "entry": 2.789,
-        "stop": 2.7332,
-        "targets": {
-          "t1": 2.9006,
-          "t2": 2.9564,
-          "t3": 3.068
-        },
-        "risk_per_share": 0.0558,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 107,
-        "position_value": 298.42,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.7332"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "JBDI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T13:52:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:29:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T14:04:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:59:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:17:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T10:19:52.698+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T13:52:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Enovix Shares Are Trading Higher By Around 7%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 14 Oct",
-            "raw_time": "2026-10-14T08:51:49.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock JBDI Holdings Up 446% Today?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:29:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Penny Stock JBDI Skyrockets Over 300%: Here\u2019s What\u2019s Driving the Rally",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T14:04:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Dow Rises Over 100 Points; Goldman Sachs Posts Upbeat Earnings",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:59:11.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "JBDI Holdings to Acquire AI Social Platform ZYMIX in $900 Million Convertible-Note Deal",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T13:17:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at JBDI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T10:19:52.698+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Dow Gains Over 100 Points; US Inflation Rate Rises In September",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "JBDI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 6.35,
-        "volume_indicator": "high",
-        "volume": 10785944,
-        "adv": 1699060,
-        "recent_pct_of_adv": 634.82,
-        "volume_acceleration": -0.87,
-        "price_velocity_pct": 3.056,
-        "buy_pressure_pct": 50.1,
-        "large_bar_count": 231,
-        "vwap_distance_pct": 10.244,
-        "recent_volume": 10785944,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 2.34,
-        "vwap": 2.6070561926011204,
-        "last_trade_time": "2026-10-15T22:20:24.339000+00:00",
-        "stale_age_seconds": 99
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.76
-    },
-    {
-      "ticker": "PMI",
-      "name": "Picard Medical, Inc.",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 11.4,
-      "change_pct": 14.000000000000004,
-      "volume": 1484570,
-      "market_cap": 23386340.0,
-      "float_shares": 1359560,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 13), 8-K (Oct 06), 8-K (Aug 20)",
-      "result": "+14.0% \u00b7 Entry $11.40 \u00b7 T1 $11.86 \u00b7 T2 $12.08 \u00b7 T3 $12.54",
-      "plan": {
-        "valid": true,
-        "ticker": "PMI",
-        "entry": 11.4,
-        "stop": 11.172,
-        "targets": {
-          "t1": 11.856,
-          "t2": 12.084,
-          "t3": 12.54
-        },
-        "risk_per_share": 0.228,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 26,
-        "position_value": 296.4,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$11.172"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "PMI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Picard Medical Inc trading resumes",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T20:02:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Inc trading halted, volatility trading pause",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T19:35:25.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T21:06:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T18:18:53.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:06:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T09:37:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:27:52.433+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Picard Medical Inc trading resumes",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T20:02:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Inc trading halted, volatility trading pause",
-            "source": "Webull",
-            "time": "2h ago \u00b7 15 Oct",
-            "raw_time": "2026-10-15T19:35:25.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's After-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T21:06:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T18:18:53.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Intraday Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T17:06:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
-            "source": "Webull",
-            "time": "2d ago \u00b7 13 Oct",
-            "raw_time": "2026-10-13T09:37:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:27:52.433+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Picard Medical Inc trading resumes",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "PMI",
-        "valid": true,
-        "stale": true,
-        "no_move": false,
-        "tape_score": 4.0,
-        "rvol": 0.85,
-        "volume_indicator": "low",
-        "volume": 1484570,
-        "adv": 1753457,
-        "recent_pct_of_adv": 84.67,
-        "volume_acceleration": 1.728,
-        "price_velocity_pct": 33.2,
-        "buy_pressure_pct": 53.94,
-        "large_bar_count": 88,
-        "vwap_distance_pct": 33.369,
-        "recent_volume": 1484570,
-        "prior_volume": 0,
-        "median_range": 0.1181,
-        "last_price": 10.0,
-        "vwap": 15.008022461172876,
-        "last_trade_time": "2026-10-15T22:15:44.649000+00:00",
-        "stale_age_seconds": 379
-      },
-      "date": "2026-10-16",
-      "time": "09:22:04",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": null
+      "previous_price": 2.94
     },
     {
       "ticker": "XXII",
       "name": "22Nd Century",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 1.059,
-      "change_pct": 68.84566326530613,
-      "volume": 8748526,
+      "price": 1.089,
+      "change_pct": 73.62882653061224,
+      "volume": 8984126,
       "market_cap": 447817.04,
       "float_shares": 529181,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (68.8%, rvol 43.2x)",
+      "scan_reason": "Top gainer tape exempt (73.6%, rvol 44.4x)",
       "scan_passed": true,
       "sec_filings": "8-K (Sep 01), 424B3 (Aug 14), 8-K (Aug 13)",
-      "result": "Top-10 gainer tape momentum \u00b7 +68.8%",
+      "result": "Top-10 gainer tape momentum \u00b7 +73.6%",
       "plan": {
         "valid": true,
         "ticker": "XXII",
-        "entry": 1.059,
-        "stop": 1.0378,
+        "entry": 1.089,
+        "stop": 1.0672,
         "targets": {
-          "t1": 1.1014,
-          "t2": 1.1226,
-          "t3": 1.165
+          "t1": 1.1326,
+          "t2": 1.1544,
+          "t3": 1.198
         },
-        "risk_per_share": 0.0212,
+        "risk_per_share": 0.0218,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 283,
-        "position_value": 299.7,
+        "shares": 275,
+        "position_value": 299.47,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2641,7 +2641,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.0378"
+          "hard_stop": "$1.0672"
         }
       },
       "ta": {
@@ -2705,67 +2705,67 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 43.22,
+        "rvol": 44.38,
         "volume_indicator": "high",
-        "volume": 8748526,
+        "volume": 8984126,
         "adv": 202418,
-        "recent_pct_of_adv": 4322.01,
+        "recent_pct_of_adv": 4438.4,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 39.113,
-        "buy_pressure_pct": 51.15,
+        "price_velocity_pct": 38.81,
+        "buy_pressure_pct": 50.92,
         "large_bar_count": 29,
         "vwap_distance_pct": 3.734,
-        "recent_volume": 8748526,
+        "recent_volume": 8984126,
         "prior_volume": 0,
-        "median_range": 0.0264,
+        "median_range": 0.026,
         "last_price": 0.6272,
         "vwap": 0.6046212105160905,
-        "last_trade_time": "2026-10-15T22:20:24.598000+00:00",
-        "stale_age_seconds": 98
+        "last_trade_time": "2026-10-15T22:23:23.557000+00:00",
+        "stale_age_seconds": 80
       },
       "date": "2026-10-16",
-      "time": "09:22:05",
+      "time": "09:24:46",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.12
+      "previous_price": 1.059
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "TCRT",
-    "name": "Alaunos Therapeutics, Inc",
+    "ticker": "PMI",
+    "name": "Picard Medical, Inc.",
     "status": "ALERT",
     "source": "regular",
-    "price": 2.94,
-    "change_pct": 34.8623853211009,
-    "volume": 15598773,
-    "market_cap": 6381154.3,
-    "float_shares": 2449482,
+    "price": 11.22,
+    "change_pct": 12.200000000000006,
+    "volume": 1484921,
+    "market_cap": 23386340.0,
+    "float_shares": 1359560,
     "country": "United States",
     "cap_size": "nano-cap",
     "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "8-K (Oct 13), 8-K (Oct 09), 8-K (Sep 22)",
-    "result": "+34.9% \u00b7 Entry $2.94 \u00b7 T1 $3.06 \u00b7 T2 $3.12 \u00b7 T3 $3.23",
+    "sec_filings": "8-K (Oct 13), 8-K (Oct 06), 8-K (Aug 20)",
+    "result": "+12.2% \u00b7 Entry $11.22 \u00b7 T1 $11.67 \u00b7 T2 $11.89 \u00b7 T3 $12.34",
     "plan": {
       "valid": true,
-      "ticker": "TCRT",
-      "entry": 2.94,
-      "stop": 2.8812,
+      "ticker": "PMI",
+      "entry": 11.22,
+      "stop": 10.9956,
       "targets": {
-        "t1": 3.0576,
-        "t2": 3.1164,
-        "t3": 3.234
+        "t1": 11.6688,
+        "t2": 11.8932,
+        "t3": 12.342
       },
-      "risk_per_share": 0.0588,
+      "risk_per_share": 0.2244,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 102,
-      "position_value": 299.88,
+      "shares": 26,
+      "position_value": 291.72,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2773,7 +2773,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$2.8812"
+        "hard_stop": "$10.9956"
       }
     },
     "ta": {
@@ -2781,58 +2781,23 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "TCRT",
+      "ticker": "PMI",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Alaunos Therapeutics announces completion of Velaris acquisition",
+          "title": "Picard Medical Inc trading resumes",
           "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:45:29.000+0000",
+          "time": "2h ago \u00b7 15 Oct",
+          "raw_time": "2026-10-15T20:02:02.000+0000",
           "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
+          "score": 0,
+          "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: Acquisition, Concurrent Oversubscribed $350 M Private Placement Positions Co to Deliver Multiple Proof-Of-Concept Datasets in Pulmonary Arterial Hypertension >TCRT",
+          "title": "Picard Medical Inc trading halted, volatility trading pause",
           "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
-        },
-        {
-          "title": "Press Release: Alaunos Therapeutics Announces Acquisition of Velaris Therapeutics",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:31:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
-        },
-        {
-          "title": "Press Release: Paragon Labs Expands Leadership Team with Former Apogee Executives; Velaris Therapeutics Acquired by Alaunos Therapeutics, Inc.",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T11:00:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquired by"
-          ]
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "1d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T12:06:24.000+0000",
+          "time": "2h ago \u00b7 15 Oct",
+          "raw_time": "2026-10-15T19:35:25.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2847,19 +2812,10 @@
           "keywords": []
         },
         {
-          "title": "Alaunos Shares Surge on Velaris Deal, $350M Private Placement",
+          "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
           "source": "Webull",
           "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T18:23:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why is Alaunos Therapeutics Stock Trading 200% Higher on Tuesday?",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T17:20:09.000+0000",
+          "raw_time": "2026-10-13T18:18:53.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2874,91 +2830,19 @@
           "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: Peter Harwin and Fairmount Designees Will Constitute 4 of the 5 Members of the Bd >TCRT",
+          "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
           "source": "Webull",
           "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:35:00.000+0000",
+          "raw_time": "2026-10-13T09:37:13.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: 3 Current Directors Will Resign From Bd and 3 Directors Designated by Fairmount Will Be Appointed Effective Upon Conversion Approval",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:35:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics Is Developing Broad Pipeline of ActRII-Fcs and an anti-PDGF-B Antibody >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics: Peter Harwin, Founding Partner of Fairmount, Will Join the Bd >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics Is Expected to Have Fincl Runway Into 2029 to Support Multiple Data Milestones >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:32:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Alaunos Therapeutics Announces -2-",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:31:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Alaunos Acquires Velaris and Secures Major Financing",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T13:48:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T12:05:54.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at TCRT last week (1005-1009)?",
+          "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
           "source": "Webull",
           "time": "3d ago \u00b7 12 Oct",
-          "raw_time": "2026-10-12T10:26:02.491+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-          "source": "Webull",
-          "time": "6d ago \u00b7 09 Oct",
-          "raw_time": "2026-10-09T21:05:51.000+0000",
+          "raw_time": "2026-10-12T09:27:52.433+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2966,54 +2850,19 @@
       ],
       "headlines": [
         {
-          "title": "Alaunos Therapeutics announces completion of Velaris acquisition",
+          "title": "Picard Medical Inc trading resumes",
           "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:45:29.000+0000",
+          "time": "2h ago \u00b7 15 Oct",
+          "raw_time": "2026-10-15T20:02:02.000+0000",
           "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
+          "score": 0,
+          "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: Acquisition, Concurrent Oversubscribed $350 M Private Placement Positions Co to Deliver Multiple Proof-Of-Concept Datasets in Pulmonary Arterial Hypertension >TCRT",
+          "title": "Picard Medical Inc trading halted, volatility trading pause",
           "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
-        },
-        {
-          "title": "Press Release: Alaunos Therapeutics Announces Acquisition of Velaris Therapeutics",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:31:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquisition"
-          ]
-        },
-        {
-          "title": "Press Release: Paragon Labs Expands Leadership Team with Former Apogee Executives; Velaris Therapeutics Acquired by Alaunos Therapeutics, Inc.",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T11:00:00.000+0000",
-          "url": "",
-          "score": 5,
-          "keywords": [
-            "acquired by"
-          ]
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Wednesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "1d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T12:06:24.000+0000",
+          "time": "2h ago \u00b7 15 Oct",
+          "raw_time": "2026-10-15T19:35:25.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -3028,19 +2877,10 @@
           "keywords": []
         },
         {
-          "title": "Alaunos Shares Surge on Velaris Deal, $350M Private Placement",
+          "title": "Picard Medical Lowers Shareholder Meeting Quorum Requirement",
           "source": "Webull",
           "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T18:23:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why is Alaunos Therapeutics Stock Trading 200% Higher on Tuesday?",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T17:20:09.000+0000",
+          "raw_time": "2026-10-13T18:18:53.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -3055,138 +2895,61 @@
           "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: Peter Harwin and Fairmount Designees Will Constitute 4 of the 5 Members of the Bd >TCRT",
+          "title": "Picard Medical Faces Motion to Dismiss in Securities Lawsuit Over IPO \u201cRamp-and-Dump\u201d Allegations",
           "source": "Webull",
           "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:35:00.000+0000",
+          "raw_time": "2026-10-13T09:37:13.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "*Alaunos Therapeutics: 3 Current Directors Will Resign From Bd and 3 Directors Designated by Fairmount Will Be Appointed Effective Upon Conversion Approval",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:35:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics Is Developing Broad Pipeline of ActRII-Fcs and an anti-PDGF-B Antibody >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics: Peter Harwin, Founding Partner of Fairmount, Will Join the Bd >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:33:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Alaunos Therapeutics Is Expected to Have Fincl Runway Into 2029 to Support Multiple Data Milestones >TCRT",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:32:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Alaunos Therapeutics Announces -2-",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T14:31:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Alaunos Acquires Velaris and Secures Major Financing",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T13:48:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "2d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T12:05:54.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at TCRT last week (1005-1009)?",
+          "title": "Weekly Report: what happened at PMI last week (1005-1009)?",
           "source": "Webull",
           "time": "3d ago \u00b7 12 Oct",
-          "raw_time": "2026-10-12T10:26:02.491+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-          "source": "Webull",
-          "time": "6d ago \u00b7 09 Oct",
-          "raw_time": "2026-10-09T21:05:51.000+0000",
+          "raw_time": "2026-10-12T09:27:52.433+0000",
           "url": "",
           "score": 0,
           "keywords": []
         }
       ],
-      "red_flags": [
-        {
-          "title": "Alaunos Therapeutics Faces Nasdaq Delisting, Seeks Hearing",
-          "flag": "delisting"
-        }
-      ],
-      "max_score": 5,
-      "avg_score": 1.1,
-      "catalyst_confirmed": true,
-      "high_impact_count": 4,
-      "top_headline": "Alaunos Therapeutics announces completion of Velaris acquisition",
-      "news_filter_reason": "news red flags; catalyst confirmed (4 items, score \u22653); red flags: delisting"
+      "red_flags": [],
+      "max_score": 0,
+      "avg_score": 0.0,
+      "catalyst_confirmed": false,
+      "high_impact_count": 0,
+      "top_headline": "Picard Medical Inc trading resumes",
+      "news_filter_reason": "low catalyst score (max 0/5)"
     },
     "tape": {
-      "ticker": "TCRT",
+      "ticker": "PMI",
       "valid": true,
       "stale": false,
       "no_move": false,
-      "tape_score": 8.0,
-      "rvol": 2.57,
-      "volume_indicator": "high",
-      "volume": 15598773,
-      "adv": 6075788,
-      "recent_pct_of_adv": 256.74,
-      "volume_acceleration": 1.448,
-      "price_velocity_pct": 1.864,
-      "buy_pressure_pct": 50.09,
-      "large_bar_count": 242,
-      "vwap_distance_pct": 1.27,
-      "recent_volume": 15598773,
+      "tape_score": 4.0,
+      "rvol": 0.85,
+      "volume_indicator": "low",
+      "volume": 1484921,
+      "adv": 1753457,
+      "recent_pct_of_adv": 84.69,
+      "volume_acceleration": 1.576,
+      "price_velocity_pct": 33.268,
+      "buy_pressure_pct": 53.94,
+      "large_bar_count": 89,
+      "vwap_distance_pct": 33.369,
+      "recent_volume": 1484921,
       "prior_volume": 0,
-      "median_range": 0.01,
-      "last_price": 2.18,
-      "vwap": 2.152653977385218,
-      "last_trade_time": "2026-10-15T22:20:24.509000+00:00",
+      "median_range": 0.1168,
+      "last_price": 10.0,
+      "vwap": 15.008022461172876,
+      "last_trade_time": "2026-10-15T22:23:05.565000+00:00",
       "stale_age_seconds": 99
     },
     "date": "2026-10-16",
-    "time": "09:22:04",
+    "time": "09:24:45",
     "skip_news_check": true,
-    "red_flag": true,
-    "previous_price": 2.88
+    "red_flag": false,
+    "previous_price": 11.4
   },
   "total_candidates": 5,
   "alerts_generated": 4,
@@ -3194,10 +2957,10 @@
     {
       "ticker": "XXII",
       "name": "22Nd Century",
-      "price": 1.059,
-      "change_pct": 68.84566326530613,
-      "volume": 8748526,
-      "rvol": 10.014751065749046,
+      "price": 1.089,
+      "change_pct": 73.62882653061224,
+      "volume": 8984126,
+      "rvol": 10.284450824438736,
       "market_cap": 447817.04,
       "float_shares": 529181,
       "cap_size": "nano-cap",
@@ -3208,10 +2971,10 @@
     {
       "ticker": "TCRT",
       "name": "Alaunos Therapeutics, Inc",
-      "price": 2.94,
-      "change_pct": 34.8623853211009,
-      "volume": 15598773,
-      "rvol": 0.36231138844255145,
+      "price": 2.96,
+      "change_pct": 35.77981651376146,
+      "volume": 15778664,
+      "rvol": 0.36648970156873895,
       "market_cap": 6381154.3,
       "float_shares": 2449482,
       "cap_size": "nano-cap",
@@ -3222,10 +2985,10 @@
     {
       "ticker": "SITC",
       "name": "Site Ctrs Corp",
-      "price": 3.61,
-      "change_pct": 19.933554817275752,
-      "volume": 2978440,
-      "rvol": 2.214824041196483,
+      "price": 3.64,
+      "change_pct": 20.930232558139547,
+      "volume": 2982213,
+      "rvol": 2.217629715008087,
       "market_cap": 157950770.39,
       "float_shares": 52256880,
       "cap_size": "micro-cap",
@@ -3234,32 +2997,32 @@
       "reason": "Filtered: vol/float 0.06x < 0.1x"
     },
     {
-      "ticker": "JBDI",
-      "name": "JBDI Holdings Ltd",
-      "price": 2.789,
-      "change_pct": 19.1880341880342,
-      "volume": 10785944,
-      "rvol": 0.7939784526408827,
-      "market_cap": 22264032.96,
-      "float_shares": 3484476,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "SNTI",
       "name": "Senti Biosciences Holdings, Inc.",
       "price": 0.31,
       "change_pct": 18.546845124282978,
-      "volume": 17297521,
-      "rvol": 7.502612627969325,
+      "volume": 17351297,
+      "rvol": 7.525937386279008,
       "market_cap": 8144519.49,
       "float_shares": 16060503,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: tiny price $0.310, tiny avg $vol, avg $vol $0.7M < $2.0M"
+    },
+    {
+      "ticker": "JBDI",
+      "name": "JBDI Holdings Ltd",
+      "price": 2.77,
+      "change_pct": 18.376068376068382,
+      "volume": 10788204,
+      "rvol": 0.7941448165032362,
+      "market_cap": 22264032.96,
+      "float_shares": 3484476,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "BGM",
@@ -3276,20 +3039,6 @@
       "reason": "Filtered: vol 658, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "PMI",
-      "name": "Picard Medical, Inc.",
-      "price": 11.4,
-      "change_pct": 14.000000000000004,
-      "volume": 1484570,
-      "rvol": 2.052126674315414,
-      "market_cap": 23386340.0,
-      "float_shares": 1359560,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "CNTX",
       "name": "Context Therapeutics Inc",
       "price": 0.27,
@@ -3302,6 +3051,20 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
+      "ticker": "PMI",
+      "name": "Picard Medical, Inc.",
+      "price": 11.22,
+      "change_pct": 12.200000000000006,
+      "volume": 1484921,
+      "rvol": 2.0526118629307604,
+      "market_cap": 23386340.0,
+      "float_shares": 1359560,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "CHSN",
@@ -3318,12 +3081,26 @@
       "reason": "Filtered: tiny price $0.930, tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.04x, vol/float 0.04x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "SXTC",
+      "name": "China Sxt Pharmaceuticals Inc",
+      "price": 0.076,
+      "change_pct": 10.465116279069765,
+      "volume": 59717133,
+      "rvol": 0.8350894383593089,
+      "market_cap": 712596.0,
+      "float_shares": 9916583,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: price $0.076, mktcap $0.7M"
+    },
+    {
       "ticker": "SAFX",
       "name": "XCF GLOBAL INC",
       "price": 0.186,
       "change_pct": 10.320284697508896,
-      "volume": 7912216,
-      "rvol": 2.0388961915273187,
+      "volume": 7932449,
+      "rvol": 2.0441100262663063,
       "market_cap": 70019056.67,
       "float_shares": 134937295,
       "cap_size": "micro-cap",
@@ -3332,32 +3109,32 @@
       "reason": "Filtered: price $0.186, float 134.9M > 100M, vol/float 0.06x < 0.1x"
     },
     {
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "price": 2.17,
+      "change_pct": 9.595959595959593,
+      "volume": 46675257,
+      "rvol": 2.285657306370022,
+      "market_cap": 15538840.02,
+      "float_shares": 4387748,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "CAPS",
       "name": "Capstone Holding Corp.",
       "price": 0.106,
       "change_pct": 9.50413223140496,
-      "volume": 3109601,
-      "rvol": 3.7684961770911474,
+      "volume": 3146468,
+      "rvol": 3.813174947313057,
       "market_cap": 2553982.72,
       "float_shares": 17086692,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: price $0.106, tiny price $0.106, tiny avg $vol, tiny vol/float 0.18x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "SXTC",
-      "name": "China Sxt Pharmaceuticals Inc",
-      "price": 0.075,
-      "change_pct": 9.011627906976742,
-      "volume": 59684321,
-      "rvol": 0.834630592576283,
-      "market_cap": 712596.0,
-      "float_shares": 9916583,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: price $0.075, mktcap $0.7M"
     },
     {
       "ticker": "NSPR",
@@ -3388,43 +3165,15 @@
       "reason": "Filtered: vol 7,473, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
-      "ticker": "ARCT",
-      "name": "Arcturus Therape",
-      "price": 12.25,
-      "change_pct": 8.695652173913047,
-      "volume": 493344,
-      "rvol": 0.8357314920533817,
-      "market_cap": 320327987.63,
-      "float_shares": 26153166,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
       "ticker": "AEHL",
       "name": "Antelope Enterprise Hldgs Ltd",
       "price": 12.38,
       "change_pct": 8.406304728546417,
-      "volume": 1756338,
-      "rvol": 0.7671702108700552,
+      "volume": 1756523,
+      "rvol": 0.7672510190567544,
       "market_cap": 217149655.52,
       "float_shares": 16457800,
       "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
-      "ticker": "NCPL",
-      "name": "Netcapital Inc",
-      "price": 2.14,
-      "change_pct": 8.080808080808088,
-      "volume": 46664618,
-      "rvol": 2.2851363213847122,
-      "market_cap": 15538840.02,
-      "float_shares": 4387748,
-      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": true,
       "reason": "Passed filters"
@@ -3528,18 +3277,18 @@
       "reason": "Filtered: tiny rvol 1.3x, tiny avg $vol, tiny vol/float 0.01x, vol 20,562, vol/float 0.01x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "VBIO",
-      "name": "Valion Bio Inc",
-      "price": 1.321,
-      "change_pct": 7.398373983739835,
-      "volume": 13659668,
-      "rvol": 7.4335740142928355,
-      "market_cap": 2394265.11,
-      "float_shares": 1941005,
+      "ticker": "HUBC",
+      "name": "Hub Cyber Security Israel Ltd",
+      "price": 0.415,
+      "change_pct": 7.401656314699783,
+      "volume": 8555637,
+      "rvol": 3.3512905522970007,
+      "market_cap": 693905.23,
+      "float_shares": 1790379,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "passed": true,
-      "reason": "Passed filters"
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: mktcap $0.7M"
     },
     {
       "ticker": "GBR",
@@ -3596,20 +3345,6 @@
       "is_penny_stock": true,
       "passed": false,
       "reason": "Filtered: tiny price $0.380, tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "HUBC",
-      "name": "Hub Cyber Security Israel Ltd",
-      "price": 0.414,
-      "change_pct": 7.142857142857132,
-      "volume": 8554875,
-      "rvol": 3.3509920726629474,
-      "market_cap": 693905.23,
-      "float_shares": 1790379,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Filtered: mktcap $0.7M"
     },
     {
       "ticker": "MWC",
@@ -3822,6 +3557,20 @@
       "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
+      "ticker": "BDRX",
+      "name": "Biodexa Pharmaceuticals plc",
+      "price": 0.458,
+      "change_pct": 6.165971256374597,
+      "volume": 1687273,
+      "rvol": 0.17122035396389124,
+      "market_cap": 1809255.79,
+      "float_shares": 4193917,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Filtered: tiny price $0.458, tiny rvol 0.2x, tiny vol/float 0.40x"
+    },
+    {
       "ticker": "WSO B",
       "name": "Watsco",
       "price": 305.19,
@@ -3890,16 +3639,30 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.00x, vol 9,602, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
+      "ticker": "LITB",
+      "name": "Lightinthebox Hldg Co Ltd",
+      "price": 2.975,
+      "change_pct": 0.8474576271186409,
+      "volume": 4036,
+      "rvol": 0.5650286994260115,
+      "market_cap": 58686581.45,
+      "float_shares": 12077407,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Filtered: vol 4,036, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     }
   ],
   "all_losers": [
     {
       "ticker": "BURU",
       "name": "Nuburu",
-      "price": 0.788,
-      "change_pct": -19.57542355582772,
-      "volume": 5586777,
-      "rvol": 1.3323548350170278,
+      "price": 0.793,
+      "change_pct": -19.06511532965911,
+      "volume": 5592839,
+      "rvol": 1.3338005227561076,
       "market_cap": 9075246.0,
       "float_shares": 9262345,
       "cap_size": "nano-cap",
@@ -4034,6 +3797,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "GCDT",
+      "name": "Green Circle DecarbonizeTechnology Limited",
+      "price": 0.299,
+      "change_pct": -9.393939393939402,
+      "volume": 15807325,
+      "rvol": 5.1911971166082385,
+      "market_cap": 745316.0,
+      "float_shares": 1198534,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "TRNR",
       "name": "Interactive Strength Inc.",
       "price": 1.81,
@@ -4042,6 +3819,20 @@
       "rvol": 3.344212796549245,
       "market_cap": 3238432.0,
       "float_shares": 1619702,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ACCL",
+      "name": "Acco Group Holdings Limited",
+      "price": 2.6,
+      "change_pct": -9.40766550522648,
+      "volume": 5450,
+      "rvol": 0.651835904796077,
+      "market_cap": 40036213.0,
+      "float_shares": 13949900,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -4076,20 +3867,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "PFSA",
-      "name": "Profusa Inc",
-      "price": 0.98,
-      "change_pct": -8.411214953271035,
-      "volume": 3427791,
-      "rvol": 5.05338367368601,
-      "market_cap": 648042.0,
-      "float_shares": 605647,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "YOUL",
       "name": "Youlife Group Inc",
       "price": 0.265,
@@ -4114,6 +3891,20 @@
       "float_shares": 90581566,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "WFF",
+      "name": "WF Holding Ltd.",
+      "price": 0.147,
+      "change_pct": -8.125000000000007,
+      "volume": 137150219,
+      "rvol": 2.3257724736118512,
+      "market_cap": 6707189.0,
+      "float_shares": 41919934,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "passed": false,
       "reason": "Bounce scanner disabled"
     },
@@ -4154,34 +3945,6 @@
       "rvol": 2.505165504748312,
       "market_cap": 29704766.0,
       "float_shares": 34198442,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "WFF",
-      "name": "WF Holding Ltd.",
-      "price": 0.148,
-      "change_pct": -7.500000000000007,
-      "volume": 137003460,
-      "rvol": 2.323283756897117,
-      "market_cap": 6707189.0,
-      "float_shares": 41919934,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "HXHX",
-      "name": "HAOXIN HLDGS LTD",
-      "price": 0.262,
-      "change_pct": -7.453196750264926,
-      "volume": 220395,
-      "rvol": 0.04501845410393167,
-      "market_cap": 4167232.0,
-      "float_shares": 9920000,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -4330,12 +4093,12 @@
     {
       "ticker": "BMMX",
       "name": "Black Mammoth",
-      "price": 3.02,
-      "change_pct": -6.790123456790129,
-      "volume": 5934677,
-      "rvol": 1.0039369665818814,
+      "price": 3.03,
+      "change_pct": -6.481481481481493,
+      "volume": 5934920,
+      "rvol": 1.003978073567633,
       "market_cap": 175003322.0,
-      "float_shares": 57948120,
+      "float_shares": 57756872,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "passed": false,
@@ -4356,6 +4119,34 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "PFSA",
+      "name": "Profusa Inc",
+      "price": 1.0,
+      "change_pct": -6.54205607476636,
+      "volume": 3429030,
+      "rvol": 5.055210255986885,
+      "market_cap": 648042.0,
+      "float_shares": 605647,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "ADXN",
+      "name": "Addex Therapeutics Ltd",
+      "price": 2.83,
+      "change_pct": -6.29139072847682,
+      "volume": 36754,
+      "rvol": 4.013321685957632,
+      "market_cap": 5292353.0,
+      "float_shares": 1752435,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "BRBI",
       "name": "BRBI BR Partners",
       "price": 14.39,
@@ -4365,34 +4156,6 @@
       "market_cap": 768592545.0,
       "float_shares": 26248926,
       "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "HAIN",
-      "name": "Hain Celestial",
-      "price": 0.265,
-      "change_pct": -5.995033699893569,
-      "volume": 10692224,
-      "rvol": 5.535202831529288,
-      "market_cap": 25653539.0,
-      "float_shares": 91002269,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "ADXN",
-      "name": "Addex Therapeutics Ltd",
-      "price": 2.84,
-      "change_pct": -5.960264900662257,
-      "volume": 36718,
-      "rvol": 4.009390696658659,
-      "market_cap": 5292353.0,
-      "float_shares": 1752435,
-      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
@@ -4454,6 +4217,20 @@
       "reason": "Bounce scanner disabled"
     },
     {
+      "ticker": "TWG",
+      "name": "Top Wealth Grp",
+      "price": 0.099,
+      "change_pct": -5.172413793103449,
+      "volume": 9026029,
+      "rvol": 0.9497306229164865,
+      "market_cap": 6550739.0,
+      "float_shares": 59579883,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
+    },
+    {
       "ticker": "REED",
       "name": "Reeds",
       "price": 0.42,
@@ -4461,7 +4238,7 @@
       "volume": 733760,
       "rvol": 5.687665201652598,
       "market_cap": 5269289.0,
-      "float_shares": 11857086,
+      "float_shares": 11820429,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -4510,20 +4287,6 @@
       "reason": "Bounce scanner disabled"
     },
     {
-      "ticker": "GCDT",
-      "name": "Green Circle DecarbonizeTechnology Limited",
-      "price": 0.313,
-      "change_pct": -5.151515151515156,
-      "volume": 15710828,
-      "rvol": 5.1595070648024235,
-      "market_cap": 745316.0,
-      "float_shares": 1198534,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
       "ticker": "ZTG",
       "name": "ZENTA GROUP CO LTD",
       "price": 0.59,
@@ -4559,21 +4322,7 @@
       "volume": 74375,
       "rvol": 0.7729440986042838,
       "market_cap": 1557472.0,
-      "float_shares": 2452712,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "passed": false,
-      "reason": "Bounce scanner disabled"
-    },
-    {
-      "ticker": "VVOS",
-      "name": "Vivos Therapeutics Inc",
-      "price": 0.136,
-      "change_pct": -4.761904761904762,
-      "volume": 11558572,
-      "rvol": 4.432112242922027,
-      "market_cap": 2872853.0,
-      "float_shares": 33609393,
+      "float_shares": 850000,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "passed": false,
@@ -4592,9 +4341,90 @@
       "is_penny_stock": false,
       "passed": false,
       "reason": "Bounce scanner disabled"
+    },
+    {
+      "ticker": "VSME",
+      "name": "VS MEDIA Holdings",
+      "price": 0.757,
+      "change_pct": -4.911443286019347,
+      "volume": 64454,
+      "rvol": 1.123968959804691,
+      "market_cap": 3643684.0,
+      "float_shares": 4562632,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "passed": false,
+      "reason": "Bounce scanner disabled"
     }
   ],
   "live_quotes": {
+    "JBDI": {
+      "price": 2.34,
+      "open": 2.67,
+      "high": 2.89,
+      "low": 2.12,
+      "close": 2.34,
+      "preClose": 2.51,
+      "volume": 10789412,
+      "changeRatio": -0.0677,
+      "marketValue": 22264032.96,
+      "name": "JBDI Holdings Ltd",
+      "_timestamp": "2026-10-15T22:24:47.180734Z"
+    },
+    "TCRT": {
+      "price": 2.18,
+      "open": 2.03,
+      "high": 2.39,
+      "low": 1.8,
+      "close": 2.18,
+      "preClose": 2.07,
+      "volume": 15798797,
+      "changeRatio": 0.0531,
+      "marketValue": 6381154.3,
+      "name": "Alaunos Therapeutics, Inc",
+      "_timestamp": "2026-10-15T22:24:47.180762Z"
+    },
+    "XXII": {
+      "price": 0.6272,
+      "open": 0.65,
+      "high": 0.65,
+      "low": 0.5618,
+      "close": 0.6272,
+      "preClose": 0.6506,
+      "volume": 9077965,
+      "changeRatio": -0.036,
+      "marketValue": 447817.04,
+      "name": "22Nd Century",
+      "_timestamp": "2026-10-15T22:24:47.180774Z"
+    },
+    "PMI": {
+      "price": 10.0,
+      "open": 13.67,
+      "high": 18.23,
+      "low": 10.0,
+      "close": 10.0,
+      "preClose": 12.68,
+      "volume": 1484932,
+      "changeRatio": -0.2114,
+      "marketValue": 23386340.0,
+      "name": "Picard Medical, Inc.",
+      "_timestamp": "2026-10-15T22:24:47.180783Z"
+    },
+    "NCPL": {
+      "price": 1.98,
+      "open": 2.015,
+      "high": 2.39,
+      "low": 1.85,
+      "close": 1.98,
+      "preClose": 1.59,
+      "volume": 46679346,
+      "changeRatio": 0.2453,
+      "marketValue": 15538840.02,
+      "name": "Netcapital Inc",
+      "_timestamp": "2026-10-15T22:24:47.180790Z"
+    }
+  },
+  "previous_live_quotes": {
     "NCPL": {
       "price": 1.98,
       "open": 2.015,
@@ -4661,65 +4491,11 @@
       "_timestamp": "2026-10-15T22:22:06.270907Z"
     }
   },
-  "previous_live_quotes": {
-    "JBDI": {
-      "price": 2.34,
-      "open": 2.67,
-      "high": 2.89,
-      "low": 2.12,
-      "close": 2.34,
-      "preClose": 2.51,
-      "volume": 10784391,
-      "changeRatio": -0.0677,
-      "marketValue": 22264032.96,
-      "name": "JBDI Holdings Ltd",
-      "_timestamp": "2026-10-15T22:19:04.271341Z"
-    },
-    "NCPL": {
-      "price": 1.98,
-      "open": 2.015,
-      "high": 2.39,
-      "low": 1.85,
-      "close": 1.98,
-      "preClose": 1.59,
-      "volume": 46656405,
-      "changeRatio": 0.2453,
-      "marketValue": 15538840.02,
-      "name": "Netcapital Inc",
-      "_timestamp": "2026-10-15T22:19:04.271368Z"
-    },
-    "TCRT": {
-      "price": 2.18,
-      "open": 2.03,
-      "high": 2.39,
-      "low": 1.8,
-      "close": 2.18,
-      "preClose": 2.07,
-      "volume": 15499527,
-      "changeRatio": 0.0531,
-      "marketValue": 6381154.3,
-      "name": "Alaunos Therapeutics, Inc",
-      "_timestamp": "2026-10-15T22:19:04.271381Z"
-    },
-    "XXII": {
-      "price": 0.6272,
-      "open": 0.65,
-      "high": 0.65,
-      "low": 0.5618,
-      "close": 0.6272,
-      "preClose": 0.6506,
-      "volume": 8572626,
-      "changeRatio": -0.036,
-      "marketValue": 447817.04,
-      "name": "22Nd Century",
-      "_timestamp": "2026-10-15T22:19:04.271389Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "09:21 AM AEST",
+    "market_time": "09:24 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
