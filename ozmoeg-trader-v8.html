@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792138379" />
+<meta name="ozmoeg-version" content="1792139897" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1446,7 +1446,37 @@
         .bubble-chart-status-text { font-size: 0.9rem; font-weight: 500; }
         .bubble-chart-status.hidden { display: none; }
         @keyframes bubblePulse { 0%, 100% { transform: scale(1); opacity: 0.35; } 50% { transform: scale(1.08); opacity: 0.6; } }
-    </style>
+    
+            /* Fast quote label */
+            #fast-refresh-label {
+                color: var(--accent-teal, #2dd4bf);
+                font-weight: 500;
+            }
+            #fast-refresh-label.stale {
+                color: var(--danger, #f87171);
+            }
+
+            /* Bubble tab change indicator */
+            .bubble-view-tab {
+                position: relative;
+            }
+            .bubble-view-tab.has-changes::after {
+                content: '';
+                position: absolute;
+                top: 4px;
+                right: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fbbf24; /* amber dot */
+                border-radius: 50%;
+                box-shadow: 0 0 4px rgba(251, 191, 36, 0.8);
+                animation: bubble-tab-pulse 1.5s infinite;
+            }
+            @keyframes bubble-tab-pulse {
+                0%, 100% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.3); opacity: 0.7; }
+            }
+        </style>
 <!-- v=2026-08-25-1415 build-trigger -->
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -1492,6 +1522,7 @@
 <span id="scanner-active-text">Scanner — loading latest data...</span>
 </div>
 <span class="last-updated" id="last-refresh-label">Last refresh: —</span>
+<span class="last-updated" id="fast-refresh-label">Fast quotes: —</span>
 <span class="last-updated" id="page-refresh-label">Next refresh: —</span>
             
 </div></header>
@@ -2579,6 +2610,23 @@
                 }
                 if (lastLabel) { lastLabel.textContent = text; lastLabel.style.color = color; }
                 if (bubbleLast) { bubbleLast.textContent = text; bubbleLast.style.color = color; }
+                // Fast quote update label (ozmoeg-fast.json timestamp)
+                const fastLabel = document.getElementById('fast-refresh-label');
+                const bubbleFast = document.getElementById('bubble-fast-refresh');
+                if (fastLabel || bubbleFast) {
+                    const fastTs = window._lastFastFeedTimestamp;
+                    let fastText = 'Fast quotes: —';
+                    let fastColor = '';
+                    let fastStale = false;
+                    if (fastTs) {
+                        const fastAgeMin = Math.max(0, (Date.now() - new Date(fastTs).getTime()) / 60000);
+                        fastStale = fastAgeMin > 2;
+                        fastText = `Fast quotes: ${formatScanTimestamp(new Date(fastTs))}${fastStale ? ` ⚠️ ${Math.round(fastAgeMin)}m stale` : ''}`;
+                        fastColor = fastStale ? 'var(--danger)' : 'var(--accent-teal)';
+                    }
+                    if (fastLabel) { fastLabel.textContent = fastText; fastLabel.style.color = fastColor; fastLabel.classList.toggle('stale', fastStale); }
+                    if (bubbleFast) { bubbleFast.textContent = fastText; bubbleFast.style.color = fastColor; }
+                }
             }
             if (!label && !bubbleNext) return;
             const usStatus = currentMarket === 'AUS'
@@ -4089,6 +4137,8 @@
 
             let bubbleChart = null;
             let bubbleAnimationId = null;
+            window._bubbleViewPreviousTickers = {};
+            window._bubbleViewLastClicked = {};
 
             function setBubbleStatus(text) {
                 const el = document.getElementById('bubble-chart-status');
@@ -4102,6 +4152,45 @@
                 }
             }
 
+            function getBubbleViewTickers(viewMode) {
+                let rows = [];
+                if (viewMode === 'setup') {
+                    rows = window._lastLiveResults || [];
+                } else if (viewMode === 'gainers') {
+                    rows = getTopN(window._lastAllGainers || [], 'change_pct', 10, true);
+                } else if (viewMode === 'bouncers') {
+                    rows = getTopN(window._lastBounceResults || [], 'change_pct', 10, true);
+                } else if (viewMode === 'volume') {
+                    rows = getTopN(window._lastAllGainers || [], 'volume', 10, false);
+                } else if (viewMode === 'gapers') {
+                    rows = getTopN((window._lastAllGainers || []).filter(g => Math.abs(g?.change_pct || 0) > 10), 'change_pct', 10, true);
+                }
+                return rows.map(r => (r?.ticker || '').toUpperCase()).filter(Boolean).sort();
+            }
+
+            function updateBubbleTabIndicators() {
+                const views = ['setup', 'gainers', 'bouncers', 'volume', 'gapers'];
+                const currentSet = {};
+                views.forEach(v => currentSet[v] = getBubbleViewTickers(v));
+                const lastClicked = window._bubbleViewLastClicked || {};
+                views.forEach(v => {
+                    const tab = document.querySelector(`.bubble-view-tab[data-view="${v}"]`);
+                    if (!tab) return;
+                    const prev = window._bubbleViewPreviousTickers?.[v] || [];
+                    const curr = currentSet[v] || [];
+                    const hasPrev = Array.isArray(window._bubbleViewPreviousTickers?.[v]);
+                    const changed = JSON.stringify(prev) !== JSON.stringify(curr);
+                    const wasClicked = lastClicked[v];
+                    if (hasPrev && changed && !wasClicked) {
+                        tab.classList.add('has-changes');
+                    } else {
+                        tab.classList.remove('has-changes');
+                        if (wasClicked) lastClicked[v] = false;
+                    }
+                });
+                window._bubbleViewPreviousTickers = currentSet;
+            }
+
             function getTopN(list, field, n, absDesc) {
                 const sorted = [...(list || [])].filter(r => r != null).sort((a, b) => {
                     const av = a[field] || 0;
@@ -4112,6 +4201,8 @@
             }
 
             function buildBubbleChart() {
+                // Update tab change indicators before rendering.
+                updateBubbleTabIndicators();
                 // Bubble View mode: setup matches the active scanner view; other modes
                 // overlay top-N lists (gainers, bouncers, volume, gapers) on the same axes.
                 const bubbleView = window._bubbleViewMode || 'setup';
@@ -4701,6 +4792,7 @@
                                     data.scan_results = data.scan_results.map(applyFast);
                                     data.pre_market_results = (data.pre_market_results || []).map(applyFast);
                                     data.pre_market_watchlist = (data.pre_market_watchlist || []).map(applyFast);
+                                    window._lastFastFeedTimestamp = fastData.last_updated || new Date().toISOString();
                                 }
                             }
                         } catch (e) { console.warn('Bubble fast feed merge failed', e); }
@@ -4735,7 +4827,11 @@
                 if (tab) {
                     document.querySelectorAll('.bubble-view-tab').forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
-                    window._bubbleViewMode = tab.dataset.view || 'setup';
+                    const view = tab.dataset.view || 'setup';
+                    window._bubbleViewMode = view;
+                    if (!window._bubbleViewLastClicked) window._bubbleViewLastClicked = {};
+                    window._bubbleViewLastClicked[view] = true;
+                    tab.classList.remove('has-changes');
                     if (window.rebuildBubbleChart) window.rebuildBubbleChart();
                 }
             });
@@ -4814,6 +4910,7 @@
                             }
                         });
                         console.log('Merged fast feed for', Object.keys(updates).length, 'tickers');
+                        window._lastFastFeedTimestamp = fastData.last_updated || new Date().toISOString();
                     }
                 } catch (e) {
                     console.warn('Fast feed merge failed', e.message);
