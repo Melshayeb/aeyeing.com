@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792130353" />
+<meta name="ozmoeg-version" content="1792130484" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4685,7 +4685,25 @@
                     const ts = Date.now();
                     const res = await fetch('https://trip-planner.aeyeing.com/ozmoeg/' + snapshotFile + '?_=' + ts, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
                     if (res.ok) {
-                        const data = await res.json();
+                        let data = await res.json();
+                        // Merge fast feed quotes into bubble data for near-real-time prices.
+                        try {
+                            const fastFile = currentMarket === 'AUS' ? 'ozmoeg-fast-au.json' : 'ozmoeg-fast.json';
+                            const fastRes = await fetch('https://trip-planner.aeyeing.com/ozmoeg/' + fastFile + '?_=' + ts, { cache: 'no-store' });
+                            if (fastRes.ok) {
+                                const fastData = await fastRes.json();
+                                const updates = fastData?.updates || {};
+                                if (Object.keys(updates).length && data?.scan_results) {
+                                    const applyFast = r => {
+                                        const u = updates[r.ticker?.toUpperCase()];
+                                        return u ? { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp } : r;
+                                    };
+                                    data.scan_results = data.scan_results.map(applyFast);
+                                    data.pre_market_results = (data.pre_market_results || []).map(applyFast);
+                                    data.pre_market_watchlist = (data.pre_market_watchlist || []).map(applyFast);
+                                }
+                            }
+                        } catch (e) { console.warn('Bubble fast feed merge failed', e); }
                         // Store all available result sets; buildBubbleChart will pick the right one for the active view.
                         window._lastLiveResults = data?.scan_results || [];
                         window._lastPreMarketResults = data?.pre_market_results || [];
