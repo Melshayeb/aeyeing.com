@@ -7,10 +7,48 @@ import subprocess
 import time
 import urllib.request
 import socket
+import os
+import glob
+import shutil
 from pathlib import Path
 
+
+def find_python():
+    """Discover a usable Python interpreter.
+
+    Prefer the Hermes-managed CPython runtime, then the active ``py`` launcher,
+    then any ``python.exe`` on PATH. This avoids breaking when a global Python
+    patch update renames ``C:\\Python314``.
+    """
+    # 1. Hermes bundled python (used by OzMoEg scanners and cron)
+    hermes_pythons = sorted(
+        glob.glob(r"C:\Users\elsha\AppData\Local\hermes\tools\python-*\python.exe"),
+        reverse=True,
+    )
+    for p in hermes_pythons:
+        if os.path.exists(p):
+            return Path(p)
+
+    # 2. py launcher: stable across patch releases
+    py = shutil.which("py")
+    if py:
+        return Path(py)
+
+    # 3. Any python.exe on PATH
+    python = shutil.which("python")
+    if python:
+        return Path(python)
+
+    # 4. Legacy fallback (kept for backwards compatibility)
+    legacy = Path(r"C:\Python314\python.exe")
+    if legacy.exists():
+        return legacy
+
+    raise RuntimeError("No Python interpreter found; please install Python 3.11+")
+
+
 API_DIR = Path(r"C:\Users\elsha\AppData\Local\hermes\skills\ozmoeg\trip_planner\scripts")
-PYTHON = Path(r"C:\Python314\python.exe")
+PYTHON = find_python()
 API_URL = "http://127.0.0.1:8777/health"
 LOG = API_DIR / "watchdog.log"
 
