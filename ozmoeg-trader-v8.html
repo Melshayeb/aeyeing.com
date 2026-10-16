@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1791359335" />
+<meta name="ozmoeg-version" content="1792124887" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1415,8 +1415,13 @@
         .bubble-modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .bubble-modal[hidden] { display: none; }
         .bubble-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); }
-        .bubble-modal-content { position: relative; width: min(1100px, 96vw); height: min(760px, 92vh); background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; }
+        .bubble-modal-content { position: relative; width: min(1400px, 98vw); height: min(900px, 96vh); background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; }
         .bubble-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--bg-card); }
+        .bubble-modal-header-left { display: flex; flex-direction: column; gap: 0.5rem; }
+        .bubble-view-tabs { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+        .bubble-view-tab { border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); padding: 0.35rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+        .bubble-view-tab:hover { border-color: var(--accent-teal); color: var(--text-primary); }
+        .bubble-view-tab.active { background: var(--accent-teal); color: #000; border-color: var(--accent-teal); }
         .bubble-modal-header h2 { font-size: 1.15rem; background: linear-gradient(90deg, var(--accent-teal), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .bubble-modal-close { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 1.4rem; line-height: 1; cursor: pointer; }
         .bubble-modal-close:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
@@ -4078,15 +4083,51 @@
                 }
             }
 
+            function getTopN(list, field, n, absDesc) {
+                const sorted = [...(list || [])].filter(r => r != null).sort((a, b) => {
+                    const av = a[field] || 0;
+                    const bv = b[field] || 0;
+                    return absDesc ? (Math.abs(bv) - Math.abs(av)) : (bv - av);
+                });
+                return sorted.slice(0, n);
+            }
+
             function buildBubbleChart() {
-                // Bubble View must match the active scanner view (live / premarket / watchlist)
-                // so the bubbles always correspond to the tickers visible in the table.
+                // Bubble View mode: setup matches the active scanner view; other modes
+                // overlay top-N lists (gainers, bouncers, volume, gapers) on the same axes.
+                const bubbleView = window._bubbleViewMode || 'setup';
                 const view = getActiveScannerView();
-                const isPre = view === 'premarket';
-                const isWatchlist = view === 'watchlist';
-                const allRows = isWatchlist ? (window._lastPreMarketWatchlist || window._lastBubbleViewResults || window._lastLiveResults || []) :
-                                isPre ? (window._lastPreMarketResults || window._lastBubbleViewResults || window._lastLiveResults || []) :
-                                (window._lastBubbleViewResults || window._lastLiveResults || []);
+                let allRows = [];
+                if (bubbleView === 'setup') {
+                    const isPre = view === 'premarket';
+                    const isWatchlist = view === 'watchlist';
+                    allRows = isWatchlist ? (window._lastPreMarketWatchlist || window._lastBubbleViewResults || window._lastLiveResults || []) :
+                              isPre ? (window._lastPreMarketResults || window._lastBubbleViewResults || window._lastLiveResults || []) :
+                              (window._lastBubbleViewResults || window._lastLiveResults || []);
+                } else if (bubbleView === 'gainers') {
+                    allRows = getTopN(window._lastAllGainers || [], 'change_pct', 10, true);
+                } else if (bubbleView === 'bouncers') {
+                    allRows = getTopN(window._lastBounceResults || [], 'change_pct', 10, true);
+                } else if (bubbleView === 'volume') {
+                    allRows = getTopN(window._lastAllGainers || [], 'volume', 10, false);
+                } else if (bubbleView === 'gapers') {
+                    allRows = (window._lastAllGainers || [])
+                        .filter(r => (r.change_pct || 0) > 10)
+                        .sort((a, b) => Math.abs(b.change_pct || 0) - Math.abs(a.change_pct || 0))
+                        .slice(0, 10);
+                }
+                // Update the hint so users know which dataset is displayed.
+                const hintEl = document.querySelector('.bubble-modal-hint');
+                if (hintEl) {
+                    const viewLabels = {
+                        setup: 'Current setup (alerts/candidates)',
+                        gainers: 'Top 10 gainers',
+                        bouncers: 'Top 10 bouncers',
+                        volume: 'Top 10 by volume',
+                        gapers: 'Top 10 gapers (>10% move)'
+                    };
+                    hintEl.textContent = `${viewLabels[bubbleView] || 'Current setup'} · X = Float (shares) · Y = Price ($) · Size = |price change %| · Hover for details.`;
+                }
                 const rows = allRows.filter(r => {
                     // Exclude watchlist rows with no real float or price data.
                     const float = getFloat(r);
@@ -4207,6 +4248,7 @@
                             { color: 'rgba(52,211,153,0.45)', edge: '#34d399', label: 'Recommended trade zone' },
                             { color: 'rgba(34,211,238,0.65)', edge: '#22d3ee', label: 'Price change > 80% (glow)' },
                             { color: 'rgba(248,113,113,0.55)', edge: '#f87171', label: 'ALERT status' },
+                            { color: 'rgba(156,163,175,0.45)', edge: '#9ca3af', label: 'CANDIDATE status' },
                             { color: '#9ca3af', edge: '#9ca3af', label: 'Size = |price change %|' },
                         ];
                         const box = 12;
@@ -4647,6 +4689,13 @@
                 if (e.target.closest('#bubble-view-btn')) openBubbleModal();
                 if (e.target.closest('#bubble-modal-refresh')) refreshBubbleData();
                 if (e.target.closest('#bubble-modal-close') || e.target.closest('.bubble-modal-backdrop')) closeBubbleModal();
+                const tab = e.target.closest('.bubble-view-tab');
+                if (tab) {
+                    document.querySelectorAll('.bubble-view-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    window._bubbleViewMode = tab.dataset.view || 'setup';
+                    if (window.rebuildBubbleChart) window.rebuildBubbleChart();
+                }
             });
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape') closeBubbleModal();
@@ -4836,7 +4885,16 @@
 <div class="bubble-modal-backdrop"></div>
 <div class="bubble-modal-content">
 <div class="bubble-modal-header">
+<div class="bubble-modal-header-left">
 <h2 id="bubble-modal-title">🫧 OzMoEg Bubble View</h2>
+<div class="bubble-view-tabs" id="bubble-view-tabs">
+  <button class="bubble-view-tab active" data-view="setup" type="button">Setup</button>
+  <button class="bubble-view-tab" data-view="gainers" type="button">Top 10 Gainers</button>
+  <button class="bubble-view-tab" data-view="bouncers" type="button">Top 10 Bouncers</button>
+  <button class="bubble-view-tab" data-view="volume" type="button">Top 10 Volume</button>
+  <button class="bubble-view-tab" data-view="gapers" type="button">Top 10 Gapers</button>
+</div>
+</div>
 <div style="display:flex;align-items:center;gap:0.5rem;">
 <button class="bubble-modal-refresh" id="bubble-modal-refresh" title="Refresh scanner data" type="button">🔄 Refresh</button>
 <button class="bubble-modal-close" id="bubble-modal-close" title="Close bubble view" type="button">×</button>
