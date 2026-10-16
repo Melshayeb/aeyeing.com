@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792130484" />
+<meta name="ozmoeg-version" content="1792130787" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -2607,27 +2607,27 @@
             }
 
             let modeLabel;
-            const pollMin = Math.round(MANIFEST_POLL_INTERVAL_MS / 60000);
+            const pollSec = Math.round(MANIFEST_POLL_INTERVAL_MS / 1000);
             if (currentMarket === 'AUS') {
                 if (usStatus === 'OPEN') {
-                    modeLabel = `(1-min ASX open mode)`;
+                    modeLabel = `(full scan every 60s)`;
                 } else if (usStatus === 'WEEKEND') {
                     modeLabel = `(markets closed — weekend)`;
                 } else {
                     modeLabel = `(markets closed — ASX 10:00–16:00 Sydney)`;
                 }
             } else if (isActiveTradingWindow() && usStatus === 'CLOSED') {
-                modeLabel = `(1-min catalyst watchlist mode)`;
+                modeLabel = `(fast quotes every ${pollSec}s, full scan every 60s)`;
             } else if (usStatus === 'PRE-MARKET' && isActiveTradingWindow()) {
-                modeLabel = `(1-min pre-market mode)`;
+                modeLabel = `(fast quotes every ${pollSec}s, full scan every 60s)`;
             } else if (usStatus === 'OPEN') {
-                modeLabel = `(${pollMin}-min open market mode)`;
+                modeLabel = `(fast quotes every ${pollSec}s, full scan every 60s)`;
             } else if (usStatus === 'AFTER-HOURS') {
-                modeLabel = `(${pollMin}-min after-hours mode)`;
+                modeLabel = `(fast quotes every ${pollSec}s, full scan every 60s)`;
             } else if (usStatus === 'PRE-MARKET' && !isActiveTradingWindow()) {
-                modeLabel = `(${pollMin}-min pre-market mode)`;
+                modeLabel = `(full scan every 60s)`;
             } else {
-                modeLabel = `(${pollMin}-min markets closed)`;
+                modeLabel = `(full scan every 60s)`;
             }
 
             const interval = getRefreshIntervalMs();
