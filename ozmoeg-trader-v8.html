@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792130787" />
+<meta name="ozmoeg-version" content="1792138379" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4689,7 +4689,7 @@
                         // Merge fast feed quotes into bubble data for near-real-time prices.
                         try {
                             const fastFile = currentMarket === 'AUS' ? 'ozmoeg-fast-au.json' : 'ozmoeg-fast.json';
-                            const fastRes = await fetch('https://trip-planner.aeyeing.com/ozmoeg/' + fastFile + '?_=' + ts, { cache: 'no-store' });
+                            const fastRes = await fetch('https://trip-planner.aeyeing.com/' + fastFile + '?_=' + ts, { cache: 'no-store' });
                             if (fastRes.ok) {
                                 const fastData = await fastRes.json();
                                 const updates = fastData?.updates || {};
@@ -4793,7 +4793,7 @@
                 // Merge fast feed (ozmoeg-fast.json) on top of full snapshot for near-real-time prices.
                 try {
                     const fastFile = currentMarket === 'AUS' ? 'ozmoeg-fast-au.json' : 'ozmoeg-fast.json';
-                    const fastUrl = `https://trip-planner.aeyeing.com/ozmoeg/${fastFile}?_=${cacheBuster}`;
+                    const fastUrl = `https://trip-planner.aeyeing.com/${fastFile}?_=${cacheBuster}`;
                     const fastData = await fetchJson(fastUrl);
                     if (fastData && fastData.updates && data && data.scan_results) {
                         const updates = fastData.updates;
