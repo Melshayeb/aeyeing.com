@@ -666,6 +666,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'float_shares': _float_shares(gainer),
                 'cap_size': _cap_size(_market_cap(gainer)),
                 'is_penny_stock': _is_penny_stock(_price(gainer)),
+                'country': _country(gainer),
                 'passed': _scan_passed(gainer),
                 'reason': _scan_reason(gainer)
             })
@@ -681,6 +682,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'float_shares': _float_shares(gainer),
                 'cap_size': _cap_size(_market_cap(gainer)),
                 'is_penny_stock': _is_penny_stock(_price(gainer)),
+                'country': _country(gainer),
                 'passed': _scan_passed(gainer),
                 'reason': _scan_reason(gainer)
             })
