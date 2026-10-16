@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792125660" />
+<meta name="ozmoeg-version" content="1792126108" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4060,8 +4060,13 @@
                 if (r?.status === 'HALT' || r?.status === 'DROPPED') return 'rgba(107,114,128,0.55)';
                 // Penny stock (< $1) gets a distinct orange-red.
                 if (r?.is_penny_stock || getPrice(r) < 1) return 'rgba(249,115,22,0.55)';
-                // Default trade-zone teal for plain top-gainers/volume/gapers.
-                return 'rgba(45,212,191,0.55)';
+                // Top-gainer / volume / gaper views: color by move intensity.
+                const absChg = Math.abs(changePct || 0);
+                if (absChg >= 50) return 'rgba(34,211,238,0.60)';
+                if (absChg >= 30) return 'rgba(59,130,246,0.55)';
+                if (absChg >= 15) return 'rgba(139,92,246,0.55)';
+                if (absChg >= 5) return 'rgba(45,212,191,0.55)';
+                return 'rgba(100,116,139,0.45)';
             }
 
             function getBubbleBorderColor(r, changePct) {
@@ -4070,7 +4075,12 @@
                 if (r?.status === 'CANDIDATE') return '#9ca3af';
                 if (r?.status === 'HALT' || r?.status === 'DROPPED') return '#6b7280';
                 if (r?.is_penny_stock || getPrice(r) < 1) return '#f97316';
-                return '#2dd4bf';
+                const absChg = Math.abs(changePct || 0);
+                if (absChg >= 50) return '#22d3ee';
+                if (absChg >= 30) return '#3b82f6';
+                if (absChg >= 15) return '#8b5cf6';
+                if (absChg >= 5) return '#2dd4bf';
+                return '#64748b';
             }
 
             let bubbleChart = null;
@@ -4253,8 +4263,11 @@
                             { color: 'rgba(239,68,68,0.60)', edge: '#ef4444', label: 'ALERT status' },
                             { color: 'rgba(156,163,175,0.45)', edge: '#9ca3af', label: 'CANDIDATE status' },
                             { color: 'rgba(249,115,22,0.55)', edge: '#f97316', label: 'Penny stock (< $1)' },
-                            { color: 'rgba(45,212,191,0.55)', edge: '#2dd4bf', label: 'Recommended trade zone' },
-                            { color: 'rgba(34,211,238,0.70)', edge: '#22d3ee', label: 'Price change > 80% (glow)' },
+                            { color: 'rgba(34,211,238,0.60)', edge: '#22d3ee', label: 'Move ≥ 50% (high)' },
+                            { color: 'rgba(59,130,246,0.55)', edge: '#3b82f6', label: 'Move 30-49%' },
+                            { color: 'rgba(139,92,246,0.55)', edge: '#8b5cf6', label: 'Move 15-29%' },
+                            { color: 'rgba(45,212,191,0.55)', edge: '#2dd4bf', label: 'Move 5-14%' },
+                            { color: 'rgba(100,116,139,0.45)', edge: '#64748b', label: 'Move < 5%' },
                             { color: '#9ca3af', edge: '#9ca3af', label: 'Size = |price change %|' },
                         ];
                         const box = 12;
