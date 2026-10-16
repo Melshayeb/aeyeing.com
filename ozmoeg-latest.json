@@ -1,14 +1,133 @@
 {
-  "last_updated": "2026-10-16T21:32:22.271873Z",
+  "last_updated": "2026-10-16T21:35:22.177745Z",
   "scan_results": [
+    {
+      "ticker": "NWGL",
+      "name": "CL Workshop Group",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.251,
+      "change_pct": 7.264957264957259,
+      "volume": 342598558,
+      "market_cap": 13227590.61,
+      "float_shares": 44911559,
+      "country": "International (region 102)",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Oct 02), 424B3 (Aug 25)",
+      "result": "+7.3% \u00b7 Entry $0.25 \u00b7 T1 $0.26 \u00b7 T2 $0.27 \u00b7 T3 $0.28",
+      "plan": {
+        "valid": true,
+        "ticker": "NWGL",
+        "entry": 0.251,
+        "stop": 0.246,
+        "targets": {
+          "t1": 0.261,
+          "t2": 0.266,
+          "t3": 0.276
+        },
+        "risk_per_share": 0.005,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 1195,
+        "position_value": 299.94,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.246"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "NWGL",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:55:18.475+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:55:18.475+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "CL Workshop Group Sets Up $200 Million ATM Offering of ADSs",
+            "flag": "offering"
+          },
+          {
+            "title": "Cl Workshop Group Enters $200M ATM Offering Program With Chaince Securities",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "NWGL",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 48.91,
+        "volume_indicator": "high",
+        "volume": 342598558,
+        "adv": 7004036,
+        "recent_pct_of_adv": 4891.44,
+        "volume_acceleration": -0.748,
+        "price_velocity_pct": 19.754,
+        "buy_pressure_pct": 47.13,
+        "large_bar_count": 131,
+        "vwap_distance_pct": 44.523,
+        "recent_volume": 342598558,
+        "prior_volume": 0,
+        "median_range": 0.0093,
+        "last_price": 0.234,
+        "vwap": 0.4217972173001049,
+        "last_trade_time": "2026-10-16T21:33:59.248000+00:00",
+        "stale_age_seconds": 81
+      },
+      "date": "2026-10-17",
+      "time": "08:35:21",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.26
+    },
     {
       "ticker": "ZTG",
       "name": "ZENTA GROUP CO LTD",
       "status": "ALERT",
       "source": "regular",
-      "price": 0.805,
-      "change_pct": 14.184397163120579,
-      "volume": 171952486,
+      "price": 0.79,
+      "change_pct": 12.056737588652494,
+      "volume": 172036979,
       "market_cap": 16981461.2,
       "float_shares": 15293207,
       "country": "International (region 102)",
@@ -17,23 +136,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+14.2% \u00b7 Entry $0.81 \u00b7 T1 $0.84 \u00b7 T2 $0.85 \u00b7 T3 $0.89",
+      "result": "+12.1% \u00b7 Entry $0.79 \u00b7 T1 $0.82 \u00b7 T2 $0.84 \u00b7 T3 $0.87",
       "plan": {
         "valid": true,
         "ticker": "ZTG",
-        "entry": 0.805,
-        "stop": 0.7889,
+        "entry": 0.79,
+        "stop": 0.7742,
         "targets": {
-          "t1": 0.8372,
-          "t2": 0.8533,
-          "t3": 0.8855
+          "t1": 0.8216,
+          "t2": 0.8374,
+          "t3": 0.869
         },
-        "risk_per_share": 0.0161,
+        "risk_per_share": 0.0158,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 372,
-        "position_value": 299.46,
+        "shares": 379,
+        "position_value": 299.41,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +160,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7889"
+          "hard_stop": "$0.7742"
         }
       },
       "ta": {
@@ -55,7 +174,7 @@
           {
             "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
             "source": "Webull",
-            "time": "9h ago \u00b7 16 Oct",
+            "time": "10h ago \u00b7 16 Oct",
             "raw_time": "2026-10-16T11:33:02.000+0000",
             "url": "",
             "score": 2,
@@ -131,7 +250,7 @@
           {
             "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
             "source": "Webull",
-            "time": "9h ago \u00b7 16 Oct",
+            "time": "10h ago \u00b7 16 Oct",
             "raw_time": "2026-10-16T11:33:02.000+0000",
             "url": "",
             "score": 2,
@@ -222,159 +341,159 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 24.32,
+        "rvol": 24.33,
         "volume_indicator": "high",
-        "volume": 171952486,
+        "volume": 172036979,
         "adv": 7071774,
-        "recent_pct_of_adv": 2431.53,
-        "volume_acceleration": -0.957,
-        "price_velocity_pct": 4.151,
-        "buy_pressure_pct": 46.59,
-        "large_bar_count": 145,
+        "recent_pct_of_adv": 2432.73,
+        "volume_acceleration": -0.958,
+        "price_velocity_pct": 4.739,
+        "buy_pressure_pct": 46.48,
+        "large_bar_count": 147,
         "vwap_distance_pct": 23.734,
-        "recent_volume": 171952486,
+        "recent_volume": 172036979,
         "prior_volume": 0,
         "median_range": 0.0103,
         "last_price": 0.705,
         "vwap": 0.9243918308084762,
-        "last_trade_time": "2026-10-16T21:30:59.557000+00:00",
+        "last_trade_time": "2026-10-16T21:33:58.796000+00:00",
         "stale_age_seconds": 81
       },
       "date": "2026-10-17",
-      "time": "08:32:21",
+      "time": "08:35:21",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.781
-    },
-    {
-      "ticker": "NWGL",
-      "name": "CL Workshop Group",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.26,
-      "change_pct": 11.111111111111109,
-      "volume": 341886956,
-      "market_cap": 13227590.61,
-      "float_shares": 44911559,
-      "country": "International (region 102)",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Oct 02), 424B3 (Aug 25)",
-      "result": "+11.1% \u00b7 Entry $0.26 \u00b7 T1 $0.27 \u00b7 T2 $0.28 \u00b7 T3 $0.29",
-      "plan": {
-        "valid": true,
-        "ticker": "NWGL",
-        "entry": 0.26,
-        "stop": 0.2548,
-        "targets": {
-          "t1": 0.2704,
-          "t2": 0.2756,
-          "t3": 0.286
-        },
-        "risk_per_share": 0.0052,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 1153,
-        "position_value": 299.78,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.2548"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "NWGL",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:55:18.475+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:55:18.475+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "CL Workshop Group Sets Up $200 Million ATM Offering of ADSs",
-            "flag": "offering"
-          },
-          {
-            "title": "Cl Workshop Group Enters $200M ATM Offering Program With Chaince Securities",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "NWGL",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 48.81,
-        "volume_indicator": "high",
-        "volume": 341886956,
-        "adv": 7004036,
-        "recent_pct_of_adv": 4881.28,
-        "volume_acceleration": -0.745,
-        "price_velocity_pct": 17.293,
-        "buy_pressure_pct": 47.21,
-        "large_bar_count": 134,
-        "vwap_distance_pct": 44.523,
-        "recent_volume": 341886956,
-        "prior_volume": 0,
-        "median_range": 0.0092,
-        "last_price": 0.234,
-        "vwap": 0.4217972173001049,
-        "last_trade_time": "2026-10-16T21:30:59.577000+00:00",
-        "stale_age_seconds": 81
-      },
-      "date": "2026-10-17",
-      "time": "08:32:21",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.291
+      "previous_price": 0.805
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "NWGL",
+      "name": "CL Workshop Group",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.251,
+      "change_pct": 7.264957264957259,
+      "volume": 342598558,
+      "market_cap": 13227590.61,
+      "float_shares": 44911559,
+      "country": "International (region 102)",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Oct 02), 424B3 (Aug 25)",
+      "result": "+7.3% \u00b7 Entry $0.25 \u00b7 T1 $0.26 \u00b7 T2 $0.27 \u00b7 T3 $0.28",
+      "plan": {
+        "valid": true,
+        "ticker": "NWGL",
+        "entry": 0.251,
+        "stop": 0.246,
+        "targets": {
+          "t1": 0.261,
+          "t2": 0.266,
+          "t3": 0.276
+        },
+        "risk_per_share": 0.005,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 1195,
+        "position_value": 299.94,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.246"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "NWGL",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:55:18.475+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Oct",
+            "raw_time": "2026-10-12T09:55:18.475+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "CL Workshop Group Sets Up $200 Million ATM Offering of ADSs",
+            "flag": "offering"
+          },
+          {
+            "title": "Cl Workshop Group Enters $200M ATM Offering Program With Chaince Securities",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "NWGL",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 48.91,
+        "volume_indicator": "high",
+        "volume": 342598558,
+        "adv": 7004036,
+        "recent_pct_of_adv": 4891.44,
+        "volume_acceleration": -0.748,
+        "price_velocity_pct": 19.754,
+        "buy_pressure_pct": 47.13,
+        "large_bar_count": 131,
+        "vwap_distance_pct": 44.523,
+        "recent_volume": 342598558,
+        "prior_volume": 0,
+        "median_range": 0.0093,
+        "last_price": 0.234,
+        "vwap": 0.4217972173001049,
+        "last_trade_time": "2026-10-16T21:33:59.248000+00:00",
+        "stale_age_seconds": 81
+      },
+      "date": "2026-10-17",
+      "time": "08:35:21",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.26
+    },
+    {
       "ticker": "ZTG",
       "name": "ZENTA GROUP CO LTD",
       "status": "ALERT",
       "source": "regular",
-      "price": 0.805,
-      "change_pct": 14.184397163120579,
-      "volume": 171952486,
+      "price": 0.79,
+      "change_pct": 12.056737588652494,
+      "volume": 172036979,
       "market_cap": 16981461.2,
       "float_shares": 15293207,
       "country": "International (region 102)",
@@ -383,23 +502,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+14.2% \u00b7 Entry $0.81 \u00b7 T1 $0.84 \u00b7 T2 $0.85 \u00b7 T3 $0.89",
+      "result": "+12.1% \u00b7 Entry $0.79 \u00b7 T1 $0.82 \u00b7 T2 $0.84 \u00b7 T3 $0.87",
       "plan": {
         "valid": true,
         "ticker": "ZTG",
-        "entry": 0.805,
-        "stop": 0.7889,
+        "entry": 0.79,
+        "stop": 0.7742,
         "targets": {
-          "t1": 0.8372,
-          "t2": 0.8533,
-          "t3": 0.8855
+          "t1": 0.8216,
+          "t2": 0.8374,
+          "t3": 0.869
         },
-        "risk_per_share": 0.0161,
+        "risk_per_share": 0.0158,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 372,
-        "position_value": 299.46,
+        "shares": 379,
+        "position_value": 299.41,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -407,7 +526,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7889"
+          "hard_stop": "$0.7742"
         }
       },
       "ta": {
@@ -421,7 +540,7 @@
           {
             "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
             "source": "Webull",
-            "time": "9h ago \u00b7 16 Oct",
+            "time": "10h ago \u00b7 16 Oct",
             "raw_time": "2026-10-16T11:33:02.000+0000",
             "url": "",
             "score": 2,
@@ -497,7 +616,7 @@
           {
             "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
             "source": "Webull",
-            "time": "9h ago \u00b7 16 Oct",
+            "time": "10h ago \u00b7 16 Oct",
             "raw_time": "2026-10-16T11:33:02.000+0000",
             "url": "",
             "score": 2,
@@ -588,186 +707,67 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 24.32,
+        "rvol": 24.33,
         "volume_indicator": "high",
-        "volume": 171952486,
+        "volume": 172036979,
         "adv": 7071774,
-        "recent_pct_of_adv": 2431.53,
-        "volume_acceleration": -0.957,
-        "price_velocity_pct": 4.151,
-        "buy_pressure_pct": 46.59,
-        "large_bar_count": 145,
+        "recent_pct_of_adv": 2432.73,
+        "volume_acceleration": -0.958,
+        "price_velocity_pct": 4.739,
+        "buy_pressure_pct": 46.48,
+        "large_bar_count": 147,
         "vwap_distance_pct": 23.734,
-        "recent_volume": 171952486,
+        "recent_volume": 172036979,
         "prior_volume": 0,
         "median_range": 0.0103,
         "last_price": 0.705,
         "vwap": 0.9243918308084762,
-        "last_trade_time": "2026-10-16T21:30:59.557000+00:00",
+        "last_trade_time": "2026-10-16T21:33:58.796000+00:00",
         "stale_age_seconds": 81
       },
       "date": "2026-10-17",
-      "time": "08:32:21",
+      "time": "08:35:21",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.781
-    },
-    {
-      "ticker": "NWGL",
-      "name": "CL Workshop Group",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.26,
-      "change_pct": 11.111111111111109,
-      "volume": 341886956,
-      "market_cap": 13227590.61,
-      "float_shares": 44911559,
-      "country": "International (region 102)",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Oct 02), 424B3 (Aug 25)",
-      "result": "+11.1% \u00b7 Entry $0.26 \u00b7 T1 $0.27 \u00b7 T2 $0.28 \u00b7 T3 $0.29",
-      "plan": {
-        "valid": true,
-        "ticker": "NWGL",
-        "entry": 0.26,
-        "stop": 0.2548,
-        "targets": {
-          "t1": 0.2704,
-          "t2": 0.2756,
-          "t3": 0.286
-        },
-        "risk_per_share": 0.0052,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 1153,
-        "position_value": 299.78,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.2548"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "NWGL",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:55:18.475+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Oct",
-            "raw_time": "2026-10-12T09:55:18.475+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "CL Workshop Group Sets Up $200 Million ATM Offering of ADSs",
-            "flag": "offering"
-          },
-          {
-            "title": "Cl Workshop Group Enters $200M ATM Offering Program With Chaince Securities",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at NWGL last week (1005-1009)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "NWGL",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 48.81,
-        "volume_indicator": "high",
-        "volume": 341886956,
-        "adv": 7004036,
-        "recent_pct_of_adv": 4881.28,
-        "volume_acceleration": -0.745,
-        "price_velocity_pct": 17.293,
-        "buy_pressure_pct": 47.21,
-        "large_bar_count": 134,
-        "vwap_distance_pct": 44.523,
-        "recent_volume": 341886956,
-        "prior_volume": 0,
-        "median_range": 0.0092,
-        "last_price": 0.234,
-        "vwap": 0.4217972173001049,
-        "last_trade_time": "2026-10-16T21:30:59.577000+00:00",
-        "stale_age_seconds": 81
-      },
-      "date": "2026-10-17",
-      "time": "08:32:21",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.291
+      "previous_price": 0.805
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "ZTG",
-    "name": "ZENTA GROUP CO LTD",
+    "ticker": "NWGL",
+    "name": "CL Workshop Group",
     "status": "ALERT",
     "source": "regular",
-    "price": 0.805,
-    "change_pct": 14.184397163120579,
-    "volume": 171952486,
-    "market_cap": 16981461.2,
-    "float_shares": 15293207,
+    "price": 0.251,
+    "change_pct": 7.264957264957259,
+    "volume": 342598558,
+    "market_cap": 13227590.61,
+    "float_shares": 44911559,
     "country": "International (region 102)",
     "cap_size": "nano-cap",
     "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+14.2% \u00b7 Entry $0.81 \u00b7 T1 $0.84 \u00b7 T2 $0.85 \u00b7 T3 $0.89",
+    "sec_filings": "424B5 (Oct 02), 424B3 (Aug 25)",
+    "result": "+7.3% \u00b7 Entry $0.25 \u00b7 T1 $0.26 \u00b7 T2 $0.27 \u00b7 T3 $0.28",
     "plan": {
       "valid": true,
-      "ticker": "ZTG",
-      "entry": 0.805,
-      "stop": 0.7889,
+      "ticker": "NWGL",
+      "entry": 0.251,
+      "stop": 0.246,
       "targets": {
-        "t1": 0.8372,
-        "t2": 0.8533,
-        "t3": 0.8855
+        "t1": 0.261,
+        "t2": 0.266,
+        "t3": 0.276
       },
-      "risk_per_share": 0.0161,
+      "risk_per_share": 0.005,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 372,
-      "position_value": 299.46,
+      "shares": 1195,
+      "position_value": 299.94,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -775,7 +775,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$0.7889"
+        "hard_stop": "$0.246"
       }
     },
     "ta": {
@@ -783,79 +783,14 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "ZTG",
+      "ticker": "NWGL",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
-          "source": "Webull",
-          "time": "9h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T11:33:02.000+0000",
-          "url": "",
-          "score": 2,
-          "keywords": [
-            "controlling stake"
-          ]
-        },
-        {
-          "title": "Dow Surges 250 Points; M&T Bank Posts Upbeat Q3 Earnings",
-          "source": "Webull",
-          "time": "7h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T13:51:46.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Is Penny Stock Zenta (ZTG) Up 46% Today?",
-          "source": "Webull",
-          "time": "7h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T13:50:01.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Friday's Pre-Market Session",
-          "source": "Webull",
-          "time": "9h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T12:05:48.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "ZTG Stock Soars 15% Pre-Market After AI Pivot: Here\u2019s What You Need to Know",
-          "source": "Webull",
-          "time": "2d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T11:22:56.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Zenta Group announces re-alignment of business focus to AI and data solutions",
-          "source": "Webull",
-          "time": "3d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T13:20:55.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Zenta Group Announces Management-Endorsed Strategic Re-Alignment To Refocus Its Business Operations On AI And Data Solutions",
-          "source": "Webull",
-          "time": "3d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T11:32:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at ZTG last week (1005-1009)?",
+          "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
           "source": "Webull",
           "time": "4d ago \u00b7 12 Oct",
-          "raw_time": "2026-10-12T09:43:29.156+0000",
+          "raw_time": "2026-10-12T09:55:18.475+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -863,75 +798,10 @@
       ],
       "headlines": [
         {
-          "title": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
-          "source": "Webull",
-          "time": "9h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T11:33:02.000+0000",
-          "url": "",
-          "score": 2,
-          "keywords": [
-            "controlling stake"
-          ]
-        },
-        {
-          "title": "Dow Surges 250 Points; M&T Bank Posts Upbeat Q3 Earnings",
-          "source": "Webull",
-          "time": "7h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T13:51:46.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Is Penny Stock Zenta (ZTG) Up 46% Today?",
-          "source": "Webull",
-          "time": "7h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T13:50:01.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Friday's Pre-Market Session",
-          "source": "Webull",
-          "time": "9h ago \u00b7 16 Oct",
-          "raw_time": "2026-10-16T12:05:48.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "ZTG Stock Soars 15% Pre-Market After AI Pivot: Here\u2019s What You Need to Know",
-          "source": "Webull",
-          "time": "2d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T11:22:56.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Zenta Group announces re-alignment of business focus to AI and data solutions",
-          "source": "Webull",
-          "time": "3d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T13:20:55.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Zenta Group Announces Management-Endorsed Strategic Re-Alignment To Refocus Its Business Operations On AI And Data Solutions",
-          "source": "Webull",
-          "time": "3d ago \u00b7 13 Oct",
-          "raw_time": "2026-10-13T11:32:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at ZTG last week (1005-1009)?",
+          "title": "Weekly Report: what happened at NWGL last week (1005-1009)?",
           "source": "Webull",
           "time": "4d ago \u00b7 12 Oct",
-          "raw_time": "2026-10-12T09:43:29.156+0000",
+          "raw_time": "2026-10-12T09:55:18.475+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -939,46 +809,50 @@
       ],
       "red_flags": [
         {
-          "title": "Zenta Group Files For Up To $50M Mixed Shelf Offering",
+          "title": "CL Workshop Group Sets Up $200 Million ATM Offering of ADSs",
+          "flag": "offering"
+        },
+        {
+          "title": "Cl Workshop Group Enters $200M ATM Offering Program With Chaince Securities",
           "flag": "offering"
         }
       ],
-      "max_score": 2,
-      "avg_score": 0.2,
+      "max_score": 0,
+      "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Zenta Group Unit ZentoAI To Acquire Controlling Stake In An Unnamed Privately Held Digital Technology Service Provider In Mainland China; Financial Terms Not Disclosed",
-      "news_filter_reason": "news red flags; low catalyst score (max 2/5); red flags: offering"
+      "top_headline": "Weekly Report: what happened at NWGL last week (1005-1009)?",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
     },
     "tape": {
-      "ticker": "ZTG",
+      "ticker": "NWGL",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 24.32,
+      "rvol": 48.91,
       "volume_indicator": "high",
-      "volume": 171952486,
-      "adv": 7071774,
-      "recent_pct_of_adv": 2431.53,
-      "volume_acceleration": -0.957,
-      "price_velocity_pct": 4.151,
-      "buy_pressure_pct": 46.59,
-      "large_bar_count": 145,
-      "vwap_distance_pct": 23.734,
-      "recent_volume": 171952486,
+      "volume": 342598558,
+      "adv": 7004036,
+      "recent_pct_of_adv": 4891.44,
+      "volume_acceleration": -0.748,
+      "price_velocity_pct": 19.754,
+      "buy_pressure_pct": 47.13,
+      "large_bar_count": 131,
+      "vwap_distance_pct": 44.523,
+      "recent_volume": 342598558,
       "prior_volume": 0,
-      "median_range": 0.0103,
-      "last_price": 0.705,
-      "vwap": 0.9243918308084762,
-      "last_trade_time": "2026-10-16T21:30:59.557000+00:00",
+      "median_range": 0.0093,
+      "last_price": 0.234,
+      "vwap": 0.4217972173001049,
+      "last_trade_time": "2026-10-16T21:33:59.248000+00:00",
       "stale_age_seconds": 81
     },
     "date": "2026-10-17",
-    "time": "08:32:21",
+    "time": "08:35:21",
     "skip_news_check": true,
     "red_flag": true,
-    "previous_price": 0.781
+    "previous_price": 0.26
   },
   "total_candidates": 2,
   "alerts_generated": 2,
@@ -986,10 +860,10 @@
     {
       "ticker": "FUFU",
       "name": "BITFUFU",
-      "price": 1.08,
-      "change_pct": 19.986668147983565,
-      "volume": 773862,
-      "rvol": 6.036412140500316,
+      "price": 1.07,
+      "change_pct": 18.875680479946677,
+      "volume": 779873,
+      "rvol": 6.083300181748688,
       "market_cap": 150043640.26,
       "float_shares": 16920694,
       "cap_size": "micro-cap",
@@ -999,72 +873,72 @@
       "reason": "Filtered: vol/float 0.05x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "SAFX",
-      "name": "XCF GLOBAL INC",
-      "price": 0.164,
-      "change_pct": 16.89237348538845,
-      "volume": 7130675,
-      "rvol": 1.7901363035904274,
-      "market_cap": 58266154.51,
-      "float_shares": 134937295,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.164, float 134.9M > 100M, vol/float 0.05x < 0.1x"
-    },
-    {
       "ticker": "XELB",
       "name": "Xcel Brands",
-      "price": 0.503,
-      "change_pct": 16.949546617065806,
-      "volume": 14209515,
-      "rvol": 3.5006910466955405,
+      "price": 0.508,
+      "change_pct": 18.112066961171827,
+      "volume": 14487742,
+      "rvol": 3.569235734381852,
       "market_cap": 2821573.85,
       "float_shares": 4279476,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: tiny price $0.503"
+      "reason": "Filtered: tiny price $0.508"
     },
     {
-      "ticker": "ZTG",
-      "name": "ZENTA GROUP CO LTD",
-      "price": 0.805,
-      "change_pct": 14.184397163120579,
-      "volume": 171952486,
-      "rvol": 7.594372057637425,
-      "market_cap": 16981461.2,
-      "float_shares": 15293207,
-      "cap_size": "nano-cap",
+      "ticker": "SAFX",
+      "name": "XCF GLOBAL INC",
+      "price": 0.163,
+      "change_pct": 16.179615110477545,
+      "volume": 7563046,
+      "rvol": 1.8986818513428767,
+      "market_cap": 58266154.51,
+      "float_shares": 134937295,
+      "cap_size": "micro-cap",
       "is_penny_stock": true,
-      "country": "International (region 102)",
-      "passed": true,
-      "reason": "Passed filters"
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.163, float 134.9M > 100M, vol/float 0.06x < 0.1x"
     },
     {
-      "ticker": "BESS",
-      "name": "Bimergen Energy",
-      "price": 2.52,
-      "change_pct": 14.027149321266972,
-      "volume": 18815,
-      "rvol": 0.337047453558569,
-      "market_cap": 15685636.33,
-      "float_shares": 4416138,
+      "ticker": "AAME",
+      "name": "Atlantic Amer",
+      "price": 1.199,
+      "change_pct": 14.190476190476192,
+      "volume": 35212,
+      "rvol": 2.191845627139745,
+      "market_cap": 21417089.4,
+      "float_shares": 4054408,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: vol 18,815, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: vol 35,212, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "RPGL",
+      "name": "REPUBLIC PWR GROUP LTD",
+      "price": 7.8,
+      "change_pct": 13.207547169811324,
+      "volume": 742472,
+      "rvol": 4.3492920784249405,
+      "market_cap": 6953691.16,
+      "float_shares": 1003703,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.74x, avg $vol $1.3M < $2.0M"
     },
     {
       "ticker": "XXII",
       "name": "22Nd Century",
-      "price": 0.378,
-      "change_pct": 12.835820895522382,
-      "volume": 26272338,
-      "rvol": 5.741992632894428,
+      "price": 0.379,
+      "change_pct": 13.134328358208949,
+      "volume": 26306783,
+      "rvol": 5.749520814674065,
       "market_cap": 239187.99,
       "float_shares": 529181,
       "cap_size": "nano-cap",
@@ -1072,6 +946,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: mktcap $0.2M"
+    },
+    {
+      "ticker": "ZTG",
+      "name": "ZENTA GROUP CO LTD",
+      "price": 0.79,
+      "change_pct": 12.056737588652494,
+      "volume": 172036979,
+      "rvol": 7.59810373545839,
+      "market_cap": 16981461.2,
+      "float_shares": 15293207,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 102)",
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "EOCN",
@@ -1168,8 +1057,8 @@
       "name": "Our Bond, Inc.",
       "price": 0.156,
       "change_pct": 11.349036402569592,
-      "volume": 758170,
-      "rvol": 1.6821532058023492,
+      "volume": 758235,
+      "rvol": 1.6822974214246729,
       "market_cap": 4199571.19,
       "float_shares": 19796239,
       "cap_size": "nano-cap",
@@ -1177,36 +1066,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.156, tiny price $0.156, tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.04x, vol/float 0.04x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "NWGL",
-      "name": "CL Workshop Group",
-      "price": 0.26,
-      "change_pct": 11.111111111111109,
-      "volume": 341886956,
-      "rvol": 7.813915663446406,
-      "market_cap": 13227590.61,
-      "float_shares": 44911559,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 102)",
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
-      "ticker": "RPGL",
-      "name": "REPUBLIC PWR GROUP LTD",
-      "price": 7.63,
-      "change_pct": 10.740203193033384,
-      "volume": 740693,
-      "rvol": 4.33887095734897,
-      "market_cap": 6953691.16,
-      "float_shares": 1003703,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.74x, avg $vol $1.3M < $2.0M"
     },
     {
       "ticker": "WWR",
@@ -1254,21 +1113,6 @@
       "reason": "Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "RUBI",
-      "name": "Rubico Inc",
-      "price": 0.43,
-      "change_pct": 9.974424552429662,
-      "volume": 65030649,
-      "rvol": 7.761823951940431,
-      "market_cap": 1050659.62,
-      "float_shares": 2687080,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 68)",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.430"
-    },
-    {
       "ticker": "GELS",
       "name": "Gelteq Limited",
       "price": 0.49,
@@ -1284,64 +1128,79 @@
       "reason": "Filtered: tiny price $0.490, tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.01x, vol 40,147, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "TWG",
-      "name": "Top Wealth Grp",
-      "price": 0.066,
-      "change_pct": 8.910891089108915,
-      "volume": 10975546,
-      "rvol": 1.0727111462093641,
-      "market_cap": 3802440.93,
-      "float_shares": 44408695,
+      "ticker": "RUBI",
+      "name": "Rubico Inc",
+      "price": 0.428,
+      "change_pct": 9.462915601023012,
+      "volume": 65077427,
+      "rvol": 7.767407205474067,
+      "market_cap": 1050659.62,
+      "float_shares": 2687080,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "China / Hong Kong",
+      "country": "International (region 68)",
       "passed": false,
-      "reason": "Filtered: price $0.066, tiny price $0.066, tiny rvol 1.1x, tiny avg $vol, tiny vol/float 0.25x, avg $vol $0.7M < $2.0M"
+      "reason": "Filtered: tiny price $0.428"
     },
     {
-      "ticker": "AAME",
-      "name": "Atlantic Amer",
-      "price": 1.15,
-      "change_pct": 9.523809523809511,
-      "volume": 32415,
-      "rvol": 2.0177404295051353,
-      "market_cap": 21417089.4,
-      "float_shares": 4054408,
+      "ticker": "ZONE",
+      "name": "Zone Frontier Inc",
+      "price": 0.104,
+      "change_pct": 9.47368421052631,
+      "volume": 17081392,
+      "rvol": 2.3801079321640914,
+      "market_cap": 48338874.61,
+      "float_shares": 493045692,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
+      "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: vol 32,415, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
+      "reason": "Filtered: price $0.104, float 493.0M > 100M, vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "SLXN",
       "name": "Silexion Therapeutics Corp",
-      "price": 0.167,
-      "change_pct": 9.15032679738563,
-      "volume": 824776,
-      "rvol": 0.5933670169562005,
+      "price": 0.166,
+      "change_pct": 8.496732026143798,
+      "volume": 824777,
+      "rvol": 0.593367736384284,
       "market_cap": 2214413.68,
       "float_shares": 12349525,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "International (region 83)",
       "passed": false,
-      "reason": "Filtered: price $0.167, tiny price $0.167, tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.07x, vol/float 0.07x < 0.1x, avg $vol $0.2M < $2.0M"
+      "reason": "Filtered: price $0.166, tiny price $0.166, tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.07x, vol/float 0.07x < 0.1x, avg $vol $0.2M < $2.0M"
     },
     {
-      "ticker": "UPLD",
-      "name": "Upland Software",
-      "price": 3.66,
-      "change_pct": 8.605341246290802,
-      "volume": 150691,
-      "rvol": 4.092862186973763,
-      "market_cap": 9965733.67,
-      "float_shares": 2032986,
+      "ticker": "GP",
+      "name": "GreenPower Mtr Co Inc",
+      "price": 0.35,
+      "change_pct": 8.695652173913034,
+      "volume": 2559960,
+      "rvol": 0.21121790891827927,
+      "market_cap": 3382141.81,
+      "float_shares": 6485367,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
+      "is_penny_stock": true,
+      "country": "Canada",
       "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.07x, vol/float 0.07x < 0.1x, avg $vol $0.1M < $2.0M"
+      "reason": "Filtered: tiny price $0.350, tiny rvol 0.2x, tiny vol/float 0.39x"
+    },
+    {
+      "ticker": "HUBC",
+      "name": "Hub Cyber Security Israel Ltd",
+      "price": 0.432,
+      "change_pct": 8.270676691729316,
+      "volume": 3416662,
+      "rvol": 1.1611354628926653,
+      "market_cap": 716532.58,
+      "float_shares": 1790379,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 83)",
+      "passed": false,
+      "reason": "Filtered: mktcap $0.7M"
     },
     {
       "ticker": "IPWR",
@@ -1389,36 +1248,6 @@
       "reason": "Filtered: vol 42,065, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "TGL",
-      "name": "Treasure Global Inc.",
-      "price": 0.334,
-      "change_pct": 8.090614886731398,
-      "volume": 57037253,
-      "rvol": 1.6447238860330236,
-      "market_cap": 1594408.17,
-      "float_shares": 5004052,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.334, tiny rvol 1.6x"
-    },
-    {
-      "ticker": "HUBC",
-      "name": "Hub Cyber Security Israel Ltd",
-      "price": 0.431,
-      "change_pct": 8.020050125313276,
-      "volume": 3416221,
-      "rvol": 1.160985591252118,
-      "market_cap": 716532.58,
-      "float_shares": 1790379,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 83)",
-      "passed": false,
-      "reason": "Filtered: mktcap $0.7M"
-    },
-    {
       "ticker": "OTAI",
       "name": "Starlink AI Acquisition Corp",
       "price": 10.93,
@@ -1432,21 +1261,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 2,808, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "BKHA",
-      "name": "Black Hawk Acquisition Corp",
-      "price": 6.48,
-      "change_pct": 7.820299500831958,
-      "volume": 13419,
-      "rvol": 0.18297721477562484,
-      "market_cap": 24962997.77,
-      "float_shares": 1952078,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 13,419, vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "TWAV",
@@ -1468,15 +1282,15 @@
       "name": "Future Vision II Acquisition Corp",
       "price": 11.9,
       "change_pct": 7.692307692307689,
-      "volume": 7760,
-      "rvol": 0.8275567878852511,
+      "volume": 7761,
+      "rvol": 0.8276634318012157,
       "market_cap": 83361200.0,
       "float_shares": 5612500,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "International (region 39)",
       "passed": false,
-      "reason": "Filtered: vol 7,760, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: vol 7,761, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "TOPP",
@@ -1492,21 +1306,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.136, tiny price $0.136, tiny rvol 0.0x, tiny vol/float 0.27x"
-    },
-    {
-      "ticker": "SCAG",
-      "name": "Scage Future",
-      "price": 0.184,
-      "change_pct": 7.728337236533951,
-      "volume": 293674,
-      "rvol": 1.6527136843527002,
-      "market_cap": 12401730.78,
-      "float_shares": 20616904,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.184, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
       "ticker": "RENX",
@@ -1569,6 +1368,21 @@
       "reason": "Filtered: vol 37,938, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
+      "ticker": "NWGL",
+      "name": "CL Workshop Group",
+      "price": 0.251,
+      "change_pct": 7.264957264957259,
+      "volume": 342598558,
+      "rvol": 7.830179512991868,
+      "market_cap": 13227590.61,
+      "float_shares": 44911559,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 102)",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "IBG",
       "name": "Innovation Beverage Group Ltd",
       "price": 0.87,
@@ -1612,21 +1426,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 468, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "ZONE",
-      "name": "Zone Frontier Inc",
-      "price": 0.102,
-      "change_pct": 7.368421052631572,
-      "volume": 17073326,
-      "rvol": 2.378984021971009,
-      "market_cap": 48338874.61,
-      "float_shares": 493045692,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.102, float 493.0M > 100M, vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "IVDA",
@@ -1674,21 +1473,6 @@
       "reason": "Filtered: float 103.0M > 100M, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "SNTI",
-      "name": "Senti Biosciences Holdings, Inc.",
-      "price": 0.24,
-      "change_pct": 6.714095153401513,
-      "volume": 3460722,
-      "rvol": 1.1672983153935201,
-      "market_cap": 7004598.21,
-      "float_shares": 16060503,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.240, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.22x, avg $vol $0.7M < $2.0M"
-    },
-    {
       "ticker": "FTHM",
       "name": "Fathom Holdings Inc",
       "price": 0.2,
@@ -1702,6 +1486,36 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny price $0.200, tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.2M < $2.0M"
+    },
+    {
+      "ticker": "SNTI",
+      "name": "Senti Biosciences Holdings, Inc.",
+      "price": 0.24,
+      "change_pct": 6.714095153401513,
+      "volume": 3466133,
+      "rvol": 1.169123440666395,
+      "market_cap": 7004598.21,
+      "float_shares": 16060503,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.240, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.22x, avg $vol $0.7M < $2.0M"
+    },
+    {
+      "ticker": "AMRO",
+      "name": "Amaero Inc.",
+      "price": 4.8,
+      "change_pct": 6.6666666666666625,
+      "volume": 329605,
+      "rvol": 0.5877103359491039,
+      "market_cap": 124725042.0,
+      "float_shares": 3883496,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.08x < 0.1x"
     },
     {
       "ticker": "GALT",
@@ -1732,16 +1546,76 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny price $0.822, tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.01x, vol 31,854, vol/float 0.01x < 0.1x, avg $vol $0.2M < $2.0M"
+    },
+    {
+      "ticker": "TRIB",
+      "name": "Trinity Biotech Plc",
+      "price": 8.55,
+      "change_pct": 6.4757160647571785,
+      "volume": 28644,
+      "rvol": 1.3951585407432663,
+      "market_cap": 6529449.96,
+      "float_shares": 701200,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 1.4x, tiny avg $vol, tiny vol/float 0.04x, vol 28,644, vol/float 0.04x < 0.1x, avg $vol $0.2M < $2.0M"
+    },
+    {
+      "ticker": "CTW",
+      "name": "CTW",
+      "price": 1.99,
+      "change_pct": 6.417112299465234,
+      "volume": 8793,
+      "rvol": 0.835122043878811,
+      "market_cap": 116688000.0,
+      "float_shares": 2399869,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "Japan",
+      "passed": false,
+      "reason": "Filtered: vol 8,793, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "BOF",
+      "name": "Branchout Foods Inc.",
+      "price": 2.33,
+      "change_pct": 6.392694063926946,
+      "volume": 42638,
+      "rvol": 0.39628603825492126,
+      "market_cap": 35608756.14,
+      "float_shares": 14505783,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 42,638, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "ILAG",
+      "name": "Intelligent Living Application Group Inc.",
+      "price": 3.0,
+      "change_pct": 6.382978723404261,
+      "volume": 2205,
+      "rvol": 0.004254801847799659,
+      "market_cap": 5856993.36,
+      "float_shares": 976948,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 2,205, vol/float 0.00x < 0.1x, avg $vol $1.6M < $2.0M"
     }
   ],
   "all_losers": [
     {
       "ticker": "AACG",
       "name": "Ata Creativity Global",
-      "price": 0.7,
-      "change_pct": -26.647804673582737,
-      "volume": 294363,
-      "rvol": 8.73143891080592,
+      "price": 0.71,
+      "change_pct": -25.599916168919634,
+      "volume": 294915,
+      "rvol": 8.747812416575208,
       "market_cap": 65335214.0,
       "float_shares": 68171341,
       "cap_size": "micro-cap",
@@ -1770,8 +1644,8 @@
       "name": "Origin Agritech",
       "price": 0.87,
       "change_pct": -10.337009172420906,
-      "volume": 1614295,
-      "rvol": 8.340109941206254,
+      "volume": 1614297,
+      "rvol": 8.34012027402639,
       "market_cap": 13724491.0,
       "float_shares": 12128540,
       "cap_size": "nano-cap",
@@ -1815,8 +1689,8 @@
       "name": "Sangrix Inc",
       "price": 0.785,
       "change_pct": -9.624683398572415,
-      "volume": 159492431,
-      "rvol": 9.537289221885308,
+      "volume": 159502711,
+      "rvol": 9.537903942800817,
       "market_cap": 1652926.0,
       "float_shares": 1881935,
       "cap_size": "nano-cap",
@@ -1824,21 +1698,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: mktcap $1.7M"
-    },
-    {
-      "ticker": "WIMI",
-      "name": "WiMi Hologram Cloud Inc.",
-      "price": 0.46,
-      "change_pct": -9.234411996842937,
-      "volume": 452702,
-      "rvol": 2.421604446275068,
-      "market_cap": 9317545.0,
-      "float_shares": 17379276,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.460, vol/float 0.03x"
     },
     {
       "ticker": "PLRZ",
@@ -1871,21 +1730,6 @@
       "reason": "Filtered: price $0.415, float 78.6M, vol/float 0.01x"
     },
     {
-      "ticker": "WFF",
-      "name": "WF Holding Ltd.",
-      "price": 0.099,
-      "change_pct": -7.563025210084031,
-      "volume": 112897568,
-      "rvol": 1.6003855750696232,
-      "market_cap": 4489624.0,
-      "float_shares": 41919934,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.099, mktcap $4.5M"
-    },
-    {
       "ticker": "AUST",
       "name": "Austin Gold Corp.",
       "price": 0.76,
@@ -1899,6 +1743,21 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: move -8.0%, rvol 0.4x, vol 34,473, vol/float 0.00x"
+    },
+    {
+      "ticker": "WFF",
+      "name": "WF Holding Ltd.",
+      "price": 0.099,
+      "change_pct": -7.563025210084031,
+      "volume": 113178307,
+      "rvol": 1.604365205932526,
+      "market_cap": 4489624.0,
+      "float_shares": 41919934,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.099, mktcap $4.5M, move -7.7%"
     },
     {
       "ticker": "IMRN",
@@ -1944,6 +1803,21 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: price $0.360, mktcap $4.6M, move -7.3%, rvol 0.6x, vol 78,167, vol/float 0.01x"
+    },
+    {
+      "ticker": "WIMI",
+      "name": "WiMi Hologram Cloud Inc.",
+      "price": 0.47,
+      "change_pct": -7.261247040252576,
+      "volume": 454706,
+      "rvol": 2.432324291361538,
+      "market_cap": 9317545.0,
+      "float_shares": 17379276,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.470, move -7.3%, vol/float 0.03x"
     },
     {
       "ticker": "CDT",
@@ -2023,10 +1897,10 @@
     {
       "ticker": "LHSW",
       "name": "Lianhe Sowell International Group Ltd",
-      "price": 0.655,
-      "change_pct": -6.428571428571418,
-      "volume": 27050655,
-      "rvol": 4.554531320610363,
+      "price": 0.654,
+      "change_pct": -6.571428571428561,
+      "volume": 27055050,
+      "rvol": 4.555271308797491,
       "market_cap": 9445566.0,
       "float_shares": 10906166,
       "cap_size": "nano-cap",
@@ -2034,21 +1908,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: move -6.5%"
-    },
-    {
-      "ticker": "ZBAO",
-      "name": "Zhibao Tech",
-      "price": 0.593,
-      "change_pct": -6.422597443585304,
-      "volume": 1137797,
-      "rvol": 0.8343063755899115,
-      "market_cap": 5693980.0,
-      "float_shares": 8985293,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: move -6.4%, rvol 0.8x, vol/float 0.13x"
     },
     {
       "ticker": "NCI",
@@ -2246,6 +2105,21 @@
       "reason": "Filtered: move -5.3%, rvol 0.4x, vol 61,318, vol/float 0.01x"
     },
     {
+      "ticker": "ZBAO",
+      "name": "Zhibao Tech",
+      "price": 0.601,
+      "change_pct": -5.160170427647161,
+      "volume": 1137961,
+      "rvol": 0.8344266310006717,
+      "market_cap": 5693980.0,
+      "float_shares": 8985293,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: move -5.2%, rvol 0.8x, vol/float 0.13x"
+    },
+    {
       "ticker": "EPAM",
       "name": "Epam Sys Inc",
       "price": 115.84,
@@ -2310,8 +2184,8 @@
       "name": "Fort Technology Inc",
       "price": 0.515,
       "change_pct": -4.876246767639449,
-      "volume": 491255,
-      "rvol": 5.318915114768298,
+      "volume": 492355,
+      "rvol": 5.330825032481593,
       "market_cap": 8144053.0,
       "float_shares": 15042582,
       "cap_size": "nano-cap",
@@ -2415,8 +2289,8 @@
       "name": "Able View Global",
       "price": 1.82,
       "change_pct": -4.712041884816746,
-      "volume": 178003,
-      "rvol": 0.6805020338257333,
+      "volume": 178481,
+      "rvol": 0.6823294186010949,
       "market_cap": 105471777.0,
       "float_shares": 30349393,
       "cap_size": "micro-cap",
@@ -2441,6 +2315,21 @@
       "reason": "Filtered: mktcap $718.9M, move -4.7%, float 131.9M, vol/float 0.01x"
     },
     {
+      "ticker": "SCAG",
+      "name": "Scage Future",
+      "price": 0.163,
+      "change_pct": -4.566744730679158,
+      "volume": 308024,
+      "rvol": 1.733471399950476,
+      "market_cap": 12401730.0,
+      "float_shares": 72609665,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.163, move -4.7%, float 72.6M, vol/float 0.00x"
+    },
+    {
       "ticker": "CCG",
       "name": "CHECHE GROUP INC",
       "price": 4.59,
@@ -2454,21 +2343,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: move -4.4%, rvol 0.4x, vol 8,062, vol/float 0.00x"
-    },
-    {
-      "ticker": "INLF",
-      "name": "INLIF",
-      "price": 2.44,
-      "change_pct": -4.313725490196074,
-      "volume": 65239,
-      "rvol": 0.6449600601075609,
-      "market_cap": 2780259.0,
-      "float_shares": 1046390,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: mktcap $2.8M, move -4.3%, rvol 0.6x, vol 65,239, vol/float 0.06x"
     },
     {
       "ticker": "DGNX",
@@ -2487,6 +2361,34 @@
     }
   ],
   "live_quotes": {
+    "ZTG": {
+      "price": 0.705,
+      "open": 1.005,
+      "high": 1.1,
+      "low": 0.58,
+      "close": 0.705,
+      "preClose": 0.623,
+      "volume": 172082631,
+      "changeRatio": 0.1316,
+      "marketValue": 16981461.2,
+      "name": "ZENTA GROUP CO LTD",
+      "_timestamp": "2026-10-16T21:35:21.914977Z"
+    },
+    "NWGL": {
+      "price": 0.234,
+      "open": 0.228,
+      "high": 0.7279,
+      "low": 0.094,
+      "close": 0.234,
+      "preClose": 0.221,
+      "volume": 343431511,
+      "changeRatio": 0.0588,
+      "marketValue": 13227590.61,
+      "name": "CL Workshop Group",
+      "_timestamp": "2026-10-16T21:35:21.915000Z"
+    }
+  },
+  "previous_live_quotes": {
     "ZTG": {
       "price": 0.705,
       "open": 1.005,
@@ -2514,39 +2416,11 @@
       "_timestamp": "2026-10-16T21:32:22.007812Z"
     }
   },
-  "previous_live_quotes": {
-    "ZTG": {
-      "price": 0.705,
-      "open": 1.005,
-      "high": 1.1,
-      "low": 0.58,
-      "close": 0.705,
-      "preClose": 0.623,
-      "volume": 171894517,
-      "changeRatio": 0.1316,
-      "marketValue": 16981461.2,
-      "name": "ZENTA GROUP CO LTD",
-      "_timestamp": "2026-10-16T21:29:23.895937Z"
-    },
-    "NWGL": {
-      "price": 0.234,
-      "open": 0.228,
-      "high": 0.7279,
-      "low": 0.094,
-      "close": 0.234,
-      "preClose": 0.221,
-      "volume": 341265737,
-      "changeRatio": 0.0588,
-      "marketValue": 13227590.61,
-      "name": "CL Workshop Group",
-      "_timestamp": "2026-10-16T21:29:23.895964Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "08:32 AM AEST",
+    "market_time": "08:35 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
