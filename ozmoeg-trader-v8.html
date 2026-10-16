@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792130253" />
+<meta name="ozmoeg-version" content="1792130353" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4772,6 +4772,35 @@
                         console.warn('Source failed', url, e.message);
                     }
                 }
+                // Merge fast feed (ozmoeg-fast.json) on top of full snapshot for near-real-time prices.
+                try {
+                    const fastFile = currentMarket === 'AUS' ? 'ozmoeg-fast-au.json' : 'ozmoeg-fast.json';
+                    const fastUrl = `https://trip-planner.aeyeing.com/ozmoeg/${fastFile}?_=${cacheBuster}`;
+                    const fastData = await fetchJson(fastUrl);
+                    if (fastData && fastData.updates && data && data.scan_results) {
+                        const updates = fastData.updates;
+                        data.scan_results = data.scan_results.map(r => {
+                            const u = updates[r.ticker?.toUpperCase()];
+                            if (u) {
+                                return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                            }
+                            return r;
+                        });
+                        // Also update pre_market_results / watchlist if present
+                        ['pre_market_results', 'pre_market_watchlist'].forEach(key => {
+                            if (Array.isArray(data[key])) {
+                                data[key] = data[key].map(r => {
+                                    const u = updates[r.ticker?.toUpperCase()];
+                                    return u ? { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp } : r;
+                                });
+                            }
+                        });
+                        console.log('Merged fast feed for', Object.keys(updates).length, 'tickers');
+                    }
+                } catch (e) {
+                    console.warn('Fast feed merge failed', e.message);
+                }
+
                 // Fallback: use scan data embedded in the HTML if all live sources fail.
                 if (!data) {
                     try {
