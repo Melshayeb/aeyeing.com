@@ -365,7 +365,7 @@ def _float_shares(stock: Dict) -> int:
 def _country(stock: Dict) -> str:
     """Return origin country if already enriched."""
     t = _extract_ticker_dict(stock)
-    return stock.get('country', '') or t.get('_country', '')
+    return stock.get('country', '') or stock.get('_country', '') or t.get('_country', '') or t.get('country', '')
 def _rvol(stock: Dict) -> float:
     """Return computed relative volume from the inner ticker dict if present."""
     t = stock.get('ticker', stock) if isinstance(stock, dict) else stock
