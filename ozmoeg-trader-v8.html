@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792127050" />
+<meta name="ozmoeg-version" content="1792130253" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -2434,8 +2434,8 @@
         // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
         // race where the frontend refreshes on a wall-clock boundary before the backend scan
         // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
-        const MANIFEST_POLL_INTERVAL_MS = 60000; // 1 minute
-        const MANIFEST_POLL_OFFSET_MS = 5000;    // poll at :05 past each minute
+        const MANIFEST_POLL_INTERVAL_MS = 15000; // 15 seconds
+        const MANIFEST_POLL_OFFSET_MS = 1000;    // poll shortly after each 15s boundary
         let refreshTimerId = null;
         let nextPollAt = computeNextPollAt();
 
@@ -2451,13 +2451,13 @@
         }
 
         function getTunnelSnapshotFile() {
-            // Tunnel JSON is updated immediately by the OzMoEg backend and is the fastest live source.
+            // Tunnel JSON is updated immediately by the OzMoEg backend and is the primary live source.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return `https://trip-planner.aeyeing.com/ozmoeg/${file}`;
         }
 
         function getPublicSnapshotFile() {
-            // Raw GitHub rolling JSON — bypasses Cloudflare's 4-hour edge cache and mobile-carrier proxies.
+            // Fallback: raw GitHub rolling JSON — bypasses Cloudflare edge cache and mobile-carrier proxies.
             const file = currentMarket === 'AUS' ? 'ozmoeg-latest-au.json' : 'ozmoeg-latest.json';
             return `https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/${file}`;
         }
@@ -2487,10 +2487,11 @@
             };
             const market = currentMarket === 'AUS' ? '-au' : '';
             // Primary: own CDN (aeyeing.com), then raw GitHub, then legacy tunnel.
+            // Prefer tunnel first (live, no build delay), then main CDN, then raw GitHub.
+            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
             const main = await tryFetch(`https://aeyeing.com/ozmoeg-manifest${market}.json`, 'main');
             const raw = await tryFetch(`https://raw.githubusercontent.com/Melshayeb/aeyeing.com/main/ozmoeg-manifest${market}.json`, 'raw-github');
-            const tunnel = await tryFetch(`https://trip-planner.aeyeing.com/ozmoeg/ozmoeg-manifest${market}.json`, 'tunnel');
-            const candidates = [main, raw, tunnel].filter(Boolean);
+            const candidates = [tunnel, main, raw].filter(Boolean);
             if (!candidates.length) return null;
             // Use whichever manifest has the newest last_updated timestamp.
             let newest = candidates[0];
