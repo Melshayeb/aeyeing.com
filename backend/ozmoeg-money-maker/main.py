@@ -836,13 +836,14 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                                 ticker, price_velocity_pct, large_bar_count, rvol)
                     return None
 
-            # Fetch recent SEC EDGAR filings for the alert/candidate row.
-            # Rate-limited internally; if it fails we simply leave the field blank.
+            # Fetch recent SEC EDGAR filings only for ALERT rows to save time.
+            # Candidates are filtered later and rarely need SEC context; BOUNCE rows are handled below.
             sec_filings_summary = ''
-            try:
-                sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
-            except Exception as e:
-                logger.debug("SEC filings lookup failed for %s: %s", ticker, e)
+            if status == 'ALERT':
+                try:
+                    sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
+                except Exception as e:
+                    logger.debug("SEC filings lookup failed for %s: %s", ticker, e)
 
             return {
                 'ticker': ticker,
@@ -930,7 +931,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # Live tape momentum is required to keep the dead-ticker filter honest.
             max_bar_candidates = min(5, len(regular_candidates))
             bar_candidates = regular_candidates[:max_bar_candidates]
-            bar_total_budget = 10  # seconds for the whole bar window
+            bar_total_budget = 5  # seconds for the whole bar window
             with ThreadPoolExecutor(max_workers=3) as bar_ex:
                 bar_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in bar_candidates]
                 done, pending = wait(bar_futures, timeout=bar_total_budget)
@@ -972,7 +973,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
             if exempt_gainers:
                 # Fetch 1m bars for exemption candidates (always, including PRE-MARKET)
-                exempt_bar_budget = 10
+                exempt_bar_budget = 5
                 with ThreadPoolExecutor(max_workers=3) as bar_ex:
                     exempt_futures = [bar_ex.submit(_fetch_bars, _symbol(g)) for g in exempt_gainers]
                     done, pending = wait(exempt_futures, timeout=exempt_bar_budget)
@@ -1056,10 +1057,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             change_pct = _change_pct(gainer)
             change_str = f"{('+' if change_pct >= 0 else '')}{change_pct:.1f}%"
             sec_filings_summary = ''
-            try:
-                sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
-            except Exception as e:
-                logger.debug("SEC filings lookup failed for exempt %s: %s", ticker, e)
+            # Exempt top-gainer candidates are always CANDIDATE; skip SEC to speed up scans.
             return {
                 'ticker': ticker,
                 'name': name,
