@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792205233" />
+<meta name="ozmoeg-version" content="1792205565" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4665,10 +4665,8 @@
                             borderColor: inRows.map((r, i) => dataPoints[i]?.isNew ? '#ffffff' : getBubbleBorderColor(r, getChangePct(r))),
                             borderWidth: inRows.map((r, i) => dataPoints[i]?.isNew ? 3 : 1.6),
                             hoverBorderColor: '#fff',
-                            hoverBorderWidth: 3,
-                            hoverRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? 6 : 4)),
-                            pointRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? (dataPoints[i].r * 1.25) : dataPoints[i].r)),
-                            pointHoverRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? (dataPoints[i].r * 1.4) : (dataPoints[i].r + 2))) }] },
+                            hoverBorderWidth: 2,
+                            hoverRadius: 4 }] },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
