@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792203641" />
+<meta name="ozmoeg-version" content="1792205233" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -1623,9 +1623,7 @@
 </tbody>
 </table>
 </div>
-<!-- BOUNCERS_SECTION -->
-<div id="bouncers-section" style="text-align:center;padding:16px;color:var(--text-secondary);">⏳ Loading bounce setups…</div>
-<!-- END_BOUNCERS_SECTION -->
+
 <!-- SCANNED_GAINERS_TABLE -->
 <details class="scanned-details" id="scanned-gainers-details">
   <summary>🔍 Show all 50 scanned gainers with filter reasons</summary>
@@ -1784,7 +1782,7 @@
 
             renderScannerView(); // show empty/loading state immediately
             renderScannedTables();
-            renderBouncers();
+            
             renderNewsTicker();
             loadLiveData().then(() => renderPlanRules());
         }
@@ -3799,26 +3797,6 @@
             }
         }
 
-        function renderBouncers() {
-            const section = document.getElementById('bouncers-section');
-            if (!section) return;
-            let bouncers = window._lastBounceResults || [];
-            // Fallback: use BOUNCE status rows from scan_results if bounce_results is missing/malformed
-            if (!bouncers.length) {
-                bouncers = (window._lastLiveResults || []).filter(r => r?.status === 'BOUNCE');
-            }
-            if (!bouncers.length) {
-                section.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text-secondary);">No bounce setups in current scan.</div>';
-                return;
-            }
-            section.innerHTML = bouncers.map(r => {
-                const ticker = (typeof r.ticker === 'string' ? r.ticker : (r.ticker?.symbol || '')) || '';
-                const name = r.name || '';
-                const reason = r.scan_reason || r.result || r.reason || r._scan_reason || 'Bounce setup';
-                return `<div class="bounce-item"><strong>${escapeHtml(ticker)}${name ? ' <span style="color:var(--text-secondary);font-weight:400;">(' + escapeHtml(name) + ')</span>' : ''}</strong> — ${escapeHtml(reason)}</div>`;
-            }).join('');
-        }
-
         function renderNewsTicker() {
             const ticker = document.getElementById('news-ticker');
             if (!ticker) return;
@@ -4144,7 +4122,9 @@
             let bubbleChart = null;
             let bubbleAnimationId = null;
             window._bubbleViewPreviousTickers = {};
+            window._bubbleViewPreviousTickersInitialized = false;
             window._bubbleViewLastClicked = {};
+            window._bubbleNewTickers = {};
 
             function setBubbleStatus(text) {
                 const el = document.getElementById('bubble-chart-status');
@@ -4189,12 +4169,19 @@
                     const wasClicked = lastClicked[v];
                     if (hasPrev && changed && !wasClicked) {
                         tab.classList.add('has-changes');
-                    } else {
+                    }
+                    // Only clear the dot and update previous snapshot when the user clicks the tab.
+                    if (wasClicked) {
                         tab.classList.remove('has-changes');
-                        if (wasClicked) lastClicked[v] = false;
+                        window._bubbleViewPreviousTickers[v] = curr;
+                        lastClicked[v] = false;
                     }
                 });
-                window._bubbleViewPreviousTickers = currentSet;
+                // On first run, initialize the previous snapshot without showing dots.
+                if (!window._bubbleViewPreviousTickersInitialized) {
+                    window._bubbleViewPreviousTickers = currentSet;
+                    window._bubbleViewPreviousTickersInitialized = true;
+                }
             }
 
             function getTopN(list, field, n, absDesc) {
@@ -4209,6 +4196,15 @@
             function buildBubbleChart() {
                 // Update tab change indicators before rendering.
                 updateBubbleTabIndicators();
+                // Compute new tickers for this view compared to previous render.
+                const viewMode = window._bubbleViewMode || 'setup';
+                const currentTickers = getBubbleViewTickers(viewMode);
+                const prevTickers = window._bubbleNewTickers?.previous?.[viewMode] || [];
+                const newTickers = currentTickers.filter(t => !prevTickers.includes(t));
+                window._bubbleNewTickers = window._bubbleNewTickers || {};
+                window._bubbleNewTickers.current = { [viewMode]: new Set(newTickers) };
+                window._bubbleNewTickers.previous = window._bubbleNewTickers.previous || {};
+                window._bubbleNewTickers.previous[viewMode] = currentTickers;
                 // Bubble View mode: setup matches the active scanner view; other modes
                 // overlay top-N lists (gainers, bouncers, volume, gapers) on the same axes.
                 const bubbleView = window._bubbleViewMode || 'setup';
@@ -4298,6 +4294,7 @@
                     // Bubble radius: scaled by relative change % to match PNG proportions
                     const rel = Math.abs(changePct) / maxChange;
                     const radius = 8 + rel * 34;
+                    const isNew = window._bubbleNewTickers?.current?.[window._bubbleViewMode || 'setup']?.has((r.ticker || '').toUpperCase());
                     return {
                         x: floatShares,
                         y: price,
@@ -4305,6 +4302,7 @@
                         ticker: r.ticker,
                         country: shortCountry(r.country),
                         raw: r,
+                        isNew: isNew,
                         trueX: floatShares,
                         trueY: price,
                         changePct: changePct,
@@ -4663,7 +4661,14 @@
                 };
                 const config = {
                     type: 'bubble',
-                    data: { datasets: [{ data: dataPoints, backgroundColor: inRows.map(r => getBubbleColor(r, getChangePct(r))), borderColor: inRows.map(r => getBubbleBorderColor(r, getChangePct(r))), borderWidth: 1.6, hoverBorderColor: '#fff', hoverBorderWidth: 2, hoverRadius: 4 }] },
+                    data: { datasets: [{ data: dataPoints, backgroundColor: inRows.map(r => getBubbleColor(r, getChangePct(r))),
+                            borderColor: inRows.map((r, i) => dataPoints[i]?.isNew ? '#ffffff' : getBubbleBorderColor(r, getChangePct(r))),
+                            borderWidth: inRows.map((r, i) => dataPoints[i]?.isNew ? 3 : 1.6),
+                            hoverBorderColor: '#fff',
+                            hoverBorderWidth: 3,
+                            hoverRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? 6 : 4)),
+                            pointRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? (dataPoints[i].r * 1.25) : dataPoints[i].r)),
+                            pointHoverRadius: inRows.map((r, i) => (dataPoints[i]?.isNew ? (dataPoints[i].r * 1.4) : (dataPoints[i].r + 2))) }] },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
@@ -5007,7 +5012,7 @@
                 renderScannerView();
                 renderNewsTicker();
                 renderScannedTables();
-                renderBouncers();
+                
                 renderPlanRules();
                 if (modal && !modal.hidden && typeof window.rebuildBubbleChart === 'function') window.rebuildBubbleChart();
                 // Update status badge with real data counts so stale/empty warning hides.
@@ -5044,12 +5049,12 @@
             renderScannerView();
             renderNewsTicker();
             renderScannedTables();
-            renderBouncers();
+            
             await loadLiveData();
             renderScannerView();
             renderNewsTicker();
             renderScannedTables();
-            renderBouncers();
+            
             resetRefreshTimer();
         })();
 
