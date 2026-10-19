@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792411546" />
+<meta name="ozmoeg-version" content="1792412577" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4506,6 +4506,7 @@
                             const changePct = getChangePct(r);
                             const clampedX = Math.min(floatShares, maxFloat);
                             const clampedY = Math.max(minPrice, Math.min(price, maxPrice));
+                            const isNew = window._bubbleNewTickers?.current?.[window._bubbleViewMode || 'setup']?.has((r.ticker || '').toUpperCase());
                             return {
                                 row: r,
                                 ticker: r.ticker,
@@ -4517,6 +4518,8 @@
                                 targetY: y.getPixelForValue(clampedY),
                                 color: getBubbleColor(r, changePct),
                                 border: getBubbleBorderColor(r, changePct),
+                                newBorder: isNew ? '#ffffff' : null,
+                                isNew: isNew,
                                 side: floatShares > maxFloat ? 'right' : (price > maxPrice ? 'top' : 'bottom')
                             };
                         });
@@ -4570,9 +4573,10 @@
                             hitBoxes.push({ x: lx, y: ly, w: labelW, h: labelH, item });
 
                             // Leader line / arrow
-                            ctx.strokeStyle = item.border || 'rgba(148,163,184,0.55)';
-                            ctx.lineWidth = 0.8;
-                            ctx.setLineDash([3, 3]);
+                            const leaderColor = item.newBorder || item.border || 'rgba(148,163,184,0.55)';
+                            ctx.strokeStyle = leaderColor;
+                            ctx.lineWidth = item.isNew ? 2 : 0.8;
+                            ctx.setLineDash(item.isNew ? [] : [3, 3]);
                             ctx.beginPath();
                             ctx.moveTo(arrowFromX, arrowFromY);
                             ctx.lineTo(arrowToX, arrowToY);
@@ -4580,7 +4584,7 @@
                             ctx.setLineDash([]);
 
                             // Arrowhead at the chart edge pointing toward the clipped bubble.
-                            ctx.fillStyle = item.border || '#94a3b8';
+                            ctx.fillStyle = leaderColor;
                             ctx.beginPath();
                             if (item.side === 'right') {
                                 ctx.moveTo(right - 9, item.targetY - 3);
@@ -4601,8 +4605,9 @@
                             // Label box
                             ctx.fillStyle = 'rgba(17,24,39,0.92)';
                             ctx.fillRect(lx, ly, labelW, labelH);
-                            ctx.strokeStyle = item.border || 'rgba(255,255,255,0.2)';
-                            ctx.lineWidth = 0.8;
+                            const labelBorder = item.newBorder || item.border || 'rgba(255,255,255,0.2)';
+                            ctx.strokeStyle = labelBorder;
+                            ctx.lineWidth = item.isNew ? 2.5 : 0.8;
                             ctx.strokeRect(lx, ly, labelW, labelH);
 
                             // Text
