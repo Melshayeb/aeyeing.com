@@ -679,6 +679,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'reason_note': 'bounce_research'
             }
 
+        # Results list is shared across bounce, regular, and exempt candidates.
+        scan_results = []
+
         # Create entries for bounce candidates (never alert)
         bounce_results_enriched = []
         for gainer in bounce_candidates:
@@ -739,8 +742,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
         }
 
         # Build full result set: regular candidates (source 'regular') + bounce candidates (source 'bounce')
-        scan_results = []
-
+        # are already in scan_results; append regular and exempt candidates next.
+        
         # Create entries for regular candidates in parallel.
         # Each candidate still needs TA, news and a trade plan, but we run them
         # concurrently with a small thread pool instead of blocking sequentially.
