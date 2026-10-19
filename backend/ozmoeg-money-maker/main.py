@@ -650,6 +650,42 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             if passed:
                 bounce_candidates.append(gainer)
 
+        def _build_bounce_result(gainer: Dict) -> Dict:
+            """Build a website-ready bounce result dict with all fields the bubble chart and tables expect."""
+            ticker = _symbol(gainer)
+            name = _name(gainer)
+            sec_filings_summary = ''
+            try:
+                sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
+            except Exception as e:
+                logger.debug("SEC filings lookup failed for bounce %s: %s", ticker, e)
+            return {
+                'ticker': ticker,
+                'name': name,
+                'status': 'BOUNCE',
+                'source': 'bounce',
+                'price': _price(gainer),
+                'change_pct': _change_pct(gainer),
+                'volume': _volume(gainer),
+                'market_cap': _market_cap(gainer),
+                'float_shares': _float_shares(gainer),
+                'country': _country(gainer),
+                'cap_size': _cap_size(_market_cap(gainer)),
+                'is_penny_stock': _is_penny_stock(_price(gainer)),
+                'scan_reason': _scan_reason(gainer),
+                'scan_passed': _scan_passed(gainer),
+                'sec_filings': sec_filings_summary,
+                'result': _scan_reason(gainer) or f"{('+' if _change_pct(gainer) >= 0 else '')}{_change_pct(gainer):.1f}%",
+                'reason_note': 'bounce_research'
+            }
+
+        # Create entries for bounce candidates (never alert)
+        bounce_results_enriched = []
+        for gainer in bounce_candidates:
+            br = _build_bounce_result(gainer)
+            bounce_results_enriched.append(br)
+            scan_results.append(br)
+
         # Store all raw gainer/loser payloads for website visibility (debug purposes)
         for gainer in all_gainers:
             all_gainers_output.append({
@@ -1092,41 +1128,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 except Exception as e:
                     logger.warning("Failed to build exempt result: %s", e)
 
-        def _build_bounce_result(gainer: Dict) -> Dict:
-            """Build a website-ready bounce result dict with all fields the bubble chart and tables expect."""
-            ticker = _symbol(gainer)
-            name = _name(gainer)
-            sec_filings_summary = ''
-            try:
-                sec_filings_summary = summarize_filings(ticker, max_age_days=90, max_results=3)
-            except Exception as e:
-                logger.debug("SEC filings lookup failed for bounce %s: %s", ticker, e)
-            return {
-                'ticker': ticker,
-                'name': name,
-                'status': 'BOUNCE',
-                'source': 'bounce',
-                'price': _price(gainer),
-                'change_pct': _change_pct(gainer),
-                'volume': _volume(gainer),
-                'market_cap': _market_cap(gainer),
-                'float_shares': _float_shares(gainer),
-                'country': _country(gainer),
-                'cap_size': _cap_size(_market_cap(gainer)),
-                'is_penny_stock': _is_penny_stock(_price(gainer)),
-                'scan_reason': _scan_reason(gainer),
-                'scan_passed': _scan_passed(gainer),
-                'sec_filings': sec_filings_summary,
-                'result': _scan_reason(gainer) or f"{('+' if _change_pct(gainer) >= 0 else '')}{_change_pct(gainer):.1f}%",
-                'reason_note': 'bounce_research'
-            }
 
-        # Create entries for bounce candidates (never alert)
-        bounce_results_enriched = []
-        for gainer in bounce_candidates:
-            br = _build_bounce_result(gainer)
-            bounce_results_enriched.append(br)
-            scan_results.append(br)
 
         # Telegram is suppressed when market is closed and reduced to active-hours only.
         # ALERTs are sent as a pre-market summary; CANDIDATEs are reported individually
