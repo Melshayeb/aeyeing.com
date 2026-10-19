@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792397987" />
+<meta name="ozmoeg-version" content="1792411546" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4796,7 +4796,15 @@
                                 if (Object.keys(updates).length && data?.scan_results) {
                                     const applyFast = r => {
                                         const u = updates[r.ticker?.toUpperCase()];
-                                        return u ? { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp } : r;
+                                        if (!u) return r;
+                                        const scanName = (r.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                                        const quoteName = (u.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                                        // Skip quote merge if names differ significantly (ticker symbol collision across datasets)
+                                        if (scanName && quoteName && scanName !== quoteName && !scanName.includes(quoteName) && !quoteName.includes(scanName)) {
+                                            console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
+                                            return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
+                                        }
+                                        return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
                                     };
                                     data.scan_results = data.scan_results.map(applyFast);
                                     data.pre_market_results = (data.pre_market_results || []).map(applyFast);
@@ -4904,17 +4912,30 @@
                         const updates = fastData.updates;
                         data.scan_results = data.scan_results.map(r => {
                             const u = updates[r.ticker?.toUpperCase()];
-                            if (u) {
-                                return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                            if (!u) return r;
+                            const scanName = (r.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                            const quoteName = (u.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                            // Skip quote merge if names differ significantly (ticker symbol collision across datasets)
+                            if (scanName && quoteName && scanName !== quoteName && !scanName.includes(quoteName) && !quoteName.includes(scanName)) {
+                                console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
+                                return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
                             }
-                            return r;
+                            return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
                         });
                         // Also update pre_market_results / watchlist if present
                         ['pre_market_results', 'pre_market_watchlist'].forEach(key => {
                             if (Array.isArray(data[key])) {
                                 data[key] = data[key].map(r => {
                                     const u = updates[r.ticker?.toUpperCase()];
-                                    return u ? { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp } : r;
+                                    if (!u) return r;
+                                    const scanName = (r.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    const quoteName = (u.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    // Skip quote merge if names differ significantly (ticker symbol collision across datasets)
+                                    if (scanName && quoteName && scanName !== quoteName && !scanName.includes(quoteName) && !quoteName.includes(scanName)) {
+                                        console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
+                                        return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
+                                    }
+                                    return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
                                 });
                             }
                         });

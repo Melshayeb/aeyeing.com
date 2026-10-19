@@ -70,6 +70,7 @@ def _quote_fields(quote: Dict[str, Any]) -> Dict[str, Any]:
         'change_pct': change_pct,
         'volume': int(quote.get('volume', 0) or 0),
         'market_cap': float(quote.get('marketValue', 0) or 0),
+        'name': (quote.get('name') or quote.get('symbol') or '').strip(),
         'timestamp': datetime.now(timezone.utc).isoformat(),
     }
 
