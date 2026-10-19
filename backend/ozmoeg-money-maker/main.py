@@ -226,13 +226,10 @@ def _scan_allowed_minute(market: str, market_status: str) -> bool:
     if market == 'au':
         if status != 'OPEN' or weekday >= 5:
             return False
-        # ASX is open 10:00-16:00 Sydney. The Hermes cron fires at the scheduled
-        # wall-clock times (10:30 / 13:30 standard time, 11:30 / 14:30 during AEDT).
-        # The cron is the source of truth for AU cadence, so we only require the
-        # scan to land on a :30 minute boundary while the market is open. This keeps
-        # the two daily scans working across AEST/AEDT transitions without hardcoding
-        # a specific hour.
-        return minute == 30
+        # ASX is open 10:00-16:00 Sydney. The Hermes cron controls when scans run
+        # (hourly during market hours), so any cron invocation while the market is
+        # open is allowed. No minute boundary check is needed.
+        return True
 
     if market == 'us':
         # Catalyst watchlist window: 1h before US pre-market, no live market data yet.
