@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792495123" />
+<meta name="ozmoeg-version" content="1792495161" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4961,7 +4961,10 @@
                                         console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
                                         return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
                                     }
-                                    return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                                    const updated = { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                                    if (updated.result) updated.result = updateResultString(updated.result, u.price, u.change_pct);
+                                    if (updated.plan && updated.plan.valid) updated.plan.entry = u.price;
+                                    return updated;
                                 });
                             }
                         });
