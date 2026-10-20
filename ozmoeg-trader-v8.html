@@ -10,7 +10,7 @@
             });
         }
     </script>
-<meta name="ozmoeg-version" content="1792412577" />
+<meta name="ozmoeg-version" content="1792495123" />
     
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -4082,6 +4082,16 @@
                 return '$' + p.toFixed(0);
             }
 
+                        function updateResultString(result, price, changePct) {
+                // Replace leading "+/-X.X%" with updated change, and "Entry $Y.Y" with updated price.
+                if (!result) return result;
+                let s = result;
+                const sign = changePct >= 0 ? '+' : '';
+                s = s.replace(/^[+-]?\d+\.?\d*%/, `${sign}${changePct.toFixed(1)}%`);
+                s = s.replace(/Entry \$[\d,.]+/, `Entry $${price.toFixed(2)}`);
+                return s;
+            }
+
             function getBubbleColor(r, changePct) {
                 // Extreme mover glow wins first.
                 if (Math.abs(changePct) > 80) return 'rgba(34,211,238,0.70)';
@@ -4809,7 +4819,15 @@
                                             console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
                                             return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
                                         }
-                                        return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                                        const updated = { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                                        // Recompute the displayed result string so the table reflects the live price.
+                                        if (updated.result) {
+                                            updated.result = updateResultString(updated.result, u.price, u.change_pct);
+                                        }
+                                        if (updated.plan && updated.plan.valid) {
+                                            updated.plan.entry = u.price;
+                                        }
+                                        return updated;
                                     };
                                     data.scan_results = data.scan_results.map(applyFast);
                                     data.pre_market_results = (data.pre_market_results || []).map(applyFast);
@@ -4925,7 +4943,10 @@
                                 console.warn('Skipping fast quote for', r.ticker, 'name mismatch:', r.name, 'vs', u.name);
                                 return { ...r, _fast_mismatch: true, _fast_quote_name: u.name };
                             }
-                            return { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                            const updated = { ...r, price: u.price, change_pct: u.change_pct, volume: u.volume, _fast_updated: u.timestamp };
+                            if (updated.result) updated.result = updateResultString(updated.result, u.price, u.change_pct);
+                            if (updated.plan && updated.plan.valid) updated.plan.entry = u.price;
+                            return updated;
                         });
                         // Also update pre_market_results / watchlist if present
                         ['pre_market_results', 'pre_market_watchlist'].forEach(key => {
