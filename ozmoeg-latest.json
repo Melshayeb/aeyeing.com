@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-10-21T20:27:56.832703Z",
+  "last_updated": "2026-10-21T20:31:04.436870Z",
   "scan_results": [
     {
       "ticker": "LHSW",
       "name": "Lianhe Sowell International Group Ltd",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 0.922,
-      "change_pct": -9.6078431372549,
-      "volume": 7044905,
+      "price": 0.93,
+      "change_pct": -8.823529411764703,
+      "volume": 7047061,
       "market_cap": 13763539.0,
       "float_shares": 10906166,
       "country": "",
@@ -19,16 +19,131 @@
       "sec_filings": "424B4 (Sep 03)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": null
+      "previous_price": 0.922
+    },
+    {
+      "ticker": "SDEV",
+      "name": "Stablecoin Development Corporation",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.18,
+      "change_pct": 7.272727272727258,
+      "volume": 123415421,
+      "market_cap": 56926494.9,
+      "float_shares": 5136209,
+      "country": "United States",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 05), 8-K (Sep 29), 8-K (Sep 08)",
+      "result": "+7.3% \u00b7 Entry $1.18 \u00b7 T1 $1.23 \u00b7 T2 $1.25 \u00b7 T3 $1.30",
+      "plan": {
+        "valid": true,
+        "ticker": "SDEV",
+        "entry": 1.18,
+        "stop": 1.1564,
+        "targets": {
+          "t1": 1.2272,
+          "t2": 1.2508,
+          "t3": 1.298
+        },
+        "risk_per_share": 0.0236,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 254,
+        "position_value": 299.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.1564"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SDEV",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 19 Oct",
+            "raw_time": "2026-10-19T09:45:13.281+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 19 Oct",
+            "raw_time": "2026-10-19T09:45:13.281+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Watching Stablecoin Development; Fugazi Research Issues Report On Co Titled, \u201cSDEV: A Dilution Timebomb Wearing a Stablecoin Costume\u201d",
+            "flag": "dilution"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: dilution"
+      },
+      "tape": {
+        "ticker": "SDEV",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 9.41,
+        "volume_indicator": "high",
+        "volume": 123415421,
+        "adv": 13118890,
+        "recent_pct_of_adv": 940.75,
+        "volume_acceleration": 1.246,
+        "price_velocity_pct": 7.173,
+        "buy_pressure_pct": 48.19,
+        "large_bar_count": 199,
+        "vwap_distance_pct": 15.762,
+        "recent_volume": 123415421,
+        "prior_volume": 0,
+        "median_range": 0.01,
+        "last_price": 1.1,
+        "vwap": 1.3058199185807569,
+        "last_trade_time": "2026-10-21T20:29:37.471000+00:00",
+        "stale_age_seconds": 85
+      },
+      "date": "2026-10-22",
+      "time": "07:31:03",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.2
     },
     {
       "ticker": "NCPL",
       "name": "Netcapital Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.861,
-      "change_pct": 18.535031847133755,
-      "volume": 7480828,
+      "price": 1.87,
+      "change_pct": 19.10828025477707,
+      "volume": 7495865,
       "market_cap": 12321201.43,
       "float_shares": 4387748,
       "country": "United States",
@@ -37,23 +152,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Oct 20), 8-K (Oct 14), 8-K (Sep 25)",
-      "result": "+18.5% \u00b7 Entry $1.86 \u00b7 T1 $1.94 \u00b7 T2 $1.97 \u00b7 T3 $2.05",
+      "result": "+19.1% \u00b7 Entry $1.87 \u00b7 T1 $1.94 \u00b7 T2 $1.98 \u00b7 T3 $2.06",
       "plan": {
         "valid": true,
         "ticker": "NCPL",
-        "entry": 1.861,
-        "stop": 1.8238,
+        "entry": 1.87,
+        "stop": 1.8326,
         "targets": {
-          "t1": 1.9354,
-          "t2": 1.9726,
-          "t3": 2.047
+          "t1": 1.9448,
+          "t2": 1.9822,
+          "t3": 2.057
         },
-        "risk_per_share": 0.0372,
+        "risk_per_share": 0.0374,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 161,
-        "position_value": 299.62,
+        "shares": 160,
+        "position_value": 299.2,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -61,7 +176,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.8238"
+          "hard_stop": "$1.8326"
         }
       },
       "ta": {
@@ -343,346 +458,27 @@
         "tape_score": 4.0,
         "rvol": 0.32,
         "volume_indicator": "low",
-        "volume": 7480828,
+        "volume": 7495865,
         "adv": 23287988,
-        "recent_pct_of_adv": 32.12,
-        "volume_acceleration": 0.601,
-        "price_velocity_pct": 20.377,
-        "buy_pressure_pct": 46.37,
-        "large_bar_count": 150,
+        "recent_pct_of_adv": 32.19,
+        "volume_acceleration": 0.591,
+        "price_velocity_pct": 22.273,
+        "buy_pressure_pct": 46.16,
+        "large_bar_count": 151,
         "vwap_distance_pct": 20.609,
-        "recent_volume": 7480828,
+        "recent_volume": 7495865,
         "prior_volume": 0,
         "median_range": 0.0095,
         "last_price": 1.57,
         "vwap": 1.9775459991765632,
-        "last_trade_time": "2026-10-21T20:26:32.625000+00:00",
-        "stale_age_seconds": 82
+        "last_trade_time": "2026-10-21T20:29:29.306000+00:00",
+        "stale_age_seconds": 93
       },
       "date": "2026-10-22",
-      "time": "07:27:55",
+      "time": "07:31:03",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.88
-    },
-    {
-      "ticker": "AHT",
-      "name": "Ashford Hospitality Tr Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.6,
-      "change_pct": 5.263157894736838,
-      "volume": 29370935,
-      "market_cap": 15980440.58,
-      "float_shares": 6400893,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 21), 424B3 (Oct 09), 8-K (Oct 09)",
-      "result": "+5.3% \u00b7 Entry $2.60 \u00b7 T1 $2.70 \u00b7 T2 $2.76 \u00b7 T3 $2.86",
-      "plan": {
-        "valid": true,
-        "ticker": "AHT",
-        "entry": 2.6,
-        "stop": 2.548,
-        "targets": {
-          "t1": 2.704,
-          "t2": 2.756,
-          "t3": 2.86
-        },
-        "risk_per_share": 0.052,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 115,
-        "position_value": 299.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.548"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "AHT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-            "source": "Webull",
-            "time": "9h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:30:28.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Ashford Hospitality Trust secures $17M fee waiver, quarterly buyback",
-            "source": "Webull",
-            "time": "10h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:17:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Super Micro Computer Shares Are Trading Higher By 13%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T08:22:05.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Ashford Hospitality Trust (AHT) Shares Rocket 66% After Hours: What\u2019s Behind the Surge?",
-            "source": "Webull",
-            "time": "14h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T05:37:03.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: ASHFORD HOSPITALITY TRUST ANNOUNCES $17 MILLION ADVISORY FEE WAIVER, SHARE PURCHASE COMMITMENT FROM ASHFORD INC. AND TERMINATION OF ATM PROGRAM",
-            "source": "Webull",
-            "time": "22h ago \u00b7 20 Oct",
-            "raw_time": "2026-10-20T22:15:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AHT last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:42:48.742+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-            "source": "Webull",
-            "time": "9h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:30:28.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Ashford Hospitality Trust secures $17M fee waiver, quarterly buyback",
-            "source": "Webull",
-            "time": "10h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:17:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Super Micro Computer Shares Are Trading Higher By 13%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T08:22:05.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Ashford Hospitality Trust (AHT) Shares Rocket 66% After Hours: What\u2019s Behind the Surge?",
-            "source": "Webull",
-            "time": "14h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T05:37:03.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: ASHFORD HOSPITALITY TRUST ANNOUNCES $17 MILLION ADVISORY FEE WAIVER, SHARE PURCHASE COMMITMENT FROM ASHFORD INC. AND TERMINATION OF ATM PROGRAM",
-            "source": "Webull",
-            "time": "22h ago \u00b7 20 Oct",
-            "raw_time": "2026-10-20T22:15:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AHT last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:42:48.742+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 2,
-        "avg_score": 0.3,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-        "news_filter_reason": "low catalyst score (max 2/5)"
-      },
-      "tape": {
-        "ticker": "AHT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 286.39,
-        "volume_indicator": "high",
-        "volume": 29370935,
-        "adv": 102557,
-        "recent_pct_of_adv": 28638.64,
-        "volume_acceleration": -0.266,
-        "price_velocity_pct": 1.984,
-        "buy_pressure_pct": 49.01,
-        "large_bar_count": 144,
-        "vwap_distance_pct": 0.1,
-        "recent_volume": 29370935,
-        "prior_volume": 0,
-        "median_range": 0.021,
-        "last_price": 2.47,
-        "vwap": 2.4724608647088804,
-        "last_trade_time": "2026-10-21T20:26:36.541000+00:00",
-        "stale_age_seconds": 78
-      },
-      "date": "2026-10-22",
-      "time": "07:27:55",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.628
-    },
-    {
-      "ticker": "SDEV",
-      "name": "Stablecoin Development Corporation",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.2,
-      "change_pct": 9.09090909090908,
-      "volume": 123210538,
-      "market_cap": 56926494.9,
-      "float_shares": 5136209,
-      "country": "United States",
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 05), 8-K (Sep 29), 8-K (Sep 08)",
-      "result": "+9.1% \u00b7 Entry $1.20 \u00b7 T1 $1.25 \u00b7 T2 $1.27 \u00b7 T3 $1.32",
-      "plan": {
-        "valid": true,
-        "ticker": "SDEV",
-        "entry": 1.2,
-        "stop": 1.176,
-        "targets": {
-          "t1": 1.248,
-          "t2": 1.272,
-          "t3": 1.32
-        },
-        "risk_per_share": 0.024,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 250,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.176"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "SDEV",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:45:13.281+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:45:13.281+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Watching Stablecoin Development; Fugazi Research Issues Report On Co Titled, \u201cSDEV: A Dilution Timebomb Wearing a Stablecoin Costume\u201d",
-            "flag": "dilution"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: dilution"
-      },
-      "tape": {
-        "ticker": "SDEV",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 9.39,
-        "volume_indicator": "high",
-        "volume": 123210538,
-        "adv": 13118890,
-        "recent_pct_of_adv": 939.18,
-        "volume_acceleration": 1.446,
-        "price_velocity_pct": 6.311,
-        "buy_pressure_pct": 48.18,
-        "large_bar_count": 195,
-        "vwap_distance_pct": 15.762,
-        "recent_volume": 123210538,
-        "prior_volume": 0,
-        "median_range": 0.01,
-        "last_price": 1.1,
-        "vwap": 1.3058199185807569,
-        "last_trade_time": "2026-10-21T20:26:38.180000+00:00",
-        "stale_age_seconds": 77
-      },
-      "date": "2026-10-22",
-      "time": "07:27:55",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 1.202
+      "previous_price": 1.861
     }
   ],
   "pre_market_results": [
@@ -691,9 +487,9 @@
       "name": "Lianhe Sowell International Group Ltd",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 0.922,
-      "change_pct": -9.6078431372549,
-      "volume": 7044905,
+      "price": 0.93,
+      "change_pct": -8.823529411764703,
+      "volume": 7047061,
       "market_cap": 13763539.0,
       "float_shares": 10906166,
       "country": "",
@@ -704,16 +500,131 @@
       "sec_filings": "424B4 (Sep 03)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": null
+      "previous_price": 0.922
+    },
+    {
+      "ticker": "SDEV",
+      "name": "Stablecoin Development Corporation",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.18,
+      "change_pct": 7.272727272727258,
+      "volume": 123415421,
+      "market_cap": 56926494.9,
+      "float_shares": 5136209,
+      "country": "United States",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 05), 8-K (Sep 29), 8-K (Sep 08)",
+      "result": "+7.3% \u00b7 Entry $1.18 \u00b7 T1 $1.23 \u00b7 T2 $1.25 \u00b7 T3 $1.30",
+      "plan": {
+        "valid": true,
+        "ticker": "SDEV",
+        "entry": 1.18,
+        "stop": 1.1564,
+        "targets": {
+          "t1": 1.2272,
+          "t2": 1.2508,
+          "t3": 1.298
+        },
+        "risk_per_share": 0.0236,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 254,
+        "position_value": 299.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.1564"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SDEV",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 19 Oct",
+            "raw_time": "2026-10-19T09:45:13.281+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 19 Oct",
+            "raw_time": "2026-10-19T09:45:13.281+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Watching Stablecoin Development; Fugazi Research Issues Report On Co Titled, \u201cSDEV: A Dilution Timebomb Wearing a Stablecoin Costume\u201d",
+            "flag": "dilution"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: dilution"
+      },
+      "tape": {
+        "ticker": "SDEV",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 9.41,
+        "volume_indicator": "high",
+        "volume": 123415421,
+        "adv": 13118890,
+        "recent_pct_of_adv": 940.75,
+        "volume_acceleration": 1.246,
+        "price_velocity_pct": 7.173,
+        "buy_pressure_pct": 48.19,
+        "large_bar_count": 199,
+        "vwap_distance_pct": 15.762,
+        "recent_volume": 123415421,
+        "prior_volume": 0,
+        "median_range": 0.01,
+        "last_price": 1.1,
+        "vwap": 1.3058199185807569,
+        "last_trade_time": "2026-10-21T20:29:37.471000+00:00",
+        "stale_age_seconds": 85
+      },
+      "date": "2026-10-22",
+      "time": "07:31:03",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.2
     },
     {
       "ticker": "NCPL",
       "name": "Netcapital Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.861,
-      "change_pct": 18.535031847133755,
-      "volume": 7480828,
+      "price": 1.87,
+      "change_pct": 19.10828025477707,
+      "volume": 7495865,
       "market_cap": 12321201.43,
       "float_shares": 4387748,
       "country": "United States",
@@ -722,23 +633,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Oct 20), 8-K (Oct 14), 8-K (Sep 25)",
-      "result": "+18.5% \u00b7 Entry $1.86 \u00b7 T1 $1.94 \u00b7 T2 $1.97 \u00b7 T3 $2.05",
+      "result": "+19.1% \u00b7 Entry $1.87 \u00b7 T1 $1.94 \u00b7 T2 $1.98 \u00b7 T3 $2.06",
       "plan": {
         "valid": true,
         "ticker": "NCPL",
-        "entry": 1.861,
-        "stop": 1.8238,
+        "entry": 1.87,
+        "stop": 1.8326,
         "targets": {
-          "t1": 1.9354,
-          "t2": 1.9726,
-          "t3": 2.047
+          "t1": 1.9448,
+          "t2": 1.9822,
+          "t3": 2.057
         },
-        "risk_per_share": 0.0372,
+        "risk_per_share": 0.0374,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 161,
-        "position_value": 299.62,
+        "shares": 160,
+        "position_value": 299.2,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -746,7 +657,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.8238"
+          "hard_stop": "$1.8326"
         }
       },
       "ta": {
@@ -1028,346 +939,27 @@
         "tape_score": 4.0,
         "rvol": 0.32,
         "volume_indicator": "low",
-        "volume": 7480828,
+        "volume": 7495865,
         "adv": 23287988,
-        "recent_pct_of_adv": 32.12,
-        "volume_acceleration": 0.601,
-        "price_velocity_pct": 20.377,
-        "buy_pressure_pct": 46.37,
-        "large_bar_count": 150,
+        "recent_pct_of_adv": 32.19,
+        "volume_acceleration": 0.591,
+        "price_velocity_pct": 22.273,
+        "buy_pressure_pct": 46.16,
+        "large_bar_count": 151,
         "vwap_distance_pct": 20.609,
-        "recent_volume": 7480828,
+        "recent_volume": 7495865,
         "prior_volume": 0,
         "median_range": 0.0095,
         "last_price": 1.57,
         "vwap": 1.9775459991765632,
-        "last_trade_time": "2026-10-21T20:26:32.625000+00:00",
-        "stale_age_seconds": 82
+        "last_trade_time": "2026-10-21T20:29:29.306000+00:00",
+        "stale_age_seconds": 93
       },
       "date": "2026-10-22",
-      "time": "07:27:55",
+      "time": "07:31:03",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.88
-    },
-    {
-      "ticker": "AHT",
-      "name": "Ashford Hospitality Tr Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.6,
-      "change_pct": 5.263157894736838,
-      "volume": 29370935,
-      "market_cap": 15980440.58,
-      "float_shares": 6400893,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 21), 424B3 (Oct 09), 8-K (Oct 09)",
-      "result": "+5.3% \u00b7 Entry $2.60 \u00b7 T1 $2.70 \u00b7 T2 $2.76 \u00b7 T3 $2.86",
-      "plan": {
-        "valid": true,
-        "ticker": "AHT",
-        "entry": 2.6,
-        "stop": 2.548,
-        "targets": {
-          "t1": 2.704,
-          "t2": 2.756,
-          "t3": 2.86
-        },
-        "risk_per_share": 0.052,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 115,
-        "position_value": 299.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.548"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "AHT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-            "source": "Webull",
-            "time": "9h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:30:28.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Ashford Hospitality Trust secures $17M fee waiver, quarterly buyback",
-            "source": "Webull",
-            "time": "10h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:17:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Super Micro Computer Shares Are Trading Higher By 13%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T08:22:05.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Ashford Hospitality Trust (AHT) Shares Rocket 66% After Hours: What\u2019s Behind the Surge?",
-            "source": "Webull",
-            "time": "14h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T05:37:03.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: ASHFORD HOSPITALITY TRUST ANNOUNCES $17 MILLION ADVISORY FEE WAIVER, SHARE PURCHASE COMMITMENT FROM ASHFORD INC. AND TERMINATION OF ATM PROGRAM",
-            "source": "Webull",
-            "time": "22h ago \u00b7 20 Oct",
-            "raw_time": "2026-10-20T22:15:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AHT last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:42:48.742+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-            "source": "Webull",
-            "time": "9h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:30:28.000+0000",
-            "url": "",
-            "score": 2,
-            "keywords": [
-              "share buyback"
-            ]
-          },
-          {
-            "title": "Ashford Hospitality Trust secures $17M fee waiver, quarterly buyback",
-            "source": "Webull",
-            "time": "10h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T10:17:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Super Micro Computer Shares Are Trading Higher By 13%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "12h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T08:22:05.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Ashford Hospitality Trust (AHT) Shares Rocket 66% After Hours: What\u2019s Behind the Surge?",
-            "source": "Webull",
-            "time": "14h ago \u00b7 21 Oct",
-            "raw_time": "2026-10-21T05:37:03.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: ASHFORD HOSPITALITY TRUST ANNOUNCES $17 MILLION ADVISORY FEE WAIVER, SHARE PURCHASE COMMITMENT FROM ASHFORD INC. AND TERMINATION OF ATM PROGRAM",
-            "source": "Webull",
-            "time": "22h ago \u00b7 20 Oct",
-            "raw_time": "2026-10-20T22:15:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at AHT last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:42:48.742+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 2,
-        "avg_score": 0.3,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Ashford Hospitality Shifts Strategy With Fee Waivers, Share Buybacks",
-        "news_filter_reason": "low catalyst score (max 2/5)"
-      },
-      "tape": {
-        "ticker": "AHT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 286.39,
-        "volume_indicator": "high",
-        "volume": 29370935,
-        "adv": 102557,
-        "recent_pct_of_adv": 28638.64,
-        "volume_acceleration": -0.266,
-        "price_velocity_pct": 1.984,
-        "buy_pressure_pct": 49.01,
-        "large_bar_count": 144,
-        "vwap_distance_pct": 0.1,
-        "recent_volume": 29370935,
-        "prior_volume": 0,
-        "median_range": 0.021,
-        "last_price": 2.47,
-        "vwap": 2.4724608647088804,
-        "last_trade_time": "2026-10-21T20:26:36.541000+00:00",
-        "stale_age_seconds": 78
-      },
-      "date": "2026-10-22",
-      "time": "07:27:55",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.628
-    },
-    {
-      "ticker": "SDEV",
-      "name": "Stablecoin Development Corporation",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.2,
-      "change_pct": 9.09090909090908,
-      "volume": 123210538,
-      "market_cap": 56926494.9,
-      "float_shares": 5136209,
-      "country": "United States",
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 05), 8-K (Sep 29), 8-K (Sep 08)",
-      "result": "+9.1% \u00b7 Entry $1.20 \u00b7 T1 $1.25 \u00b7 T2 $1.27 \u00b7 T3 $1.32",
-      "plan": {
-        "valid": true,
-        "ticker": "SDEV",
-        "entry": 1.2,
-        "stop": 1.176,
-        "targets": {
-          "t1": 1.248,
-          "t2": 1.272,
-          "t3": 1.32
-        },
-        "risk_per_share": 0.024,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 250,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.176"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "SDEV",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:45:13.281+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 19 Oct",
-            "raw_time": "2026-10-19T09:45:13.281+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Watching Stablecoin Development; Fugazi Research Issues Report On Co Titled, \u201cSDEV: A Dilution Timebomb Wearing a Stablecoin Costume\u201d",
-            "flag": "dilution"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at SDEV last week (1012-1016)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: dilution"
-      },
-      "tape": {
-        "ticker": "SDEV",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 9.39,
-        "volume_indicator": "high",
-        "volume": 123210538,
-        "adv": 13118890,
-        "recent_pct_of_adv": 939.18,
-        "volume_acceleration": 1.446,
-        "price_velocity_pct": 6.311,
-        "buy_pressure_pct": 48.18,
-        "large_bar_count": 195,
-        "vwap_distance_pct": 15.762,
-        "recent_volume": 123210538,
-        "prior_volume": 0,
-        "median_range": 0.01,
-        "last_price": 1.1,
-        "vwap": 1.3058199185807569,
-        "last_trade_time": "2026-10-21T20:26:38.180000+00:00",
-        "stale_age_seconds": 77
-      },
-      "date": "2026-10-22",
-      "time": "07:27:55",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 1.202
+      "previous_price": 1.861
     }
   ],
   "pre_market_watchlist": [],
@@ -1377,9 +969,9 @@
       "name": "Lianhe Sowell International Group Ltd",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 0.922,
-      "change_pct": -9.6078431372549,
-      "volume": 7044905,
+      "price": 0.93,
+      "change_pct": -8.823529411764703,
+      "volume": 7047061,
       "market_cap": 13763539.0,
       "float_shares": 10906166,
       "country": "",
@@ -1390,43 +982,43 @@
       "sec_filings": "424B4 (Sep 03)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": null
+      "previous_price": 0.922
     }
   ],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "NCPL",
-    "name": "Netcapital Inc",
+    "ticker": "SDEV",
+    "name": "Stablecoin Development Corporation",
     "status": "ALERT",
     "source": "regular",
-    "price": 1.861,
-    "change_pct": 18.535031847133755,
-    "volume": 7480828,
-    "market_cap": 12321201.43,
-    "float_shares": 4387748,
+    "price": 1.18,
+    "change_pct": 7.272727272727258,
+    "volume": 123415421,
+    "market_cap": 56926494.9,
+    "float_shares": 5136209,
     "country": "United States",
-    "cap_size": "nano-cap",
+    "cap_size": "micro-cap",
     "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "8-K (Oct 20), 8-K (Oct 14), 8-K (Sep 25)",
-    "result": "+18.5% \u00b7 Entry $1.86 \u00b7 T1 $1.94 \u00b7 T2 $1.97 \u00b7 T3 $2.05",
+    "sec_filings": "8-K (Oct 05), 8-K (Sep 29), 8-K (Sep 08)",
+    "result": "+7.3% \u00b7 Entry $1.18 \u00b7 T1 $1.23 \u00b7 T2 $1.25 \u00b7 T3 $1.30",
     "plan": {
       "valid": true,
-      "ticker": "NCPL",
-      "entry": 1.861,
-      "stop": 1.8238,
+      "ticker": "SDEV",
+      "entry": 1.18,
+      "stop": 1.1564,
       "targets": {
-        "t1": 1.9354,
-        "t2": 1.9726,
-        "t3": 2.047
+        "t1": 1.2272,
+        "t2": 1.2508,
+        "t3": 1.298
       },
-      "risk_per_share": 0.0372,
+      "risk_per_share": 0.0236,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 161,
-      "position_value": 299.62,
+      "shares": 254,
+      "position_value": 299.72,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1434,7 +1026,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.8238"
+        "hard_stop": "$1.1564"
       }
     },
     "ta": {
@@ -1442,131 +1034,14 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "NCPL",
+      "ticker": "SDEV",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Netcapital Secures Convertible Note Financing for Working Capital",
-          "source": "Webull",
-          "time": "22h ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T21:31:30.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Tuesday's After-Market Session",
-          "source": "Webull",
-          "time": "23h ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T21:05:46.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Tuesday's Intraday Session",
-          "source": "Webull",
-          "time": "1d ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T17:05:47.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why 3M Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "1d ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T08:43:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit Filed by The Rosen Law Firm",
-          "source": "Webull",
-          "time": "1d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T21:34:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Monday's Intraday Session",
+          "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
           "source": "Webull",
           "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T17:05:49.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Law Offices of Frank R. Cruz Encourages Netcapital Inc. (NCPL) Shareholders To Inquire About Securities Fraud Class Action",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T11:06:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm Encourages Netcapital Inc. (NCPL) Shareholders To Inquire About Securities Fraud Class Action",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T10:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at NCPL last week (1012-1016)?",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T09:06:17.586+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T10:06:55.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T10:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T06:57:33.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-          "source": "Webull",
-          "time": "6d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T22:09:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-          "source": "Webull",
-          "time": "6d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T21:27:00.000+0000",
+          "raw_time": "2026-10-19T09:45:13.281+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1574,195 +1049,68 @@
       ],
       "headlines": [
         {
-          "title": "Netcapital Secures Convertible Note Financing for Working Capital",
-          "source": "Webull",
-          "time": "22h ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T21:31:30.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Tuesday's After-Market Session",
-          "source": "Webull",
-          "time": "23h ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T21:05:46.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Tuesday's Intraday Session",
-          "source": "Webull",
-          "time": "1d ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T17:05:47.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why 3M Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "1d ago \u00b7 20 Oct",
-          "raw_time": "2026-10-20T08:43:57.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "NCPL Investors Have Opportunity to Lead Netcapital Inc. Securities Fraud Lawsuit Filed by The Rosen Law Firm",
-          "source": "Webull",
-          "time": "1d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T21:34:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Financials Stocks Moving In Monday's Intraday Session",
+          "title": "Weekly Report: what happened at SDEV last week (1012-1016)?",
           "source": "Webull",
           "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T17:05:49.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Law Offices of Frank R. Cruz Encourages Netcapital Inc. (NCPL) Shareholders To Inquire About Securities Fraud Class Action",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T11:06:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm Encourages Netcapital Inc. (NCPL) Shareholders To Inquire About Securities Fraud Class Action",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T10:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at NCPL last week (1012-1016)?",
-          "source": "Webull",
-          "time": "2d ago \u00b7 19 Oct",
-          "raw_time": "2026-10-19T09:06:17.586+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Ericsson Shares Are Trading Higher By Around 11%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T10:06:55.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Securities Fraud Investigation Into Netcapital Inc. (NCPL) Announced \u2013 Shareholders Who Lost Money Urged To Contact Glancy Prongay Wolke & Rotter LLP, a Leading Securities Fraud Law Firm",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T10:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Netcapital (NCPL) Stock Climbs Nearly 19% After Hours: What\u2019s Behind the Move?",
-          "source": "Webull",
-          "time": "6d ago \u00b7 15 Oct",
-          "raw_time": "2026-10-15T06:57:33.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stocks to Watch: Rocket Lab, Vanda, Netcapital",
-          "source": "Webull",
-          "time": "6d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T22:09:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Netcapital Shares Gain After Regaining Nasdaq Minimum Bid Compliance",
-          "source": "Webull",
-          "time": "6d ago \u00b7 14 Oct",
-          "raw_time": "2026-10-14T21:27:00.000+0000",
+          "raw_time": "2026-10-19T09:45:13.281+0000",
           "url": "",
           "score": 0,
           "keywords": []
         }
       ],
-      "red_flags": [],
+      "red_flags": [
+        {
+          "title": "Watching Stablecoin Development; Fugazi Research Issues Report On Co Titled, \u201cSDEV: A Dilution Timebomb Wearing a Stablecoin Costume\u201d",
+          "flag": "dilution"
+        }
+      ],
       "max_score": 0,
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Netcapital Secures Convertible Note Financing for Working Capital",
-      "news_filter_reason": "low catalyst score (max 0/5)"
+      "top_headline": "Weekly Report: what happened at SDEV last week (1012-1016)?",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: dilution"
     },
     "tape": {
-      "ticker": "NCPL",
+      "ticker": "SDEV",
       "valid": true,
       "stale": false,
       "no_move": false,
-      "tape_score": 4.0,
-      "rvol": 0.32,
-      "volume_indicator": "low",
-      "volume": 7480828,
-      "adv": 23287988,
-      "recent_pct_of_adv": 32.12,
-      "volume_acceleration": 0.601,
-      "price_velocity_pct": 20.377,
-      "buy_pressure_pct": 46.37,
-      "large_bar_count": 150,
-      "vwap_distance_pct": 20.609,
-      "recent_volume": 7480828,
+      "tape_score": 8.0,
+      "rvol": 9.41,
+      "volume_indicator": "high",
+      "volume": 123415421,
+      "adv": 13118890,
+      "recent_pct_of_adv": 940.75,
+      "volume_acceleration": 1.246,
+      "price_velocity_pct": 7.173,
+      "buy_pressure_pct": 48.19,
+      "large_bar_count": 199,
+      "vwap_distance_pct": 15.762,
+      "recent_volume": 123415421,
       "prior_volume": 0,
-      "median_range": 0.0095,
-      "last_price": 1.57,
-      "vwap": 1.9775459991765632,
-      "last_trade_time": "2026-10-21T20:26:32.625000+00:00",
-      "stale_age_seconds": 82
+      "median_range": 0.01,
+      "last_price": 1.1,
+      "vwap": 1.3058199185807569,
+      "last_trade_time": "2026-10-21T20:29:37.471000+00:00",
+      "stale_age_seconds": 85
     },
     "date": "2026-10-22",
-    "time": "07:27:55",
+    "time": "07:31:03",
     "skip_news_check": true,
-    "red_flag": false,
-    "previous_price": 1.88
+    "red_flag": true,
+    "previous_price": 1.2
   },
-  "total_candidates": 4,
-  "alerts_generated": 3,
+  "total_candidates": 3,
+  "alerts_generated": 2,
   "all_gainers": [
-    {
-      "ticker": "STAK",
-      "name": "STAK inc.",
-      "price": 1.259,
-      "change_pct": 25.89999999999999,
-      "volume": 1675645,
-      "rvol": 6.732363978239732,
-      "market_cap": 19210349.0,
-      "float_shares": 10010349,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Cayman-China",
-      "passed": true,
-      "reason": "Passed filters"
-    },
     {
       "ticker": "NCPL",
       "name": "Netcapital Inc",
-      "price": 1.861,
-      "change_pct": 18.535031847133755,
-      "volume": 7480828,
-      "rvol": 0.29503627617718375,
+      "price": 1.87,
+      "change_pct": 19.10828025477707,
+      "volume": 7495865,
+      "rvol": 0.2956293202205539,
       "market_cap": 12321201.43,
       "float_shares": 4387748,
       "cap_size": "nano-cap",
@@ -1772,19 +1120,49 @@
       "reason": "Passed filters"
     },
     {
+      "ticker": "RPT",
+      "name": "Rithm Property Trust Inc.",
+      "price": 12.97,
+      "change_pct": 19.100091827364555,
+      "volume": 52679,
+      "rvol": 2.47540059207744,
+      "market_cap": 84643221.96,
+      "float_shares": 7759875,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.01x < 0.1x"
+    },
+    {
+      "ticker": "STAK",
+      "name": "STAK inc.",
+      "price": 1.17,
+      "change_pct": 16.999999999999993,
+      "volume": 2464243,
+      "rvol": 9.900773019839772,
+      "market_cap": 19210349.0,
+      "float_shares": 10010349,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Cayman-China",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "YFOR",
       "name": "Yyforce Inc",
-      "price": 0.313,
-      "change_pct": 15.925925925925918,
-      "volume": 15826042,
-      "rvol": 2.6774901768380626,
+      "price": 0.314,
+      "change_pct": 16.29629629629629,
+      "volume": 16399176,
+      "rvol": 2.7744544497126014,
       "market_cap": 3465918.18,
       "float_shares": 7669269,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: tiny price $0.313, tiny avg $vol, avg $vol $1.9M < $2.0M"
+      "reason": "Filtered: tiny price $0.314, tiny avg $vol, avg $vol $1.9M < $2.0M"
     },
     {
       "ticker": "HBNB",
@@ -1806,8 +1184,8 @@
       "name": "Robin Energy Ltd",
       "price": 0.26,
       "change_pct": 12.311015118790495,
-      "volume": 131242751,
-      "rvol": 10.044867332692824,
+      "volume": 131881011,
+      "rvol": 10.0937175508947,
       "market_cap": 308426.76,
       "float_shares": 1324558,
       "cap_size": "nano-cap",
@@ -1830,21 +1208,6 @@
       "country": "International (region 166)",
       "passed": false,
       "reason": "Filtered: vol 2,192, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
-      "ticker": "SDEV",
-      "name": "Stablecoin Development Corporation",
-      "price": 1.2,
-      "change_pct": 9.09090909090908,
-      "volume": 123210538,
-      "rvol": 11.775216016593989,
-      "market_cap": 56926494.9,
-      "float_shares": 5136209,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Passed filters"
     },
     {
       "ticker": "QCLS",
@@ -2012,27 +1375,27 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "QS",
-      "name": "Quantumscape Corp",
-      "price": 4.268,
-      "change_pct": 7.236180904522609,
-      "volume": 13889915,
-      "rvol": 1.000452547287338,
-      "market_cap": 2464071757.86,
-      "float_shares": 509231683,
-      "cap_size": "small-cap",
+      "ticker": "SDEV",
+      "name": "Stablecoin Development Corporation",
+      "price": 1.18,
+      "change_pct": 7.272727272727258,
+      "volume": 123415421,
+      "rvol": 11.794796659794555,
+      "market_cap": 56926494.9,
+      "float_shares": 5136209,
+      "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
-      "passed": false,
-      "reason": "Filtered: float 509.2M > 100M, vol/float 0.03x < 0.1x"
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "MKDW",
       "name": "MKDWELL Tech Inc",
       "price": 0.585,
       "change_pct": 7.084019769357488,
-      "volume": 231529,
-      "rvol": 2.783737315442697,
+      "volume": 232181,
+      "rvol": 2.7915764920886836,
       "market_cap": 18682608.86,
       "float_shares": 31570021,
       "cap_size": "nano-cap",
@@ -2044,10 +1407,10 @@
     {
       "ticker": "ATII",
       "name": "Archimedes Tech SPAC Partners II Co.",
-      "price": 10.48,
-      "change_pct": 6.829765545361875,
-      "volume": 204136,
-      "rvol": 1.0962735420951726,
+      "price": 10.5,
+      "change_pct": 7.033639143730881,
+      "volume": 205104,
+      "rvol": 1.101472001890349,
       "market_cap": 290277900.0,
       "float_shares": 22161410,
       "cap_size": "micro-cap",
@@ -2072,6 +1435,36 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "QS",
+      "name": "Quantumscape Corp",
+      "price": 4.25,
+      "change_pct": 6.78391959798995,
+      "volume": 14042439,
+      "rvol": 1.0114384334012887,
+      "market_cap": 2464071757.86,
+      "float_shares": 509231683,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: float 509.2M > 100M, vol/float 0.03x < 0.1x"
+    },
+    {
+      "ticker": "ONEN",
+      "name": "Hennessy Cap Inv",
+      "price": 1.45,
+      "change_pct": 6.617647058823518,
+      "volume": 58151,
+      "rvol": 0.5812484382028087,
+      "market_cap": 147232211.44,
+      "float_shares": 12058322,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "IVVD",
       "name": "Invivyd",
       "price": 0.681,
@@ -2085,21 +1478,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: float 255.0M > 100M, vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "VNTG",
-      "name": "Vantage Corp",
-      "price": 0.56,
-      "change_pct": 6.54490106544903,
-      "volume": 88629,
-      "rvol": 0.3894547659641784,
-      "market_cap": 16115363.78,
-      "float_shares": 10294510,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "CTGO",
@@ -2132,6 +1510,21 @@
       "reason": "Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.01x, vol 31,907, vol/float 0.01x < 0.1x, avg $vol $0.4M < $2.0M"
     },
     {
+      "ticker": "VNTG",
+      "name": "Vantage Corp",
+      "price": 0.558,
+      "change_pct": 6.164383561643854,
+      "volume": 93165,
+      "rvol": 0.40938691930465965,
+      "market_cap": 16115363.78,
+      "float_shares": 10294510,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "BLNE",
       "name": "Beeline Holdings, Inc",
       "price": 0.74,
@@ -2151,8 +1544,8 @@
       "name": "Golden Heaven Gr",
       "price": 1.12,
       "change_pct": 5.660377358490571,
-      "volume": 70288,
-      "rvol": 0.8030895089234706,
+      "volume": 70308,
+      "rvol": 0.8033180228971002,
       "market_cap": 63060354.0,
       "float_shares": 41818480,
       "cap_size": "micro-cap",
@@ -2160,36 +1553,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "IBM",
-      "name": "International Business Machines Corp",
-      "price": 266.0,
-      "change_pct": 5.782231766483732,
-      "volume": 8585212,
-      "rvol": 1.709625020884391,
-      "market_cap": 236909113709.4,
-      "float_shares": 940999035,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $266.000, mktcap $236909.1M, float 941.0M > 100M, vol/float 0.01x < 0.1x"
-    },
-    {
-      "ticker": "AHT",
-      "name": "Ashford Hospitality Tr Inc",
-      "price": 2.6,
-      "change_pct": 5.263157894736838,
-      "volume": 29370935,
-      "rvol": 40.87232571019841,
-      "market_cap": 15980440.58,
-      "float_shares": 6400893,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Passed filters"
     },
     {
       "ticker": "AGRZ",
@@ -2220,6 +1583,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "IBM",
+      "name": "International Business Machines Corp",
+      "price": 264.2,
+      "change_pct": 5.066412153026318,
+      "volume": 8680573,
+      "rvol": 1.7286148316912244,
+      "market_cap": 236909113709.4,
+      "float_shares": 940999035,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $264.200, mktcap $236909.1M, float 941.0M > 100M, vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "CELZ",
@@ -2254,17 +1632,17 @@
     {
       "ticker": "CSX",
       "name": "Csx Corp",
-      "price": 50.73,
-      "change_pct": 4.814049586776856,
-      "volume": 14007648,
-      "rvol": 1.5431292777801646,
+      "price": 50.71,
+      "change_pct": 4.772727272727278,
+      "volume": 14012461,
+      "rvol": 1.5436594939316524,
       "market_cap": 89659785982.8,
       "float_shares": 1847509560,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $50.730, mktcap $89659.8M, float 1847.5M > 100M, vol/float 0.01x < 0.1x"
+      "reason": "Filtered: price $50.710, mktcap $89659.8M, float 1847.5M > 100M, vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "WKSP",
@@ -2282,49 +1660,34 @@
       "reason": "Filtered: tiny price $0.350, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.01x, move 4.8%, vol/float 0.01x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "RCT",
-      "name": "RedCloud",
-      "price": 0.086,
-      "change_pct": 4.8780487804877914,
-      "volume": 29817939,
-      "rvol": 3.833724553694432,
-      "market_cap": 6226348.56,
-      "float_shares": 27446181,
-      "cap_size": "nano-cap",
+      "ticker": "IBIO",
+      "name": "Ibio",
+      "price": 0.88,
+      "change_pct": 4.761904761904766,
+      "volume": 514653,
+      "rvol": 0.555793982146444,
+      "market_cap": 54018095.04,
+      "float_shares": 61502323,
+      "cap_size": "micro-cap",
       "is_penny_stock": true,
-      "country": "United Kingdom",
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.086, tiny price $0.086, tiny avg $vol, move 4.8%, avg $vol $0.7M < $2.0M"
+      "reason": "Filtered: move 4.8% / rvol 0.6, vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "CNEY",
       "name": "Cn Energy Group Inc",
       "price": 0.45,
       "change_pct": 4.748603351955314,
-      "volume": 38705,
-      "rvol": 0.09628301060717626,
+      "volume": 38894,
+      "rvol": 0.09675316921729786,
       "market_cap": 5265173.3,
       "float_shares": 11620571,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: tiny price $0.450, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, move 4.8%, vol 38,705, vol/float 0.00x < 0.1x, avg $vol $0.2M < $2.0M"
-    },
-    {
-      "ticker": "BTTC",
-      "name": "Black TITAN Corp",
-      "price": 0.402,
-      "change_pct": 4.687500000000004,
-      "volume": 1254522,
-      "rvol": 2.870457571971829,
-      "market_cap": 5758833.41,
-      "float_shares": 6930564,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 39)",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.402, tiny avg $vol, tiny vol/float 0.18x, move 4.7%, avg $vol $0.2M < $2.0M"
+      "reason": "Filtered: tiny price $0.450, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, move 4.8%, vol 38,894, vol/float 0.00x < 0.1x, avg $vol $0.2M < $2.0M"
     },
     {
       "ticker": "VRXA",
@@ -2342,19 +1705,19 @@
       "reason": "Filtered: move 4.7% / rvol 1.0, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "RANI",
-      "name": "Rani Therapeutics Holdings, Inc.",
-      "price": 0.633,
-      "change_pct": 4.628099173553723,
-      "volume": 672051,
-      "rvol": 1.0429258678750446,
-      "market_cap": 84334168.0,
-      "float_shares": 109768303,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
+      "ticker": "SKYQ",
+      "name": "Sky Quarry Inc",
+      "price": 2.26,
+      "change_pct": 4.629629629629613,
+      "volume": 728585,
+      "rvol": 1.3665102443489154,
+      "market_cap": 19080122.4,
+      "float_shares": 8150542,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: float 109.8M > 100M, vol/float 0.01x < 0.1x"
+      "reason": "Filtered: vol/float 0.09x < 0.1x"
     },
     {
       "ticker": "JOB",
@@ -2400,6 +1763,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: move 4.5% / rvol 0.6, float 131.0M > 100M, vol/float 0.01x < 0.1x"
+    },
+    {
+      "ticker": "GLE",
+      "name": "Global Engine Group Holding Limited",
+      "price": 3.28,
+      "change_pct": 4.458598726114639,
+      "volume": 21278,
+      "rvol": 0.8251444526311708,
+      "market_cap": 6499800.0,
+      "float_shares": 1022000,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.02x, move 4.5%, vol 21,278, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
       "ticker": "HAIN",
@@ -2475,68 +1853,53 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny rvol 1.4x, tiny avg $vol, tiny vol/float 0.02x, move 4.3%, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "RYDE",
-      "name": "RYDE GROUP LTD",
-      "price": 0.72,
-      "change_pct": 4.2269832078749285,
-      "volume": 83038,
-      "rvol": 0.13718577357193837,
-      "market_cap": 124500332.18,
-      "float_shares": 103010496,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: move 4.2% / rvol 0.1, float 103.0M > 100M, vol/float 0.00x < 0.1x"
     }
   ],
   "all_losers": [
     {
       "ticker": "POM",
       "name": "POMDOCTOR LTD",
-      "price": 1.91,
-      "change_pct": -36.544850498338874,
-      "volume": 31860664,
-      "rvol": 9.993953564529921,
+      "price": 1.93,
+      "change_pct": -35.880398671096344,
+      "volume": 31946908,
+      "rvol": 10.021006313060814,
       "market_cap": 18535308.0,
       "float_shares": 8586974,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: move -36.5%"
+      "reason": "Filtered: move -35.9%"
     },
     {
       "ticker": "NVEC",
       "name": "Nve Corp",
-      "price": 74.5,
-      "change_pct": -27.71902590472494,
-      "volume": 122106,
-      "rvol": 1.236528977508633,
+      "price": 79.0,
+      "change_pct": -23.35306102648685,
+      "volume": 123973,
+      "rvol": 1.2554354980809932,
       "market_cap": 496438346.0,
       "float_shares": 4837166,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $74.500, mktcap $496.4M, vol/float 0.03x"
+      "reason": "Filtered: price $79.000, mktcap $496.4M, vol/float 0.03x"
     },
     {
       "ticker": "SFWL",
       "name": "SHENGFENG DEV LTD",
-      "price": 5.75,
-      "change_pct": -20.689655172413794,
-      "volume": 610,
-      "rvol": 0.7093023255813954,
+      "price": 6.05,
+      "change_pct": -16.551724137931036,
+      "volume": 916,
+      "rvol": 1.0651162790697675,
       "market_cap": 39873796.0,
       "float_shares": 2707834,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: rvol 0.7x, vol 610, vol/float 0.00x"
+      "reason": "Filtered: vol 916, vol/float 0.00x"
     },
     {
       "ticker": "LEXX",
@@ -2556,32 +1919,32 @@
     {
       "ticker": "ASIC",
       "name": "Ategrity Specialty Holdings",
-      "price": 24.44,
-      "change_pct": -12.307140294223178,
-      "volume": 65209,
-      "rvol": 0.8459692275758284,
+      "price": 24.68,
+      "change_pct": -11.445999282382495,
+      "volume": 66952,
+      "rvol": 0.8685815105991023,
       "market_cap": 1335723483.0,
       "float_shares": 47926928,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $24.440, mktcap $1335.7M, rvol 0.8x, vol 65,209, vol/float 0.00x"
+      "reason": "Filtered: price $24.680, mktcap $1335.7M, rvol 0.9x, vol 66,952, vol/float 0.00x"
     },
     {
       "ticker": "HXL",
       "name": "Hexcel Corp",
-      "price": 80.0,
-      "change_pct": -10.952804986642924,
-      "volume": 1732844,
-      "rvol": 1.6398606229570873,
+      "price": 80.62,
+      "change_pct": -10.262689225289403,
+      "volume": 1733149,
+      "rvol": 1.6401492568387304,
       "market_cap": 6794010927.0,
       "float_shares": 75623452,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $80.000, mktcap $6794.0M, float 75.6M, vol/float 0.02x"
+      "reason": "Filtered: price $80.620, mktcap $6794.0M, float 75.6M, vol/float 0.02x"
     },
     {
       "ticker": "PLRZ",
@@ -2597,21 +1960,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: rvol 0.2x, vol 6,992, vol/float 0.00x"
-    },
-    {
-      "ticker": "LHSW",
-      "name": "Lianhe Sowell International Group Ltd",
-      "price": 0.922,
-      "change_pct": -9.6078431372549,
-      "volume": 7044905,
-      "rvol": 1.0859538263779198,
-      "market_cap": 13763539.0,
-      "float_shares": 10906166,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": true,
-      "reason": "Bounce candidate"
     },
     {
       "ticker": "UPC",
@@ -2674,19 +2022,19 @@
       "reason": "Filtered: mktcap $3.6M, rvol 0.5x, vol/float 0.18x"
     },
     {
-      "ticker": "GGG",
-      "name": "Graco",
-      "price": 74.68,
-      "change_pct": -8.715315976042042,
-      "volume": 1657381,
-      "rvol": 1.053498023476736,
-      "market_cap": 13249442341.0,
-      "float_shares": 161953824,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
+      "ticker": "LHSW",
+      "name": "Lianhe Sowell International Group Ltd",
+      "price": 0.93,
+      "change_pct": -8.823529411764703,
+      "volume": 7047061,
+      "rvol": 1.0862861681837597,
+      "market_cap": 13763539.0,
+      "float_shares": 10906166,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
       "country": "",
-      "passed": false,
-      "reason": "Filtered: price $74.680, mktcap $13249.4M, float 162.0M, vol/float 0.01x"
+      "passed": true,
+      "reason": "Bounce candidate"
     },
     {
       "ticker": "RAYA",
@@ -2734,6 +2082,21 @@
       "reason": "Filtered: price $0.430, mktcap $0.3M, rvol 0.2x"
     },
     {
+      "ticker": "ELWT",
+      "name": "ELAUWIT CONNECTION INC",
+      "price": 5.13,
+      "change_pct": -8.392857142857139,
+      "volume": 6096,
+      "rvol": 0.34394041976980366,
+      "market_cap": 37070857.0,
+      "float_shares": 6619796,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: rvol 0.3x, vol 6,096, vol/float 0.00x"
+    },
+    {
       "ticker": "APUS",
       "name": "APIMEDS PHARMACEUTICALS US INC",
       "price": 3.0,
@@ -2768,30 +2131,15 @@
       "name": "China Sxt Pharmaceuticals Inc",
       "price": 0.068,
       "change_pct": -6.849315068493138,
-      "volume": 225597038,
-      "rvol": 2.149891282782544,
+      "volume": 225747851,
+      "rvol": 2.151328498257112,
       "market_cap": 756097.0,
       "float_shares": 10357498,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $0.068, mktcap $0.8M, move -7.5%"
-    },
-    {
-      "ticker": "EHGO",
-      "name": "Eshallgo Inc",
-      "price": 2.7,
-      "change_pct": -7.216494845360823,
-      "volume": 164098,
-      "rvol": 1.0239805310286731,
-      "market_cap": 3258224.0,
-      "float_shares": 1107315,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: mktcap $3.3M, move -7.2%, vol/float 0.15x"
+      "reason": "Filtered: price $0.068, mktcap $0.8M, move -7.3%"
     },
     {
       "ticker": "EOCN",
@@ -2809,19 +2157,19 @@
       "reason": "Filtered: mktcap $3.2M, move -7.0%, rvol 0.9x, vol 7,058, vol/float 0.01x"
     },
     {
-      "ticker": "ROL",
-      "name": "Rollins",
-      "price": 31.15,
-      "change_pct": -6.875934230194332,
-      "volume": 7896616,
-      "rvol": 1.0883143097619663,
-      "market_cap": 16094313763.0,
-      "float_shares": 481145404,
-      "cap_size": "small-cap",
+      "ticker": "EHGO",
+      "name": "Eshallgo Inc",
+      "price": 2.71,
+      "change_pct": -6.872852233676982,
+      "volume": 165784,
+      "rvol": 1.0345012636111197,
+      "market_cap": 3258224.0,
+      "float_shares": 1107315,
+      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $31.150, mktcap $16094.3M, move -6.9%, float 481.1M, vol/float 0.02x"
+      "reason": "Filtered: mktcap $3.3M, move -6.9%, vol/float 0.15x"
     },
     {
       "ticker": "MDXH",
@@ -2869,19 +2217,34 @@
       "reason": "Filtered: move -6.4%, rvol 0.5x, vol 79,617, vol/float 0.00x"
     },
     {
+      "ticker": "GGG",
+      "name": "Graco",
+      "price": 76.61,
+      "change_pct": -6.356191174673026,
+      "volume": 1657427,
+      "rvol": 1.0535272629268562,
+      "market_cap": 13249442341.0,
+      "float_shares": 161953824,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $76.610, mktcap $13249.4M, move -6.4%, float 162.0M, vol/float 0.01x"
+    },
+    {
       "ticker": "LRCX",
       "name": "Lam Research",
-      "price": 244.79,
-      "change_pct": -6.142402515240984,
-      "volume": 14683788,
-      "rvol": 1.5335290967953437,
+      "price": 244.25,
+      "change_pct": -6.34944979103562,
+      "volume": 14743240,
+      "rvol": 1.539738078555546,
       "market_cap": 326383987853.0,
       "float_shares": 1251424362,
       "cap_size": "small-cap",
       "is_penny_stock": false,
       "country": "",
       "passed": false,
-      "reason": "Filtered: price $244.790, mktcap $326384.0M, move -6.2%, float 1251.4M, vol/float 0.01x"
+      "reason": "Filtered: price $244.250, mktcap $326384.0M, move -6.3%, float 1251.4M, vol/float 0.01x"
     },
     {
       "ticker": "GSIW",
@@ -2942,21 +2305,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: move -6.0%, rvol 0.1x, vol 4,774, vol/float 0.00x"
-    },
-    {
-      "ticker": "INV",
-      "name": "Innventure, Inc.",
-      "price": 0.321,
-      "change_pct": -5.892700087950749,
-      "volume": 4971514,
-      "rvol": 0.6427644884706748,
-      "market_cap": 29583970.0,
-      "float_shares": 86756511,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.321, move -6.0%, rvol 0.6x, float 86.8M, vol/float 0.06x"
     },
     {
       "ticker": "MASK",
@@ -3034,27 +2382,72 @@
       "reason": "Filtered: price $0.396, mktcap $1.8M, move -5.7%, rvol 0.0x, vol/float 0.10x"
     },
     {
-      "ticker": "FRTT",
-      "name": "Fort Technology Inc",
-      "price": 0.726,
-      "change_pct": -5.714285714285719,
-      "volume": 4227519,
-      "rvol": 0.19676926564923022,
-      "market_cap": 11581283.0,
-      "float_shares": 15042582,
+      "ticker": "FUFU",
+      "name": "BITFUFU",
+      "price": 1.0,
+      "change_pct": -5.660377358490571,
+      "volume": 892188,
+      "rvol": 0.1601560150952934,
+      "market_cap": 173364499.0,
+      "float_shares": 31696634,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: move -5.7%, rvol 0.2x, vol/float 0.03x"
+    },
+    {
+      "ticker": "KTTA",
+      "name": "Pasithea Therapeutics Corp",
+      "price": 0.46,
+      "change_pct": -5.699056990569904,
+      "volume": 774923,
+      "rvol": 4.00307363287909,
+      "market_cap": 16426542.0,
+      "float_shares": 33414448,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "",
       "passed": false,
-      "reason": "Filtered: move -5.7%, rvol 0.2x"
+      "reason": "Filtered: price $0.460, move -5.7%, vol/float 0.02x"
+    },
+    {
+      "ticker": "PDSB",
+      "name": "Pds Biotechnology Corporation",
+      "price": 1.17,
+      "change_pct": -5.645161290322586,
+      "volume": 14853522,
+      "rvol": 1.3887826433795458,
+      "market_cap": 128106623.0,
+      "float_shares": 72474208,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: move -5.7%, float 72.5M"
+    },
+    {
+      "ticker": "INV",
+      "name": "Innventure, Inc.",
+      "price": 0.322,
+      "change_pct": -5.599530929346234,
+      "volume": 4971592,
+      "rvol": 0.6427745730505634,
+      "market_cap": 29583970.0,
+      "float_shares": 86756511,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.322, move -5.6%, rvol 0.6x, float 86.8M, vol/float 0.06x"
     },
     {
       "ticker": "NWGL",
       "name": "CL Workshop Group",
       "price": 0.12,
       "change_pct": -5.734485467399844,
-      "volume": 22938047,
-      "rvol": 0.2407740042283893,
+      "volume": 22994832,
+      "rvol": 0.24137005984856083,
       "market_cap": 7009492.0,
       "float_shares": 44911559,
       "cap_size": "nano-cap",
@@ -3062,36 +2455,6 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: price $0.120, move -5.6%, rvol 0.2x"
-    },
-    {
-      "ticker": "WHLR",
-      "name": "Wheeler Real Estate Invt Tr",
-      "price": 0.501,
-      "change_pct": -5.471698113207552,
-      "volume": 92757218,
-      "rvol": 8.77353019571537,
-      "market_cap": 792194.0,
-      "float_shares": 1506932,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: mktcap $0.8M, move -5.5%"
-    },
-    {
-      "ticker": "DKI",
-      "name": "DARKIRIS INC.",
-      "price": 0.038,
-      "change_pct": -4.761904761904759,
-      "volume": 41228585,
-      "rvol": 0.7804794057203512,
-      "market_cap": 117165.0,
-      "float_shares": 2566666,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.038, mktcap $0.1M, move -5.5%, rvol 0.8x"
     },
     {
       "ticker": "FFR",
@@ -3109,12 +2472,27 @@
       "reason": "Filtered: move -5.4%, rvol 0.5x, vol/float 0.02x"
     },
     {
+      "ticker": "ADVB",
+      "name": "Advanced Biomed Inc.",
+      "price": 3.56,
+      "change_pct": -5.319148936170206,
+      "volume": 25256,
+      "rvol": 0.45039679001337496,
+      "market_cap": 6425806.0,
+      "float_shares": 1652133,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: move -5.3%, rvol 0.5x, vol 25,256, vol/float 0.02x"
+    },
+    {
       "ticker": "NEXR",
       "name": "NEXERA TECHNOLOGIES LTD",
       "price": 0.663,
       "change_pct": -5.285714285714275,
-      "volume": 9767990,
-      "rvol": 9.60796927177853,
+      "volume": 9768499,
+      "rvol": 9.60846993326153,
       "market_cap": 1134886.0,
       "float_shares": 1635990,
       "cap_size": "nano-cap",
@@ -3122,6 +2500,51 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: mktcap $1.1M, move -5.3%"
+    },
+    {
+      "ticker": "FRTT",
+      "name": "Fort Technology Inc",
+      "price": 0.73,
+      "change_pct": -5.194805194805199,
+      "volume": 4229628,
+      "rvol": 0.19686742875180985,
+      "market_cap": 11581283.0,
+      "float_shares": 15042582,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: move -5.2%, rvol 0.2x"
+    },
+    {
+      "ticker": "ROL",
+      "name": "Rollins",
+      "price": 31.75,
+      "change_pct": -5.082212257100157,
+      "volume": 7897234,
+      "rvol": 1.0883994827326962,
+      "market_cap": 16094313763.0,
+      "float_shares": 481145404,
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $31.750, mktcap $16094.3M, move -5.1%, float 481.1M, vol/float 0.02x"
+    },
+    {
+      "ticker": "RUBI",
+      "name": "Rubico Inc",
+      "price": 0.17,
+      "change_pct": -5.027932960893844,
+      "volume": 4095443,
+      "rvol": 0.26203944191572276,
+      "market_cap": 480992.0,
+      "float_shares": 2687109,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.170, mktcap $0.5M, move -4.9%, rvol 0.3x"
     },
     {
       "ticker": "GL",
@@ -3139,6 +2562,21 @@
       "reason": "Filtered: price $161.540, mktcap $13035.2M, move -4.8%, float 76.8M, vol/float 0.01x"
     },
     {
+      "ticker": "DKI",
+      "name": "DARKIRIS INC.",
+      "price": 0.038,
+      "change_pct": -4.761904761904759,
+      "volume": 41273490,
+      "rvol": 0.7813294816498034,
+      "market_cap": 117165.0,
+      "float_shares": 2566666,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "",
+      "passed": false,
+      "reason": "Filtered: price $0.038, mktcap $0.1M, move -4.8%, rvol 0.8x"
+    },
+    {
       "ticker": "TFIN",
       "name": "Triumph Financial Inc",
       "price": 59.1,
@@ -3154,21 +2592,6 @@
       "reason": "Filtered: price $59.100, mktcap $1481.2M, move -4.7%, vol/float 0.01x"
     },
     {
-      "ticker": "RTO",
-      "name": "Rentokil Initial Plc",
-      "price": 20.07,
-      "change_pct": -4.610266159695812,
-      "volume": 1354560,
-      "rvol": 0.8434292332263398,
-      "market_cap": 10629575836.0,
-      "float_shares": 503247977,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $20.070, mktcap $10629.6M, move -4.6%, rvol 0.8x, float 503.2M, vol/float 0.00x"
-    },
-    {
       "ticker": "FGL",
       "name": "Founder Group Ltd",
       "price": 2.91,
@@ -3182,69 +2605,50 @@
       "country": "",
       "passed": false,
       "reason": "Filtered: mktcap $0.2M, move -4.6%, rvol 0.7x, vol 31,597"
-    },
-    {
-      "ticker": "CDT",
-      "name": "CDT Equity",
-      "price": 0.138,
-      "change_pct": -4.630269523151336,
-      "volume": 1627105,
-      "rvol": 0.37514332109296844,
-      "market_cap": 162717.0,
-      "float_shares": 1124515,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.138, mktcap $0.2M, move -4.6%, rvol 0.4x"
-    },
-    {
-      "ticker": "YHC",
-      "name": "LQR House Inc.",
-      "price": 1.71,
-      "change_pct": -4.469273743016763,
-      "volume": 60320,
-      "rvol": 0.10805543215007381,
-      "market_cap": 2333904.0,
-      "float_shares": 1303857,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: mktcap $2.3M, move -4.5%, rvol 0.1x, vol 60,320, vol/float 0.05x"
-    },
-    {
-      "ticker": "LVS",
-      "name": "Las Vegas Snds",
-      "price": 35.85,
-      "change_pct": -4.4254865369234775,
-      "volume": 6010820,
-      "rvol": 1.0168236833126134,
-      "market_cap": 24295271411.0,
-      "float_shares": 647701184,
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $35.850, mktcap $24295.3M, move -4.4%, float 647.7M, vol/float 0.01x"
-    },
-    {
-      "ticker": "NIVF",
-      "name": "NewGenIvf Group",
-      "price": 0.18,
-      "change_pct": -4.458598726114659,
-      "volume": 14520684,
-      "rvol": 0.537548552007927,
-      "market_cap": 1678243.0,
-      "float_shares": 6821751,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "",
-      "passed": false,
-      "reason": "Filtered: price $0.180, mktcap $1.7M, move -4.4%, rvol 0.5x"
     }
   ],
   "live_quotes": {
+    "NCPL": {
+      "price": 1.57,
+      "open": 2.34,
+      "high": 2.34,
+      "low": 1.53,
+      "close": 1.57,
+      "preClose": 2.02,
+      "volume": 7501400,
+      "changeRatio": -0.2228,
+      "marketValue": 12321201.43,
+      "name": "Netcapital Inc",
+      "_timestamp": "2026-10-21T20:31:04.151221Z"
+    },
+    "SDEV": {
+      "price": 1.1,
+      "open": 0.94,
+      "high": 1.65,
+      "low": 0.9029,
+      "close": 1.1,
+      "preClose": 0.83,
+      "volume": 123609973,
+      "changeRatio": 0.3253,
+      "marketValue": 56926494.9,
+      "name": "Stablecoin Development Corporation",
+      "_timestamp": "2026-10-21T20:31:04.151245Z"
+    },
+    "LHSW": {
+      "price": 1.02,
+      "open": 0.7506,
+      "high": 1.05,
+      "low": 0.7349,
+      "close": 1.02,
+      "preClose": 0.73,
+      "volume": 7047667,
+      "changeRatio": 0.3973,
+      "marketValue": 13763539.32,
+      "name": "Lianhe Sowell International Group Ltd",
+      "_timestamp": "2026-10-21T20:31:04.151252Z"
+    }
+  },
+  "previous_live_quotes": {
     "NCPL": {
       "price": 1.57,
       "open": 2.34,
@@ -3298,52 +2702,11 @@
       "_timestamp": "2026-10-21T20:27:56.544500Z"
     }
   },
-  "previous_live_quotes": {
-    "SDEV": {
-      "price": 1.1,
-      "open": 0.94,
-      "high": 1.65,
-      "low": 0.9029,
-      "close": 1.1,
-      "preClose": 0.83,
-      "volume": 123084218,
-      "changeRatio": 0.3253,
-      "marketValue": 56926494.9,
-      "name": "Stablecoin Development Corporation",
-      "_timestamp": "2026-10-21T20:25:01.898135Z"
-    },
-    "NCPL": {
-      "price": 1.57,
-      "open": 2.34,
-      "high": 2.34,
-      "low": 1.53,
-      "close": 1.57,
-      "preClose": 2.02,
-      "volume": 7456165,
-      "changeRatio": -0.2228,
-      "marketValue": 12321201.43,
-      "name": "Netcapital Inc",
-      "_timestamp": "2026-10-21T20:25:01.898162Z"
-    },
-    "AHT": {
-      "price": 2.47,
-      "open": 2.39,
-      "high": 2.81,
-      "low": 2.26,
-      "close": 2.47,
-      "preClose": 1.79,
-      "volume": 29365064,
-      "changeRatio": 0.3799,
-      "marketValue": 15980440.58,
-      "name": "Ashford Hospitality Tr Inc",
-      "_timestamp": "2026-10-21T20:25:01.898173Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "07:27 AM AEST",
+    "market_time": "07:31 AM AEST",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
