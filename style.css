@@ -31,20 +31,22 @@ a:hover { text-decoration: underline; }
     background-clip: text; text-decoration: none;
 }
 
-.nav-menu { display: flex; list-style: none; gap: 2rem; }
+.nav-menu { display: flex; list-style: none; gap: 1.25rem; align-items: center; white-space: nowrap; }
 
-.nav-link { color: #FFFFFF; text-decoration: none; font-weight: 400; transition: color 0.3s; font-size: 1rem; }
+.nav-link { color: #FFFFFF; text-decoration: none; font-weight: 400; transition: color 0.3s; font-size: 0.95rem; white-space: nowrap; display: inline-flex; align-items: center; }
 .nav-link:hover, .nav-link.active { color: #14B8A6; }
 .new-tag {
     background: #ef4444;
     color: #fff;
-    font-size: .65rem;
+    font-size: .55rem;
     font-weight: 700;
     text-transform: uppercase;
-    padding: .15rem .35rem;
+    padding: .12rem .3rem;
     border-radius: .25rem;
-    margin-left: .35rem;
+    margin-left: .3rem;
     vertical-align: middle;
+    flex-shrink: 0;
+    line-height: 1;
 }
 
 /* Dropdown Menu */
