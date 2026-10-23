@@ -169,6 +169,16 @@
         .status.error { color: var(--error); }
         .status.ok { color: var(--ok); }
         .preview { white-space: pre-wrap; background: var(--input); padding: 1rem; border-radius: .5rem; font-family: monospace; font-size: .85rem; max-height: 300px; overflow: auto; }
+        .limit-notice {
+            background: rgba(59, 130, 246, .12);
+            border: 1px solid rgba(59, 130, 246, .35);
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+            color: var(--text);
+        }
+        .limit-notice strong { color: #60a5fa; }
         .hero-img { width: 100%; border-radius: .5rem; margin-top: 1rem; }
         .loading-overlay {
             position: fixed;
@@ -217,6 +227,9 @@
         <div class="card">
             <h2>1. Tell us about your trip</h2>
             <p style="color:var(--muted)">Speak or type naturally, or fill the structured form.</p>
+            <div class="limit-notice" role="note">
+                <strong>🛡️ Fair use limit:</strong> Each visitor can generate up to <strong>10 trip plans per day</strong>. This keeps the service free and responsive for everyone.
+            </div>
             <label>Voice / chat request</label>
             <textarea id="chatInput" placeholder="Plan an Australia family trip from 2026-08-10 to 2026-08-14 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love history, food, parks, museums and kid-friendly places. We eat seafood and coffee. We want Melbourne."></textarea>
             <div class="row" style="margin-top:.75rem">
