@@ -296,6 +296,11 @@
     let currentJobId = null;
     let currentFiles = null;
 
+    function cacheBust(url) {
+        const sep = url.includes('?') ? '&' : '?';
+        return `${url}${sep}_cb=${Date.now()}`;
+    }
+
     function setJdMode(mode) {
         jdMode = mode;
         document.getElementById('jdTextBlock').style.display = mode === 'text' ? 'block' : 'none';
@@ -306,7 +311,7 @@
     async function checkHealth() {
         const statusEl = document.getElementById('apiStatus');
         try {
-            const r = await fetch(API_BASE + '/health', { cache: 'no-store' });
+            const r = await fetch(cacheBust(API_BASE + '/health'), { cache: 'no-store' });
             if (r.ok) {
                 const data = await r.json();
                 statusEl.className = 'api-status ok';
@@ -354,7 +359,7 @@
             payload.cover_letter = await toBase64(coverFile);
             payload.cover_letter_name = coverFile.name;
         }
-        const r = await fetch(API_BASE + '/upload', {
+        const r = await fetch(cacheBust(API_BASE + '/upload'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -367,7 +372,7 @@
         if (jdMode === 'text') {
             const text = document.getElementById('jdText').value.trim();
             if (!text) throw new Error('Please paste the job description.');
-            const r = await fetch(API_BASE + '/parse-jd', {
+            const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text }),
@@ -377,7 +382,7 @@
         } else if (jdMode === 'url') {
             const url = document.getElementById('jdUrl').value.trim();
             if (!url) throw new Error('Please enter a job description URL.');
-            const r = await fetch(API_BASE + '/parse-jd', {
+            const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url }),
@@ -406,7 +411,7 @@
             const notes = document.getElementById('notes').value.trim();
 
             setLoading(true, 'Starting AI tailoring…');
-            const r = await fetch(API_BASE + '/tailor', {
+            const r = await fetch(cacheBust(API_BASE + '/tailor'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -434,7 +439,7 @@
     async function pollStatus() {
         if (!currentJobId) return;
         try {
-            const r = await fetch(API_BASE + '/status?job_id=' + encodeURIComponent(currentJobId), { cache: 'no-store' });
+            const r = await fetch(cacheBust(API_BASE + '/status?job_id=' + encodeURIComponent(currentJobId)), { cache: 'no-store' });
             const data = await r.json();
             if (data.status === 'done' || data.status === 'error') {
                 setLoading(false);
@@ -474,7 +479,7 @@
         for (const [key, path] of Object.entries(currentFiles)) {
             const div = document.createElement('div');
             div.className = 'file-item';
-            div.innerHTML = `<span>${labels[key] || key}</span><a class="btn" href="${API_BASE}/download/${currentJobId}/${key}">Download</a>`;
+            div.innerHTML = `<span>${labels[key] || key}</span><a class="btn" href="${cacheBust(API_BASE + '/download/' + currentJobId + '/' + key)}">Download</a>`;
             fileList.appendChild(div);
         }
         document.getElementById('results').style.display = 'block';
@@ -488,7 +493,7 @@
         }
         if (!currentJobId) return;
         try {
-            const r = await fetch(API_BASE + '/email', {
+            const r = await fetch(cacheBust(API_BASE + '/email'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ job_id: currentJobId, email }),
