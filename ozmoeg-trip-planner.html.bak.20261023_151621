@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzMoEg Trip Planner</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --input: #111827;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --ok: #22c55e;
+            --error: #ef4444;
+            --chip-on: #3b82f6;
+            --chip-off: #334155;
+            --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        .banner {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+        .banner h1 { margin: 0; font-size: 1.5rem; }
+        .badge {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: .25rem .5rem;
+            border-radius: 9999px;
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+        h2 { margin-top: 0; color: #60a5fa; }
+        label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; color: var(--muted); }
+        input[type="text"], input[type="email"], input[type="date"], textarea, select {
+            width: 100%;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .65rem .85rem;
+            color: var(--text);
+            font: inherit;
+        }
+        textarea { min-height: 90px; resize: vertical; }
+        select { appearance: auto; cursor: pointer; }
+        .row { display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; }
+        .row > * { flex: 1; min-width: 140px; }
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: .5rem;
+            padding: .65rem 1rem;
+            font: inherit;
+            cursor: pointer;
+            transition: background .15s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn.secondary { background: var(--chip-off); }
+        .btn.secondary:hover { background: #475569; }
+        .voice-wave {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            height: 18px;
+        }
+        .voice-wave span {
+            width: 3px;
+            background: currentColor;
+            border-radius: 2px;
+            animation: voice-bounce 0.8s ease-in-out infinite;
+        }
+        .voice-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+        .voice-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+        .voice-wave span:nth-child(3) { height: 18px; animation-delay: 0.2s; }
+        .voice-wave span:nth-child(4) { height: 12px; animation-delay: 0.3s; }
+        .voice-wave span:nth-child(5) { height: 6px; animation-delay: 0.4s; }
+        @keyframes voice-bounce {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+        .chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .5rem;
+        }
+        .chip {
+            background: var(--chip-off);
+            color: var(--text);
+            border: 1px solid #475569;
+            border-radius: 9999px;
+            padding: .35rem .75rem;
+            font-size: .85rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .chip.on { background: var(--chip-on); border-color: var(--chip-on); }
+        .api-status {
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            font-size: .9rem;
+            margin-bottom: 1rem;
+            background: #1f2937;
+            color: var(--muted);
+        }
+        .api-status.ok { background: #064e3b; color: #6ee7b7; }
+        .api-status.error { background: #450a0a; color: #fca5a5; }
+        .added-city {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            margin-top: .5rem;
+        }
+        .added-city .name { font-weight: 600; }
+        .added-city .dates { font-size: .85rem; color: var(--muted); }
+        .added-city .actions { display: flex; gap: .5rem; }
+        .added-city button {
+            background: transparent;
+            border: 1px solid #475569;
+            color: var(--text);
+            border-radius: .35rem;
+            padding: .3rem .6rem;
+            cursor: pointer;
+            font-size: .8rem;
+        }
+        .added-city button.delete { border-color: var(--error); color: var(--error); }
+        .status { min-height: 1.5rem; font-size: .9rem; margin-top: .75rem; }
+        .status.error { color: var(--error); }
+        .status.ok { color: var(--ok); }
+        .preview { white-space: pre-wrap; background: var(--input); padding: 1rem; border-radius: .5rem; font-family: monospace; font-size: .85rem; max-height: 300px; overflow: auto; }
+        .hero-img { width: 100%; border-radius: .5rem; margin-top: 1rem; }
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s;
+        }
+        .loading-overlay.show { opacity: 1; pointer-events: auto; }
+        .spinner {
+            width: 64px; height: 64px;
+            border: 4px solid #334155;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .checkmark {
+            width: 64px; height: 64px;
+            background: var(--ok);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .loading-text { margin-top: 1rem; font-size: 1.1rem; }
+        .loading-sub { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+        .download-link { display: none; margin-top: 1rem; }
+        .back { display: inline-block; margin: 1rem 1.5rem; padding: .5rem 1rem; border: 1px solid #475569; border-radius: .5rem; }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <h1>🌍 OzMoEg Trip Planner</h1>
+        <span class="badge">AI + Real Online Data</span>
+    </header>
+    <a class="back" href="index.html">← Back to Aeyeing</a>
+    <div class="container">
+        <div class="card">
+            <h2>1. Tell us about your trip</h2>
+            <p style="color:var(--muted)">Speak or type naturally, or fill the structured form.</p>
+            <label>Voice / chat request</label>
+            <textarea id="chatInput" placeholder="Plan an Australia family trip from 2026-08-10 to 2026-08-14 for 2 adults age 40 and 38 and 2 kids age 12 and 9. We love history, food, parks, museums and kid-friendly places. We eat seafood and coffee. We want Melbourne."></textarea>
+            <div class="row" style="margin-top:.75rem">
+                <button id="micBtn" class="btn secondary">🎙️ Start voice</button>
+                <button id="parseBtn" class="btn">Parse from text</button>
+            </div>
+            <hr style="border-color:#374151;margin:1.25rem 0">
+            <div id="apiStatus" class="api-status">🔌 Checking trip planner connection…</div>
+            <form id="tripForm">
+                <div class="row">
+                    <div>
+                        <label>Country</label>
+                        <select id="country"><option value="" disabled>Select a country</option></select>
+                    </div>
+                    <div>
+                        <label>Requester email</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+                </div>
+                <label>Cities &amp; dates <span style="color:var(--muted)">Select a city and dates, then click Add. You can add multiple cities.</span></label>
+                <div class="row">
+                    <div>
+                        <select id="citySelect"><option value="">Choose city…</option></select>
+                    </div>
+                    <div>
+                        <input type="date" id="cityStart">
+                    </div>
+                    <div>
+                        <input type="date" id="cityEnd">
+                    </div>
+                    <button type="button" id="addCityBtn" class="btn">+ Add city</button>
+                </div>
+                <div id="addedCitiesList"></div>
+                <input type="hidden" id="citiesRaw">
+                <label>Travelers</label>
+                <input type="text" id="travelersRaw" placeholder="adult 40, adult 38, child 12, child 9" value="adult 40, adult 38, child 12, child 9">
+                <label>Interests</label>
+                <div id="interests" class="chip-grid">
+                    <span class="chip" data-value="history &amp; culture">history &amp; culture</span>
+                    <span class="chip" data-value="food &amp; drink">food &amp; drink</span>
+                    <span class="chip" data-value="pop culture">pop culture</span>
+                    <span class="chip" data-value="parks &amp; outdoors">parks &amp; outdoors</span>
+                    <span class="chip" data-value="museums &amp; art">museums &amp; art</span>
+                    <span class="chip" data-value="shopping">shopping</span>
+                    <span class="chip" data-value="nature &amp; wildlife">nature &amp; wildlife</span>
+                    <span class="chip" data-value="nightlife">nightlife</span>
+                    <span class="chip" data-value="architecture">architecture</span>
+                    <span class="chip" data-value="technology">technology</span>
+                    <span class="chip" data-value="music &amp; shows">music &amp; shows</span>
+                    <span class="chip" data-value="wellness &amp; spa">wellness &amp; spa</span>
+                    <span class="chip" data-value="festivals &amp; events">festivals &amp; events</span>
+                    <span class="chip" data-value="hiking &amp; adventure">hiking &amp; adventure</span>
+                    <span class="chip" data-value="photography">photography</span>
+                    <span class="chip" data-value="sports">sports</span>
+                    <span class="chip" data-value="kids friendly">kids friendly</span>
+                    <span class="chip" data-value="local markets">local markets</span>
+                </div>
+                <label>Food preferences</label>
+                <div id="food" class="chip-grid">
+                    <span class="chip" data-value="seafood">seafood</span>
+                    <span class="chip" data-value="noodles">noodles</span>
+                    <span class="chip" data-value="street food">street food</span>
+                    <span class="chip" data-value="vegetarian">vegetarian</span>
+                    <span class="chip" data-value="vegan">vegan</span>
+                    <span class="chip" data-value="halal">halal</span>
+                    <span class="chip" data-value="fine dining">fine dining</span>
+                    <span class="chip" data-value="grilled meats">grilled meats</span>
+                    <span class="chip" data-value="sweets &amp; desserts">sweets &amp; desserts</span>
+                    <span class="chip" data-value="family-friendly table">family-friendly table</span>
+                    <span class="chip" data-value="wine &amp; cocktails">wine &amp; cocktails</span>
+                    <span class="chip" data-value="coffee &amp; cafés">coffee &amp; cafés</span>
+                    <span class="chip" data-value="kid-friendly meals">kid-friendly meals</span>
+                    <span class="chip" data-value="gluten-free">gluten-free</span>
+                    <span class="chip" data-value="budget eats">budget eats</span>
+                    <span class="chip" data-value="michelin-recommended">michelin-recommended</span>
+                    <span class="chip" data-value="private kitchens">private kitchens</span>
+                    <span class="chip" data-value="allergy aware">allergy aware</span>
+                </div>
+                <label>Pace <span id="paceBullet" style="color:var(--muted)">Relaxed = 1–2 activities per day. Compressed = pack Morning, Afternoon &amp; Evening with nearby places.</span></label>
+                <div id="paceContainer">
+                    <div id="pace" class="chip-grid">
+                        <span class="chip on" data-value="relaxed">Relaxed</span>
+                        <span class="chip" data-value="compressed">Compressed</span>
+                    </div>
+                </div>
+                <div id="status" class="status"></div>
+                <button id="generateBtn" type="submit" class="btn" style="margin-top:1rem;width:100%">Generate Excel plan</button>
+                <a id="downloadLink" class="download-link btn" style="text-align:center">Download Excel plan</a>
+            </form>
+        </div>
+        <div class="card">
+            <h2>2. Parsed request preview</h2>
+            <div id="parsedPreview" class="preview">Fill the form or paste a natural-language request, then click Parse.</div>
+            <h2>3. What you get</h2>
+            <ul style="color:var(--muted)">
+                <li>Editable Excel plan tailored to your dates and travel party</li>
+                <li>Exact city named for every date</li>
+                <li>Weather from live Open-Meteo data</li>
+                <li>Morning / Afternoon / Evening scheduling</li>
+                <li>Live hotel rates from Nuitee/LiteAPI (max 2 hotels per city)</li>
+                <li>Attractions filtered by age &amp; interests</li>
+                <li>Green cells for confirmed selections; editable backup rows</li>
+                <li>Top hotel recommendation auto-marked with X</li>
+                <li id="paceBulletText">Relaxed pace: 1–2 activities per day</li>
+            </ul>
+            <img class="hero-img" src="trip-planner-preview.png" alt="Generated Excel trip plan sample">
+            <p>⚠️ Disclaimer: Live hotel and weather data are sourced from third-party APIs and may change. Always double-check bookings, prices and opening hours directly with providers before travelling.</p>
+        </div>
+    </div>
+    <div id="loadingOverlay" class="loading-overlay">
+        <div id="loadingSpinner" class="spinner"></div>
+        <div id="doneCheck" class="checkmark">✓</div>
+        <div id="loadingText" class="loading-text">Building your trip plan…</div>
+        <div id="loadingSub" class="loading-sub">Live weather, hotels &amp; attractions</div>
+    </div>
+<script>
+const API = 'https://trip-planner.aeyeing.com';
+const LOCAL_API = 'http://localhost:8777';
+
+const COUNTRY_CITIES = {
+    "Afghanistan": ["Kabul"],
+    "Albania": ["Tirana"],
+    "Algeria": ["Algiers"],
+    "Andorra": ["Andorra la Vella"],
+    "Argentina": ["Buenos Aires", "Mendoza", "Bariloche", "Córdoba"],
+    "Armenia": ["Yerevan"],
+    "Australia": ["Melbourne", "Sydney", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast", "Hobart", "Darwin"],
+    "Austria": ["Vienna", "Salzburg", "Innsbruck", "Graz"],
+    "Azerbaijan": ["Baku"],
+    "Bahamas": ["Nassau"],
+    "Bahrain": ["Manama"],
+    "Bangladesh": ["Dhaka"],
+    "Barbados": ["Bridgetown"],
+    "Belarus": ["Minsk"],
+    "Belgium": ["Brussels", "Bruges", "Antwerp", "Ghent"],
+    "Belize": ["Belize City"],
+    "Bhutan": ["Thimphu"],
+    "Bolivia": ["La Paz", "Sucre", "Santa Cruz de la Sierra"],
+    "Bosnia and Herzegovina": ["Sarajevo", "Mostar"],
+    "Botswana": ["Gaborone"],
+    "Brazil": ["Rio de Janeiro", "São Paulo", "Salvador", "Brasília", "Florianópolis"],
+    "Bulgaria": ["Sofia", "Plovdiv", "Varna"],
+    "Cambodia": ["Siem Reap", "Phnom Penh"],
+    "Cameroon": ["Yaoundé"],
+    "Canada": ["Toronto", "Vancouver", "Montreal", "Calgary", "Quebec City", "Ottawa"],
+    "Chile": ["Santiago", "Valparaíso", "San Pedro de Atacama"],
+    "China": ["Beijing", "Shanghai", "Xi'an", "Guilin", "Chengdu"],
+    "Colombia": ["Bogotá", "Medellín", "Cartagena"],
+    "Costa Rica": ["San José"],
+    "Croatia": ["Dubrovnik", "Split", "Zagreb"],
+    "Cuba": ["Havana"],
+    "Cyprus": ["Nicosia"],
+    "Czech Republic": ["Prague", "Český Krumlov"],
+    "Denmark": ["Copenhagen"],
+    "Dominican Republic": ["Punta Cana", "Santo Domingo"],
+    "Ecuador": ["Quito", "Guayaquil", "Galápagos"],
+    "Egypt": ["Cairo", "Alexandria", "Luxor", "Aswan", "Sharm El-Sheikh", "Hurghada"],
+    "El Salvador": ["San Salvador"],
+    "Estonia": ["Tallinn"],
+    "Ethiopia": ["Addis Ababa"],
+    "Fiji": ["Nadi", "Suva", "Denarau Island"],
+    "Finland": ["Helsinki", "Rovaniemi"],
+    "France": ["Paris", "Nice", "Lyon", "Marseille", "Bordeaux", "Strasbourg"],
+    "Georgia": ["Tbilisi"],
+    "Germany": ["Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Dresden"],
+    "Ghana": ["Accra"],
+    "Greece": ["Athens", "Santorini", "Mykonos", "Thessaloniki"],
+    "Guatemala": ["Antigua Guatemala", "Guatemala City"],
+    "Hungary": ["Budapest"],
+    "Iceland": ["Reykjavík"],
+    "India": ["New Delhi", "Mumbai", "Jaipur", "Agra", "Bangalore", "Kerala"],
+    "Indonesia": ["Jakarta", "Bali", "Yogyakarta"],
+    "Iran": ["Tehran", "Isfahan", "Shiraz"],
+    "Ireland": ["Dublin", "Galway", "Cork"],
+    "Israel": ["Jerusalem", "Tel Aviv"],
+    "Italy": ["Rome", "Venice", "Florence", "Milan", "Naples", "Amalfi Coast"],
+    "Jamaica": ["Kingston", "Montego Bay"],
+    "Japan": ["Tokyo", "Kyoto", "Osaka", "Nara", "Yokohama", "Sapporo", "Hiroshima", "Fukuoka"],
+    "Jordan": ["Amman", "Petra", "Aqaba"],
+    "Kazakhstan": ["Almaty", "Astana"],
+    "Kenya": ["Nairobi", "Mombasa"],
+    "Kuwait": ["Kuwait City"],
+    "Laos": ["Luang Prabang", "Vientiane"],
+    "Latvia": ["Riga"],
+    "Lebanon": ["Beirut"],
+    "Lithuania": ["Vilnius"],
+    "Luxembourg": ["Luxembourg City"],
+    "Malaysia": ["Kuala Lumpur", "Penang", "Langkawi"],
+    "Maldives": ["Malé"],
+    "Malta": ["Valletta"],
+    "Mexico": ["Mexico City", "Cancún", "Guadalajara", "Oaxaca"],
+    "Monaco": ["Monaco"],
+    "Mongolia": ["Ulaanbaatar"],
+    "Montenegro": ["Kotor", "Podgorica"],
+    "Morocco": ["Marrakech", "Casablanca", "Fez", "Rabat"],
+    "Nepal": ["Kathmandu", "Pokhara"],
+    "Netherlands": ["Amsterdam", "Rotterdam", "The Hague"],
+    "New Zealand": ["Auckland", "Wellington", "Queenstown", "Christchurch"],
+    "Nigeria": ["Lagos", "Abuja"],
+    "North Macedonia": ["Skopje"],
+    "Norway": ["Oslo", "Bergen", "Tromsø"],
+    "Oman": ["Muscat"],
+    "Pakistan": ["Karachi", "Lahore", "Islamabad"],
+    "Panama": ["Panama City"],
+    "Papua New Guinea": ["Port Moresby"],
+    "Paraguay": ["Asunción"],
+    "Peru": ["Lima", "Cusco", "Arequipa"],
+    "Philippines": ["Manila", "Cebu", "Palawan"],
+    "Poland": ["Warsaw", "Kraków", "Gdańsk"],
+    "Portugal": ["Lisbon", "Porto", "Faro"],
+    "Qatar": ["Doha"],
+    "Romania": ["Bucharest", "Brașov"],
+    "Russia": ["Moscow", "Saint Petersburg"],
+    "Rwanda": ["Kigali"],
+    "Saudi Arabia": ["Riyadh", "Jeddah", "Al Ula"],
+    "Serbia": ["Belgrade"],
+    "Seychelles": ["Mahé"],
+    "Singapore": ["Singapore"],
+    "Slovakia": ["Bratislava"],
+    "Slovenia": ["Ljubljana"],
+    "South Africa": ["Cape Town", "Johannesburg", "Durban"],
+    "South Korea": ["Seoul", "Busan"],
+    "Spain": ["Madrid", "Barcelona", "Seville", "Valencia", "Granada"],
+    "Sri Lanka": ["Colombo", "Kandy", "Galle"],
+    "Sweden": ["Stockholm", "Gothenburg"],
+    "Switzerland": ["Zurich", "Geneva", "Lucerne", "Interlaken"],
+    "Taiwan": ["Taipei", "Kaohsiung"],
+    "Tanzania": ["Zanzibar City", "Arusha"],
+    "Thailand": ["Bangkok", "Chiang Mai", "Phuket"],
+    "Tunisia": ["Tunis"],
+    "Turkey": ["Istanbul", "Cappadocia", "Antalya"],
+    "Uganda": ["Kampala"],
+    "Ukraine": ["Kyiv"],
+    "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah"],
+    "United Kingdom": ["London", "Edinburgh", "Manchester", "Birmingham", "Liverpool", "Glasgow", "Belfast"],
+    "United States": ["New York", "Los Angeles", "San Francisco", "Las Vegas", "Chicago", "Miami", "Washington DC", "Boston", "Seattle", "New Orleans", "San Diego", "Honolulu"],
+    "Uruguay": ["Montevideo", "Punta del Este"],
+    "Uzbekistan": ["Tashkent", "Samarkand", "Bukhara"],
+    "Venezuela": ["Caracas"],
+    "Vietnam": ["Hanoi", "Ho Chi Minh City", "Da Nang", "Hoi An", "Nha Trang", "Hue"],
+    "Zambia": ["Lusaka", "Livingstone"],
+    "Zimbabwe": ["Harare", "Victoria Falls"]
+};
+
+function updateCityDropdown() {
+    const country = document.getElementById('country')?.value || '';
+    const city = document.getElementById('citySelect');
+    if (!city) return;
+    city.innerHTML = '<option value="">Choose city…</option>';
+    if (!country || !COUNTRY_CITIES[country]) return;
+    COUNTRY_CITIES[country].forEach(cityName => {
+        const opt = document.createElement('option');
+        opt.value = cityName;
+        opt.textContent = cityName;
+        city.appendChild(opt);
+    });
+}
+
+function initCountryDropdown() {
+    const select = document.getElementById('country');
+    if (!select) return;
+    select.innerHTML = '<option value="" disabled>Select a country</option>';
+    const sorted = Object.keys(COUNTRY_CITIES).sort();
+    sorted.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        select.appendChild(opt);
+    });
+    const australiaIndex = Math.max(1, sorted.indexOf('Australia') + 1);
+    select.selectedIndex = australiaIndex;
+    updateCityDropdown();
+}
+
+let addedCities = [];
+
+function syncCities() {
+    const raw = document.getElementById('citiesRaw');
+    if (raw) raw.value = JSON.stringify(addedCities);
+    renderAddedCities();
+}
+
+function renderAddedCities() {
+    const list = document.getElementById('addedCitiesList');
+    if (!list) return;
+    list.innerHTML = '';
+    if (addedCities.length === 0) {
+        list.innerHTML = '<div style="color:var(--muted);font-size:.85rem;" id="noCitiesMsg">No cities added yet.</div>';
+        return;
+    }
+    addedCities.forEach((c, idx) => {
+        const row = document.createElement('div');
+        row.className = 'added-city';
+        row.innerHTML = `
+            <div class="info">
+                <div class="name">${escapeHtml(c.city)}</div>
+                <div class="dates">${formatDate(c.start_date)} → ${formatDate(c.end_date)}</div>
+            </div>
+            <div class="actions">
+                <button type="button" class="edit" data-idx="${idx}">Edit</button>
+                <button type="button" class="delete" data-idx="${idx}">Delete</button>
+            </div>`;
+        list.appendChild(row);
+    });
+    list.querySelectorAll('button.edit').forEach(btn => {
+        btn.addEventListener('click', () => editCity(parseInt(btn.dataset.idx, 10)));
+    });
+    list.querySelectorAll('button.delete').forEach(btn => {
+        btn.addEventListener('click', () => deleteCity(parseInt(btn.dataset.idx, 10)));
+    });
+}
+
+function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function editCity(idx) {
+    const c = addedCities[idx];
+    if (!c) return;
+    const cityEl = document.getElementById('citySelect');
+    if (cityEl) cityEl.value = c.city;
+    const startEl = document.getElementById('cityStart');
+    const endEl = document.getElementById('cityEnd');
+    if (startEl) startEl.value = c.start_date;
+    if (endEl) endEl.value = c.end_date;
+    addedCities.splice(idx, 1);
+    syncCities();
+    setStatus('City loaded into the editor. Modify above and click Add city.', 'ok');
+}
+
+function deleteCity(idx) {
+    addedCities.splice(idx, 1);
+    syncCities();
+    setStatus('City removed.', 'ok');
+}
+
+function addCity() {
+    const city = document.getElementById('citySelect')?.value || '';
+    const start = document.getElementById('cityStart')?.value || '';
+    const end = document.getElementById('cityEnd')?.value || '';
+    if (!city || !start || !end) {
+        setStatus('Please select a city and both dates.', 'error');
+        return;
+    }
+    if (new Date(start) > new Date(end)) {
+        setStatus('Start date must be before end date.', 'error');
+        return;
+    }
+    addedCities.push({ city, start_date: start, end_date: end });
+    syncCities();
+    document.getElementById('citySelect').value = "";
+    document.getElementById('cityStart').value = "";
+    document.getElementById('cityEnd').value = "";
+    setStatus('City added.', 'ok');
+}
+
+if (document.getElementById('addCityBtn')) {
+    document.getElementById('addCityBtn').addEventListener('click', addCity);
+}
+
+// Seed the default Melbourne example on first load if nothing is parsed.
+// Mark it as an example so it auto-clears when the user interacts.
+const rawEl = document.getElementById('citiesRaw');
+let defaultExample = null;
+if (!rawEl || !rawEl.value.trim()) {
+    defaultExample = { city: 'Melbourne', start_date: '2026-08-10', end_date: '2026-08-14', _example: true };
+    addedCities = [defaultExample];
+} else {
+    addedCities = parseCities(rawEl.value);
+}
+syncCities();
+
+function _clearExampleIfPresent() {
+    if (defaultExample) {
+        const idx = addedCities.findIndex(c => c._example);
+        if (idx !== -1) {
+            addedCities.splice(idx, 1);
+            defaultExample = null;
+            syncCities();
+        }
+    }
+}
+
+if (document.getElementById('addCityBtn')) {
+    document.getElementById('addCityBtn').addEventListener('click', () => {
+        _clearExampleIfPresent();
+        addCity();
+    });
+}
+
+// Auto-clear example when country changes, so the old default city doesn't linger.
+const countrySelect = document.getElementById('country');
+if (countrySelect) {
+    countrySelect.addEventListener('change', () => {
+        updateCityDropdown();
+        _clearExampleIfPresent();
+    });
+}
+
+async function checkApi() {
+    const el = document.getElementById('apiStatus');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+        const res = await fetch(`${API}/health`, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            signal: controller.signal
+        });
+        clearTimeout(timeout);
+        if (res.ok) {
+            el.className = 'api-status ok';
+            el.textContent = 'Connected';
+            return;
+        }
+        throw new Error('API not healthy');
+    } catch (e) {
+        clearTimeout(timeout);
+        // Try local fallback
+        try {
+            const localRes = await fetch(`${LOCAL_API}/health`, { method: 'GET', mode: 'cors' });
+            if (localRes.ok) {
+                window.__actualApi = LOCAL_API;
+                el.className = 'api-status ok';
+                el.textContent = 'Connected';
+                return;
+            }
+        } catch (localErr) {}
+        el.className = 'api-status error';
+        el.textContent = 'Disconnected — will be back soon';
+    }
+}
+
+// If this copy of the page is missing the Pace section, the GitHub Pages CDN is still serving
+// the old HTML. Ask the API server for its copy of the page, which is always the latest version.
+(function ensureLatestPage() {
+    if (document.getElementById('paceContainer') && document.getElementById('addedCitiesList')) return;
+    fetch(`${API}/ozmoeg-trip-planner.html`, { method: 'GET', mode: 'cors' })
+        .then(r => r.ok ? r.text() : Promise.reject('not ok'))
+        .then(html => {
+            if (html.includes('paceContainer') && html.includes('addedCitiesList')) {
+                document.open();
+                document.write(html);
+                document.close();
+                if (typeof initCountryDropdown === 'function') initCountryDropdown();
+                if (typeof syncCities === 'function') syncCities();
+            }
+        })
+        .catch(() => {});
+})();
+
+function runInit() {
+    checkApi();
+    initCountryDropdown();
+    syncCities();
+    // Bind change listener here after DOM is ready.
+    const country = document.getElementById('country');
+    if (country) {
+        country.addEventListener('change', updateCityDropdown);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInit);
+} else {
+    runInit();
+}
+
+function activeApi() {
+    return window.__actualApi || API;
+}
+
+function chipsToList(containerId) {
+    return Array.from(document.querySelectorAll(`#${containerId} .chip.on`)).map(c => c.textContent.trim());
+}
+
+function selectedValue(containerId, defaultValue) {
+    const selected = document.querySelector(`#${containerId} .chip.on`);
+    return selected ? selected.dataset.value || selected.textContent.trim() : defaultValue;
+}
+
+document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+        const parent = chip.parentElement;
+        if (parent && parent.id === 'pace') {
+            parent.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+            chip.classList.add('on');
+            const bullet = document.getElementById('paceBullet');
+            const bulletText = document.getElementById('paceBulletText');
+            if (chip.dataset.value === 'compressed') {
+                if (bullet) bullet.textContent = 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions';
+                if (bulletText) bulletText.textContent = 'Compressed pace: Morning, Afternoon & Evening filled with nearby attractions';
+            } else {
+                if (bullet) bullet.textContent = 'Relaxed pace: 1–2 activities per day';
+                if (bulletText) bulletText.textContent = 'Relaxed pace: 1–2 activities per day';
+            }
+        } else {
+            chip.classList.toggle('on');
+        }
+    });
+});
+
+function parseCities(raw) {
+    return raw.split(/\n+/).map(l => l.trim()).filter(Boolean).map(line => {
+        const parts = line.split(/\s+/);
+        return { city: parts[0], start_date: parts[1], end_date: parts[2] };
+    });
+}
+
+function parseTravelers(raw) {
+    return raw.split(',').map(t => t.trim()).filter(Boolean).map(t => {
+        const m = t.match(/(adult|child)\s*(\d+)?/i);
+        return { name: (m?.[1] || 'adult').replace(/^\w/, c => c.toUpperCase()), age: parseInt(m?.[2] || '35', 10) };
+    });
+}
+
+function buildRequest() {
+    return {
+        destination_country: document.getElementById('country').value,
+        cities: addedCities.map(c => ({ city: c.city, start_date: c.start_date, end_date: c.end_date })),
+        travelers: parseTravelers(document.getElementById('travelersRaw').value),
+        interests: chipsToList('interests'),
+        food_preferences: chipsToList('food'),
+        pace: selectedValue('pace', 'relaxed'),
+        requester_email: document.getElementById('email').value,
+        raw_input: document.getElementById('chatInput').value
+    };
+}
+
+async function parseFromText() {
+    const text = document.getElementById('chatInput').value.trim();
+    if (!text) return;
+    setStatus('Parsing natural-language request...');
+    try {
+        const res = await fetch(`${activeApi()}/parse`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+        });
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+        fillForm(data);
+        document.getElementById('parsedPreview').textContent = JSON.stringify(data, null, 2);
+        setStatus('Parsed successfully.', 'ok');
+    } catch (e) {
+        setStatus('Parse failed: ' + e.message, 'error');
+    }
+}
+
+function fillForm(req) {
+    if (req.destination_country) {
+        const c = document.getElementById('country');
+        const match = Array.from(c.options).find(o => o.value === req.destination_country || o.textContent === req.destination_country);
+        if (match) c.selectedIndex = match.index;
+        updateCityDropdown();
+    }
+    if (req.requester_email) document.getElementById('email').value = req.requester_email;
+    if (req.cities) {
+        addedCities = req.cities.map(c => ({ city: c.city, start_date: c.start_date, end_date: c.end_date }));
+        document.getElementById('citiesRaw').value = JSON.stringify(addedCities);
+        syncCities();
+    }
+    if (req.travelers) document.getElementById('travelersRaw').value = req.travelers.map(t => `${t.name.toLowerCase()} ${t.age}`).join(', ');
+    setChips('interests', req.interests || []);
+    setChips('food', req.food_preferences || []);
+    if (req.pace) setChips('pace', [req.pace]);
+}
+
+function setChips(containerId, values) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.querySelectorAll('.chip').forEach(chip => {
+        chip.classList.toggle('on', values.includes(chip.dataset.value || chip.textContent.trim()));
+    });
+}
+
+function setStatus(msg, cls) {
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = 'status ' + (cls || '');
+}
+
+function showLoading(text, sub) {
+    const ov = document.getElementById('loadingOverlay');
+    document.getElementById('loadingText').textContent = text || 'Building your trip plan…';
+    document.getElementById('loadingSub').textContent = sub || 'Live weather, hotels & attractions';
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('doneCheck').style.display = 'none';
+    ov.classList.add('show');
+}
+
+function showDone(text) {
+    document.getElementById('loadingSpinner').style.display = 'none';
+    const check = document.getElementById('doneCheck');
+    check.style.display = 'flex';
+    document.getElementById('loadingText').textContent = text || 'Done!';
+    document.getElementById('loadingSub').textContent = '';
+}
+
+function hideLoading() {
+    const ov = document.getElementById('loadingOverlay');
+    ov.classList.remove('show');
+}
+
+async function generateExcel(e) {
+    e.preventDefault();
+    const btn = document.getElementById('generateBtn');
+    const link = document.getElementById('downloadLink');
+    const email = document.getElementById('email').value.trim();
+    if (!document.getElementById('country').value) {
+        setStatus('Please select a country from the dropdown.', 'error');
+        return;
+    }
+    const req = buildRequest();
+    if (req.cities.length === 0) {
+        setStatus('Please add at least one city with dates.', 'error');
+        return;
+    }
+    btn.disabled = true;
+    link.style.display = 'none';
+    showLoading('Building your trip plan…', 'Live weather, hotels & attractions');
+    try {
+        const API_BASE = activeApi();
+        const endpoint = email ? `${API_BASE}/generate-and-email` : `${API_BASE}/generate`;
+        const controller = new AbortController();
+        // Generating a new city via LLM can take ~30-40s over a slow connection.
+        const genTimeout = setTimeout(() => controller.abort(), email ? 30000 : 90000);
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req),
+            signal: controller.signal
+        });
+        clearTimeout(genTimeout);
+        if (!res.ok) {
+            let msg = await res.text();
+            try {
+                const data = JSON.parse(msg);
+                msg = data.error || data.message || msg;
+            } catch (_) {}
+            throw new Error(msg || `HTTP ${res.status}`);
+        }
+        if (email) {
+            const data = await res.json();
+            showDone(`Plan queued for ${email}`);
+            setTimeout(hideLoading, 1500);
+            setStatus(`✅ Plan queued. It will be emailed to ${email} within a few minutes.`, 'ok');
+            return;
+        }
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.style.display = 'inline-block';
+        link.download = res.headers.get('X-Filename') || setDownloadFilename(req) || 'OzMoEg_Trip_Plan.xlsx';
+        showDone('Excel plan ready!');
+        setTimeout(hideLoading, 1500);
+        setStatus('Plan generated. Click the download link.', 'ok');
+    } catch (err) {
+        hideLoading();
+        let userMsg = err.message || String(err);
+        if (userMsg.includes('aborted') || userMsg.includes('timeout') || userMsg.includes('The operation timed out')) {
+            userMsg = 'Request timed out. The server may be slow for new cities. Please wait a moment and try again.';
+        } else if (userMsg.includes('Failed to fetch') || userMsg.includes('NetworkError')) {
+            userMsg = 'Cannot reach the trip planner server. Please check your internet connection, disable any ad blockers for aeyeing.com, and try again.';
+        }
+        setStatus('Generation failed: ' + userMsg, 'error');
+        console.error(err);
+    } finally {
+        btn.disabled = false;
+    }
+}
+
+function setDownloadFilename(req) {
+    const firstCity = (req.cities?.[0]?.city || 'Trip').replace(/\s+/g, '_');
+    const start = req.cities?.[0]?.start_date || '';
+    const country = (req.destination_country || '').replace(/\s+/g, '_');
+    const name = `${country}_${firstCity}_${start}.xlsx`.replace(/^_+|_+$/g, '');
+    return name || 'OzMoEg_Trip_Plan.xlsx';
+}
+
+document.getElementById('parseBtn').addEventListener('click', parseFromText);
+document.getElementById('tripForm').addEventListener('submit', generateExcel);
+
+const micBtn = document.getElementById('micBtn');
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-AU';
+
+    let finalTranscript = '';
+    let silenceTimer = null;
+    const SILENCE_TIMEOUT = 2500; // ms before stopping after last speech
+
+    function setMicListening(listening) {
+        if (listening) {
+            micBtn.innerHTML = '<span class="voice-wave"><span></span><span></span><span></span><span></span><span></span></span> Listening...';
+            micBtn.classList.add('listening');
+        } else {
+            micBtn.textContent = '🎙️ Start voice';
+            micBtn.classList.remove('listening');
+        }
+    }
+
+    recognition.onstart = () => {
+        finalTranscript = '';
+        setMicListening(true);
+        setStatus('Listening… speak naturally. Pauses up to ~2.5 seconds are OK.', 'ok');
+    };
+    recognition.onend = () => {
+        setMicListening(false);
+        if (finalTranscript) {
+            document.getElementById('chatInput').value = finalTranscript.trim();
+            parseFromText();
+        }
+    };
+    recognition.onerror = e => {
+        console.error('Voice error', e.error);
+        let msg = 'Voice failed: ' + e.error;
+        if (e.error === 'not-allowed') msg = 'Microphone permission denied. Check the 🔒 icon in the address bar.';
+        if (e.error === 'no-speech') msg = 'No speech heard. Try again.';
+        if (e.error === 'network') msg = 'Speech recognition network error.';
+        setStatus(msg, 'error');
+        setMicListening(false);
+    };
+    recognition.onresult = e => {
+        let interim = '';
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+            const transcript = e.results[i][0].transcript;
+            if (e.results[i].isFinal) {
+                finalTranscript += ' ' + transcript;
+            } else {
+                interim = transcript;
+            }
+        }
+        // Show live interim preview in the textarea
+        document.getElementById('chatInput').value = (finalTranscript + ' ' + interim).trim();
+
+        // Reset silence timer on any speech
+        if (silenceTimer) clearTimeout(silenceTimer);
+        silenceTimer = setTimeout(() => {
+            try { recognition.stop(); } catch (_) {}
+        }, SILENCE_TIMEOUT);
+    };
+    micBtn.addEventListener('click', () => {
+        if (micBtn.classList.contains('listening')) {
+            try { recognition.stop(); } catch (_) {}
+        } else {
+            try { recognition.start(); } catch (_) {}
+        }
+    });
+} else {
+    micBtn.style.display = 'none';
+}
+</script>
+</body>
+</html>
