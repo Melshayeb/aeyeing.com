@@ -214,7 +214,7 @@
             <div class="row">
                 <button type="button" id="jdTextBtn" class="btn secondary" onclick="setJdMode('text')">Paste text</button>
                 <button type="button" id="jdUrlBtn" class="btn secondary" onclick="setJdMode('url')">Paste URL</button>
-                <button type="button" id="jdTitleBtn" class="btn secondary" onclick="setJdMode('title')">Company + Title</button>
+                
             </div>
 
             <div id="jdTextBlock">
@@ -227,19 +227,7 @@
                 <input type="text" id="jdUrl" placeholder="https://...">
             </div>
 
-            <div id="jdTitleBlock" style="display:none">
-                <div class="row">
-                    <div>
-                        <label>Company</label>
-                        <input type="text" id="jdCompany" placeholder="Company name">
-                    </div>
-                    <div>
-                        <label>Job title</label>
-                        <input type="text" id="jdTitle" placeholder="Job title">
-                    </div>
-                </div>
-                <p style="color:var(--muted);font-size:.85rem;margin-top:.5rem">Note: For best results, paste the full job description text or URL.</p>
-            </div>
+            
 
             <label>Additional notes (optional)</label>
             <textarea id="notes" placeholder="Add any specific skills, experience, projects or achievements you want emphasised..."></textarea>
@@ -252,7 +240,7 @@
 
             <label>Email address (for delivery)</label>
             <input type="email" id="email" placeholder="you@example.com">
-            <p style="color:var(--muted);font-size:.85rem;margin-top:.35rem">We'll also show download links once tailoring is complete.</p>
+            <p style="color:var(--muted);font-size:.85rem;margin-top:.35rem">We'll also show download links once tailoring is complete. Tip: LinkedIn URLs often block auto-fetching; paste the job text for best results.</p>
 
             <button id="generateBtn" class="btn" style="margin-top:1rem;width:100%">🚀 Generate tailored package</button>
             <div id="status" class="status"></div>
@@ -400,11 +388,6 @@
             });
             if (!r.ok) throw new Error('JD fetch failed: ' + await r.text());
             return await r.json();
-        } else {
-            const company = document.getElementById('jdCompany').value.trim();
-            const title = document.getElementById('jdTitle').value.trim();
-            if (!company || !title) throw new Error('Please enter company and job title.');
-            return { company, title };
         }
     }
 
