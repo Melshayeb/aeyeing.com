@@ -214,7 +214,6 @@
             <div class="row">
                 <button type="button" id="jdTextBtn" class="btn secondary" onclick="setJdMode('text')">Paste text</button>
                 <button type="button" id="jdUrlBtn" class="btn secondary" onclick="setJdMode('url')">Paste URL</button>
-                
             </div>
 
             <div id="jdTextBlock">
@@ -225,6 +224,11 @@
             <div id="jdUrlBlock" style="display:none">
                 <label>Job description URL</label>
                 <input type="text" id="jdUrl" placeholder="https://...">
+                <label>Company name (fallback if not auto-detected)</label>
+                <input type="text" id="fallbackCompany" placeholder="e.g. Sanofi">
+                <label>Job title (fallback if not auto-detected)</label>
+                <input type="text" id="fallbackTitle" placeholder="e.g. Project Manager">
+                <p style="color:var(--muted);font-size:.8rem;margin-top:.25rem">If LinkedIn/protected pages don't fetch, paste the visible text instead.</p>
             </div>
 
             
@@ -237,6 +241,11 @@
                 <option value="new">New clean layout (Recommended)</option>
                 <option value="match">Match my resume layout (best effort)</option>
             </select>
+
+            <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;margin-top:.75rem">
+                <input type="checkbox" id="keepAllRoles" style="width:auto">
+                Keep all roles (do not remove unrelated jobs)
+            </label>
 
             <label>Email address (for delivery)</label>
             <input type="email" id="email" placeholder="you@example.com">
@@ -304,7 +313,7 @@
         jdMode = mode;
         document.getElementById('jdTextBlock').style.display = mode === 'text' ? 'block' : 'none';
         document.getElementById('jdUrlBlock').style.display = mode === 'url' ? 'block' : 'none';
-        document.getElementById('jdTitleBlock').style.display = mode === 'title' ? 'block' : 'none';
+        
     }
 
     async function checkHealth() {
@@ -381,10 +390,12 @@
         } else if (jdMode === 'url') {
             const url = document.getElementById('jdUrl').value.trim();
             if (!url) throw new Error('Please enter a job description URL.');
+            const fallbackCompany = document.getElementById('fallbackCompany').value.trim();
+            const fallbackTitle = document.getElementById('fallbackTitle').value.trim();
             const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url }),
+                body: JSON.stringify({ url, company: fallbackCompany, title: fallbackTitle }),
             });
             if (!r.ok) throw new Error('JD fetch failed: ' + await r.text());
             return await r.json();
@@ -414,6 +425,7 @@
                     email,
                     layout,
                     notes,
+                    keep_all_roles: document.getElementById('keepAllRoles').checked,
                 }),
             });
             if (r.status === 429) {
