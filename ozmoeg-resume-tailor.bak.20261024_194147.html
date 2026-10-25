@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzMoEg Resume Tailor</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --input: #111827;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --ok: #22c55e;
+            --error: #ef4444;
+            --chip-off: #334155;
+            --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        .banner {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+        .banner h1 { margin: 0; font-size: 1.5rem; }
+        .badge {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: .25rem .5rem;
+            border-radius: 9999px;
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+        .back { display: inline-block; margin: 1rem 1.5rem; padding: .5rem 1rem; border: 1px solid #475569; border-radius: .5rem; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+        h2 { margin-top: 0; color: #60a5fa; }
+        label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; color: var(--muted); }
+        input[type="text"], input[type="email"], textarea, select {
+            width: 100%;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .65rem .85rem;
+            color: var(--text);
+            font: inherit;
+        }
+        textarea { min-height: 90px; resize: vertical; }
+        select { appearance: auto; cursor: pointer; }
+        .row { display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; }
+        .row > * { flex: 1; min-width: 140px; }
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: .5rem;
+            padding: .65rem 1rem;
+            font: inherit;
+            cursor: pointer;
+            transition: background .15s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn.secondary { background: var(--chip-off); }
+        .btn.secondary:hover { background: #475569; }
+        .btn:disabled { opacity: .5; cursor: not-allowed; }
+        .limit-notice {
+            background: rgba(59, 130, 246, .12);
+            border: 1px solid rgba(59, 130, 246, .35);
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+            color: var(--text);
+        }
+        .limit-notice strong { color: #60a5fa; }
+        .api-status {
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            font-size: .9rem;
+            margin-bottom: 1rem;
+            background: #1f2937;
+            color: var(--muted);
+        }
+        .api-status.ok { background: #064e3b; color: #6ee7b7; }
+        .api-status.error { background: #450a0a; color: #fca5a5; }
+        .status { min-height: 1.5rem; font-size: .9rem; margin-top: .75rem; }
+        .status.error { color: var(--error); }
+        .status.ok { color: var(--ok); }
+        .score-card {
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .score-row {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            margin: .5rem 0;
+        }
+        .score-label { width: 120px; font-size: .9rem; color: var(--muted); }
+        .score-bar-bg {
+            flex: 1;
+            height: 12px;
+            background: #334155;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .score-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #22c55e);
+            border-radius: 6px;
+            transition: width .5s ease;
+        }
+        .score-value { width: 50px; text-align: right; font-weight: 700; }
+        .score-delta {
+            color: #22c55e;
+            font-weight: 700;
+            margin-left: .5rem;
+        }
+        .file-list {
+            margin-top: 1rem;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            margin-bottom: .5rem;
+        }
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s;
+        }
+        .loading-overlay.show { opacity: 1; pointer-events: auto; }
+        .spinner {
+            width: 64px; height: 64px;
+            border: 4px solid #334155;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { margin-top: 1rem; font-size: 1.1rem; }
+        .loading-sub { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <h1>📝 OzMoEg Resume Tailor</h1>
+        <span class="badge">AI-Powered</span>
+    </header>
+    <a class="back" href="index.html">← Back to Aeyeing</a>
+    <div class="container">
+        <div class="card">
+            <h2>1. Upload your documents</h2>
+            <div id="apiStatus" class="api-status">🔌 Checking resume tailor connection…</div>
+            <div class="limit-notice" role="note">
+                <strong>🛡️ Fair use limits:</strong> Each visitor can generate up to <strong>10 resume packages per day</strong>. Global daily cap: <strong>100 packages</strong>.
+            </div>
+
+            <label>Resume (DOCX or PDF) *</label>
+            <input type="file" id="resumeFile" accept=".docx,.pdf">
+
+            <label>Cover letter (optional)</label>
+            <input type="file" id="coverFile" accept=".docx,.pdf">
+
+            <h2 style="margin-top:1.5rem">2. Job description</h2>
+            <div class="row">
+                <button type="button" id="jdTextBtn" class="btn secondary" onclick="setJdMode('text')">Paste text</button>
+                <button type="button" id="jdUrlBtn" class="btn secondary" onclick="setJdMode('url')">Paste URL</button>
+                
+            </div>
+
+            <div id="jdTextBlock">
+                <label>Paste the full job description</label>
+                <textarea id="jdText" placeholder="Paste the job description here..."></textarea>
+            </div>
+
+            <div id="jdUrlBlock" style="display:none">
+                <label>Job description URL</label>
+                <input type="text" id="jdUrl" placeholder="https://...">
+            </div>
+
+            
+
+            <label>Additional notes (optional)</label>
+            <textarea id="notes" placeholder="Add any specific skills, experience, projects or achievements you want emphasised..."></textarea>
+
+            <label>Layout option</label>
+            <select id="layout">
+                <option value="new">New clean layout (Recommended)</option>
+                <option value="match">Match my resume layout (best effort)</option>
+            </select>
+
+            <label>Email address (for delivery)</label>
+            <input type="email" id="email" placeholder="you@example.com">
+            <p style="color:var(--muted);font-size:.85rem;margin-top:.35rem">We'll also show download links once tailoring is complete. Tip: LinkedIn URLs often block auto-fetching; paste the job text for best results.</p>
+
+            <button id="generateBtn" class="btn" style="margin-top:1rem;width:100%">🚀 Generate tailored package</button>
+            <div id="status" class="status"></div>
+        </div>
+
+        <div class="card">
+            <h2>2. Match score comparison</h2>
+            <p style="color:var(--muted)">See how well your resume matches the job before and after AI tailoring.</p>
+            <div id="scoreCard" class="score-card" style="display:none">
+                <div class="score-row">
+                    <span class="score-label">Before</span>
+                    <div class="score-bar-bg"><div id="barBefore" class="score-bar" style="width:0%"></div></div>
+                    <span id="valBefore" class="score-value">0%</span>
+                </div>
+                <div class="score-row">
+                    <span class="score-label">After</span>
+                    <div class="score-bar-bg"><div id="barAfter" class="score-bar" style="width:0%"></div></div>
+                    <span id="valAfter" class="score-value">0%</span>
+                    <span id="scoreDelta" class="score-delta"></span>
+                </div>
+                <div id="scoreSummary" style="margin-top:.75rem;font-size:.9rem;color:var(--muted)"></div>
+            </div>
+
+            <h2 style="margin-top:1.5rem">3. What you get</h2>
+            <ul style="color:var(--muted)">
+                <li>Tailored resume in DOCX, keyword-matched to the job description</li>
+                <li>Tailored cover letter highlighting your strongest fit</li>
+                <li>Interview preparation document with role snapshot and elevator pitch</li>
+                <li>6+ STAR-method examples mapped to the role's requirements</li>
+                <li>Anticipated Q&A and smart questions to ask the interviewer</li>
+                <li>Before/after job-match score with visual comparison</li>
+                <li>Optional email delivery to your inbox</li>
+            </ul>
+
+            <h2 style="margin-top:1.5rem">4. Your tailored files</h2>
+            <div id="results" style="display:none">
+                <div class="file-list" id="fileList"></div>
+                <button id="emailBtn" class="btn secondary" style="margin-top:1rem;width:100%">📧 Email me the files</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Tailoring your application…</div>
+        <div id="loadingSub" class="loading-sub">Uploading documents…</div>
+    </div>
+
+    <script>
+    const API_BASE = 'https://ozmoeg-resume-tailor.aeyeing.com';
+    let jdMode = 'text';
+    let currentJobId = null;
+    let currentFiles = null;
+
+    function cacheBust(url) {
+        const sep = url.includes('?') ? '&' : '?';
+        return `${url}${sep}_cb=${Date.now()}`;
+    }
+
+    function setJdMode(mode) {
+        jdMode = mode;
+        document.getElementById('jdTextBlock').style.display = mode === 'text' ? 'block' : 'none';
+        document.getElementById('jdUrlBlock').style.display = mode === 'url' ? 'block' : 'none';
+        document.getElementById('jdTitleBlock').style.display = mode === 'title' ? 'block' : 'none';
+    }
+
+    async function checkHealth() {
+        const statusEl = document.getElementById('apiStatus');
+        try {
+            const r = await fetch(cacheBust(API_BASE + '/health'), { cache: 'no-store' });
+            if (r.ok) {
+                const data = await r.json();
+                statusEl.className = 'api-status ok';
+                statusEl.textContent = '✅ Connected' + (data.limits ? ` — ${data.limits.global_remaining} global slots remaining today` : '');
+            } else {
+                throw new Error('HTTP ' + r.status);
+            }
+        } catch (e) {
+            statusEl.className = 'api-status error';
+            statusEl.textContent = '❌ Not connected — ' + e.message;
+        }
+    }
+
+    function toBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result.split(',')[1]);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function setLoading(show, subtext) {
+        const el = document.getElementById('loading');
+        if (subtext) document.getElementById('loadingSub').textContent = subtext;
+        el.classList.toggle('show', show);
+    }
+
+    function setStatus(msg, isError) {
+        const el = document.getElementById('status');
+        el.textContent = msg;
+        el.className = 'status ' + (isError ? 'error' : 'ok');
+    }
+
+    async function uploadFiles() {
+        const resumeFile = document.getElementById('resumeFile').files[0];
+        if (!resumeFile) throw new Error('Please upload your resume.');
+        const resumeB64 = await toBase64(resumeFile);
+        const coverFile = document.getElementById('coverFile').files[0];
+        const payload = {
+            resume: resumeB64,
+            resume_name: resumeFile.name,
+        };
+        if (coverFile) {
+            payload.cover_letter = await toBase64(coverFile);
+            payload.cover_letter_name = coverFile.name;
+        }
+        const r = await fetch(cacheBust(API_BASE + '/upload'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        if (!r.ok) throw new Error('Upload failed: ' + await r.text());
+        return (await r.json()).upload_id;
+    }
+
+    async function buildJd() {
+        if (jdMode === 'text') {
+            const text = document.getElementById('jdText').value.trim();
+            if (!text) throw new Error('Please paste the job description.');
+            const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text }),
+            });
+            if (!r.ok) throw new Error('JD parsing failed: ' + await r.text());
+            return await r.json();
+        } else if (jdMode === 'url') {
+            const url = document.getElementById('jdUrl').value.trim();
+            if (!url) throw new Error('Please enter a job description URL.');
+            const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url }),
+            });
+            if (!r.ok) throw new Error('JD fetch failed: ' + await r.text());
+            return await r.json();
+        }
+    }
+
+    async function startTailoring() {
+        try {
+            setLoading(true, 'Uploading documents…');
+            const uploadId = await uploadFiles();
+
+            setLoading(true, 'Fetching job description…');
+            const jd = await buildJd();
+            if (jd.error) throw new Error(jd.error);
+
+            const email = document.getElementById('email').value.trim();
+            const layout = document.getElementById('layout').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            setLoading(true, 'Starting AI tailoring…');
+            const r = await fetch(cacheBust(API_BASE + '/tailor'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    upload_id: uploadId,
+                    jd: jd,
+                    email,
+                    layout,
+                    notes,
+                }),
+            });
+            if (r.status === 429) {
+                const data = await r.json();
+                throw new Error(data.error || 'Daily limit reached.');
+            }
+            if (!r.ok) throw new Error('Tailoring failed: ' + await r.text());
+            const data = await r.json();
+            currentJobId = data.job_id;
+            pollStatus();
+        } catch (e) {
+            setLoading(false);
+            setStatus(e.message, true);
+        }
+    }
+
+    async function pollStatus() {
+        if (!currentJobId) return;
+        try {
+            const r = await fetch(cacheBust(API_BASE + '/status?job_id=' + encodeURIComponent(currentJobId)), { cache: 'no-store' });
+            const data = await r.json();
+            if (data.status === 'done' || data.status === 'error') {
+                setLoading(false);
+                if (data.status === 'error') {
+                    setStatus(data.message, true);
+                } else {
+                    setStatus('Tailoring complete!', false);
+                    showResults(data);
+                }
+            } else {
+                setLoading(true, data.message || 'Processing…');
+                setTimeout(pollStatus, 2000);
+            }
+        } catch (e) {
+            setLoading(false);
+            setStatus('Status check failed: ' + e.message, true);
+        }
+    }
+
+    function showResults(data) {
+        const match = data.match || {};
+        const before = match.before || 0;
+        const after = match.after || 0;
+        document.getElementById('scoreCard').style.display = 'block';
+        document.getElementById('barBefore').style.width = before + '%';
+        document.getElementById('valBefore').textContent = before + '%';
+        document.getElementById('barAfter').style.width = after + '%';
+        document.getElementById('valAfter').textContent = after + '%';
+        const delta = after - before;
+        document.getElementById('scoreDelta').textContent = delta > 0 ? '+' + delta + '%' : (delta < 0 ? delta + '%' : '');
+        document.getElementById('scoreSummary').textContent = match.summary || '';
+
+        const fileList = document.getElementById('fileList');
+        fileList.innerHTML = '';
+        currentFiles = data.files || {};
+        const labels = { resume: 'Tailored Resume', cover_letter: 'Tailored Cover Letter', interview_prep: 'Interview Prep' };
+        for (const [key, path] of Object.entries(currentFiles)) {
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            div.innerHTML = `<span>${labels[key] || key}</span><a class="btn" href="${cacheBust(API_BASE + '/download/' + currentJobId + '/' + key)}">Download</a>`;
+            fileList.appendChild(div);
+        }
+        document.getElementById('results').style.display = 'block';
+    }
+
+    async function emailFiles() {
+        const email = document.getElementById('email').value.trim();
+        if (!email) {
+            setStatus('Please enter an email address.', true);
+            return;
+        }
+        if (!currentJobId) return;
+        try {
+            const r = await fetch(cacheBust(API_BASE + '/email'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ job_id: currentJobId, email }),
+            });
+            if (!r.ok) throw new Error(await r.text());
+            setStatus('Files are being emailed.', false);
+        } catch (e) {
+            setStatus('Email failed: ' + e.message, true);
+        }
+    }
+
+    document.getElementById('generateBtn').addEventListener('click', startTailoring);
+    document.getElementById('emailBtn').addEventListener('click', emailFiles);
+    checkHealth();
+    setInterval(checkHealth, 30000);
+    </script>
+</body>
+</html>
