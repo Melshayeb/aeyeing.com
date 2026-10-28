@@ -228,13 +228,13 @@
                 <input type="text" id="fallbackCompany" placeholder="e.g. Sanofi">
                 <label>Job title (fallback if not auto-detected)</label>
                 <input type="text" id="fallbackTitle" placeholder="e.g. Project Manager">
-                <p style="color:var(--muted);font-size:.8rem;margin-top:.25rem">If LinkedIn/protected pages don't fetch, paste the visible text instead.</p>
+                <p style="color:var(--muted);font-size:.8rem;margin-top:.25rem">If LinkedIn/protected pages don't fetch, we'll use the company/title you entered. Paste the visible text for best results.</p>
             </div>
 
             
 
             <label>Additional notes (optional)</label>
-            <textarea id="notes" placeholder="Add any specific skills, experience, projects or achievements you want emphasised..."></textarea>
+            <textarea id="notes" placeholder="Add specific instructions: skills to highlight, roles to keep/remove, projects to mention, tone, length, or any changes you want applied..."></textarea>
 
             <label>Layout option</label>
             <select id="layout">
@@ -380,10 +380,11 @@
         if (jdMode === 'text') {
             const text = document.getElementById('jdText').value.trim();
             if (!text) throw new Error('Please paste the job description.');
+            const notesForJd = document.getElementById('notes').value.trim();
             const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text }),
+                body: JSON.stringify({ text, notes: notesForJd }),
             });
             if (!r.ok) throw new Error('JD parsing failed: ' + await r.text());
             return await r.json();
@@ -392,10 +393,11 @@
             if (!url) throw new Error('Please enter a job description URL.');
             const fallbackCompany = document.getElementById('fallbackCompany').value.trim();
             const fallbackTitle = document.getElementById('fallbackTitle').value.trim();
+            const notesForJd = document.getElementById('notes').value.trim();
             const r = await fetch(cacheBust(API_BASE + '/parse-jd'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url, company: fallbackCompany, title: fallbackTitle }),
+                body: JSON.stringify({ url, company: fallbackCompany, title: fallbackTitle, notes: notesForJd }),
             });
             if (!r.ok) throw new Error('JD fetch failed: ' + await r.text());
             return await r.json();
@@ -452,7 +454,8 @@
                 if (data.status === 'error') {
                     setStatus(data.message, true);
                 } else {
-                    setStatus('Tailoring complete!', false);
+                    const warning = data.fetch_warning ? ' ⚠️ ' + data.fetch_warning : '';
+                    setStatus('Tailoring complete!' + warning, false);
                     showResults(data);
                 }
             } else {
