@@ -1582,7 +1582,7 @@
 <div class="scanner-toggle" id="scanner-toggle">
 <button class="active" data-view="live" title="Current market scan">📊 Live</button>
 <button data-view="premarket" title="Saved pre-market/after-hours watchlist">🌅 Pre/After</button>
-<button data-view="watchlist" title="Sydney 17:00 catalyst watchlist">⏰ Watchlist</button>
+<button data-view="watchlist" title="ET 03:00 catalyst watchlist">⏰ Watchlist</button>
 </div>
 <button class="bubble-view-btn" id="bubble-view-btn" title="Open interactive bubble chart" type="button">🫧 Bubble View</button>
 <span id="scanner-timestamp"></span>
@@ -1663,7 +1663,7 @@
 <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
 <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
 <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
-<li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
+<li><strong>Catalyst watchlist (ET 03:00–03:59, US weekdays):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
 <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
 <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
 <li>Risk:Reward ≥2.0:1 ✅</li>
@@ -2030,20 +2030,20 @@
         }
 
         function findNextScanWindow(fromTime) {
-            // The scanner's active window starts at 17:00 Sydney on weekdays.
+            // The scanner's active window starts at 03:00 ET on weekdays.
             let probe = new Date(fromTime);
             let safety = 0;
             while (safety++ < 10080) { // Max 1 week
                 probe.setMinutes(probe.getMinutes() + 1);
-                const sydney = new Intl.DateTimeFormat('en-AU', {
-                    timeZone: 'Australia/Sydney',
+                const et = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
                     hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'long'
                 }).formatToParts(probe);
-                const sh = parseInt(sydney.find(p => p.type === 'hour').value);
-                const sm = parseInt(sydney.find(p => p.type === 'minute').value);
-                const sw = sydney.find(p => p.type === 'weekday').value;
-                const swn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[sw];
-                if (swn >= 1 && swn <= 5 && sh === 17 && sm === 0) {
+                const eh = parseInt(et.find(p => p.type === 'hour').value);
+                const em = parseInt(et.find(p => p.type === 'minute').value);
+                const ew = et.find(p => p.type === 'weekday').value;
+                const ewn = {'Monday':1,'Tuesday':2,'Wednesday':3,'Thursday':4,'Friday':5,'Saturday':6,'Sunday':0}[ew];
+                if (ewn >= 1 && ewn <= 5 && eh === 3 && em === 0) {
                     return probe;
                 }
             }
@@ -2420,13 +2420,13 @@
 
         // Live data refresh: fetch latest scan results from ozmoeg-latest.json.
         // Intervals are driven by Sydney wall-clock time and US market status:
-        //   CATALYST WATCHLIST (Sydney 17:00 → 17:59): every 1 minute, news-only mode
-        //   PRE-MARKET / OPEN / AFTER-HOURS inside Sydney active window : every 1 minute
-        //   OPEN / AFTER-HOURS outside Sydney active window             : every 10 minutes
-        //   CLOSED / WEEKEND (outside Sydney active window)             : no auto-fetch
+        //   CATALYST WATCHLIST (ET 03:00 → 03:59): every 1 minute, news-only mode
+        //   PRE-MARKET / OPEN / AFTER-HOURS inside ET active window (03:00-20:00) : every 1 minute
+        //   OPEN / AFTER-HOURS outside ET active window                              : every 10 minutes
+        //   CLOSED / WEEKEND (outside ET active window)                              : no auto-fetch
         const CLOSED_REFRESH_INTERVAL_MS = 0;          // disabled when markets are closed
-        const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside Sydney window
-        const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during Sydney active window (17:00-23:59)
+        const IDLE_REFRESH_INTERVAL_MS = 600000;        // 10 min during US open/after-hours outside active window
+        const ACTIVE_REFRESH_INTERVAL_MS = 60000;     // 1 min during ET active window (03:00-20:00 ET, US weekdays)
         let liveResults = [];
         let displayedResults = [];
         let userSelectedScannerView = null;
@@ -2437,28 +2437,30 @@
         const audioCtx = window.AudioContext || window.webkitAudioContext;
         const sharedAudioCtx = audioCtx ? new audioCtx() : null;
 
-        // Active = Sydney window for the website 1-minute refresh: 17:00 to 23:59 Sydney time.
-        // Uses Intl format parts instead of Date.parse to avoid browser-timezone ambiguity.
+        // Active = ET-derived window for 1-minute refresh: 03:00 to 20:00 ET on US weekdays.
+        // Uses Intl format parts against America/New_York so US and Australian DST changes
+        // are handled automatically.
         function isActiveTradingWindow(now = new Date()) {
             try {
-                const fmt = new Intl.DateTimeFormat('en-AU', {
-                    timeZone: 'Australia/Melbourne',
+                const fmt = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/New_York',
                     hour: 'numeric',
                     minute: 'numeric',
                     hour12: false,
+                    weekday: 'short',
                 });
                 const parts = fmt.formatToParts(now);
-                let h = 0, m = 0;
+                let h = 0, m = 0, wd = '';
                 for (const p of parts) {
                     if (p.type === 'hour') h = parseInt(p.value, 10);
                     if (p.type === 'minute') m = parseInt(p.value, 10);
+                    if (p.type === 'weekday') wd = p.value;
                 }
                 const mins = h * 60 + m;
-                const start = 17 * 60;      // Sydney 17:00
-                const end = 24 * 60;        // Sydney 24:00 (exclusive)
-                return mins >= start && mins < end;
+                const weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(wd);
+                // Active window covers ET 03:00 (1h before US pre-market) through 20:00 (after-hours close).
+                return weekday >= 1 && weekday <= 5 && mins >= 180 && mins < 1200;
             } catch (e) {
-                // Fallback: assume active only if US market status is PRE-MARKET.
                 return currentMarketStatus === 'PRE-MARKET';
             }
         }
@@ -2468,11 +2470,11 @@
                 ? getCurrentAUSMarketStatus()
                 : (getCurrentUSMarketStatus ? getCurrentUSMarketStatus() : currentMarketStatus);
             if (usStatus === 'CLOSED' || usStatus === 'WEEKEND') {
-                // Catalyst watchlist scans every minute during Sydney 17:00-17:59 even though the US market is closed.
+                // Catalyst watchlist scans every minute during ET 03:00-03:59 even though the US market is closed.
                 return isActiveTradingWindow() ? ACTIVE_REFRESH_INTERVAL_MS : CLOSED_REFRESH_INTERVAL_MS;
             }
             if (isActiveTradingWindow()) return ACTIVE_REFRESH_INTERVAL_MS;
-            // US OPEN / AFTER-HOURS outside the Sydney 17:00-23:59 window refresh every 10 minutes.
+            // US OPEN / AFTER-HOURS outside the ET 03:00-20:00 active window refresh every 10 minutes.
             // PRE-MARKET outside the window is treated the same way: the website is not in active mode.
             return IDLE_REFRESH_INTERVAL_MS;
         }
@@ -2847,7 +2849,7 @@
                     <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
                     <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
                     <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
-                    <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
+                    <li><strong>Catalyst watchlist (ET 03:00–03:59, US weekdays):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
                     <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
                     <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
                     <li>Risk:Reward ≥2.0:1 ✅</li>
@@ -2868,7 +2870,7 @@
                     <li><strong>Hyper-scalp exception:</strong> +30%+ move, RVOL ≥1.5x, current session dollar volume ≥$100K and avg daily dollar volume $100K–$500K passes the dollar-volume floor in all phases ✅</li>
                     <li>Near demand zone, candlestick signal, price above VWAP — context, not hard filters ✅</li>
                     <li>News catalyst scored ≥3 from ≥2 sources ✅</li>
-                    <li><strong>Catalyst watchlist (Sydney 17:00–17:59):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
+                    <li><strong>Catalyst watchlist (ET 03:00–03:59, US weekdays):</strong> news/catalyst score ≥3 only; no price, volume, float, or move filters applied ✅</li>
                     <li>Red flags block: offering, dilution, bankruptcy, delisting, SEC investigation, restated, going concern, short report ✅</li>
                     <li>Volume indicator: today's volume vs 3-month average (RVOL) ✅</li>
                     <li>Risk:Reward ≥2.0:1 ✅</li>
@@ -3866,7 +3868,7 @@
                     populateAlertSelector(displayedResults);
                     renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No catalyst watchlist saved yet. Runs Sydney 17:00-17:59 weekdays.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-secondary);">No catalyst watchlist saved yet. Runs ET 03:00–03:59 on US weekdays.</td></tr>';
                     populateAlertSelector([]);
                     renderSelectedAlert().catch(err => console.error('renderSelectedAlert failed:', err));
                 }

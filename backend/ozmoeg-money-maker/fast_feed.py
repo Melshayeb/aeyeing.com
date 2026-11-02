@@ -76,17 +76,21 @@ def _quote_fields(quote: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _is_active_market_window(market: str) -> bool:
-    """Return True during the US active window (Sydney 17:00 through next day 11:00)."""
+    """Return True during the US active window (ET 03:00 through 20:00 on weekdays).
+
+    This is derived from America/New_York market hours so both US and Australian
+    DST changes are handled automatically.
+    """
     sydney = pytz.timezone('Australia/Sydney')
     now = datetime.now(sydney)
-    # Active Sydney hours: 17-23 same day, 0-11 next day, Mon-Fri for 17-23 and Tue-Sat for 0-11.
-    if market != 'us':
+    if now.weekday() >= 5:
         return False
-    if now.hour >= 17 and now.weekday() < 5:
-        return True
-    if now.hour <= 11 and now.weekday() >= 1:
-        return True
-    return False
+    # Convert current Sydney time to ET and check if it falls within the active window.
+    et_now = now.astimezone(pytz.timezone('America/New_York'))
+    if et_now.weekday() >= 5:
+        return False
+    et_minutes = et_now.hour * 60 + et_now.minute
+    return 180 <= et_minutes < 1200  # 03:00 - 20:00 ET
 
 
 def run_fast_feed(market: str = 'us') -> bool:

@@ -161,39 +161,37 @@ def _market_status_label_for_telegram(market: str, status: str) -> str:
     return f"US Market {status}"
 def _is_us_active_trading_window() -> bool:
     """
-    Return True for the Sydney-time active US window:
-    17:00 Sydney through 23:59 Sydney.  During this window the website
-    refreshes every 1 minute by cron and covers:
-      - 17:00-17:59 Sydney: pre-market catalyst watchlist (1h before US pre-market)
-      - 18:00-23:59 Sydney: US pre-market + first 30 minutes of market open.
-    Outside this window (US open after 09:30 ET, after-hours, closed, weekends)
-    the website uses a slower cadence or no refresh at all.
+    Return True during the US active trading window, derived from ET market
+    hours so both US and Australian DST changes are handled automatically.
+
+    Active window: 03:00 ET through 20:00 ET on US weekdays. This covers:
+      - 03:00-03:59 ET: catalyst watchlist (1h before US pre-market opens)
+      - 04:00-09:29 ET: US pre-market
+      - 09:30-15:59 ET: US regular hours
+      - 16:00-20:00 ET: US after-hours
     """
     import pytz
     from datetime import datetime as _dt
-    sydney = pytz.timezone('Australia/Sydney')
-    sydney_now = _dt.now(sydney)
-    if sydney_now.weekday() >= 5:
+    et = pytz.timezone('America/New_York')
+    et_now = _dt.now(et)
+    if et_now.weekday() >= 5:
         return False
-    sydney_today_17 = sydney_now.replace(hour=17, minute=0, second=0, microsecond=0)
-    sydney_today_2359 = sydney_now.replace(hour=23, minute=59, second=59, microsecond=0)
-    return sydney_today_17 <= sydney_now <= sydney_today_2359
+    minutes = et_now.hour * 60 + et_now.minute
+    return 180 <= minutes < 1200  # 03:00 - 20:00 ET
 
 def _is_catalyst_watchlist_window() -> bool:
-    """Return True during Sydney 17:00-18:59 weekdays.
+    """Return True during the ET catalyst watchlist window (03:00-03:59 ET).
 
-    US pre-market opens at 04:00 ET. In Sydney that is 18:00 AEST (standard)
-    or 19:00 AEDT (DST). Running the catalyst watchlist from 17:00 through
-    18:59 covers the hour before pre-market in both offsets and keeps the
-    watchlist refreshed every minute until live pre-market data is available.
+    This is the hour before US pre-market opens (04:00 ET). Derived from ET
+    so both US and Australian DST changes are handled automatically.
     """
     import pytz
     from datetime import datetime as _dt
-    sydney = pytz.timezone('Australia/Sydney')
-    sydney_now = _dt.now(sydney)
-    if sydney_now.weekday() >= 5:
+    et = pytz.timezone('America/New_York')
+    et_now = _dt.now(et)
+    if et_now.weekday() >= 5:
         return False
-    return 17 <= sydney_now.hour <= 18
+    return et_now.hour == 3
 
 def _scan_allowed_minute(market: str, market_status: str) -> bool:
     """
@@ -201,16 +199,13 @@ def _scan_allowed_minute(market: str, market_status: str) -> bool:
     cadence for this market status.  The cron job fires every minute; this gate
     silently no-ops when the current phase does not need a scan.
 
-    Rules (Sydney time, US market clock is secondary):
+    Rules (derived from ET market hours so US/AU DST changes are automatic):
     - US CLOSED/WEEKEND      : NO scans.
-    - US CLOSED but Sydney 17:00-17:59: catalyst watchlist scans every 1 minute.
+    - US CLOSED but ET 03:00-03:59: catalyst watchlist scans every 1 minute.
     - US PRE-MARKET          : every 1 minute.
-      Active pre-market window is Sydney 18:00-23:59 (after 23:30 ET the US market
-      is open and the website shifts to 1-minute cadence).
-    - US OPEN                : every 1 minute (user requested 1-min refresh across
-      all active US phases; previously throttled to 10 minutes).
-    - US AFTER-HOURS         : every 1 minute (same 1-min refresh policy).
-    - AU OPEN                : exactly twice per day at 10:30 and 13:30 Sydney.
+    - US OPEN                : every 1 minute.
+    - US AFTER-HOURS         : every 1 minute.
+    - AU OPEN                : any cron invocation while ASX is open is allowed.
     - AU CLOSED/WEEKEND      : NO scans.
     """
     from datetime import datetime as _dt
@@ -232,14 +227,12 @@ def _scan_allowed_minute(market: str, market_status: str) -> bool:
         return True
 
     if market == 'us':
-        # Catalyst watchlist window: 1h before US pre-market, no live market data yet.
+        # Catalyst watchlist window: 1h before US pre-market, ET-derived.
         if _is_catalyst_watchlist_window():
             return True
         if status in ('CLOSED', 'WEEKEND'):
             return False
-        # User wants 1-minute refresh across every active US phase (pre-market,
-        # open market, after-hours).  The old 10-minute throttle for open/after-hours
-        # is removed; CLOSED and WEEKEND still skip entirely.
+        # 1-minute refresh across every active US phase (pre-market, open, after-hours).
         if status in ('PRE-MARKET', 'OPEN', 'AFTER-HOURS'):
             return True
     return False
@@ -378,11 +371,12 @@ def _scan_passed(stock: Dict) -> bool:
 def _format_market_time() -> str:
     """Return formatted market time string for logging/info."""
     sydney = pytz.timezone('Australia/Sydney')
-    return datetime.now(sydney).strftime('%I:%M %p AEST')
+    return datetime.now(sydney).strftime('%I:%M %p %Z')
 
 def _run_catalyst_watchlist(config: Dict[str, Any], args, client: WebullClient) -> Dict[str, Any]:
     """
-    Catalyst-only watchlist run for Sydney 17:00-17:59 (1h before US pre-market opens).
+    Catalyst-only watchlist run for the ET hour before US pre-market opens
+    (03:00-03:59 ET, ET-derived so DST changes are automatic).
     No live price/volume data is reliable yet, so we nominate tickers purely from
     news/catalyst quality, with no trade-plan or Telegram alert output.
     """
@@ -578,7 +572,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             # Special logic for extended-hours: lower news gate, relaxed TA
             pass
 
-        # --- Catalyst watchlist mode (Sydney 17:00-17:59, before US pre-market opens) ---
+        # --- Catalyst watchlist mode (ET 03:00-03:59, before US pre-market opens) ---
         if market == 'us' and _is_catalyst_watchlist_window() and market_status == 'CLOSED':
             return _run_catalyst_watchlist(config, args, client)
 
