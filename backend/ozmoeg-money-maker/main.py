@@ -318,6 +318,11 @@ def _change_pct(stock: Dict) -> float:
     price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
 
+    # DEBUG
+    t_dbg = _extract_ticker_dict(stock)
+    sym_dbg = t_dbg.get('symbol', '')
+    if sym_dbg == 'CLRO':
+        print(f"DEBUG _change_pct CLRO price={price} close={close} pre_close={pre_close} abs_pre={abs(price-pre_close) if price and pre_close else None} abs_close={abs(price-close) if price and close else None}")
     # When preClose is available, decide whether the current quote is in the
     # extended session (closer to preClose than to close) or a regular-hours
     # continuation (closer to close). Use the matching reference.
