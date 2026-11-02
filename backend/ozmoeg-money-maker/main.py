@@ -296,19 +296,37 @@ def _name(stock: Dict) -> str:
     t = _extract_ticker_dict(stock)
     return t.get('name', '') or _symbol(stock)
 def _price(stock: Dict) -> float:
-    """Return current/last price from a Webull ranking payload."""
+    """Return current/last price from a Webull ranking payload.
+
+    Webull public quote batches sometimes carry a stale or corrupted
+    `values.price` that differs sharply from the last sale (`ticker.close`).
+    We validate the quote against close and use the more conservative of the
+    two when the discrepancy is suspicious.
+    """
     t = _extract_ticker_dict(stock)
     v = stock.get('values', {})
-    price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('close', 0) or 0)
-    return price
+    quote_price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
+    close_price = float(t.get('close', 0) or 0)
+    if quote_price > 0 and close_price > 0:
+        # If quote and last sale disagree by more than 15%, trust last sale.
+        if abs(quote_price - close_price) / close_price > 0.15:
+            return close_price
+    return quote_price or close_price or 0.0
+
 def _change_pct(stock: Dict) -> float:
     """Compute change percentage from a Webull ranking payload."""
     t = _extract_ticker_dict(stock)
     v = stock.get('values', {})
     close = float(t.get('close', 0) or 0)
     pre_close = float(t.get('preClose', 0) or 0)
-    price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
+    quote_price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
+    price = _price(stock)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
+    # Prefer explicit change ratio if it looks sensible relative to price/close.
+    if change_ratio and close > 0 and price > 0:
+        ratio_price = close * (change_ratio if change_ratio <= 1 else change_ratio - 1)
+        if abs(ratio_price - price) / price <= 0.15:
+            return (change_ratio - 1) * 100 if change_ratio > 1 else change_ratio * 100
     if close > 0 and price > 0 and price != close:
         return (price - close) / close * 100
     if pre_close > 0 and close > 0:
