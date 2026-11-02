@@ -233,6 +233,15 @@ class SmallCapScanner:
             # Also copy marketValue if quote has a more precise value
             if 'marketValue' in q:
                 t['marketValue'] = q['marketValue']
+            # Merge the prior session close reference so _change_pct can compute
+            # pre-market / after-hours gaps correctly. The ranking payload often omits it.
+            if 'preClose' in q and q['preClose']:
+                t['preClose'] = q['preClose']
+            # Copy current extended-hours price field names when present.
+            for price_key in ('pprice', 'pPrice', 'price'):
+                if price_key in q and q[price_key]:
+                    t[price_key] = q[price_key]
+                    break
             # Copy float / total shares from quote for low-float momentum filters
             for key in ('outstandingShares', 'totalShares'):
                 if key in q and key not in t:
