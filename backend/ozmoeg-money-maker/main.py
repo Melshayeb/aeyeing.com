@@ -322,7 +322,11 @@ def _change_pct(stock: Dict) -> float:
     # extended session (closer to preClose than to close) or a regular-hours
     # continuation (closer to close). Use the matching reference.
     if price > 0 and pre_close > 0 and close > 0:
-        if abs(price - pre_close) < abs(price - close):
+        diff_pre = abs(price - pre_close)
+        diff_close = abs(price - close)
+        # If the quote is identical to the last regular close, it is almost certainly
+        # a daily-summary payload and the meaningful change is vs the prior close.
+        if diff_close < 0.0001 or diff_pre < diff_close:
             return (price - pre_close) / pre_close * 100
         return (price - close) / close * 100
 
@@ -706,10 +710,12 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
 
         # Store enriched gainer/loser payloads for the website bubble chart and tables.
         # Use enriched data so preClose/price are reliable and change_pct is meaningful.
+        # Restrict to the scanner's small-cap universe so mega/large caps don't appear.
+        max_bubble_mcap = float(config.get('scanner', {}).get('max_market_cap', 300_000_000))
         for gainer in enriched_gainers:
             mcap = _market_cap(gainer)
             cap_size = _cap_size(mcap)
-            if cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
+            if mcap > max_bubble_mcap or cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
                 continue
             all_gainers_output.append({
                 'ticker': _symbol(gainer),
@@ -729,7 +735,7 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
         for gainer in enriched_losers:
             mcap = _market_cap(gainer)
             cap_size = _cap_size(mcap)
-            if cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
+            if mcap > max_bubble_mcap or cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
                 continue
             all_losers_output.append({
                 'ticker': _symbol(gainer),
