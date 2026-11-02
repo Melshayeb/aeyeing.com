@@ -303,13 +303,30 @@ def _price(stock: Dict) -> float:
     return price
 
 def _change_pct(stock: Dict) -> float:
-    """Compute change percentage from a Webull ranking payload."""
+    """Compute change percentage from a Webull ranking payload.
+
+    In extended-hours / pre-market mode, Webull exposes the current quote in
+    `pprice` and the prior session close in `preClose`. The field `close` is the
+    last regular-market trade. We compute the displayed change against the most
+    relevant reference: preClose when the quote is in extended hours, otherwise
+    the last regular close.
+    """
     t = _extract_ticker_dict(stock)
     v = stock.get('values', {})
     close = float(t.get('close', 0) or 0)
     pre_close = float(t.get('preClose', 0) or 0)
     price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
+
+    # When preClose is available, decide whether the current quote is in the
+    # extended session (closer to preClose than to close) or a regular-hours
+    # continuation (closer to close). Use the matching reference.
+    if price > 0 and pre_close > 0 and close > 0:
+        if abs(price - pre_close) < abs(price - close):
+            return (price - pre_close) / pre_close * 100
+        return (price - close) / close * 100
+
+    # Fallbacks if one reference is missing.
     if close > 0 and price > 0 and price != close:
         return (price - close) / close * 100
     if pre_close > 0 and close > 0:
