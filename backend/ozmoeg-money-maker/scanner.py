@@ -233,6 +233,13 @@ class SmallCapScanner:
             # Also copy marketValue if quote has a more precise value
             if 'marketValue' in q:
                 t['marketValue'] = q['marketValue']
+            # Use the fetched quote price as the authoritative current price when available.
+            # The gainer ranking payload can carry stale or corrupted values.price while the
+            # dedicated quote endpoint returns the actual last sale / pre-market price.
+            for price_key in ('pprice', 'price', 'close'):
+                if price_key in q and q[price_key]:
+                    t[price_key] = q[price_key]
+                    break
             # Copy float / total shares from quote for low-float momentum filters
             for key in ('outstandingShares', 'totalShares'):
                 if key in q and key not in t:
