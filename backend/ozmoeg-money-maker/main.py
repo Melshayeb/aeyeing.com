@@ -654,8 +654,11 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             if passed:
                 regular_candidates.append(enriched)
 
+        # Enrich losers with quotes so _price/_change_pct use reliable data.
+        enriched_losers = scanner.enrich_gainers_with_quotes(all_losers)
+
         # Bounce scanner pass (Option C — beaten-down losers; research-only, never alerted)
-        for gainer in all_losers:
+        for gainer in enriched_losers:
             passed, reason = scanner._passes_filter_with_reason(gainer, mode='bounce')
             gainer['_scan_passed'] = passed
             gainer['_scan_reason'] = reason
@@ -701,8 +704,13 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             bounce_results_enriched.append(br)
             scan_results.append(br)
 
-        # Store all raw gainer/loser payloads for website visibility (debug purposes)
-        for gainer in all_gainers:
+        # Store enriched gainer/loser payloads for the website bubble chart and tables.
+        # Use enriched data so preClose/price are reliable and change_pct is meaningful.
+        for gainer in enriched_gainers:
+            mcap = _market_cap(gainer)
+            cap_size = _cap_size(mcap)
+            if cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
+                continue
             all_gainers_output.append({
                 'ticker': _symbol(gainer),
                 'name': _name(gainer),
@@ -710,15 +718,19 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'change_pct': _change_pct(gainer),
                 'volume': _volume(gainer),
                 'rvol': _rvol(gainer),
-                'market_cap': _market_cap(gainer),
+                'market_cap': mcap,
                 'float_shares': _float_shares(gainer),
-                'cap_size': _cap_size(_market_cap(gainer)),
+                'cap_size': cap_size,
                 'is_penny_stock': _is_penny_stock(_price(gainer)),
                 'country': _country(gainer),
                 'passed': _scan_passed(gainer),
                 'reason': _scan_reason(gainer)
             })
-        for gainer in all_losers:
+        for gainer in enriched_losers:
+            mcap = _market_cap(gainer)
+            cap_size = _cap_size(mcap)
+            if cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
+                continue
             all_losers_output.append({
                 'ticker': _symbol(gainer),
                 'name': _name(gainer),
@@ -726,9 +738,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'change_pct': _change_pct(gainer),
                 'volume': _volume(gainer),
                 'rvol': _rvol(gainer),
-                'market_cap': _market_cap(gainer),
+                'market_cap': mcap,
                 'float_shares': _float_shares(gainer),
-                'cap_size': _cap_size(_market_cap(gainer)),
+                'cap_size': cap_size,
                 'is_penny_stock': _is_penny_stock(_price(gainer)),
                 'country': _country(gainer),
                 'passed': _scan_passed(gainer),
