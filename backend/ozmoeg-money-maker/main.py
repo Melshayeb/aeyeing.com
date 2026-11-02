@@ -878,7 +878,12 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 )
                 has_fresh_news = bool(news_data.get('headlines')) and int(news_data.get('max_score', 0) or 0) > 0
 
-                is_alive = (has_live_price_move and has_volume_confirm) or has_fresh_news
+                # Pre-market gaps often sit with stale 1m bars because there is no continuous tape.
+                # Keep the candidate if it has either live tape momentum, fresh news, or a meaningful
+                # pre-market price gap with confirming relative volume.
+                change_pct = abs(_change_pct(gainer) or 0)
+                is_premarket_gap = market_status.lower() == 'pre-market' and change_pct >= 15.0 and rvol >= 1.5
+                is_alive = (has_live_price_move and has_volume_confirm) or has_fresh_news or is_premarket_gap
                 if not is_alive:
                     logger.info("Dropping dead candidate %s: no live price movement (pv=%.2f%% bars=%d rvol=%.2f)",
                                 ticker, price_velocity_pct, large_bar_count, rvol)
