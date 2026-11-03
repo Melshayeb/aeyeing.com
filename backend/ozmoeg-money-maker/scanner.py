@@ -519,7 +519,25 @@ class SmallCapScanner:
         fails = []
         if not (price_min <= price <= price_max):
             fails.append(f'price ${price:.3f}')
-        if not (mkt_min <= market_cap_raw <= mkt_max):
+        # Momentum override: a ticker with very strong relative volume and a real
+        # percentage move can be promoted even if its market cap sits below the
+        # normal floor (e.g. sub-$1M nano-caps catching a low-float squeeze).
+        momentum_mcap_override = False
+        if not self.is_au and market_cap_raw > 0 and market_cap_raw < mkt_min:
+            vfr = volume / outstanding_shares if outstanding_shares > 0 else 0.0
+            mcap_override_min_change = float(self.cfg.get('mcap_override_min_change_pct', 10.0))
+            mcap_override_min_rvol = float(self.cfg.get('mcap_override_min_rvol', 5.0))
+            mcap_override_min_vfr = float(self.cfg.get('mcap_override_min_vfr', 3.0))
+            mcap_override_min_dollar_vol = float(self.cfg.get('mcap_override_min_dollar_volume', 500_000))
+            current_dollar_vol = price * volume
+            if (
+                abs(change_pct) >= mcap_override_min_change and
+                rvol >= mcap_override_min_rvol and
+                vfr >= mcap_override_min_vfr and
+                current_dollar_vol >= mcap_override_min_dollar_vol
+            ):
+                momentum_mcap_override = True
+        if not (mkt_min <= market_cap_raw <= mkt_max) and not momentum_mcap_override:
             fails.append(f'mktcap ${market_cap_raw/1e6:.1f}M')
 
         # Tiny-cap ($5M-$10M) liquidity gate uses the same unified thresholds.
