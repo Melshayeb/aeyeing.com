@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03T17:52:55.831866Z",
+  "last_updated": "2026-11-03T17:53:55.923165Z",
   "scan_results": [
     {
       "ticker": "CNSY",
@@ -8,7 +8,7 @@
       "source": "bounce",
       "price": 1.3,
       "change_pct": -23.9766081871345,
-      "volume": 27651023,
+      "volume": 27651686,
       "market_cap": 9866512.5,
       "float_shares": 7439322,
       "country": "United States",
@@ -19,17 +19,498 @@
       "sec_filings": "8-K (Oct 02), 8-K (Sep 10), 8-K (Aug 14)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": 1.29
+      "previous_price": 1.3
+    },
+    {
+      "ticker": "CRIS",
+      "name": "Curis",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.06,
+      "change_pct": 60.363086232980336,
+      "volume": 18205326,
+      "market_cap": 4350994.72,
+      "float_shares": 3948184,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
+      "result": "+60.4% \u00b7 Entry $1.06 \u00b7 T1 $1.10 \u00b7 T2 $1.12 \u00b7 T3 $1.17",
+      "plan": {
+        "valid": true,
+        "ticker": "CRIS",
+        "entry": 1.06,
+        "stop": 1.0388,
+        "targets": {
+          "t1": 1.1024,
+          "t2": 1.1236,
+          "t3": 1.166
+        },
+        "risk_per_share": 0.0212,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 283,
+        "position_value": 299.98,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.0388"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CRIS",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Curis prices $8.5M private placement offering",
+            "flag": "offering"
+          },
+          {
+            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "CRIS",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 48.64,
+        "volume_indicator": "high",
+        "volume": 18205326,
+        "adv": 374249,
+        "recent_pct_of_adv": 4864.5,
+        "volume_acceleration": 42.238,
+        "price_velocity_pct": 31.497,
+        "buy_pressure_pct": 59.22,
+        "large_bar_count": 52,
+        "vwap_distance_pct": 14.123,
+        "recent_volume": 18205326,
+        "prior_volume": 0,
+        "median_range": 0.0071,
+        "last_price": 1.06,
+        "vwap": 1.2343265890196835,
+        "last_trade_time": "2026-11-03T17:49:49.709000+00:00",
+        "stale_age_seconds": 293
+      },
+      "date": "2026-11-04",
+      "time": "04:53:53",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.06
+    },
+    {
+      "ticker": "RDAC",
+      "name": "Rising Dragon",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 11.2,
+      "change_pct": 119.6078431372549,
+      "volume": 8601789,
+      "market_cap": 38475998.4,
+      "float_shares": 1743482,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 03), 8-K (Oct 29), 8-K (Oct 13)",
+      "result": "+119.6% \u00b7 Entry $11.20 \u00b7 T1 $11.65 \u00b7 T2 $11.87 \u00b7 T3 $12.32",
+      "plan": {
+        "valid": true,
+        "ticker": "RDAC",
+        "entry": 11.2,
+        "stop": 10.976,
+        "targets": {
+          "t1": 11.648,
+          "t2": 11.872,
+          "t3": 12.32
+        },
+        "risk_per_share": 0.224,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 26,
+        "position_value": 291.2,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$10.976"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "RDAC",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T14:13:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Why Is Penny Stock Rising Dragon Acquisition Corp. (RDAC) Up 117% Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T14:05:06.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Rising Dragon Acquisition, HZJL Cayman Limited mutually terminate merger",
+            "source": "Webull",
+            "time": "6h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T11:20:27.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Rising Dragon Acquisition And HZJL Cayman Terminate Merger Agreement, Effective October 30",
+            "source": "Webull",
+            "time": "6h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T11:06:26.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at RDAC last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:28:54.977+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rising Dragon Extends SPAC Deadline With New Promissory Notes",
+            "source": "Webull",
+            "time": "5d ago \u00b7 29 Oct",
+            "raw_time": "2026-10-29T14:46:09.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T14:13:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Why Is Penny Stock Rising Dragon Acquisition Corp. (RDAC) Up 117% Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T14:05:06.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Rising Dragon Acquisition, HZJL Cayman Limited mutually terminate merger",
+            "source": "Webull",
+            "time": "6h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T11:20:27.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Rising Dragon Acquisition And HZJL Cayman Terminate Merger Agreement, Effective October 30",
+            "source": "Webull",
+            "time": "6h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T11:06:26.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at RDAC last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:28:54.977+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rising Dragon Extends SPAC Deadline With New Promissory Notes",
+            "source": "Webull",
+            "time": "5d ago \u00b7 29 Oct",
+            "raw_time": "2026-10-29T14:46:09.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 3.3,
+        "catalyst_confirmed": true,
+        "high_impact_count": 4,
+        "top_headline": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
+        "news_filter_reason": "catalyst confirmed (4 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "RDAC",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 9.93,
+        "volume_indicator": "high",
+        "volume": 8601789,
+        "adv": 866660,
+        "recent_pct_of_adv": 992.52,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 1.266,
+        "buy_pressure_pct": 46.81,
+        "large_bar_count": 120,
+        "vwap_distance_pct": 1.007,
+        "recent_volume": 8601789,
+        "prior_volume": 0,
+        "median_range": 0.05,
+        "last_price": 11.2,
+        "vwap": 11.088310556339515,
+        "last_trade_time": "2026-11-03T17:53:16.179000+00:00",
+        "stale_age_seconds": 53
+      },
+      "date": "2026-11-04",
+      "time": "04:53:54",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 11.16
+    },
+    {
+      "ticker": "EHGO",
+      "name": "Eshallgo Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.505,
+      "change_pct": 31.151832460732987,
+      "volume": 20807187,
+      "market_cap": 2957190.08,
+      "float_shares": 1170515,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Aug 20)",
+      "result": "+31.2% \u00b7 Entry $2.50 \u00b7 T1 $2.61 \u00b7 T2 $2.66 \u00b7 T3 $2.76",
+      "plan": {
+        "valid": true,
+        "ticker": "EHGO",
+        "entry": 2.505,
+        "stop": 2.4549,
+        "targets": {
+          "t1": 2.6052,
+          "t2": 2.6553,
+          "t3": 2.7555
+        },
+        "risk_per_share": 0.0501,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 119,
+        "position_value": 298.09,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.4549"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "EHGO",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "8h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T09:33:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at EHGO last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:57:01.982+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "8h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T09:33:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at EHGO last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:57:01.982+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "EHGO",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 70.31,
+        "volume_indicator": "high",
+        "volume": 20807187,
+        "adv": 295952,
+        "recent_pct_of_adv": 7030.6,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 4.812,
+        "buy_pressure_pct": 49.59,
+        "large_bar_count": 131,
+        "vwap_distance_pct": 5.686,
+        "recent_volume": 20807187,
+        "prior_volume": 0,
+        "median_range": 0.02,
+        "last_price": 2.505,
+        "vwap": 2.3702385560496673,
+        "last_trade_time": "2026-11-03T17:53:38.715000+00:00",
+        "stale_age_seconds": 53
+      },
+      "date": "2026-11-04",
+      "time": "04:53:54",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.5
     },
     {
       "ticker": "MERC",
       "name": "Mercer Intl",
       "status": "ALERT",
       "source": "regular",
-      "price": 0.206,
-      "change_pct": 63.49206349206348,
-      "volume": 526857887,
-      "market_cap": 13812416.6,
+      "price": 0.207,
+      "change_pct": 64.28571428571428,
+      "volume": 527539812,
+      "market_cap": 13872732.83,
       "float_shares": 38329462,
       "country": "Canada",
       "cap_size": "nano-cap",
@@ -37,22 +518,22 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Nov 03), 8-K (Oct 02), 8-K (Aug 26)",
-      "result": "+63.5% \u00b7 Entry $0.21 \u00b7 T1 $0.21 \u00b7 T2 $0.22 \u00b7 T3 $0.23",
+      "result": "+64.3% \u00b7 Entry $0.21 \u00b7 T1 $0.22 \u00b7 T2 $0.22 \u00b7 T3 $0.23",
       "plan": {
         "valid": true,
         "ticker": "MERC",
-        "entry": 0.206,
-        "stop": 0.2019,
+        "entry": 0.207,
+        "stop": 0.2029,
         "targets": {
-          "t1": 0.2142,
-          "t2": 0.2183,
-          "t3": 0.2265
+          "t1": 0.2152,
+          "t2": 0.2193,
+          "t3": 0.2275
         },
         "risk_per_share": 0.0041,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 1456,
+        "shares": 1449,
         "position_value": 299.94,
         "risk_reward": 2.0,
         "confidence": "MED",
@@ -61,7 +542,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.2019"
+          "hard_stop": "$0.2029"
         }
       },
       "ta": {
@@ -129,7 +610,7 @@
           {
             "title": "*Mercer Intl: Recapitalization Is Being Implemented Through a Prepackaged Joint Chapter 11 Plan of Reorganization >MERC",
             "source": "Webull",
-            "time": "17h ago \u00b7 02 Nov",
+            "time": "18h ago \u00b7 02 Nov",
             "raw_time": "2026-11-02T23:53:00.000+0000",
             "url": "",
             "score": 0,
@@ -257,7 +738,7 @@
           {
             "title": "*Mercer Intl: Recapitalization Is Being Implemented Through a Prepackaged Joint Chapter 11 Plan of Reorganization >MERC",
             "source": "Webull",
-            "time": "17h ago \u00b7 02 Nov",
+            "time": "18h ago \u00b7 02 Nov",
             "raw_time": "2026-11-02T23:53:00.000+0000",
             "url": "",
             "score": 0,
@@ -354,39 +835,39 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 132.1,
+        "rvol": 132.27,
         "volume_indicator": "high",
-        "volume": 526857887,
+        "volume": 527539812,
         "adv": 3988339,
-        "recent_pct_of_adv": 13209.96,
+        "recent_pct_of_adv": 13227.06,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 5.461,
-        "buy_pressure_pct": 49.08,
+        "price_velocity_pct": 5.263,
+        "buy_pressure_pct": 49.1,
         "large_bar_count": 86,
-        "vwap_distance_pct": 15.492,
-        "recent_volume": 526857887,
+        "vwap_distance_pct": 15.066,
+        "recent_volume": 527539812,
         "prior_volume": 0,
         "median_range": 0.005,
-        "last_price": 0.206,
-        "vwap": 0.24376481379612888,
-        "last_trade_time": "2026-11-03T17:52:41.606000+00:00",
+        "last_price": 0.207,
+        "vwap": 0.2437188233500859,
+        "last_trade_time": "2026-11-03T17:53:41.264000+00:00",
         "stale_age_seconds": 53
       },
       "date": "2026-11-04",
-      "time": "04:52:53",
+      "time": "04:53:54",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.207
+      "previous_price": 0.206
     },
     {
       "ticker": "PARA",
       "name": "PARABOLIC TECHNOLOGIES INC",
       "status": "ALERT",
       "source": "regular",
-      "price": 3.03,
-      "change_pct": -4.416403785488963,
-      "volume": 82425527,
-      "market_cap": 1581342.2,
+      "price": 3.065,
+      "change_pct": -3.3123028391167186,
+      "volume": 82643898,
+      "market_cap": 1597183.76,
       "float_shares": 498617,
       "country": "United States",
       "cap_size": "nano-cap",
@@ -394,23 +875,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "S-1 (Oct 30), 8-K (Oct 30), 8-K (Oct 22)",
-      "result": "-4.4% \u00b7 Entry $3.03 \u00b7 T1 $3.15 \u00b7 T2 $3.21 \u00b7 T3 $3.33",
+      "result": "-3.3% \u00b7 Entry $3.06 \u00b7 T1 $3.19 \u00b7 T2 $3.25 \u00b7 T3 $3.37",
       "plan": {
         "valid": true,
         "ticker": "PARA",
-        "entry": 3.03,
-        "stop": 2.9694,
+        "entry": 3.065,
+        "stop": 3.0037,
         "targets": {
-          "t1": 3.1512,
-          "t2": 3.2118,
-          "t3": 3.333
+          "t1": 3.1876,
+          "t2": 3.2489,
+          "t3": 3.3715
         },
-        "risk_per_share": 0.0606,
+        "risk_per_share": 0.0613,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 99,
-        "position_value": 299.97,
+        "shares": 97,
+        "position_value": 297.31,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -418,7 +899,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.9694"
+          "hard_stop": "$3.0037"
         }
       },
       "ta": {
@@ -649,544 +1130,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 396.32,
+        "rvol": 397.37,
         "volume_indicator": "high",
-        "volume": 82425527,
+        "volume": 82643898,
         "adv": 207975,
-        "recent_pct_of_adv": 39632.42,
+        "recent_pct_of_adv": 39737.42,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 41.394,
-        "buy_pressure_pct": 49.04,
-        "large_bar_count": 204,
-        "vwap_distance_pct": 42.449,
-        "recent_volume": 82425527,
+        "price_velocity_pct": 36.146,
+        "buy_pressure_pct": 49.15,
+        "large_bar_count": 205,
+        "vwap_distance_pct": 41.719,
+        "recent_volume": 82643898,
         "prior_volume": 0,
-        "median_range": 0.0457,
-        "last_price": 3.03,
-        "vwap": 5.26488360048728,
-        "last_trade_time": "2026-11-03T17:52:41.468000+00:00",
+        "median_range": 0.0478,
+        "last_price": 3.065,
+        "vwap": 5.259017426394809,
+        "last_trade_time": "2026-11-03T17:53:41.587000+00:00",
         "stale_age_seconds": 53
       },
       "date": "2026-11-04",
-      "time": "04:52:54",
+      "time": "04:53:54",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 2.82
-    },
-    {
-      "ticker": "CRIS",
-      "name": "Curis",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.06,
-      "change_pct": 60.363086232980336,
-      "volume": 18205326,
-      "market_cap": 4350994.72,
-      "float_shares": 3948184,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
-      "result": "+60.4% \u00b7 Entry $1.06 \u00b7 T1 $1.10 \u00b7 T2 $1.12 \u00b7 T3 $1.17",
-      "plan": {
-        "valid": true,
-        "ticker": "CRIS",
-        "entry": 1.06,
-        "stop": 1.0388,
-        "targets": {
-          "t1": 1.1024,
-          "t2": 1.1236,
-          "t3": 1.166
-        },
-        "risk_per_share": 0.0212,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 283,
-        "position_value": 299.98,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.0388"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CRIS",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Curis prices $8.5M private placement offering",
-            "flag": "offering"
-          },
-          {
-            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "CRIS",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 48.64,
-        "volume_indicator": "high",
-        "volume": 18205326,
-        "adv": 374249,
-        "recent_pct_of_adv": 4864.5,
-        "volume_acceleration": 42.238,
-        "price_velocity_pct": 31.497,
-        "buy_pressure_pct": 59.22,
-        "large_bar_count": 52,
-        "vwap_distance_pct": 14.123,
-        "recent_volume": 18205326,
-        "prior_volume": 0,
-        "median_range": 0.0071,
-        "last_price": 1.06,
-        "vwap": 1.2343265890196835,
-        "last_trade_time": "2026-11-03T17:49:49.709000+00:00",
-        "stale_age_seconds": 233
-      },
-      "date": "2026-11-04",
-      "time": "04:52:54",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 1.06
-    },
-    {
-      "ticker": "EHGO",
-      "name": "Eshallgo Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.5,
-      "change_pct": 30.89005235602095,
-      "volume": 20802249,
-      "market_cap": 2951287.5,
-      "float_shares": 1170515,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Aug 20)",
-      "result": "+30.9% \u00b7 Entry $2.50 \u00b7 T1 $2.60 \u00b7 T2 $2.65 \u00b7 T3 $2.75",
-      "plan": {
-        "valid": true,
-        "ticker": "EHGO",
-        "entry": 2.5,
-        "stop": 2.45,
-        "targets": {
-          "t1": 2.6,
-          "t2": 2.65,
-          "t3": 2.75
-        },
-        "risk_per_share": 0.05,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 120,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.45"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "EHGO",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "8h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T09:33:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at EHGO last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:57:01.982+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "8h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T09:33:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at EHGO last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:57:01.982+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "EHGO",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 70.29,
-        "volume_indicator": "high",
-        "volume": 20802249,
-        "adv": 295952,
-        "recent_pct_of_adv": 7028.93,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 5.485,
-        "buy_pressure_pct": 49.49,
-        "large_bar_count": 131,
-        "vwap_distance_pct": 5.476,
-        "recent_volume": 20802249,
-        "prior_volume": 0,
-        "median_range": 0.02,
-        "last_price": 2.5,
-        "vwap": 2.3702162108959546,
-        "last_trade_time": "2026-11-03T17:52:41.931000+00:00",
-        "stale_age_seconds": 53
-      },
-      "date": "2026-11-04",
-      "time": "04:52:54",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": null
-    },
-    {
-      "ticker": "RDAC",
-      "name": "Rising Dragon",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 11.16,
-      "change_pct": 118.82352941176472,
-      "volume": 8596723,
-      "market_cap": 38338584.12,
-      "float_shares": 1743482,
-      "country": "China / Cayman-China",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 03), 8-K (Oct 29), 8-K (Oct 13)",
-      "result": "+118.8% \u00b7 Entry $11.16 \u00b7 T1 $11.61 \u00b7 T2 $11.83 \u00b7 T3 $12.28",
-      "plan": {
-        "valid": true,
-        "ticker": "RDAC",
-        "entry": 11.16,
-        "stop": 10.9368,
-        "targets": {
-          "t1": 11.6064,
-          "t2": 11.8296,
-          "t3": 12.276
-        },
-        "risk_per_share": 0.2232,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 26,
-        "position_value": 290.16,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$10.9368"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "RDAC",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
-            "source": "Webull",
-            "time": "3h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T14:13:07.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Why Is Penny Stock Rising Dragon Acquisition Corp. (RDAC) Up 117% Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T14:05:06.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Rising Dragon Acquisition, HZJL Cayman Limited mutually terminate merger",
-            "source": "Webull",
-            "time": "6h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T11:20:27.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Rising Dragon Acquisition And HZJL Cayman Terminate Merger Agreement, Effective October 30",
-            "source": "Webull",
-            "time": "6h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T11:06:26.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at RDAC last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:28:54.977+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rising Dragon Extends SPAC Deadline With New Promissory Notes",
-            "source": "Webull",
-            "time": "5d ago \u00b7 29 Oct",
-            "raw_time": "2026-10-29T14:46:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
-            "source": "Webull",
-            "time": "3h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T14:13:07.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Why Is Penny Stock Rising Dragon Acquisition Corp. (RDAC) Up 117% Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T14:05:06.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Rising Dragon Acquisition, HZJL Cayman Limited mutually terminate merger",
-            "source": "Webull",
-            "time": "6h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T11:20:27.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Rising Dragon Acquisition And HZJL Cayman Terminate Merger Agreement, Effective October 30",
-            "source": "Webull",
-            "time": "6h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T11:06:26.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Weekly Report: what happened at RDAC last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:28:54.977+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rising Dragon Extends SPAC Deadline With New Promissory Notes",
-            "source": "Webull",
-            "time": "5d ago \u00b7 29 Oct",
-            "raw_time": "2026-10-29T14:46:09.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 5,
-        "avg_score": 3.3,
-        "catalyst_confirmed": true,
-        "high_impact_count": 4,
-        "top_headline": "Rising Dragon Acquisition Terminates Merger Agreement with HZJL",
-        "news_filter_reason": "catalyst confirmed (4 items, score \u22653)"
-      },
-      "tape": {
-        "ticker": "RDAC",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 9.92,
-        "volume_indicator": "high",
-        "volume": 8596723,
-        "adv": 866501,
-        "recent_pct_of_adv": 992.12,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 0.904,
-        "buy_pressure_pct": 46.81,
-        "large_bar_count": 120,
-        "vwap_distance_pct": 0.647,
-        "recent_volume": 8596723,
-        "prior_volume": 0,
-        "median_range": 0.05,
-        "last_price": 11.16,
-        "vwap": 11.088309237865158,
-        "last_trade_time": "2026-11-03T17:50:17.914000+00:00",
-        "stale_age_seconds": 156
-      },
-      "date": "2026-11-04",
-      "time": "04:52:54",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 11.16
+      "previous_price": 3.03
     },
     {
       "ticker": "IBTA",
       "name": "Ibotta",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 64.86,
-      "change_pct": 29.53864589574595,
-      "volume": 887842,
-      "market_cap": 1502665315.97,
+      "price": 64.81,
+      "change_pct": 29.438785700019977,
+      "volume": 888770,
+      "market_cap": 1501622683.34,
       "float_shares": 10268992,
       "country": "United States",
       "cap_size": "small-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (29.5%, rvol 3.4x)",
+      "scan_reason": "Top gainer tape exempt (29.4%, rvol 3.4x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +29.5%",
+      "result": "Top-10 gainer tape momentum \u00b7 +29.4%",
       "plan": {
         "valid": true,
         "ticker": "IBTA",
-        "entry": 64.86,
-        "stop": 63.5628,
+        "entry": 64.81,
+        "stop": 63.5138,
         "targets": {
-          "t1": 67.4544,
-          "t2": 68.7516,
-          "t3": 71.346
+          "t1": 67.4024,
+          "t2": 68.6986,
+          "t3": 71.291
         },
-        "risk_per_share": 1.2972,
+        "risk_per_share": 1.2962,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
         "shares": 4,
-        "position_value": 259.44,
+        "position_value": 259.24,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1194,7 +1194,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$63.5628"
+          "hard_stop": "$63.5138"
         }
       },
       "ta": {
@@ -1241,7 +1241,7 @@
           {
             "title": "Ibotta Q3: Third-Party Recovery Is Strong And Now The Main Growth Lever",
             "source": "Webull",
-            "time": "12m ago \u00b7 03 Nov",
+            "time": "13m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:40:45.000+0000",
             "url": "",
             "score": 0,
@@ -1250,7 +1250,7 @@
           {
             "title": "Nasdaq Surges 1%; Pfizer Posts Upbeat Q3 Earnings",
             "source": "Webull",
-            "time": "21m ago \u00b7 03 Nov",
+            "time": "22m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:31:30.000+0000",
             "url": "",
             "score": 0,
@@ -1259,7 +1259,7 @@
           {
             "title": "Fabrinet, EverQuote, Lattice Semiconductor, Fiserv And Other Big Stocks Moving Higher On Tuesday",
             "source": "Webull",
-            "time": "50m ago \u00b7 03 Nov",
+            "time": "51m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:02:46.000+0000",
             "url": "",
             "score": 0,
@@ -1429,7 +1429,7 @@
           {
             "title": "Ibotta Q3: Third-Party Recovery Is Strong And Now The Main Growth Lever",
             "source": "Webull",
-            "time": "12m ago \u00b7 03 Nov",
+            "time": "13m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:40:45.000+0000",
             "url": "",
             "score": 0,
@@ -1438,7 +1438,7 @@
           {
             "title": "Nasdaq Surges 1%; Pfizer Posts Upbeat Q3 Earnings",
             "source": "Webull",
-            "time": "21m ago \u00b7 03 Nov",
+            "time": "22m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:31:30.000+0000",
             "url": "",
             "score": 0,
@@ -1447,7 +1447,7 @@
           {
             "title": "Fabrinet, EverQuote, Lattice Semiconductor, Fiserv And Other Big Stocks Moving Higher On Tuesday",
             "source": "Webull",
-            "time": "50m ago \u00b7 03 Nov",
+            "time": "51m ago \u00b7 03 Nov",
             "raw_time": "2026-11-03T17:02:46.000+0000",
             "url": "",
             "score": 0,
@@ -1594,29 +1594,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.42,
+        "rvol": 3.43,
         "volume_indicator": "high",
-        "volume": 887842,
+        "volume": 888770,
         "adv": 259351,
-        "recent_pct_of_adv": 342.33,
-        "volume_acceleration": -0.465,
-        "price_velocity_pct": 1.328,
-        "buy_pressure_pct": 48.84,
+        "recent_pct_of_adv": 342.69,
+        "volume_acceleration": -0.438,
+        "price_velocity_pct": 1.25,
+        "buy_pressure_pct": 49.18,
         "large_bar_count": 46,
-        "vwap_distance_pct": 4.195,
-        "recent_volume": 887842,
+        "vwap_distance_pct": 4.033,
+        "recent_volume": 888770,
         "prior_volume": 0,
         "median_range": 0.25,
-        "last_price": 64.86,
-        "vwap": 62.24852286096362,
-        "last_trade_time": "2026-11-03T17:52:29.093000+00:00",
+        "last_price": 64.81,
+        "vwap": 62.29775253524897,
+        "last_trade_time": "2026-11-03T17:53:08.804000+00:00",
         "stale_age_seconds": 53
       },
       "date": "2026-11-04",
-      "time": "04:52:54",
+      "time": "04:53:54",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 64.61
+      "previous_price": 64.86
     }
   ],
   "pre_market_results": [
@@ -2989,7 +2989,7 @@
       "source": "bounce",
       "price": 1.3,
       "change_pct": -23.9766081871345,
-      "volume": 27651023,
+      "volume": 27651686,
       "market_cap": 9866512.5,
       "float_shares": 7439322,
       "country": "United States",
@@ -3000,43 +3000,43 @@
       "sec_filings": "8-K (Oct 02), 8-K (Sep 10), 8-K (Aug 14)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": 1.29
+      "previous_price": 1.3
     }
   ],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "MERC",
-    "name": "Mercer Intl",
+    "ticker": "CRIS",
+    "name": "Curis",
     "status": "ALERT",
     "source": "regular",
-    "price": 0.206,
-    "change_pct": 63.49206349206348,
-    "volume": 526857887,
-    "market_cap": 13812416.6,
-    "float_shares": 38329462,
-    "country": "Canada",
+    "price": 1.06,
+    "change_pct": 60.363086232980336,
+    "volume": 18205326,
+    "market_cap": 4350994.72,
+    "float_shares": 3948184,
+    "country": "United States",
     "cap_size": "nano-cap",
-    "is_penny_stock": true,
+    "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "8-K (Nov 03), 8-K (Oct 02), 8-K (Aug 26)",
-    "result": "+63.5% \u00b7 Entry $0.21 \u00b7 T1 $0.21 \u00b7 T2 $0.22 \u00b7 T3 $0.23",
+    "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
+    "result": "+60.4% \u00b7 Entry $1.06 \u00b7 T1 $1.10 \u00b7 T2 $1.12 \u00b7 T3 $1.17",
     "plan": {
       "valid": true,
-      "ticker": "MERC",
-      "entry": 0.206,
-      "stop": 0.2019,
+      "ticker": "CRIS",
+      "entry": 1.06,
+      "stop": 1.0388,
       "targets": {
-        "t1": 0.2142,
-        "t2": 0.2183,
-        "t3": 0.2265
+        "t1": 1.1024,
+        "t2": 1.1236,
+        "t3": 1.166
       },
-      "risk_per_share": 0.0041,
+      "risk_per_share": 0.0212,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 1456,
-      "position_value": 299.94,
+      "shares": 283,
+      "position_value": 299.98,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -3044,7 +3044,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$0.2019"
+        "hard_stop": "$1.0388"
       }
     },
     "ta": {
@@ -3052,131 +3052,23 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "MERC",
+      "ticker": "CRIS",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Mercer International Announces Debt Restructuring and Recapitalization Plan",
-          "source": "Webull",
-          "time": "6h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T11:29:01.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "8h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T09:33:37.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer International (MERC) Shares Skyrocket 126% After-Hours: Here\u2019s Why",
-          "source": "Webull",
-          "time": "11h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T06:02:32.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer International plans Chapter 11 filing with $1.1B debt reduction",
-          "source": "Webull",
-          "time": "15h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T02:27:15.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer announces recapitalization agreement",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:55:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Mercer Intl: The Co and Its Operating Businesses Will Continue to Operate in the Ordinary Course of Business >MERC",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:54:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Mercer Intl: Recapitalization Is Being Implemented Through a Prepackaged Joint Chapter 11 Plan of Reorganization >MERC",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:53:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Mercer International Announces Comprehensive Recapitalization Agreement with Significant Support from Noteholders and Shareholders",
-          "source": "Webull",
-          "time": "18h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:49:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Mercer International Announces -2-",
-          "source": "Webull",
-          "time": "18h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:49:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at MERC last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
           "source": "Webull",
           "time": "1d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T10:00:47.258+0000",
+          "raw_time": "2026-11-02T09:47:25.171+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "Here are the major earnings after the close Thursday",
+          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
           "source": "Webull",
-          "time": "5d ago \u00b7 29 Oct",
-          "raw_time": "2026-10-29T14:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer Intl Price Target Cut to $0.15/Share From $0.75 by CIBC",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T19:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer Intl Cut to Underperformer From Neutral by CIBC",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T19:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "CIBC Downgrades Mercer International to Underperformer, Lowers Price Target to $0.15",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T18:55:09.000+0000",
+          "time": "3d ago \u00b7 30 Oct",
+          "raw_time": "2026-10-30T21:05:59.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -3184,127 +3076,19 @@
       ],
       "headlines": [
         {
-          "title": "Mercer International Announces Debt Restructuring and Recapitalization Plan",
-          "source": "Webull",
-          "time": "6h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T11:29:01.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Aehr Test Systems Shares Are Trading Higher By Over 15%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "8h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T09:33:37.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer International (MERC) Shares Skyrocket 126% After-Hours: Here\u2019s Why",
-          "source": "Webull",
-          "time": "11h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T06:02:32.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer International plans Chapter 11 filing with $1.1B debt reduction",
-          "source": "Webull",
-          "time": "15h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T02:27:15.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer announces recapitalization agreement",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:55:11.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Mercer Intl: The Co and Its Operating Businesses Will Continue to Operate in the Ordinary Course of Business >MERC",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:54:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Mercer Intl: Recapitalization Is Being Implemented Through a Prepackaged Joint Chapter 11 Plan of Reorganization >MERC",
-          "source": "Webull",
-          "time": "17h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:53:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Mercer International Announces Comprehensive Recapitalization Agreement with Significant Support from Noteholders and Shareholders",
-          "source": "Webull",
-          "time": "18h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:49:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Mercer International Announces -2-",
-          "source": "Webull",
-          "time": "18h ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T23:49:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at MERC last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
           "source": "Webull",
           "time": "1d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T10:00:47.258+0000",
+          "raw_time": "2026-11-02T09:47:25.171+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "Here are the major earnings after the close Thursday",
+          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
           "source": "Webull",
-          "time": "5d ago \u00b7 29 Oct",
-          "raw_time": "2026-10-29T14:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer Intl Price Target Cut to $0.15/Share From $0.75 by CIBC",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T19:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Mercer Intl Cut to Underperformer From Neutral by CIBC",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T19:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "CIBC Downgrades Mercer International to Underperformer, Lowers Price Target to $0.15",
-          "source": "Webull",
-          "time": "6d ago \u00b7 27 Oct",
-          "raw_time": "2026-10-27T18:55:09.000+0000",
+          "time": "3d ago \u00b7 30 Oct",
+          "raw_time": "2026-10-30T21:05:59.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -3312,54 +3096,50 @@
       ],
       "red_flags": [
         {
-          "title": "Mercer International Inc. Announces Restructuring Support Agreements and $420.0 million Rights Offering",
+          "title": "Curis prices $8.5M private placement offering",
           "flag": "offering"
         },
         {
-          "title": "Mercer International Expects to File for Bankruptcy",
-          "flag": "bankruptcy"
-        },
-        {
-          "title": "Mercer International weighs potential Chapter 11 bankruptcy - Bloomberg",
-          "flag": "bankruptcy"
+          "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
+          "flag": "offering"
         }
       ],
       "max_score": 0,
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Mercer International Announces Debt Restructuring and Recapitalization Plan",
-      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: bankruptcy, offering"
+      "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
     },
     "tape": {
-      "ticker": "MERC",
+      "ticker": "CRIS",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 132.1,
+      "rvol": 48.64,
       "volume_indicator": "high",
-      "volume": 526857887,
-      "adv": 3988339,
-      "recent_pct_of_adv": 13209.96,
-      "volume_acceleration": 0.0,
-      "price_velocity_pct": 5.461,
-      "buy_pressure_pct": 49.08,
-      "large_bar_count": 86,
-      "vwap_distance_pct": 15.492,
-      "recent_volume": 526857887,
+      "volume": 18205326,
+      "adv": 374249,
+      "recent_pct_of_adv": 4864.5,
+      "volume_acceleration": 42.238,
+      "price_velocity_pct": 31.497,
+      "buy_pressure_pct": 59.22,
+      "large_bar_count": 52,
+      "vwap_distance_pct": 14.123,
+      "recent_volume": 18205326,
       "prior_volume": 0,
-      "median_range": 0.005,
-      "last_price": 0.206,
-      "vwap": 0.24376481379612888,
-      "last_trade_time": "2026-11-03T17:52:41.606000+00:00",
-      "stale_age_seconds": 53
+      "median_range": 0.0071,
+      "last_price": 1.06,
+      "vwap": 1.2343265890196835,
+      "last_trade_time": "2026-11-03T17:49:49.709000+00:00",
+      "stale_age_seconds": 293
     },
     "date": "2026-11-04",
-    "time": "04:52:53",
+    "time": "04:53:53",
     "skip_news_check": true,
     "red_flag": true,
-    "previous_price": 0.207
+    "previous_price": 1.06
   },
   "total_candidates": 7,
   "alerts_generated": 5,
@@ -3367,11 +3147,11 @@
     {
       "ticker": "RDAC",
       "name": "Rising Dragon",
-      "price": 11.16,
-      "change_pct": 118.82352941176472,
-      "volume": 8596723,
-      "rvol": 9.921192243286505,
-      "market_cap": 38338584.12,
+      "price": 11.2,
+      "change_pct": 119.6078431372549,
+      "volume": 8601789,
+      "rvol": 9.92521750167309,
+      "market_cap": 38475998.4,
       "float_shares": 1743482,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -3382,11 +3162,11 @@
     {
       "ticker": "PARA",
       "name": "PARABOLIC TECHNOLOGIES INC",
-      "price": 3.03,
-      "change_pct": -4.416403785488963,
-      "volume": 82425527,
-      "rvol": 46.03957562870081,
-      "market_cap": 1581342.2,
+      "price": 3.065,
+      "change_pct": -3.3123028391167186,
+      "volume": 82643898,
+      "rvol": 46.16154886363827,
+      "market_cap": 1597183.76,
       "float_shares": 498617,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -3397,11 +3177,11 @@
     {
       "ticker": "MERC",
       "name": "Mercer Intl",
-      "price": 0.206,
-      "change_pct": 63.49206349206348,
-      "volume": 526857887,
-      "rvol": 67.15579388342688,
-      "market_cap": 13812416.6,
+      "price": 0.207,
+      "change_pct": 64.28571428571428,
+      "volume": 527539812,
+      "rvol": 67.24271526369647,
+      "market_cap": 13872732.83,
       "float_shares": 38329462,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
@@ -3428,10 +3208,10 @@
       "ticker": "HUBC",
       "name": "Hub Cyber Security Israel Ltd",
       "price": 0.113,
-      "change_pct": 0.17730496453901218,
-      "volume": 366065233,
-      "rvol": 10.07178535842632,
-      "market_cap": 202568.61,
+      "change_pct": 0.08857395925598129,
+      "volume": 366109364,
+      "rvol": 10.072999562670764,
+      "market_cap": 202927.77,
       "float_shares": 1790379,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
@@ -3442,12 +3222,27 @@
     {
       "ticker": "EHGO",
       "name": "Eshallgo Inc",
-      "price": 2.5,
-      "change_pct": 30.89005235602095,
-      "volume": 20802249,
-      "rvol": 335.4498089110348,
-      "market_cap": 2951287.5,
+      "price": 2.505,
+      "change_pct": 31.151832460732987,
+      "volume": 20807187,
+      "rvol": 335.5294373760341,
+      "market_cap": 2957190.08,
       "float_shares": 1170515,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Cayman-China",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
+      "ticker": "CHSN",
+      "name": "CHANSON INTL HLDG",
+      "price": 1.282,
+      "change_pct": 29.429581019687024,
+      "volume": 2120298,
+      "rvol": 0.1656309676379141,
+      "market_cap": 2977537.5,
+      "float_shares": 2096288,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "China / Cayman-China",
@@ -3457,11 +3252,11 @@
     {
       "ticker": "ATHE",
       "name": "Alterity Therapeutics Ltd",
-      "price": 2.71,
-      "change_pct": 29.665071770334933,
-      "volume": 3201790,
-      "rvol": 9.419245704871734,
-      "market_cap": 50986063.68,
+      "price": 2.65,
+      "change_pct": 26.79425837320575,
+      "volume": 3290436,
+      "rvol": 9.44753865368879,
+      "market_cap": 50604145.6,
       "float_shares": 18956646,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -3470,27 +3265,12 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "CHSN",
-      "name": "CHANSON INTL HLDG",
-      "price": 1.26,
-      "change_pct": 27.20848056537102,
-      "volume": 2115044,
-      "rvol": 0.16522054179024098,
-      "market_cap": 2926444.9,
-      "float_shares": 2096288,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Cayman-China",
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
       "ticker": "STI",
       "name": "Solidion Tech",
       "price": 4.93,
       "change_pct": 25.44529262086513,
-      "volume": 130321,
-      "rvol": 1.5461761146572384,
+      "volume": 130605,
+      "rvol": 1.5495455947606958,
       "market_cap": 44280732.49,
       "float_shares": 4032585,
       "cap_size": "nano-cap",
@@ -3502,11 +3282,11 @@
     {
       "ticker": "SRTS",
       "name": "Sensus Healthcare Inc",
-      "price": 3.381,
-      "change_pct": 22.945454545454538,
-      "volume": 8750483,
-      "rvol": 221.2287758507357,
-      "market_cap": 55651636.66,
+      "price": 3.4,
+      "change_pct": 23.636363636363633,
+      "volume": 8750845,
+      "rvol": 221.23792789604084,
+      "market_cap": 55971000.6,
       "float_shares": 13389288,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -3517,11 +3297,11 @@
     {
       "ticker": "NMRA",
       "name": "Neumora Therapeutics Inc",
-      "price": 0.611,
-      "change_pct": 0.049123956115927125,
-      "volume": 3258289,
-      "rvol": 1.6714908858475035,
-      "market_cap": 114748033.46,
+      "price": 0.61,
+      "change_pct": 23.058301391970954,
+      "volume": 3266767,
+      "rvol": 1.675840070260002,
+      "market_cap": 114635295.91,
       "float_shares": 142052833,
       "cap_size": "micro-cap",
       "is_penny_stock": true,
@@ -3532,11 +3312,11 @@
     {
       "ticker": "CVGI",
       "name": "Commercial Veh Group Inc",
-      "price": 3.881,
-      "change_pct": 22.429022082018925,
-      "volume": 656111,
-      "rvol": 2.1450508709525553,
-      "market_cap": 157703565.38,
+      "price": 3.9,
+      "change_pct": 23.02839116719243,
+      "volume": 657620,
+      "rvol": 2.1499843071611653,
+      "market_cap": 158467459.8,
       "float_shares": 34242756,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -3547,17 +3327,32 @@
     {
       "ticker": "DCGO",
       "name": "DOCGO INC",
-      "price": 0.259,
-      "change_pct": 0.07727975270480429,
-      "volume": 1720421,
-      "rvol": 2.0034551143727866,
-      "market_cap": 25602661.9,
+      "price": 0.26,
+      "change_pct": 21.495327102803742,
+      "volume": 1725771,
+      "rvol": 2.0096852666796314,
+      "market_cap": 25721375.94,
       "float_shares": 95899118,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
+      "ticker": "IFBD",
+      "name": "Infobird Co Ltd",
+      "price": 1.24,
+      "change_pct": 20.388349514563103,
+      "volume": 365024,
+      "rvol": 1.8959331013348568,
+      "market_cap": 10153831.76,
+      "float_shares": 8186759,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.04x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
       "ticker": "CRMT",
@@ -3575,28 +3370,13 @@
       "reason": "Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.04x, vol/float 0.04x < 0.1x, avg $vol $0.4M < $2.0M"
     },
     {
-      "ticker": "IFBD",
-      "name": "Infobird Co Ltd",
-      "price": 1.23,
-      "change_pct": 19.417475728155335,
-      "volume": 364522,
-      "rvol": 1.8933257154729133,
-      "market_cap": 10071946.02,
-      "float_shares": 8186759,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Hong Kong",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.04x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
       "ticker": "WFF",
       "name": "WF Holding Ltd.",
-      "price": 1.32,
-      "change_pct": 18.918918918918916,
-      "volume": 16152344,
-      "rvol": 2.59013134790759,
-      "market_cap": 3501199.68,
+      "price": 1.311,
+      "change_pct": 18.10810810810809,
+      "volume": 16155784,
+      "rvol": 2.5906829738410644,
+      "market_cap": 3476001.65,
       "float_shares": 2118431,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -3607,11 +3387,11 @@
     {
       "ticker": "BIVI",
       "name": "Biovie Inc",
-      "price": 1.62,
-      "change_pct": 18.248175182481752,
-      "volume": 11845002,
-      "rvol": 98.9664875884599,
-      "market_cap": 14065990.2,
+      "price": 1.615,
+      "change_pct": 17.883211678832104,
+      "volume": 11847075,
+      "rvol": 98.98380776525437,
+      "market_cap": 14022576.65,
       "float_shares": 8641125,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -3626,7 +3406,7 @@
       "change_pct": 17.540322580645164,
       "volume": 186161,
       "rvol": 4.162068502951172,
-      "market_cap": 44456000.38,
+      "market_cap": 44532254.24,
       "float_shares": 11131871,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -3639,9 +3419,9 @@
       "name": "LENZ THERAPEUTICS INC",
       "price": 3.58,
       "change_pct": 17.377049180327877,
-      "volume": 940786,
-      "rvol": 0.4763753212846932,
-      "market_cap": 112469117.77,
+      "volume": 941832,
+      "rvol": 0.4769049726464947,
+      "market_cap": 112484827.94,
       "float_shares": 30588288,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -3695,6 +3475,21 @@
       "reason": "Filtered: vol 19,205, vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "PSHG",
+      "name": "Performance Shipping Inc",
+      "price": 1.775,
+      "change_pct": 16.01307189542483,
+      "volume": 326918,
+      "rvol": 4.3705030681408,
+      "market_cap": 22067080.45,
+      "float_shares": 11397599,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "International (region 68)",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.03x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "ZNB",
       "name": "Zeta Network Group",
       "price": 0.578,
@@ -3730,7 +3525,7 @@
       "price": 2.58,
       "change_pct": 15.333035315154223,
       "volume": 242816,
-      "rvol": 4.768109965635738,
+      "rvol": 4.768016337430782,
       "market_cap": 4340119.86,
       "float_shares": 783113,
       "cap_size": "nano-cap",
@@ -3743,61 +3538,16 @@
       "ticker": "RR",
       "name": "Richtech Robotics Inc-B",
       "price": 0.979,
-      "change_pct": 0.051098620337245264,
-      "volume": 3383803,
-      "rvol": 0.44951520204387224,
-      "market_cap": 220262251.23,
+      "change_pct": 0.02043318348998549,
+      "volume": 3399748,
+      "rvol": 0.45163338678943504,
+      "market_cap": 220329781.81,
       "float_shares": 183097097,
       "cap_size": "micro-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
       "reason": "Filtered: float 183.1M > 100M, vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "ALZN",
-      "name": "Alzamend Neuro Inc",
-      "price": 1.439,
-      "change_pct": 15.120000000000006,
-      "volume": 129845,
-      "rvol": 4.064006259780908,
-      "market_cap": 6946145.69,
-      "float_shares": 4699163,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "FMST",
-      "name": "Foremost Clean Energy",
-      "price": 0.723,
-      "change_pct": -0.041476565740367476,
-      "volume": 252519,
-      "rvol": 1.1184789830358328,
-      "market_cap": 12550805.03,
-      "float_shares": 12558728,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
-      "ticker": "PSHG",
-      "name": "Performance Shipping Inc",
-      "price": 1.775,
-      "change_pct": 16.01307189542483,
-      "volume": 326918,
-      "rvol": 4.3705030681408,
-      "market_cap": 22067080.45,
-      "float_shares": 11397599,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "International (region 68)",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "PMN",
@@ -3835,7 +3585,7 @@
       "price": 0.85,
       "change_pct": 14.849344683150925,
       "volume": 1409,
-      "rvol": 0.07638926538357278,
+      "rvol": 0.07636856368563685,
       "market_cap": 32385000.0,
       "float_shares": 7100000,
       "cap_size": "nano-cap",
@@ -3864,17 +3614,17 @@
     {
       "ticker": "CENN",
       "name": "Cenntro",
-      "price": 0.314,
-      "change_pct": -84.18136020151134,
-      "volume": 25824969,
-      "rvol": 13.786919894295705,
-      "market_cap": 5525349.02,
+      "price": 0.313,
+      "change_pct": 0.06393861892582416,
+      "volume": 25934516,
+      "rvol": 13.845402663961776,
+      "market_cap": 5500729.39,
       "float_shares": 932062,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.314, move -84.2%"
+      "reason": "Filtered: price $0.313, move -84.2%"
     },
     {
       "ticker": "ABTS",
@@ -3896,9 +3646,9 @@
       "name": "reAlpha Tech",
       "price": 0.39,
       "change_pct": -41.62550516389762,
-      "volume": 1067569,
-      "rvol": 5.426403911841249,
-      "market_cap": 2342583.36,
+      "volume": 1068076,
+      "rvol": 5.427573975923206,
+      "market_cap": 2341982.7,
       "float_shares": 4516791,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
@@ -3937,36 +3687,6 @@
       "reason": "Filtered: mktcap $1.2M, move -38.2%"
     },
     {
-      "ticker": "GMEX",
-      "name": "GMEX ROBOTICS",
-      "price": 0.57,
-      "change_pct": -34.99828942866918,
-      "volume": 442631,
-      "rvol": 0.4188166655785387,
-      "market_cap": 428940.96,
-      "float_shares": 751585,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Australia",
-      "passed": false,
-      "reason": "Filtered: mktcap $0.4M, move -35.0%, rvol 0.4x"
-    },
-    {
-      "ticker": "VIVO",
-      "name": "Vivopower International Plc",
-      "price": 1.47,
-      "change_pct": -33.333333333333336,
-      "volume": 1358654,
-      "rvol": 2.728872963619821,
-      "market_cap": 47030525.85,
-      "float_shares": 21962530,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United Kingdom",
-      "passed": false,
-      "reason": "Filtered: move -33.3%, vol/float 0.06x"
-    },
-    {
       "ticker": "EZGO",
       "name": "Ezgo Technologies Ltd",
       "price": 0.53,
@@ -3980,6 +3700,21 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: mktcap $2.8M, move -33.3%, vol/float 0.09x"
+    },
+    {
+      "ticker": "GMEX",
+      "name": "GMEX ROBOTICS",
+      "price": 0.586,
+      "change_pct": -0.06821282401092547,
+      "volume": 444031,
+      "rvol": 0.4201413430905294,
+      "market_cap": 441282.42,
+      "float_shares": 751585,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Australia",
+      "passed": false,
+      "reason": "Filtered: mktcap $0.4M, move -33.1%, rvol 0.4x"
     },
     {
       "ticker": "RZAI",
@@ -3997,6 +3732,21 @@
       "reason": "Filtered: mktcap $216.4M, move -32.5%, float 55.6M, vol/float 0.01x"
     },
     {
+      "ticker": "VIVO",
+      "name": "Vivopower International Plc",
+      "price": 1.49,
+      "change_pct": -32.426303854875286,
+      "volume": 1367780,
+      "rvol": 2.7472026448086995,
+      "market_cap": 47670396.95,
+      "float_shares": 21962530,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: move -32.4%, vol/float 0.06x"
+    },
+    {
       "ticker": "JDZG",
       "name": "Jiade Limited",
       "price": 0.364,
@@ -4012,28 +3762,13 @@
       "reason": "Filtered: price $0.364, mktcap $2.0M, move -30.8%, rvol 0.3x"
     },
     {
-      "ticker": "PLCE",
-      "name": "Childrens Pl Inc",
-      "price": 0.312,
-      "change_pct": 0.1605136436597112,
-      "volume": 1449736,
-      "rvol": 0.353925800713742,
-      "market_cap": 6955754.56,
-      "float_shares": 21174460,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.312, rvol 0.4x, vol/float 0.07x"
-    },
-    {
       "ticker": "BDMD",
       "name": "Baird Medical",
       "price": 0.103,
-      "change_pct": 0.4878048780487809,
-      "volume": 19574837,
-      "rvol": 0.6460684468599739,
-      "market_cap": 3264241.74,
+      "change_pct": -25.36231884057972,
+      "volume": 19583069,
+      "rvol": 0.6463401444201913,
+      "market_cap": 3293043.87,
       "float_shares": 4381473,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
@@ -4042,12 +3777,27 @@
       "reason": "Filtered: price $0.103, mktcap $3.3M, rvol 0.6x"
     },
     {
+      "ticker": "PLCE",
+      "name": "Childrens Pl Inc",
+      "price": 0.317,
+      "change_pct": -25.30631479736098,
+      "volume": 1469110,
+      "rvol": 0.35865559873422853,
+      "market_cap": 7049150.24,
+      "float_shares": 21174460,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.317, rvol 0.4x, vol/float 0.07x"
+    },
+    {
       "ticker": "XXII",
       "name": "22Nd Century",
       "price": 0.056,
       "change_pct": -24.426450742240213,
-      "volume": 16925919,
-      "rvol": 0.18157026981679325,
+      "volume": 16931859,
+      "rvol": 0.1816339902802264,
       "market_cap": 1077243.31,
       "float_shares": 19017385,
       "cap_size": "nano-cap",
@@ -4061,8 +3811,8 @@
       "name": "Cerenome, Inc",
       "price": 1.3,
       "change_pct": -23.9766081871345,
-      "volume": 27651023,
-      "rvol": 9.833562181910258,
+      "volume": 27651686,
+      "rvol": 9.833528687970754,
       "market_cap": 9866512.5,
       "float_shares": 7439322,
       "cap_size": "nano-cap",
@@ -4132,6 +3882,21 @@
       "reason": "Filtered: mktcap $3.3M, vol/float 0.15x"
     },
     {
+      "ticker": "KPTI",
+      "name": "Karyopharm Therapeutics Inc",
+      "price": 0.087,
+      "change_pct": -0.3436426116838586,
+      "volume": 10770641,
+      "rvol": 0.559686841371065,
+      "market_cap": 1986895.9,
+      "float_shares": 21494936,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.087, mktcap $2.0M, rvol 0.6x"
+    },
+    {
       "ticker": "BYSI",
       "name": "Beyondspring Inc",
       "price": 0.642,
@@ -4145,21 +3910,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: rvol 0.5x, vol/float 0.00x"
-    },
-    {
-      "ticker": "KPTI",
-      "name": "Karyopharm Therapeutics Inc",
-      "price": 0.09,
-      "change_pct": 0.5586592178770955,
-      "volume": 10754337,
-      "rvol": 0.5588396184191798,
-      "market_cap": 2029990.67,
-      "float_shares": 21494936,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.090, mktcap $2.0M, rvol 0.6x"
     },
     {
       "ticker": "JG",
@@ -4209,17 +3959,17 @@
     {
       "ticker": "BTOC",
       "name": "Armlogi Holding Corp.",
-      "price": 2.32,
-      "change_pct": -16.845878136200724,
-      "volume": 76930,
-      "rvol": 0.509956514822082,
-      "market_cap": 6588756.27,
+      "price": 2.319,
+      "change_pct": -16.88172043010753,
+      "volume": 77030,
+      "rvol": 0.5106193986318078,
+      "market_cap": 6586768.12,
       "float_shares": 891476,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: rvol 0.5x, vol 76,930, vol/float 0.09x"
+      "reason": "Filtered: rvol 0.5x, vol 77,030, vol/float 0.09x"
     },
     {
       "ticker": "CURR",
@@ -4282,36 +4032,6 @@
       "reason": "Filtered: rvol 0.7x, vol 10,582, vol/float 0.00x"
     },
     {
-      "ticker": "GTEC",
-      "name": "Greenland Technologies Hldg",
-      "price": 0.49,
-      "change_pct": -15.531804861230816,
-      "volume": 436804,
-      "rvol": 2.286931937172775,
-      "market_cap": 13009323.2,
-      "float_shares": 20335982,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.490, vol/float 0.02x"
-    },
-    {
-      "ticker": "AMCI",
-      "name": "AMC ROBOTICS",
-      "price": 1.93,
-      "change_pct": -15.164835164835164,
-      "volume": 81173,
-      "rvol": 1.175636532166961,
-      "market_cap": 45226825.9,
-      "float_shares": 4509513,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 81,173, vol/float 0.02x"
-    },
-    {
       "ticker": "AEON",
       "name": "Aeon Biopharma",
       "price": 0.232,
@@ -4340,6 +4060,36 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: rvol 0.0x"
+    },
+    {
+      "ticker": "AMCI",
+      "name": "AMC ROBOTICS",
+      "price": 1.94,
+      "change_pct": -14.725274725274723,
+      "volume": 81620,
+      "rvol": 1.1821104770732556,
+      "market_cap": 45472942.34,
+      "float_shares": 4509513,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 81,620, vol/float 0.02x"
+    },
+    {
+      "ticker": "AIOK",
+      "name": "AI Okto Corp",
+      "price": 10.78,
+      "change_pct": -14.647664291369763,
+      "volume": 1174316,
+      "rvol": 0.09111472454562164,
+      "market_cap": 46568694.48,
+      "float_shares": 4319916,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "International (region 48)",
+      "passed": false,
+      "reason": "Filtered: rvol 0.1x"
     },
     {
       "ticker": "SCAG",
@@ -4393,13 +4143,13 @@
       "change_pct": -14.175257731958766,
       "volume": 231854,
       "rvol": 1.211864938323228,
-      "market_cap": 216007281.5,
+      "market_cap": 216223505.0,
       "float_shares": 21758844,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: mktcap $216.0M, vol/float 0.01x"
+      "reason": "Filtered: mktcap $216.2M, vol/float 0.01x"
     },
     {
       "ticker": "FCHL",
@@ -4417,19 +4167,34 @@
       "reason": "Filtered: mktcap $1.1M, rvol 1.0x, vol 35,537, vol/float 0.03x"
     },
     {
-      "ticker": "AIOK",
-      "name": "AI Okto Corp",
-      "price": 10.89,
-      "change_pct": -13.776722090261284,
-      "volume": 1172445,
-      "rvol": 0.09096955437879699,
-      "market_cap": 47043885.24,
-      "float_shares": 4319916,
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "price": 0.04,
+      "change_pct": 0.5025125628140673,
+      "volume": 59344648,
+      "rvol": 0.5419245876666364,
+      "market_cap": 40904.13,
+      "float_shares": 930097,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "International (region 48)",
+      "is_penny_stock": true,
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: rvol 0.1x"
+      "reason": "Filtered: price $0.040, mktcap $0.0M, rvol 0.5x"
+    },
+    {
+      "ticker": "GTEC",
+      "name": "Greenland Technologies Hldg",
+      "price": 0.5,
+      "change_pct": -13.807964144113077,
+      "volume": 437084,
+      "rvol": 2.2880624829867875,
+      "market_cap": 13272111.0,
+      "float_shares": 20335982,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x"
     },
     {
       "ticker": "AOMR",
@@ -4447,28 +4212,28 @@
       "reason": "Filtered: vol/float 0.01x"
     },
     {
-      "ticker": "SHFS",
-      "name": "SHF Holdings Inc",
-      "price": 0.04,
-      "change_pct": 0.2506265664160473,
-      "volume": 59294039,
-      "rvol": 0.5414624354358705,
-      "market_cap": 41006.91,
-      "float_shares": 930097,
+      "ticker": "CDT",
+      "name": "CDT Equity",
+      "price": 0.061,
+      "change_pct": 0.8264462809917362,
+      "volume": 2533237,
+      "rvol": 0.05309716687825644,
+      "market_cap": 566826.54,
+      "float_shares": 4409271,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.040, mktcap $0.0M, rvol 0.5x"
+      "reason": "Filtered: price $0.061, mktcap $0.6M, rvol 0.1x"
     },
     {
       "ticker": "NTWK",
       "name": "Netsol Technologies Inc",
-      "price": 6.92,
-      "change_pct": -13.5,
-      "volume": 138984,
-      "rvol": 0.730917696555351,
-      "market_cap": 82711770.56,
+      "price": 6.93,
+      "change_pct": -13.375000000000004,
+      "volume": 139313,
+      "rvol": 0.732647909545096,
+      "market_cap": 82831296.24,
       "float_shares": 9066494,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -4481,8 +4246,8 @@
       "name": "International Mny Express Inc",
       "price": 8.3,
       "change_pct": -12.815126050420156,
-      "volume": 567311,
-      "rvol": 0.9458667275779912,
+      "volume": 568149,
+      "rvol": 0.9472639088731016,
       "market_cap": 250756504.1,
       "float_shares": 27718072,
       "cap_size": "micro-cap",
@@ -4493,6 +4258,99 @@
     }
   ],
   "live_quotes": {
+    "RDAC": {
+      "price": 11.2,
+      "open": 11.0,
+      "high": 11.3,
+      "low": 10.9,
+      "close": 11.2,
+      "preClose": 5.1,
+      "volume": 8601789,
+      "changeRatio": 1.1961,
+      "marketValue": 38475998.4,
+      "name": "Rising Dragon",
+      "_timestamp": "2026-11-03T17:53:55.923081Z"
+    },
+    "IBTA": {
+      "price": 64.81,
+      "open": 58.6,
+      "high": 66.39,
+      "low": 53.65,
+      "close": 64.81,
+      "preClose": 50.07,
+      "volume": 888928,
+      "changeRatio": 0.2944,
+      "marketValue": 1501622683.34,
+      "name": "Ibotta",
+      "_timestamp": "2026-11-03T17:53:55.923103Z"
+    },
+    "CRIS": {
+      "price": 1.06,
+      "open": 0.72,
+      "high": 1.5,
+      "low": 0.69,
+      "close": 1.06,
+      "preClose": 0.661,
+      "volume": 18205326,
+      "changeRatio": 0.6036,
+      "marketValue": 4350994.72,
+      "name": "Curis",
+      "_timestamp": "2026-11-03T17:53:55.923111Z"
+    },
+    "MERC": {
+      "price": 0.2063,
+      "open": 0.22,
+      "high": 0.3579,
+      "low": 0.1823,
+      "close": 0.2063,
+      "preClose": 0.126,
+      "volume": 527597904,
+      "changeRatio": 0.6373,
+      "marketValue": 13825820.21,
+      "name": "Mercer Intl",
+      "_timestamp": "2026-11-03T17:53:55.923117Z"
+    },
+    "EHGO": {
+      "price": 2.514,
+      "open": 2.25,
+      "high": 2.84,
+      "low": 2.1,
+      "close": 2.514,
+      "preClose": 1.91,
+      "volume": 20808175,
+      "changeRatio": 0.316,
+      "marketValue": 2967342.5,
+      "name": "Eshallgo Inc",
+      "_timestamp": "2026-11-03T17:53:55.923123Z"
+    },
+    "CNSY": {
+      "price": 1.3,
+      "open": 1.7,
+      "high": 4.25,
+      "low": 1.16,
+      "close": 1.3,
+      "preClose": 1.71,
+      "volume": 27651846,
+      "changeRatio": -0.2398,
+      "marketValue": 9866512.5,
+      "name": "Cerenome, Inc",
+      "_timestamp": "2026-11-03T17:53:55.923128Z"
+    },
+    "PARA": {
+      "price": 3.059,
+      "open": 0.0,
+      "high": 8.9,
+      "low": 2.69,
+      "close": 3.059,
+      "preClose": 3.17,
+      "volume": 82671651,
+      "changeRatio": 0.8102,
+      "marketValue": 1594213.47,
+      "name": "PARABOLIC TECHNOLOGIES INC",
+      "_timestamp": "2026-11-03T17:53:55.923132Z"
+    }
+  },
+  "previous_live_quotes": {
     "CNSY": {
       "price": 1.3,
       "open": 1.7,
@@ -4585,117 +4443,11 @@
       "_timestamp": "2026-11-03T17:52:55.831811Z"
     }
   },
-  "previous_live_quotes": {
-    "IBTA": {
-      "price": 64.61,
-      "open": 58.6,
-      "high": 66.39,
-      "low": 53.65,
-      "close": 64.61,
-      "preClose": 50.07,
-      "volume": 873467,
-      "changeRatio": 0.2904,
-      "marketValue": 1496988760.54,
-      "name": "Ibotta",
-      "_timestamp": "2026-11-03T17:51:55.924448Z"
-    },
-    "PARA": {
-      "price": 2.841,
-      "open": 0.0,
-      "high": 8.9,
-      "low": 2.69,
-      "close": 2.841,
-      "preClose": 3.17,
-      "volume": 82262299,
-      "changeRatio": 0.681,
-      "marketValue": 1480404.35,
-      "name": "PARABOLIC TECHNOLOGIES INC",
-      "_timestamp": "2026-11-03T17:51:55.924477Z"
-    },
-    "CNSY": {
-      "price": 1.29,
-      "open": 1.7,
-      "high": 4.25,
-      "low": 1.16,
-      "close": 1.29,
-      "preClose": 1.71,
-      "volume": 27638884,
-      "changeRatio": -0.2456,
-      "marketValue": 9790616.25,
-      "name": "Cerenome, Inc",
-      "_timestamp": "2026-11-03T17:51:55.924490Z"
-    },
-    "CHSN": {
-      "price": 1.291,
-      "open": 1.067,
-      "high": 1.38,
-      "low": 1.05,
-      "close": 1.291,
-      "preClose": 0.9905,
-      "volume": 2095298,
-      "changeRatio": 0.3029,
-      "marketValue": 2997045.59,
-      "name": "CHANSON INTL HLDG",
-      "_timestamp": "2026-11-03T17:51:55.924499Z"
-    },
-    "MERC": {
-      "price": 0.206,
-      "open": 0.22,
-      "high": 0.3579,
-      "low": 0.1823,
-      "close": 0.206,
-      "preClose": 0.126,
-      "volume": 526360706,
-      "changeRatio": 0.6349,
-      "marketValue": 13805714.8,
-      "name": "Mercer Intl",
-      "_timestamp": "2026-11-03T17:51:55.924508Z"
-    },
-    "ATHE": {
-      "price": 2.82,
-      "open": 2.1,
-      "high": 3.289,
-      "low": 2.1,
-      "close": 2.82,
-      "preClose": 2.09,
-      "volume": 3079401,
-      "changeRatio": 0.3493,
-      "marketValue": 53850449.28,
-      "name": "Alterity Therapeutics Ltd",
-      "_timestamp": "2026-11-03T17:51:55.924516Z"
-    },
-    "RDAC": {
-      "price": 11.16,
-      "open": 11.0,
-      "high": 11.3,
-      "low": 10.9,
-      "close": 11.16,
-      "preClose": 5.1,
-      "volume": 8598981,
-      "changeRatio": 1.1882,
-      "marketValue": 38338584.12,
-      "name": "Rising Dragon",
-      "_timestamp": "2026-11-03T17:51:55.924524Z"
-    },
-    "CRIS": {
-      "price": 1.06,
-      "open": 0.72,
-      "high": 1.5,
-      "low": 0.69,
-      "close": 1.06,
-      "preClose": 0.661,
-      "volume": 18205326,
-      "changeRatio": 0.6036,
-      "marketValue": 4350994.72,
-      "name": "Curis",
-      "_timestamp": "2026-11-03T17:51:55.924530Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "OPEN",
-    "market_time": "04:52 AM AEDT",
+    "market_time": "04:53 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
