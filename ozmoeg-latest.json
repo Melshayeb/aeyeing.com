@@ -1,14 +1,151 @@
 {
-  "last_updated": "2026-11-04T00:34:58.608934Z",
+  "last_updated": "2026-11-04T00:36:55.467882Z",
   "scan_results": [
+    {
+      "ticker": "CRIS",
+      "name": "Curis",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.0,
+      "change_pct": 40.07564084605688,
+      "volume": 50599830,
+      "market_cap": 2930353.9,
+      "float_shares": 3948184,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
+      "result": "+40.1% \u00b7 Entry $1.00 \u00b7 T1 $1.04 \u00b7 T2 $1.06 \u00b7 T3 $1.10",
+      "plan": {
+        "valid": true,
+        "ticker": "CRIS",
+        "entry": 1.0,
+        "stop": 0.98,
+        "targets": {
+          "t1": 1.04,
+          "t2": 1.06,
+          "t3": 1.1
+        },
+        "risk_per_share": 0.02,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 300,
+        "position_value": 300.0,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.98"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CRIS",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Curis prices $8.5M private placement offering",
+            "flag": "offering"
+          },
+          {
+            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "CRIS",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 47.52,
+        "volume_indicator": "high",
+        "volume": 50599830,
+        "adv": 1064748,
+        "recent_pct_of_adv": 4752.28,
+        "volume_acceleration": -0.968,
+        "price_velocity_pct": 33.898,
+        "buy_pressure_pct": 50.62,
+        "large_bar_count": 152,
+        "vwap_distance_pct": 33.187,
+        "recent_volume": 50599830,
+        "prior_volume": 0,
+        "median_range": 0.0149,
+        "last_price": 0.7139,
+        "vwap": 1.0685097467180769,
+        "last_trade_time": "2026-11-04T00:36:41.723000+00:00",
+        "stale_age_seconds": 11
+      },
+      "date": "2026-11-04",
+      "time": "11:36:53",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.0
+    },
     {
       "ticker": "CCXI",
       "name": "Churchill Capital Corp XI",
       "status": "ALERT",
       "source": "regular",
-      "price": 11.44,
-      "change_pct": 7.015902712815716,
-      "volume": 4623621,
+      "price": 11.47,
+      "change_pct": 7.296538821328355,
+      "volume": 4623674,
       "market_cap": 595433000.0,
       "float_shares": 39249823,
       "country": "United States",
@@ -17,23 +154,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Nov 02), 8-K (Oct 30), 8-K (Oct 13)",
-      "result": "+7.0% \u00b7 Entry $11.44 \u00b7 T1 $11.90 \u00b7 T2 $12.13 \u00b7 T3 $12.58",
+      "result": "+7.3% \u00b7 Entry $11.47 \u00b7 T1 $11.93 \u00b7 T2 $12.16 \u00b7 T3 $12.62",
       "plan": {
         "valid": true,
         "ticker": "CCXI",
-        "entry": 11.44,
-        "stop": 11.2112,
+        "entry": 11.47,
+        "stop": 11.2406,
         "targets": {
-          "t1": 11.8976,
-          "t2": 12.1264,
-          "t3": 12.584
+          "t1": 11.9288,
+          "t2": 12.1582,
+          "t3": 12.617
         },
-        "risk_per_share": 0.2288,
+        "risk_per_share": 0.2294,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
         "shares": 26,
-        "position_value": 297.44,
+        "position_value": 298.22,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +178,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$11.2112"
+          "hard_stop": "$11.2406"
         }
       },
       "ta": {
@@ -165,7 +302,7 @@
         "tape_score": 5.0,
         "rvol": 1.57,
         "volume_indicator": "moderate",
-        "volume": 4623621,
+        "volume": 4623674,
         "adv": 2953151,
         "recent_pct_of_adv": 156.57,
         "volume_acceleration": -0.565,
@@ -173,53 +310,53 @@
         "buy_pressure_pct": 52.51,
         "large_bar_count": 168,
         "vwap_distance_pct": 2.906,
-        "recent_volume": 4623621,
+        "recent_volume": 4623674,
         "prior_volume": 0,
         "median_range": 0.0191,
         "last_price": 10.69,
         "vwap": 10.388084217506357,
-        "last_trade_time": "2026-11-04T00:34:41.081000+00:00",
-        "stale_age_seconds": 118
+        "last_trade_time": "2026-11-04T00:35:35.429000+00:00",
+        "stale_age_seconds": 235
       },
       "date": "2026-11-04",
-      "time": "11:34:56",
+      "time": "11:36:53",
       "skip_news_check": true,
       "red_flag": false,
       "previous_price": 11.44
     },
     {
-      "ticker": "ONEG",
-      "name": "OneConstruction Group Limited",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.62,
-      "change_pct": 0.0,
-      "volume": 4631282,
-      "market_cap": 24320000.0,
-      "float_shares": 7000000,
-      "country": "China / Hong Kong",
+      "ticker": "HPAI",
+      "name": "Helport AI Ltd",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.366,
+      "change_pct": 52.119700748129674,
+      "volume": 28798147,
+      "market_cap": 9057846.55,
+      "float_shares": 8093751,
+      "country": "Singapore",
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (52.1%, rvol 32.0x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+0.0% \u00b7 Entry $1.62 \u00b7 T1 $1.68 \u00b7 T2 $1.72 \u00b7 T3 $1.78",
+      "result": "Top-10 gainer tape momentum \u00b7 +52.1%",
       "plan": {
         "valid": true,
-        "ticker": "ONEG",
-        "entry": 1.62,
-        "stop": 1.5876,
+        "ticker": "HPAI",
+        "entry": 0.366,
+        "stop": 0.3587,
         "targets": {
-          "t1": 1.6848,
-          "t2": 1.7172,
-          "t3": 1.782
+          "t1": 0.3806,
+          "t2": 0.3879,
+          "t3": 0.4025
         },
-        "risk_per_share": 0.0324,
+        "risk_per_share": 0.0073,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 185,
-        "position_value": 299.7,
+        "shares": 819,
+        "position_value": 299.75,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -227,7 +364,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.5876"
+          "hard_stop": "$0.3587"
         }
       },
       "ta": {
@@ -235,50 +372,32 @@
         "error": "No bar data"
       },
       "news": {
-        "ticker": "ONEG",
+        "ticker": "HPAI",
         "total_items": 20,
         "scored_items": [
           {
-            "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
+            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
+            "source": "Webull",
+            "time": "1h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T23:00:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T21:35:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
             "source": "Webull",
             "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T12:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ONEG last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:49:53.391+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T17:05:39.000+0000",
+            "raw_time": "2026-11-02T09:00:22.719+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -286,46 +405,28 @@
         ],
         "headlines": [
           {
-            "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
+            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
+            "source": "Webull",
+            "time": "1h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T23:00:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T21:35:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
             "source": "Webull",
             "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T12:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ONEG last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:49:53.391+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T17:05:39.000+0000",
+            "raw_time": "2026-11-02T09:00:22.719+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -336,209 +437,72 @@
         "avg_score": 0.0,
         "catalyst_confirmed": false,
         "high_impact_count": 0,
-        "top_headline": "12 Industrials Stocks Moving In Monday's After-Market Session",
+        "top_headline": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
         "news_filter_reason": "low catalyst score (max 0/5)"
       },
       "tape": {
-        "ticker": "ONEG",
+        "ticker": "HPAI",
         "valid": true,
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.47,
+        "rvol": 32.03,
         "volume_indicator": "high",
-        "volume": 4631282,
-        "adv": 1875186,
-        "recent_pct_of_adv": 246.98,
-        "volume_acceleration": -0.841,
-        "price_velocity_pct": 5.684,
-        "buy_pressure_pct": 51.3,
-        "large_bar_count": 192,
-        "vwap_distance_pct": 6.524,
-        "recent_volume": 4631282,
+        "volume": 28798147,
+        "adv": 898971,
+        "recent_pct_of_adv": 3203.46,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 37.147,
+        "buy_pressure_pct": 51.34,
+        "large_bar_count": 28,
+        "vwap_distance_pct": 1.377,
+        "recent_volume": 28798147,
         "prior_volume": 0,
-        "median_range": 0.005,
-        "last_price": 1.52,
-        "vwap": 1.6260809590870058,
-        "last_trade_time": "2026-11-04T00:33:36.370000+00:00",
-        "stale_age_seconds": 79
+        "median_range": 0.0101,
+        "last_price": 0.2406,
+        "vwap": 0.23733287018810267,
+        "last_trade_time": "2026-11-04T00:36:41.995000+00:00",
+        "stale_age_seconds": 10
       },
       "date": "2026-11-04",
-      "time": "11:34:56",
+      "time": "11:36:54",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": null
-    },
-    {
-      "ticker": "CRIS",
-      "name": "Curis",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.0,
-      "change_pct": 40.07564084605688,
-      "volume": 50558743,
-      "market_cap": 2930353.9,
-      "float_shares": 3948184,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
-      "result": "+40.1% \u00b7 Entry $1.00 \u00b7 T1 $1.04 \u00b7 T2 $1.06 \u00b7 T3 $1.10",
-      "plan": {
-        "valid": true,
-        "ticker": "CRIS",
-        "entry": 1.0,
-        "stop": 0.98,
-        "targets": {
-          "t1": 1.04,
-          "t2": 1.06,
-          "t3": 1.1
-        },
-        "risk_per_share": 0.02,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 300,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.98"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CRIS",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Curis prices $8.5M private placement offering",
-            "flag": "offering"
-          },
-          {
-            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "CRIS",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 47.48,
-        "volume_indicator": "high",
-        "volume": 50558743,
-        "adv": 1064748,
-        "recent_pct_of_adv": 4748.42,
-        "volume_acceleration": -0.966,
-        "price_velocity_pct": 39.061,
-        "buy_pressure_pct": 50.41,
-        "large_bar_count": 150,
-        "vwap_distance_pct": 33.187,
-        "recent_volume": 50558743,
-        "prior_volume": 0,
-        "median_range": 0.015,
-        "last_price": 0.7139,
-        "vwap": 1.0685097467180769,
-        "last_trade_time": "2026-11-04T00:34:40.490000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-04",
-      "time": "11:34:56",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.986
+      "previous_price": 0.375
     },
     {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 2.06,
-      "change_pct": 37.333333333333336,
-      "volume": 9305656,
+      "price": 2.07,
+      "change_pct": 37.999999999999986,
+      "volume": 9307634,
       "market_cap": 88699.36,
       "float_shares": 31797,
       "country": "China / Hong Kong",
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (37.3%, rvol 17.3x)",
+      "scan_reason": "Top gainer tape exempt (38.0%, rvol 17.3x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +37.3%",
+      "result": "Top-10 gainer tape momentum \u00b7 +38.0%",
       "plan": {
         "valid": true,
         "ticker": "DKI",
-        "entry": 2.06,
-        "stop": 2.0188,
+        "entry": 2.07,
+        "stop": 2.0286,
         "targets": {
-          "t1": 2.1424,
-          "t2": 2.1836,
-          "t3": 2.266
+          "t1": 2.1528,
+          "t2": 2.1942,
+          "t3": 2.277
         },
-        "risk_per_share": 0.0412,
+        "risk_per_share": 0.0414,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 145,
-        "position_value": 298.7,
+        "shares": 144,
+        "position_value": 298.08,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -546,7 +510,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0188"
+          "hard_stop": "$2.0286"
         }
       },
       "ta": {
@@ -612,184 +576,175 @@
         "tape_score": 8.0,
         "rvol": 17.28,
         "volume_indicator": "high",
-        "volume": 9305656,
+        "volume": 9307634,
         "adv": 538656,
-        "recent_pct_of_adv": 1727.57,
+        "recent_pct_of_adv": 1727.94,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 26.471,
+        "price_velocity_pct": 27.184,
         "buy_pressure_pct": 49.04,
         "large_bar_count": 85,
         "vwap_distance_pct": 0.029,
-        "recent_volume": 9305656,
+        "recent_volume": 9307634,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.5,
         "vwap": 1.4995667845946858,
-        "last_trade_time": "2026-11-04T00:34:39.859000+00:00",
-        "stale_age_seconds": 16
+        "last_trade_time": "2026-11-04T00:36:11.365000+00:00",
+        "stale_age_seconds": 41
       },
       "date": "2026-11-04",
-      "time": "11:34:57",
+      "time": "11:36:54",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 2.07
-    },
-    {
-      "ticker": "HPAI",
-      "name": "Helport AI Ltd",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.375,
-      "change_pct": 55.86034912718204,
-      "volume": 28692704,
-      "market_cap": 9057846.55,
-      "float_shares": 8093751,
-      "country": "Singapore",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (55.9%, rvol 31.9x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +55.9%",
-      "plan": {
-        "valid": true,
-        "ticker": "HPAI",
-        "entry": 0.375,
-        "stop": 0.3675,
-        "targets": {
-          "t1": 0.39,
-          "t2": 0.3975,
-          "t3": 0.4125
-        },
-        "risk_per_share": 0.0075,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 800,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.3675"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "HPAI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-            "source": "Webull",
-            "time": "1h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T23:00:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
-            "source": "Webull",
-            "time": "2h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T21:35:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:00:22.719+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-            "source": "Webull",
-            "time": "1h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T23:00:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
-            "source": "Webull",
-            "time": "2h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T21:35:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:00:22.719+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "HPAI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 31.92,
-        "volume_indicator": "high",
-        "volume": 28692704,
-        "adv": 898971,
-        "recent_pct_of_adv": 3191.73,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 38.276,
-        "buy_pressure_pct": 51.49,
-        "large_bar_count": 28,
-        "vwap_distance_pct": 1.377,
-        "recent_volume": 28692704,
-        "prior_volume": 0,
-        "median_range": 0.0101,
-        "last_price": 0.2406,
-        "vwap": 0.23733287018810267,
-        "last_trade_time": "2026-11-04T00:34:41.266000+00:00",
-        "stale_age_seconds": 14
-      },
-      "date": "2026-11-04",
-      "time": "11:34:57",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.378
+      "previous_price": 2.06
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "CRIS",
+      "name": "Curis",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.0,
+      "change_pct": 40.07564084605688,
+      "volume": 50599830,
+      "market_cap": 2930353.9,
+      "float_shares": 3948184,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
+      "result": "+40.1% \u00b7 Entry $1.00 \u00b7 T1 $1.04 \u00b7 T2 $1.06 \u00b7 T3 $1.10",
+      "plan": {
+        "valid": true,
+        "ticker": "CRIS",
+        "entry": 1.0,
+        "stop": 0.98,
+        "targets": {
+          "t1": 1.04,
+          "t2": 1.06,
+          "t3": 1.1
+        },
+        "risk_per_share": 0.02,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 300,
+        "position_value": 300.0,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.98"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CRIS",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:47:25.171+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:05:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Curis prices $8.5M private placement offering",
+            "flag": "offering"
+          },
+          {
+            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "CRIS",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 47.52,
+        "volume_indicator": "high",
+        "volume": 50599830,
+        "adv": 1064748,
+        "recent_pct_of_adv": 4752.28,
+        "volume_acceleration": -0.968,
+        "price_velocity_pct": 33.898,
+        "buy_pressure_pct": 50.62,
+        "large_bar_count": 152,
+        "vwap_distance_pct": 33.187,
+        "recent_volume": 50599830,
+        "prior_volume": 0,
+        "median_range": 0.0149,
+        "last_price": 0.7139,
+        "vwap": 1.0685097467180769,
+        "last_trade_time": "2026-11-04T00:36:41.723000+00:00",
+        "stale_age_seconds": 11
+      },
+      "date": "2026-11-04",
+      "time": "11:36:53",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 1.0
+    },
+    {
       "ticker": "CCXI",
       "name": "Churchill Capital Corp XI",
       "status": "ALERT",
       "source": "regular",
-      "price": 11.44,
-      "change_pct": 7.015902712815716,
-      "volume": 4623621,
+      "price": 11.47,
+      "change_pct": 7.296538821328355,
+      "volume": 4623674,
       "market_cap": 595433000.0,
       "float_shares": 39249823,
       "country": "United States",
@@ -798,23 +753,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "8-K (Nov 02), 8-K (Oct 30), 8-K (Oct 13)",
-      "result": "+7.0% \u00b7 Entry $11.44 \u00b7 T1 $11.90 \u00b7 T2 $12.13 \u00b7 T3 $12.58",
+      "result": "+7.3% \u00b7 Entry $11.47 \u00b7 T1 $11.93 \u00b7 T2 $12.16 \u00b7 T3 $12.62",
       "plan": {
         "valid": true,
         "ticker": "CCXI",
-        "entry": 11.44,
-        "stop": 11.2112,
+        "entry": 11.47,
+        "stop": 11.2406,
         "targets": {
-          "t1": 11.8976,
-          "t2": 12.1264,
-          "t3": 12.584
+          "t1": 11.9288,
+          "t2": 12.1582,
+          "t3": 12.617
         },
-        "risk_per_share": 0.2288,
+        "risk_per_share": 0.2294,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
         "shares": 26,
-        "position_value": 297.44,
+        "position_value": 298.22,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -822,7 +777,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$11.2112"
+          "hard_stop": "$11.2406"
         }
       },
       "ta": {
@@ -946,7 +901,7 @@
         "tape_score": 5.0,
         "rvol": 1.57,
         "volume_indicator": "moderate",
-        "volume": 4623621,
+        "volume": 4623674,
         "adv": 2953151,
         "recent_pct_of_adv": 156.57,
         "volume_acceleration": -0.565,
@@ -954,53 +909,53 @@
         "buy_pressure_pct": 52.51,
         "large_bar_count": 168,
         "vwap_distance_pct": 2.906,
-        "recent_volume": 4623621,
+        "recent_volume": 4623674,
         "prior_volume": 0,
         "median_range": 0.0191,
         "last_price": 10.69,
         "vwap": 10.388084217506357,
-        "last_trade_time": "2026-11-04T00:34:41.081000+00:00",
-        "stale_age_seconds": 118
+        "last_trade_time": "2026-11-04T00:35:35.429000+00:00",
+        "stale_age_seconds": 235
       },
       "date": "2026-11-04",
-      "time": "11:34:56",
+      "time": "11:36:53",
       "skip_news_check": true,
       "red_flag": false,
       "previous_price": 11.44
     },
     {
-      "ticker": "ONEG",
-      "name": "OneConstruction Group Limited",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.62,
-      "change_pct": 0.0,
-      "volume": 4631282,
-      "market_cap": 24320000.0,
-      "float_shares": 7000000,
-      "country": "China / Hong Kong",
+      "ticker": "HPAI",
+      "name": "Helport AI Ltd",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.366,
+      "change_pct": 52.119700748129674,
+      "volume": 28798147,
+      "market_cap": 9057846.55,
+      "float_shares": 8093751,
+      "country": "Singapore",
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (52.1%, rvol 32.0x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+0.0% \u00b7 Entry $1.62 \u00b7 T1 $1.68 \u00b7 T2 $1.72 \u00b7 T3 $1.78",
+      "result": "Top-10 gainer tape momentum \u00b7 +52.1%",
       "plan": {
         "valid": true,
-        "ticker": "ONEG",
-        "entry": 1.62,
-        "stop": 1.5876,
+        "ticker": "HPAI",
+        "entry": 0.366,
+        "stop": 0.3587,
         "targets": {
-          "t1": 1.6848,
-          "t2": 1.7172,
-          "t3": 1.782
+          "t1": 0.3806,
+          "t2": 0.3879,
+          "t3": 0.4025
         },
-        "risk_per_share": 0.0324,
+        "risk_per_share": 0.0073,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 185,
-        "position_value": 299.7,
+        "shares": 819,
+        "position_value": 299.75,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1008,7 +963,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.5876"
+          "hard_stop": "$0.3587"
         }
       },
       "ta": {
@@ -1016,50 +971,32 @@
         "error": "No bar data"
       },
       "news": {
-        "ticker": "ONEG",
+        "ticker": "HPAI",
         "total_items": 20,
         "scored_items": [
           {
-            "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
+            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
+            "source": "Webull",
+            "time": "1h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T23:00:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T21:35:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
             "source": "Webull",
             "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T12:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ONEG last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:49:53.391+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T17:05:39.000+0000",
+            "raw_time": "2026-11-02T09:00:22.719+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -1067,46 +1004,28 @@
         ],
         "headlines": [
           {
-            "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
+            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
+            "source": "Webull",
+            "time": "1h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T23:00:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
+            "source": "Webull",
+            "time": "3h ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T21:35:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
             "source": "Webull",
             "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T12:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at ONEG last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:49:53.391+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T17:05:39.000+0000",
+            "raw_time": "2026-11-02T09:00:22.719+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -1117,209 +1036,72 @@
         "avg_score": 0.0,
         "catalyst_confirmed": false,
         "high_impact_count": 0,
-        "top_headline": "12 Industrials Stocks Moving In Monday's After-Market Session",
+        "top_headline": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
         "news_filter_reason": "low catalyst score (max 0/5)"
       },
       "tape": {
-        "ticker": "ONEG",
+        "ticker": "HPAI",
         "valid": true,
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.47,
+        "rvol": 32.03,
         "volume_indicator": "high",
-        "volume": 4631282,
-        "adv": 1875186,
-        "recent_pct_of_adv": 246.98,
-        "volume_acceleration": -0.841,
-        "price_velocity_pct": 5.684,
-        "buy_pressure_pct": 51.3,
-        "large_bar_count": 192,
-        "vwap_distance_pct": 6.524,
-        "recent_volume": 4631282,
+        "volume": 28798147,
+        "adv": 898971,
+        "recent_pct_of_adv": 3203.46,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 37.147,
+        "buy_pressure_pct": 51.34,
+        "large_bar_count": 28,
+        "vwap_distance_pct": 1.377,
+        "recent_volume": 28798147,
         "prior_volume": 0,
-        "median_range": 0.005,
-        "last_price": 1.52,
-        "vwap": 1.6260809590870058,
-        "last_trade_time": "2026-11-04T00:33:36.370000+00:00",
-        "stale_age_seconds": 79
+        "median_range": 0.0101,
+        "last_price": 0.2406,
+        "vwap": 0.23733287018810267,
+        "last_trade_time": "2026-11-04T00:36:41.995000+00:00",
+        "stale_age_seconds": 10
       },
       "date": "2026-11-04",
-      "time": "11:34:56",
+      "time": "11:36:54",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": null
-    },
-    {
-      "ticker": "CRIS",
-      "name": "Curis",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 1.0,
-      "change_pct": 40.07564084605688,
-      "volume": 50558743,
-      "market_cap": 2930353.9,
-      "float_shares": 3948184,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
-      "result": "+40.1% \u00b7 Entry $1.00 \u00b7 T1 $1.04 \u00b7 T2 $1.06 \u00b7 T3 $1.10",
-      "plan": {
-        "valid": true,
-        "ticker": "CRIS",
-        "entry": 1.0,
-        "stop": 0.98,
-        "targets": {
-          "t1": 1.04,
-          "t2": 1.06,
-          "t3": 1.1
-        },
-        "risk_per_share": 0.02,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 300,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.98"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CRIS",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:47:25.171+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:05:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Curis prices $8.5M private placement offering",
-            "flag": "offering"
-          },
-          {
-            "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "CRIS",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 47.48,
-        "volume_indicator": "high",
-        "volume": 50558743,
-        "adv": 1064748,
-        "recent_pct_of_adv": 4748.42,
-        "volume_acceleration": -0.966,
-        "price_velocity_pct": 39.061,
-        "buy_pressure_pct": 50.41,
-        "large_bar_count": 150,
-        "vwap_distance_pct": 33.187,
-        "recent_volume": 50558743,
-        "prior_volume": 0,
-        "median_range": 0.015,
-        "last_price": 0.7139,
-        "vwap": 1.0685097467180769,
-        "last_trade_time": "2026-11-04T00:34:40.490000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-04",
-      "time": "11:34:56",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.986
+      "previous_price": 0.375
     },
     {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 2.06,
-      "change_pct": 37.333333333333336,
-      "volume": 9305656,
+      "price": 2.07,
+      "change_pct": 37.999999999999986,
+      "volume": 9307634,
       "market_cap": 88699.36,
       "float_shares": 31797,
       "country": "China / Hong Kong",
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (37.3%, rvol 17.3x)",
+      "scan_reason": "Top gainer tape exempt (38.0%, rvol 17.3x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +37.3%",
+      "result": "Top-10 gainer tape momentum \u00b7 +38.0%",
       "plan": {
         "valid": true,
         "ticker": "DKI",
-        "entry": 2.06,
-        "stop": 2.0188,
+        "entry": 2.07,
+        "stop": 2.0286,
         "targets": {
-          "t1": 2.1424,
-          "t2": 2.1836,
-          "t3": 2.266
+          "t1": 2.1528,
+          "t2": 2.1942,
+          "t3": 2.277
         },
-        "risk_per_share": 0.0412,
+        "risk_per_share": 0.0414,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 145,
-        "position_value": 298.7,
+        "shares": 144,
+        "position_value": 298.08,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1327,7 +1109,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.0188"
+          "hard_stop": "$2.0286"
         }
       },
       "ta": {
@@ -1393,211 +1175,65 @@
         "tape_score": 8.0,
         "rvol": 17.28,
         "volume_indicator": "high",
-        "volume": 9305656,
+        "volume": 9307634,
         "adv": 538656,
-        "recent_pct_of_adv": 1727.57,
+        "recent_pct_of_adv": 1727.94,
         "volume_acceleration": -1.0,
-        "price_velocity_pct": 26.471,
+        "price_velocity_pct": 27.184,
         "buy_pressure_pct": 49.04,
         "large_bar_count": 85,
         "vwap_distance_pct": 0.029,
-        "recent_volume": 9305656,
+        "recent_volume": 9307634,
         "prior_volume": 0,
         "median_range": 0.02,
         "last_price": 1.5,
         "vwap": 1.4995667845946858,
-        "last_trade_time": "2026-11-04T00:34:39.859000+00:00",
-        "stale_age_seconds": 16
+        "last_trade_time": "2026-11-04T00:36:11.365000+00:00",
+        "stale_age_seconds": 41
       },
       "date": "2026-11-04",
-      "time": "11:34:57",
+      "time": "11:36:54",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 2.07
-    },
-    {
-      "ticker": "HPAI",
-      "name": "Helport AI Ltd",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.375,
-      "change_pct": 55.86034912718204,
-      "volume": 28692704,
-      "market_cap": 9057846.55,
-      "float_shares": 8093751,
-      "country": "Singapore",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (55.9%, rvol 31.9x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +55.9%",
-      "plan": {
-        "valid": true,
-        "ticker": "HPAI",
-        "entry": 0.375,
-        "stop": 0.3675,
-        "targets": {
-          "t1": 0.39,
-          "t2": 0.3975,
-          "t3": 0.4125
-        },
-        "risk_per_share": 0.0075,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 800,
-        "position_value": 300.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.3675"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "HPAI",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-            "source": "Webull",
-            "time": "1h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T23:00:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
-            "source": "Webull",
-            "time": "2h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T21:35:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:00:22.719+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-            "source": "Webull",
-            "time": "1h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T23:00:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Helport AI Appoints Ran Ding as Chief Financial Officer",
-            "source": "Webull",
-            "time": "2h ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T21:35:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at HPAI last week (1026-1030)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:00:22.719+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Helport AI Reports Delayed Annual Filing and Loss Outlook",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "HPAI",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 31.92,
-        "volume_indicator": "high",
-        "volume": 28692704,
-        "adv": 898971,
-        "recent_pct_of_adv": 3191.73,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 38.276,
-        "buy_pressure_pct": 51.49,
-        "large_bar_count": 28,
-        "vwap_distance_pct": 1.377,
-        "recent_volume": 28692704,
-        "prior_volume": 0,
-        "median_range": 0.0101,
-        "last_price": 0.2406,
-        "vwap": 0.23733287018810267,
-        "last_trade_time": "2026-11-04T00:34:41.266000+00:00",
-        "stale_age_seconds": 14
-      },
-      "date": "2026-11-04",
-      "time": "11:34:57",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.378
+      "previous_price": 2.06
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "CCXI",
-    "name": "Churchill Capital Corp XI",
+    "ticker": "CRIS",
+    "name": "Curis",
     "status": "ALERT",
     "source": "regular",
-    "price": 11.44,
-    "change_pct": 7.015902712815716,
-    "volume": 4623621,
-    "market_cap": 595433000.0,
-    "float_shares": 39249823,
+    "price": 1.0,
+    "change_pct": 40.07564084605688,
+    "volume": 50599830,
+    "market_cap": 2930353.9,
+    "float_shares": 3948184,
     "country": "United States",
-    "cap_size": "small-cap",
+    "cap_size": "nano-cap",
     "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "8-K (Nov 02), 8-K (Oct 30), 8-K (Oct 13)",
-    "result": "+7.0% \u00b7 Entry $11.44 \u00b7 T1 $11.90 \u00b7 T2 $12.13 \u00b7 T3 $12.58",
+    "sec_filings": "8-K (Oct 19), 424B4 (Aug 13), S-1 (Aug 10)",
+    "result": "+40.1% \u00b7 Entry $1.00 \u00b7 T1 $1.04 \u00b7 T2 $1.06 \u00b7 T3 $1.10",
     "plan": {
       "valid": true,
-      "ticker": "CCXI",
-      "entry": 11.44,
-      "stop": 11.2112,
+      "ticker": "CRIS",
+      "entry": 1.0,
+      "stop": 0.98,
       "targets": {
-        "t1": 11.8976,
-        "t2": 12.1264,
-        "t3": 12.584
+        "t1": 1.04,
+        "t2": 1.06,
+        "t3": 1.1
       },
-      "risk_per_share": 0.2288,
+      "risk_per_share": 0.02,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 26,
-      "position_value": 297.44,
+      "shares": 300,
+      "position_value": 300.0,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1605,7 +1241,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$11.2112"
+        "hard_stop": "$0.98"
       }
     },
     "ta": {
@@ -1613,52 +1249,23 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "CCXI",
+      "ticker": "CRIS",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "The only U.S. pure-play humanoid robotics stock begins trading this week",
-          "source": "Webull",
-          "time": "12h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T11:41:49.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Churchill Capital Corp XI call volume above normal and directionally bullish",
-          "source": "Webull",
-          "time": "7h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T17:05:13.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at CCXI last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
           "source": "Webull",
           "time": "1d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T10:34:15.433+0000",
+          "raw_time": "2026-11-02T09:47:25.171+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "3 things to look out for on Monday",
+          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
           "source": "Webull",
           "time": "4d ago \u00b7 30 Oct",
-          "raw_time": "2026-10-30T20:14:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Catalyst watch: Election drama, jobs report, Apple and McDonald's in the earnings confessional",
-          "source": "Webull",
-          "time": "4d ago \u00b7 30 Oct",
-          "raw_time": "2026-10-30T19:00:08.000+0000",
+          "raw_time": "2026-10-30T21:05:59.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1666,116 +1273,96 @@
       ],
       "headlines": [
         {
-          "title": "The only U.S. pure-play humanoid robotics stock begins trading this week",
-          "source": "Webull",
-          "time": "12h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T11:41:49.000+0000",
-          "url": "",
-          "score": 3,
-          "keywords": [
-            "robotics"
-          ]
-        },
-        {
-          "title": "Churchill Capital Corp XI call volume above normal and directionally bullish",
-          "source": "Webull",
-          "time": "7h ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T17:05:13.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at CCXI last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CRIS last week (1026-1030)?",
           "source": "Webull",
           "time": "1d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T10:34:15.433+0000",
+          "raw_time": "2026-11-02T09:47:25.171+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "3 things to look out for on Monday",
+          "title": "12 Health Care Stocks Moving In Friday's After-Market Session",
           "source": "Webull",
           "time": "4d ago \u00b7 30 Oct",
-          "raw_time": "2026-10-30T20:14:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Catalyst watch: Election drama, jobs report, Apple and McDonald's in the earnings confessional",
-          "source": "Webull",
-          "time": "4d ago \u00b7 30 Oct",
-          "raw_time": "2026-10-30T19:00:08.000+0000",
+          "raw_time": "2026-10-30T21:05:59.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         }
       ],
-      "red_flags": [],
-      "max_score": 3,
-      "avg_score": 0.6,
+      "red_flags": [
+        {
+          "title": "Curis prices $8.5M private placement offering",
+          "flag": "offering"
+        },
+        {
+          "title": "Curis Commences ~$8.5M Offering Of 16.666M Common Shares, Warrants At $0.51 Per Share",
+          "flag": "offering"
+        }
+      ],
+      "max_score": 0,
+      "avg_score": 0.0,
       "catalyst_confirmed": false,
-      "high_impact_count": 1,
-      "top_headline": "The only U.S. pure-play humanoid robotics stock begins trading this week",
-      "news_filter_reason": "low catalyst score (max 3/5)"
+      "high_impact_count": 0,
+      "top_headline": "Weekly Report: what happened at CRIS last week (1026-1030)?",
+      "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
     },
     "tape": {
-      "ticker": "CCXI",
+      "ticker": "CRIS",
       "valid": true,
       "stale": false,
       "no_move": false,
-      "tape_score": 5.0,
-      "rvol": 1.57,
-      "volume_indicator": "moderate",
-      "volume": 4623621,
-      "adv": 2953151,
-      "recent_pct_of_adv": 156.57,
-      "volume_acceleration": -0.565,
-      "price_velocity_pct": 0.944,
-      "buy_pressure_pct": 52.51,
-      "large_bar_count": 168,
-      "vwap_distance_pct": 2.906,
-      "recent_volume": 4623621,
+      "tape_score": 8.0,
+      "rvol": 47.52,
+      "volume_indicator": "high",
+      "volume": 50599830,
+      "adv": 1064748,
+      "recent_pct_of_adv": 4752.28,
+      "volume_acceleration": -0.968,
+      "price_velocity_pct": 33.898,
+      "buy_pressure_pct": 50.62,
+      "large_bar_count": 152,
+      "vwap_distance_pct": 33.187,
+      "recent_volume": 50599830,
       "prior_volume": 0,
-      "median_range": 0.0191,
-      "last_price": 10.69,
-      "vwap": 10.388084217506357,
-      "last_trade_time": "2026-11-04T00:34:41.081000+00:00",
-      "stale_age_seconds": 118
+      "median_range": 0.0149,
+      "last_price": 0.7139,
+      "vwap": 1.0685097467180769,
+      "last_trade_time": "2026-11-04T00:36:41.723000+00:00",
+      "stale_age_seconds": 11
     },
     "date": "2026-11-04",
-    "time": "11:34:56",
+    "time": "11:36:53",
     "skip_news_check": true,
-    "red_flag": false,
-    "previous_price": 11.44
+    "red_flag": true,
+    "previous_price": 1.0
   },
-  "total_candidates": 5,
-  "alerts_generated": 3,
+  "total_candidates": 4,
+  "alerts_generated": 2,
   "all_gainers": [
     {
       "ticker": "HPAI",
       "name": "Helport AI Ltd",
-      "price": 0.375,
-      "change_pct": 55.86034912718204,
-      "volume": 28692704,
-      "rvol": 12.935088564773261,
+      "price": 0.366,
+      "change_pct": 52.119700748129674,
+      "volume": 28798147,
+      "rvol": 12.982623803819932,
       "market_cap": 9057846.55,
       "float_shares": 8093751,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: tiny price $0.375"
+      "reason": "Filtered: tiny price $0.366"
     },
     {
       "ticker": "CRIS",
       "name": "Curis",
       "price": 1.0,
       "change_pct": 40.07564084605688,
-      "volume": 50558743,
-      "rvol": 6.495261206306367,
+      "volume": 50599830,
+      "rvol": 6.500539636531254,
       "market_cap": 2930353.9,
       "float_shares": 3948184,
       "cap_size": "nano-cap",
@@ -1787,10 +1374,10 @@
     {
       "ticker": "DKI",
       "name": "DARKIRIS INC.",
-      "price": 2.06,
-      "change_pct": 37.333333333333336,
-      "volume": 9305656,
-      "rvol": 4.163779595204452,
+      "price": 2.07,
+      "change_pct": 37.999999999999986,
+      "volume": 9307634,
+      "rvol": 4.164664643613646,
       "market_cap": 88699.36,
       "float_shares": 31797,
       "cap_size": "nano-cap",
@@ -1802,10 +1389,10 @@
     {
       "ticker": "GNTA",
       "name": "Genenta Science Spa",
-      "price": 1.187,
-      "change_pct": 20.50761421319798,
-      "volume": 313741,
-      "rvol": 1.01555009597426,
+      "price": 1.19,
+      "change_pct": 20.812182741116747,
+      "volume": 329979,
+      "rvol": 1.0681109740820944,
       "market_cap": 23237154.7,
       "float_shares": 13325924,
       "cap_size": "nano-cap",
@@ -1830,21 +1417,6 @@
       "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
-      "ticker": "XXII",
-      "name": "22Nd Century",
-      "price": 0.057,
-      "change_pct": 18.012422360248443,
-      "volume": 39205099,
-      "rvol": 0.46203115240566717,
-      "market_cap": 927466.16,
-      "float_shares": 19017385,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.057, mktcap $0.9M"
-    },
-    {
       "ticker": "AVAT",
       "name": "Avalanche Treasury Corp",
       "price": 1.045,
@@ -1860,12 +1432,27 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "XXII",
+      "name": "22Nd Century",
+      "price": 0.057,
+      "change_pct": 18.012422360248443,
+      "volume": 39286868,
+      "rvol": 0.46299479811157546,
+      "market_cap": 927466.16,
+      "float_shares": 19017385,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.057, mktcap $0.9M"
+    },
+    {
       "ticker": "CMTG",
       "name": "Claros Mtg Tr Inc",
-      "price": 1.25,
-      "change_pct": 9.649122807017553,
-      "volume": 463844,
-      "rvol": 0.7640650069019592,
+      "price": 1.26,
+      "change_pct": 10.526315789473696,
+      "volume": 468844,
+      "rvol": 0.7723012351047813,
       "market_cap": 156603468.66,
       "float_shares": 115073677,
       "cap_size": "micro-cap",
@@ -1875,12 +1462,27 @@
       "reason": "Filtered: float 115.1M > 100M, vol/float 0.00x < 0.1x"
     },
     {
+      "ticker": "MCRP",
+      "name": "Micropolis AI Robotics",
+      "price": 0.47,
+      "change_pct": 8.620291194823205,
+      "volume": 68835,
+      "rvol": 0.09510263236791532,
+      "market_cap": 14917402.22,
+      "float_shares": 9171770,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 181)",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.01x < 0.1x"
+    },
+    {
       "ticker": "CPSH",
       "name": "Cps Technologie",
-      "price": 3.9,
-      "change_pct": 10.169491525423725,
-      "volume": 174273,
-      "rvol": 1.097133036186447,
+      "price": 3.91,
+      "change_pct": 10.451977401129946,
+      "volume": 174293,
+      "rvol": 1.097258945884012,
       "market_cap": 67566977.87,
       "float_shares": 15982893,
       "cap_size": "micro-cap",
@@ -2040,6 +1642,21 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
+      "ticker": "LBGJ",
+      "name": "Li Bang International Corporation Inc.",
+      "price": 1.65,
+      "change_pct": 5.095541401273875,
+      "volume": 1304896,
+      "rvol": 6.910317582202263,
+      "market_cap": 1086951.78,
+      "float_shares": 620646,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: tiny avg $vol, avg $vol $0.3M < $2.0M"
+    },
+    {
       "ticker": "JOB",
       "name": "Gee Group",
       "price": 0.205,
@@ -2130,6 +1747,21 @@
       "reason": "Filtered: tiny price $0.903, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.04x, vol 46,330, vol/float 0.04x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "SAFX",
+      "name": "XCF GLOBAL INC",
+      "price": 0.114,
+      "change_pct": 7.6487252124645995,
+      "volume": 8609452,
+      "rvol": 1.1983524875469889,
+      "market_cap": 63613681.62,
+      "float_shares": 222535540,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.114, float 222.5M > 100M, vol/float 0.04x < 0.1x"
+    },
+    {
       "ticker": "WORX",
       "name": "Scworx Corp",
       "price": 1.532,
@@ -2143,21 +1775,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.06x, vol/float 0.06x < 0.1x, avg $vol $1.5M < $2.0M"
-    },
-    {
-      "ticker": "SAFX",
-      "name": "XCF GLOBAL INC",
-      "price": 0.113,
-      "change_pct": 6.704438149197364,
-      "volume": 8608952,
-      "rvol": 1.1982828923806794,
-      "market_cap": 63613681.62,
-      "float_shares": 222535540,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.113, float 222.5M > 100M, vol/float 0.04x < 0.1x"
     },
     {
       "ticker": "JSPR",
@@ -2233,53 +1850,23 @@
       "country": "International (region 83)",
       "passed": false,
       "reason": "Filtered: float 293.2M > 100M, vol/float 0.01x < 0.1x"
-    },
-    {
-      "ticker": "ONEG",
-      "name": "OneConstruction Group Limited",
-      "price": 1.62,
-      "change_pct": 0.0,
-      "volume": 4631282,
-      "rvol": 0.2714025311975237,
-      "market_cap": 24320000.0,
-      "float_shares": 7000000,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Hong Kong",
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
-      "ticker": "DFSC",
-      "name": "DEFSEC Technologies Inc",
-      "price": 0.619,
-      "change_pct": 6.577134986225898,
-      "volume": 165169,
-      "rvol": 1.2596013055945336,
-      "market_cap": 2668194.04,
-      "float_shares": 4578777,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.619, tiny rvol 1.3x, tiny avg $vol, tiny vol/float 0.04x, vol/float 0.04x < 0.1x, avg $vol $0.1M < $2.0M"
     }
   ],
   "all_losers": [
     {
       "ticker": "CENN",
       "name": "Cenntro",
-      "price": 0.2,
-      "change_pct": -32.81827342962714,
-      "volume": 71605292,
-      "rvol": 6.75546031521705,
+      "price": 0.199,
+      "change_pct": -33.15418206247901,
+      "volume": 71743387,
+      "rvol": 6.768488616145281,
       "market_cap": 5235189.06,
       "float_shares": 932062,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.200, move -32.8%"
+      "reason": "Filtered: price $0.199, move -33.3%"
     },
     {
       "ticker": "JG",
@@ -2299,10 +1886,10 @@
     {
       "ticker": "PARA",
       "name": "PARABOLIC TECHNOLOGIES INC",
-      "price": 2.177,
-      "change_pct": 28.816568047337288,
-      "volume": 101592857,
-      "rvol": 6.350438654887525,
+      "price": 2.18,
+      "change_pct": 28.9940828402367,
+      "volume": 101594922,
+      "rvol": 6.350567735378118,
       "market_cap": 1417402.88,
       "float_shares": 498617,
       "cap_size": "nano-cap",
@@ -2316,8 +1903,8 @@
       "name": "Abits Group Inc.",
       "price": 0.34,
       "change_pct": -15.0,
-      "volume": 1136619,
-      "rvol": 9.511933653572564,
+      "volume": 1138613,
+      "rvol": 9.528620683883709,
       "market_cap": 1285778.0,
       "float_shares": 2356026,
       "cap_size": "nano-cap",
@@ -2340,6 +1927,21 @@
       "country": "China / Hong Kong",
       "passed": false,
       "reason": "Filtered: vol 5,403, vol/float 0.00x"
+    },
+    {
+      "ticker": "CCTG",
+      "name": "CCSC Technology International Holdings Limited",
+      "price": 0.292,
+      "change_pct": 1.0031131096506254,
+      "volume": 6468015,
+      "rvol": 1.0701042389629212,
+      "market_cap": 4522201.94,
+      "float_shares": 13232239,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: price $0.292, mktcap $4.5M"
     },
     {
       "ticker": "YOUL",
@@ -2402,21 +2004,6 @@
       "reason": "Filtered: vol/float 0.03x"
     },
     {
-      "ticker": "CCTG",
-      "name": "CCSC Technology International Holdings Limited",
-      "price": 0.298,
-      "change_pct": 3.0785195434105717,
-      "volume": 6466515,
-      "rvol": 1.0698560706518636,
-      "market_cap": 4522201.94,
-      "float_shares": 13232239,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Hong Kong",
-      "passed": false,
-      "reason": "Filtered: price $0.298, mktcap $4.5M"
-    },
-    {
       "ticker": "USNA",
       "name": "Usana Health Sciences Inc",
       "price": 13.34,
@@ -2447,6 +2034,21 @@
       "reason": "Filtered: mktcap $248.4M, rvol 0.8x, vol 51,577, vol/float 0.01x"
     },
     {
+      "ticker": "MERC",
+      "name": "Mercer Intl",
+      "price": 0.191,
+      "change_pct": -9.905660377358487,
+      "volume": 611290087,
+      "rvol": 6.528295322100988,
+      "market_cap": 14207823.0,
+      "float_shares": 38329462,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Canada",
+      "passed": false,
+      "reason": "Filtered: price $0.191"
+    },
+    {
       "ticker": "PMEC",
       "name": "Primech Holdings Ltd.",
       "price": 0.281,
@@ -2462,36 +2064,6 @@
       "reason": "Filtered: price $0.281, vol 77,801, vol/float 0.01x"
     },
     {
-      "ticker": "SHFS",
-      "name": "SHF Holdings Inc",
-      "price": 0.038,
-      "change_pct": -8.653846153846152,
-      "volume": 82327202,
-      "rvol": 0.7837373382920375,
-      "market_cap": 42754.07,
-      "float_shares": 930097,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.038, mktcap $0.0M, rvol 0.8x"
-    },
-    {
-      "ticker": "MERC",
-      "name": "Mercer Intl",
-      "price": 0.192,
-      "change_pct": -9.433962264150939,
-      "volume": 611235231,
-      "rvol": 6.5277094853995505,
-      "market_cap": 14207823.0,
-      "float_shares": 38329462,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: price $0.192"
-    },
-    {
       "ticker": "SXTP",
       "name": "60 degrees pharmaceuticals, Inc.",
       "price": 0.92,
@@ -2505,6 +2077,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: mktcap $3.6M, rvol 0.0x, vol 71,730, vol/float 0.03x"
+    },
+    {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "price": 0.038,
+      "change_pct": -8.653846153846152,
+      "volume": 82520003,
+      "rvol": 0.7855727625368703,
+      "market_cap": 42754.07,
+      "float_shares": 930097,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.038, mktcap $0.0M, rvol 0.8x"
     },
     {
       "ticker": "BDMD",
@@ -2537,6 +2124,21 @@
       "reason": "Filtered: price $0.298, mktcap $0.2M, rvol 0.3x"
     },
     {
+      "ticker": "HIND",
+      "name": "Vyome Holdings, Inc.",
+      "price": 1.62,
+      "change_pct": -7.954545454545449,
+      "volume": 5269,
+      "rvol": 0.4601344860710855,
+      "market_cap": 12422794.56,
+      "float_shares": 3307061,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: rvol 0.5x, vol 5,269, vol/float 0.00x"
+    },
+    {
       "ticker": "EZRA",
       "name": "Reliance Global Group Inc",
       "price": 2.2,
@@ -2552,19 +2154,94 @@
       "reason": "Filtered: mktcap $4.0M, vol 40,830, vol/float 0.03x"
     },
     {
+      "ticker": "ZNB",
+      "name": "Zeta Network Group",
+      "price": 0.506,
+      "change_pct": 1.200000000000001,
+      "volume": 13335412,
+      "rvol": 3.9274797874308036,
+      "market_cap": 2756138.92,
+      "float_shares": 5001100,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: mktcap $2.8M"
+    },
+    {
+      "ticker": "CJMB",
+      "name": "Callan JMB Inc.",
+      "price": 0.335,
+      "change_pct": -4.558404558404547,
+      "volume": 6265757,
+      "rvol": 0.6224104669143624,
+      "market_cap": 2418319.26,
+      "float_shares": 3411222,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.335, mktcap $2.4M, move -7.9%, rvol 0.6x"
+    },
+    {
       "ticker": "CHOW",
       "name": "CHOWCHOW CLOUD INTL HLDGS LTD",
-      "price": 3.77,
-      "change_pct": -7.598039215686275,
-      "volume": 489215,
-      "rvol": 0.04500292850429552,
+      "price": 3.76,
+      "change_pct": -7.843137254901968,
+      "volume": 489284,
+      "rvol": 0.0450092758200295,
       "market_cap": 14479920.0,
       "float_shares": 1103375,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "China / Hong Kong",
       "passed": false,
-      "reason": "Filtered: move -7.6%, rvol 0.0x"
+      "reason": "Filtered: move -7.8%, rvol 0.0x"
+    },
+    {
+      "ticker": "ZBAO",
+      "name": "Zhibao Tech",
+      "price": 0.24,
+      "change_pct": -7.692307692307699,
+      "volume": 26353200,
+      "rvol": 6.6430738042847794,
+      "market_cap": 2336176.18,
+      "float_shares": 8809650,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: price $0.240, mktcap $2.3M, move -7.7%"
+    },
+    {
+      "ticker": "SURG",
+      "name": "Surgepays Inc",
+      "price": 0.141,
+      "change_pct": -7.601572739187436,
+      "volume": 32010990,
+      "rvol": 3.312989591366084,
+      "market_cap": 8073825.35,
+      "float_shares": 42656769,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.141, move -7.7%"
+    },
+    {
+      "ticker": "SGRX",
+      "name": "Sangrix Inc",
+      "price": 0.7,
+      "change_pct": -5.14905149051491,
+      "volume": 73615532,
+      "rvol": 3.1312254055538173,
+      "market_cap": 2753006.22,
+      "float_shares": 3545018,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: mktcap $2.8M, move -7.4%"
     },
     {
       "ticker": "SHPH",
@@ -2597,21 +2274,6 @@
       "reason": "Filtered: price $40.010, mktcap $241.6M, move -7.3%, vol 19,334, vol/float 0.00x"
     },
     {
-      "ticker": "SGRX",
-      "name": "Sangrix Inc",
-      "price": 0.701,
-      "change_pct": -5.013550135501359,
-      "volume": 73614668,
-      "rvol": 3.131188655445832,
-      "market_cap": 2753006.22,
-      "float_shares": 3545018,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: mktcap $2.8M, move -7.2%"
-    },
-    {
       "ticker": "CDTG",
       "name": "CDT Environmental Technology Investment Holdings Ltd",
       "price": 1.03,
@@ -2631,8 +2293,8 @@
       "name": "Smart Logistics Global Limited",
       "price": 0.255,
       "change_pct": -7.2052401746724835,
-      "volume": 2920214,
-      "rvol": 0.05203891248852889,
+      "volume": 2920640,
+      "rvol": 0.05204650391050006,
       "market_cap": 12366000.0,
       "float_shares": 5000000,
       "cap_size": "nano-cap",
@@ -2745,69 +2407,63 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: mktcap $2.4M, move -6.9%, rvol 0.1x"
-    },
-    {
-      "ticker": "BIOX",
-      "name": "Bioceres Crop Solutions Corp",
-      "price": 0.21,
-      "change_pct": -5.277401894451969,
-      "volume": 138934,
-      "rvol": 0.4983053157492656,
-      "market_cap": 14435154.54,
-      "float_shares": 52997457,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 15)",
-      "passed": false,
-      "reason": "Filtered: price $0.210, move -6.9%, rvol 0.5x, float 53.0M, vol/float 0.00x"
-    },
-    {
-      "ticker": "LICN",
-      "name": "Lichen International",
-      "price": 0.585,
-      "change_pct": -3.433476394849792,
-      "volume": 11332,
-      "rvol": 0.28464494737635326,
-      "market_cap": 10245082.69,
-      "float_shares": 16215300,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: move -6.9%, rvol 0.3x, vol 11,332, vol/float 0.00x"
-    },
-    {
-      "ticker": "TRUG",
-      "name": "TruGolf Holdings",
-      "price": 0.735,
-      "change_pct": 2.239532619279455,
-      "volume": 193270,
-      "rvol": 0.1829394114361979,
-      "market_cap": 983778.85,
-      "float_shares": 1242715,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: mktcap $1.0M, move -6.8%, rvol 0.2x, vol/float 0.16x"
-    },
-    {
-      "ticker": "ACNT",
-      "name": "Ascent Industries Co.",
-      "price": 12.84,
-      "change_pct": -6.413994169096215,
-      "volume": 49424,
-      "rvol": 1.997090673993858,
-      "market_cap": 124150262.34,
-      "float_shares": 8245030,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: move -6.8%, vol 49,424, vol/float 0.01x"
     }
   ],
   "live_quotes": {
+    "CRIS": {
+      "price": 0.7139,
+      "open": 0.72,
+      "high": 1.5,
+      "low": 0.62,
+      "close": 0.7139,
+      "preClose": 0.661,
+      "volume": 50606603,
+      "changeRatio": 0.08,
+      "marketValue": 2930353.9,
+      "name": "Curis",
+      "_timestamp": "2026-11-04T00:36:55.185322Z"
+    },
+    "HPAI": {
+      "price": 0.2406,
+      "open": 0.235,
+      "high": 0.2599,
+      "low": 0.2313,
+      "close": 0.2406,
+      "preClose": 0.235,
+      "volume": 28805351,
+      "changeRatio": 0.0238,
+      "marketValue": 9057846.55,
+      "name": "Helport AI Ltd",
+      "_timestamp": "2026-11-04T00:36:55.185349Z"
+    },
+    "DKI": {
+      "price": 1.5,
+      "open": 1.49,
+      "high": 1.51,
+      "low": 1.41,
+      "close": 1.5,
+      "preClose": 1.48,
+      "volume": 9307674,
+      "changeRatio": 0.0135,
+      "marketValue": 88699.36,
+      "name": "DARKIRIS INC.",
+      "_timestamp": "2026-11-04T00:36:55.185361Z"
+    },
+    "CCXI": {
+      "price": 10.69,
+      "open": 9.5,
+      "high": 10.98,
+      "low": 9.4,
+      "close": 10.69,
+      "preClose": 9.29,
+      "volume": 4623734,
+      "changeRatio": 0.1507,
+      "marketValue": 595433000.0,
+      "name": "Churchill Capital Corp XI",
+      "_timestamp": "2026-11-04T00:36:55.185369Z"
+    }
+  },
+  "previous_live_quotes": {
     "CCXI": {
       "price": 10.69,
       "open": 9.5,
@@ -2874,78 +2530,11 @@
       "_timestamp": "2026-11-04T00:34:58.334545Z"
     }
   },
-  "previous_live_quotes": {
-    "DKI": {
-      "price": 1.5,
-      "open": 1.49,
-      "high": 1.51,
-      "low": 1.41,
-      "close": 1.5,
-      "preClose": 1.48,
-      "volume": 9298556,
-      "changeRatio": 0.0135,
-      "marketValue": 88699.36,
-      "name": "DARKIRIS INC.",
-      "_timestamp": "2026-11-04T00:33:55.753082Z"
-    },
-    "CCXI": {
-      "price": 10.69,
-      "open": 9.5,
-      "high": 10.98,
-      "low": 9.4,
-      "close": 10.69,
-      "preClose": 9.29,
-      "volume": 4623513,
-      "changeRatio": 0.1507,
-      "marketValue": 595433000.0,
-      "name": "Churchill Capital Corp XI",
-      "_timestamp": "2026-11-04T00:33:55.753114Z"
-    },
-    "WFF": {
-      "price": 1.33,
-      "open": 1.11,
-      "high": 1.65,
-      "low": 1.09,
-      "close": 1.33,
-      "preClose": 1.11,
-      "volume": 18665248,
-      "changeRatio": 0.1982,
-      "marketValue": 3527723.92,
-      "name": "WF Holding Ltd.",
-      "_timestamp": "2026-11-04T00:33:55.753126Z"
-    },
-    "HPAI": {
-      "price": 0.2406,
-      "open": 0.235,
-      "high": 0.2599,
-      "low": 0.2313,
-      "close": 0.2406,
-      "preClose": 0.235,
-      "volume": 28658304,
-      "changeRatio": 0.0238,
-      "marketValue": 9057846.55,
-      "name": "Helport AI Ltd",
-      "_timestamp": "2026-11-04T00:33:55.753134Z"
-    },
-    "CRIS": {
-      "price": 0.7139,
-      "open": 0.72,
-      "high": 1.5,
-      "low": 0.62,
-      "close": 0.7139,
-      "preClose": 0.661,
-      "volume": 50546550,
-      "changeRatio": 0.08,
-      "marketValue": 2930353.9,
-      "name": "Curis",
-      "_timestamp": "2026-11-04T00:33:55.753140Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "11:34 AM AEDT",
+    "market_time": "11:36 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
