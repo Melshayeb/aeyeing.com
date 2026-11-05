@@ -711,10 +711,14 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
         # Store enriched gainer/loser payloads for the website bubble chart and tables.
         # Use enriched data so preClose/price are reliable and change_pct is meaningful.
         # Restrict to the scanner's small-cap universe so mega/large caps don't appear.
+        # Only include true gainers (positive change) in the gainers list; losers belong in all_losers.
         max_bubble_mcap = float(config.get('scanner', {}).get('max_market_cap', 300_000_000))
         for gainer in enriched_gainers:
             mcap = _market_cap(gainer)
             cap_size = _cap_size(mcap)
+            change_pct = _change_pct(gainer)
+            if change_pct <= 0:
+                continue
             if mcap > max_bubble_mcap or cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
                 continue
             all_gainers_output.append({
@@ -735,6 +739,9 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
         for gainer in enriched_losers:
             mcap = _market_cap(gainer)
             cap_size = _cap_size(mcap)
+            change_pct = _change_pct(gainer)
+            if change_pct >= 0:
+                continue
             if mcap > max_bubble_mcap or cap_size not in ('nano-cap', 'micro-cap', 'small-cap'):
                 continue
             all_losers_output.append({
