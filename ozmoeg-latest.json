@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-11-05T23:01:30.265634Z",
+  "last_updated": "2026-11-05T23:02:31.416216Z",
   "scan_results": [
     {
       "ticker": "DFNS",
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.079,
+      "price": 2.06,
       "change_pct": -19.649122807017545,
-      "volume": 6370494,
+      "volume": 6372450,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -19,16 +19,180 @@
       "sec_filings": "8-K (Oct 29), 8-K (Oct 27), 8-K (Oct 23)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": 2.05
+      "previous_price": 2.079
+    },
+    {
+      "ticker": "INOD",
+      "name": "Innodata",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 42.75,
+      "change_pct": 10.693940963231494,
+      "volume": 3484324,
+      "market_cap": 1327857981.62,
+      "float_shares": 32712197,
+      "country": "United States",
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
+      "result": "+10.7% \u00b7 Entry $42.75 \u00b7 T1 $44.46 \u00b7 T2 $45.31 \u00b7 T3 $47.02",
+      "plan": {
+        "valid": true,
+        "ticker": "INOD",
+        "entry": 42.75,
+        "stop": 41.895,
+        "targets": {
+          "t1": 44.46,
+          "t2": 45.315,
+          "t3": 47.025
+        },
+        "risk_per_share": 0.855,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 7,
+        "position_value": 299.25,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$41.895"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "INOD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+            "source": "Webull",
+            "time": "1h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T21:58:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:25:32.664+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+            "source": "Webull",
+            "time": "4d ago \u00b7 01 Nov",
+            "raw_time": "2026-11-01T14:45:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+            "source": "Webull",
+            "time": "5d ago \u00b7 31 Oct",
+            "raw_time": "2026-10-31T11:55:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+            "source": "Webull",
+            "time": "1h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T21:58:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:25:32.664+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+            "source": "Webull",
+            "time": "4d ago \u00b7 01 Nov",
+            "raw_time": "2026-11-01T14:45:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+            "source": "Webull",
+            "time": "5d ago \u00b7 31 Oct",
+            "raw_time": "2026-10-31T11:55:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "INOD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.21,
+        "volume_indicator": "high",
+        "volume": 3484324,
+        "adv": 1579970,
+        "recent_pct_of_adv": 220.53,
+        "volume_acceleration": -0.371,
+        "price_velocity_pct": 2.359,
+        "buy_pressure_pct": 51.01,
+        "large_bar_count": 112,
+        "vwap_distance_pct": 1.403,
+        "recent_volume": 3484324,
+        "prior_volume": 0,
+        "median_range": 0.1325,
+        "last_price": 38.62,
+        "vwap": 38.08556230479072,
+        "last_trade_time": "2026-11-05T23:01:33.319000+00:00",
+        "stale_age_seconds": 176
+      },
+      "date": "2026-11-06",
+      "time": "10:02:28",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 42.76
     },
     {
       "ticker": "STAK",
       "name": "STAK inc.",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.04,
+      "price": 2.02,
       "change_pct": 25.174825174825184,
-      "volume": 7504484,
+      "volume": 7505804,
       "market_cap": 34386524.71,
       "float_shares": 10010349,
       "country": "China / Cayman-China",
@@ -37,23 +201,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+25.2% \u00b7 Entry $2.04 \u00b7 T1 $2.12 \u00b7 T2 $2.16 \u00b7 T3 $2.24",
+      "result": "+25.2% \u00b7 Entry $2.02 \u00b7 T1 $2.10 \u00b7 T2 $2.14 \u00b7 T3 $2.22",
       "plan": {
         "valid": true,
         "ticker": "STAK",
-        "entry": 2.04,
-        "stop": 1.9992,
+        "entry": 2.02,
+        "stop": 1.9796,
         "targets": {
-          "t1": 2.1216,
-          "t2": 2.1624,
-          "t3": 2.244
+          "t1": 2.1008,
+          "t2": 2.1412,
+          "t3": 2.222
         },
-        "risk_per_share": 0.0408,
+        "risk_per_share": 0.0404,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 147,
-        "position_value": 299.88,
+        "shares": 148,
+        "position_value": 298.96,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -61,7 +225,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.9992"
+          "hard_stop": "$1.9796"
         }
       },
       "ta": {
@@ -199,61 +363,61 @@
         "tape_score": 8.0,
         "rvol": 2.28,
         "volume_indicator": "high",
-        "volume": 7504484,
+        "volume": 7505804,
         "adv": 3284982,
-        "recent_pct_of_adv": 228.45,
+        "recent_pct_of_adv": 228.49,
         "volume_acceleration": 1.54,
         "price_velocity_pct": 10.5,
-        "buy_pressure_pct": 54.5,
-        "large_bar_count": 114,
+        "buy_pressure_pct": 54.31,
+        "large_bar_count": 115,
         "vwap_distance_pct": 2.88,
-        "recent_volume": 7504484,
+        "recent_volume": 7505804,
         "prior_volume": 0,
         "median_range": 0.0198,
         "last_price": 1.79,
         "vwap": 1.7398921219736934,
-        "last_trade_time": "2026-11-05T23:01:07.456000+00:00",
+        "last_trade_time": "2026-11-05T23:02:07.883000+00:00",
         "stale_age_seconds": 20
       },
       "date": "2026-11-06",
-      "time": "10:01:28",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.99
+      "previous_price": 2.04
     },
     {
-      "ticker": "CIIT",
-      "name": "Tianci Intrnl",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.019,
-      "change_pct": 30.258064516129036,
-      "volume": 4178823,
-      "market_cap": 1499456.05,
-      "float_shares": 605068,
-      "country": "China / Hong Kong",
-      "cap_size": "nano-cap",
+      "ticker": "MWC",
+      "name": "Micware Co., Ltd.",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.16,
+      "change_pct": -28.082191780821912,
+      "volume": 657438,
+      "market_cap": 62390384.7,
+      "float_shares": 23924441,
+      "country": "Japan",
+      "cap_size": "micro-cap",
       "is_penny_stock": false,
-      "scan_reason": "Passed filters",
+      "scan_reason": "Top gainer tape exempt (-28.1%, rvol 3.2x)",
       "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
-      "result": "+30.3% \u00b7 Entry $2.02 \u00b7 T1 $2.10 \u00b7 T2 $2.14 \u00b7 T3 $2.22",
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 -28.1%",
       "plan": {
         "valid": true,
-        "ticker": "CIIT",
-        "entry": 2.019,
-        "stop": 1.9786,
+        "ticker": "MWC",
+        "entry": 1.16,
+        "stop": 1.1368,
         "targets": {
-          "t1": 2.0998,
-          "t2": 2.1402,
-          "t3": 2.221
+          "t1": 1.2064,
+          "t2": 1.2296,
+          "t3": 1.276
         },
-        "risk_per_share": 0.0404,
+        "risk_per_share": 0.0232,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 148,
-        "position_value": 298.81,
+        "shares": 258,
+        "position_value": 299.28,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -261,7 +425,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.9786"
+          "hard_stop": "$1.1368"
         }
       },
       "ta": {
@@ -269,14 +433,14 @@
         "error": "No bar data"
       },
       "news": {
-        "ticker": "CIIT",
+        "ticker": "MWC",
         "total_items": 20,
         "scored_items": [
           {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "title": "Weekly Report: what happened at MWC last week (1026-1030)?",
             "source": "Webull",
             "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "raw_time": "2026-11-02T10:33:09.861+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -284,10 +448,10 @@
         ],
         "headlines": [
           {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "title": "Weekly Report: what happened at MWC last week (1026-1030)?",
             "source": "Webull",
             "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "raw_time": "2026-11-02T10:33:09.861+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -298,202 +462,38 @@
         "avg_score": 0.0,
         "catalyst_confirmed": false,
         "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+        "top_headline": "Weekly Report: what happened at MWC last week (1026-1030)?",
         "news_filter_reason": "low catalyst score (max 0/5)"
       },
       "tape": {
-        "ticker": "CIIT",
+        "ticker": "MWC",
         "valid": true,
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 526.17,
+        "rvol": 3.16,
         "volume_indicator": "high",
-        "volume": 4178823,
-        "adv": 7942,
-        "recent_pct_of_adv": 52616.76,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 26.969,
-        "buy_pressure_pct": 50.65,
-        "large_bar_count": 15,
-        "vwap_distance_pct": 1.956,
-        "recent_volume": 4178823,
+        "volume": 657438,
+        "adv": 207792,
+        "recent_pct_of_adv": 316.39,
+        "volume_acceleration": 2.282,
+        "price_velocity_pct": 1.932,
+        "buy_pressure_pct": 45.62,
+        "large_bar_count": 41,
+        "vwap_distance_pct": 9.338,
+        "recent_volume": 657438,
         "prior_volume": 0,
-        "median_range": 0.07,
-        "last_price": 1.55,
-        "vwap": 1.5809155094011416,
-        "last_trade_time": "2026-11-05T23:01:09.944000+00:00",
-        "stale_age_seconds": 18
+        "median_range": 0.0,
+        "last_price": 1.05,
+        "vwap": 1.1581518726727997,
+        "last_trade_time": "2026-11-05T23:01:55.790000+00:00",
+        "stale_age_seconds": 33
       },
       "date": "2026-11-06",
-      "time": "10:01:28",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.997
-    },
-    {
-      "ticker": "INOD",
-      "name": "Innodata",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 42.76,
-      "change_pct": 10.719834282755052,
-      "volume": 3484024,
-      "market_cap": 1327857981.62,
-      "float_shares": 32712197,
-      "country": "United States",
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
-      "result": "+10.7% \u00b7 Entry $42.76 \u00b7 T1 $44.47 \u00b7 T2 $45.33 \u00b7 T3 $47.04",
-      "plan": {
-        "valid": true,
-        "ticker": "INOD",
-        "entry": 42.76,
-        "stop": 41.9048,
-        "targets": {
-          "t1": 44.4704,
-          "t2": 45.3256,
-          "t3": 47.036
-        },
-        "risk_per_share": 0.8552,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 7,
-        "position_value": 299.32,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$41.9048"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "INOD",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "1h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "1h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "INOD",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.21,
-        "volume_indicator": "high",
-        "volume": 3484024,
-        "adv": 1579970,
-        "recent_pct_of_adv": 220.51,
-        "volume_acceleration": -0.371,
-        "price_velocity_pct": 2.359,
-        "buy_pressure_pct": 51.01,
-        "large_bar_count": 112,
-        "vwap_distance_pct": 1.403,
-        "recent_volume": 3484024,
-        "prior_volume": 0,
-        "median_range": 0.1325,
-        "last_price": 38.62,
-        "vwap": 38.08556230479072,
-        "last_trade_time": "2026-11-05T23:00:21.880000+00:00",
-        "stale_age_seconds": 115
-      },
-      "date": "2026-11-06",
-      "time": "10:01:28",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 42.58
+      "previous_price": null
     },
     {
       "ticker": "INV",
@@ -501,17 +501,17 @@
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
       "price": 0.178,
-      "change_pct": -98.49809523809525,
+      "change_pct": -27.02452568255437,
       "volume": 9725784,
-      "market_cap": 7290751.0,
+      "market_cap": 13681501.0,
       "float_shares": 86756511,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (-98.5%, rvol 2.2x)",
+      "scan_reason": "Top gainer tape exempt (-27.0%, rvol 2.2x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 -98.5%",
+      "result": "Top-10 gainer tape momentum \u00b7 -27.0%",
       "plan": {
         "valid": true,
         "ticker": "INV",
@@ -577,247 +577,47 @@
         "last_price": 0.1577,
         "vwap": 0.16276409366664563,
         "last_trade_time": "2026-11-05T22:58:45.064000+00:00",
-        "stale_age_seconds": 162
+        "stale_age_seconds": 223
       },
       "date": "2026-11-06",
-      "time": "10:01:29",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
       "previous_price": 0.178
-    },
-    {
-      "ticker": "LABT",
-      "name": "Lakewood-Amedex",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.59,
-      "change_pct": 182.4451410658307,
-      "volume": 747046985,
-      "market_cap": 1281053.33,
-      "float_shares": 1434312,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (182.4%, rvol 55.5x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +182.4%",
-      "plan": {
-        "valid": true,
-        "ticker": "LABT",
-        "entry": 0.59,
-        "stop": 0.5782,
-        "targets": {
-          "t1": 0.6136,
-          "t2": 0.6254,
-          "t3": 0.649
-        },
-        "risk_per_share": 0.0118,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 508,
-        "position_value": 299.72,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.5782"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "LABT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:29:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:09:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "5h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T17:05:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
-            "source": "Webull",
-            "time": "9h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T13:02:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:32:36.239+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T14:28:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:29:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:09:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "5h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T17:05:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
-            "source": "Webull",
-            "time": "9h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T13:02:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:32:36.239+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T14:28:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "LABT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 55.48,
-        "volume_indicator": "high",
-        "volume": 747046985,
-        "adv": 13466346,
-        "recent_pct_of_adv": 5547.51,
-        "volume_acceleration": -0.793,
-        "price_velocity_pct": 20.16,
-        "buy_pressure_pct": 49.35,
-        "large_bar_count": 91,
-        "vwap_distance_pct": 8.466,
-        "recent_volume": 747046985,
-        "prior_volume": 0,
-        "median_range": 0.0208,
-        "last_price": 0.5406,
-        "vwap": 0.5906026213968292,
-        "last_trade_time": "2026-11-05T23:01:10.951000+00:00",
-        "stale_age_seconds": 16
-      },
-      "date": "2026-11-06",
-      "time": "10:01:29",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.591
     },
     {
       "ticker": "DVLT",
       "name": "Datavault AI Inc",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 0.096,
-      "change_pct": 62.16216216216216,
-      "volume": 131631682,
+      "price": 0.09,
+      "change_pct": 52.02702702702702,
+      "volume": 133702361,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "country": "United States",
       "cap_size": "micro-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (62.2%, rvol 2.5x)",
+      "scan_reason": "Top gainer tape exempt (52.0%, rvol 2.5x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +62.2%",
+      "result": "Top-10 gainer tape momentum \u00b7 +52.0%",
       "plan": {
         "valid": true,
         "ticker": "DVLT",
-        "entry": 0.096,
-        "stop": 0.0941,
+        "entry": 0.09,
+        "stop": 0.0882,
         "targets": {
-          "t1": 0.0998,
-          "t2": 0.1017,
-          "t3": 0.1055
+          "t1": 0.0936,
+          "t2": 0.0954,
+          "t3": 0.099
         },
-        "risk_per_share": 0.0019,
+        "risk_per_share": 0.0018,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 3125,
-        "position_value": 300.0,
+        "shares": 3333,
+        "position_value": 299.97,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -825,7 +625,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0941"
+          "hard_stop": "$0.0882"
         }
       },
       "ta": {
@@ -952,29 +752,718 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.48,
+        "rvol": 2.52,
         "volume_indicator": "high",
-        "volume": 131631682,
+        "volume": 133702361,
         "adv": 53004613,
-        "recent_pct_of_adv": 248.34,
+        "recent_pct_of_adv": 252.25,
         "volume_acceleration": -0.658,
         "price_velocity_pct": 3.86,
-        "buy_pressure_pct": 53.06,
-        "large_bar_count": 231,
+        "buy_pressure_pct": 52.98,
+        "large_bar_count": 232,
         "vwap_distance_pct": 5.008,
-        "recent_volume": 131631682,
+        "recent_volume": 133702361,
         "prior_volume": 0,
         "median_range": 0.0001,
         "last_price": 0.0592,
         "vwap": 0.056376730604129836,
-        "last_trade_time": "2026-11-05T23:01:10.897000+00:00",
+        "last_trade_time": "2026-11-05T23:02:11.558000+00:00",
         "stale_age_seconds": 16
       },
       "date": "2026-11-06",
-      "time": "10:01:29",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.098
+      "previous_price": 0.096
+    },
+    {
+      "ticker": "LABT",
+      "name": "Lakewood-Amedex",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.59,
+      "change_pct": 182.4451410658307,
+      "volume": 747127305,
+      "market_cap": 1281053.33,
+      "float_shares": 1434312,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (182.4%, rvol 55.5x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +182.4%",
+      "plan": {
+        "valid": true,
+        "ticker": "LABT",
+        "entry": 0.59,
+        "stop": 0.5782,
+        "targets": {
+          "t1": 0.6136,
+          "t2": 0.6254,
+          "t3": 0.649
+        },
+        "risk_per_share": 0.0118,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 508,
+        "position_value": 299.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.5782"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "LABT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:29:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:09:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T13:02:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:32:36.239+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T14:28:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:29:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:09:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T13:02:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:32:36.239+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T14:28:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "LABT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 55.48,
+        "volume_indicator": "high",
+        "volume": 747127305,
+        "adv": 13466346,
+        "recent_pct_of_adv": 5548.11,
+        "volume_acceleration": -0.793,
+        "price_velocity_pct": 20.16,
+        "buy_pressure_pct": 49.27,
+        "large_bar_count": 91,
+        "vwap_distance_pct": 8.466,
+        "recent_volume": 747127305,
+        "prior_volume": 0,
+        "median_range": 0.0208,
+        "last_price": 0.5406,
+        "vwap": 0.5906026213968292,
+        "last_trade_time": "2026-11-05T23:02:11.140000+00:00",
+        "stale_age_seconds": 16
+      },
+      "date": "2026-11-06",
+      "time": "10:02:29",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 0.59
+    },
+    {
+      "ticker": "DDD",
+      "name": "3D Systems Corp",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.818,
+      "change_pct": -36.74242424242425,
+      "volume": 13394171,
+      "market_cap": 277807033.39,
+      "float_shares": 155659497,
+      "country": "United States",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (-36.7%, rvol 5.2x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 -36.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "DDD",
+        "entry": 1.818,
+        "stop": 1.7816,
+        "targets": {
+          "t1": 1.8908,
+          "t2": 1.9272,
+          "t3": 2.0
+        },
+        "risk_per_share": 0.0364,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 165,
+        "position_value": 299.97,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.7816"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "DDD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "3D Systems expands distribution partnership with BioSummer Dental",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:35:44.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "partnership with"
+            ]
+          },
+          {
+            "title": "3D Systems Expands Collaboration With BioSummer Dental To Include NextDent 300 Multijet 3D Printer To Its Portfolio",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:34:32.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "collaboration with"
+            ]
+          },
+          {
+            "title": "3D Systems (DDD) Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T20:01:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T14:28:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Corporation Enters Exchange Agreements for $92,030,000 of 5.875% Convertible Senior Secured Notes due 2030",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T12:14:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Announces Exchange of Convertible Notes",
+            "source": "Webull",
+            "time": "11h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T11:42:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems reports Q3 EPS (6c), consensus (4c)",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:36:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems sees Q4 revenue $100M-$103M, consensus $106.04M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:35:51.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Sees Q4 Sales $100.000M-$103.000M vs $105.912M Est",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:40:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Non-GAAP EPS of -$0.06 misses by $0.02, revenue of $99.3M beats by $2.02M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:15:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Loss/Shr 21c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Adj Loss/Shr 6c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems: Q3 Earnings Snapshot",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:16:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at DDD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:36:11.091+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "3D Systems expands distribution partnership with BioSummer Dental",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:35:44.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "partnership with"
+            ]
+          },
+          {
+            "title": "3D Systems Expands Collaboration With BioSummer Dental To Include NextDent 300 Multijet 3D Printer To Its Portfolio",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:34:32.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "collaboration with"
+            ]
+          },
+          {
+            "title": "3D Systems (DDD) Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T20:01:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T14:28:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Corporation Enters Exchange Agreements for $92,030,000 of 5.875% Convertible Senior Secured Notes due 2030",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T12:14:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Announces Exchange of Convertible Notes",
+            "source": "Webull",
+            "time": "11h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T11:42:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems reports Q3 EPS (6c), consensus (4c)",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:36:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems sees Q4 revenue $100M-$103M, consensus $106.04M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:35:51.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Sees Q4 Sales $100.000M-$103.000M vs $105.912M Est",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:40:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Non-GAAP EPS of -$0.06 misses by $0.02, revenue of $99.3M beats by $2.02M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:15:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Loss/Shr 21c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Adj Loss/Shr 6c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems: Q3 Earnings Snapshot",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:16:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at DDD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:36:11.091+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "3D Systems announces $42.5M at-the-market offering; shares slump",
+            "flag": "offering"
+          },
+          {
+            "title": "3D Systems Enters Agreement for $42.5 Million Stock Offering",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 4,
+        "avg_score": 0.5,
+        "catalyst_confirmed": true,
+        "high_impact_count": 2,
+        "top_headline": "3D Systems expands distribution partnership with BioSummer Dental",
+        "news_filter_reason": "news red flags; catalyst confirmed (2 items, score \u22653); red flags: offering"
+      },
+      "tape": {
+        "ticker": "DDD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 5.22,
+        "volume_indicator": "high",
+        "volume": 13394171,
+        "adv": 2566521,
+        "recent_pct_of_adv": 521.88,
+        "volume_acceleration": 0.182,
+        "price_velocity_pct": 4.298,
+        "buy_pressure_pct": 45.24,
+        "large_bar_count": 88,
+        "vwap_distance_pct": 5.852,
+        "recent_volume": 13394171,
+        "prior_volume": 0,
+        "median_range": 0.0099,
+        "last_price": 1.67,
+        "vwap": 1.7737999175537082,
+        "last_trade_time": "2026-11-05T23:01:42.623000+00:00",
+        "stale_age_seconds": 46
+      },
+      "date": "2026-11-06",
+      "time": "10:02:29",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": null
+    },
+    {
+      "ticker": "CIIT",
+      "name": "Tianci Intrnl",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 2.04,
+      "change_pct": 31.61290322580645,
+      "volume": 4196008,
+      "market_cap": 1499456.05,
+      "float_shares": 605068,
+      "country": "China / Hong Kong",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (31.6%, rvol 24.4x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +31.6%",
+      "plan": {
+        "valid": true,
+        "ticker": "CIIT",
+        "entry": 2.04,
+        "stop": 1.9992,
+        "targets": {
+          "t1": 2.1216,
+          "t2": 2.1624,
+          "t3": 2.244
+        },
+        "risk_per_share": 0.0408,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 147,
+        "position_value": 299.88,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.9992"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CIIT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CIIT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 24.4,
+        "volume_indicator": "high",
+        "volume": 4196008,
+        "adv": 172000,
+        "recent_pct_of_adv": 2439.54,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 26.19,
+        "buy_pressure_pct": 51.42,
+        "large_bar_count": 15,
+        "vwap_distance_pct": 1.956,
+        "recent_volume": 4196008,
+        "prior_volume": 0,
+        "median_range": 0.07,
+        "last_price": 1.55,
+        "vwap": 1.5809155094011416,
+        "last_trade_time": "2026-11-05T23:02:11.411000+00:00",
+        "stale_age_seconds": 16
+      },
+      "date": "2026-11-06",
+      "time": "10:02:30",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.019
     }
   ],
   "pre_market_results": [
@@ -983,9 +1472,9 @@
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.079,
+      "price": 2.06,
       "change_pct": -19.649122807017545,
-      "volume": 6370494,
+      "volume": 6372450,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -996,16 +1485,180 @@
       "sec_filings": "8-K (Oct 29), 8-K (Oct 27), 8-K (Oct 23)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": 2.05
+      "previous_price": 2.079
+    },
+    {
+      "ticker": "INOD",
+      "name": "Innodata",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 42.75,
+      "change_pct": 10.693940963231494,
+      "volume": 3484324,
+      "market_cap": 1327857981.62,
+      "float_shares": 32712197,
+      "country": "United States",
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
+      "result": "+10.7% \u00b7 Entry $42.75 \u00b7 T1 $44.46 \u00b7 T2 $45.31 \u00b7 T3 $47.02",
+      "plan": {
+        "valid": true,
+        "ticker": "INOD",
+        "entry": 42.75,
+        "stop": 41.895,
+        "targets": {
+          "t1": 44.46,
+          "t2": 45.315,
+          "t3": 47.025
+        },
+        "risk_per_share": 0.855,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 7,
+        "position_value": 299.25,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$41.895"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "INOD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+            "source": "Webull",
+            "time": "1h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T21:58:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:25:32.664+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+            "source": "Webull",
+            "time": "4d ago \u00b7 01 Nov",
+            "raw_time": "2026-11-01T14:45:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+            "source": "Webull",
+            "time": "5d ago \u00b7 31 Oct",
+            "raw_time": "2026-10-31T11:55:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+            "source": "Webull",
+            "time": "1h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T21:58:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:25:32.664+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+            "source": "Webull",
+            "time": "4d ago \u00b7 01 Nov",
+            "raw_time": "2026-11-01T14:45:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+            "source": "Webull",
+            "time": "5d ago \u00b7 31 Oct",
+            "raw_time": "2026-10-31T11:55:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "INOD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.21,
+        "volume_indicator": "high",
+        "volume": 3484324,
+        "adv": 1579970,
+        "recent_pct_of_adv": 220.53,
+        "volume_acceleration": -0.371,
+        "price_velocity_pct": 2.359,
+        "buy_pressure_pct": 51.01,
+        "large_bar_count": 112,
+        "vwap_distance_pct": 1.403,
+        "recent_volume": 3484324,
+        "prior_volume": 0,
+        "median_range": 0.1325,
+        "last_price": 38.62,
+        "vwap": 38.08556230479072,
+        "last_trade_time": "2026-11-05T23:01:33.319000+00:00",
+        "stale_age_seconds": 176
+      },
+      "date": "2026-11-06",
+      "time": "10:02:28",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 42.76
     },
     {
       "ticker": "STAK",
       "name": "STAK inc.",
       "status": "ALERT",
       "source": "regular",
-      "price": 2.04,
+      "price": 2.02,
       "change_pct": 25.174825174825184,
-      "volume": 7504484,
+      "volume": 7505804,
       "market_cap": 34386524.71,
       "float_shares": 10010349,
       "country": "China / Cayman-China",
@@ -1014,23 +1667,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "+25.2% \u00b7 Entry $2.04 \u00b7 T1 $2.12 \u00b7 T2 $2.16 \u00b7 T3 $2.24",
+      "result": "+25.2% \u00b7 Entry $2.02 \u00b7 T1 $2.10 \u00b7 T2 $2.14 \u00b7 T3 $2.22",
       "plan": {
         "valid": true,
         "ticker": "STAK",
-        "entry": 2.04,
-        "stop": 1.9992,
+        "entry": 2.02,
+        "stop": 1.9796,
         "targets": {
-          "t1": 2.1216,
-          "t2": 2.1624,
-          "t3": 2.244
+          "t1": 2.1008,
+          "t2": 2.1412,
+          "t3": 2.222
         },
-        "risk_per_share": 0.0408,
+        "risk_per_share": 0.0404,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 147,
-        "position_value": 299.88,
+        "shares": 148,
+        "position_value": 298.96,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1038,7 +1691,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.9992"
+          "hard_stop": "$1.9796"
         }
       },
       "ta": {
@@ -1176,61 +1829,61 @@
         "tape_score": 8.0,
         "rvol": 2.28,
         "volume_indicator": "high",
-        "volume": 7504484,
+        "volume": 7505804,
         "adv": 3284982,
-        "recent_pct_of_adv": 228.45,
+        "recent_pct_of_adv": 228.49,
         "volume_acceleration": 1.54,
         "price_velocity_pct": 10.5,
-        "buy_pressure_pct": 54.5,
-        "large_bar_count": 114,
+        "buy_pressure_pct": 54.31,
+        "large_bar_count": 115,
         "vwap_distance_pct": 2.88,
-        "recent_volume": 7504484,
+        "recent_volume": 7505804,
         "prior_volume": 0,
         "median_range": 0.0198,
         "last_price": 1.79,
         "vwap": 1.7398921219736934,
-        "last_trade_time": "2026-11-05T23:01:07.456000+00:00",
+        "last_trade_time": "2026-11-05T23:02:07.883000+00:00",
         "stale_age_seconds": 20
       },
       "date": "2026-11-06",
-      "time": "10:01:28",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.99
+      "previous_price": 2.04
     },
     {
-      "ticker": "CIIT",
-      "name": "Tianci Intrnl",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.019,
-      "change_pct": 30.258064516129036,
-      "volume": 4178823,
-      "market_cap": 1499456.05,
-      "float_shares": 605068,
-      "country": "China / Hong Kong",
-      "cap_size": "nano-cap",
+      "ticker": "MWC",
+      "name": "Micware Co., Ltd.",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.16,
+      "change_pct": -28.082191780821912,
+      "volume": 657438,
+      "market_cap": 62390384.7,
+      "float_shares": 23924441,
+      "country": "Japan",
+      "cap_size": "micro-cap",
       "is_penny_stock": false,
-      "scan_reason": "Passed filters",
+      "scan_reason": "Top gainer tape exempt (-28.1%, rvol 3.2x)",
       "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
-      "result": "+30.3% \u00b7 Entry $2.02 \u00b7 T1 $2.10 \u00b7 T2 $2.14 \u00b7 T3 $2.22",
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 -28.1%",
       "plan": {
         "valid": true,
-        "ticker": "CIIT",
-        "entry": 2.019,
-        "stop": 1.9786,
+        "ticker": "MWC",
+        "entry": 1.16,
+        "stop": 1.1368,
         "targets": {
-          "t1": 2.0998,
-          "t2": 2.1402,
-          "t3": 2.221
+          "t1": 1.2064,
+          "t2": 1.2296,
+          "t3": 1.276
         },
-        "risk_per_share": 0.0404,
+        "risk_per_share": 0.0232,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 148,
-        "position_value": 298.81,
+        "shares": 258,
+        "position_value": 299.28,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1238,7 +1891,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.9786"
+          "hard_stop": "$1.1368"
         }
       },
       "ta": {
@@ -1246,14 +1899,14 @@
         "error": "No bar data"
       },
       "news": {
-        "ticker": "CIIT",
+        "ticker": "MWC",
         "total_items": 20,
         "scored_items": [
           {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "title": "Weekly Report: what happened at MWC last week (1026-1030)?",
             "source": "Webull",
             "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "raw_time": "2026-11-02T10:33:09.861+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -1261,10 +1914,10 @@
         ],
         "headlines": [
           {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "title": "Weekly Report: what happened at MWC last week (1026-1030)?",
             "source": "Webull",
             "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "raw_time": "2026-11-02T10:33:09.861+0000",
             "url": "",
             "score": 0,
             "keywords": []
@@ -1275,202 +1928,38 @@
         "avg_score": 0.0,
         "catalyst_confirmed": false,
         "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+        "top_headline": "Weekly Report: what happened at MWC last week (1026-1030)?",
         "news_filter_reason": "low catalyst score (max 0/5)"
       },
       "tape": {
-        "ticker": "CIIT",
+        "ticker": "MWC",
         "valid": true,
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 526.17,
+        "rvol": 3.16,
         "volume_indicator": "high",
-        "volume": 4178823,
-        "adv": 7942,
-        "recent_pct_of_adv": 52616.76,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 26.969,
-        "buy_pressure_pct": 50.65,
-        "large_bar_count": 15,
-        "vwap_distance_pct": 1.956,
-        "recent_volume": 4178823,
+        "volume": 657438,
+        "adv": 207792,
+        "recent_pct_of_adv": 316.39,
+        "volume_acceleration": 2.282,
+        "price_velocity_pct": 1.932,
+        "buy_pressure_pct": 45.62,
+        "large_bar_count": 41,
+        "vwap_distance_pct": 9.338,
+        "recent_volume": 657438,
         "prior_volume": 0,
-        "median_range": 0.07,
-        "last_price": 1.55,
-        "vwap": 1.5809155094011416,
-        "last_trade_time": "2026-11-05T23:01:09.944000+00:00",
-        "stale_age_seconds": 18
+        "median_range": 0.0,
+        "last_price": 1.05,
+        "vwap": 1.1581518726727997,
+        "last_trade_time": "2026-11-05T23:01:55.790000+00:00",
+        "stale_age_seconds": 33
       },
       "date": "2026-11-06",
-      "time": "10:01:28",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.997
-    },
-    {
-      "ticker": "INOD",
-      "name": "Innodata",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 42.76,
-      "change_pct": 10.719834282755052,
-      "volume": 3484024,
-      "market_cap": 1327857981.62,
-      "float_shares": 32712197,
-      "country": "United States",
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
-      "result": "+10.7% \u00b7 Entry $42.76 \u00b7 T1 $44.47 \u00b7 T2 $45.33 \u00b7 T3 $47.04",
-      "plan": {
-        "valid": true,
-        "ticker": "INOD",
-        "entry": 42.76,
-        "stop": 41.9048,
-        "targets": {
-          "t1": 44.4704,
-          "t2": 45.3256,
-          "t3": 47.036
-        },
-        "risk_per_share": 0.8552,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 7,
-        "position_value": 299.32,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$41.9048"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "INOD",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "1h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "1h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "INOD",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.21,
-        "volume_indicator": "high",
-        "volume": 3484024,
-        "adv": 1579970,
-        "recent_pct_of_adv": 220.51,
-        "volume_acceleration": -0.371,
-        "price_velocity_pct": 2.359,
-        "buy_pressure_pct": 51.01,
-        "large_bar_count": 112,
-        "vwap_distance_pct": 1.403,
-        "recent_volume": 3484024,
-        "prior_volume": 0,
-        "median_range": 0.1325,
-        "last_price": 38.62,
-        "vwap": 38.08556230479072,
-        "last_trade_time": "2026-11-05T23:00:21.880000+00:00",
-        "stale_age_seconds": 115
-      },
-      "date": "2026-11-06",
-      "time": "10:01:28",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 42.58
+      "previous_price": null
     },
     {
       "ticker": "INV",
@@ -1478,17 +1967,17 @@
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
       "price": 0.178,
-      "change_pct": -98.49809523809525,
+      "change_pct": -27.02452568255437,
       "volume": 9725784,
-      "market_cap": 7290751.0,
+      "market_cap": 13681501.0,
       "float_shares": 86756511,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (-98.5%, rvol 2.2x)",
+      "scan_reason": "Top gainer tape exempt (-27.0%, rvol 2.2x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 -98.5%",
+      "result": "Top-10 gainer tape momentum \u00b7 -27.0%",
       "plan": {
         "valid": true,
         "ticker": "INV",
@@ -1554,247 +2043,47 @@
         "last_price": 0.1577,
         "vwap": 0.16276409366664563,
         "last_trade_time": "2026-11-05T22:58:45.064000+00:00",
-        "stale_age_seconds": 162
+        "stale_age_seconds": 223
       },
       "date": "2026-11-06",
-      "time": "10:01:29",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": false,
       "previous_price": 0.178
-    },
-    {
-      "ticker": "LABT",
-      "name": "Lakewood-Amedex",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.59,
-      "change_pct": 182.4451410658307,
-      "volume": 747046985,
-      "market_cap": 1281053.33,
-      "float_shares": 1434312,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (182.4%, rvol 55.5x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +182.4%",
-      "plan": {
-        "valid": true,
-        "ticker": "LABT",
-        "entry": 0.59,
-        "stop": 0.5782,
-        "targets": {
-          "t1": 0.6136,
-          "t2": 0.6254,
-          "t3": 0.649
-        },
-        "risk_per_share": 0.0118,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 508,
-        "position_value": 299.72,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.5782"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "LABT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:29:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:09:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "5h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T17:05:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
-            "source": "Webull",
-            "time": "9h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T13:02:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:32:36.239+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T14:28:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:29:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
-            "source": "Webull",
-            "time": "3h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T19:09:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "5h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T17:05:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
-            "source": "Webull",
-            "time": "9h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T13:02:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:32:36.239+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T14:28:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "LABT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 55.48,
-        "volume_indicator": "high",
-        "volume": 747046985,
-        "adv": 13466346,
-        "recent_pct_of_adv": 5547.51,
-        "volume_acceleration": -0.793,
-        "price_velocity_pct": 20.16,
-        "buy_pressure_pct": 49.35,
-        "large_bar_count": 91,
-        "vwap_distance_pct": 8.466,
-        "recent_volume": 747046985,
-        "prior_volume": 0,
-        "median_range": 0.0208,
-        "last_price": 0.5406,
-        "vwap": 0.5906026213968292,
-        "last_trade_time": "2026-11-05T23:01:10.951000+00:00",
-        "stale_age_seconds": 16
-      },
-      "date": "2026-11-06",
-      "time": "10:01:29",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.591
     },
     {
       "ticker": "DVLT",
       "name": "Datavault AI Inc",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 0.096,
-      "change_pct": 62.16216216216216,
-      "volume": 131631682,
+      "price": 0.09,
+      "change_pct": 52.02702702702702,
+      "volume": 133702361,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "country": "United States",
       "cap_size": "micro-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (62.2%, rvol 2.5x)",
+      "scan_reason": "Top gainer tape exempt (52.0%, rvol 2.5x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +62.2%",
+      "result": "Top-10 gainer tape momentum \u00b7 +52.0%",
       "plan": {
         "valid": true,
         "ticker": "DVLT",
-        "entry": 0.096,
-        "stop": 0.0941,
+        "entry": 0.09,
+        "stop": 0.0882,
         "targets": {
-          "t1": 0.0998,
-          "t2": 0.1017,
-          "t3": 0.1055
+          "t1": 0.0936,
+          "t2": 0.0954,
+          "t3": 0.099
         },
-        "risk_per_share": 0.0019,
+        "risk_per_share": 0.0018,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 3125,
-        "position_value": 300.0,
+        "shares": 3333,
+        "position_value": 299.97,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1802,7 +2091,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0941"
+          "hard_stop": "$0.0882"
         }
       },
       "ta": {
@@ -1929,29 +2218,718 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.48,
+        "rvol": 2.52,
         "volume_indicator": "high",
-        "volume": 131631682,
+        "volume": 133702361,
         "adv": 53004613,
-        "recent_pct_of_adv": 248.34,
+        "recent_pct_of_adv": 252.25,
         "volume_acceleration": -0.658,
         "price_velocity_pct": 3.86,
-        "buy_pressure_pct": 53.06,
-        "large_bar_count": 231,
+        "buy_pressure_pct": 52.98,
+        "large_bar_count": 232,
         "vwap_distance_pct": 5.008,
-        "recent_volume": 131631682,
+        "recent_volume": 133702361,
         "prior_volume": 0,
         "median_range": 0.0001,
         "last_price": 0.0592,
         "vwap": 0.056376730604129836,
-        "last_trade_time": "2026-11-05T23:01:10.897000+00:00",
+        "last_trade_time": "2026-11-05T23:02:11.558000+00:00",
         "stale_age_seconds": 16
       },
       "date": "2026-11-06",
-      "time": "10:01:29",
+      "time": "10:02:29",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.098
+      "previous_price": 0.096
+    },
+    {
+      "ticker": "LABT",
+      "name": "Lakewood-Amedex",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.59,
+      "change_pct": 182.4451410658307,
+      "volume": 747127305,
+      "market_cap": 1281053.33,
+      "float_shares": 1434312,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (182.4%, rvol 55.5x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +182.4%",
+      "plan": {
+        "valid": true,
+        "ticker": "LABT",
+        "entry": 0.59,
+        "stop": 0.5782,
+        "targets": {
+          "t1": 0.6136,
+          "t2": 0.6254,
+          "t3": 0.649
+        },
+        "risk_per_share": 0.0118,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 508,
+        "position_value": 299.72,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.5782"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "LABT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:29:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:09:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T13:02:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:32:36.239+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T14:28:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:29:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Is Penny Stock Lakewood-Amedex Biotherapeutics (LABT) Up Today?",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T19:09:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lakewood-Amedex Biotherapeutics Announces Completion of Series C Convertible Preferred Stock Redemption",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T13:02:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LABT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:32:36.239+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "This Kazia Therapeutics Analyst Begins Coverage On A Bullish Note; Here Are Top 4 Initiations For Friday",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T14:28:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Healthcare Stocks Rally: LABT Soars 240%, ADMA 29%, WRBY 27%, CCLD 20%",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "LABT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 55.48,
+        "volume_indicator": "high",
+        "volume": 747127305,
+        "adv": 13466346,
+        "recent_pct_of_adv": 5548.11,
+        "volume_acceleration": -0.793,
+        "price_velocity_pct": 20.16,
+        "buy_pressure_pct": 49.27,
+        "large_bar_count": 91,
+        "vwap_distance_pct": 8.466,
+        "recent_volume": 747127305,
+        "prior_volume": 0,
+        "median_range": 0.0208,
+        "last_price": 0.5406,
+        "vwap": 0.5906026213968292,
+        "last_trade_time": "2026-11-05T23:02:11.140000+00:00",
+        "stale_age_seconds": 16
+      },
+      "date": "2026-11-06",
+      "time": "10:02:29",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 0.59
+    },
+    {
+      "ticker": "DDD",
+      "name": "3D Systems Corp",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.818,
+      "change_pct": -36.74242424242425,
+      "volume": 13394171,
+      "market_cap": 277807033.39,
+      "float_shares": 155659497,
+      "country": "United States",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (-36.7%, rvol 5.2x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 -36.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "DDD",
+        "entry": 1.818,
+        "stop": 1.7816,
+        "targets": {
+          "t1": 1.8908,
+          "t2": 1.9272,
+          "t3": 2.0
+        },
+        "risk_per_share": 0.0364,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 165,
+        "position_value": 299.97,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.7816"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "DDD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "3D Systems expands distribution partnership with BioSummer Dental",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:35:44.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "partnership with"
+            ]
+          },
+          {
+            "title": "3D Systems Expands Collaboration With BioSummer Dental To Include NextDent 300 Multijet 3D Printer To Its Portfolio",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:34:32.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "collaboration with"
+            ]
+          },
+          {
+            "title": "3D Systems (DDD) Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T20:01:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T14:28:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Corporation Enters Exchange Agreements for $92,030,000 of 5.875% Convertible Senior Secured Notes due 2030",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T12:14:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Announces Exchange of Convertible Notes",
+            "source": "Webull",
+            "time": "11h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T11:42:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems reports Q3 EPS (6c), consensus (4c)",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:36:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems sees Q4 revenue $100M-$103M, consensus $106.04M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:35:51.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Sees Q4 Sales $100.000M-$103.000M vs $105.912M Est",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:40:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Non-GAAP EPS of -$0.06 misses by $0.02, revenue of $99.3M beats by $2.02M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:15:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Loss/Shr 21c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Adj Loss/Shr 6c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems: Q3 Earnings Snapshot",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:16:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at DDD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:36:11.091+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "3D Systems expands distribution partnership with BioSummer Dental",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:35:44.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "partnership with"
+            ]
+          },
+          {
+            "title": "3D Systems Expands Collaboration With BioSummer Dental To Include NextDent 300 Multijet 3D Printer To Its Portfolio",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T12:34:32.000+0000",
+            "url": "",
+            "score": 4,
+            "keywords": [
+              "collaboration with"
+            ]
+          },
+          {
+            "title": "3D Systems (DDD) Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "3h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T20:01:43.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "5h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T17:05:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Q3 2026 Earnings Call Transcript",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T14:28:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Corporation Enters Exchange Agreements for $92,030,000 of 5.875% Convertible Senior Secured Notes due 2030",
+            "source": "Webull",
+            "time": "10h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T12:14:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Announces Exchange of Convertible Notes",
+            "source": "Webull",
+            "time": "11h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T11:42:10.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems reports Q3 EPS (6c), consensus (4c)",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:36:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems sees Q4 revenue $100M-$103M, consensus $106.04M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T22:35:51.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Sys Sees Q4 Sales $100.000M-$103.000M vs $105.912M Est",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:40:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems Non-GAAP EPS of -$0.06 misses by $0.02, revenue of $99.3M beats by $2.02M",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:15:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Loss/Shr 21c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*3D Systems 3Q Adj Loss/Shr 6c >DDD",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T21:10:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "3D Systems: Q3 Earnings Snapshot",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:16:49.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at DDD last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:36:11.091+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "3D Systems announces $42.5M at-the-market offering; shares slump",
+            "flag": "offering"
+          },
+          {
+            "title": "3D Systems Enters Agreement for $42.5 Million Stock Offering",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 4,
+        "avg_score": 0.5,
+        "catalyst_confirmed": true,
+        "high_impact_count": 2,
+        "top_headline": "3D Systems expands distribution partnership with BioSummer Dental",
+        "news_filter_reason": "news red flags; catalyst confirmed (2 items, score \u22653); red flags: offering"
+      },
+      "tape": {
+        "ticker": "DDD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 5.22,
+        "volume_indicator": "high",
+        "volume": 13394171,
+        "adv": 2566521,
+        "recent_pct_of_adv": 521.88,
+        "volume_acceleration": 0.182,
+        "price_velocity_pct": 4.298,
+        "buy_pressure_pct": 45.24,
+        "large_bar_count": 88,
+        "vwap_distance_pct": 5.852,
+        "recent_volume": 13394171,
+        "prior_volume": 0,
+        "median_range": 0.0099,
+        "last_price": 1.67,
+        "vwap": 1.7737999175537082,
+        "last_trade_time": "2026-11-05T23:01:42.623000+00:00",
+        "stale_age_seconds": 46
+      },
+      "date": "2026-11-06",
+      "time": "10:02:29",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": null
+    },
+    {
+      "ticker": "CIIT",
+      "name": "Tianci Intrnl",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 2.04,
+      "change_pct": 31.61290322580645,
+      "volume": 4196008,
+      "market_cap": 1499456.05,
+      "float_shares": 605068,
+      "country": "China / Hong Kong",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (31.6%, rvol 24.4x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +31.6%",
+      "plan": {
+        "valid": true,
+        "ticker": "CIIT",
+        "entry": 2.04,
+        "stop": 1.9992,
+        "targets": {
+          "t1": 2.1216,
+          "t2": 2.1624,
+          "t3": 2.244
+        },
+        "risk_per_share": 0.0408,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 147,
+        "position_value": 299.88,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.9992"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CIIT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CIIT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 24.4,
+        "volume_indicator": "high",
+        "volume": 4196008,
+        "adv": 172000,
+        "recent_pct_of_adv": 2439.54,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 26.19,
+        "buy_pressure_pct": 51.42,
+        "large_bar_count": 15,
+        "vwap_distance_pct": 1.956,
+        "recent_volume": 4196008,
+        "prior_volume": 0,
+        "median_range": 0.07,
+        "last_price": 1.55,
+        "vwap": 1.5809155094011416,
+        "last_trade_time": "2026-11-05T23:02:11.411000+00:00",
+        "stale_age_seconds": 16
+      },
+      "date": "2026-11-06",
+      "time": "10:02:30",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.019
     }
   ],
   "pre_market_watchlist": [],
@@ -1961,9 +2939,9 @@
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.079,
+      "price": 2.06,
       "change_pct": -19.649122807017545,
-      "volume": 6370494,
+      "volume": 6372450,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -1974,43 +2952,43 @@
       "sec_filings": "8-K (Oct 29), 8-K (Oct 27), 8-K (Oct 23)",
       "result": "Bounce candidate",
       "reason_note": "bounce_research",
-      "previous_price": 2.05
+      "previous_price": 2.079
     }
   ],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "STAK",
-    "name": "STAK inc.",
+    "ticker": "INOD",
+    "name": "Innodata",
     "status": "ALERT",
     "source": "regular",
-    "price": 2.04,
-    "change_pct": 25.174825174825184,
-    "volume": 7504484,
-    "market_cap": 34386524.71,
-    "float_shares": 10010349,
-    "country": "China / Cayman-China",
-    "cap_size": "nano-cap",
+    "price": 42.75,
+    "change_pct": 10.693940963231494,
+    "volume": 3484324,
+    "market_cap": 1327857981.62,
+    "float_shares": 32712197,
+    "country": "United States",
+    "cap_size": "small-cap",
     "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+25.2% \u00b7 Entry $2.04 \u00b7 T1 $2.12 \u00b7 T2 $2.16 \u00b7 T3 $2.24",
+    "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
+    "result": "+10.7% \u00b7 Entry $42.75 \u00b7 T1 $44.46 \u00b7 T2 $45.31 \u00b7 T3 $47.02",
     "plan": {
       "valid": true,
-      "ticker": "STAK",
-      "entry": 2.04,
-      "stop": 1.9992,
+      "ticker": "INOD",
+      "entry": 42.75,
+      "stop": 41.895,
       "targets": {
-        "t1": 2.1216,
-        "t2": 2.1624,
-        "t3": 2.244
+        "t1": 44.46,
+        "t2": 45.315,
+        "t3": 47.025
       },
-      "risk_per_share": 0.0408,
+      "risk_per_share": 0.855,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 147,
-      "position_value": 299.88,
+      "shares": 7,
+      "position_value": 299.25,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2018,7 +2996,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.9992"
+        "hard_stop": "$41.895"
       }
     },
     "ta": {
@@ -2026,59 +3004,41 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "STAK",
+      "ticker": "INOD",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+          "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
           "source": "Webull",
           "time": "1h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:41:32.000+0000",
+          "raw_time": "2026-11-05T21:58:22.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
-          "source": "Webull",
-          "time": "1h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Names New CFO Amid Management Changes",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T14:00:36.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stak names Xiaofei Han as CFO, effective November 1",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:10:41.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Announces Changes in Management",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at STAK last week (1026-1030)?",
+          "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
           "source": "Webull",
           "time": "3d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T09:47:10.540+0000",
+          "raw_time": "2026-11-02T09:25:32.664+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+          "source": "Webull",
+          "time": "4d ago \u00b7 01 Nov",
+          "raw_time": "2026-11-01T14:45:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+          "source": "Webull",
+          "time": "5d ago \u00b7 31 Oct",
+          "raw_time": "2026-10-31T11:55:36.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2086,55 +3046,37 @@
       ],
       "headlines": [
         {
-          "title": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+          "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
           "source": "Webull",
           "time": "1h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:41:32.000+0000",
+          "raw_time": "2026-11-05T21:58:22.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
-          "source": "Webull",
-          "time": "1h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Names New CFO Amid Management Changes",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T14:00:36.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stak names Xiaofei Han as CFO, effective November 1",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:10:41.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Announces Changes in Management",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at STAK last week (1026-1030)?",
+          "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
           "source": "Webull",
           "time": "3d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T09:47:10.540+0000",
+          "raw_time": "2026-11-02T09:25:32.664+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
+          "source": "Webull",
+          "time": "4d ago \u00b7 01 Nov",
+          "raw_time": "2026-11-01T14:45:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
+          "source": "Webull",
+          "time": "5d ago \u00b7 31 Oct",
+          "raw_time": "2026-10-31T11:55:36.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2145,71 +3087,71 @@
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+      "top_headline": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
       "news_filter_reason": "low catalyst score (max 0/5)"
     },
     "tape": {
-      "ticker": "STAK",
+      "ticker": "INOD",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 2.28,
+      "rvol": 2.21,
       "volume_indicator": "high",
-      "volume": 7504484,
-      "adv": 3284982,
-      "recent_pct_of_adv": 228.45,
-      "volume_acceleration": 1.54,
-      "price_velocity_pct": 10.5,
-      "buy_pressure_pct": 54.5,
-      "large_bar_count": 114,
-      "vwap_distance_pct": 2.88,
-      "recent_volume": 7504484,
+      "volume": 3484324,
+      "adv": 1579970,
+      "recent_pct_of_adv": 220.53,
+      "volume_acceleration": -0.371,
+      "price_velocity_pct": 2.359,
+      "buy_pressure_pct": 51.01,
+      "large_bar_count": 112,
+      "vwap_distance_pct": 1.403,
+      "recent_volume": 3484324,
       "prior_volume": 0,
-      "median_range": 0.0198,
-      "last_price": 1.79,
-      "vwap": 1.7398921219736934,
-      "last_trade_time": "2026-11-05T23:01:07.456000+00:00",
-      "stale_age_seconds": 20
+      "median_range": 0.1325,
+      "last_price": 38.62,
+      "vwap": 38.08556230479072,
+      "last_trade_time": "2026-11-05T23:01:33.319000+00:00",
+      "stale_age_seconds": 176
     },
     "date": "2026-11-06",
-    "time": "10:01:28",
+    "time": "10:02:28",
     "skip_news_check": true,
     "red_flag": false,
-    "previous_price": 1.99
+    "previous_price": 42.76
   },
-  "total_candidates": 7,
-  "alerts_generated": 3,
+  "total_candidates": 9,
+  "alerts_generated": 2,
   "all_gainers": [
     {
       "ticker": "DVLT",
       "name": "Datavault AI Inc",
-      "price": 0.096,
-      "change_pct": 62.16216216216216,
-      "volume": 131631682,
-      "rvol": 1.1017981060078954,
+      "price": 0.09,
+      "change_pct": 52.02702702702702,
+      "volume": 133702361,
+      "rvol": 1.1191303330651345,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "cap_size": "micro-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.096, float 685.2M > 100M"
+      "reason": "Filtered: price $0.090, float 685.2M > 100M"
     },
     {
       "ticker": "CIIT",
       "name": "Tianci Intrnl",
-      "price": 2.019,
-      "change_pct": 30.258064516129036,
-      "volume": 4178823,
-      "rvol": 526.1675900277008,
+      "price": 2.04,
+      "change_pct": 31.61290322580645,
+      "volume": 4196008,
+      "rvol": 7.9555581677982525,
       "market_cap": 1499456.05,
       "float_shares": 605068,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "China / Hong Kong",
-      "passed": true,
-      "reason": "Passed filters"
+      "passed": false,
+      "reason": "Filtered: tiny avg $vol, avg $vol $1.1M < $2.0M"
     },
     {
       "ticker": "DBGI",
@@ -2242,21 +3184,6 @@
       "reason": "Filtered: vol 49,576, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "RIME",
-      "name": "Algorhythm Holdings Inc",
-      "price": 0.097,
-      "change_pct": 19.605425400739822,
-      "volume": 3401060,
-      "rvol": 2.115618600693209,
-      "market_cap": 1653771.49,
-      "float_shares": 11622153,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.097, tiny price $0.097, tiny avg $vol, tiny vol/float 0.29x, avg $vol $0.2M < $2.0M"
-    },
-    {
       "ticker": "UONEK",
       "name": "Urban One Inc",
       "price": 4.24,
@@ -2272,12 +3199,27 @@
       "reason": "Filtered: vol 3,185, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
+      "ticker": "RIME",
+      "name": "Algorhythm Holdings Inc",
+      "price": 0.097,
+      "change_pct": 19.605425400739822,
+      "volume": 3519699,
+      "rvol": 2.0047679966098295,
+      "market_cap": 1653771.49,
+      "float_shares": 11622153,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.097, tiny price $0.097, tiny avg $vol, tiny vol/float 0.30x, avg $vol $0.2M < $2.0M"
+    },
+    {
       "ticker": "KDK",
       "name": "Kodiak AI, Inc.",
-      "price": 1.11,
-      "change_pct": 16.706970875828006,
-      "volume": 10849361,
-      "rvol": 1.140295029040348,
+      "price": 1.1,
+      "change_pct": 15.655556723793518,
+      "volume": 10853109,
+      "rvol": 1.140688953232643,
       "market_cap": 190807941.49,
       "float_shares": 116156776,
       "cap_size": "micro-cap",
@@ -2302,6 +3244,21 @@
       "reason": "Filtered: tiny price $0.314, tiny rvol 1.1x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "PLBY",
+      "name": "Playboy Inc",
+      "price": 1.42,
+      "change_pct": 14.51612903225806,
+      "volume": 1526473,
+      "rvol": 1.7149050522344715,
+      "market_cap": 148561533.12,
+      "float_shares": 85006118,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
+    },
+    {
       "ticker": "EXOD",
       "name": "Exodus Movement",
       "price": 4.486,
@@ -2310,36 +3267,6 @@
       "rvol": 1.4768076313193743,
       "market_cap": 118396771.36,
       "float_shares": 5378895,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "STAK",
-      "name": "STAK inc.",
-      "price": 2.04,
-      "change_pct": 25.174825174825184,
-      "volume": 7504484,
-      "rvol": 6.278794288205179,
-      "market_cap": 34386524.71,
-      "float_shares": 10010349,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Cayman-China",
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
-      "ticker": "PLBY",
-      "name": "Playboy Inc",
-      "price": 1.41,
-      "change_pct": 13.709677419354833,
-      "volume": 1523210,
-      "rvol": 1.7112392584828355,
-      "market_cap": 148561533.12,
-      "float_shares": 85006118,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
@@ -2392,6 +3319,21 @@
       "reason": "Filtered: tiny price $0.850, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
+      "ticker": "STAK",
+      "name": "STAK inc.",
+      "price": 2.02,
+      "change_pct": 25.174825174825184,
+      "volume": 7505804,
+      "rvol": 6.279898695711468,
+      "market_cap": 34386524.71,
+      "float_shares": 10010349,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Cayman-China",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "FRD",
       "name": "Friedman Inds",
       "price": 40.0,
@@ -2412,7 +3354,7 @@
       "price": 2.85,
       "change_pct": 11.328125000000002,
       "volume": 317452,
-      "rvol": 1.3397934506902562,
+      "rvol": 1.3397595242818015,
       "market_cap": 39532753.92,
       "float_shares": 13129859,
       "cap_size": "nano-cap",
@@ -2497,27 +3439,12 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "ASTI",
-      "name": "Ascent Solar Tec",
-      "price": 1.61,
-      "change_pct": 9.152542372881356,
-      "volume": 527549,
-      "rvol": 1.9371681415929203,
-      "market_cap": 14479235.73,
-      "float_shares": 9811053,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.05x < 0.1x"
-    },
-    {
       "ticker": "LABT",
       "name": "Lakewood-Amedex",
       "price": 0.59,
       "change_pct": 182.4451410658307,
-      "volume": 747046985,
-      "rvol": 7.903196909741794,
+      "volume": 747127305,
+      "rvol": 7.904046635111867,
       "market_cap": 1281053.33,
       "float_shares": 1434312,
       "cap_size": "nano-cap",
@@ -2525,6 +3452,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny price $0.590"
+    },
+    {
+      "ticker": "ASTI",
+      "name": "Ascent Solar Tec",
+      "price": 1.61,
+      "change_pct": 9.152542372881356,
+      "volume": 527549,
+      "rvol": 1.936755657371103,
+      "market_cap": 14479235.73,
+      "float_shares": 9811053,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.05x < 0.1x"
     },
     {
       "ticker": "UEIC",
@@ -2570,68 +3512,23 @@
       "country": "Australia",
       "passed": false,
       "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
-    },
-    {
-      "ticker": "ERNA",
-      "name": "Ernexa",
-      "price": 1.99,
-      "change_pct": 8.7431693989071,
-      "volume": 33688,
-      "rvol": 3.035775434802199,
-      "market_cap": 2987312.13,
-      "float_shares": 1150392,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny avg $vol, tiny vol/float 0.03x, vol 33,688, vol/float 0.03x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "BLNE",
-      "name": "Beeline Holdings, Inc",
-      "price": 0.66,
-      "change_pct": 8.73146622734762,
-      "volume": 526584,
-      "rvol": 1.271825291398374,
-      "market_cap": 19987385.84,
-      "float_shares": 23482136,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "CLAR",
-      "name": "Clarus Corp",
-      "price": 4.62,
-      "change_pct": 8.70588235294118,
-      "volume": 293087,
-      "rvol": 0.7604432613072628,
-      "market_cap": 162724658.75,
-      "float_shares": 29331331,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: move -3.8% / rvol 0.8, vol/float 0.01x < 0.1x"
     }
   ],
   "all_losers": [
     {
       "ticker": "EVGN",
       "name": "Evogene",
-      "price": 0.246,
+      "price": 0.25,
       "change_pct": -7.623318385650224,
-      "volume": 7419825,
-      "rvol": 270.0868156668608,
+      "volume": 7424975,
+      "rvol": 7.856950117457831,
       "market_cap": 5950292.2,
       "float_shares": 13650568,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "International (region 83)",
       "passed": false,
-      "reason": "Filtered: price $0.246, move -7.6%"
+      "reason": "Filtered: price $0.250, move -7.6%"
     },
     {
       "ticker": "BDSX",
@@ -2653,8 +3550,8 @@
       "name": "Baird Medical",
       "price": 0.122,
       "change_pct": -22.53968253968254,
-      "volume": 376368396,
-      "rvol": 5.114180973478041,
+      "volume": 376396918,
+      "rvol": 5.114568537022897,
       "market_cap": 5040373.28,
       "float_shares": 4381473,
       "cap_size": "nano-cap",
@@ -2662,21 +3559,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: price $0.122, move 44.4%"
-    },
-    {
-      "ticker": "NTCL",
-      "name": "Netclass Technology Inc.",
-      "price": 0.261,
-      "change_pct": -14.69194312796209,
-      "volume": 154131358,
-      "rvol": 7.99408475097035,
-      "market_cap": 856295.06,
-      "float_shares": 2001988,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: price $0.261, mktcap $0.9M"
     },
     {
       "ticker": "SDA",
@@ -2709,6 +3591,21 @@
       "reason": "Filtered: mktcap $4.2M, rvol 1.0x, vol 2,437, vol/float 0.00x"
     },
     {
+      "ticker": "NTCL",
+      "name": "Netclass Technology Inc.",
+      "price": 0.267,
+      "change_pct": -14.69194312796209,
+      "volume": 154145341,
+      "rvol": 7.994809984878124,
+      "market_cap": 856295.06,
+      "float_shares": 2001988,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: price $0.267, mktcap $0.9M"
+    },
+    {
       "ticker": "INGN",
       "name": "Inogen Inc",
       "price": 5.62,
@@ -2728,8 +3625,8 @@
       "name": "Inovio Pharmaceu",
       "price": 1.23,
       "change_pct": -10.493827160493836,
-      "volume": 16181322,
-      "rvol": 0.3230018577676718,
+      "volume": 16185159,
+      "rvol": 0.3230784496634548,
       "market_cap": 149926401.1,
       "float_shares": 103007384,
       "cap_size": "micro-cap",
@@ -2784,21 +3681,6 @@
       "reason": "Filtered: rvol 1.0x, vol 98,066"
     },
     {
-      "ticker": "CTM",
-      "name": "Castellum Inc",
-      "price": 0.41,
-      "change_pct": -3.3265306122448943,
-      "volume": 909517,
-      "rvol": 2.258334202384677,
-      "market_cap": 44897895.18,
-      "float_shares": 83320062,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.410, move -3.3%, float 83.3M, vol/float 0.01x"
-    },
-    {
       "ticker": "POLA",
       "name": "Polar Pwr Inc",
       "price": 0.29,
@@ -2829,6 +3711,21 @@
       "reason": "Filtered: mktcap $298.2M, move -1.8%, vol/float 0.05x"
     },
     {
+      "ticker": "CTM",
+      "name": "Castellum Inc",
+      "price": 0.413,
+      "change_pct": -3.3265306122448943,
+      "volume": 911367,
+      "rvol": 2.262927759486316,
+      "market_cap": 44897895.18,
+      "float_shares": 83320062,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.413, move -3.3%, float 83.3M, vol/float 0.01x"
+    },
+    {
       "ticker": "NXGL",
       "name": "Nexgel Inc",
       "price": 3.6,
@@ -2849,7 +3746,7 @@
       "price": 0.088,
       "change_pct": -12.263210368893326,
       "volume": 10543262,
-      "rvol": 0.13209653058330803,
+      "rvol": 0.13203755649402624,
       "market_cap": 180120.85,
       "float_shares": 1790379,
       "cap_size": "nano-cap",
@@ -2863,8 +3760,8 @@
       "name": "CL Workshop Group",
       "price": 0.03,
       "change_pct": -39.63963963963963,
-      "volume": 18214971,
-      "rvol": 0.6408600041818688,
+      "volume": 18215793,
+      "rvol": 0.6377647799010782,
       "market_cap": 1893693.53,
       "float_shares": 44911559,
       "cap_size": "nano-cap",
@@ -2872,21 +3769,6 @@
       "country": "International (region 102)",
       "passed": false,
       "reason": "Filtered: price $0.030, mktcap $1.9M, move -39.6%, rvol 0.6x"
-    },
-    {
-      "ticker": "EHGO",
-      "name": "Eshallgo Inc",
-      "price": 1.51,
-      "change_pct": -26.72413793103448,
-      "volume": 253284,
-      "rvol": 0.08485481974330884,
-      "market_cap": 2006875.5,
-      "float_shares": 1170515,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: mktcap $2.0M, rvol 0.1x"
     },
     {
       "ticker": "XTLB",
@@ -2934,6 +3816,36 @@
       "reason": "Filtered: move 4.2%, rvol 0.0x, vol 46,393, vol/float 0.01x"
     },
     {
+      "ticker": "EHGO",
+      "name": "Eshallgo Inc",
+      "price": 1.526,
+      "change_pct": -26.72413793103448,
+      "volume": 253295,
+      "rvol": 0.0848585049465478,
+      "market_cap": 2006875.5,
+      "float_shares": 1170515,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: mktcap $2.0M, rvol 0.1x"
+    },
+    {
+      "ticker": "DFNS",
+      "name": "T3 Defense Inc",
+      "price": 2.06,
+      "change_pct": -19.649122807017545,
+      "volume": 6372450,
+      "rvol": 6.944647266909763,
+      "market_cap": 7709019.36,
+      "float_shares": 3063997,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": true,
+      "reason": "Bounce candidate"
+    },
+    {
       "ticker": "DFSC",
       "name": "DEFSEC Technologies Inc",
       "price": 0.48,
@@ -2977,24 +3889,115 @@
       "country": "Malaysia",
       "passed": false,
       "reason": "Filtered: move -3.0%, vol 10,621, vol/float 0.01x"
-    },
-    {
-      "ticker": "DFNS",
-      "name": "T3 Defense Inc",
-      "price": 2.079,
-      "change_pct": -19.649122807017545,
-      "volume": 6370494,
-      "rvol": 6.942515633071275,
-      "market_cap": 7709019.36,
-      "float_shares": 3063997,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Bounce candidate"
     }
   ],
   "live_quotes": {
+    "LABT": {
+      "price": 0.5406,
+      "open": 0.3834,
+      "high": 0.96,
+      "low": 0.3701,
+      "close": 0.5406,
+      "preClose": 0.1914,
+      "volume": 747142924,
+      "changeRatio": 1.8245,
+      "marketValue": 1281053.33,
+      "name": "Lakewood-Amedex",
+      "_timestamp": "2026-11-05T23:02:31.118205Z"
+    },
+    "DVLT": {
+      "price": 0.0592,
+      "open": 0.0683,
+      "high": 0.0683,
+      "low": 0.0505,
+      "close": 0.0592,
+      "preClose": 0.069,
+      "volume": 134189990,
+      "changeRatio": -0.142,
+      "marketValue": 56223933.42,
+      "name": "Datavault AI Inc",
+      "_timestamp": "2026-11-05T23:02:31.118243Z"
+    },
+    "STAK": {
+      "price": 1.79,
+      "open": 1.44,
+      "high": 2.05,
+      "low": 1.4,
+      "close": 1.79,
+      "preClose": 1.43,
+      "volume": 7506428,
+      "changeRatio": 0.2517,
+      "marketValue": 34386524.71,
+      "name": "STAK inc.",
+      "_timestamp": "2026-11-05T23:02:31.118258Z"
+    },
+    "DFNS": {
+      "price": 2.29,
+      "open": 2.78,
+      "high": 2.78,
+      "low": 2.21,
+      "close": 2.29,
+      "preClose": 2.85,
+      "volume": 6375650,
+      "changeRatio": -0.1965,
+      "marketValue": 7709019.36,
+      "name": "T3 Defense Inc",
+      "_timestamp": "2026-11-05T23:02:31.118270Z"
+    },
+    "INOD": {
+      "price": 38.62,
+      "open": 41.1,
+      "high": 41.67,
+      "low": 36.26,
+      "close": 38.62,
+      "preClose": 43.3,
+      "volume": 3484357,
+      "changeRatio": -0.1081,
+      "marketValue": 1327857981.62,
+      "name": "Innodata",
+      "_timestamp": "2026-11-05T23:02:31.118281Z"
+    },
+    "DDD": {
+      "price": 1.67,
+      "open": 2.06,
+      "high": 2.06,
+      "low": 1.64,
+      "close": 1.67,
+      "preClose": 2.64,
+      "volume": 13394171,
+      "changeRatio": -0.3674,
+      "marketValue": 277807033.39,
+      "name": "3D Systems Corp",
+      "_timestamp": "2026-11-05T23:02:31.118290Z"
+    },
+    "MWC": {
+      "price": 1.05,
+      "open": 1.46,
+      "high": 1.473,
+      "low": 0.9999,
+      "close": 1.05,
+      "preClose": 1.46,
+      "volume": 657438,
+      "changeRatio": -0.2808,
+      "marketValue": 62390384.7,
+      "name": "Micware Co., Ltd.",
+      "_timestamp": "2026-11-05T23:02:31.118299Z"
+    },
+    "CIIT": {
+      "price": 1.55,
+      "open": 1.65,
+      "high": 1.71,
+      "low": 1.52,
+      "close": 1.55,
+      "preClose": 1.708,
+      "volume": 4201833,
+      "changeRatio": -0.0922,
+      "marketValue": 1499456.05,
+      "name": "Tianci Intrnl",
+      "_timestamp": "2026-11-05T23:02:31.118305Z"
+    }
+  },
+  "previous_live_quotes": {
     "DVLT": {
       "price": 0.0592,
       "open": 0.0683,
@@ -3074,91 +4077,11 @@
       "_timestamp": "2026-11-05T23:01:29.957061Z"
     }
   },
-  "previous_live_quotes": {
-    "INOD": {
-      "price": 38.62,
-      "open": 41.1,
-      "high": 41.67,
-      "low": 36.26,
-      "close": 38.62,
-      "preClose": 43.3,
-      "volume": 3484024,
-      "changeRatio": -0.1081,
-      "marketValue": 1327857981.62,
-      "name": "Innodata",
-      "_timestamp": "2026-11-05T23:00:31.243934Z"
-    },
-    "LABT": {
-      "price": 0.5406,
-      "open": 0.3834,
-      "high": 0.96,
-      "low": 0.3701,
-      "close": 0.5406,
-      "preClose": 0.1914,
-      "volume": 747020767,
-      "changeRatio": 1.8245,
-      "marketValue": 1281053.33,
-      "name": "Lakewood-Amedex",
-      "_timestamp": "2026-11-05T23:00:31.243961Z"
-    },
-    "DFNS": {
-      "price": 2.29,
-      "open": 2.78,
-      "high": 2.78,
-      "low": 2.21,
-      "close": 2.29,
-      "preClose": 2.85,
-      "volume": 6366627,
-      "changeRatio": -0.1965,
-      "marketValue": 7709019.36,
-      "name": "T3 Defense Inc",
-      "_timestamp": "2026-11-05T23:00:31.243973Z"
-    },
-    "DVLT": {
-      "price": 0.0592,
-      "open": 0.0683,
-      "high": 0.0683,
-      "low": 0.0505,
-      "close": 0.0592,
-      "preClose": 0.069,
-      "volume": 131071441,
-      "changeRatio": -0.142,
-      "marketValue": 56223933.42,
-      "name": "Datavault AI Inc",
-      "_timestamp": "2026-11-05T23:00:31.243981Z"
-    },
-    "STAK": {
-      "price": 1.79,
-      "open": 1.44,
-      "high": 2.05,
-      "low": 1.4,
-      "close": 1.79,
-      "preClose": 1.43,
-      "volume": 7503360,
-      "changeRatio": 0.2517,
-      "marketValue": 34386524.71,
-      "name": "STAK inc.",
-      "_timestamp": "2026-11-05T23:00:31.243988Z"
-    },
-    "CIIT": {
-      "price": 1.55,
-      "open": 1.65,
-      "high": 1.71,
-      "low": 1.52,
-      "close": 1.55,
-      "preClose": 1.708,
-      "volume": 4170477,
-      "changeRatio": -0.0922,
-      "marketValue": 1499456.05,
-      "name": "Tianci Intrnl",
-      "_timestamp": "2026-11-05T23:00:31.243995Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "10:01 AM AEDT",
+    "market_time": "10:02 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
