@@ -318,17 +318,17 @@ def _change_pct(stock: Dict) -> float:
     price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
 
-    # When preClose is available, decide whether the current quote is in the
-    # extended session (closer to preClose than to close) or a regular-hours
-    # continuation (closer to close). Use the matching reference.
-    if price > 0 and pre_close > 0 and close > 0:
-        diff_pre = abs(price - pre_close)
-        diff_close = abs(price - close)
-        # If the quote is identical to the last regular close, it is almost certainly
-        # a daily-summary payload and the meaningful change is vs the prior close.
-        if diff_close < 0.0001 or diff_pre < diff_close:
-            return (price - pre_close) / pre_close * 100
-        return (price - close) / close * 100
+    # For daily-summary ranking payloads, the most meaningful and consistent
+    # change is the regular-session change vs the prior close (preClose).  Use
+    # that whenever both close and preClose are present.  Only fall back to a
+    # live quote-vs-close computation for true extended-hours quotes.
+    if pre_close > 0 and close > 0:
+        # If a live extended-hours quote (pprice) is present and far from the
+        # regular close, report the extended-hours move vs the regular close.
+        if price > 0 and abs(price - close) > 1e-9 and abs(price - close) > abs(price - pre_close):
+            return (price - close) / close * 100
+        # Otherwise report the daily change vs prior close.
+        return (close - pre_close) / pre_close * 100
 
     # Fallbacks if one reference is missing.
     if close > 0 and price > 0 and price != close:

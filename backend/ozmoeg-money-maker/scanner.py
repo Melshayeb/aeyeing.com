@@ -340,9 +340,13 @@ class SmallCapScanner:
                 change_pct = change_ratio * 100
         else:
             # Webull payloads report session change as changeRatio (0.848 = +84.8%).
-            # Trust it when it is present and non-zero; derive from price/close only
-            # when it is missing or implausibly small/flat.
-            if abs(change_ratio) >= 0.0001:
+            # When both close and preClose are present, the authoritative daily change
+            # for regular-hours summaries is vs the prior close (preClose).  Use that
+            # before trusting the API changeRatio, because changeRatio can reflect
+            # pre/after-hours moves or be internally inconsistent.
+            if pre_close > 0 and close > 0:
+                change_pct = (close - pre_close) / pre_close * 100
+            elif abs(change_ratio) >= 0.0001:
                 # changeRatio can be either a decimal fraction (0.848) or already a
                 # percentage (84.8). Treat values <= ~10 as decimal fractions.
                 if abs(change_ratio) <= 10:
