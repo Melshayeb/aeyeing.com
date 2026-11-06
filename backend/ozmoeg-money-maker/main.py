@@ -318,19 +318,14 @@ def _change_pct(stock: Dict) -> float:
     price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
 
-    # For daily-summary ranking payloads, the most meaningful and consistent
-    # change is the regular-session change vs the prior close (preClose).  Use
-    # that whenever both close and preClose are present.  Only fall back to a
-    # live quote-vs-close computation for true extended-hours quotes.
-    if pre_close > 0 and close > 0:
-        # If a live extended-hours quote (pprice) is present and far from the
-        # regular close, report the extended-hours move vs the regular close.
-        if price > 0 and abs(price - close) > 1e-9 and abs(price - close) > abs(price - pre_close):
-            return (price - close) / close * 100
-        # Otherwise report the daily change vs prior close.
-        return (close - pre_close) / pre_close * 100
+    # The live, displayed change percentage is the current price vs the prior
+    # close (preClose).  This matches Webull's app/UI and reflects real-time
+    # extended-hours or intraday momentum.  Only fall back to close-based
+    # calculations when preClose is missing.
+    if pre_close > 0 and price > 0:
+        return (price - pre_close) / pre_close * 100
 
-    # Fallbacks if one reference is missing.
+    # Fallbacks if preClose is missing.
     if close > 0 and price > 0 and price != close:
         return (price - close) / close * 100
     if pre_close > 0 and close > 0:

@@ -316,6 +316,9 @@ class SmallCapScanner:
             return (close - pre_close) / pre_close * 100
         if self.is_au and change_ratio:
             return change_ratio * 100
+        # US: live price vs prior close is the displayed change (matches Webull).
+        if pre_close > 0 and price > 0:
+            return (price - pre_close) / pre_close * 100
         if close > 0 and price > 0:
             return (price - close) / close * 100
         return (change_ratio - 1) * 100 if change_ratio > 1 else (change_ratio * 100)
@@ -340,12 +343,10 @@ class SmallCapScanner:
                 change_pct = change_ratio * 100
         else:
             # Webull payloads report session change as changeRatio (0.848 = +84.8%).
-            # When both close and preClose are present, the authoritative daily change
-            # for regular-hours summaries is vs the prior close (preClose).  Use that
-            # before trusting the API changeRatio, because changeRatio can reflect
-            # pre/after-hours moves or be internally inconsistent.
-            if pre_close > 0 and close > 0:
-                change_pct = (close - pre_close) / pre_close * 100
+            # The live displayed change is price vs the prior close (preClose), which
+            # matches Webull's UI and captures real extended-hours/intraday momentum.
+            if pre_close > 0 and price > 0:
+                change_pct = (price - pre_close) / pre_close * 100
             elif abs(change_ratio) >= 0.0001:
                 # changeRatio can be either a decimal fraction (0.848) or already a
                 # percentage (84.8). Treat values <= ~10 as decimal fractions.
