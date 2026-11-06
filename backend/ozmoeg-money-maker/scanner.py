@@ -237,6 +237,11 @@ class SmallCapScanner:
             # pre-market / after-hours gaps correctly. The ranking payload often omits it.
             if 'preClose' in q and q['preClose']:
                 t['preClose'] = q['preClose']
+            # Copy Webull's pre-defined change ratios so the scanner/display match
+            # Webull's UI exactly (regular-session changeRatio and extended-hours pChRatio).
+            for ratio_key in ('changeRatio', 'pChRatio'):
+                if ratio_key in q and q[ratio_key] is not None:
+                    t[ratio_key] = q[ratio_key]
             # Copy current extended-hours price field names when present.
             for price_key in ('pprice', 'pPrice', 'price'):
                 if price_key in q and q[price_key]:
@@ -305,23 +310,41 @@ class SmallCapScanner:
         return candidates[:20]
 
     def _change_pct(self, stock: Dict) -> float:
-        """Compute change percentage for a stock (used for sorting and bounce logic)."""
+        """Compute change percentage for a stock (used for sorting and bounce logic).
+
+        Match Webull's displayed percentage based on market phase:
+        - PRE-MARKET / AFTER-HOURS: use pChRatio (pPrice vs last regular close).
+        - OPEN (regular session): use changeRatio (last trade vs prior close).
+        """
         t = stock.get('ticker', stock)
         v = stock.get('values', {})
         close = float(t.get('close', 0) or 0)
         pre_close = float(t.get('preClose', 0) or 0)
-        price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('close', 0) or 0)
+        price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('pPrice', 0) or t.get('close', 0) or 0)
         change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
-        if self.is_au and pre_close > 0 and close != pre_close:
-            return (close - pre_close) / pre_close * 100
-        if self.is_au and change_ratio:
-            return change_ratio * 100
-        # US: live price vs prior close is the displayed change (matches Webull).
-        if pre_close > 0 and price > 0:
-            return (price - pre_close) / pre_close * 100
-        if close > 0 and price > 0:
-            return (price - close) / close * 100
-        return (change_ratio - 1) * 100 if change_ratio > 1 else (change_ratio * 100)
+        pChRatio = float(v.get('pChRatio', 0) or t.get('pChRatio', 0) or 0)
+
+        market_status = str(self.cfg.get('market_status', '') or self._detect_market_status()).upper()
+        is_extended = market_status in ('PRE-MARKET', 'AFTER-HOURS')
+
+        if is_extended:
+            # Webull extended-hours display uses pChRatio when available.
+            if pChRatio:
+                return pChRatio * 100 if abs(pChRatio) <= 10 else pChRatio
+            if close > 0 and price > 0 and price != close:
+                return (price - close) / close * 100
+            if pre_close > 0 and price > 0:
+                return (price - pre_close) / pre_close * 100
+        else:
+            # Regular session display uses changeRatio (last trade vs prior close).
+            if change_ratio:
+                return change_ratio * 100 if abs(change_ratio) <= 10 else change_ratio
+            if pre_close > 0 and price > 0:
+                return (price - pre_close) / pre_close * 100
+            if close > 0 and price > 0:
+                return (price - close) / close * 100
+
+        return 0.0
 
     def _passes_filter_with_reason(self, stock: Dict, mode: str = 'momentum') -> tuple:
         """Check if stock meets criteria and return reason.
@@ -330,11 +353,15 @@ class SmallCapScanner:
         """
         t = stock.get('ticker', stock)
         v = stock.get('values', {})
-        price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('close', 0) or 0)
+        price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('pPrice', 0) or t.get('close', 0) or 0)
         close = float(t.get('close', 0) or 0)
         pre_close = float(t.get('preClose', 0) or 0)
         # ASX: changeRatio is in values dict; US: may be in ticker dict
         change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
+        pChRatio = float(v.get('pChRatio', 0) or t.get('pChRatio', 0) or 0)
+
+        market_status = str(self.cfg.get('market_status', '') or self._detect_market_status()).upper()
+        is_extended = market_status in ('PRE-MARKET', 'AFTER-HOURS')
 
         if self.is_au:
             if pre_close > 0 and close != pre_close:
@@ -342,22 +369,25 @@ class SmallCapScanner:
             else:
                 change_pct = change_ratio * 100
         else:
-            # Webull payloads report session change as changeRatio (0.848 = +84.8%).
-            # The live displayed change is price vs the prior close (preClose), which
-            # matches Webull's UI and captures real extended-hours/intraday momentum.
-            if pre_close > 0 and price > 0:
-                change_pct = (price - pre_close) / pre_close * 100
-            elif abs(change_ratio) >= 0.0001:
-                # changeRatio can be either a decimal fraction (0.848) or already a
-                # percentage (84.8). Treat values <= ~10 as decimal fractions.
-                if abs(change_ratio) <= 10:
-                    change_pct = change_ratio * 100
+            # Match Webull's displayed change percentage by market phase.
+            if is_extended:
+                if pChRatio:
+                    change_pct = pChRatio * 100 if abs(pChRatio) <= 10 else pChRatio
+                elif close > 0 and price > 0 and price != close:
+                    change_pct = (price - close) / close * 100
+                elif pre_close > 0 and price > 0:
+                    change_pct = (price - pre_close) / pre_close * 100
                 else:
-                    change_pct = change_ratio
-            elif close > 0 and price > 0 and abs(price - close) > 1e-9:
-                change_pct = (price - close) / close * 100
+                    change_pct = 0.0
             else:
-                change_pct = (change_ratio - 1) * 100 if change_ratio > 1 else (change_ratio * 100)
+                if change_ratio:
+                    change_pct = change_ratio * 100 if abs(change_ratio) <= 10 else change_ratio
+                elif pre_close > 0 and price > 0:
+                    change_pct = (price - pre_close) / pre_close * 100
+                elif close > 0 and price > 0:
+                    change_pct = (price - close) / close * 100
+                else:
+                    change_pct = 0.0
 
         volume = int(t.get('volume', 0) or t.get('amount', 0) or 0)
         market_cap_raw = float(t.get('marketValue', 0) or 0)

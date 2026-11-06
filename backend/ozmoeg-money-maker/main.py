@@ -315,24 +315,40 @@ def _change_pct(stock: Dict) -> float:
     v = stock.get('values', {})
     close = float(t.get('close', 0) or 0)
     pre_close = float(t.get('preClose', 0) or 0)
-    price = float(v.get('price', 0) or t.get('pprice', 0) or 0)
+    price = float(v.get('price', 0) or t.get('pprice', 0) or t.get('pPrice', 0) or t.get('close', 0) or 0)
     change_ratio = float(v.get('changeRatio', 0) or t.get('changeRatio', 0) or 0)
+    pChRatio = float(v.get('pChRatio', 0) or t.get('pChRatio', 0) or 0)
 
-    # The live, displayed change percentage is the current price vs the prior
-    # close (preClose).  This matches Webull's app/UI and reflects real-time
-    # extended-hours or intraday momentum.  Only fall back to close-based
-    # calculations when preClose is missing.
-    if pre_close > 0 and price > 0:
-        return (price - pre_close) / pre_close * 100
+    # Detect market phase from the scanner config if available, otherwise infer from quote shape.
+    market_status = ''
+    if 'market_status' in stock:
+        market_status = str(stock.get('market_status', '')).upper()
+    elif 'market_status' in (stock.get('scan_stats') or {}):
+        market_status = str(stock.get('scan_stats', {}).get('market_status', '')).upper()
+    is_extended = market_status in ('PRE-MARKET', 'AFTER-HOURS')
 
-    # Fallbacks if preClose is missing.
-    if close > 0 and price > 0 and price != close:
-        return (price - close) / close * 100
-    if pre_close > 0 and close > 0:
-        return (close - pre_close) / pre_close * 100
-    if change_ratio > 1:
-        return (change_ratio - 1) * 100
-    return change_ratio * 100
+    # If no explicit market phase, infer: a live pPrice that differs from close means extended hours.
+    if not market_status and price > 0 and close > 0 and abs(price - close) > 1e-9:
+        is_extended = True
+
+    if is_extended:
+        # Webull extended-hours display uses pChRatio when available.
+        if pChRatio:
+            return pChRatio * 100 if abs(pChRatio) <= 10 else pChRatio
+        if close > 0 and price > 0 and price != close:
+            return (price - close) / close * 100
+        if pre_close > 0 and price > 0:
+            return (price - pre_close) / pre_close * 100
+    else:
+        # Regular session display uses changeRatio (last trade vs prior close).
+        if change_ratio:
+            return change_ratio * 100 if abs(change_ratio) <= 10 else change_ratio
+        if pre_close > 0 and price > 0:
+            return (price - pre_close) / pre_close * 100
+        if close > 0 and price > 0:
+            return (price - close) / close * 100
+
+    return 0.0
 def _volume(stock: Dict) -> int:
     """Return volume from a Webull ranking payload."""
     t = _extract_ticker_dict(stock)
