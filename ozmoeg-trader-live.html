@@ -1470,105 +1470,760 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-06T09:02:23.480246Z&quot;,
-  &quot;scan_results&quot;: [],
-  &quot;pre_market_results&quot;: [],
+  &quot;last_updated&quot;: &quot;2026-11-06T09:04:26.572227Z&quot;,
+  &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;CIIT&quot;,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 2.58,
+      &quot;change_pct&quot;: 66.45161290322581,
+      &quot;volume&quot;: 460286,
+      &quot;market_cap&quot;: 1835260.45,
+      &quot;float_shares&quot;: 860971,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (66.5%, rvol 2.1x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +66.5%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;entry&quot;: 2.58,
+        &quot;stop&quot;: 2.5284,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 2.6832,
+          &quot;t2&quot;: 2.7348,
+          &quot;t3&quot;: 2.838
+        },
+        &quot;risk_per_share&quot;: 0.0516,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 116,
+        &quot;position_value&quot;: 299.28,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.5284&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;17h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;17h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2.14,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 460286,
+        &quot;adv&quot;: 214747,
+        &quot;recent_pct_of_adv&quot;: 214.34,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 43.636,
+        &quot;buy_pressure_pct&quot;: 20.41,
+        &quot;large_bar_count&quot;: 1,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 460286,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.1297,
+        &quot;last_price&quot;: 1.55,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T09:04:09.007000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;20:04:22&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;_telegram_sent&quot;: true,
+      &quot;previous_price&quot;: null
+    },
+    {
+      &quot;ticker&quot;: &quot;RCT&quot;,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.058,
+      &quot;change_pct&quot;: 93.33333333333334,
+      &quot;volume&quot;: 29461493,
+      &quot;market_cap&quot;: 2307260.55,
+      &quot;float_shares&quot;: 5771596,
+      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (93.3%, rvol 1.4x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +93.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;entry&quot;: 0.058,
+        &quot;stop&quot;: 0.0568,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0604,
+          &quot;t2&quot;: 0.0616,
+          &quot;t3&quot;: 0.064
+        },
+        &quot;risk_per_share&quot;: 0.0012,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 5172,
+        &quot;position_value&quot;: 299.98,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0568&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T12:05:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RCT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:40:58.405+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:29:29.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T20:53:17.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T12:05:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RCT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:40:58.405+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:29:29.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T20:53:17.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 5.0,
+        &quot;rvol&quot;: 1.43,
+        &quot;volume_indicator&quot;: &quot;moderate&quot;,
+        &quot;volume&quot;: 29461493,
+        &quot;adv&quot;: 20662332,
+        &quot;recent_pct_of_adv&quot;: 142.59,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 53.271,
+        &quot;buy_pressure_pct&quot;: 77.59,
+        &quot;large_bar_count&quot;: 2,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 29461493,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0061,
+        &quot;last_price&quot;: 0.03,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T09:04:09.132000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;20:04:22&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.061
+    }
+  ],
+  &quot;pre_market_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;CIIT&quot;,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 2.58,
+      &quot;change_pct&quot;: 66.45161290322581,
+      &quot;volume&quot;: 460286,
+      &quot;market_cap&quot;: 1835260.45,
+      &quot;float_shares&quot;: 860971,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (66.5%, rvol 2.1x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +66.5%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;entry&quot;: 2.58,
+        &quot;stop&quot;: 2.5284,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 2.6832,
+          &quot;t2&quot;: 2.7348,
+          &quot;t3&quot;: 2.838
+        },
+        &quot;risk_per_share&quot;: 0.0516,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 116,
+        &quot;position_value&quot;: 299.28,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.5284&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;17h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;17h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2.14,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 460286,
+        &quot;adv&quot;: 214747,
+        &quot;recent_pct_of_adv&quot;: 214.34,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 43.636,
+        &quot;buy_pressure_pct&quot;: 20.41,
+        &quot;large_bar_count&quot;: 1,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 460286,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.1297,
+        &quot;last_price&quot;: 1.55,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T09:04:09.007000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;20:04:22&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;_telegram_sent&quot;: true,
+      &quot;previous_price&quot;: null
+    },
+    {
+      &quot;ticker&quot;: &quot;RCT&quot;,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.058,
+      &quot;change_pct&quot;: 93.33333333333334,
+      &quot;volume&quot;: 29461493,
+      &quot;market_cap&quot;: 2307260.55,
+      &quot;float_shares&quot;: 5771596,
+      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (93.3%, rvol 1.4x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +93.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;entry&quot;: 0.058,
+        &quot;stop&quot;: 0.0568,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0604,
+          &quot;t2&quot;: 0.0616,
+          &quot;t3&quot;: 0.064
+        },
+        &quot;risk_per_share&quot;: 0.0012,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 5172,
+        &quot;position_value&quot;: 299.98,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0568&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T12:05:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RCT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:40:58.405+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:29:29.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T20:53:17.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T12:05:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RCT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:40:58.405+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:29:29.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T20:53:17.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 5.0,
+        &quot;rvol&quot;: 1.43,
+        &quot;volume_indicator&quot;: &quot;moderate&quot;,
+        &quot;volume&quot;: 29461493,
+        &quot;adv&quot;: 20662332,
+        &quot;recent_pct_of_adv&quot;: 142.59,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 53.271,
+        &quot;buy_pressure_pct&quot;: 77.59,
+        &quot;large_bar_count&quot;: 2,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 29461493,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0061,
+        &quot;last_price&quot;: 0.03,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T09:04:09.132000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;20:04:22&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.061
+    }
+  ],
   &quot;pre_market_watchlist&quot;: [],
   &quot;bounce_results&quot;: [],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: null,
-  &quot;total_candidates&quot;: 0,
+  &quot;total_candidates&quot;: 2,
   &quot;alerts_generated&quot;: 0,
   &quot;all_gainers&quot;: [
     {
       &quot;ticker&quot;: &quot;RCT&quot;,
       &quot;name&quot;: &quot;RedCloud&quot;,
-      &quot;price&quot;: 0.059,
-      &quot;change_pct&quot;: 96.66666666666667,
-      &quot;volume&quot;: 21808961,
-      &quot;rvol&quot;: 0.23695887249749295,
+      &quot;price&quot;: 0.058,
+      &quot;change_pct&quot;: 93.33333333333334,
+      &quot;volume&quot;: 29461493,
+      &quot;rvol&quot;: 0.3201052156208992,
       &quot;market_cap&quot;: 2307260.55,
       &quot;float_shares&quot;: 5771596,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United Kingdom&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.059, tiny price $0.059, tiny rvol 0.2x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.058, tiny price $0.058, tiny rvol 0.3x&quot;
     },
     {
       &quot;ticker&quot;: &quot;CIIT&quot;,
       &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;price&quot;: 2.669,
-      &quot;change_pct&quot;: 72.19354838709677,
-      &quot;volume&quot;: 342051,
-      &quot;rvol&quot;: 0.34913815541680576,
+      &quot;price&quot;: 2.58,
+      &quot;change_pct&quot;: 66.45161290322581,
+      &quot;volume&quot;: 460286,
+      &quot;rvol&quot;: 0.46982293577326145,
       &quot;market_cap&quot;: 1835260.45,
       &quot;float_shares&quot;: 860971,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;China / Hong Kong&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.3x, tiny vol/float 0.40x&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.5x, tiny vol/float 0.53x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SHFS&quot;,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
       &quot;price&quot;: 0.04,
       &quot;change_pct&quot;: 50.375939849624075,
-      &quot;volume&quot;: 7845079,
-      &quot;rvol&quot;: 0.08242124731750171,
+      &quot;volume&quot;: 12127934,
+      &quot;rvol&quot;: 0.12741738453676985,
       &quot;market_cap&quot;: 2274645.4,
       &quot;float_shares&quot;: 85415340,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.040, tiny price $0.040, tiny rvol 0.1x, tiny vol/float 0.09x, vol/float 0.09x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;HKPD&quot;,
-      &quot;name&quot;: &quot;Cellyan Biotechnology Co Ltd&quot;,
-      &quot;price&quot;: 1.75,
-      &quot;change_pct&quot;: 28.676470588235286,
-      &quot;volume&quot;: 7042,
-      &quot;rvol&quot;: 0.15709983268265476,
-      &quot;market_cap&quot;: 3353587.28,
-      &quot;float_shares&quot;: 2107450,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.2x, tiny avg $vol, tiny vol/float 0.00x, vol 7,042, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.040, tiny price $0.040, tiny rvol 0.1x, tiny vol/float 0.14x&quot;
     },
     {
       &quot;ticker&quot;: &quot;VSA&quot;,
       &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
-      &quot;price&quot;: 1.94,
+      &quot;price&quot;: 2.23,
       &quot;change_pct&quot;: 2.6666666666666687,
-      &quot;volume&quot;: 38916,
-      &quot;rvol&quot;: 6.358823529411764,
+      &quot;volume&quot;: 234926,
+      &quot;rvol&quot;: 38.386601307189544,
       &quot;market_cap&quot;: 4301119.9,
       &quot;float_shares&quot;: 2792058,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny avg $vol, tiny vol/float 0.01x, move 2.7%, vol 38,916, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny vol/float 0.08x, move 2.7%, vol/float 0.08x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;DBGI&quot;,
-      &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
-      &quot;price&quot;: 0.576,
-      &quot;change_pct&quot;: 22.553191489361698,
-      &quot;volume&quot;: 108989,
-      &quot;rvol&quot;: 0.2901792370444525,
-      &quot;market_cap&quot;: 438749.23,
-      &quot;float_shares&quot;: 916298,
+      &quot;ticker&quot;: &quot;INLX&quot;,
+      &quot;name&quot;: &quot;Intellinetics&quot;,
+      &quot;price&quot;: 5.4,
+      &quot;change_pct&quot;: 34.328358208955244,
+      &quot;volume&quot;: 10,
+      &quot;rvol&quot;: 0.0007230657989877079,
+      &quot;market_cap&quot;: 18069875.88,
+      &quot;float_shares&quot;: 2783987,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
+      &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.4M, avg $vol $0.2M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: move -2.1% / rvol 0.0, vol 10, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;FLUX&quot;,
@@ -1616,34 +2271,64 @@
       &quot;reason&quot;: &quot;Filtered: vol 1, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;NUR&quot;,
-      &quot;name&quot;: &quot;Nuran Wireless&quot;,
-      &quot;price&quot;: 0.458,
-      &quot;change_pct&quot;: 20.39957939011567,
-      &quot;volume&quot;: 20399,
-      &quot;rvol&quot;: 0.004386789267667047,
-      &quot;market_cap&quot;: 5019263.5,
-      &quot;float_shares&quot;: 7893033,
+      &quot;ticker&quot;: &quot;DBGI&quot;,
+      &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
+      &quot;price&quot;: 0.565,
+      &quot;change_pct&quot;: 20.212765957446805,
+      &quot;volume&quot;: 114073,
+      &quot;rvol&quot;: 0.30371520160173804,
+      &quot;market_cap&quot;: 438749.23,
+      &quot;float_shares&quot;: 916298,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.458, tiny rvol 0.0x, tiny vol/float 0.00x, vol 20,399, vol/float 0.00x < 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.4M, avg $vol $0.2M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;NAAS&quot;,
-      &quot;name&quot;: &quot;NaaS Technology ADR&quot;,
-      &quot;price&quot;: 1.808,
-      &quot;change_pct&quot;: 17.78501628664496,
-      &quot;volume&quot;: 7656,
-      &quot;rvol&quot;: 0.3344692005242464,
-      &quot;market_cap&quot;: 37704002.38,
-      &quot;float_shares&quot;: 24454037,
+      &quot;ticker&quot;: &quot;CATX&quot;,
+      &quot;name&quot;: &quot;Perspective Therapeutics Inc&quot;,
+      &quot;price&quot;: 0.948,
+      &quot;change_pct&quot;: 20.243531202435307,
+      &quot;volume&quot;: 67,
+      &quot;rvol&quot;: 1.5394410542276155e-05,
+      &quot;market_cap&quot;: 89997171.11,
+      &quot;float_shares&quot;: 104759185,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 67, float 104.8M > 100M, vol/float 0.00x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;CABR&quot;,
+      &quot;name&quot;: &quot;Caring Brands&quot;,
+      &quot;price&quot;: 0.898,
+      &quot;change_pct&quot;: 19.733333333333334,
+      &quot;volume&quot;: 5,
+      &quot;rvol&quot;: 2.82276958860956e-05,
+      &quot;market_cap&quot;: 7851169.5,
+      &quot;float_shares&quot;: 7791506,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.898, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 5, vol/float 0.00x < 0.1x, avg $vol $0.2M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;SSM&quot;,
+      &quot;name&quot;: &quot;Sono Group N.V.&quot;,
+      &quot;price&quot;: 1.03,
+      &quot;change_pct&quot;: 18.092180692501728,
+      &quot;volume&quot;: 18,
+      &quot;rvol&quot;: 0.00022365805168986084,
+      &quot;market_cap&quot;: 1490008.91,
+      &quot;float_shares&quot;: 1052167,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;country&quot;: &quot;Germany&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 7,656, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 18, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;DFSC&quot;,
@@ -1770,15 +2455,15 @@
       &quot;name&quot;: &quot;Hf Foods Group Inc&quot;,
       &quot;price&quot;: 1.65,
       &quot;change_pct&quot;: 14.583333333333332,
-      &quot;volume&quot;: 78,
-      &quot;rvol&quot;: 0.0014831717056474614,
+      &quot;volume&quot;: 79,
+      &quot;rvol&quot;: 0.0015021867275147366,
       &quot;market_cap&quot;: 77617360.8,
       &quot;float_shares&quot;: 39435358,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move -3.4% / rvol 0.0, vol 78, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: move -3.4% / rvol 0.0, vol 79, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;IBG&quot;,
@@ -1794,6 +2479,21 @@
       &quot;country&quot;: &quot;Australia&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny price $0.859, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 3, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;PLBY&quot;,
+      &quot;name&quot;: &quot;Playboy Inc&quot;,
+      &quot;price&quot;: 1.42,
+      &quot;change_pct&quot;: 14.51612903225806,
+      &quot;volume&quot;: 2543,
+      &quot;rvol&quot;: 0.0024253048082645383,
+      &quot;market_cap&quot;: 148561533.12,
+      &quot;float_shares&quot;: 80244213,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 2,543, vol/float 0.00x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;COYA&quot;,
@@ -1854,21 +2554,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;PLBY&quot;,
-      &quot;name&quot;: &quot;Playboy Inc&quot;,
-      &quot;price&quot;: 1.416,
-      &quot;change_pct&quot;: 14.193548387096769,
-      &quot;volume&quot;: 1989,
-      &quot;rvol&quot;: 0.0018969450505852013,
-      &quot;market_cap&quot;: 148561533.12,
-      &quot;float_shares&quot;: 80244213,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 1,989, vol/float 0.00x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;ACON&quot;,
@@ -1976,21 +2661,6 @@
       &quot;reason&quot;: &quot;Filtered: move -2.8% / rvol 0.0, vol 1, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;NNOX&quot;,
-      &quot;name&quot;: &quot;Nano-X Imaging Ltd.&quot;,
-      &quot;price&quot;: 0.28,
-      &quot;change_pct&quot;: 12.766814337494981,
-      &quot;volume&quot;: 432,
-      &quot;rvol&quot;: 0.0004585403133358808,
-      &quot;market_cap&quot;: 19552882.09,
-      &quot;float_shares&quot;: 72882052,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;International (region 83)&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 432, vol/float 0.00x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;PRZO&quot;,
       &quot;name&quot;: &quot;ParaZero Technologies Ltd&quot;,
       &quot;price&quot;: 0.54,
@@ -2019,6 +2689,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 88, float 101.7M > 100M, vol/float 0.00x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;RVSN&quot;,
+      &quot;name&quot;: &quot;RAIL VISION LTD&quot;,
+      &quot;price&quot;: 2.946,
+      &quot;change_pct&quot;: 12.442748091603056,
+      &quot;volume&quot;: 3,
+      &quot;rvol&quot;: 0.00015519917227108123,
+      &quot;market_cap&quot;: 5977081.98,
+      &quot;float_shares&quot;: 2144190,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 3, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;HURA&quot;,
@@ -2055,32 +2740,32 @@
     {
       &quot;ticker&quot;: &quot;BDSX&quot;,
       &quot;name&quot;: &quot;BIODESIX INC&quot;,
-      &quot;price&quot;: 11.5,
+      &quot;price&quot;: 11.99,
       &quot;change_pct&quot;: -7.677989762680311,
-      &quot;volume&quot;: 924,
-      &quot;rvol&quot;: 0.00940888956774095,
+      &quot;volume&quot;: 1024,
+      &quot;rvol&quot;: 0.010427167659487806,
       &quot;market_cap&quot;: 219996058.24,
       &quot;float_shares&quot;: 6191777,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $220.0M, move -7.7%, rvol 0.0x, vol 924, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $220.0M, move -7.7%, rvol 0.0x, vol 1,024, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;BDMD&quot;,
       &quot;name&quot;: &quot;Baird Medical&quot;,
-      &quot;price&quot;: 0.108,
-      &quot;change_pct&quot;: -31.428571428571427,
-      &quot;volume&quot;: 300149,
-      &quot;rvol&quot;: 0.0035520340761616156,
+      &quot;price&quot;: 0.103,
+      &quot;change_pct&quot;: -34.60317460317461,
+      &quot;volume&quot;: 323187,
+      &quot;rvol&quot;: 0.0038246712032105525,
       &quot;market_cap&quot;: 5040373.28,
       &quot;float_shares&quot;: 4381473,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.108, move 44.4%, rvol 0.0x, vol/float 0.07x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.103, move 44.4%, rvol 0.0x, vol/float 0.07x&quot;
     },
     {
       &quot;ticker&quot;: &quot;ACH&quot;,
@@ -2098,19 +2783,34 @@
       &quot;reason&quot;: &quot;Filtered: price $0.224, move 8.2%, rvol 0.0x, vol 56, float 71.1M, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;EVGN&quot;,
+      &quot;name&quot;: &quot;Evogene&quot;,
+      &quot;price&quot;: 0.26,
+      &quot;change_pct&quot;: -7.623318385650224,
+      &quot;volume&quot;: 32600,
+      &quot;rvol&quot;: 0.029226292187614866,
+      &quot;market_cap&quot;: 5950292.2,
+      &quot;float_shares&quot;: 13650568,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.260, move -7.6%, rvol 0.0x, vol 32,600, vol/float 0.00x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;INO&quot;,
       &quot;name&quot;: &quot;Inovio Pharmaceu&quot;,
-      &quot;price&quot;: 1.16,
+      &quot;price&quot;: 1.148,
       &quot;change_pct&quot;: -10.493827160493836,
-      &quot;volume&quot;: 34228,
-      &quot;rvol&quot;: 0.0006017201729061235,
+      &quot;volume&quot;: 39831,
+      &quot;rvol&quot;: 0.0007002195923519868,
       &quot;market_cap&quot;: 149926401.1,
       &quot;float_shares&quot;: 103007384,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 34,228, float 103.0M, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 39,831, float 103.0M, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;POLA&quot;,
@@ -2147,15 +2847,15 @@
       &quot;name&quot;: &quot;Mercer Intl&quot;,
       &quot;price&quot;: 0.204,
       &quot;change_pct&quot;: -0.28000000000000247,
-      &quot;volume&quot;: 10804,
-      &quot;rvol&quot;: 0.00010752462586625298,
+      &quot;volume&quot;: 10904,
+      &quot;rvol&quot;: 0.00010851985565027975,
       &quot;market_cap&quot;: 16707595.63,
       &quot;float_shares&quot;: 38329462,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.204, move -0.3%, rvol 0.0x, vol 10,804, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.204, move -0.3%, rvol 0.0x, vol 10,904, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;STIM&quot;,
@@ -2171,6 +2871,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;NTCL&quot;,
+      &quot;name&quot;: &quot;Netclass Technology Inc.&quot;,
+      &quot;price&quot;: 0.267,
+      &quot;change_pct&quot;: -14.69194312796209,
+      &quot;volume&quot;: 27267,
+      &quot;rvol&quot;: 0.0012261141677903536,
+      &quot;market_cap&quot;: 856295.06,
+      &quot;float_shares&quot;: 2001988,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.267, mktcap $0.9M, rvol 0.0x, vol 27,267, vol/float 0.01x&quot;
     },
     {
       &quot;ticker&quot;: &quot;CTM&quot;,
@@ -2203,21 +2918,6 @@
       &quot;reason&quot;: &quot;Filtered: price $0.230, mktcap $3.7M, move -6.8%, rvol 0.0x, vol 1,087, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;NTCL&quot;,
-      &quot;name&quot;: &quot;Netclass Technology Inc.&quot;,
-      &quot;price&quot;: 0.27,
-      &quot;change_pct&quot;: -14.69194312796209,
-      &quot;volume&quot;: 27211,
-      &quot;rvol&quot;: 0.0012235960178876779,
-      &quot;market_cap&quot;: 856295.06,
-      &quot;float_shares&quot;: 2001988,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.270, mktcap $0.9M, rvol 0.0x, vol 27,211, vol/float 0.01x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;GNLN&quot;,
       &quot;name&quot;: &quot;Greenlane Holdings&quot;,
       &quot;price&quot;: 1.021,
@@ -2237,15 +2937,15 @@
       &quot;name&quot;: &quot;Childrens Pl Inc&quot;,
       &quot;price&quot;: 0.285,
       &quot;change_pct&quot;: -15.203808390360022,
-      &quot;volume&quot;: 7238,
-      &quot;rvol&quot;: 0.0002707171862288509,
+      &quot;volume&quot;: 16733,
+      &quot;rvol&quot;: 0.0006258511573870353,
       &quot;market_cap&quot;: 7473878.22,
       &quot;float_shares&quot;: 21174460,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.285, move 39.5%, rvol 0.0x, vol 7,238, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.285, move 39.5%, rvol 0.0x, vol 16,733, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;BTBD&quot;,
@@ -2327,30 +3027,15 @@
       &quot;name&quot;: &quot;HUHUTECH International Group&quot;,
       &quot;price&quot;: 0.42,
       &quot;change_pct&quot;: -13.133402275077561,
-      &quot;volume&quot;: 2784,
-      &quot;rvol&quot;: 0.000627430900340805,
+      &quot;volume&quot;: 5660,
+      &quot;rvol&quot;: 0.0012755958677905734,
       &quot;market_cap&quot;: 12950957.51,
       &quot;float_shares&quot;: 8245848,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.420, move 27.2%, rvol 0.0x, vol 2,784, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;FLYE&quot;,
-      &quot;name&quot;: &quot;Fly-E Group Inc&quot;,
-      &quot;price&quot;: 1.95,
-      &quot;change_pct&quot;: -12.94642857142858,
-      &quot;volume&quot;: 10339,
-      &quot;rvol&quot;: 0.002592472326943884,
-      &quot;market_cap&quot;: 3656544.64,
-      &quot;float_shares&quot;: 1555386,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $3.7M, move 31.8%, rvol 0.0x, vol 10,339, vol/float 0.01x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.420, move 27.2%, rvol 0.0x, vol 5,660, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;TC&quot;,
@@ -2383,6 +3068,21 @@
       &quot;reason&quot;: &quot;Filtered: price $0.240, mktcap $2.3M, rvol 0.0x, vol 1, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;ELPW&quot;,
+      &quot;name&quot;: &quot;Elong Power Holding Limited&quot;,
+      &quot;price&quot;: 1.14,
+      &quot;change_pct&quot;: -48.00796812749004,
+      &quot;volume&quot;: 52482,
+      &quot;rvol&quot;: 0.0034508458951589068,
+      &quot;market_cap&quot;: 1216376.15,
+      &quot;float_shares&quot;: 805497,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, move -48.0%, rvol 0.0x, vol 52,482, vol/float 0.07x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;MGN&quot;,
       &quot;name&quot;: &quot;MEGAN HLDGS LTD&quot;,
       &quot;price&quot;: 3.07,
@@ -2396,6 +3096,21 @@
       &quot;country&quot;: &quot;Malaysia&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -3.6%, rvol 0.0x, vol 1, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;FLYE&quot;,
+      &quot;name&quot;: &quot;Fly-E Group Inc&quot;,
+      &quot;price&quot;: 1.968,
+      &quot;change_pct&quot;: -12.142857142857153,
+      &quot;volume&quot;: 10619,
+      &quot;rvol&quot;: 0.002662681462406142,
+      &quot;market_cap&quot;: 3656544.64,
+      &quot;float_shares&quot;: 1555386,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $3.7M, move 31.8%, rvol 0.0x, vol 10,619, vol/float 0.01x&quot;
     },
     {
       &quot;ticker&quot;: &quot;FUFU&quot;,
@@ -2413,19 +3128,19 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1,001, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;ELPW&quot;,
-      &quot;name&quot;: &quot;Elong Power Holding Limited&quot;,
-      &quot;price&quot;: 1.15,
-      &quot;change_pct&quot;: -48.00796812749004,
-      &quot;volume&quot;: 50161,
-      &quot;rvol&quot;: 0.003298233317081398,
-      &quot;market_cap&quot;: 1216376.15,
-      &quot;float_shares&quot;: 805497,
+      &quot;ticker&quot;: &quot;DFNS&quot;,
+      &quot;name&quot;: &quot;T3 Defense Inc&quot;,
+      &quot;price&quot;: 2.02,
+      &quot;change_pct&quot;: -19.649122807017545,
+      &quot;volume&quot;: 1895,
+      &quot;rvol&quot;: 0.0016466862936610834,
+      &quot;market_cap&quot;: 7709019.36,
+      &quot;float_shares&quot;: 3063997,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, move -48.0%, rvol 0.0x, vol 50,161, vol/float 0.06x&quot;
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1,895, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;FTHM&quot;,
@@ -2488,21 +3203,6 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $2.0M, move 2.7%, rvol 0.0x, vol 2, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;EVGN&quot;,
-      &quot;name&quot;: &quot;Evogene&quot;,
-      &quot;price&quot;: 0.295,
-      &quot;change_pct&quot;: -7.623318385650224,
-      &quot;volume&quot;: 31678,
-      &quot;rvol&quot;: 0.028399708095682936,
-      &quot;market_cap&quot;: 5950292.2,
-      &quot;float_shares&quot;: 13650568,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;International (region 83)&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.295, move -7.6%, rvol 0.0x, vol 31,678, vol/float 0.00x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;PCSA&quot;,
       &quot;name&quot;: &quot;Processa Pharmaceuticals Inc&quot;,
       &quot;price&quot;: 1.65,
@@ -2516,6 +3216,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -4.9%, rvol 0.0x, vol 802, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;HUBC&quot;,
+      &quot;name&quot;: &quot;Hub Cyber Security Israel Ltd&quot;,
+      &quot;price&quot;: 0.09,
+      &quot;change_pct&quot;: -10.269192422731809,
+      &quot;volume&quot;: 46375,
+      &quot;rvol&quot;: 0.0005107263041248878,
+      &quot;market_cap&quot;: 180120.85,
+      &quot;float_shares&quot;: 1790379,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.090, mktcap $0.2M, move 5.6%, rvol 0.0x, vol 46,375, vol/float 0.03x&quot;
     },
     {
       &quot;ticker&quot;: &quot;XCUR&quot;,
@@ -2548,6 +3263,21 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $241.3M, move -7.6%, rvol 0.0x, vol 126, float 115.1M, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;CRIS&quot;,
+      &quot;name&quot;: &quot;Curis&quot;,
+      &quot;price&quot;: 0.767,
+      &quot;change_pct&quot;: -23.423423423423433,
+      &quot;volume&quot;: 2003,
+      &quot;rvol&quot;: 5.959621851133526e-05,
+      &quot;market_cap&quot;: 5677344.65,
+      &quot;float_shares&quot;: 6293624,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 2,003, vol/float 0.00x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;PZG&quot;,
       &quot;name&quot;: &quot;Paramount Gold&quot;,
       &quot;price&quot;: 0.859,
@@ -2561,75 +3291,56 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -2.4%, rvol 0.0x, vol 1,481, float 63.1M, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;IVF&quot;,
-      &quot;name&quot;: &quot;INVO Fertility, Inc&quot;,
-      &quot;price&quot;: 1.84,
-      &quot;change_pct&quot;: -0.9756097560975618,
-      &quot;volume&quot;: 376,
-      &quot;rvol&quot;: 0.009226993865030675,
-      &quot;market_cap&quot;: 1272288.29,
-      &quot;float_shares&quot;: 621076,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $1.3M, move -1.0%, rvol 0.0x, vol 376, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;VEEA&quot;,
-      &quot;name&quot;: &quot;VEEA INC&quot;,
-      &quot;price&quot;: 4.071,
-      &quot;change_pct&quot;: -0.663716814159278,
-      &quot;volume&quot;: 1,
-      &quot;rvol&quot;: 3.943808614855538e-06,
-      &quot;market_cap&quot;: 13967078.92,
-      &quot;float_shares&quot;: 1882414,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move -0.7%, rvol 0.0x, vol 1, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;GRWG&quot;,
-      &quot;name&quot;: &quot;Growgeneration Corp&quot;,
-      &quot;price&quot;: 1.333,
-      &quot;change_pct&quot;: -3.2894736842105288,
-      &quot;volume&quot;: 22,
-      &quot;rvol&quot;: 0.00010801946314326817,
-      &quot;market_cap&quot;: 86613060.03,
-      &quot;float_shares&quot;: 53842044,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move -3.3%, rvol 0.0x, vol 22, float 53.8M, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;SDA&quot;,
-      &quot;name&quot;: &quot;SunCar Technology Group Inc.&quot;,
-      &quot;price&quot;: 0.14,
-      &quot;change_pct&quot;: -25.339805825242717,
-      &quot;volume&quot;: 2560,
-      &quot;rvol&quot;: 0.0014738249268700736,
-      &quot;market_cap&quot;: 15689039.41,
-      &quot;float_shares&quot;: 38914985,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.140, rvol 0.0x, vol 2,560, vol/float 0.00x&quot;
     }
   ],
-  &quot;live_quotes&quot;: {},
-  &quot;previous_live_quotes&quot;: {},
+  &quot;live_quotes&quot;: {
+    &quot;CIIT&quot;: {
+      &quot;price&quot;: 1.55,
+      &quot;open&quot;: 1.65,
+      &quot;high&quot;: 1.71,
+      &quot;low&quot;: 1.52,
+      &quot;close&quot;: 1.55,
+      &quot;preClose&quot;: 1.708,
+      &quot;volume&quot;: 473215,
+      &quot;changeRatio&quot;: -0.0922,
+      &quot;marketValue&quot;: 1835260.45,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T09:04:25.993840Z&quot;
+    },
+    &quot;RCT&quot;: {
+      &quot;price&quot;: 0.03,
+      &quot;open&quot;: 0.0263,
+      &quot;high&quot;: 0.0302,
+      &quot;low&quot;: 0.0263,
+      &quot;close&quot;: 0.03,
+      &quot;preClose&quot;: 0.0334,
+      &quot;volume&quot;: 30382897,
+      &quot;changeRatio&quot;: -0.1018,
+      &quot;marketValue&quot;: 2307260.55,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T09:04:25.993876Z&quot;
+    }
+  },
+  &quot;previous_live_quotes&quot;: {
+    &quot;RCT&quot;: {
+      &quot;price&quot;: 0.03,
+      &quot;open&quot;: 0.0263,
+      &quot;high&quot;: 0.0302,
+      &quot;low&quot;: 0.0263,
+      &quot;close&quot;: 0.03,
+      &quot;preClose&quot;: 0.0334,
+      &quot;volume&quot;: 27350924,
+      &quot;changeRatio&quot;: -0.1018,
+      &quot;marketValue&quot;: 2307260.55,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T09:03:25.235250Z&quot;
+    }
+  },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;PRE-MARKET&quot;,
-    &quot;market_time&quot;: &quot;08:02 PM AEDT&quot;,
+    &quot;market_time&quot;: &quot;08:04 PM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
