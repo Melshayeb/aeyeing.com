@@ -1470,16 +1470,312 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-06T11:35:23.120107Z&quot;,
+  &quot;last_updated&quot;: &quot;2026-11-06T11:37:26.486529Z&quot;,
   &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;CIIT&quot;,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 2.35,
+      &quot;change_pct&quot;: 51.61,
+      &quot;volume&quot;: 2436289,
+      &quot;market_cap&quot;: 1835260.45,
+      &quot;float_shares&quot;: 860971,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)&quot;,
+      &quot;result&quot;: &quot;+51.6% · Entry $2.35 · T1 $2.44 · T2 $2.49 · T3 $2.58&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;entry&quot;: 2.35,
+        &quot;stop&quot;: 2.303,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 2.444,
+          &quot;t2&quot;: 2.491,
+          &quot;t3&quot;: 2.585
+        },
+        &quot;risk_per_share&quot;: 0.047,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 127,
+        &quot;position_value&quot;: 298.45,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.303&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 11.34,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 2436289,
+        &quot;adv&quot;: 214747,
+        &quot;recent_pct_of_adv&quot;: 1134.49,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 34.879,
+        &quot;buy_pressure_pct&quot;: 42.64,
+        &quot;large_bar_count&quot;: 36,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 2436289,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0233,
+        &quot;last_price&quot;: 1.55,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.082000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 2.369
+    },
+    {
+      &quot;ticker&quot;: &quot;RAYA&quot;,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 1.119,
+      &quot;change_pct&quot;: 13.07,
+      &quot;volume&quot;: 1242317,
+      &quot;market_cap&quot;: 1055515.99,
+      &quot;float_shares&quot;: 1025737,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;+13.1% · Entry $1.12 · T1 $1.16 · T2 $1.19 · T3 $1.23&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;entry&quot;: 1.119,
+        &quot;stop&quot;: 1.0966,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 1.1638,
+          &quot;t2&quot;: 1.1862,
+          &quot;t3&quot;: 1.231
+        },
+        &quot;risk_per_share&quot;: 0.0224,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 268,
+        &quot;position_value&quot;: 299.89,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$1.0966&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;27m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 2,
+            &quot;keywords&quot;: [
+              &quot;expansion&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;37m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;27m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 2,
+            &quot;keywords&quot;: [
+              &quot;expansion&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;37m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 2,
+        &quot;avg_score&quot;: 0.7,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 2/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 103.96,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 1242317,
+        &quot;adv&quot;: 11950,
+        &quot;recent_pct_of_adv&quot;: 10395.96,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 13.193,
+        &quot;buy_pressure_pct&quot;: 53.34,
+        &quot;large_bar_count&quot;: 7,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 1242317,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0699,
+        &quot;last_price&quot;: 0.9817,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.121000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 1.169
+    },
     {
       &quot;ticker&quot;: &quot;DBGI&quot;,
       &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.991,
-      &quot;change_pct&quot;: 110.85000000000001,
-      &quot;volume&quot;: 12270293,
+      &quot;price&quot;: 0.986,
+      &quot;change_pct&quot;: 109.81,
+      &quot;volume&quot;: 12316845,
       &quot;market_cap&quot;: 438749.23,
       &quot;float_shares&quot;: 916298,
       &quot;country&quot;: &quot;United States&quot;,
@@ -1488,23 +1784,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 02), 8-K (Oct 29), 8-K (Sep 11)&quot;,
-      &quot;result&quot;: &quot;+110.9% · Entry $0.99 · T1 $1.03 · T2 $1.05 · T3 $1.09&quot;,
+      &quot;result&quot;: &quot;+109.8% · Entry $0.99 · T1 $1.03 · T2 $1.05 · T3 $1.08&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;DBGI&quot;,
-        &quot;entry&quot;: 0.991,
-        &quot;stop&quot;: 0.9712,
+        &quot;entry&quot;: 0.986,
+        &quot;stop&quot;: 0.9663,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 1.0306,
-          &quot;t2&quot;: 1.0504,
-          &quot;t3&quot;: 1.09
+          &quot;t1&quot;: 1.0254,
+          &quot;t2&quot;: 1.0451,
+          &quot;t3&quot;: 1.0845
         },
-        &quot;risk_per_share&quot;: 0.0198,
+        &quot;risk_per_share&quot;: 0.0197,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 302,
-        &quot;position_value&quot;: 299.28,
+        &quot;shares&quot;: 304,
+        &quot;position_value&quot;: 299.74,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -1512,7 +1808,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9712&quot;
+          &quot;hard_stop&quot;: &quot;$0.9663&quot;
         }
       },
       &quot;ta&quot;: {
@@ -1612,184 +1908,38 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 15.23,
+        &quot;rvol&quot;: 15.28,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 12270293,
+        &quot;volume&quot;: 12316845,
         &quot;adv&quot;: 805865,
-        &quot;recent_pct_of_adv&quot;: 1522.62,
+        &quot;recent_pct_of_adv&quot;: 1528.4,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 49.711,
-        &quot;buy_pressure_pct&quot;: 51.13,
-        &quot;large_bar_count&quot;: 31,
+        &quot;price_velocity_pct&quot;: 52.635,
+        &quot;buy_pressure_pct&quot;: 51.31,
+        &quot;large_bar_count&quot;: 32,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 12270293,
+        &quot;recent_volume&quot;: 12316845,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0322,
+        &quot;median_range&quot;: 0.0317,
         &quot;last_price&quot;: 0.47,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.755000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 11
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:06.931000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.98
-    },
-    {
-      &quot;ticker&quot;: &quot;CIIT&quot;,
-      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.369,
-      &quot;change_pct&quot;: 52.86,
-      &quot;volume&quot;: 2432335,
-      &quot;market_cap&quot;: 1835260.45,
-      &quot;float_shares&quot;: 860971,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)&quot;,
-      &quot;result&quot;: &quot;+52.9% · Entry $2.37 · T1 $2.46 · T2 $2.51 · T3 $2.61&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;entry&quot;: 2.369,
-        &quot;stop&quot;: 2.3216,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 2.4638,
-          &quot;t2&quot;: 2.5112,
-          &quot;t3&quot;: 2.606
-        },
-        &quot;risk_per_share&quot;: 0.0474,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 126,
-        &quot;position_value&quot;: 298.49,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.3216&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 11.33,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 2432335,
-        &quot;adv&quot;: 214747,
-        &quot;recent_pct_of_adv&quot;: 1132.65,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 35.417,
-        &quot;buy_pressure_pct&quot;: 41.9,
-        &quot;large_bar_count&quot;: 31,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 2432335,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0273,
-        &quot;last_price&quot;: 1.55,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:04.695000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.35
+      &quot;previous_price&quot;: 0.971
     },
     {
       &quot;ticker&quot;: &quot;VSA&quot;,
       &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.089,
-      &quot;change_pct&quot;: 35.68,
-      &quot;volume&quot;: 4588538,
+      &quot;price&quot;: 2.13,
+      &quot;change_pct&quot;: 38.33,
+      &quot;volume&quot;: 4622566,
       &quot;market_cap&quot;: 4301119.9,
       &quot;float_shares&quot;: 2792058,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
@@ -1798,23 +1948,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+35.7% · Entry $2.09 · T1 $2.17 · T2 $2.21 · T3 $2.30&quot;,
+      &quot;result&quot;: &quot;+38.3% · Entry $2.13 · T1 $2.22 · T2 $2.26 · T3 $2.34&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;VSA&quot;,
-        &quot;entry&quot;: 2.089,
-        &quot;stop&quot;: 2.0472,
+        &quot;entry&quot;: 2.13,
+        &quot;stop&quot;: 2.0874,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 2.1726,
-          &quot;t2&quot;: 2.2144,
-          &quot;t3&quot;: 2.298
+          &quot;t1&quot;: 2.2152,
+          &quot;t2&quot;: 2.2578,
+          &quot;t3&quot;: 2.343
         },
-        &quot;risk_per_share&quot;: 0.0418,
+        &quot;risk_per_share&quot;: 0.0426,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 143,
-        &quot;position_value&quot;: 298.73,
+        &quot;shares&quot;: 140,
+        &quot;position_value&quot;: 298.2,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -1822,7 +1972,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.0472&quot;
+          &quot;hard_stop&quot;: &quot;$2.0874&quot;
         }
       },
       &quot;ta&quot;: {
@@ -1868,212 +2018,62 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 749.76,
+        &quot;rvol&quot;: 755.32,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 4588538,
+        &quot;volume&quot;: 4622566,
         &quot;adv&quot;: 6120,
-        &quot;recent_pct_of_adv&quot;: 74976.11,
+        &quot;recent_pct_of_adv&quot;: 75532.12,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 24.476,
-        &quot;buy_pressure_pct&quot;: 52.96,
+        &quot;price_velocity_pct&quot;: 23.391,
+        &quot;buy_pressure_pct&quot;: 53.03,
         &quot;large_bar_count&quot;: 31,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 4588538,
+        &quot;recent_volume&quot;: 4622566,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.04,
         &quot;last_price&quot;: 1.54,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:05.165000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:07.534000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.089
+      &quot;previous_price&quot;: 2.121
     },
     {
-      &quot;ticker&quot;: &quot;RAYA&quot;,
-      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 1.14,
-      &quot;change_pct&quot;: 16.220000000000002,
-      &quot;volume&quot;: 1195253,
-      &quot;market_cap&quot;: 1055515.99,
-      &quot;float_shares&quot;: 1025737,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+16.2% · Entry $1.14 · T1 $1.19 · T2 $1.21 · T3 $1.25&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;entry&quot;: 1.14,
-        &quot;stop&quot;: 1.1172,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 1.1856,
-          &quot;t2&quot;: 1.2084,
-          &quot;t3&quot;: 1.254
-        },
-        &quot;risk_per_share&quot;: 0.0228,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 263,
-        &quot;position_value&quot;: 299.82,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.1172&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;25m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 2,
-            &quot;keywords&quot;: [
-              &quot;expansion&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;35m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;25m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 2,
-            &quot;keywords&quot;: [
-              &quot;expansion&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;35m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 2,
-        &quot;avg_score&quot;: 0.7,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 2/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 100.02,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 1195253,
-        &quot;adv&quot;: 11950,
-        &quot;recent_pct_of_adv&quot;: 10002.12,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 15.436,
-        &quot;buy_pressure_pct&quot;: 53.95,
-        &quot;large_bar_count&quot;: 6,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 1195253,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0749,
-        &quot;last_price&quot;: 0.9817,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.569000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 1.2
-    },
-    {
-      &quot;ticker&quot;: &quot;RCT&quot;,
-      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;ticker&quot;: &quot;SHFS&quot;,
+      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.057,
-      &quot;change_pct&quot;: 88.33,
-      &quot;volume&quot;: 214655849,
-      &quot;market_cap&quot;: 2307260.55,
-      &quot;float_shares&quot;: 5771596,
-      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;price&quot;: 0.036,
+      &quot;change_pct&quot;: 33.46,
+      &quot;volume&quot;: 135052214,
+      &quot;market_cap&quot;: 2274645.4,
+      &quot;float_shares&quot;: 85415340,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (88.3%, rvol 10.4x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (33.5%, rvol 2.8x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +88.3%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +33.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;RCT&quot;,
-        &quot;entry&quot;: 0.057,
-        &quot;stop&quot;: 0.0559,
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;entry&quot;: 0.036,
+        &quot;stop&quot;: 0.0353,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.0592,
-          &quot;t2&quot;: 0.0603,
-          &quot;t3&quot;: 0.0625
+          &quot;t1&quot;: 0.0374,
+          &quot;t2&quot;: 0.0381,
+          &quot;t3&quot;: 0.0395
         },
-        &quot;risk_per_share&quot;: 0.0011,
+        &quot;risk_per_share&quot;: 0.0007,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 5263,
+        &quot;shares&quot;: 8333,
         &quot;position_value&quot;: 299.99,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
@@ -2082,7 +2082,189 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.0559&quot;
+          &quot;hard_stop&quot;: &quot;$0.0353&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2.78,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 135052214,
+        &quot;adv&quot;: 48566280,
+        &quot;recent_pct_of_adv&quot;: 278.08,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 24.0,
+        &quot;buy_pressure_pct&quot;: 49.73,
+        &quot;large_bar_count&quot;: 26,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 135052214,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0011,
+        &quot;last_price&quot;: 0.0266,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:07.784000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:25&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.035
+    },
+    {
+      &quot;ticker&quot;: &quot;RCT&quot;,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.059,
+      &quot;change_pct&quot;: 96.33,
+      &quot;volume&quot;: 215108477,
+      &quot;market_cap&quot;: 2307260.55,
+      &quot;float_shares&quot;: 5771596,
+      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (96.3%, rvol 10.4x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +96.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;entry&quot;: 0.059,
+        &quot;stop&quot;: 0.0578,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0614,
+          &quot;t2&quot;: 0.0626,
+          &quot;t3&quot;: 0.065
+        },
+        &quot;risk_per_share&quot;: 0.0012,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 5084,
+        &quot;position_value&quot;: 299.96,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0578&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2236,222 +2418,336 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 10.39,
+        &quot;rvol&quot;: 10.41,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 214655849,
+        &quot;volume&quot;: 215108477,
         &quot;adv&quot;: 20662332,
-        &quot;recent_pct_of_adv&quot;: 1038.88,
+        &quot;recent_pct_of_adv&quot;: 1041.07,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 46.619,
-        &quot;buy_pressure_pct&quot;: 50.29,
+        &quot;price_velocity_pct&quot;: 46.237,
+        &quot;buy_pressure_pct&quot;: 49.33,
         &quot;large_bar_count&quot;: 23,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 214655849,
+        &quot;recent_volume&quot;: 215108477,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0017,
         &quot;last_price&quot;: 0.03,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.596000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 11
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.325000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 15
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
+      &quot;time&quot;: &quot;22:37:25&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
       &quot;previous_price&quot;: 0.057
-    },
-    {
-      &quot;ticker&quot;: &quot;SHFS&quot;,
-      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.036,
-      &quot;change_pct&quot;: 33.08,
-      &quot;volume&quot;: 134925156,
-      &quot;market_cap&quot;: 2274645.4,
-      &quot;float_shares&quot;: 85415340,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (33.1%, rvol 2.8x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +33.1%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;entry&quot;: 0.036,
-        &quot;stop&quot;: 0.0353,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.0374,
-          &quot;t2&quot;: 0.0381,
-          &quot;t3&quot;: 0.0395
-        },
-        &quot;risk_per_share&quot;: 0.0007,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 8333,
-        &quot;position_value&quot;: 299.99,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.0353&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 2.78,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 134925156,
-        &quot;adv&quot;: 48566280,
-        &quot;recent_pct_of_adv&quot;: 277.82,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 23.782,
-        &quot;buy_pressure_pct&quot;: 49.85,
-        &quot;large_bar_count&quot;: 26,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 134925156,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0011,
-        &quot;last_price&quot;: 0.0266,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:34:41.150000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 38
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.036
     }
   ],
   &quot;pre_market_results&quot;: [
     {
+      &quot;ticker&quot;: &quot;CIIT&quot;,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 2.35,
+      &quot;change_pct&quot;: 51.61,
+      &quot;volume&quot;: 2436289,
+      &quot;market_cap&quot;: 1835260.45,
+      &quot;float_shares&quot;: 860971,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)&quot;,
+      &quot;result&quot;: &quot;+51.6% · Entry $2.35 · T1 $2.44 · T2 $2.49 · T3 $2.58&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;entry&quot;: 2.35,
+        &quot;stop&quot;: 2.303,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 2.444,
+          &quot;t2&quot;: 2.491,
+          &quot;t3&quot;: 2.585
+        },
+        &quot;risk_per_share&quot;: 0.047,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 127,
+        &quot;position_value&quot;: 298.45,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.303&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;CIIT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 11.34,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 2436289,
+        &quot;adv&quot;: 214747,
+        &quot;recent_pct_of_adv&quot;: 1134.49,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 34.879,
+        &quot;buy_pressure_pct&quot;: 42.64,
+        &quot;large_bar_count&quot;: 36,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 2436289,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0233,
+        &quot;last_price&quot;: 1.55,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.082000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 2.369
+    },
+    {
+      &quot;ticker&quot;: &quot;RAYA&quot;,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 1.119,
+      &quot;change_pct&quot;: 13.07,
+      &quot;volume&quot;: 1242317,
+      &quot;market_cap&quot;: 1055515.99,
+      &quot;float_shares&quot;: 1025737,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;+13.1% · Entry $1.12 · T1 $1.16 · T2 $1.19 · T3 $1.23&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;entry&quot;: 1.119,
+        &quot;stop&quot;: 1.0966,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 1.1638,
+          &quot;t2&quot;: 1.1862,
+          &quot;t3&quot;: 1.231
+        },
+        &quot;risk_per_share&quot;: 0.0224,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 268,
+        &quot;position_value&quot;: 299.89,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$1.0966&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;27m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 2,
+            &quot;keywords&quot;: [
+              &quot;expansion&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;37m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;27m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 2,
+            &quot;keywords&quot;: [
+              &quot;expansion&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;37m ago · 06 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 2,
+        &quot;avg_score&quot;: 0.7,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 2/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;RAYA&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 103.96,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 1242317,
+        &quot;adv&quot;: 11950,
+        &quot;recent_pct_of_adv&quot;: 10395.96,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 13.193,
+        &quot;buy_pressure_pct&quot;: 53.34,
+        &quot;large_bar_count&quot;: 7,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 1242317,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0699,
+        &quot;last_price&quot;: 0.9817,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.121000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 1.169
+    },
+    {
       &quot;ticker&quot;: &quot;DBGI&quot;,
       &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.991,
-      &quot;change_pct&quot;: 110.85000000000001,
-      &quot;volume&quot;: 12270293,
+      &quot;price&quot;: 0.986,
+      &quot;change_pct&quot;: 109.81,
+      &quot;volume&quot;: 12316845,
       &quot;market_cap&quot;: 438749.23,
       &quot;float_shares&quot;: 916298,
       &quot;country&quot;: &quot;United States&quot;,
@@ -2460,23 +2756,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 02), 8-K (Oct 29), 8-K (Sep 11)&quot;,
-      &quot;result&quot;: &quot;+110.9% · Entry $0.99 · T1 $1.03 · T2 $1.05 · T3 $1.09&quot;,
+      &quot;result&quot;: &quot;+109.8% · Entry $0.99 · T1 $1.03 · T2 $1.05 · T3 $1.08&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;DBGI&quot;,
-        &quot;entry&quot;: 0.991,
-        &quot;stop&quot;: 0.9712,
+        &quot;entry&quot;: 0.986,
+        &quot;stop&quot;: 0.9663,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 1.0306,
-          &quot;t2&quot;: 1.0504,
-          &quot;t3&quot;: 1.09
+          &quot;t1&quot;: 1.0254,
+          &quot;t2&quot;: 1.0451,
+          &quot;t3&quot;: 1.0845
         },
-        &quot;risk_per_share&quot;: 0.0198,
+        &quot;risk_per_share&quot;: 0.0197,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 302,
-        &quot;position_value&quot;: 299.28,
+        &quot;shares&quot;: 304,
+        &quot;position_value&quot;: 299.74,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2484,7 +2780,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9712&quot;
+          &quot;hard_stop&quot;: &quot;$0.9663&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2584,184 +2880,38 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 15.23,
+        &quot;rvol&quot;: 15.28,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 12270293,
+        &quot;volume&quot;: 12316845,
         &quot;adv&quot;: 805865,
-        &quot;recent_pct_of_adv&quot;: 1522.62,
+        &quot;recent_pct_of_adv&quot;: 1528.4,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 49.711,
-        &quot;buy_pressure_pct&quot;: 51.13,
-        &quot;large_bar_count&quot;: 31,
+        &quot;price_velocity_pct&quot;: 52.635,
+        &quot;buy_pressure_pct&quot;: 51.31,
+        &quot;large_bar_count&quot;: 32,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 12270293,
+        &quot;recent_volume&quot;: 12316845,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0322,
+        &quot;median_range&quot;: 0.0317,
         &quot;last_price&quot;: 0.47,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.755000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 11
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:06.931000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.98
-    },
-    {
-      &quot;ticker&quot;: &quot;CIIT&quot;,
-      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.369,
-      &quot;change_pct&quot;: 52.86,
-      &quot;volume&quot;: 2432335,
-      &quot;market_cap&quot;: 1835260.45,
-      &quot;float_shares&quot;: 860971,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)&quot;,
-      &quot;result&quot;: &quot;+52.9% · Entry $2.37 · T1 $2.46 · T2 $2.51 · T3 $2.61&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;entry&quot;: 2.369,
-        &quot;stop&quot;: 2.3216,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 2.4638,
-          &quot;t2&quot;: 2.5112,
-          &quot;t3&quot;: 2.606
-        },
-        &quot;risk_per_share&quot;: 0.0474,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 126,
-        &quot;position_value&quot;: 298.49,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.3216&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;CIIT&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 11.33,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 2432335,
-        &quot;adv&quot;: 214747,
-        &quot;recent_pct_of_adv&quot;: 1132.65,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 35.417,
-        &quot;buy_pressure_pct&quot;: 41.9,
-        &quot;large_bar_count&quot;: 31,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 2432335,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0273,
-        &quot;last_price&quot;: 1.55,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:04.695000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.35
+      &quot;previous_price&quot;: 0.971
     },
     {
       &quot;ticker&quot;: &quot;VSA&quot;,
       &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.089,
-      &quot;change_pct&quot;: 35.68,
-      &quot;volume&quot;: 4588538,
+      &quot;price&quot;: 2.13,
+      &quot;change_pct&quot;: 38.33,
+      &quot;volume&quot;: 4622566,
       &quot;market_cap&quot;: 4301119.9,
       &quot;float_shares&quot;: 2792058,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
@@ -2770,23 +2920,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+35.7% · Entry $2.09 · T1 $2.17 · T2 $2.21 · T3 $2.30&quot;,
+      &quot;result&quot;: &quot;+38.3% · Entry $2.13 · T1 $2.22 · T2 $2.26 · T3 $2.34&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;VSA&quot;,
-        &quot;entry&quot;: 2.089,
-        &quot;stop&quot;: 2.0472,
+        &quot;entry&quot;: 2.13,
+        &quot;stop&quot;: 2.0874,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 2.1726,
-          &quot;t2&quot;: 2.2144,
-          &quot;t3&quot;: 2.298
+          &quot;t1&quot;: 2.2152,
+          &quot;t2&quot;: 2.2578,
+          &quot;t3&quot;: 2.343
         },
-        &quot;risk_per_share&quot;: 0.0418,
+        &quot;risk_per_share&quot;: 0.0426,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 143,
-        &quot;position_value&quot;: 298.73,
+        &quot;shares&quot;: 140,
+        &quot;position_value&quot;: 298.2,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2794,7 +2944,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.0472&quot;
+          &quot;hard_stop&quot;: &quot;$2.0874&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2840,212 +2990,62 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 749.76,
+        &quot;rvol&quot;: 755.32,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 4588538,
+        &quot;volume&quot;: 4622566,
         &quot;adv&quot;: 6120,
-        &quot;recent_pct_of_adv&quot;: 74976.11,
+        &quot;recent_pct_of_adv&quot;: 75532.12,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 24.476,
-        &quot;buy_pressure_pct&quot;: 52.96,
+        &quot;price_velocity_pct&quot;: 23.391,
+        &quot;buy_pressure_pct&quot;: 53.03,
         &quot;large_bar_count&quot;: 31,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 4588538,
+        &quot;recent_volume&quot;: 4622566,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.04,
         &quot;last_price&quot;: 1.54,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:05.165000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:07.534000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:20&quot;,
+      &quot;time&quot;: &quot;22:37:24&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.089
+      &quot;previous_price&quot;: 2.121
     },
     {
-      &quot;ticker&quot;: &quot;RAYA&quot;,
-      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 1.14,
-      &quot;change_pct&quot;: 16.220000000000002,
-      &quot;volume&quot;: 1195253,
-      &quot;market_cap&quot;: 1055515.99,
-      &quot;float_shares&quot;: 1025737,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+16.2% · Entry $1.14 · T1 $1.19 · T2 $1.21 · T3 $1.25&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;entry&quot;: 1.14,
-        &quot;stop&quot;: 1.1172,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 1.1856,
-          &quot;t2&quot;: 1.2084,
-          &quot;t3&quot;: 1.254
-        },
-        &quot;risk_per_share&quot;: 0.0228,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 263,
-        &quot;position_value&quot;: 299.82,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.1172&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;25m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 2,
-            &quot;keywords&quot;: [
-              &quot;expansion&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;35m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;25m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:10:04.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 2,
-            &quot;keywords&quot;: [
-              &quot;expansion&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;ERAYAK Advances Hybrid Power Strategy as Ruike Facility Enters Final Acceptance Phase&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;35m ago · 06 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-06T11:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at RAYA last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:32:07.541+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 2,
-        &quot;avg_score&quot;: 0.7,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Erayak Power Solution Group Sees Unit Ruike Electronics&#39; Manufacturing Expansion Entering Phased Production Start-Up Through 2027&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 2/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;RAYA&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 100.02,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 1195253,
-        &quot;adv&quot;: 11950,
-        &quot;recent_pct_of_adv&quot;: 10002.12,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 15.436,
-        &quot;buy_pressure_pct&quot;: 53.95,
-        &quot;large_bar_count&quot;: 6,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 1195253,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0749,
-        &quot;last_price&quot;: 0.9817,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.569000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 1.2
-    },
-    {
-      &quot;ticker&quot;: &quot;RCT&quot;,
-      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;ticker&quot;: &quot;SHFS&quot;,
+      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.057,
-      &quot;change_pct&quot;: 88.33,
-      &quot;volume&quot;: 214655849,
-      &quot;market_cap&quot;: 2307260.55,
-      &quot;float_shares&quot;: 5771596,
-      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;price&quot;: 0.036,
+      &quot;change_pct&quot;: 33.46,
+      &quot;volume&quot;: 135052214,
+      &quot;market_cap&quot;: 2274645.4,
+      &quot;float_shares&quot;: 85415340,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (88.3%, rvol 10.4x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (33.5%, rvol 2.8x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +88.3%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +33.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;RCT&quot;,
-        &quot;entry&quot;: 0.057,
-        &quot;stop&quot;: 0.0559,
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;entry&quot;: 0.036,
+        &quot;stop&quot;: 0.0353,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.0592,
-          &quot;t2&quot;: 0.0603,
-          &quot;t3&quot;: 0.0625
+          &quot;t1&quot;: 0.0374,
+          &quot;t2&quot;: 0.0381,
+          &quot;t3&quot;: 0.0395
         },
-        &quot;risk_per_share&quot;: 0.0011,
+        &quot;risk_per_share&quot;: 0.0007,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 5263,
+        &quot;shares&quot;: 8333,
         &quot;position_value&quot;: 299.99,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
@@ -3054,7 +3054,189 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.0559&quot;
+          &quot;hard_stop&quot;: &quot;$0.0353&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
+            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2.78,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 135052214,
+        &quot;adv&quot;: 48566280,
+        &quot;recent_pct_of_adv&quot;: 278.08,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 24.0,
+        &quot;buy_pressure_pct&quot;: 49.73,
+        &quot;large_bar_count&quot;: 26,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 135052214,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0011,
+        &quot;last_price&quot;: 0.0266,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:07.784000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;time&quot;: &quot;22:37:25&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.035
+    },
+    {
+      &quot;ticker&quot;: &quot;RCT&quot;,
+      &quot;name&quot;: &quot;RedCloud&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.059,
+      &quot;change_pct&quot;: 96.33,
+      &quot;volume&quot;: 215108477,
+      &quot;market_cap&quot;: 2307260.55,
+      &quot;float_shares&quot;: 5771596,
+      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (96.3%, rvol 10.4x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +96.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;RCT&quot;,
+        &quot;entry&quot;: 0.059,
+        &quot;stop&quot;: 0.0578,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0614,
+          &quot;t2&quot;: 0.0626,
+          &quot;t3&quot;: 0.065
+        },
+        &quot;risk_per_share&quot;: 0.0012,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 5084,
+        &quot;position_value&quot;: 299.96,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0578&quot;
         }
       },
       &quot;ta&quot;: {
@@ -3208,249 +3390,67 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 10.39,
+        &quot;rvol&quot;: 10.41,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 214655849,
+        &quot;volume&quot;: 215108477,
         &quot;adv&quot;: 20662332,
-        &quot;recent_pct_of_adv&quot;: 1038.88,
+        &quot;recent_pct_of_adv&quot;: 1041.07,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 46.619,
-        &quot;buy_pressure_pct&quot;: 50.29,
+        &quot;price_velocity_pct&quot;: 46.237,
+        &quot;buy_pressure_pct&quot;: 49.33,
         &quot;large_bar_count&quot;: 23,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 214655849,
+        &quot;recent_volume&quot;: 215108477,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0017,
         &quot;last_price&quot;: 0.03,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.596000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 11
+        &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.325000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 15
       },
       &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
+      &quot;time&quot;: &quot;22:37:25&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
       &quot;previous_price&quot;: 0.057
-    },
-    {
-      &quot;ticker&quot;: &quot;SHFS&quot;,
-      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.036,
-      &quot;change_pct&quot;: 33.08,
-      &quot;volume&quot;: 134925156,
-      &quot;market_cap&quot;: 2274645.4,
-      &quot;float_shares&quot;: 85415340,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (33.1%, rvol 2.8x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +33.1%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;entry&quot;: 0.036,
-        &quot;stop&quot;: 0.0353,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.0374,
-          &quot;t2&quot;: 0.0381,
-          &quot;t3&quot;: 0.0395
-        },
-        &quot;risk_per_share&quot;: 0.0007,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 8333,
-        &quot;position_value&quot;: 299.99,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.0353&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 03 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-03T17:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Financial stocks up to $2B with the highest and lowest short interest&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T16:00:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;10 Financials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T12:05:36.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T10:07:34.026+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;SHF Holdings Expands Common Equity Through Share Conversions&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-            &quot;raw_time&quot;: &quot;2026-10-30T21:49:33.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;12 Financials Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SHFS&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 2.78,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 134925156,
-        &quot;adv&quot;: 48566280,
-        &quot;recent_pct_of_adv&quot;: 277.82,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 23.782,
-        &quot;buy_pressure_pct&quot;: 49.85,
-        &quot;large_bar_count&quot;: 26,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 134925156,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0011,
-        &quot;last_price&quot;: 0.0266,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T11:34:41.150000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 38
-      },
-      &quot;date&quot;: &quot;2026-11-06&quot;,
-      &quot;time&quot;: &quot;22:35:21&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.036
     }
   ],
   &quot;pre_market_watchlist&quot;: [],
   &quot;bounce_results&quot;: [],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: {
-    &quot;ticker&quot;: &quot;DBGI&quot;,
-    &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
+    &quot;ticker&quot;: &quot;CIIT&quot;,
+    &quot;name&quot;: &quot;Tianci Intrnl&quot;,
     &quot;status&quot;: &quot;ALERT&quot;,
     &quot;source&quot;: &quot;regular&quot;,
-    &quot;price&quot;: 0.991,
-    &quot;change_pct&quot;: 110.85000000000001,
-    &quot;volume&quot;: 12270293,
-    &quot;market_cap&quot;: 438749.23,
-    &quot;float_shares&quot;: 916298,
-    &quot;country&quot;: &quot;United States&quot;,
+    &quot;price&quot;: 2.35,
+    &quot;change_pct&quot;: 51.61,
+    &quot;volume&quot;: 2436289,
+    &quot;market_cap&quot;: 1835260.45,
+    &quot;float_shares&quot;: 860971,
+    &quot;country&quot;: &quot;China / Hong Kong&quot;,
     &quot;cap_size&quot;: &quot;nano-cap&quot;,
-    &quot;is_penny_stock&quot;: true,
+    &quot;is_penny_stock&quot;: false,
     &quot;scan_reason&quot;: &quot;Passed filters&quot;,
     &quot;scan_passed&quot;: true,
-    &quot;sec_filings&quot;: &quot;8-K (Nov 02), 8-K (Oct 29), 8-K (Sep 11)&quot;,
-    &quot;result&quot;: &quot;+110.9% · Entry $0.99 · T1 $1.03 · T2 $1.05 · T3 $1.09&quot;,
+    &quot;sec_filings&quot;: &quot;8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)&quot;,
+    &quot;result&quot;: &quot;+51.6% · Entry $2.35 · T1 $2.44 · T2 $2.49 · T3 $2.58&quot;,
     &quot;plan&quot;: {
       &quot;valid&quot;: true,
-      &quot;ticker&quot;: &quot;DBGI&quot;,
-      &quot;entry&quot;: 0.991,
-      &quot;stop&quot;: 0.9712,
+      &quot;ticker&quot;: &quot;CIIT&quot;,
+      &quot;entry&quot;: 2.35,
+      &quot;stop&quot;: 2.303,
       &quot;targets&quot;: {
-        &quot;t1&quot;: 1.0306,
-        &quot;t2&quot;: 1.0504,
-        &quot;t3&quot;: 1.09
+        &quot;t1&quot;: 2.444,
+        &quot;t2&quot;: 2.491,
+        &quot;t3&quot;: 2.585
       },
-      &quot;risk_per_share&quot;: 0.0198,
+      &quot;risk_per_share&quot;: 0.047,
       &quot;risk_amount&quot;: 20.0,
       &quot;daily_risk_budget&quot;: 60.0,
       &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-      &quot;shares&quot;: 302,
-      &quot;position_value&quot;: 299.28,
+      &quot;shares&quot;: 127,
+      &quot;position_value&quot;: 298.45,
       &quot;risk_reward&quot;: 2.0,
       &quot;confidence&quot;: &quot;MED&quot;,
       &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3458,7 +3458,7 @@
         &quot;momentum_based&quot;: true,
         &quot;time_based&quot;: false,
         &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-        &quot;hard_stop&quot;: &quot;$0.9712&quot;
+        &quot;hard_stop&quot;: &quot;$2.303&quot;
       }
     },
     &quot;ta&quot;: {
@@ -3466,41 +3466,32 @@
       &quot;error&quot;: &quot;No bar data&quot;
     },
     &quot;news&quot;: {
-      &quot;ticker&quot;: &quot;DBGI&quot;,
+      &quot;ticker&quot;: &quot;CIIT&quot;,
       &quot;total_items&quot;: 20,
       &quot;scored_items&quot;: [
         {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Digital Brands Group Receives Written Default Notice From Shakawe Capital, Holder Of Its $3.53M Unsecured Convertible Promissory Note; Company Disputes Certain Assertions In The Notice And Is Evaluating Potential Resolution Alternatives&quot;,
+          &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T11:26:47.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at DBGI last week (1026-1030)?&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T09:10:50.479+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-          &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -3508,37 +3499,28 @@
       ],
       &quot;headlines&quot;: [
         {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-06T05:33:03.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Digital Brands Group Receives Written Default Notice From Shakawe Capital, Holder Of Its $3.53M Unsecured Convertible Promissory Note; Company Disputes Certain Assertions In The Notice And Is Evaluating Potential Resolution Alternatives&quot;,
+          &quot;title&quot;: &quot;Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;19h ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T16:00:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Weekly Report: what happened at CIIT last week (1026-1030)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T11:26:47.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at DBGI last week (1026-1030)?&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T09:10:50.479+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6d ago · 30 Oct&quot;,
-          &quot;raw_time&quot;: &quot;2026-10-30T21:06:00.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T09:52:44.806+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -3549,38 +3531,38 @@
       &quot;avg_score&quot;: 0.0,
       &quot;catalyst_confirmed&quot;: false,
       &quot;high_impact_count&quot;: 0,
-      &quot;top_headline&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Intraday Session&quot;,
+      &quot;top_headline&quot;: &quot;Tianci International (CIIT) Stock Surges Over 59% After Hours: What’s Driving the Surge?&quot;,
       &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
     },
     &quot;tape&quot;: {
-      &quot;ticker&quot;: &quot;DBGI&quot;,
+      &quot;ticker&quot;: &quot;CIIT&quot;,
       &quot;valid&quot;: true,
       &quot;stale&quot;: false,
       &quot;no_move&quot;: false,
       &quot;tape_score&quot;: 8.0,
-      &quot;rvol&quot;: 15.23,
+      &quot;rvol&quot;: 11.34,
       &quot;volume_indicator&quot;: &quot;high&quot;,
-      &quot;volume&quot;: 12270293,
-      &quot;adv&quot;: 805865,
-      &quot;recent_pct_of_adv&quot;: 1522.62,
+      &quot;volume&quot;: 2436289,
+      &quot;adv&quot;: 214747,
+      &quot;recent_pct_of_adv&quot;: 1134.49,
       &quot;volume_acceleration&quot;: 0.0,
-      &quot;price_velocity_pct&quot;: 49.711,
-      &quot;buy_pressure_pct&quot;: 51.13,
-      &quot;large_bar_count&quot;: 31,
+      &quot;price_velocity_pct&quot;: 34.879,
+      &quot;buy_pressure_pct&quot;: 42.64,
+      &quot;large_bar_count&quot;: 36,
       &quot;vwap_distance_pct&quot;: 0.0,
-      &quot;recent_volume&quot;: 12270293,
+      &quot;recent_volume&quot;: 2436289,
       &quot;prior_volume&quot;: 0,
-      &quot;median_range&quot;: 0.0322,
-      &quot;last_price&quot;: 0.47,
+      &quot;median_range&quot;: 0.0233,
+      &quot;last_price&quot;: 1.55,
       &quot;vwap&quot;: null,
-      &quot;last_trade_time&quot;: &quot;2026-11-06T11:35:08.755000+00:00&quot;,
-      &quot;stale_age_seconds&quot;: 11
+      &quot;last_trade_time&quot;: &quot;2026-11-06T11:37:08.082000+00:00&quot;,
+      &quot;stale_age_seconds&quot;: 17
     },
     &quot;date&quot;: &quot;2026-11-06&quot;,
-    &quot;time&quot;: &quot;22:35:20&quot;,
+    &quot;time&quot;: &quot;22:37:24&quot;,
     &quot;skip_news_check&quot;: false,
     &quot;red_flag&quot;: false,
-    &quot;previous_price&quot;: 0.98
+    &quot;previous_price&quot;: 2.369
   },
   &quot;total_candidates&quot;: 6,
   &quot;alerts_generated&quot;: 4,
@@ -3588,10 +3570,10 @@
     {
       &quot;ticker&quot;: &quot;DBGI&quot;,
       &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
-      &quot;price&quot;: 0.991,
-      &quot;change_pct&quot;: 110.85000000000001,
-      &quot;volume&quot;: 12270293,
-      &quot;rvol&quot;: 32.669207544356645,
+      &quot;price&quot;: 0.986,
+      &quot;change_pct&quot;: 109.81,
+      &quot;volume&quot;: 12316845,
+      &quot;rvol&quot;: 32.793150546337515,
       &quot;market_cap&quot;: 438749.23,
       &quot;float_shares&quot;: 916298,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3603,25 +3585,25 @@
     {
       &quot;ticker&quot;: &quot;RCT&quot;,
       &quot;name&quot;: &quot;RedCloud&quot;,
-      &quot;price&quot;: 0.057,
-      &quot;change_pct&quot;: 88.33,
-      &quot;volume&quot;: 214655849,
-      &quot;rvol&quot;: 2.332280201428766,
+      &quot;price&quot;: 0.059,
+      &quot;change_pct&quot;: 96.33,
+      &quot;volume&quot;: 215108477,
+      &quot;rvol&quot;: 2.337198098275883,
       &quot;market_cap&quot;: 2307260.55,
       &quot;float_shares&quot;: 5771596,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United Kingdom&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.057, tiny price $0.057&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.059, tiny price $0.059&quot;
     },
     {
       &quot;ticker&quot;: &quot;CIIT&quot;,
       &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;price&quot;: 2.369,
-      &quot;change_pct&quot;: 52.86,
-      &quot;volume&quot;: 2432335,
-      &quot;rvol&quot;: 2.4827319763887146,
+      &quot;price&quot;: 2.35,
+      &quot;change_pct&quot;: 51.61,
+      &quot;volume&quot;: 2436289,
+      &quot;rvol&quot;: 2.486767901635295,
       &quot;market_cap&quot;: 1835260.45,
       &quot;float_shares&quot;: 860971,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3633,10 +3615,10 @@
     {
       &quot;ticker&quot;: &quot;VSA&quot;,
       &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
-      &quot;price&quot;: 2.089,
-      &quot;change_pct&quot;: 35.68,
-      &quot;volume&quot;: 4588538,
-      &quot;rvol&quot;: 749.7611111111111,
+      &quot;price&quot;: 2.13,
+      &quot;change_pct&quot;: 38.33,
+      &quot;volume&quot;: 4622566,
+      &quot;rvol&quot;: 755.3212418300653,
       &quot;market_cap&quot;: 4301119.9,
       &quot;float_shares&quot;: 2792058,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3649,9 +3631,9 @@
       &quot;ticker&quot;: &quot;SHFS&quot;,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
       &quot;price&quot;: 0.036,
-      &quot;change_pct&quot;: 33.08,
-      &quot;volume&quot;: 134925156,
-      &quot;rvol&quot;: 1.4175382621422294,
+      &quot;change_pct&quot;: 33.46,
+      &quot;volume&quot;: 135052214,
+      &quot;rvol&quot;: 1.4188731472137077,
       &quot;market_cap&quot;: 2274645.4,
       &quot;float_shares&quot;: 85415340,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3704,21 +3686,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 12, vol/float 0.00x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;RAYA&quot;,
-      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
-      &quot;price&quot;: 1.14,
-      &quot;change_pct&quot;: 16.220000000000002,
-      &quot;volume&quot;: 1195253,
-      &quot;rvol&quot;: 100.02117154811715,
-      &quot;market_cap&quot;: 1055515.99,
-      &quot;float_shares&quot;: 1025737,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;UONEK&quot;,
@@ -3796,21 +3763,6 @@
       &quot;reason&quot;: &quot;Filtered: vol 30, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;SITC&quot;,
-      &quot;name&quot;: &quot;Site Ctrs Corp&quot;,
-      &quot;price&quot;: 0.65,
-      &quot;change_pct&quot;: 14.04,
-      &quot;volume&quot;: 44796,
-      &quot;rvol&quot;: 0.009598095293599384,
-      &quot;market_cap&quot;: 187399228.17,
-      &quot;float_shares&quot;: 52276557,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 44,796, vol/float 0.00x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;EU&quot;,
       &quot;name&quot;: &quot;Encore Energy&quot;,
       &quot;price&quot;: 0.72,
@@ -3839,6 +3791,36 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny price $0.773, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 2, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;KDK&quot;,
+      &quot;name&quot;: &quot;Kodiak AI, Inc.&quot;,
+      &quot;price&quot;: 1.08,
+      &quot;change_pct&quot;: 13.33,
+      &quot;volume&quot;: 80033,
+      &quot;rvol&quot;: 0.007745002613828303,
+      &quot;market_cap&quot;: 190807941.49,
+      &quot;float_shares&quot;: 116156776,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: float 116.2M > 100M, vol/float 0.00x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;RAYA&quot;,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;price&quot;: 1.119,
+      &quot;change_pct&quot;: 13.07,
+      &quot;volume&quot;: 1242317,
+      &quot;rvol&quot;: 103.95958158995816,
+      &quot;market_cap&quot;: 1055515.99,
+      &quot;float_shares&quot;: 1025737,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;TLSA&quot;,
@@ -3919,7 +3901,7 @@
       &quot;ticker&quot;: &quot;RANI&quot;,
       &quot;name&quot;: &quot;Rani Therapeutics Holdings, Inc.&quot;,
       &quot;price&quot;: 0.58,
-      &quot;change_pct&quot;: 12.34,
+      &quot;change_pct&quot;: 12.17,
       &quot;volume&quot;: 1628,
       &quot;rvol&quot;: 0.0032552643102658797,
       &quot;market_cap&quot;: 71955863.67,
@@ -3929,6 +3911,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 1,628, float 109.8M > 100M, vol/float 0.00x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;SITC&quot;,
+      &quot;name&quot;: &quot;Site Ctrs Corp&quot;,
+      &quot;price&quot;: 0.64,
+      &quot;change_pct&quot;: 12.26,
+      &quot;volume&quot;: 45396,
+      &quot;rvol&quot;: 0.009726652691049149,
+      &quot;market_cap&quot;: 187399228.17,
+      &quot;float_shares&quot;: 52276557,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 45,396, vol/float 0.00x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;CRDL&quot;,
@@ -4006,34 +4003,19 @@
       &quot;reason&quot;: &quot;Filtered: vol 49, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;ENRD&quot;,
-      &quot;name&quot;: &quot;Einride AB&quot;,
-      &quot;price&quot;: 1.99,
-      &quot;change_pct&quot;: 11.799999999999999,
-      &quot;volume&quot;: 139,
-      &quot;rvol&quot;: 0.001795100280242274,
-      &quot;market_cap&quot;: 261106970.02,
-      &quot;float_shares&quot;: 140741406,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;International (region 166)&quot;,
+      &quot;ticker&quot;: &quot;NNOX&quot;,
+      &quot;name&quot;: &quot;Nano-X Imaging Ltd.&quot;,
+      &quot;price&quot;: 0.278,
+      &quot;change_pct&quot;: 11.959999999999999,
+      &quot;volume&quot;: 1251,
+      &quot;rvol&quot;: 0.0013278563240351547,
+      &quot;market_cap&quot;: 19552882.09,
+      &quot;float_shares&quot;: 72882052,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 139, float 140.7M > 100M, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;CDXS&quot;,
-      &quot;name&quot;: &quot;Codexis Inc&quot;,
-      &quot;price&quot;: 1.14,
-      &quot;change_pct&quot;: 11.76,
-      &quot;volume&quot;: 99,
-      &quot;rvol&quot;: 0.00010453855730455249,
-      &quot;market_cap&quot;: 111695880.3,
-      &quot;float_shares&quot;: 101725675,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 99, float 101.7M > 100M, vol/float 0.00x < 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: vol 1,251, vol/float 0.00x < 0.1x&quot;
     }
   ],
   &quot;all_losers&quot;: [
@@ -4056,46 +4038,31 @@
       &quot;ticker&quot;: &quot;BDMD&quot;,
       &quot;name&quot;: &quot;Baird Medical&quot;,
       &quot;price&quot;: 0.103,
-      &quot;change_pct&quot;: -34.599999999999994,
-      &quot;volume&quot;: 1966398,
-      &quot;rvol&quot;: 0.023270817838127227,
+      &quot;change_pct&quot;: -34.67,
+      &quot;volume&quot;: 1968633,
+      &quot;rvol&quot;: 0.023297267355401052,
       &quot;market_cap&quot;: 5040373.28,
       &quot;float_shares&quot;: 4381473,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.103, move -34.6%, rvol 0.0x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.103, move -34.7%, rvol 0.0x&quot;
     },
     {
       &quot;ticker&quot;: &quot;NTCL&quot;,
       &quot;name&quot;: &quot;Netclass Technology Inc.&quot;,
-      &quot;price&quot;: 0.247,
-      &quot;change_pct&quot;: -23.830000000000002,
-      &quot;volume&quot;: 434642,
-      &quot;rvol&quot;: 0.019544530535692772,
+      &quot;price&quot;: 0.249,
+      &quot;change_pct&quot;: -23.3,
+      &quot;volume&quot;: 435412,
+      &quot;rvol&quot;: 0.019579155096854567,
       &quot;market_cap&quot;: 856295.06,
       &quot;float_shares&quot;: 2001988,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.247, mktcap $0.9M, rvol 0.0x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;LABT&quot;,
-      &quot;name&quot;: &quot;Lakewood-Amedex&quot;,
-      &quot;price&quot;: 0.422,
-      &quot;change_pct&quot;: -21.94,
-      &quot;volume&quot;: 1208215,
-      &quot;rvol&quot;: 0.010736245369407428,
-      &quot;market_cap&quot;: 1281053.33,
-      &quot;float_shares&quot;: 1434312,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.422, mktcap $1.3M, rvol 0.0x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.249, mktcap $0.9M, rvol 0.0x&quot;
     },
     {
       &quot;ticker&quot;: &quot;MERC&quot;,
@@ -4113,6 +4080,21 @@
       &quot;reason&quot;: &quot;Filtered: price $0.197, rvol 0.0x, vol 50,498, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;LABT&quot;,
+      &quot;name&quot;: &quot;Lakewood-Amedex&quot;,
+      &quot;price&quot;: 0.428,
+      &quot;change_pct&quot;: -21.01,
+      &quot;volume&quot;: 1219166,
+      &quot;rvol&quot;: 0.01083355638031226,
+      &quot;market_cap&quot;: 1281053.33,
+      &quot;float_shares&quot;: 1434312,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.428, mktcap $1.3M, rvol 0.0x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;THCH&quot;,
       &quot;name&quot;: &quot;TH International Limited&quot;,
       &quot;price&quot;: 1.11,
@@ -4128,12 +4110,27 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 446, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;ELPW&quot;,
+      &quot;name&quot;: &quot;Elong Power Holding Limited&quot;,
+      &quot;price&quot;: 1.05,
+      &quot;change_pct&quot;: -19.54,
+      &quot;volume&quot;: 126376,
+      &quot;rvol&quot;: 0.008309593781612782,
+      &quot;market_cap&quot;: 1216376.15,
+      &quot;float_shares&quot;: 805497,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, rvol 0.0x, vol/float 0.16x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;INO&quot;,
       &quot;name&quot;: &quot;Inovio Pharmaceu&quot;,
       &quot;price&quot;: 1.17,
       &quot;change_pct&quot;: -19.31,
-      &quot;volume&quot;: 269360,
-      &quot;rvol&quot;: 0.004735285315355657,
+      &quot;volume&quot;: 271060,
+      &quot;rvol&quot;: 0.004765170914687794,
       &quot;market_cap&quot;: 149926401.1,
       &quot;float_shares&quot;: 103007384,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -4141,6 +4138,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, float 103.0M, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;PLCE&quot;,
+      &quot;name&quot;: &quot;Childrens Pl Inc&quot;,
+      &quot;price&quot;: 0.272,
+      &quot;change_pct&quot;: -18.98,
+      &quot;volume&quot;: 136085,
+      &quot;rvol&quot;: 0.005089879564514116,
+      &quot;market_cap&quot;: 7473878.22,
+      &quot;float_shares&quot;: 21174460,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.272, rvol 0.0x, vol/float 0.01x&quot;
     },
     {
       &quot;ticker&quot;: &quot;TBCH&quot;,
@@ -4173,34 +4185,19 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 515, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;ELPW&quot;,
-      &quot;name&quot;: &quot;Elong Power Holding Limited&quot;,
-      &quot;price&quot;: 1.07,
-      &quot;change_pct&quot;: -18.01,
-      &quot;volume&quot;: 125386,
-      &quot;rvol&quot;: 0.00824449836916266,
-      &quot;market_cap&quot;: 1216376.15,
-      &quot;float_shares&quot;: 805497,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, rvol 0.0x, vol/float 0.16x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;PLCE&quot;,
-      &quot;name&quot;: &quot;Childrens Pl Inc&quot;,
-      &quot;price&quot;: 0.28,
-      &quot;change_pct&quot;: -16.689999999999998,
-      &quot;volume&quot;: 134485,
-      &quot;rvol&quot;: 0.005030036030669661,
-      &quot;market_cap&quot;: 7473878.22,
-      &quot;float_shares&quot;: 21174460,
+      &quot;ticker&quot;: &quot;SCNI&quot;,
+      &quot;name&quot;: &quot;Scinai Immunotherapeutics Ltd.&quot;,
+      &quot;price&quot;: 0.373,
+      &quot;change_pct&quot;: -17.25,
+      &quot;volume&quot;: 1659,
+      &quot;rvol&quot;: 0.020276216084087022,
+      &quot;market_cap&quot;: 1186317.62,
+      &quot;float_shares&quot;: 2549707,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.280, rvol 0.0x, vol/float 0.01x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.373, mktcap $1.2M, rvol 0.0x, vol 1,659, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;IMRN&quot;,
@@ -4263,21 +4260,6 @@
       &quot;reason&quot;: &quot;Filtered: price $0.400, rvol 0.0x, vol 9,743, float 83.3M, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;JDZG&quot;,
-      &quot;name&quot;: &quot;Jiade Limited&quot;,
-      &quot;price&quot;: 0.335,
-      &quot;change_pct&quot;: -15.15,
-      &quot;volume&quot;: 330431,
-      &quot;rvol&quot;: 0.020169863886335168,
-      &quot;market_cap&quot;: 2144360.94,
-      &quot;float_shares&quot;: 5132411,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.335, mktcap $2.1M, rvol 0.0x, vol/float 0.06x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;BTBD&quot;,
       &quot;name&quot;: &quot;Bt Brands&quot;,
       &quot;price&quot;: 1.35,
@@ -4291,6 +4273,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;JDZG&quot;,
+      &quot;name&quot;: &quot;Jiade Limited&quot;,
+      &quot;price&quot;: 0.335,
+      &quot;change_pct&quot;: -15.049999999999999,
+      &quot;volume&quot;: 337874,
+      &quot;rvol&quot;: 0.020624192617313776,
+      &quot;market_cap&quot;: 2144360.94,
+      &quot;float_shares&quot;: 5132411,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.335, mktcap $2.1M, rvol 0.0x, vol/float 0.07x&quot;
     },
     {
       &quot;ticker&quot;: &quot;FBLG&quot;,
@@ -4341,16 +4338,16 @@
       &quot;ticker&quot;: &quot;HUBC&quot;,
       &quot;name&quot;: &quot;Hub Cyber Security Israel Ltd&quot;,
       &quot;price&quot;: 0.086,
-      &quot;change_pct&quot;: -14.16,
-      &quot;volume&quot;: 88416,
-      &quot;rvol&quot;: 0.0009737224130567348,
+      &quot;change_pct&quot;: -14.06,
+      &quot;volume&quot;: 88549,
+      &quot;rvol&quot;: 0.0009751871375515835,
       &quot;market_cap&quot;: 180120.85,
       &quot;float_shares&quot;: 1790379,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;International (region 83)&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.086, mktcap $0.2M, rvol 0.0x, vol 88,416, vol/float 0.05x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.086, mktcap $0.2M, rvol 0.0x, vol 88,549, vol/float 0.05x&quot;
     },
     {
       &quot;ticker&quot;: &quot;DFNS&quot;,
@@ -4594,18 +4591,18 @@
     }
   ],
   &quot;live_quotes&quot;: {
-    &quot;RAYA&quot;: {
-      &quot;price&quot;: 0.9817,
-      &quot;open&quot;: 0.95,
-      &quot;high&quot;: 0.9999,
-      &quot;low&quot;: 0.92,
-      &quot;close&quot;: 0.9817,
-      &quot;preClose&quot;: 1.0,
-      &quot;volume&quot;: 1204367,
-      &quot;changeRatio&quot;: -0.0183,
-      &quot;marketValue&quot;: 1055515.99,
-      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533416Z&quot;
+    &quot;DBGI&quot;: {
+      &quot;price&quot;: 0.47,
+      &quot;open&quot;: 0.6269,
+      &quot;high&quot;: 0.6324,
+      &quot;low&quot;: 0.4675,
+      &quot;close&quot;: 0.47,
+      &quot;preClose&quot;: 0.6278,
+      &quot;volume&quot;: 12329408,
+      &quot;changeRatio&quot;: -0.2514,
+      &quot;marketValue&quot;: 438749.23,
+      &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133201Z&quot;
     },
     &quot;CIIT&quot;: {
       &quot;price&quot;: 1.55,
@@ -4614,11 +4611,11 @@
       &quot;low&quot;: 1.52,
       &quot;close&quot;: 1.55,
       &quot;preClose&quot;: 1.708,
-      &quot;volume&quot;: 2433005,
+      &quot;volume&quot;: 2436407,
       &quot;changeRatio&quot;: -0.0922,
       &quot;marketValue&quot;: 1835260.45,
       &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533441Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133228Z&quot;
     },
     &quot;SHFS&quot;: {
       &quot;price&quot;: 0.0266,
@@ -4627,37 +4624,11 @@
       &quot;low&quot;: 0.0263,
       &quot;close&quot;: 0.0266,
       &quot;preClose&quot;: 0.0318,
-      &quot;volume&quot;: 134950696,
+      &quot;volume&quot;: 135052739,
       &quot;changeRatio&quot;: -0.1635,
       &quot;marketValue&quot;: 2274645.4,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533453Z&quot;
-    },
-    &quot;VSA&quot;: {
-      &quot;price&quot;: 1.54,
-      &quot;open&quot;: 1.585,
-      &quot;high&quot;: 1.59,
-      &quot;low&quot;: 1.513,
-      &quot;close&quot;: 1.54,
-      &quot;preClose&quot;: 1.5,
-      &quot;volume&quot;: 4589904,
-      &quot;changeRatio&quot;: 0.0267,
-      &quot;marketValue&quot;: 4301119.9,
-      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533461Z&quot;
-    },
-    &quot;DBGI&quot;: {
-      &quot;price&quot;: 0.47,
-      &quot;open&quot;: 0.6269,
-      &quot;high&quot;: 0.6324,
-      &quot;low&quot;: 0.4675,
-      &quot;close&quot;: 0.47,
-      &quot;preClose&quot;: 0.6278,
-      &quot;volume&quot;: 12275170,
-      &quot;changeRatio&quot;: -0.2514,
-      &quot;marketValue&quot;: 438749.23,
-      &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533468Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133240Z&quot;
     },
     &quot;RCT&quot;: {
       &quot;price&quot;: 0.03,
@@ -4666,26 +4637,52 @@
       &quot;low&quot;: 0.0263,
       &quot;close&quot;: 0.03,
       &quot;preClose&quot;: 0.0334,
-      &quot;volume&quot;: 214673931,
+      &quot;volume&quot;: 215615983,
       &quot;changeRatio&quot;: -0.1018,
       &quot;marketValue&quot;: 2307260.55,
       &quot;name&quot;: &quot;RedCloud&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:35:22.533474Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133249Z&quot;
+    },
+    &quot;RAYA&quot;: {
+      &quot;price&quot;: 0.9817,
+      &quot;open&quot;: 0.95,
+      &quot;high&quot;: 0.9999,
+      &quot;low&quot;: 0.92,
+      &quot;close&quot;: 0.9817,
+      &quot;preClose&quot;: 1.0,
+      &quot;volume&quot;: 1252128,
+      &quot;changeRatio&quot;: -0.0183,
+      &quot;marketValue&quot;: 1055515.99,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133258Z&quot;
+    },
+    &quot;VSA&quot;: {
+      &quot;price&quot;: 1.54,
+      &quot;open&quot;: 1.585,
+      &quot;high&quot;: 1.59,
+      &quot;low&quot;: 1.513,
+      &quot;close&quot;: 1.54,
+      &quot;preClose&quot;: 1.5,
+      &quot;volume&quot;: 4627651,
+      &quot;changeRatio&quot;: 0.0267,
+      &quot;marketValue&quot;: 4301119.9,
+      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:37:26.133264Z&quot;
     }
   },
   &quot;previous_live_quotes&quot;: {
-    &quot;VSA&quot;: {
-      &quot;price&quot;: 1.54,
-      &quot;open&quot;: 1.585,
-      &quot;high&quot;: 1.59,
-      &quot;low&quot;: 1.513,
-      &quot;close&quot;: 1.54,
-      &quot;preClose&quot;: 1.5,
-      &quot;volume&quot;: 4581319,
-      &quot;changeRatio&quot;: 0.0267,
-      &quot;marketValue&quot;: 4301119.9,
-      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380255Z&quot;
+    &quot;RAYA&quot;: {
+      &quot;price&quot;: 0.9817,
+      &quot;open&quot;: 0.95,
+      &quot;high&quot;: 0.9999,
+      &quot;low&quot;: 0.92,
+      &quot;close&quot;: 0.9817,
+      &quot;preClose&quot;: 1.0,
+      &quot;volume&quot;: 1221537,
+      &quot;changeRatio&quot;: -0.0183,
+      &quot;marketValue&quot;: 1055515.99,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956181Z&quot;
     },
     &quot;DBGI&quot;: {
       &quot;price&quot;: 0.47,
@@ -4694,24 +4691,11 @@
       &quot;low&quot;: 0.4675,
       &quot;close&quot;: 0.47,
       &quot;preClose&quot;: 0.6278,
-      &quot;volume&quot;: 12250567,
+      &quot;volume&quot;: 12311227,
       &quot;changeRatio&quot;: -0.2514,
       &quot;marketValue&quot;: 438749.23,
       &quot;name&quot;: &quot;Digital Brands Group Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380280Z&quot;
-    },
-    &quot;RAYA&quot;: {
-      &quot;price&quot;: 0.9817,
-      &quot;open&quot;: 0.95,
-      &quot;high&quot;: 0.9999,
-      &quot;low&quot;: 0.92,
-      &quot;close&quot;: 0.9817,
-      &quot;preClose&quot;: 1.0,
-      &quot;volume&quot;: 1174500,
-      &quot;changeRatio&quot;: -0.0183,
-      &quot;marketValue&quot;: 1055515.99,
-      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380291Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956207Z&quot;
     },
     &quot;RCT&quot;: {
       &quot;price&quot;: 0.03,
@@ -4720,24 +4704,11 @@
       &quot;low&quot;: 0.0263,
       &quot;close&quot;: 0.03,
       &quot;preClose&quot;: 0.0334,
-      &quot;volume&quot;: 214411118,
+      &quot;volume&quot;: 214881333,
       &quot;changeRatio&quot;: -0.1018,
       &quot;marketValue&quot;: 2307260.55,
       &quot;name&quot;: &quot;RedCloud&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380299Z&quot;
-    },
-    &quot;CIIT&quot;: {
-      &quot;price&quot;: 1.55,
-      &quot;open&quot;: 1.65,
-      &quot;high&quot;: 1.71,
-      &quot;low&quot;: 1.52,
-      &quot;close&quot;: 1.55,
-      &quot;preClose&quot;: 1.708,
-      &quot;volume&quot;: 2431405,
-      &quot;changeRatio&quot;: -0.0922,
-      &quot;marketValue&quot;: 1835260.45,
-      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380306Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956219Z&quot;
     },
     &quot;SHFS&quot;: {
       &quot;price&quot;: 0.0266,
@@ -4746,18 +4717,44 @@
       &quot;low&quot;: 0.0263,
       &quot;close&quot;: 0.0266,
       &quot;preClose&quot;: 0.0318,
-      &quot;volume&quot;: 134891756,
+      &quot;volume&quot;: 134999215,
       &quot;changeRatio&quot;: -0.1635,
       &quot;marketValue&quot;: 2274645.4,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T11:34:22.380312Z&quot;
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956227Z&quot;
+    },
+    &quot;VSA&quot;: {
+      &quot;price&quot;: 1.54,
+      &quot;open&quot;: 1.585,
+      &quot;high&quot;: 1.59,
+      &quot;low&quot;: 1.513,
+      &quot;close&quot;: 1.54,
+      &quot;preClose&quot;: 1.5,
+      &quot;volume&quot;: 4610153,
+      &quot;changeRatio&quot;: 0.0267,
+      &quot;marketValue&quot;: 4301119.9,
+      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956235Z&quot;
+    },
+    &quot;CIIT&quot;: {
+      &quot;price&quot;: 1.55,
+      &quot;open&quot;: 1.65,
+      &quot;high&quot;: 1.71,
+      &quot;low&quot;: 1.52,
+      &quot;close&quot;: 1.55,
+      &quot;preClose&quot;: 1.708,
+      &quot;volume&quot;: 2435076,
+      &quot;changeRatio&quot;: -0.0922,
+      &quot;marketValue&quot;: 1835260.45,
+      &quot;name&quot;: &quot;Tianci Intrnl&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T11:36:21.956241Z&quot;
     }
   },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;PRE-MARKET&quot;,
-    &quot;market_time&quot;: &quot;10:35 PM AEDT&quot;,
+    &quot;market_time&quot;: &quot;10:37 PM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
