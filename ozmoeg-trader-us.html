@@ -1466,16 +1466,463 @@
     </style>
 <!-- v=2026-08-25-1415 build-trigger -->
 <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-06T21:55:32.342779Z&quot;,
+  &quot;last_updated&quot;: &quot;2026-11-06T21:56:29.697719Z&quot;,
   &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;ANVS&quot;,
+      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.938,
+      &quot;change_pct&quot;: 11.03,
+      &quot;volume&quot;: 10841480,
+      &quot;market_cap&quot;: 36349727.15,
+      &quot;float_shares&quot;: 37992227,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 424B5 (Nov 05), 424B5 (Nov 04)&quot;,
+      &quot;result&quot;: &quot;+11.0% · Entry $0.94 · T1 $0.98 · T2 $0.99 · T3 $1.03&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;entry&quot;: 0.938,
+        &quot;stop&quot;: 0.9192,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.9756,
+          &quot;t2&quot;: 0.9944,
+          &quot;t3&quot;: 1.032
+        },
+        &quot;risk_per_share&quot;: 0.0188,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 319,
+        &quot;position_value&quot;: 299.22,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.9192&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;preliminary&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;preliminary&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio Announces Pricing of Public Offering and Underwriting Agreement&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio prices $21M public offering; shares slump&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Plans To Commence Common Stock Offering; Terms Undisclosed&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;*Annovis: Announces Launch of Proposed Public Offering&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis shares tank as it launched public offering of shares&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio announces common stock and warrants offering, no amount given&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.1,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: offering&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 7.03,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 10841480,
+        &quot;adv&quot;: 1541407,
+        &quot;recent_pct_of_adv&quot;: 703.35,
+        &quot;volume_acceleration&quot;: -0.528,
+        &quot;price_velocity_pct&quot;: 4.013,
+        &quot;buy_pressure_pct&quot;: 43.41,
+        &quot;large_bar_count&quot;: 143,
+        &quot;vwap_distance_pct&quot;: 11.98,
+        &quot;recent_volume&quot;: 10841480,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0034,
+        &quot;last_price&quot;: 0.8449,
+        &quot;vwap&quot;: 0.7545066989454448,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.234000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-07&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.928
+    },
+    {
+      &quot;ticker&quot;: &quot;OMH&quot;,
+      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 13.93,
+      &quot;change_pct&quot;: 89.95,
+      &quot;volume&quot;: 8326151,
+      &quot;market_cap&quot;: 15667408.64,
+      &quot;float_shares&quot;: 2110107,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;424B5 (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+90.0% · Entry $13.93 · T1 $14.49 · T2 $14.77 · T3 $15.32&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;entry&quot;: 13.93,
+        &quot;stop&quot;: 13.6514,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 14.4872,
+          &quot;t2&quot;: 14.7658,
+          &quot;t3&quot;: 15.323
+        },
+        &quot;risk_per_share&quot;: 0.2786,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 21,
+        &quot;position_value&quot;: 292.53,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$13.6514&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 3.87,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 8326151,
+        &quot;adv&quot;: 2153655,
+        &quot;recent_pct_of_adv&quot;: 386.61,
+        &quot;volume_acceleration&quot;: 0.325,
+        &quot;price_velocity_pct&quot;: 1.656,
+        &quot;buy_pressure_pct&quot;: 47.48,
+        &quot;large_bar_count&quot;: 172,
+        &quot;vwap_distance_pct&quot;: 12.512,
+        &quot;recent_volume&quot;: 8326151,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.12,
+        &quot;last_price&quot;: 7.36,
+        &quot;vwap&quot;: 8.412591492392378,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.596000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-07&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 16.76
+    },
     {
       &quot;ticker&quot;: &quot;AIRS&quot;,
       &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.58,
-      &quot;change_pct&quot;: 8.62,
-      &quot;volume&quot;: 11007274,
+      &quot;price&quot;: 0.57,
+      &quot;change_pct&quot;: 6.76,
+      &quot;volume&quot;: 11009069,
       &quot;market_cap&quot;: 38491632.09,
       &quot;float_shares&quot;: 10769598,
       &quot;country&quot;: &quot;United States&quot;,
@@ -1484,23 +1931,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 06), 8-K (Nov 06), 8-K (Aug 12)&quot;,
-      &quot;result&quot;: &quot;+8.6% · Entry $0.58 · T1 $0.60 · T2 $0.61 · T3 $0.64&quot;,
+      &quot;result&quot;: &quot;+6.8% · Entry $0.57 · T1 $0.59 · T2 $0.60 · T3 $0.63&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;AIRS&quot;,
-        &quot;entry&quot;: 0.58,
-        &quot;stop&quot;: 0.5684,
+        &quot;entry&quot;: 0.57,
+        &quot;stop&quot;: 0.5586,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.6032,
-          &quot;t2&quot;: 0.6148,
-          &quot;t3&quot;: 0.638
+          &quot;t1&quot;: 0.5928,
+          &quot;t2&quot;: 0.6042,
+          &quot;t3&quot;: 0.627
         },
-        &quot;risk_per_share&quot;: 0.0116,
+        &quot;risk_per_share&quot;: 0.0114,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 517,
-        &quot;position_value&quot;: 299.86,
+        &quot;shares&quot;: 526,
+        &quot;position_value&quot;: 299.82,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -1508,7 +1955,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.5684&quot;
+          &quot;hard_stop&quot;: &quot;$0.5586&quot;
         }
       },
       &quot;ta&quot;: {
@@ -1898,508 +2345,61 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 11.45,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 11007274,
+        &quot;volume&quot;: 11009069,
         &quot;adv&quot;: 961240,
-        &quot;recent_pct_of_adv&quot;: 1145.11,
-        &quot;volume_acceleration&quot;: 0.614,
-        &quot;price_velocity_pct&quot;: 8.186,
-        &quot;buy_pressure_pct&quot;: 55.91,
-        &quot;large_bar_count&quot;: 196,
+        &quot;recent_pct_of_adv&quot;: 1145.3,
+        &quot;volume_acceleration&quot;: 0.566,
+        &quot;price_velocity_pct&quot;: 8.579,
+        &quot;buy_pressure_pct&quot;: 55.76,
+        &quot;large_bar_count&quot;: 197,
         &quot;vwap_distance_pct&quot;: 14.454,
-        &quot;recent_volume&quot;: 11007274,
+        &quot;recent_volume&quot;: 11009069,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.001,
         &quot;last_price&quot;: 0.5339,
         &quot;vwap&quot;: 0.6241074556547135,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:54:59.735000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 52
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:48.939000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 39
       },
       &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:29&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.584
-    },
-    {
-      &quot;ticker&quot;: &quot;OMH&quot;,
-      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 16.76,
-      &quot;change_pct&quot;: 127.62,
-      &quot;volume&quot;: 8149973,
-      &quot;market_cap&quot;: 15667408.64,
-      &quot;float_shares&quot;: 2110107,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;424B5 (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+127.6% · Entry $16.76 · T1 $17.43 · T2 $17.77 · T3 $18.44&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;entry&quot;: 16.76,
-        &quot;stop&quot;: 16.4248,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 17.4304,
-          &quot;t2&quot;: 17.7656,
-          &quot;t3&quot;: 18.436
-        },
-        &quot;risk_per_share&quot;: 0.3352,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 17,
-        &quot;position_value&quot;: 284.92,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$16.4248&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 3.78,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 8149973,
-        &quot;adv&quot;: 2153655,
-        &quot;recent_pct_of_adv&quot;: 378.43,
-        &quot;volume_acceleration&quot;: 0.399,
-        &quot;price_velocity_pct&quot;: 2.774,
-        &quot;buy_pressure_pct&quot;: 47.57,
-        &quot;large_bar_count&quot;: 171,
-        &quot;vwap_distance_pct&quot;: 12.512,
-        &quot;recent_volume&quot;: 8149973,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.12,
-        &quot;last_price&quot;: 7.36,
-        &quot;vwap&quot;: 8.412591492392378,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:09.692000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 20
-      },
-      &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 16.62
-    },
-    {
-      &quot;ticker&quot;: &quot;ANVS&quot;,
-      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.969999999999999,
-      &quot;volume&quot;: 10827171,
-      &quot;market_cap&quot;: 36349727.15,
-      &quot;float_shares&quot;: 37992227,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 424B5 (Nov 05), 424B5 (Nov 04)&quot;,
-      &quot;result&quot;: &quot;+10.0% · Entry $0.93 · T1 $0.97 · T2 $0.98 · T3 $1.02&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;entry&quot;: 0.928,
-        &quot;stop&quot;: 0.9094,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.9652,
-          &quot;t2&quot;: 0.9838,
-          &quot;t3&quot;: 1.021
-        },
-        &quot;risk_per_share&quot;: 0.0186,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 323,
-        &quot;position_value&quot;: 299.74,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9094&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 1,
-            &quot;keywords&quot;: [
-              &quot;preliminary&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 1,
-            &quot;keywords&quot;: [
-              &quot;preliminary&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio Announces Pricing of Public Offering and Underwriting Agreement&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio prices $21M public offering; shares slump&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Plans To Commence Common Stock Offering; Terms Undisclosed&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;*Annovis: Announces Launch of Proposed Public Offering&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis shares tank as it launched public offering of shares&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio announces common stock and warrants offering, no amount given&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          }
-        ],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.1,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: offering&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 7.02,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 10827171,
-        &quot;adv&quot;: 1541407,
-        &quot;recent_pct_of_adv&quot;: 702.42,
-        &quot;volume_acceleration&quot;: -0.528,
-        &quot;price_velocity_pct&quot;: 4.013,
-        &quot;buy_pressure_pct&quot;: 43.24,
-        &quot;large_bar_count&quot;: 142,
-        &quot;vwap_distance_pct&quot;: 11.98,
-        &quot;recent_volume&quot;: 10827171,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0034,
-        &quot;last_price&quot;: 0.8449,
-        &quot;vwap&quot;: 0.7545066989454448,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:08.151000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 22
-      },
-      &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 0.963
+      &quot;previous_price&quot;: 0.58
     },
     {
       &quot;ticker&quot;: &quot;JDZG&quot;,
       &quot;name&quot;: &quot;Jiade Limited&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.285,
-      &quot;change_pct&quot;: 36.01,
-      &quot;volume&quot;: 12909927,
+      &quot;price&quot;: 0.306,
+      &quot;change_pct&quot;: 45.53,
+      &quot;volume&quot;: 13173671,
       &quot;market_cap&quot;: 1141703.82,
       &quot;float_shares&quot;: 5132411,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (36.0%, rvol 5.1x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (45.5%, rvol 5.2x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +36.0%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +45.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;JDZG&quot;,
-        &quot;entry&quot;: 0.285,
-        &quot;stop&quot;: 0.2793,
+        &quot;entry&quot;: 0.306,
+        &quot;stop&quot;: 0.2999,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.2964,
-          &quot;t2&quot;: 0.3021,
-          &quot;t3&quot;: 0.3135
+          &quot;t1&quot;: 0.3182,
+          &quot;t2&quot;: 0.3243,
+          &quot;t3&quot;: 0.3365
         },
-        &quot;risk_per_share&quot;: 0.0057,
+        &quot;risk_per_share&quot;: 0.0061,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 1052,
-        &quot;position_value&quot;: 299.82,
+        &quot;shares&quot;: 980,
+        &quot;position_value&quot;: 299.88,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2407,7 +2407,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.2793&quot;
+          &quot;hard_stop&quot;: &quot;$0.2999&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2543,40 +2543,487 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 5.08,
+        &quot;rvol&quot;: 5.18,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 12909927,
+        &quot;volume&quot;: 13173671,
         &quot;adv&quot;: 2541344,
-        &quot;recent_pct_of_adv&quot;: 508.0,
+        &quot;recent_pct_of_adv&quot;: 518.37,
         &quot;volume_acceleration&quot;: 0.859,
         &quot;price_velocity_pct&quot;: 10.69,
-        &quot;buy_pressure_pct&quot;: 52.82,
-        &quot;large_bar_count&quot;: 237,
+        &quot;buy_pressure_pct&quot;: 52.9,
+        &quot;large_bar_count&quot;: 238,
         &quot;vwap_distance_pct&quot;: 21.104,
-        &quot;recent_volume&quot;: 12909927,
+        &quot;recent_volume&quot;: 13173671,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0008,
         &quot;last_price&quot;: 0.2102,
         &quot;vwap&quot;: 0.2664259885347019,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:09.164000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 20
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.412000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
+      &quot;time&quot;: &quot;08:56:28&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.277
+      &quot;previous_price&quot;: 0.285
     }
   ],
   &quot;pre_market_results&quot;: [
     {
+      &quot;ticker&quot;: &quot;ANVS&quot;,
+      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.938,
+      &quot;change_pct&quot;: 11.03,
+      &quot;volume&quot;: 10841480,
+      &quot;market_cap&quot;: 36349727.15,
+      &quot;float_shares&quot;: 37992227,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 424B5 (Nov 05), 424B5 (Nov 04)&quot;,
+      &quot;result&quot;: &quot;+11.0% · Entry $0.94 · T1 $0.98 · T2 $0.99 · T3 $1.03&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;entry&quot;: 0.938,
+        &quot;stop&quot;: 0.9192,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.9756,
+          &quot;t2&quot;: 0.9944,
+          &quot;t3&quot;: 1.032
+        },
+        &quot;risk_per_share&quot;: 0.0188,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 319,
+        &quot;position_value&quot;: 299.22,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.9192&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;preliminary&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;preliminary&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;Annovis Bio Announces Pricing of Public Offering and Underwriting Agreement&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio prices $21M public offering; shares slump&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio Plans To Commence Common Stock Offering; Terms Undisclosed&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;*Annovis: Announces Launch of Proposed Public Offering&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis shares tank as it launched public offering of shares&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Annovis Bio announces common stock and warrants offering, no amount given&quot;,
+            &quot;flag&quot;: &quot;offering&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.1,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: offering&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;ANVS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 7.03,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 10841480,
+        &quot;adv&quot;: 1541407,
+        &quot;recent_pct_of_adv&quot;: 703.35,
+        &quot;volume_acceleration&quot;: -0.528,
+        &quot;price_velocity_pct&quot;: 4.013,
+        &quot;buy_pressure_pct&quot;: 43.41,
+        &quot;large_bar_count&quot;: 143,
+        &quot;vwap_distance_pct&quot;: 11.98,
+        &quot;recent_volume&quot;: 10841480,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0034,
+        &quot;last_price&quot;: 0.8449,
+        &quot;vwap&quot;: 0.7545066989454448,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.234000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-07&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.928
+    },
+    {
+      &quot;ticker&quot;: &quot;OMH&quot;,
+      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 13.93,
+      &quot;change_pct&quot;: 89.95,
+      &quot;volume&quot;: 8326151,
+      &quot;market_cap&quot;: 15667408.64,
+      &quot;float_shares&quot;: 2110107,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;424B5 (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+90.0% · Entry $13.93 · T1 $14.49 · T2 $14.77 · T3 $15.32&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;entry&quot;: 13.93,
+        &quot;stop&quot;: 13.6514,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 14.4872,
+          &quot;t2&quot;: 14.7658,
+          &quot;t3&quot;: 15.323
+        },
+        &quot;risk_per_share&quot;: 0.2786,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 21,
+        &quot;position_value&quot;: 292.53,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$13.6514&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;OMH&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 3.87,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 8326151,
+        &quot;adv&quot;: 2153655,
+        &quot;recent_pct_of_adv&quot;: 386.61,
+        &quot;volume_acceleration&quot;: 0.325,
+        &quot;price_velocity_pct&quot;: 1.656,
+        &quot;buy_pressure_pct&quot;: 47.48,
+        &quot;large_bar_count&quot;: 172,
+        &quot;vwap_distance_pct&quot;: 12.512,
+        &quot;recent_volume&quot;: 8326151,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.12,
+        &quot;last_price&quot;: 7.36,
+        &quot;vwap&quot;: 8.412591492392378,
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.596000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-07&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 16.76
+    },
+    {
       &quot;ticker&quot;: &quot;AIRS&quot;,
       &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.58,
-      &quot;change_pct&quot;: 8.62,
-      &quot;volume&quot;: 11007274,
+      &quot;price&quot;: 0.57,
+      &quot;change_pct&quot;: 6.76,
+      &quot;volume&quot;: 11009069,
       &quot;market_cap&quot;: 38491632.09,
       &quot;float_shares&quot;: 10769598,
       &quot;country&quot;: &quot;United States&quot;,
@@ -2585,23 +3032,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 06), 8-K (Nov 06), 8-K (Aug 12)&quot;,
-      &quot;result&quot;: &quot;+8.6% · Entry $0.58 · T1 $0.60 · T2 $0.61 · T3 $0.64&quot;,
+      &quot;result&quot;: &quot;+6.8% · Entry $0.57 · T1 $0.59 · T2 $0.60 · T3 $0.63&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;AIRS&quot;,
-        &quot;entry&quot;: 0.58,
-        &quot;stop&quot;: 0.5684,
+        &quot;entry&quot;: 0.57,
+        &quot;stop&quot;: 0.5586,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.6032,
-          &quot;t2&quot;: 0.6148,
-          &quot;t3&quot;: 0.638
+          &quot;t1&quot;: 0.5928,
+          &quot;t2&quot;: 0.6042,
+          &quot;t3&quot;: 0.627
         },
-        &quot;risk_per_share&quot;: 0.0116,
+        &quot;risk_per_share&quot;: 0.0114,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 517,
-        &quot;position_value&quot;: 299.86,
+        &quot;shares&quot;: 526,
+        &quot;position_value&quot;: 299.82,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2609,7 +3056,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.5684&quot;
+          &quot;hard_stop&quot;: &quot;$0.5586&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2999,508 +3446,61 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 11.45,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 11007274,
+        &quot;volume&quot;: 11009069,
         &quot;adv&quot;: 961240,
-        &quot;recent_pct_of_adv&quot;: 1145.11,
-        &quot;volume_acceleration&quot;: 0.614,
-        &quot;price_velocity_pct&quot;: 8.186,
-        &quot;buy_pressure_pct&quot;: 55.91,
-        &quot;large_bar_count&quot;: 196,
+        &quot;recent_pct_of_adv&quot;: 1145.3,
+        &quot;volume_acceleration&quot;: 0.566,
+        &quot;price_velocity_pct&quot;: 8.579,
+        &quot;buy_pressure_pct&quot;: 55.76,
+        &quot;large_bar_count&quot;: 197,
         &quot;vwap_distance_pct&quot;: 14.454,
-        &quot;recent_volume&quot;: 11007274,
+        &quot;recent_volume&quot;: 11009069,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.001,
         &quot;last_price&quot;: 0.5339,
         &quot;vwap&quot;: 0.6241074556547135,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:54:59.735000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 52
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:48.939000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 39
       },
       &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:29&quot;,
+      &quot;time&quot;: &quot;08:56:27&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.584
-    },
-    {
-      &quot;ticker&quot;: &quot;OMH&quot;,
-      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 16.76,
-      &quot;change_pct&quot;: 127.62,
-      &quot;volume&quot;: 8149973,
-      &quot;market_cap&quot;: 15667408.64,
-      &quot;float_shares&quot;: 2110107,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;424B5 (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+127.6% · Entry $16.76 · T1 $17.43 · T2 $17.77 · T3 $18.44&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;entry&quot;: 16.76,
-        &quot;stop&quot;: 16.4248,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 17.4304,
-          &quot;t2&quot;: 17.7656,
-          &quot;t3&quot;: 18.436
-        },
-        &quot;risk_per_share&quot;: 0.3352,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 17,
-        &quot;position_value&quot;: 284.92,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$16.4248&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:47:10.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Ohmyhome Ltd trading halted, volatility trading pause&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:36:50.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T09:42:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at OMH last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:56.210+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Ohmyhome Ltd trading resumes&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;OMH&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 3.78,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 8149973,
-        &quot;adv&quot;: 2153655,
-        &quot;recent_pct_of_adv&quot;: 378.43,
-        &quot;volume_acceleration&quot;: 0.399,
-        &quot;price_velocity_pct&quot;: 2.774,
-        &quot;buy_pressure_pct&quot;: 47.57,
-        &quot;large_bar_count&quot;: 171,
-        &quot;vwap_distance_pct&quot;: 12.512,
-        &quot;recent_volume&quot;: 8149973,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.12,
-        &quot;last_price&quot;: 7.36,
-        &quot;vwap&quot;: 8.412591492392378,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:09.692000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 20
-      },
-      &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 16.62
-    },
-    {
-      &quot;ticker&quot;: &quot;ANVS&quot;,
-      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.969999999999999,
-      &quot;volume&quot;: 10827171,
-      &quot;market_cap&quot;: 36349727.15,
-      &quot;float_shares&quot;: 37992227,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 05), 424B5 (Nov 05), 424B5 (Nov 04)&quot;,
-      &quot;result&quot;: &quot;+10.0% · Entry $0.93 · T1 $0.97 · T2 $0.98 · T3 $1.02&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;entry&quot;: 0.928,
-        &quot;stop&quot;: 0.9094,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.9652,
-          &quot;t2&quot;: 0.9838,
-          &quot;t3&quot;: 1.021
-        },
-        &quot;risk_per_share&quot;: 0.0186,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 323,
-        &quot;position_value&quot;: 299.74,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9094&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 1,
-            &quot;keywords&quot;: [
-              &quot;preliminary&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 1,
-            &quot;keywords&quot;: [
-              &quot;preliminary&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [
-          {
-            &quot;title&quot;: &quot;Annovis Bio Announces Pricing of Public Offering and Underwriting Agreement&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio prices $21M public offering; shares slump&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio Plans To Commence Common Stock Offering; Terms Undisclosed&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;*Annovis: Announces Launch of Proposed Public Offering&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis shares tank as it launched public offering of shares&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Annovis Bio announces common stock and warrants offering, no amount given&quot;,
-            &quot;flag&quot;: &quot;offering&quot;
-          }
-        ],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.1,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
-        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: offering&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;ANVS&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 7.02,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 10827171,
-        &quot;adv&quot;: 1541407,
-        &quot;recent_pct_of_adv&quot;: 702.42,
-        &quot;volume_acceleration&quot;: -0.528,
-        &quot;price_velocity_pct&quot;: 4.013,
-        &quot;buy_pressure_pct&quot;: 43.24,
-        &quot;large_bar_count&quot;: 142,
-        &quot;vwap_distance_pct&quot;: 11.98,
-        &quot;recent_volume&quot;: 10827171,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0034,
-        &quot;last_price&quot;: 0.8449,
-        &quot;vwap&quot;: 0.7545066989454448,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:08.151000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 22
-      },
-      &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 0.963
+      &quot;previous_price&quot;: 0.58
     },
     {
       &quot;ticker&quot;: &quot;JDZG&quot;,
       &quot;name&quot;: &quot;Jiade Limited&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.285,
-      &quot;change_pct&quot;: 36.01,
-      &quot;volume&quot;: 12909927,
+      &quot;price&quot;: 0.306,
+      &quot;change_pct&quot;: 45.53,
+      &quot;volume&quot;: 13173671,
       &quot;market_cap&quot;: 1141703.82,
       &quot;float_shares&quot;: 5132411,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (36.0%, rvol 5.1x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (45.5%, rvol 5.2x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +36.0%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +45.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;JDZG&quot;,
-        &quot;entry&quot;: 0.285,
-        &quot;stop&quot;: 0.2793,
+        &quot;entry&quot;: 0.306,
+        &quot;stop&quot;: 0.2999,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.2964,
-          &quot;t2&quot;: 0.3021,
-          &quot;t3&quot;: 0.3135
+          &quot;t1&quot;: 0.3182,
+          &quot;t2&quot;: 0.3243,
+          &quot;t3&quot;: 0.3365
         },
-        &quot;risk_per_share&quot;: 0.0057,
+        &quot;risk_per_share&quot;: 0.0061,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 1052,
-        &quot;position_value&quot;: 299.82,
+        &quot;shares&quot;: 980,
+        &quot;position_value&quot;: 299.88,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3508,7 +3508,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.2793&quot;
+          &quot;hard_stop&quot;: &quot;$0.2999&quot;
         }
       },
       &quot;ta&quot;: {
@@ -3644,29 +3644,29 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 5.08,
+        &quot;rvol&quot;: 5.18,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 12909927,
+        &quot;volume&quot;: 13173671,
         &quot;adv&quot;: 2541344,
-        &quot;recent_pct_of_adv&quot;: 508.0,
+        &quot;recent_pct_of_adv&quot;: 518.37,
         &quot;volume_acceleration&quot;: 0.859,
         &quot;price_velocity_pct&quot;: 10.69,
-        &quot;buy_pressure_pct&quot;: 52.82,
-        &quot;large_bar_count&quot;: 237,
+        &quot;buy_pressure_pct&quot;: 52.9,
+        &quot;large_bar_count&quot;: 238,
         &quot;vwap_distance_pct&quot;: 21.104,
-        &quot;recent_volume&quot;: 12909927,
+        &quot;recent_volume&quot;: 13173671,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0008,
         &quot;last_price&quot;: 0.2102,
         &quot;vwap&quot;: 0.2664259885347019,
-        &quot;last_trade_time&quot;: &quot;2026-11-06T21:55:09.164000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 20
+        &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.412000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-07&quot;,
-      &quot;time&quot;: &quot;08:55:30&quot;,
+      &quot;time&quot;: &quot;08:56:28&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.277
+      &quot;previous_price&quot;: 0.285
     }
   ],
   &quot;pre_market_watchlist&quot;: [],
@@ -3677,7 +3677,7 @@
       &quot;status&quot;: &quot;BOUNCE&quot;,
       &quot;source&quot;: &quot;bounce&quot;,
       &quot;price&quot;: 0.916,
-      &quot;change_pct&quot;: -16.75,
+      &quot;change_pct&quot;: -17.09,
       &quot;volume&quot;: 1776797,
       &quot;market_cap&quot;: 16885000.0,
       &quot;float_shares&quot;: 5030000,
@@ -3714,9 +3714,9 @@
       &quot;name&quot;: &quot;STAK inc.&quot;,
       &quot;status&quot;: &quot;BOUNCE&quot;,
       &quot;source&quot;: &quot;bounce&quot;,
-      &quot;price&quot;: 2.92,
+      &quot;price&quot;: 2.91,
       &quot;change_pct&quot;: -10.74,
-      &quot;volume&quot;: 31061045,
+      &quot;volume&quot;: 31075898,
       &quot;market_cap&quot;: 62625737.74,
       &quot;float_shares&quot;: 10010349,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
@@ -3752,9 +3752,9 @@
       &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
       &quot;status&quot;: &quot;BOUNCE&quot;,
       &quot;source&quot;: &quot;bounce&quot;,
-      &quot;price&quot;: 2.17,
-      &quot;change_pct&quot;: -8.09,
-      &quot;volume&quot;: 29582790,
+      &quot;price&quot;: 2.161,
+      &quot;change_pct&quot;: -8.05,
+      &quot;volume&quot;: 29583886,
       &quot;market_cap&quot;: 6563397.25,
       &quot;float_shares&quot;: 2792058,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
@@ -3769,38 +3769,38 @@
   ],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: {
-    &quot;ticker&quot;: &quot;AIRS&quot;,
-    &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
+    &quot;ticker&quot;: &quot;ANVS&quot;,
+    &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
     &quot;status&quot;: &quot;ALERT&quot;,
     &quot;source&quot;: &quot;regular&quot;,
-    &quot;price&quot;: 0.58,
-    &quot;change_pct&quot;: 8.62,
-    &quot;volume&quot;: 11007274,
-    &quot;market_cap&quot;: 38491632.09,
-    &quot;float_shares&quot;: 10769598,
+    &quot;price&quot;: 0.938,
+    &quot;change_pct&quot;: 11.03,
+    &quot;volume&quot;: 10841480,
+    &quot;market_cap&quot;: 36349727.15,
+    &quot;float_shares&quot;: 37992227,
     &quot;country&quot;: &quot;United States&quot;,
     &quot;cap_size&quot;: &quot;nano-cap&quot;,
     &quot;is_penny_stock&quot;: true,
     &quot;scan_reason&quot;: &quot;Passed filters&quot;,
     &quot;scan_passed&quot;: true,
-    &quot;sec_filings&quot;: &quot;8-K (Nov 06), 8-K (Nov 06), 8-K (Aug 12)&quot;,
-    &quot;result&quot;: &quot;+8.6% · Entry $0.58 · T1 $0.60 · T2 $0.61 · T3 $0.64&quot;,
+    &quot;sec_filings&quot;: &quot;8-K (Nov 05), 424B5 (Nov 05), 424B5 (Nov 04)&quot;,
+    &quot;result&quot;: &quot;+11.0% · Entry $0.94 · T1 $0.98 · T2 $0.99 · T3 $1.03&quot;,
     &quot;plan&quot;: {
       &quot;valid&quot;: true,
-      &quot;ticker&quot;: &quot;AIRS&quot;,
-      &quot;entry&quot;: 0.58,
-      &quot;stop&quot;: 0.5684,
+      &quot;ticker&quot;: &quot;ANVS&quot;,
+      &quot;entry&quot;: 0.938,
+      &quot;stop&quot;: 0.9192,
       &quot;targets&quot;: {
-        &quot;t1&quot;: 0.6032,
-        &quot;t2&quot;: 0.6148,
-        &quot;t3&quot;: 0.638
+        &quot;t1&quot;: 0.9756,
+        &quot;t2&quot;: 0.9944,
+        &quot;t3&quot;: 1.032
       },
-      &quot;risk_per_share&quot;: 0.0116,
+      &quot;risk_per_share&quot;: 0.0188,
       &quot;risk_amount&quot;: 20.0,
       &quot;daily_risk_budget&quot;: 60.0,
       &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-      &quot;shares&quot;: 517,
-      &quot;position_value&quot;: 299.86,
+      &quot;shares&quot;: 319,
+      &quot;position_value&quot;: 299.22,
       &quot;risk_reward&quot;: 2.0,
       &quot;confidence&quot;: &quot;MED&quot;,
       &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3808,7 +3808,7 @@
         &quot;momentum_based&quot;: true,
         &quot;time_based&quot;: false,
         &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-        &quot;hard_stop&quot;: &quot;$0.5684&quot;
+        &quot;hard_stop&quot;: &quot;$0.9192&quot;
       }
     },
     &quot;ta&quot;: {
@@ -3816,185 +3816,88 @@
       &quot;error&quot;: &quot;No bar data&quot;
     },
     &quot;news&quot;: {
-      &quot;ticker&quot;: &quot;AIRS&quot;,
+      &quot;ticker&quot;: &quot;ANVS&quot;,
       &quot;total_items&quot;: 20,
       &quot;scored_items&quot;: [
         {
-          &quot;title&quot;: &quot;Friday&#39;s ETF Movers: PSI, RSSL&quot;,
+          &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:13:18.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 1,
+          &quot;keywords&quot;: [
+            &quot;preliminary&quot;
+          ]
+        },
+        {
+          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Friday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:05:45.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Friday Sector Laggards: Hospital &amp; Medical Practitioners, Packaging &amp; Containers&quot;,
+          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:04:16.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;AirSculpt Technologies, Inc. Enters into $39.0 million Financing Agreement and Reduces 2026 Guidance&quot;,
+          &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;5h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T16:12:31.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;AirSculpt Technologies, Inc. Reports Third Quarter Fiscal 2026 Results&quot;,
+          &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T15:51:39.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Nasdaq Jumps 400 Points; US Nonfarm Payrolls Top Estimates In October&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T15:04:24.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Q3 2026 Earnings Call Transcript&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;7h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T14:09:20.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Reports Third-Quarter Revenue and EBITDA Declines&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;9h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T12:18:27.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies reports Q3 adjusted EPS (8c), consensus (3c)&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:51:34.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies cuts FY26 revenue view to $144M-$146M from $151M-$157M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:50:37.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Cuts 2026 Adjusted Ebitda View to $9M-$10M From $12M-$14M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:49:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Had Seen 2026 Revenue $151M-$157M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:49:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Cuts 2026 View To Rev $144M-$146M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:48:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies GAAP EPS of -$0.10, revenue of $31.9M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:47:54.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies 3Q Loss/Shr 10c >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:46:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies 3Q Rev $31.9M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:46:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Lowers FY2026 Sales Guidance from $151.000M to $144.000M-$146.000M vs $151.086M Est&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:45:50.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Press Release: AirSculpt Technologies Reports -2-&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:45:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies: A Curious Play On Unit Economics&quot;,
+          &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-04T08:59:55.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Weekly Report: what happened at AIRS last week (1026-1030)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T09:45:12.459+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -4002,223 +3905,151 @@
       ],
       &quot;headlines&quot;: [
         {
-          &quot;title&quot;: &quot;Friday&#39;s ETF Movers: PSI, RSSL&quot;,
+          &quot;title&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:13:18.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T03:18:26.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 1,
+          &quot;keywords&quot;: [
+            &quot;preliminary&quot;
+          ]
+        },
+        {
+          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Intraday Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T17:05:32.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Friday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Annovis Bio 21M share Spot Secondary priced at $1.00&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:05:45.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T14:01:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Friday Sector Laggards: Hospital &amp; Medical Practitioners, Packaging &amp; Containers&quot;,
+          &quot;title&quot;: &quot;12 Health Care Stocks Moving In Thursday&#39;s Pre-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T17:04:16.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T12:05:49.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;AirSculpt Technologies, Inc. Enters into $39.0 million Financing Agreement and Reduces 2026 Guidance&quot;,
+          &quot;title&quot;: &quot;Annovis Bio, Inc. Stockholders Approve Increase in Authorized Shares to 140,000,000&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;5h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T16:12:31.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 05 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-05T01:38:47.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;AirSculpt Technologies, Inc. Reports Third Quarter Fiscal 2026 Results&quot;,
+          &quot;title&quot;: &quot;Annovis Bio Files Charter Amendment After Stockholder Approval&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T15:51:39.000+0000&quot;,
+          &quot;time&quot;: &quot;1d ago · 04 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-04T21:57:46.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Nasdaq Jumps 400 Points; US Nonfarm Payrolls Top Estimates In October&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;6h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T15:04:24.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Q3 2026 Earnings Call Transcript&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;7h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T14:09:20.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Reports Third-Quarter Revenue and EBITDA Declines&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;9h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T12:18:27.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies reports Q3 adjusted EPS (8c), consensus (3c)&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:51:34.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies cuts FY26 revenue view to $144M-$146M from $151M-$157M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:50:37.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Cuts 2026 Adjusted Ebitda View to $9M-$10M From $12M-$14M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:49:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Had Seen 2026 Revenue $151M-$157M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:49:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies Cuts 2026 View To Rev $144M-$146M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:48:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies GAAP EPS of -$0.10, revenue of $31.9M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:47:54.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies 3Q Loss/Shr 10c >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:46:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*AirSculpt Technologies 3Q Rev $31.9M >AIRS&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:46:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies Lowers FY2026 Sales Guidance from $151.000M to $144.000M-$146.000M vs $151.086M Est&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:45:50.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Press Release: AirSculpt Technologies Reports -2-&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;10h ago · 06 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-06T11:45:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AirSculpt Technologies: A Curious Play On Unit Economics&quot;,
+          &quot;title&quot;: &quot;Annovis Bio Clarifies Regulation FD Disclosure in Current Report&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;2d ago · 04 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-04T08:59:55.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-04T21:49:38.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Weekly Report: what happened at AIRS last week (1026-1030)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at ANVS last week (1026-1030)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-02T09:45:12.459+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T09:03:30.211+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Annovis Gets NYSE Listing Notice; Plans To Regain Compliance&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;4d ago · 02 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-02T06:40:42.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         }
       ],
-      &quot;red_flags&quot;: [],
+      &quot;red_flags&quot;: [
+        {
+          &quot;title&quot;: &quot;Annovis Bio Announces Pricing of Public Offering and Underwriting Agreement&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        },
+        {
+          &quot;title&quot;: &quot;Annovis Bio prices $21M public offering; shares slump&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        },
+        {
+          &quot;title&quot;: &quot;Annovis Bio Plans To Commence Common Stock Offering; Terms Undisclosed&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        },
+        {
+          &quot;title&quot;: &quot;*Annovis: Announces Launch of Proposed Public Offering&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        },
+        {
+          &quot;title&quot;: &quot;Annovis shares tank as it launched public offering of shares&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        },
+        {
+          &quot;title&quot;: &quot;Annovis Bio announces common stock and warrants offering, no amount given&quot;,
+          &quot;flag&quot;: &quot;offering&quot;
+        }
+      ],
       &quot;max_score&quot;: 0,
-      &quot;avg_score&quot;: 0.0,
+      &quot;avg_score&quot;: 0.1,
       &quot;catalyst_confirmed&quot;: false,
       &quot;high_impact_count&quot;: 0,
-      &quot;top_headline&quot;: &quot;Friday&#39;s ETF Movers: PSI, RSSL&quot;,
-      &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      &quot;top_headline&quot;: &quot;Annovis Bio, Inc. Reports Preliminary Cash and Cash Equivalents of approximately $2.8 million&quot;,
+      &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: offering&quot;
     },
     &quot;tape&quot;: {
-      &quot;ticker&quot;: &quot;AIRS&quot;,
+      &quot;ticker&quot;: &quot;ANVS&quot;,
       &quot;valid&quot;: true,
       &quot;stale&quot;: false,
       &quot;no_move&quot;: false,
       &quot;tape_score&quot;: 8.0,
-      &quot;rvol&quot;: 11.45,
+      &quot;rvol&quot;: 7.03,
       &quot;volume_indicator&quot;: &quot;high&quot;,
-      &quot;volume&quot;: 11007274,
-      &quot;adv&quot;: 961240,
-      &quot;recent_pct_of_adv&quot;: 1145.11,
-      &quot;volume_acceleration&quot;: 0.614,
-      &quot;price_velocity_pct&quot;: 8.186,
-      &quot;buy_pressure_pct&quot;: 55.91,
-      &quot;large_bar_count&quot;: 196,
-      &quot;vwap_distance_pct&quot;: 14.454,
-      &quot;recent_volume&quot;: 11007274,
+      &quot;volume&quot;: 10841480,
+      &quot;adv&quot;: 1541407,
+      &quot;recent_pct_of_adv&quot;: 703.35,
+      &quot;volume_acceleration&quot;: -0.528,
+      &quot;price_velocity_pct&quot;: 4.013,
+      &quot;buy_pressure_pct&quot;: 43.41,
+      &quot;large_bar_count&quot;: 143,
+      &quot;vwap_distance_pct&quot;: 11.98,
+      &quot;recent_volume&quot;: 10841480,
       &quot;prior_volume&quot;: 0,
-      &quot;median_range&quot;: 0.001,
-      &quot;last_price&quot;: 0.5339,
-      &quot;vwap&quot;: 0.6241074556547135,
-      &quot;last_trade_time&quot;: &quot;2026-11-06T21:54:59.735000+00:00&quot;,
-      &quot;stale_age_seconds&quot;: 52
+      &quot;median_range&quot;: 0.0034,
+      &quot;last_price&quot;: 0.8449,
+      &quot;vwap&quot;: 0.7545066989454448,
+      &quot;last_trade_time&quot;: &quot;2026-11-06T21:56:09.234000+00:00&quot;,
+      &quot;stale_age_seconds&quot;: 17
     },
     &quot;date&quot;: &quot;2026-11-07&quot;,
-    &quot;time&quot;: &quot;08:55:29&quot;,
+    &quot;time&quot;: &quot;08:56:27&quot;,
     &quot;skip_news_check&quot;: true,
-    &quot;red_flag&quot;: false,
-    &quot;previous_price&quot;: 0.584
+    &quot;red_flag&quot;: true,
+    &quot;previous_price&quot;: 0.928
   },
   &quot;total_candidates&quot;: 4,
   &quot;alerts_generated&quot;: 3,
@@ -4226,10 +4057,10 @@
     {
       &quot;ticker&quot;: &quot;OMH&quot;,
       &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;price&quot;: 16.76,
-      &quot;change_pct&quot;: 127.62,
-      &quot;volume&quot;: 8149973,
-      &quot;rvol&quot;: 0.5845530030308635,
+      &quot;price&quot;: 13.93,
+      &quot;change_pct&quot;: 89.95,
+      &quot;volume&quot;: 8326151,
+      &quot;rvol&quot;: 0.5971892877115578,
       &quot;market_cap&quot;: 15667408.64,
       &quot;float_shares&quot;: 2110107,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4241,32 +4072,32 @@
     {
       &quot;ticker&quot;: &quot;JDZG&quot;,
       &quot;name&quot;: &quot;Jiade Limited&quot;,
-      &quot;price&quot;: 0.285,
-      &quot;change_pct&quot;: 36.01,
-      &quot;volume&quot;: 12909927,
-      &quot;rvol&quot;: 0.8453061931109317,
+      &quot;price&quot;: 0.306,
+      &quot;change_pct&quot;: 45.53,
+      &quot;volume&quot;: 13173671,
+      &quot;rvol&quot;: 0.8625754183045249,
       &quot;market_cap&quot;: 1141703.82,
       &quot;float_shares&quot;: 5132411,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.285&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.306&quot;
     },
     {
       &quot;ticker&quot;: &quot;SHFS&quot;,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;price&quot;: 0.03,
-      &quot;change_pct&quot;: 14.069999999999999,
-      &quot;volume&quot;: 622284087,
-      &quot;rvol&quot;: 3.907155321413528,
+      &quot;price&quot;: 0.031,
+      &quot;change_pct&quot;: 15.97,
+      &quot;volume&quot;: 624330812,
+      &quot;rvol&quot;: 3.9200061601900305,
       &quot;market_cap&quot;: 2248991.51,
       &quot;float_shares&quot;: 85415340,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.030, tiny price $0.030&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.031, tiny price $0.031&quot;
     },
     {
       &quot;ticker&quot;: &quot;DRIO&quot;,
@@ -4282,6 +4113,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 14,747, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;ANVS&quot;,
+      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
+      &quot;price&quot;: 0.938,
+      &quot;change_pct&quot;: 11.03,
+      &quot;volume&quot;: 10841480,
+      &quot;rvol&quot;: 1.772786600347772,
+      &quot;market_cap&quot;: 36349727.15,
+      &quot;float_shares&quot;: 37992227,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;UONEK&quot;,
@@ -4327,6 +4173,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;TC&quot;,
+      &quot;name&quot;: &quot;Token Cat Ltd&quot;,
+      &quot;price&quot;: 0.919,
+      &quot;change_pct&quot;: 11.37,
+      &quot;volume&quot;: 58945,
+      &quot;rvol&quot;: 1.1851099762756845,
+      &quot;market_cap&quot;: 17984481.9,
+      &quot;float_shares&quot;: 21798916,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;ALDX&quot;,
@@ -4419,21 +4280,6 @@
       &quot;reason&quot;: &quot;Filtered: tiny price $0.347, tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;ANVS&quot;,
-      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.969999999999999,
-      &quot;volume&quot;: 10827171,
-      &quot;rvol&quot;: 1.77044680878201,
-      &quot;market_cap&quot;: 36349727.15,
-      &quot;float_shares&quot;: 37992227,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;PDC&quot;,
       &quot;name&quot;: &quot;Perpetuals.com Ltd&quot;,
       &quot;price&quot;: 2.78,
@@ -4447,21 +4293,6 @@
       &quot;country&quot;: &quot;Japan&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;AIRS&quot;,
-      &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
-      &quot;price&quot;: 0.58,
-      &quot;change_pct&quot;: 8.62,
-      &quot;volume&quot;: 11007274,
-      &quot;rvol&quot;: 13.018825791938157,
-      &quot;market_cap&quot;: 38491632.09,
-      &quot;float_shares&quot;: 10769598,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;USBC&quot;,
@@ -4496,10 +4327,10 @@
     {
       &quot;ticker&quot;: &quot;CHSN&quot;,
       &quot;name&quot;: &quot;CHANSON INTL HLDG&quot;,
-      &quot;price&quot;: 3.289,
-      &quot;change_pct&quot;: 8.18,
-      &quot;volume&quot;: 2666160,
-      &quot;rvol&quot;: 0.09451861114335203,
+      &quot;price&quot;: 3.288,
+      &quot;change_pct&quot;: 8.17,
+      &quot;volume&quot;: 2669645,
+      &quot;rvol&quot;: 0.09464215862731194,
       &quot;market_cap&quot;: 7060068.64,
       &quot;float_shares&quot;: 2096288,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4573,15 +4404,15 @@
       &quot;name&quot;: &quot;Yueda Digital Holding&quot;,
       &quot;price&quot;: 1.03,
       &quot;change_pct&quot;: 7.28,
-      &quot;volume&quot;: 60571,
-      &quot;rvol&quot;: 0.34363990173774417,
+      &quot;volume&quot;: 64329,
+      &quot;rvol&quot;: 0.36496031498385934,
       &quot;market_cap&quot;: 5321125.75,
       &quot;float_shares&quot;: 5472161,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.2M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.2M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;BLIN&quot;,
@@ -4627,6 +4458,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 36,533, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;AIRS&quot;,
+      &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
+      &quot;price&quot;: 0.57,
+      &quot;change_pct&quot;: 6.76,
+      &quot;volume&quot;: 11009069,
+      &quot;rvol&quot;: 13.020948823698475,
+      &quot;market_cap&quot;: 38491632.09,
+      &quot;float_shares&quot;: 10769598,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;JSPR&quot;,
@@ -4734,19 +4580,19 @@
       &quot;reason&quot;: &quot;Filtered: float 147.7M > 100M, vol/float 0.05x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;OFAL&quot;,
-      &quot;name&quot;: &quot;OFA Group&quot;,
-      &quot;price&quot;: 0.244,
-      &quot;change_pct&quot;: 6.13,
-      &quot;volume&quot;: 122578,
-      &quot;rvol&quot;: 0.34127938703462407,
-      &quot;market_cap&quot;: 6089591.33,
-      &quot;float_shares&quot;: 4382824,
+      &quot;ticker&quot;: &quot;LABT&quot;,
+      &quot;name&quot;: &quot;Lakewood-Amedex&quot;,
+      &quot;price&quot;: 0.41,
+      &quot;change_pct&quot;: 6.11,
+      &quot;volume&quot;: 34305133,
+      &quot;rvol&quot;: 0.3346431726511911,
+      &quot;market_cap&quot;: 915410.47,
+      &quot;float_shares&quot;: 1434312,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.244, tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.9M&quot;
     },
     {
       &quot;ticker&quot;: &quot;SILO&quot;,
@@ -4809,21 +4655,6 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;NKTX&quot;,
-      &quot;name&quot;: &quot;Nkarta, Inc.&quot;,
-      &quot;price&quot;: 1.83,
-      &quot;change_pct&quot;: 5.779999999999999,
-      &quot;volume&quot;: 1965342,
-      &quot;rvol&quot;: 1.6814738954895574,
-      &quot;market_cap&quot;: 123910888.43,
-      &quot;float_shares&quot;: 68009867,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.03x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;OPNW&quot;,
       &quot;name&quot;: &quot;Openworld Inc&quot;,
       &quot;price&quot;: 0.66,
@@ -4873,17 +4704,17 @@
     {
       &quot;ticker&quot;: &quot;SDA&quot;,
       &quot;name&quot;: &quot;SunCar Technology Group Inc.&quot;,
-      &quot;price&quot;: 0.285,
-      &quot;change_pct&quot;: -23.21,
-      &quot;volume&quot;: 556023708,
-      &quot;rvol&quot;: 7.887068631380301,
+      &quot;price&quot;: 0.29,
+      &quot;change_pct&quot;: -23.43,
+      &quot;volume&quot;: 556307868,
+      &quot;rvol&quot;: 7.891099375735347,
       &quot;market_cap&quot;: 38406523.66,
       &quot;float_shares&quot;: 38914985,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.285&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.290&quot;
     },
     {
       &quot;ticker&quot;: &quot;PMI&quot;,
@@ -4904,7 +4735,7 @@
       &quot;ticker&quot;: &quot;PLUT&quot;,
       &quot;name&quot;: &quot;Plutus Financial Group&quot;,
       &quot;price&quot;: 0.916,
-      &quot;change_pct&quot;: -16.75,
+      &quot;change_pct&quot;: -17.09,
       &quot;volume&quot;: 1776797,
       &quot;rvol&quot;: 6.967257598393858,
       &quot;market_cap&quot;: 16885000.0,
@@ -4920,8 +4751,8 @@
       &quot;name&quot;: &quot;Karyopharm Therapeutics Inc&quot;,
       &quot;price&quot;: 0.046,
       &quot;change_pct&quot;: -16.21,
-      &quot;volume&quot;: 102577952,
-      &quot;rvol&quot;: 3.7844907528080887,
+      &quot;volume&quot;: 102625921,
+      &quot;rvol&quot;: 3.786260511643998,
       &quot;market_cap&quot;: 1245212.15,
       &quot;float_shares&quot;: 21494936,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4993,10 +4824,10 @@
     {
       &quot;ticker&quot;: &quot;STAK&quot;,
       &quot;name&quot;: &quot;STAK inc.&quot;,
-      &quot;price&quot;: 2.92,
+      &quot;price&quot;: 2.91,
       &quot;change_pct&quot;: -10.74,
-      &quot;volume&quot;: 31061045,
-      &quot;rvol&quot;: 5.889238451906676,
+      &quot;volume&quot;: 31075898,
+      &quot;rvol&quot;: 5.892054611463645,
       &quot;market_cap&quot;: 62625737.74,
       &quot;float_shares&quot;: 10010349,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5004,6 +4835,21 @@
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: true,
       &quot;reason&quot;: &quot;Bounce candidate&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;VIVK&quot;,
+      &quot;name&quot;: &quot;Vivakor&quot;,
+      &quot;price&quot;: 0.447,
+      &quot;change_pct&quot;: -9.41,
+      &quot;volume&quot;: 250282068,
+      &quot;rvol&quot;: 7.373245491841757,
+      &quot;market_cap&quot;: 297121.58,
+      &quot;float_shares&quot;: 595263,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.447, mktcap $0.3M&quot;
     },
     {
       &quot;ticker&quot;: &quot;FUSE&quot;,
@@ -5023,32 +4869,17 @@
     {
       &quot;ticker&quot;: &quot;RCT&quot;,
       &quot;name&quot;: &quot;RedCloud&quot;,
-      &quot;price&quot;: 0.038,
+      &quot;price&quot;: 0.039,
       &quot;change_pct&quot;: -9.2,
-      &quot;volume&quot;: 667527875,
-      &quot;rvol&quot;: 4.078892738625746,
+      &quot;volume&quot;: 667700779,
+      &quot;rvol&quot;: 4.079949259104504,
       &quot;market_cap&quot;: 3260928.24,
       &quot;float_shares&quot;: 5771596,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United Kingdom&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.038, mktcap $3.3M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;VIVK&quot;,
-      &quot;name&quot;: &quot;Vivakor&quot;,
-      &quot;price&quot;: 0.45,
-      &quot;change_pct&quot;: -9.31,
-      &quot;volume&quot;: 250265290,
-      &quot;rvol&quot;: 7.372751216267599,
-      &quot;market_cap&quot;: 297121.58,
-      &quot;float_shares&quot;: 595263,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.450, mktcap $0.3M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.039, mktcap $3.3M&quot;
     },
     {
       &quot;ticker&quot;: &quot;MTVA&quot;,
@@ -5084,9 +4915,9 @@
       &quot;ticker&quot;: &quot;RAYA&quot;,
       &quot;name&quot;: &quot;Erayak Power Sol&quot;,
       &quot;price&quot;: 0.77,
-      &quot;change_pct&quot;: -8.780000000000001,
-      &quot;volume&quot;: 73117812,
-      &quot;rvol&quot;: 7.996172833174087,
+      &quot;change_pct&quot;: -8.790000000000001,
+      &quot;volume&quot;: 73124081,
+      &quot;rvol&quot;: 7.99685841177826,
       &quot;market_cap&quot;: 907677.09,
       &quot;float_shares&quot;: 1025737,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5186,6 +5017,21 @@
       &quot;reason&quot;: &quot;Filtered: float 167.3M, vol/float 0.02x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;VSA&quot;,
+      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
+      &quot;price&quot;: 2.161,
+      &quot;change_pct&quot;: -8.05,
+      &quot;volume&quot;: 29583886,
+      &quot;rvol&quot;: 8.007974982019613,
+      &quot;market_cap&quot;: 6563397.25,
+      &quot;float_shares&quot;: 2792058,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Bounce candidate&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;JWEL&quot;,
       &quot;name&quot;: &quot;Jowell Global Ltd&quot;,
       &quot;price&quot;: 1.7,
@@ -5214,21 +5060,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -7.8%, vol/float 0.06x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;VSA&quot;,
-      &quot;name&quot;: &quot;VisionSys AI Inc&quot;,
-      &quot;price&quot;: 2.17,
-      &quot;change_pct&quot;: -8.09,
-      &quot;volume&quot;: 29582790,
-      &quot;rvol&quot;: 8.007678309007138,
-      &quot;market_cap&quot;: 6563397.25,
-      &quot;float_shares&quot;: 2792058,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Bounce candidate&quot;
     },
     {
       &quot;ticker&quot;: &quot;NPT&quot;,
@@ -5607,6 +5438,60 @@
     }
   ],
   &quot;live_quotes&quot;: {
+    &quot;AIRS&quot;: {
+      &quot;price&quot;: 0.5339,
+      &quot;open&quot;: 0.9893,
+      &quot;high&quot;: 1.015,
+      &quot;low&quot;: 0.5155,
+      &quot;close&quot;: 0.5339,
+      &quot;preClose&quot;: 1.44,
+      &quot;volume&quot;: 11009069,
+      &quot;changeRatio&quot;: -0.6292,
+      &quot;marketValue&quot;: 38491632.09,
+      &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T21:56:29.437527Z&quot;
+    },
+    &quot;OMH&quot;: {
+      &quot;price&quot;: 7.36,
+      &quot;open&quot;: 10.0,
+      &quot;high&quot;: 11.43,
+      &quot;low&quot;: 5.36,
+      &quot;close&quot;: 7.36,
+      &quot;preClose&quot;: 13.35,
+      &quot;volume&quot;: 8424542,
+      &quot;changeRatio&quot;: -0.4487,
+      &quot;marketValue&quot;: 15667408.64,
+      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T21:56:29.437548Z&quot;
+    },
+    &quot;ANVS&quot;: {
+      &quot;price&quot;: 0.8449,
+      &quot;open&quot;: 0.7,
+      &quot;high&quot;: 0.8527,
+      &quot;low&quot;: 0.6301,
+      &quot;close&quot;: 0.8449,
+      &quot;preClose&quot;: 0.6689,
+      &quot;volume&quot;: 10860884,
+      &quot;changeRatio&quot;: 0.2631,
+      &quot;marketValue&quot;: 36349727.15,
+      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T21:56:29.437556Z&quot;
+    },
+    &quot;JDZG&quot;: {
+      &quot;price&quot;: 0.2102,
+      &quot;open&quot;: 0.34,
+      &quot;high&quot;: 0.3775,
+      &quot;low&quot;: 0.16,
+      &quot;close&quot;: 0.2102,
+      &quot;preClose&quot;: 0.3948,
+      &quot;volume&quot;: 13364811,
+      &quot;changeRatio&quot;: -0.4676,
+      &quot;marketValue&quot;: 1141703.82,
+      &quot;name&quot;: &quot;Jiade Limited&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-06T21:56:29.437560Z&quot;
+    }
+  },
+  &quot;previous_live_quotes&quot;: {
     &quot;ANVS&quot;: {
       &quot;price&quot;: 0.8449,
       &quot;open&quot;: 0.7,
@@ -5660,65 +5545,11 @@
       &quot;_timestamp&quot;: &quot;2026-11-06T21:55:31.942648Z&quot;
     }
   },
-  &quot;previous_live_quotes&quot;: {
-    &quot;ANVS&quot;: {
-      &quot;price&quot;: 0.8449,
-      &quot;open&quot;: 0.7,
-      &quot;high&quot;: 0.8527,
-      &quot;low&quot;: 0.6301,
-      &quot;close&quot;: 0.8449,
-      &quot;preClose&quot;: 0.6689,
-      &quot;volume&quot;: 10757141,
-      &quot;changeRatio&quot;: 0.2631,
-      &quot;marketValue&quot;: 36349727.15,
-      &quot;name&quot;: &quot;Annovis Bio Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T21:54:28.245518Z&quot;
-    },
-    &quot;AIRS&quot;: {
-      &quot;price&quot;: 0.5339,
-      &quot;open&quot;: 0.9893,
-      &quot;high&quot;: 1.015,
-      &quot;low&quot;: 0.5155,
-      &quot;close&quot;: 0.5339,
-      &quot;preClose&quot;: 1.44,
-      &quot;volume&quot;: 11001640,
-      &quot;changeRatio&quot;: -0.6292,
-      &quot;marketValue&quot;: 38491632.09,
-      &quot;name&quot;: &quot;Airsculpt Technologies, Inc.&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T21:54:28.245538Z&quot;
-    },
-    &quot;JDZG&quot;: {
-      &quot;price&quot;: 0.2102,
-      &quot;open&quot;: 0.34,
-      &quot;high&quot;: 0.3775,
-      &quot;low&quot;: 0.16,
-      &quot;close&quot;: 0.2102,
-      &quot;preClose&quot;: 0.3948,
-      &quot;volume&quot;: 12865931,
-      &quot;changeRatio&quot;: -0.4676,
-      &quot;marketValue&quot;: 1141703.82,
-      &quot;name&quot;: &quot;Jiade Limited&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T21:54:28.245544Z&quot;
-    },
-    &quot;OMH&quot;: {
-      &quot;price&quot;: 7.36,
-      &quot;open&quot;: 10.0,
-      &quot;high&quot;: 11.43,
-      &quot;low&quot;: 5.36,
-      &quot;close&quot;: 7.36,
-      &quot;preClose&quot;: 13.35,
-      &quot;volume&quot;: 8097475,
-      &quot;changeRatio&quot;: -0.4487,
-      &quot;marketValue&quot;: 15667408.64,
-      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-06T21:54:28.245549Z&quot;
-    }
-  },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;AFTER-HOURS&quot;,
-    &quot;market_time&quot;: &quot;08:55 AM AEDT&quot;,
+    &quot;market_time&quot;: &quot;08:56 AM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
