@@ -698,15 +698,16 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
                 'reason_note': 'bounce_research'
             }
 
-        # Results list is shared across bounce, regular, and exempt candidates.
+        # Results list contains ALERT and CANDIDATE entries only.
+        # Bounce candidates are research-only and live in bounce_results separately.
         scan_results = []
 
-        # Create entries for bounce candidates (never alert)
+        # Create entries for bounce candidates (never alert) — keep them out of scan_results
+        # so the bubble chart and main scanner table only show momentum setups.
         bounce_results_enriched = []
         for gainer in bounce_candidates:
             br = _build_bounce_result(gainer)
             bounce_results_enriched.append(br)
-            scan_results.append(br)
 
         # Store enriched gainer/loser payloads for the website bubble chart and tables.
         # Use enriched data so preClose/price are reliable and change_pct is meaningful.
@@ -778,8 +779,8 @@ def run_scan(config: Dict[str, Any], args) -> Dict[str, Any]:
             'scan_time': time.time()
         }
 
-        # Build full result set: regular candidates (source 'regular') + bounce candidates (source 'bounce')
-        # are already in scan_results; append regular and exempt candidates next.
+        # scan_results currently contains only momentum candidates (regular + exempt).
+        # Convert them into ALERT/CANDIDATE rows with TA, news, and trade plans.
         
         # Create entries for regular candidates in parallel.
         # Each candidate still needs TA, news and a trade plan, but we run them
