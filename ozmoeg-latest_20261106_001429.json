@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-11-05T23:59:29.353354Z",
+  "last_updated": "2026-11-06T00:14:29.277218Z",
   "scan_results": [
     {
       "ticker": "DFNS",
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.05,
+      "price": 2.032,
       "change_pct": -19.649122807017545,
-      "volume": 6487071,
+      "volume": 6495607,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -22,13 +22,141 @@
       "previous_price": 2.05
     },
     {
+      "ticker": "CIIT",
+      "name": "Tianci Intrnl",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.39,
+      "change_pct": 54.19354838709678,
+      "volume": 6261152,
+      "market_cap": 1499456.05,
+      "float_shares": 605068,
+      "country": "China / Hong Kong",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
+      "result": "+54.2% \u00b7 Entry $2.39 \u00b7 T1 $2.49 \u00b7 T2 $2.53 \u00b7 T3 $2.63",
+      "plan": {
+        "valid": true,
+        "ticker": "CIIT",
+        "entry": 2.39,
+        "stop": 2.3422,
+        "targets": {
+          "t1": 2.4856,
+          "t2": 2.5334,
+          "t3": 2.629
+        },
+        "risk_per_share": 0.0478,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 125,
+        "position_value": 298.75,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.3422"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CIIT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T16:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T16:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CIIT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 36.4,
+        "volume_indicator": "high",
+        "volume": 6261152,
+        "adv": 172000,
+        "recent_pct_of_adv": 3640.2,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 34.599,
+        "buy_pressure_pct": 46.97,
+        "large_bar_count": 23,
+        "vwap_distance_pct": 1.956,
+        "recent_volume": 6261152,
+        "prior_volume": 0,
+        "median_range": 0.06,
+        "last_price": 1.55,
+        "vwap": 1.5809155094011416,
+        "last_trade_time": "2026-11-06T00:14:11.510000+00:00",
+        "stale_age_seconds": 15
+      },
+      "date": "2026-11-06",
+      "time": "11:14:26",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.44
+    },
+    {
       "ticker": "STAK",
       "name": "STAK inc.",
       "status": "ALERT",
       "source": "regular",
       "price": 1.97,
       "change_pct": 25.174825174825184,
-      "volume": 7600937,
+      "volume": 7627160,
       "market_cap": 34386524.71,
       "float_shares": 10010349,
       "country": "China / Cayman-China",
@@ -84,7 +212,7 @@
           {
             "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
             "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
+            "time": "3h ago \u00b7 05 Nov",
             "raw_time": "2026-11-05T21:05:00.000+0000",
             "url": "",
             "score": 0,
@@ -140,7 +268,7 @@
           {
             "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
             "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
+            "time": "3h ago \u00b7 05 Nov",
             "raw_time": "2026-11-05T21:05:00.000+0000",
             "url": "",
             "score": 0,
@@ -197,726 +325,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.29,
+        "rvol": 2.3,
         "volume_indicator": "high",
-        "volume": 7600937,
+        "volume": 7627160,
         "adv": 3321508,
-        "recent_pct_of_adv": 228.84,
-        "volume_acceleration": 0.712,
-        "price_velocity_pct": 0.556,
-        "buy_pressure_pct": 53.98,
-        "large_bar_count": 140,
+        "recent_pct_of_adv": 229.63,
+        "volume_acceleration": 0.53,
+        "price_velocity_pct": 7.254,
+        "buy_pressure_pct": 54.1,
+        "large_bar_count": 152,
         "vwap_distance_pct": 2.88,
-        "recent_volume": 7600937,
+        "recent_volume": 7627160,
         "prior_volume": 0,
-        "median_range": 0.015,
+        "median_range": 0.0146,
         "last_price": 1.79,
-        "vwap": 1.7398921219736938,
-        "last_trade_time": "2026-11-05T23:59:03.476000+00:00",
-        "stale_age_seconds": 24
+        "vwap": 1.7398921219736934,
+        "last_trade_time": "2026-11-06T00:11:40.704000+00:00",
+        "stale_age_seconds": 222
       },
       "date": "2026-11-06",
-      "time": "10:59:27",
+      "time": "11:14:27",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.95
-    },
-    {
-      "ticker": "CIIT",
-      "name": "Tianci Intrnl",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.3,
-      "change_pct": 48.38709677419353,
-      "volume": 6069586,
-      "market_cap": 1499456.05,
-      "float_shares": 605068,
-      "country": "China / Hong Kong",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
-      "result": "+48.4% \u00b7 Entry $2.30 \u00b7 T1 $2.39 \u00b7 T2 $2.44 \u00b7 T3 $2.53",
-      "plan": {
-        "valid": true,
-        "ticker": "CIIT",
-        "entry": 2.3,
-        "stop": 2.254,
-        "targets": {
-          "t1": 2.392,
-          "t2": 2.438,
-          "t3": 2.53
-        },
-        "risk_per_share": 0.046,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 130,
-        "position_value": 299.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.254"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CIIT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-            "source": "Webull",
-            "time": "7h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T16:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-            "source": "Webull",
-            "time": "7h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T16:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "CIIT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 35.29,
-        "volume_indicator": "high",
-        "volume": 6069586,
-        "adv": 172000,
-        "recent_pct_of_adv": 3528.83,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 32.317,
-        "buy_pressure_pct": 49.36,
-        "large_bar_count": 23,
-        "vwap_distance_pct": 1.956,
-        "recent_volume": 6069586,
-        "prior_volume": 0,
-        "median_range": 0.0601,
-        "last_price": 1.55,
-        "vwap": 1.5809155094011416,
-        "last_trade_time": "2026-11-05T23:59:04.442000+00:00",
-        "stale_age_seconds": 23
-      },
-      "date": "2026-11-06",
-      "time": "10:59:27",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.28
-    },
-    {
-      "ticker": "INOD",
-      "name": "Innodata",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 42.49,
-      "change_pct": 10.020714655618864,
-      "volume": 3493884,
-      "market_cap": 1327857981.62,
-      "float_shares": 32712197,
-      "country": "United States",
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
-      "result": "+10.0% \u00b7 Entry $42.49 \u00b7 T1 $44.19 \u00b7 T2 $45.04 \u00b7 T3 $46.74",
-      "plan": {
-        "valid": true,
-        "ticker": "INOD",
-        "entry": 42.49,
-        "stop": 41.6402,
-        "targets": {
-          "t1": 44.1896,
-          "t2": 45.0394,
-          "t3": 46.739
-        },
-        "risk_per_share": 0.8498,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 7,
-        "position_value": 297.43,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$41.6402"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "INOD",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Innodata reports Q3 EPS 30c, consensus 27c",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata raises FY26 revenue view to up 42% from up 40%",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Innodata reports Q3 EPS 30c, consensus 27c",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata raises FY26 revenue view to up 42% from up 40%",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Innodata reports Q3 EPS 30c, consensus 27c",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "INOD",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.21,
-        "volume_indicator": "high",
-        "volume": 3493884,
-        "adv": 1581697,
-        "recent_pct_of_adv": 220.89,
-        "volume_acceleration": -0.386,
-        "price_velocity_pct": 1.994,
-        "buy_pressure_pct": 51.2,
-        "large_bar_count": 113,
-        "vwap_distance_pct": 1.403,
-        "recent_volume": 3493884,
-        "prior_volume": 0,
-        "median_range": 0.13,
-        "last_price": 38.62,
-        "vwap": 38.08556230479072,
-        "last_trade_time": "2026-11-05T23:57:35.337000+00:00",
-        "stale_age_seconds": 127
-      },
-      "date": "2026-11-06",
-      "time": "10:59:27",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 42.49
-    },
-    {
-      "ticker": "CDT",
-      "name": "CDT Equity",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.053,
-      "change_pct": 25.295508274231683,
-      "volume": 91650498,
-      "market_cap": 394354.65,
-      "float_shares": 4409271,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (25.3%, rvol 14.2x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +25.3%",
-      "plan": {
-        "valid": true,
-        "ticker": "CDT",
-        "entry": 0.053,
-        "stop": 0.0519,
-        "targets": {
-          "t1": 0.0552,
-          "t2": 0.0563,
-          "t3": 0.0585
-        },
-        "risk_per_share": 0.0011,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 5660,
-        "position_value": 299.98,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0519"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CDT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T17:05:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T14:32:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:03:03.226+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T17:05:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T14:32:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:03:03.226+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "CDT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 14.2,
-        "volume_indicator": "high",
-        "volume": 91650498,
-        "adv": 6454148,
-        "recent_pct_of_adv": 1420.02,
-        "volume_acceleration": -0.92,
-        "price_velocity_pct": 3.864,
-        "buy_pressure_pct": 52.44,
-        "large_bar_count": 248,
-        "vwap_distance_pct": 2.61,
-        "recent_volume": 91650498,
-        "prior_volume": 0,
-        "median_range": 0.0002,
-        "last_price": 0.0423,
-        "vwap": 0.04343347015594655,
-        "last_trade_time": "2026-11-05T23:59:10.573000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-06",
-      "time": "10:59:28",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.055
-    },
-    {
-      "ticker": "RCT",
-      "name": "RedCloud",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.053,
-      "change_pct": 76.66666666666667,
-      "volume": 73113312,
-      "market_cap": 2307260.55,
-      "float_shares": 5771596,
-      "country": "United Kingdom",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (76.7%, rvol 3.9x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +76.7%",
-      "plan": {
-        "valid": true,
-        "ticker": "RCT",
-        "entry": 0.053,
-        "stop": 0.0519,
-        "targets": {
-          "t1": 0.0552,
-          "t2": 0.0563,
-          "t3": 0.0585
-        },
-        "risk_per_share": 0.0011,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 5660,
-        "position_value": 299.98,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0519"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "RCT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T12:05:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:40:58.405+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:29:29.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:06:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T20:53:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T12:05:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:40:58.405+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:29:29.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:06:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T20:53:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan",
-            "flag": "delisting"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
-      },
-      "tape": {
-        "ticker": "RCT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 3.87,
-        "volume_indicator": "high",
-        "volume": 73113312,
-        "adv": 18892034,
-        "recent_pct_of_adv": 387.01,
-        "volume_acceleration": -0.597,
-        "price_velocity_pct": 3.448,
-        "buy_pressure_pct": 47.84,
-        "large_bar_count": 160,
-        "vwap_distance_pct": 4.635,
-        "recent_volume": 73113312,
-        "prior_volume": 0,
-        "median_range": 0.0001,
-        "last_price": 0.03,
-        "vwap": 0.02867118954170488,
-        "last_trade_time": "2026-11-05T23:59:11.371000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-06",
-      "time": "10:59:28",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.052
+      "previous_price": 1.97
     },
     {
       "ticker": "DVLT",
@@ -925,7 +356,7 @@
       "source": "top_gainer_exempt",
       "price": 0.076,
       "change_pct": 28.378378378378372,
-      "volume": 172961684,
+      "volume": 175599514,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "country": "United States",
@@ -1099,29 +530,616 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.26,
+        "rvol": 3.31,
         "volume_indicator": "high",
-        "volume": 172961684,
+        "volume": 175599514,
         "adv": 53004613,
-        "recent_pct_of_adv": 326.31,
-        "volume_acceleration": -0.761,
+        "recent_pct_of_adv": 331.29,
+        "volume_acceleration": -0.775,
         "price_velocity_pct": 0.169,
-        "buy_pressure_pct": 51.92,
-        "large_bar_count": 229,
+        "buy_pressure_pct": 52.08,
+        "large_bar_count": 244,
         "vwap_distance_pct": 5.008,
-        "recent_volume": 172961684,
+        "recent_volume": 175599514,
         "prior_volume": 0,
         "median_range": 0.0002,
         "last_price": 0.0592,
-        "vwap": 0.056376730604129836,
-        "last_trade_time": "2026-11-05T23:59:10.953000+00:00",
-        "stale_age_seconds": 15
+        "vwap": 0.05637673060412985,
+        "last_trade_time": "2026-11-06T00:14:12.254000+00:00",
+        "stale_age_seconds": 13
       },
       "date": "2026-11-06",
-      "time": "10:59:28",
+      "time": "11:14:27",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.076
+      "previous_price": 0.077
+    },
+    {
+      "ticker": "CDT",
+      "name": "CDT Equity",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.053,
+      "change_pct": 25.295508274231683,
+      "volume": 94698956,
+      "market_cap": 394354.65,
+      "float_shares": 4409271,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (25.3%, rvol 14.7x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +25.3%",
+      "plan": {
+        "valid": true,
+        "ticker": "CDT",
+        "entry": 0.053,
+        "stop": 0.0519,
+        "targets": {
+          "t1": 0.0552,
+          "t2": 0.0563,
+          "t3": 0.0585
+        },
+        "risk_per_share": 0.0011,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 5660,
+        "position_value": 299.98,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.0519"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CDT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T14:32:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T21:05:50.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:03:03.226+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T14:32:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T21:05:50.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:03:03.226+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CDT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 14.67,
+        "volume_indicator": "high",
+        "volume": 94698956,
+        "adv": 6454148,
+        "recent_pct_of_adv": 1467.26,
+        "volume_acceleration": -0.923,
+        "price_velocity_pct": 4.515,
+        "buy_pressure_pct": 52.63,
+        "large_bar_count": 263,
+        "vwap_distance_pct": 2.61,
+        "recent_volume": 94698956,
+        "prior_volume": 0,
+        "median_range": 0.0002,
+        "last_price": 0.0423,
+        "vwap": 0.043433470155946556,
+        "last_trade_time": "2026-11-06T00:14:11.429000+00:00",
+        "stale_age_seconds": 14
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 0.054
+    },
+    {
+      "ticker": "RCT",
+      "name": "RedCloud",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.056,
+      "change_pct": 86.66666666666669,
+      "volume": 89259529,
+      "market_cap": 2307260.55,
+      "float_shares": 5771596,
+      "country": "United Kingdom",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (86.7%, rvol 4.7x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +86.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "RCT",
+        "entry": 0.056,
+        "stop": 0.0549,
+        "targets": {
+          "t1": 0.0582,
+          "t2": 0.0593,
+          "t3": 0.0615
+        },
+        "risk_per_share": 0.0011,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 5357,
+        "position_value": 299.99,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.0549"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "RCT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:40:58.405+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T20:53:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:40:58.405+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T20:53:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan",
+            "flag": "delisting"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
+      },
+      "tape": {
+        "ticker": "RCT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 4.72,
+        "volume_indicator": "high",
+        "volume": 89259529,
+        "adv": 18892034,
+        "recent_pct_of_adv": 472.47,
+        "volume_acceleration": -0.63,
+        "price_velocity_pct": 3.448,
+        "buy_pressure_pct": 48.11,
+        "large_bar_count": 175,
+        "vwap_distance_pct": 4.635,
+        "recent_volume": 89259529,
+        "prior_volume": 0,
+        "median_range": 0.0001,
+        "last_price": 0.03,
+        "vwap": 0.02867118954170488,
+        "last_trade_time": "2026-11-06T00:14:12.035000+00:00",
+        "stale_age_seconds": 14
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.056
+    },
+    {
+      "ticker": "JDZG",
+      "name": "Jiade Limited",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.444,
+      "change_pct": 30.901856763925732,
+      "volume": 79685516,
+      "market_cap": 2144360.94,
+      "float_shares": 5132411,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (30.9%, rvol 33.1x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +30.9%",
+      "plan": {
+        "valid": true,
+        "ticker": "JDZG",
+        "entry": 0.444,
+        "stop": 0.4351,
+        "targets": {
+          "t1": 0.4618,
+          "t2": 0.4707,
+          "t3": 0.4885
+        },
+        "risk_per_share": 0.0089,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 675,
+        "position_value": 299.7,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.4351"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "JDZG",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "14h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T09:42:42.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JDZG last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:28:59.525+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "14h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T09:42:42.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JDZG last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:28:59.525+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "JDZG",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 33.14,
+        "volume_indicator": "high",
+        "volume": 79685516,
+        "adv": 2404370,
+        "recent_pct_of_adv": 3314.2,
+        "volume_acceleration": -0.784,
+        "price_velocity_pct": 5.252,
+        "buy_pressure_pct": 49.71,
+        "large_bar_count": 194,
+        "vwap_distance_pct": 10.615,
+        "recent_volume": 79685516,
+        "prior_volume": 0,
+        "median_range": 0.0049,
+        "last_price": 0.3948,
+        "vwap": 0.3569120937382663,
+        "last_trade_time": "2026-11-06T00:14:05.730000+00:00",
+        "stale_age_seconds": 20
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": null
     }
   ],
   "pre_market_results": [
@@ -1130,9 +1148,9 @@
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.05,
+      "price": 2.032,
       "change_pct": -19.649122807017545,
-      "volume": 6487071,
+      "volume": 6495607,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -1146,13 +1164,141 @@
       "previous_price": 2.05
     },
     {
+      "ticker": "CIIT",
+      "name": "Tianci Intrnl",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.39,
+      "change_pct": 54.19354838709678,
+      "volume": 6261152,
+      "market_cap": 1499456.05,
+      "float_shares": 605068,
+      "country": "China / Hong Kong",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
+      "result": "+54.2% \u00b7 Entry $2.39 \u00b7 T1 $2.49 \u00b7 T2 $2.53 \u00b7 T3 $2.63",
+      "plan": {
+        "valid": true,
+        "ticker": "CIIT",
+        "entry": 2.39,
+        "stop": 2.3422,
+        "targets": {
+          "t1": 2.4856,
+          "t2": 2.5334,
+          "t3": 2.629
+        },
+        "risk_per_share": 0.0478,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 125,
+        "position_value": 298.75,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.3422"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CIIT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T16:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+            "source": "Webull",
+            "time": "8h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T16:00:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:52:44.806+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CIIT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 36.4,
+        "volume_indicator": "high",
+        "volume": 6261152,
+        "adv": 172000,
+        "recent_pct_of_adv": 3640.2,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 34.599,
+        "buy_pressure_pct": 46.97,
+        "large_bar_count": 23,
+        "vwap_distance_pct": 1.956,
+        "recent_volume": 6261152,
+        "prior_volume": 0,
+        "median_range": 0.06,
+        "last_price": 1.55,
+        "vwap": 1.5809155094011416,
+        "last_trade_time": "2026-11-06T00:14:11.510000+00:00",
+        "stale_age_seconds": 15
+      },
+      "date": "2026-11-06",
+      "time": "11:14:26",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.44
+    },
+    {
       "ticker": "STAK",
       "name": "STAK inc.",
       "status": "ALERT",
       "source": "regular",
       "price": 1.97,
       "change_pct": 25.174825174825184,
-      "volume": 7600937,
+      "volume": 7627160,
       "market_cap": 34386524.71,
       "float_shares": 10010349,
       "country": "China / Cayman-China",
@@ -1208,7 +1354,7 @@
           {
             "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
             "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
+            "time": "3h ago \u00b7 05 Nov",
             "raw_time": "2026-11-05T21:05:00.000+0000",
             "url": "",
             "score": 0,
@@ -1264,7 +1410,7 @@
           {
             "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
             "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
+            "time": "3h ago \u00b7 05 Nov",
             "raw_time": "2026-11-05T21:05:00.000+0000",
             "url": "",
             "score": 0,
@@ -1321,726 +1467,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 2.29,
+        "rvol": 2.3,
         "volume_indicator": "high",
-        "volume": 7600937,
+        "volume": 7627160,
         "adv": 3321508,
-        "recent_pct_of_adv": 228.84,
-        "volume_acceleration": 0.712,
-        "price_velocity_pct": 0.556,
-        "buy_pressure_pct": 53.98,
-        "large_bar_count": 140,
+        "recent_pct_of_adv": 229.63,
+        "volume_acceleration": 0.53,
+        "price_velocity_pct": 7.254,
+        "buy_pressure_pct": 54.1,
+        "large_bar_count": 152,
         "vwap_distance_pct": 2.88,
-        "recent_volume": 7600937,
+        "recent_volume": 7627160,
         "prior_volume": 0,
-        "median_range": 0.015,
+        "median_range": 0.0146,
         "last_price": 1.79,
-        "vwap": 1.7398921219736938,
-        "last_trade_time": "2026-11-05T23:59:03.476000+00:00",
-        "stale_age_seconds": 24
+        "vwap": 1.7398921219736934,
+        "last_trade_time": "2026-11-06T00:11:40.704000+00:00",
+        "stale_age_seconds": 222
       },
       "date": "2026-11-06",
-      "time": "10:59:27",
+      "time": "11:14:27",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.95
-    },
-    {
-      "ticker": "CIIT",
-      "name": "Tianci Intrnl",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.3,
-      "change_pct": 48.38709677419353,
-      "volume": 6069586,
-      "market_cap": 1499456.05,
-      "float_shares": 605068,
-      "country": "China / Hong Kong",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
-      "result": "+48.4% \u00b7 Entry $2.30 \u00b7 T1 $2.39 \u00b7 T2 $2.44 \u00b7 T3 $2.53",
-      "plan": {
-        "valid": true,
-        "ticker": "CIIT",
-        "entry": 2.3,
-        "stop": 2.254,
-        "targets": {
-          "t1": 2.392,
-          "t2": 2.438,
-          "t3": 2.53
-        },
-        "risk_per_share": 0.046,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 130,
-        "position_value": 299.0,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.254"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CIIT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-            "source": "Webull",
-            "time": "7h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T16:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-            "source": "Webull",
-            "time": "7h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T16:00:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:52:44.806+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "CIIT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 35.29,
-        "volume_indicator": "high",
-        "volume": 6069586,
-        "adv": 172000,
-        "recent_pct_of_adv": 3528.83,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 32.317,
-        "buy_pressure_pct": 49.36,
-        "large_bar_count": 23,
-        "vwap_distance_pct": 1.956,
-        "recent_volume": 6069586,
-        "prior_volume": 0,
-        "median_range": 0.0601,
-        "last_price": 1.55,
-        "vwap": 1.5809155094011416,
-        "last_trade_time": "2026-11-05T23:59:04.442000+00:00",
-        "stale_age_seconds": 23
-      },
-      "date": "2026-11-06",
-      "time": "10:59:27",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.28
-    },
-    {
-      "ticker": "INOD",
-      "name": "Innodata",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 42.49,
-      "change_pct": 10.020714655618864,
-      "volume": 3493884,
-      "market_cap": 1327857981.62,
-      "float_shares": 32712197,
-      "country": "United States",
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 05), 8-K (Sep 15)",
-      "result": "+10.0% \u00b7 Entry $42.49 \u00b7 T1 $44.19 \u00b7 T2 $45.04 \u00b7 T3 $46.74",
-      "plan": {
-        "valid": true,
-        "ticker": "INOD",
-        "entry": 42.49,
-        "stop": 41.6402,
-        "targets": {
-          "t1": 44.1896,
-          "t2": 45.0394,
-          "t3": 46.739
-        },
-        "risk_per_share": 0.8498,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 7,
-        "position_value": 297.43,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$41.6402"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "INOD",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Innodata reports Q3 EPS 30c, consensus 27c",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata raises FY26 revenue view to up 42% from up 40%",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Innodata reports Q3 EPS 30c, consensus 27c",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata raises FY26 revenue view to up 42% from up 40%",
-            "source": "Webull",
-            "time": "43m ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T23:15:33.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata FY2026  Revenue expected to be more than $357.361M vs $358.235M Est",
-            "source": "Webull",
-            "time": "2h ago \u00b7 05 Nov",
-            "raw_time": "2026-11-05T21:58:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at INOD last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:25:32.664+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "INOD Investors Have Opportunity to Join Innodata Inc. Fraud Investigation with SBS Law",
-            "source": "Webull",
-            "time": "4d ago \u00b7 01 Nov",
-            "raw_time": "2026-11-01T14:45:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Innodata Mispricing Creates Upside: Allen Klee Reiterates Buy with $111 Price Target on Strong AI Growth and Solid Financials",
-            "source": "Webull",
-            "time": "5d ago \u00b7 31 Oct",
-            "raw_time": "2026-10-31T11:55:36.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Innodata reports Q3 EPS 30c, consensus 27c",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "INOD",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.21,
-        "volume_indicator": "high",
-        "volume": 3493884,
-        "adv": 1581697,
-        "recent_pct_of_adv": 220.89,
-        "volume_acceleration": -0.386,
-        "price_velocity_pct": 1.994,
-        "buy_pressure_pct": 51.2,
-        "large_bar_count": 113,
-        "vwap_distance_pct": 1.403,
-        "recent_volume": 3493884,
-        "prior_volume": 0,
-        "median_range": 0.13,
-        "last_price": 38.62,
-        "vwap": 38.08556230479072,
-        "last_trade_time": "2026-11-05T23:57:35.337000+00:00",
-        "stale_age_seconds": 127
-      },
-      "date": "2026-11-06",
-      "time": "10:59:27",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 42.49
-    },
-    {
-      "ticker": "CDT",
-      "name": "CDT Equity",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.053,
-      "change_pct": 25.295508274231683,
-      "volume": 91650498,
-      "market_cap": 394354.65,
-      "float_shares": 4409271,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (25.3%, rvol 14.2x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +25.3%",
-      "plan": {
-        "valid": true,
-        "ticker": "CDT",
-        "entry": 0.053,
-        "stop": 0.0519,
-        "targets": {
-          "t1": 0.0552,
-          "t2": 0.0563,
-          "t3": 0.0585
-        },
-        "risk_per_share": 0.0011,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 5660,
-        "position_value": 299.98,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0519"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "CDT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T17:05:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T14:32:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:03:03.226+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T17:05:37.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
-            "source": "Webull",
-            "time": "1d ago \u00b7 04 Nov",
-            "raw_time": "2026-11-04T14:32:34.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T21:05:50.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T10:03:03.226+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "CDT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 14.2,
-        "volume_indicator": "high",
-        "volume": 91650498,
-        "adv": 6454148,
-        "recent_pct_of_adv": 1420.02,
-        "volume_acceleration": -0.92,
-        "price_velocity_pct": 3.864,
-        "buy_pressure_pct": 52.44,
-        "large_bar_count": 248,
-        "vwap_distance_pct": 2.61,
-        "recent_volume": 91650498,
-        "prior_volume": 0,
-        "median_range": 0.0002,
-        "last_price": 0.0423,
-        "vwap": 0.04343347015594655,
-        "last_trade_time": "2026-11-05T23:59:10.573000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-06",
-      "time": "10:59:28",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 0.055
-    },
-    {
-      "ticker": "RCT",
-      "name": "RedCloud",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.053,
-      "change_pct": 76.66666666666667,
-      "volume": 73113312,
-      "market_cap": 2307260.55,
-      "float_shares": 5771596,
-      "country": "United Kingdom",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (76.7%, rvol 3.9x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +76.7%",
-      "plan": {
-        "valid": true,
-        "ticker": "RCT",
-        "entry": 0.053,
-        "stop": 0.0519,
-        "targets": {
-          "t1": 0.0552,
-          "t2": 0.0563,
-          "t3": 0.0585
-        },
-        "risk_per_share": 0.0011,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 5660,
-        "position_value": 299.98,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.0519"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "RCT",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T12:05:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:40:58.405+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:29:29.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:06:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T20:53:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "2d ago \u00b7 03 Nov",
-            "raw_time": "2026-11-03T12:05:39.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:40:58.405+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "3d ago \u00b7 02 Nov",
-            "raw_time": "2026-11-02T09:29:29.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T21:06:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
-            "source": "Webull",
-            "time": "6d ago \u00b7 30 Oct",
-            "raw_time": "2026-10-30T20:53:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan",
-            "flag": "delisting"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
-      },
-      "tape": {
-        "ticker": "RCT",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 3.87,
-        "volume_indicator": "high",
-        "volume": 73113312,
-        "adv": 18892034,
-        "recent_pct_of_adv": 387.01,
-        "volume_acceleration": -0.597,
-        "price_velocity_pct": 3.448,
-        "buy_pressure_pct": 47.84,
-        "large_bar_count": 160,
-        "vwap_distance_pct": 4.635,
-        "recent_volume": 73113312,
-        "prior_volume": 0,
-        "median_range": 0.0001,
-        "last_price": 0.03,
-        "vwap": 0.02867118954170488,
-        "last_trade_time": "2026-11-05T23:59:11.371000+00:00",
-        "stale_age_seconds": 15
-      },
-      "date": "2026-11-06",
-      "time": "10:59:28",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.052
+      "previous_price": 1.97
     },
     {
       "ticker": "DVLT",
@@ -2049,7 +1498,7 @@
       "source": "top_gainer_exempt",
       "price": 0.076,
       "change_pct": 28.378378378378372,
-      "volume": 172961684,
+      "volume": 175599514,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "country": "United States",
@@ -2223,29 +1672,616 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.26,
+        "rvol": 3.31,
         "volume_indicator": "high",
-        "volume": 172961684,
+        "volume": 175599514,
         "adv": 53004613,
-        "recent_pct_of_adv": 326.31,
-        "volume_acceleration": -0.761,
+        "recent_pct_of_adv": 331.29,
+        "volume_acceleration": -0.775,
         "price_velocity_pct": 0.169,
-        "buy_pressure_pct": 51.92,
-        "large_bar_count": 229,
+        "buy_pressure_pct": 52.08,
+        "large_bar_count": 244,
         "vwap_distance_pct": 5.008,
-        "recent_volume": 172961684,
+        "recent_volume": 175599514,
         "prior_volume": 0,
         "median_range": 0.0002,
         "last_price": 0.0592,
-        "vwap": 0.056376730604129836,
-        "last_trade_time": "2026-11-05T23:59:10.953000+00:00",
-        "stale_age_seconds": 15
+        "vwap": 0.05637673060412985,
+        "last_trade_time": "2026-11-06T00:14:12.254000+00:00",
+        "stale_age_seconds": 13
       },
       "date": "2026-11-06",
-      "time": "10:59:28",
+      "time": "11:14:27",
       "skip_news_check": true,
       "red_flag": true,
-      "previous_price": 0.076
+      "previous_price": 0.077
+    },
+    {
+      "ticker": "CDT",
+      "name": "CDT Equity",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.053,
+      "change_pct": 25.295508274231683,
+      "volume": 94698956,
+      "market_cap": 394354.65,
+      "float_shares": 4409271,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (25.3%, rvol 14.7x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +25.3%",
+      "plan": {
+        "valid": true,
+        "ticker": "CDT",
+        "entry": 0.053,
+        "stop": 0.0519,
+        "targets": {
+          "t1": 0.0552,
+          "t2": 0.0563,
+          "t3": 0.0585
+        },
+        "risk_per_share": 0.0011,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 5660,
+        "position_value": 299.98,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.0519"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "CDT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T14:32:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T21:05:50.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:03:03.226+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "CDT Equity Announces 1-for-20 Reverse Stock Split",
+            "source": "Webull",
+            "time": "1d ago \u00b7 04 Nov",
+            "raw_time": "2026-11-04T14:32:34.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Monday's After-Market Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T21:05:50.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at CDT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T10:03:03.226+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Health Care Stocks Moving In Wednesday's Intraday Session",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "CDT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 14.67,
+        "volume_indicator": "high",
+        "volume": 94698956,
+        "adv": 6454148,
+        "recent_pct_of_adv": 1467.26,
+        "volume_acceleration": -0.923,
+        "price_velocity_pct": 4.515,
+        "buy_pressure_pct": 52.63,
+        "large_bar_count": 263,
+        "vwap_distance_pct": 2.61,
+        "recent_volume": 94698956,
+        "prior_volume": 0,
+        "median_range": 0.0002,
+        "last_price": 0.0423,
+        "vwap": 0.043433470155946556,
+        "last_trade_time": "2026-11-06T00:14:11.429000+00:00",
+        "stale_age_seconds": 14
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 0.054
+    },
+    {
+      "ticker": "RCT",
+      "name": "RedCloud",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.056,
+      "change_pct": 86.66666666666669,
+      "volume": 89259529,
+      "market_cap": 2307260.55,
+      "float_shares": 5771596,
+      "country": "United Kingdom",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (86.7%, rvol 4.7x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +86.7%",
+      "plan": {
+        "valid": true,
+        "ticker": "RCT",
+        "entry": 0.056,
+        "stop": 0.0549,
+        "targets": {
+          "t1": 0.0582,
+          "t2": 0.0593,
+          "t3": 0.0615
+        },
+        "risk_per_share": 0.0011,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 5357,
+        "position_value": 299.99,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.0549"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "RCT",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:40:58.405+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T20:53:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at RCT last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:40:58.405+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "RedCloud Holdings Shareholders Approve 100-for-1 Consolidation to Support Nasdaq Listing",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T20:53:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "RedCloud Appeals Nasdaq Delisting as It Moves Ahead with Reverse Stock Split Plan",
+            "flag": "delisting"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
+      },
+      "tape": {
+        "ticker": "RCT",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 4.72,
+        "volume_indicator": "high",
+        "volume": 89259529,
+        "adv": 18892034,
+        "recent_pct_of_adv": 472.47,
+        "volume_acceleration": -0.63,
+        "price_velocity_pct": 3.448,
+        "buy_pressure_pct": 48.11,
+        "large_bar_count": 175,
+        "vwap_distance_pct": 4.635,
+        "recent_volume": 89259529,
+        "prior_volume": 0,
+        "median_range": 0.0001,
+        "last_price": 0.03,
+        "vwap": 0.02867118954170488,
+        "last_trade_time": "2026-11-06T00:14:12.035000+00:00",
+        "stale_age_seconds": 14
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 0.056
+    },
+    {
+      "ticker": "JDZG",
+      "name": "Jiade Limited",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 0.444,
+      "change_pct": 30.901856763925732,
+      "volume": 79685516,
+      "market_cap": 2144360.94,
+      "float_shares": 5132411,
+      "country": "China / Cayman-China",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (30.9%, rvol 33.1x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +30.9%",
+      "plan": {
+        "valid": true,
+        "ticker": "JDZG",
+        "entry": 0.444,
+        "stop": 0.4351,
+        "targets": {
+          "t1": 0.4618,
+          "t2": 0.4707,
+          "t3": 0.4885
+        },
+        "risk_per_share": 0.0089,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 675,
+        "position_value": 299.7,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.4351"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "JDZG",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "14h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T09:42:42.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JDZG last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:28:59.525+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "14h ago \u00b7 05 Nov",
+            "raw_time": "2026-11-05T09:42:42.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "2d ago \u00b7 03 Nov",
+            "raw_time": "2026-11-03T12:05:39.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Inovio Pharmaceuticals Shares Are Trading Higher By Over 230%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:29:29.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at JDZG last week (1026-1030)?",
+            "source": "Webull",
+            "time": "3d ago \u00b7 02 Nov",
+            "raw_time": "2026-11-02T09:28:59.525+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's After-Market Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T21:06:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "6d ago \u00b7 30 Oct",
+            "raw_time": "2026-10-30T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Why AppLovin Shares Are Trading Higher By Over 16%; Here Are 20 Stocks Moving Premarket",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "JDZG",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 33.14,
+        "volume_indicator": "high",
+        "volume": 79685516,
+        "adv": 2404370,
+        "recent_pct_of_adv": 3314.2,
+        "volume_acceleration": -0.784,
+        "price_velocity_pct": 5.252,
+        "buy_pressure_pct": 49.71,
+        "large_bar_count": 194,
+        "vwap_distance_pct": 10.615,
+        "recent_volume": 79685516,
+        "prior_volume": 0,
+        "median_range": 0.0049,
+        "last_price": 0.3948,
+        "vwap": 0.3569120937382663,
+        "last_trade_time": "2026-11-06T00:14:05.730000+00:00",
+        "stale_age_seconds": 20
+      },
+      "date": "2026-11-06",
+      "time": "11:14:27",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": null
     }
   ],
   "pre_market_watchlist": [],
@@ -2255,9 +2291,9 @@
       "name": "T3 Defense Inc",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.05,
+      "price": 2.032,
       "change_pct": -19.649122807017545,
-      "volume": 6487071,
+      "volume": 6495607,
       "market_cap": 7709019.36,
       "float_shares": 3063997,
       "country": "United States",
@@ -2273,38 +2309,38 @@
   ],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "STAK",
-    "name": "STAK inc.",
+    "ticker": "CIIT",
+    "name": "Tianci Intrnl",
     "status": "ALERT",
     "source": "regular",
-    "price": 1.97,
-    "change_pct": 25.174825174825184,
-    "volume": 7600937,
-    "market_cap": 34386524.71,
-    "float_shares": 10010349,
-    "country": "China / Cayman-China",
+    "price": 2.39,
+    "change_pct": 54.19354838709678,
+    "volume": 6261152,
+    "market_cap": 1499456.05,
+    "float_shares": 605068,
+    "country": "China / Hong Kong",
     "cap_size": "nano-cap",
     "is_penny_stock": false,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "",
-    "result": "+25.2% \u00b7 Entry $1.97 \u00b7 T1 $2.05 \u00b7 T2 $2.09 \u00b7 T3 $2.17",
+    "sec_filings": "8-K (Nov 05), 8-K (Oct 15), 8-K (Oct 06)",
+    "result": "+54.2% \u00b7 Entry $2.39 \u00b7 T1 $2.49 \u00b7 T2 $2.53 \u00b7 T3 $2.63",
     "plan": {
       "valid": true,
-      "ticker": "STAK",
-      "entry": 1.97,
-      "stop": 1.9306,
+      "ticker": "CIIT",
+      "entry": 2.39,
+      "stop": 2.3422,
       "targets": {
-        "t1": 2.0488,
-        "t2": 2.0882,
-        "t3": 2.167
+        "t1": 2.4856,
+        "t2": 2.5334,
+        "t3": 2.629
       },
-      "risk_per_share": 0.0394,
+      "risk_per_share": 0.0478,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 152,
-      "position_value": 299.44,
+      "shares": 125,
+      "position_value": 298.75,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2312,7 +2348,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.9306"
+        "hard_stop": "$2.3422"
       }
     },
     "ta": {
@@ -2320,59 +2356,23 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "STAK",
+      "ticker": "CIIT",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+          "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
           "source": "Webull",
-          "time": "2h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:41:32.000+0000",
+          "time": "8h ago \u00b7 05 Nov",
+          "raw_time": "2026-11-05T16:00:00.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
-          "source": "Webull",
-          "time": "2h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Names New CFO Amid Management Changes",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T14:00:36.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stak names Xiaofei Han as CFO, effective November 1",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:10:41.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Announces Changes in Management",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at STAK last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
           "source": "Webull",
           "time": "3d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T09:47:10.540+0000",
+          "raw_time": "2026-11-02T09:52:44.806+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2380,55 +2380,19 @@
       ],
       "headlines": [
         {
-          "title": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+          "title": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
           "source": "Webull",
-          "time": "2h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:41:32.000+0000",
+          "time": "8h ago \u00b7 05 Nov",
+          "raw_time": "2026-11-05T16:00:00.000+0000",
           "url": "",
           "score": 0,
           "keywords": []
         },
         {
-          "title": "STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
-          "source": "Webull",
-          "time": "2h ago \u00b7 05 Nov",
-          "raw_time": "2026-11-05T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Names New CFO Amid Management Changes",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T14:00:36.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Stak names Xiaofei Han as CFO, effective November 1",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:10:41.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "STAK Inc. Announces Changes in Management",
-          "source": "Webull",
-          "time": "2d ago \u00b7 03 Nov",
-          "raw_time": "2026-11-03T12:00:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at STAK last week (1026-1030)?",
+          "title": "Weekly Report: what happened at CIIT last week (1026-1030)?",
           "source": "Webull",
           "time": "3d ago \u00b7 02 Nov",
-          "raw_time": "2026-11-02T09:47:10.540+0000",
+          "raw_time": "2026-11-02T09:52:44.806+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -2439,64 +2403,64 @@
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "STAK Inc. Reports Initial Progress in Gas-Powered Generator Business",
+      "top_headline": "Tianci International, Inc. Reports Financial Results for Fiscal Year Ended July 31, 2026",
       "news_filter_reason": "low catalyst score (max 0/5)"
     },
     "tape": {
-      "ticker": "STAK",
+      "ticker": "CIIT",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 2.29,
+      "rvol": 36.4,
       "volume_indicator": "high",
-      "volume": 7600937,
-      "adv": 3321508,
-      "recent_pct_of_adv": 228.84,
-      "volume_acceleration": 0.712,
-      "price_velocity_pct": 0.556,
-      "buy_pressure_pct": 53.98,
-      "large_bar_count": 140,
-      "vwap_distance_pct": 2.88,
-      "recent_volume": 7600937,
+      "volume": 6261152,
+      "adv": 172000,
+      "recent_pct_of_adv": 3640.2,
+      "volume_acceleration": -1.0,
+      "price_velocity_pct": 34.599,
+      "buy_pressure_pct": 46.97,
+      "large_bar_count": 23,
+      "vwap_distance_pct": 1.956,
+      "recent_volume": 6261152,
       "prior_volume": 0,
-      "median_range": 0.015,
-      "last_price": 1.79,
-      "vwap": 1.7398921219736938,
-      "last_trade_time": "2026-11-05T23:59:03.476000+00:00",
-      "stale_age_seconds": 24
+      "median_range": 0.06,
+      "last_price": 1.55,
+      "vwap": 1.5809155094011416,
+      "last_trade_time": "2026-11-06T00:14:11.510000+00:00",
+      "stale_age_seconds": 15
     },
     "date": "2026-11-06",
-    "time": "10:59:27",
+    "time": "11:14:26",
     "skip_news_check": true,
     "red_flag": false,
-    "previous_price": 1.95
+    "previous_price": 2.44
   },
   "total_candidates": 7,
-  "alerts_generated": 3,
+  "alerts_generated": 2,
   "all_gainers": [
     {
       "ticker": "RCT",
       "name": "RedCloud",
-      "price": 0.053,
-      "change_pct": 76.66666666666667,
-      "volume": 73113312,
-      "rvol": 0.972556590193075,
+      "price": 0.056,
+      "change_pct": 86.66666666666669,
+      "volume": 89259529,
+      "rvol": 1.1873343005782573,
       "market_cap": 2307260.55,
       "float_shares": 5771596,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United Kingdom",
       "passed": false,
-      "reason": "Filtered: price $0.053, tiny price $0.053, tiny rvol 1.0x"
+      "reason": "Filtered: price $0.056, tiny price $0.056, tiny rvol 1.2x"
     },
     {
       "ticker": "CIIT",
       "name": "Tianci Intrnl",
-      "price": 2.3,
-      "change_pct": 48.38709677419353,
-      "volume": 6069586,
-      "rvol": 11.507829460156874,
+      "price": 2.39,
+      "change_pct": 54.19354838709678,
+      "volume": 6261152,
+      "rvol": 11.871035263380422,
       "market_cap": 1499456.05,
       "float_shares": 605068,
       "cap_size": "nano-cap",
@@ -2510,8 +2474,8 @@
       "name": "Datavault AI Inc",
       "price": 0.076,
       "change_pct": 28.378378378378372,
-      "volume": 172961684,
-      "rvol": 1.4477430733061367,
+      "volume": 175599514,
+      "rvol": 1.4698225305751764,
       "market_cap": 56223933.42,
       "float_shares": 685176339,
       "cap_size": "micro-cap",
@@ -2525,8 +2489,8 @@
       "name": "CDT Equity",
       "price": 0.053,
       "change_pct": 25.295508274231683,
-      "volume": 91650498,
-      "rvol": 2.09991682174997,
+      "volume": 94698956,
+      "rvol": 2.1697637770234515,
       "market_cap": 394354.65,
       "float_shares": 4409271,
       "cap_size": "nano-cap",
@@ -2536,12 +2500,27 @@
       "reason": "Filtered: price $0.053, mktcap $0.4M"
     },
     {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "price": 0.033,
+      "change_pct": 24.060150375939862,
+      "volume": 149565724,
+      "rvol": 1.4631731857850672,
+      "market_cap": 27337.94,
+      "float_shares": 930097,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.033, mktcap $0.0M"
+    },
+    {
       "ticker": "DBGI",
       "name": "Digital Brands Group Inc",
-      "price": 0.57,
-      "change_pct": 21.276595744680847,
-      "volume": 183295,
-      "rvol": 0.48220806280188155,
+      "price": 0.569,
+      "change_pct": 21.063829787234038,
+      "volume": 185087,
+      "rvol": 0.4869224131580886,
       "market_cap": 438749.23,
       "float_shares": 916298,
       "cap_size": "nano-cap",
@@ -2566,27 +2545,12 @@
       "reason": "Filtered: vol 3,185, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "NXL",
-      "name": "Nexalin Tech",
-      "price": 1.65,
-      "change_pct": 17.857142857142858,
-      "volume": 18355,
-      "rvol": 0.649619536365245,
-      "market_cap": 1608962.6,
-      "float_shares": 945391,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.02x, vol 18,355, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
       "ticker": "PLBY",
       "name": "Playboy Inc",
-      "price": 1.46,
-      "change_pct": 17.741935483870964,
-      "volume": 1559772,
-      "rvol": 1.6427108269414468,
+      "price": 1.47,
+      "change_pct": 18.548387096774192,
+      "volume": 1567462,
+      "rvol": 1.6508097325886693,
       "market_cap": 148561533.12,
       "float_shares": 80244213,
       "cap_size": "micro-cap",
@@ -2596,19 +2560,19 @@
       "reason": "Filtered: vol/float 0.02x < 0.1x"
     },
     {
-      "ticker": "NNOX",
-      "name": "Nano-X Imaging Ltd.",
-      "price": 0.291,
-      "change_pct": 17.196939186467976,
-      "volume": 1700476,
-      "rvol": 1.7871641860064278,
-      "market_cap": 19552882.09,
-      "float_shares": 72882052,
+      "ticker": "XHLD",
+      "name": "TEN Holdings, Inc.",
+      "price": 0.58,
+      "change_pct": 15.953618552578966,
+      "volume": 729445,
+      "rvol": 0.53569094287246,
+      "market_cap": 5992367.49,
+      "float_shares": 10414001,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "International (region 83)",
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
+      "reason": "Filtered: tiny price $0.580, tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.07x, vol/float 0.07x < 0.1x, avg $vol $0.8M < $2.0M"
     },
     {
       "ticker": "MSN",
@@ -2626,19 +2590,34 @@
       "reason": "Filtered: tiny price $0.314, tiny rvol 1.1x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "SAFX",
-      "name": "XCF GLOBAL INC",
-      "price": 0.1,
-      "change_pct": 14.942528735632198,
-      "volume": 10575377,
-      "rvol": 1.2437647269136975,
-      "market_cap": 52260531.64,
-      "float_shares": 222535540,
-      "cap_size": "micro-cap",
+      "ticker": "FCDH",
+      "name": "Forcendra Hldg Ltd",
+      "price": 0.642,
+      "change_pct": 14.642857142857135,
+      "volume": 28087,
+      "rvol": 0.43621482263775857,
+      "market_cap": 2563074.08,
+      "float_shares": 4541985,
+      "cap_size": "nano-cap",
       "is_penny_stock": true,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.642, tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, vol 28,087, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
+      "ticker": "KDK",
+      "name": "Kodiak AI, Inc.",
+      "price": 1.08,
+      "change_pct": 13.552728419724543,
+      "volume": 10995977,
+      "rvol": 1.1496614315280356,
+      "market_cap": 190807941.49,
+      "float_shares": 116156776,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.100, float 222.5M > 100M, vol/float 0.05x < 0.1x"
+      "reason": "Filtered: float 116.2M > 100M, vol/float 0.09x < 0.1x"
     },
     {
       "ticker": "CABR",
@@ -2656,6 +2635,21 @@
       "reason": "Filtered: tiny price $0.850, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
+      "ticker": "SAFX",
+      "name": "XCF GLOBAL INC",
+      "price": 0.098,
+      "change_pct": 12.643678160919553,
+      "volume": 10794939,
+      "rvol": 1.2695873024087012,
+      "market_cap": 52260531.64,
+      "float_shares": 222535540,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.098, float 222.5M > 100M, vol/float 0.05x < 0.1x"
+    },
+    {
       "ticker": "SOS",
       "name": "Sos Limited",
       "price": 0.208,
@@ -2671,19 +2665,19 @@
       "reason": "Filtered: tiny price $0.208, tiny rvol 1.5x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "XHLD",
-      "name": "TEN Holdings, Inc.",
-      "price": 0.563,
-      "change_pct": 12.554978008796475,
-      "volume": 724905,
-      "rvol": 0.5323568506782014,
-      "market_cap": 5992367.49,
-      "float_shares": 10414001,
+      "ticker": "JDZG",
+      "name": "Jiade Limited",
+      "price": 0.444,
+      "change_pct": 30.901856763925732,
+      "volume": 79685516,
+      "rvol": 5.594775593975473,
+      "market_cap": 2144360.94,
+      "float_shares": 5132411,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "United States",
+      "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: tiny price $0.563, tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.07x, vol/float 0.07x < 0.1x, avg $vol $0.8M < $2.0M"
+      "reason": "Filtered: tiny price $0.444"
     },
     {
       "ticker": "HYPD",
@@ -2731,6 +2725,21 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "NXL",
+      "name": "Nexalin Tech",
+      "price": 1.55,
+      "change_pct": 10.714285714285724,
+      "volume": 18467,
+      "rvol": 0.6535834365599009,
+      "market_cap": 1608962.6,
+      "float_shares": 945391,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.02x, vol 18,467, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
       "ticker": "DLTH",
       "name": "Duluth Holdings",
       "price": 4.5,
@@ -2746,47 +2755,32 @@
       "reason": "Filtered: vol 46,252, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "SPRU",
+      "name": "Spruce Power Holding Corp",
+      "price": 1.4,
+      "change_pct": 10.236220472440936,
+      "volume": 282796,
+      "rvol": 2.6246542795092163,
+      "market_cap": 24450276.22,
+      "float_shares": 16870313,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
       "ticker": "STAK",
       "name": "STAK inc.",
       "price": 1.97,
       "change_pct": 25.174825174825184,
-      "volume": 7600937,
-      "rvol": 5.094502770799765,
+      "volume": 7627160,
+      "rvol": 5.1120786494261345,
       "market_cap": 34386524.71,
       "float_shares": 10010349,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "China / Cayman-China",
-      "passed": true,
-      "reason": "Passed filters"
-    },
-    {
-      "ticker": "KDK",
-      "name": "Kodiak AI, Inc.",
-      "price": 1.04,
-      "change_pct": 9.347071811586593,
-      "volume": 10978079,
-      "rvol": 1.1477901434831908,
-      "market_cap": 190807941.49,
-      "float_shares": 116156776,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: float 116.2M > 100M, vol/float 0.09x < 0.1x"
-    },
-    {
-      "ticker": "HPAI",
-      "name": "Helport AI Ltd",
-      "price": 0.307,
-      "change_pct": 9.21380291711134,
-      "volume": 7862798,
-      "rvol": 0.34698067864156595,
-      "market_cap": 10582546.4,
-      "float_shares": 8093751,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
       "passed": true,
       "reason": "Passed filters"
     },
@@ -2834,21 +2828,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "CLAR",
-      "name": "Clarus Corp",
-      "price": 4.62,
-      "change_pct": 8.70588235294118,
-      "volume": 293087,
-      "rvol": 0.7599601722756514,
-      "market_cap": 162724658.75,
-      "float_shares": 29331331,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: move -3.8% / rvol 0.8, vol/float 0.01x < 0.1x"
     }
   ],
   "all_losers": [
@@ -2857,8 +2836,8 @@
       "name": "BIODESIX INC",
       "price": 14.0,
       "change_pct": -7.677989762680311,
-      "volume": 185771,
-      "rvol": 1.7935718699312582,
+      "volume": 185971,
+      "rvol": 1.7955028191859117,
       "market_cap": 209334181.12,
       "float_shares": 5654384,
       "cap_size": "micro-cap",
@@ -2872,8 +2851,8 @@
       "name": "Baird Medical",
       "price": 0.118,
       "change_pct": -25.079365079365086,
-      "volume": 378204945,
-      "rvol": 5.139136426838317,
+      "volume": 378673095,
+      "rvol": 5.145497757513739,
       "market_cap": 5040373.28,
       "float_shares": 4381473,
       "cap_size": "nano-cap",
@@ -2898,6 +2877,21 @@
       "reason": "Filtered: price $0.239, move 8.2%, rvol 0.4x, float 71.1M, vol/float 0.03x"
     },
     {
+      "ticker": "CTM",
+      "name": "Castellum Inc",
+      "price": 0.382,
+      "change_pct": -3.3265306122448943,
+      "volume": 991858,
+      "rvol": 2.3827447287438113,
+      "market_cap": 44897895.18,
+      "float_shares": 83320062,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.382, move -3.3%, float 83.3M, vol/float 0.01x"
+    },
+    {
       "ticker": "AMBO",
       "name": "Ambow Education Holding Ltd.",
       "price": 1.439,
@@ -2913,12 +2907,27 @@
       "reason": "Filtered: mktcap $4.2M, rvol 1.0x, vol 2,437, vol/float 0.00x"
     },
     {
+      "ticker": "INGN",
+      "name": "Inogen Inc",
+      "price": 5.66,
+      "change_pct": -6.232686980609421,
+      "volume": 299989,
+      "rvol": 1.1597273767551184,
+      "market_cap": 179664541.49,
+      "float_shares": 23113830,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: move -6.2%, vol/float 0.01x"
+    },
+    {
       "ticker": "INO",
       "name": "Inovio Pharmaceu",
-      "price": 1.179,
+      "price": 1.22,
       "change_pct": -10.493827160493836,
-      "volume": 16472367,
-      "rvol": 0.32814795286217446,
+      "volume": 16510023,
+      "rvol": 0.3288981024498432,
       "market_cap": 149926401.1,
       "float_shares": 103007384,
       "cap_size": "micro-cap",
@@ -2928,49 +2937,34 @@
       "reason": "Filtered: rvol 0.3x, float 103.0M, vol/float 0.16x"
     },
     {
-      "ticker": "CTM",
-      "name": "Castellum Inc",
-      "price": 0.39,
-      "change_pct": -3.3265306122448943,
-      "volume": 968219,
-      "rvol": 2.3259566576259947,
-      "market_cap": 44897895.18,
-      "float_shares": 83320062,
+      "ticker": "SDA",
+      "name": "SunCar Technology Group Inc.",
+      "price": 0.131,
+      "change_pct": -25.339805825242717,
+      "volume": 11023913,
+      "rvol": 6.9915858036201275,
+      "market_cap": 15689039.41,
+      "float_shares": 38914985,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "United States",
+      "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: price $0.390, move -3.3%, float 83.3M, vol/float 0.01x"
+      "reason": "Filtered: price $0.131"
     },
     {
-      "ticker": "EVGN",
-      "name": "Evogene",
-      "price": 0.276,
-      "change_pct": -7.623318385650224,
-      "volume": 7555041,
-      "rvol": 7.994583183424689,
-      "market_cap": 5950292.2,
-      "float_shares": 13650568,
+      "ticker": "NTCL",
+      "name": "Netclass Technology Inc.",
+      "price": 0.277,
+      "change_pct": -14.69194312796209,
+      "volume": 154507100,
+      "rvol": 7.968704904102462,
+      "market_cap": 856295.06,
+      "float_shares": 2001988,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "International (region 83)",
+      "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: price $0.276, move -7.6%"
-    },
-    {
-      "ticker": "INGN",
-      "name": "Inogen Inc",
-      "price": 5.68,
-      "change_pct": -6.232686980609421,
-      "volume": 298979,
-      "rvol": 1.1558228180862251,
-      "market_cap": 179664541.49,
-      "float_shares": 23113830,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: move -6.2%, vol/float 0.01x"
+      "reason": "Filtered: price $0.277, mktcap $0.9M"
     },
     {
       "ticker": "GLXG",
@@ -3003,36 +2997,6 @@
       "reason": "Filtered: vol 59,912, vol/float 0.01x"
     },
     {
-      "ticker": "SMTK",
-      "name": "Smartkem",
-      "price": 0.285,
-      "change_pct": -13.636363636363647,
-      "volume": 295274,
-      "rvol": 0.2670348025911801,
-      "market_cap": 186540.42,
-      "float_shares": 462523,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United Kingdom",
-      "passed": false,
-      "reason": "Filtered: price $0.285, mktcap $0.2M, move 11.5%, rvol 0.3x"
-    },
-    {
-      "ticker": "SDA",
-      "name": "SunCar Technology Group Inc.",
-      "price": 0.133,
-      "change_pct": -25.339805825242717,
-      "volume": 11008544,
-      "rvol": 6.981838476857313,
-      "market_cap": 15689039.41,
-      "float_shares": 38914985,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.133"
-    },
-    {
       "ticker": "POLA",
       "name": "Polar Pwr Inc",
       "price": 0.29,
@@ -3046,6 +3010,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.290, mktcap $1.4M"
+    },
+    {
+      "ticker": "SMTK",
+      "name": "Smartkem",
+      "price": 0.286,
+      "change_pct": -13.333333333333345,
+      "volume": 296825,
+      "rvol": 0.2684374691951443,
+      "market_cap": 186540.42,
+      "float_shares": 462523,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: price $0.286, mktcap $0.2M, move 11.5%, rvol 0.3x"
     },
     {
       "ticker": "TBCH",
@@ -3063,42 +3042,72 @@
       "reason": "Filtered: mktcap $298.2M, move -1.8%, vol/float 0.05x"
     },
     {
-      "ticker": "NTCL",
-      "name": "Netclass Technology Inc.",
-      "price": 0.284,
-      "change_pct": -14.69194312796209,
-      "volume": 154458866,
-      "rvol": 7.9662172351711025,
-      "market_cap": 856295.06,
-      "float_shares": 2001988,
+      "ticker": "EVGN",
+      "name": "Evogene",
+      "price": 0.288,
+      "change_pct": -7.623318385650224,
+      "volume": 7602168,
+      "rvol": 8.044451969270492,
+      "market_cap": 5950292.2,
+      "float_shares": 13650568,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "country": "Singapore",
+      "country": "International (region 83)",
       "passed": false,
-      "reason": "Filtered: price $0.284, mktcap $0.9M"
+      "reason": "Filtered: price $0.288, move -7.6%"
     },
     {
       "ticker": "HUHU",
       "name": "HUHUTECH International Group",
-      "price": 0.423,
-      "change_pct": -12.5129265770424,
-      "volume": 25168534,
-      "rvol": 6.359356669514268,
+      "price": 0.424,
+      "change_pct": -12.306101344364013,
+      "volume": 25202536,
+      "rvol": 6.367947986174858,
       "market_cap": 12950957.51,
       "float_shares": 8245848,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: price $0.423, move 27.2%"
+      "reason": "Filtered: price $0.424, move 27.2%"
+    },
+    {
+      "ticker": "HUBC",
+      "name": "Hub Cyber Security Israel Ltd",
+      "price": 0.088,
+      "change_pct": -12.263210368893326,
+      "volume": 10704748,
+      "rvol": 0.13405991132576564,
+      "market_cap": 180120.85,
+      "float_shares": 1790379,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 83)",
+      "passed": false,
+      "reason": "Filtered: price $0.088, mktcap $0.2M, move 5.6%, rvol 0.1x"
+    },
+    {
+      "ticker": "DFNS",
+      "name": "T3 Defense Inc",
+      "price": 2.032,
+      "change_pct": -19.649122807017545,
+      "volume": 6495607,
+      "rvol": 6.1480747770762125,
+      "market_cap": 7709019.36,
+      "float_shares": 3063997,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": true,
+      "reason": "Bounce candidate"
     },
     {
       "ticker": "ELPW",
       "name": "Elong Power Holding Limited",
-      "price": 1.15,
+      "price": 1.16,
       "change_pct": -48.00796812749004,
-      "volume": 63792422,
-      "rvol": 4.803460679568628,
+      "volume": 63811773,
+      "rvol": 4.804917776896119,
       "market_cap": 1216376.15,
       "float_shares": 805497,
       "cap_size": "nano-cap",
@@ -3123,19 +3132,49 @@
       "reason": "Filtered: mktcap $4.2M, move 0.6%, vol 7,289, vol/float 0.00x"
     },
     {
+      "ticker": "VRAX",
+      "name": "Virax Biolabs Group Ltd",
+      "price": 1.05,
+      "change_pct": -1.6666666666666683,
+      "volume": 3698306,
+      "rvol": 1.9979071790134462,
+      "market_cap": 1587085.84,
+      "float_shares": 1324085,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: mktcap $1.6M, move -1.7%"
+    },
+    {
+      "ticker": "INTS",
+      "name": "INTENSITY THERAPEUTICS INC",
+      "price": 2.76,
+      "change_pct": -11.428571428571425,
+      "volume": 50209,
+      "rvol": 3.99944240879401,
+      "market_cap": 10121124.9,
+      "float_shares": 3136989,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 50,209, vol/float 0.02x"
+    },
+    {
       "ticker": "MERC",
       "name": "Mercer Intl",
-      "price": 0.222,
+      "price": 0.223,
       "change_pct": -0.28000000000000247,
-      "volume": 6155065,
-      "rvol": 0.06993639355018962,
+      "volume": 6162494,
+      "rvol": 0.0700208049199614,
       "market_cap": 16707595.63,
       "float_shares": 38329462,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "Canada",
       "passed": false,
-      "reason": "Filtered: price $0.222, move -0.3%, rvol 0.1x, vol/float 0.16x"
+      "reason": "Filtered: price $0.223, move -0.3%, rvol 0.1x, vol/float 0.16x"
     },
     {
       "ticker": "AXNX",
@@ -3151,51 +3190,21 @@
       "country": "China / Hong Kong",
       "passed": false,
       "reason": "Filtered: move 4.2%, rvol 0.0x, vol 46,393, vol/float 0.01x"
-    },
-    {
-      "ticker": "DFNS",
-      "name": "T3 Defense Inc",
-      "price": 2.05,
-      "change_pct": -19.649122807017545,
-      "volume": 6487071,
-      "rvol": 6.139995475742693,
-      "market_cap": 7709019.36,
-      "float_shares": 3063997,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Bounce candidate"
-    },
-    {
-      "ticker": "CVRX",
-      "name": "Cvrx, Inc.",
-      "price": 1.32,
-      "change_pct": -6.962025316455701,
-      "volume": 299299,
-      "rvol": 0.7808519741819681,
-      "market_cap": 39163147.59,
-      "float_shares": 22650531,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: move -7.0%, rvol 0.8x, vol/float 0.01x"
     }
   ],
   "live_quotes": {
-    "CDT": {
-      "price": 0.0423,
-      "open": 0.047,
-      "high": 0.047,
-      "low": 0.039,
-      "close": 0.0423,
-      "preClose": 0.0509,
-      "volume": 91700797,
-      "changeRatio": -0.169,
-      "marketValue": 394354.65,
-      "name": "CDT Equity",
-      "_timestamp": "2026-11-05T23:59:29.012992Z"
+    "STAK": {
+      "price": 1.79,
+      "open": 1.44,
+      "high": 2.05,
+      "low": 1.4,
+      "close": 1.79,
+      "preClose": 1.43,
+      "volume": 7627160,
+      "changeRatio": 0.2517,
+      "marketValue": 34386524.71,
+      "name": "STAK inc.",
+      "_timestamp": "2026-11-06T00:14:29.007177Z"
     },
     "DFNS": {
       "price": 2.29,
@@ -3204,63 +3213,24 @@
       "low": 2.21,
       "close": 2.29,
       "preClose": 2.85,
-      "volume": 6487071,
+      "volume": 6495608,
       "changeRatio": -0.1965,
       "marketValue": 7709019.36,
       "name": "T3 Defense Inc",
-      "_timestamp": "2026-11-05T23:59:29.013019Z"
+      "_timestamp": "2026-11-06T00:14:29.007200Z"
     },
-    "DVLT": {
-      "price": 0.0592,
-      "open": 0.0683,
-      "high": 0.0683,
-      "low": 0.0505,
-      "close": 0.0592,
-      "preClose": 0.069,
-      "volume": 172983253,
-      "changeRatio": -0.142,
-      "marketValue": 56223933.42,
-      "name": "Datavault AI Inc",
-      "_timestamp": "2026-11-05T23:59:29.013031Z"
-    },
-    "STAK": {
-      "price": 1.79,
-      "open": 1.44,
-      "high": 2.05,
-      "low": 1.4,
-      "close": 1.79,
-      "preClose": 1.43,
-      "volume": 7600937,
-      "changeRatio": 0.2517,
-      "marketValue": 34386524.71,
-      "name": "STAK inc.",
-      "_timestamp": "2026-11-05T23:59:29.013040Z"
-    },
-    "INOD": {
-      "price": 38.62,
-      "open": 41.1,
-      "high": 41.67,
-      "low": 36.26,
-      "close": 38.62,
-      "preClose": 43.3,
-      "volume": 3493884,
-      "changeRatio": -0.1081,
-      "marketValue": 1327857981.62,
-      "name": "Innodata",
-      "_timestamp": "2026-11-05T23:59:29.013049Z"
-    },
-    "RCT": {
-      "price": 0.03,
-      "open": 0.0263,
-      "high": 0.0302,
-      "low": 0.0263,
-      "close": 0.03,
-      "preClose": 0.0334,
-      "volume": 73652396,
-      "changeRatio": -0.1018,
-      "marketValue": 2307260.55,
-      "name": "RedCloud",
-      "_timestamp": "2026-11-05T23:59:29.013056Z"
+    "JDZG": {
+      "price": 0.3948,
+      "open": 0.3518,
+      "high": 0.4326,
+      "low": 0.3318,
+      "close": 0.3948,
+      "preClose": 0.3016,
+      "volume": 79694331,
+      "changeRatio": 0.309,
+      "marketValue": 2144360.94,
+      "name": "Jiade Limited",
+      "_timestamp": "2026-11-06T00:14:29.007208Z"
     },
     "CIIT": {
       "price": 1.55,
@@ -3269,26 +3239,65 @@
       "low": 1.52,
       "close": 1.55,
       "preClose": 1.708,
-      "volume": 6070857,
+      "volume": 6263634,
       "changeRatio": -0.0922,
       "marketValue": 1499456.05,
       "name": "Tianci Intrnl",
-      "_timestamp": "2026-11-05T23:59:29.013062Z"
+      "_timestamp": "2026-11-06T00:14:29.007214Z"
+    },
+    "RCT": {
+      "price": 0.03,
+      "open": 0.0263,
+      "high": 0.0302,
+      "low": 0.0263,
+      "close": 0.03,
+      "preClose": 0.0334,
+      "volume": 89538249,
+      "changeRatio": -0.1018,
+      "marketValue": 2307260.55,
+      "name": "RedCloud",
+      "_timestamp": "2026-11-06T00:14:29.007220Z"
+    },
+    "DVLT": {
+      "price": 0.0592,
+      "open": 0.0683,
+      "high": 0.0683,
+      "low": 0.0505,
+      "close": 0.0592,
+      "preClose": 0.069,
+      "volume": 175614171,
+      "changeRatio": -0.142,
+      "marketValue": 56223933.42,
+      "name": "Datavault AI Inc",
+      "_timestamp": "2026-11-06T00:14:29.007226Z"
+    },
+    "CDT": {
+      "price": 0.0423,
+      "open": 0.047,
+      "high": 0.047,
+      "low": 0.039,
+      "close": 0.0423,
+      "preClose": 0.0509,
+      "volume": 94729340,
+      "changeRatio": -0.169,
+      "marketValue": 394354.65,
+      "name": "CDT Equity",
+      "_timestamp": "2026-11-06T00:14:29.007232Z"
     }
   },
   "previous_live_quotes": {
-    "CDT": {
-      "price": 0.0423,
-      "open": 0.047,
-      "high": 0.047,
-      "low": 0.039,
-      "close": 0.0423,
-      "preClose": 0.0509,
-      "volume": 91503832,
-      "changeRatio": -0.169,
-      "marketValue": 394354.65,
-      "name": "CDT Equity",
-      "_timestamp": "2026-11-05T23:58:32.825556Z"
+    "DVLT": {
+      "price": 0.0592,
+      "open": 0.0683,
+      "high": 0.0683,
+      "low": 0.0505,
+      "close": 0.0592,
+      "preClose": 0.069,
+      "volume": 175457163,
+      "changeRatio": -0.142,
+      "marketValue": 56223933.42,
+      "name": "Datavault AI Inc",
+      "_timestamp": "2026-11-06T00:13:27.614687Z"
     },
     "STAK": {
       "price": 1.79,
@@ -3297,24 +3306,11 @@
       "low": 1.4,
       "close": 1.79,
       "preClose": 1.43,
-      "volume": 7598901,
+      "volume": 7627160,
       "changeRatio": 0.2517,
       "marketValue": 34386524.71,
       "name": "STAK inc.",
-      "_timestamp": "2026-11-05T23:58:32.825582Z"
-    },
-    "CIIT": {
-      "price": 1.55,
-      "open": 1.65,
-      "high": 1.71,
-      "low": 1.52,
-      "close": 1.55,
-      "preClose": 1.708,
-      "volume": 6067656,
-      "changeRatio": -0.0922,
-      "marketValue": 1499456.05,
-      "name": "Tianci Intrnl",
-      "_timestamp": "2026-11-05T23:58:32.825595Z"
+      "_timestamp": "2026-11-06T00:13:27.614712Z"
     },
     "DFNS": {
       "price": 2.29,
@@ -3323,11 +3319,11 @@
       "low": 2.21,
       "close": 2.29,
       "preClose": 2.85,
-      "volume": 6486526,
+      "volume": 6495478,
       "changeRatio": -0.1965,
       "marketValue": 7709019.36,
       "name": "T3 Defense Inc",
-      "_timestamp": "2026-11-05T23:58:32.825604Z"
+      "_timestamp": "2026-11-06T00:13:27.614723Z"
     },
     "RCT": {
       "price": 0.03,
@@ -3336,44 +3332,44 @@
       "low": 0.0263,
       "close": 0.03,
       "preClose": 0.0334,
-      "volume": 72230801,
+      "volume": 88554557,
       "changeRatio": -0.1018,
       "marketValue": 2307260.55,
       "name": "RedCloud",
-      "_timestamp": "2026-11-05T23:58:32.825612Z"
+      "_timestamp": "2026-11-06T00:13:27.614731Z"
     },
-    "INOD": {
-      "price": 38.62,
-      "open": 41.1,
-      "high": 41.67,
-      "low": 36.26,
-      "close": 38.62,
-      "preClose": 43.3,
-      "volume": 3493884,
-      "changeRatio": -0.1081,
-      "marketValue": 1327857981.62,
-      "name": "Innodata",
-      "_timestamp": "2026-11-05T23:58:32.825620Z"
+    "CDT": {
+      "price": 0.0423,
+      "open": 0.047,
+      "high": 0.047,
+      "low": 0.039,
+      "close": 0.0423,
+      "preClose": 0.0509,
+      "volume": 94493271,
+      "changeRatio": -0.169,
+      "marketValue": 394354.65,
+      "name": "CDT Equity",
+      "_timestamp": "2026-11-06T00:13:27.614739Z"
     },
-    "DVLT": {
-      "price": 0.0592,
-      "open": 0.0683,
-      "high": 0.0683,
-      "low": 0.0505,
-      "close": 0.0592,
-      "preClose": 0.069,
-      "volume": 172886235,
-      "changeRatio": -0.142,
-      "marketValue": 56223933.42,
-      "name": "Datavault AI Inc",
-      "_timestamp": "2026-11-05T23:58:32.825626Z"
+    "CIIT": {
+      "price": 1.55,
+      "open": 1.65,
+      "high": 1.71,
+      "low": 1.52,
+      "close": 1.55,
+      "preClose": 1.708,
+      "volume": 6253220,
+      "changeRatio": -0.0922,
+      "marketValue": 1499456.05,
+      "name": "Tianci Intrnl",
+      "_timestamp": "2026-11-06T00:13:27.614745Z"
     }
   },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "10:59 AM AEDT",
+    "market_time": "11:14 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
