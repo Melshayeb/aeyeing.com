@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzMoEg Lifestyle Coach</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --input: #111827;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --ok: #22c55e;
+            --error: #ef4444;
+            --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        .banner {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #334155;
+            flex-wrap: wrap;
+        }
+        .banner h1 { margin: 0; font-size: 1.5rem; }
+        .badge {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: .25rem .5rem;
+            border-radius: 9999px;
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--card);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+        h2 { margin-top: 0; color: #34d399; }
+        label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; color: var(--muted); }
+        input[type="text"], input[type="email"], input[type="number"], textarea, select {
+            width: 100%;
+            background: var(--input);
+            border: 1px solid #374151;
+            border-radius: .5rem;
+            padding: .65rem .85rem;
+            color: var(--text);
+            font: inherit;
+        }
+        textarea { min-height: 90px; resize: vertical; }
+        select { appearance: auto; cursor: pointer; }
+        .row { display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; }
+        .row > * { flex: 1; min-width: 140px; }
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: .5rem;
+            padding: .75rem 1.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background .2s;
+            margin-top: 1rem;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn:disabled { opacity: .6; cursor: not-allowed; }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-secondary:hover { background: rgba(16,185,129,.1); }
+        .status {
+            margin-top: 1rem;
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            font-size: .9rem;
+            display: none;
+        }
+        .status.ok { background: rgba(34,197,94,.15); color: #6ee7b7; display: block; }
+        .status.error { background: rgba(239,68,68,.15); color: #fca5a5; display: block; }
+        .status.info { background: rgba(59,130,246,.15); color: #93c5fd; display: block; }
+        .result {
+            white-space: pre-wrap;
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            border-radius: .5rem;
+            padding: 1rem;
+            font-size: .95rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .result table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: .75rem 0;
+        }
+        .result th, .result td {
+            border: 1px solid #334155;
+            padding: .5rem;
+            text-align: left;
+        }
+        .result th { background: #1e293b; }
+        .checkbox-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: .5rem;
+        }
+        .checkbox-row label {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            margin: 0;
+            cursor: pointer;
+            color: var(--text);
+        }
+        .limits {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: .5rem;
+        }
+        .home-link {
+            margin-left: auto;
+            font-size: .9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>🥗 OzMoEg Lifestyle Coach</h1>
+        <span class="badge">AI Nutritionist & Trainer</span>
+        <a href="index.html" class="home-link">← Back to Aeyeing</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Your Profile</h2>
+            <form id="coachForm">
+                <div class="row">
+                    <div>
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" step="0.1" value="62.3" required>
+                    </div>
+                    <div>
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" step="0.1" value="174" required>
+                    </div>
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="number" id="age" value="43" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <label for="gender">Gender</label>
+                        <select id="gender">
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="body_fat">Body fat %</label>
+                        <input type="number" id="body_fat" step="0.1" value="14.5">
+                    </div>
+                    <div>
+                        <label for="muscle_mass">Muscle mass (kg)</label>
+                        <input type="number" id="muscle_mass" step="0.1" value="51.2">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <label for="goal">Goal</label>
+                        <select id="goal">
+                            <option value="moderate_loss" selected>Moderate fat loss</option>
+                            <option value="aggressive_loss">Aggressive fat loss</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="muscle_gain">Muscle gain</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="activity">Activity factor</label>
+                        <select id="activity">
+                            <option value="1.2">Sedentary (1.2)</option>
+                            <option value="1.375">Light (1.375)</option>
+                            <option value="1.55" selected>Moderate (1.55)</option>
+                            <option value="1.725">Active (1.725)</option>
+                            <option value="1.9">Very active (1.9)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Dietary restrictions</label>
+                <div class="checkbox-row">
+                    <label><input type="checkbox" name="dietary" value="no chicken"> No chicken</label>
+                    <label><input type="checkbox" name="dietary" value="no eggs" checked> No eggs</label>
+                    <label><input type="checkbox" name="dietary" value="no dairy"> No dairy</label>
+                    <label><input type="checkbox" name="dietary" value="no gluten"> No gluten</label>
+                    <label><input type="checkbox" name="dietary" value="vegetarian"> Vegetarian</label>
+                </div>
+
+                <label for="avoid_foods">Foods to avoid (comma separated)</label>
+                <input type="text" id="avoid_foods" value="chicken, eggs">
+
+                <div class="row">
+                    <div>
+                        <label for="meals_per_day">Meals per day</label>
+                        <input type="number" id="meals_per_day" value="4" min="1" max="8">
+                    </div>
+                    <div>
+                        <label for="training_days">Training days/week</label>
+                        <input type="number" id="training_days" value="4" min="0" max="7">
+                    </div>
+                    <div>
+                        <label for="training_type">Training focus</label>
+                        <select id="training_type">
+                            <option value="strength" selected>Strength</option>
+                            <option value="hypertrophy">Hypertrophy</option>
+                            <option value="fat_loss">Fat loss</option>
+                            <option value="cardio">Cardio only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="plan_type">Plan type</label>
+                <select id="plan_type">
+                    <option value="daily" selected>Daily</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+
+                <div class="checkbox-row">
+                    <label><input type="checkbox" id="generate_meal" checked> Meal plan</label>
+                    <label><input type="checkbox" id="generate_training" checked> Training plan</label>
+                </div>
+
+                <label for="already_eaten">Already eaten today</label>
+                <textarea id="already_eaten" placeholder="200 g salmon, 100 g rice, 1 apple"></textarea>
+
+                <label for="training_done">Training done today</label>
+                <textarea id="training_done" placeholder="Upper body: bench 3x8 @ 70kg"></textarea>
+
+                <label for="email">Email plan to (optional)</label>
+                <input type="email" id="email" placeholder="you@example.com">
+
+                <button type="submit" class="btn" id="submitBtn">Generate Plan</button>
+                <button type="button" class="btn btn-secondary" id="emailBtn" style="display:none;margin-left:.5rem;">Email Result</button>
+                <div class="limits" id="limits"></div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Your Plan</h2>
+            <div id="status" class="status"></div>
+            <div id="result" class="result" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const API_BASE = params.get('api') || localStorage.getItem('lifestyle_api_base') || 'https://ozmoeg-lifestyle-coach.aeyeing.com';
+        let currentJobId = null;
+        let currentResult = null;
+
+        async function checkHealth() {
+            try {
+                const r = await fetch(`${API_BASE}/health`, { method: 'GET' });
+                const data = await r.json();
+                document.getElementById('limits').textContent =
+                    `Daily uses: ${data.limits.ip_used}/${data.limits.ip_limit} per IP, ${data.limits.global_used}/${data.limits.global_limit} global`;
+                return true;
+            } catch (e) {
+                showStatus('API not reachable. Make sure the OzMoEg Lifestyle Coach server is running on port 8779.', 'error');
+                document.getElementById('limits').textContent = 'API offline';
+                return false;
+            }
+        }
+
+        function showStatus(msg, type) {
+            const el = document.getElementById('status');
+            el.textContent = msg;
+            el.className = 'status ' + type;
+        }
+
+        function getCheckboxValues(name) {
+            return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+        }
+
+        document.getElementById('coachForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('emailBtn').style.display = 'none';
+            showStatus('Submitting plan request…', 'info');
+
+            const payload = {
+                weight: parseFloat(document.getElementById('weight').value),
+                height: parseFloat(document.getElementById('height').value),
+                age: parseFloat(document.getElementById('age').value),
+                gender: document.getElementById('gender').value,
+                body_fat: parseFloat(document.getElementById('body_fat').value) || 0,
+                muscle_mass: parseFloat(document.getElementById('muscle_mass').value) || 0,
+                goal: document.getElementById('goal').value,
+                activity: parseFloat(document.getElementById('activity').value),
+                dietary_restrictions: getCheckboxValues('dietary'),
+                avoid_foods: document.getElementById('avoid_foods').value.split(',').map(s => s.trim()).filter(Boolean),
+                meals_per_day: parseInt(document.getElementById('meals_per_day').value) || 3,
+                training_days: parseInt(document.getElementById('training_days').value) || 4,
+                training_type: document.getElementById('training_type').value,
+                plan_type: document.getElementById('plan_type').value,
+                generate_meal: document.getElementById('generate_meal').checked,
+                generate_training: document.getElementById('generate_training').checked,
+                already_eaten: document.getElementById('already_eaten').value,
+                training_done: document.getElementById('training_done').value,
+                email: document.getElementById('email').value,
+            };
+
+            try {
+                const r = await fetch(`${API_BASE}/plan`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+                const data = await r.json();
+                if (!r.ok) {
+                    throw new Error(data.error || `HTTP ${r.status}`);
+                }
+                currentJobId = data.job_id;
+                showStatus(`Job ${currentJobId} started. Polling…`, 'info');
+                pollJob(currentJobId);
+            } catch (err) {
+                showStatus('Error: ' + err.message, 'error');
+                btn.disabled = false;
+            }
+        });
+
+        async function pollJob(jobId) {
+            const btn = document.getElementById('submitBtn');
+            const maxAttempts = 60;
+            for (let i = 0; i < maxAttempts; i++) {
+                await new Promise(r => setTimeout(r, 2000));
+                try {
+                    const r = await fetch(`${API_BASE}/status?job_id=${jobId}`);
+                    const data = await r.json();
+                    if (data.status === 'done') {
+                        currentResult = data.result;
+                        document.getElementById('result').textContent = data.result.plan_text;
+                        document.getElementById('result').style.display = 'block';
+                        showStatus('Plan ready. BMR: ' + data.result.budget.bmr + ' | TDEE: ' + data.result.budget.tdee + ' | Target: ' + data.result.budget.target_calories, 'ok');
+                        document.getElementById('emailBtn').style.display = document.getElementById('email').value ? 'inline-block' : 'none';
+                        btn.disabled = false;
+                        await checkHealth();
+                        return;
+                    } else if (data.status === 'error') {
+                        throw new Error(data.message);
+                    } else {
+                        showStatus(`Status: ${data.message} (poll ${i+1})`, 'info');
+                    }
+                } catch (err) {
+                    showStatus('Polling error: ' + err.message, 'error');
+                    btn.disabled = false;
+                    return;
+                }
+            }
+            showStatus('Polling timed out. Check status manually.', 'error');
+            btn.disabled = false;
+        }
+
+        document.getElementById('emailBtn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            if (!email || !currentJobId) return;
+            try {
+                const r = await fetch(`${API_BASE}/email`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ job_id: currentJobId, email }),
+                });
+                const data = await r.json();
+                if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+                showStatus('Plan emailed to ' + email, 'ok');
+            } catch (err) {
+                showStatus('Email error: ' + err.message, 'error');
+            }
+        });
+
+        checkHealth();
+    </script>
+</body>
+</html>
