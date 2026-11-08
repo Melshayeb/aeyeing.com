@@ -283,22 +283,33 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        let API_BASE = params.get('api') || localStorage.getItem('lifestyle_api_base') || 'https://ozmoeg-lifestyle-coach.aeyeing.com';
+        let API_BASE = params.get('api') || localStorage.getItem('lifestyle_api_base') || 'https://trip-planner.aeyeing.com/lifestyle';
+        const PROXY_API = 'https://trip-planner.aeyeing.com/lifestyle';
         const PUBLIC_API = 'https://ozmoeg-lifestyle-coach.aeyeing.com';
         const LOCAL_API = 'http://127.0.0.1:8779';
+
+        async function tryApi(base) {
+            try {
+                const r = await fetch(`${base}/health`, { method: 'GET', cache: 'no-store' });
+                if (r.ok) return true;
+            } catch (e) {
+                console.log(base, 'unreachable:', e);
+            }
+            return false;
+        }
 
         async function resolveApiBase() {
             // If user passed ?api=, respect it
             if (params.get('api')) return;
-            try {
-                const r = await fetch(`${PUBLIC_API}/health`, { method: 'GET', cache: 'no-store' });
-                if (r.ok) {
-                    API_BASE = PUBLIC_API;
-                    localStorage.setItem('lifestyle_api_base', PUBLIC_API);
-                    return;
-                }
-            } catch (e) {
-                console.log('Public API unreachable, trying local');
+            if (await tryApi(PROXY_API)) {
+                API_BASE = PROXY_API;
+                localStorage.setItem('lifestyle_api_base', PROXY_API);
+                return;
+            }
+            if (await tryApi(PUBLIC_API)) {
+                API_BASE = PUBLIC_API;
+                localStorage.setItem('lifestyle_api_base', PUBLIC_API);
+                return;
             }
             API_BASE = LOCAL_API;
             localStorage.setItem('lifestyle_api_base', LOCAL_API);
