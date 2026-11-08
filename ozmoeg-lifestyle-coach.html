@@ -393,11 +393,11 @@
 
         async function pollJob(jobId) {
             const btn = document.getElementById('submitBtn');
-            const maxAttempts = 60;
+            const maxAttempts = 120;  // up to ~6 min with 3s interval
             for (let i = 0; i < maxAttempts; i++) {
-                await new Promise(r => setTimeout(r, 2000));
+                await new Promise(r => setTimeout(r, 3000));
                 try {
-                    const r = await fetch(`${API_BASE}/status?job_id=${jobId}`);
+                    const r = await fetch(`${API_BASE}/status?job_id=${jobId}&_=${Date.now()}`);
                     const data = await r.json();
                     if (data.status === 'done') {
                         currentResult = data.result;
@@ -419,7 +419,7 @@
                     return;
                 }
             }
-            showStatus('Polling timed out. Check status manually.', 'error');
+            showStatus('Polling timed out. The job may still be running; check back in a minute or refresh the page.', 'error');
             btn.disabled = false;
         }
 
