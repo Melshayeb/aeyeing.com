@@ -94,6 +94,35 @@
             color: var(--accent);
         }
         .btn-secondary:hover { background: rgba(16,185,129,.1); }
+        .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.92);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            text-align: center;
+            padding: 1rem;
+        }
+        .loader.active { display: flex; }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #334155;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-status {
+            color: var(--text);
+            font-size: 1.1rem;
+            max-width: 500px;
+        }
         .status {
             margin-top: 1rem;
             padding: .75rem 1rem;
@@ -269,7 +298,6 @@
                 <input type="email" id="email" placeholder="you@example.com">
 
                 <button type="submit" class="btn" id="submitBtn">Generate Plan</button>
-                <button type="button" class="btn btn-secondary" id="emailBtn" style="display:none;margin-left:.5rem;">Email Result</button>
                 <div class="limits" id="limits"></div>
             </form>
         </div>
@@ -278,7 +306,19 @@
             <h2>Your Plan</h2>
             <div id="status" class="status"></div>
             <div id="result" class="result" style="display:none;"></div>
+            <div class="btn-row" id="resultActions" style="display:none;margin-top:1rem;">
+                <button type="button" class="btn" id="regenerateBtn">🔄 Regenerate New Variation</button>
+                <button type="button" class="btn btn-secondary" id="emailBtn">Email Result</button>
+            </div>
+            <div id="timeNote" class="limits" style="display:none;margin-top:1rem;">
+                Suggested meal spacing: breakfast within 1 hour of waking, lunch 4–5 hours later, dinner 4–5 hours after lunch, and any snack 2–3 hours before or after a main meal. Adjust to your schedule and hunger.
+            </div>
         </div>
+    </div>
+
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <div class="loader-status" id="loaderStatus">Preparing your plan…</div>
     </div>
 
     <script>
@@ -317,6 +357,27 @@
         let currentJobId = null;
         let currentResult = null;
 
+        function setLoader(show, text) {
+            const el = document.getElementById('loader');
+            const status = document.getElementById('loaderStatus');
+            if (text) status.textContent = text;
+            el.classList.toggle('active', show);
+        }
+
+        function showResult(text) {
+            const resEl = document.getElementById('result');
+            resEl.textContent = text;
+            resEl.style.display = 'block';
+            document.getElementById('resultActions').style.display = 'flex';
+            document.getElementById('timeNote').style.display = 'block';
+        }
+
+        function clearResult() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('resultActions').style.display = 'none';
+            document.getElementById('timeNote').style.display = 'none';
+        }
+
         async function checkHealth() {
             await resolveApiBase();
             try {
@@ -326,6 +387,7 @@
                     `Daily uses: ${data.limits.ip_used}/${data.limits.ip_limit} per IP, ${data.limits.global_used}/${data.limits.global_limit} global`;
                 return true;
             } catch (e) {
+                setLoader(false);
                 showStatus('API not reachable. Make sure the OzMoEg Lifestyle Coach server is running on port 8779.', 'error');
                 document.getElementById('limits').textContent = 'API offline';
                 return false;
@@ -344,11 +406,14 @@
 
         document.getElementById('coachForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            await startGeneration();
+        });
+
+        async function startGeneration() {
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
-            document.getElementById('result').style.display = 'none';
-            document.getElementById('emailBtn').style.display = 'none';
-            showStatus('Submitting plan request…', 'info');
+            clearResult();
+            setLoader(true, 'Submitting plan request…');
 
             const payload = {
                 weight: parseFloat(document.getElementById('weight').value),
@@ -383,13 +448,14 @@
                     throw new Error(data.error || `HTTP ${r.status}`);
                 }
                 currentJobId = data.job_id;
-                showStatus(`Job ${currentJobId} started. Polling…`, 'info');
+                setLoader(true, `Job ${currentJobId} started. Building your plan…`);
                 pollJob(currentJobId);
             } catch (err) {
+                setLoader(false);
                 showStatus('Error: ' + err.message, 'error');
                 btn.disabled = false;
             }
-        });
+        }
 
         async function pollJob(jobId) {
             const btn = document.getElementById('submitBtn');
@@ -401,8 +467,8 @@
                     const data = await r.json();
                     if (data.status === 'done') {
                         currentResult = data.result;
-                        document.getElementById('result').textContent = data.result.plan_text;
-                        document.getElementById('result').style.display = 'block';
+                        setLoader(false);
+                        showResult(data.result.plan_text);
                         showStatus('Plan ready. BMR: ' + data.result.budget.bmr + ' | TDEE: ' + data.result.budget.tdee + ' | Target: ' + data.result.budget.target_calories, 'ok');
                         document.getElementById('emailBtn').style.display = document.getElementById('email').value ? 'inline-block' : 'none';
                         btn.disabled = false;
@@ -411,17 +477,23 @@
                     } else if (data.status === 'error') {
                         throw new Error(data.message);
                     } else {
-                        showStatus(`Status: ${data.message} (poll ${i+1})`, 'info');
+                        setLoader(true, `${data.message} (poll ${i+1})`);
                     }
                 } catch (err) {
+                    setLoader(false);
                     showStatus('Polling error: ' + err.message, 'error');
                     btn.disabled = false;
                     return;
                 }
             }
+            setLoader(false);
             showStatus('Polling timed out. The job may still be running; check back in a minute or refresh the page.', 'error');
             btn.disabled = false;
         }
+
+        document.getElementById('regenerateBtn').addEventListener('click', async () => {
+            await startGeneration();
+        });
 
         document.getElementById('emailBtn').addEventListener('click', async () => {
             const email = document.getElementById('email').value;
