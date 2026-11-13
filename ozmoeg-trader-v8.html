@@ -1427,6 +1427,64 @@
         .bubble-modal-close:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
         .bubble-modal-refresh { height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; padding: 0 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
         .bubble-modal-refresh:hover { background: var(--accent-teal); color: #fff; border-color: var(--accent-teal); }
+        /* Moving ticker flap in bubble header */
+        .bubble-ticker-flap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #0f1720 0%, #0b1220 100%);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.25rem 0.6rem;
+            min-width: 118px;
+            height: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bubble-ticker-flap::before,
+        .bubble-ticker-flap::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+        .bubble-ticker-flap::before { top: 24px; }
+        .bubble-ticker-flap::after { display: none; }
+        .bubble-ticker-label {
+            font-size: 0.55rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .bubble-ticker-sym {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .bubble-ticker-flap.active {
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 10px rgba(20,184,166,0.35), inset 0 0 12px rgba(20,184,166,0.08);
+        }
+        .bubble-ticker-flap.pulse .bubble-ticker-sym {
+            animation: flapPulse 0.4s ease-in-out 3;
+        }
+        @keyframes flapPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        @media (max-width: 720px) {
+            .bubble-ticker-flap { min-width: 98px; padding: 0.2rem 0.4rem; }
+            .bubble-ticker-sym { font-size: 0.95rem; letter-spacing: 0.08em; }
+        }
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
         .bubble-modal-meta .active-refresh { color: var(--accent-teal); font-weight: 600; }
@@ -4128,6 +4186,19 @@
             window._bubbleViewPreviousTickersInitialized = false;
             window._bubbleViewLastClicked = {};
             window._bubbleNewTickers = {};
+            window._bubbleFlapQueue = [];
+            window._bubbleFlapTimer = null;
+            window._bubbleFlapCurrent = null;
+
+            const BUBBLE_FLAP_VOLUME_THRESHOLD = 100000;
+            const BUBBLE_FLAP_DISPLAY_MS = 5000;
+            const BUBBLE_VIEW_LABELS = {
+                setup: 'Alerts/Candidates',
+                gainers: 'Top 10 Gainers',
+                bouncers: 'Top 10 Bouncers',
+                volume: 'Top 10 Volume',
+                gapers: 'Top 10 Gapers'
+            };
 
             function setBubbleStatus(text) {
                 const el = document.getElementById('bubble-chart-status');
@@ -4141,20 +4212,23 @@
                 }
             }
 
-            function getBubbleViewTickers(viewMode) {
-                let rows = [];
+            function getBubbleViewRows(viewMode) {
                 if (viewMode === 'setup') {
-                    rows = window._lastLiveResults || [];
+                    return window._lastLiveResults || [];
                 } else if (viewMode === 'gainers') {
-                    rows = getTopN(window._lastAllGainers || [], 'change_pct', 10, true);
+                    return getTopN(window._lastAllGainers || [], 'change_pct', 10, true);
                 } else if (viewMode === 'bouncers') {
-                    rows = getTopN(window._lastBounceResults || [], 'change_pct', 10, true);
+                    return getTopN(window._lastBounceResults || [], 'change_pct', 10, true);
                 } else if (viewMode === 'volume') {
-                    rows = getTopN(window._lastAllGainers || [], 'volume', 10, false);
+                    return getTopN(window._lastAllGainers || [], 'volume', 10, false);
                 } else if (viewMode === 'gapers') {
-                    rows = getTopN((window._lastAllGainers || []).filter(g => Math.abs(g?.change_pct || 0) > 10), 'change_pct', 10, true);
+                    return getTopN((window._lastAllGainers || []).filter(g => Math.abs(g?.change_pct || 0) > 10), 'change_pct', 10, true);
                 }
-                return rows.map(r => (r?.ticker || '').toUpperCase()).filter(Boolean).sort();
+                return [];
+            }
+
+            function getBubbleViewTickers(viewMode) {
+                return getBubbleViewRows(viewMode).map(r => (r?.ticker || '').toUpperCase()).filter(Boolean).sort();
             }
 
             function updateBubbleTabIndicators() {
@@ -4185,6 +4259,66 @@
                     window._bubbleViewPreviousTickers = currentSet;
                     window._bubbleViewPreviousTickersInitialized = true;
                 }
+                detectNewBubbleFlapTickers(currentSet);
+            }
+
+            function detectNewBubbleFlapTickers(currentSet) {
+                const views = ['setup', 'gainers', 'bouncers', 'volume', 'gapers'];
+                const prevSet = window._bubbleViewPreviousTickers || {};
+                const queuedNow = new Set();
+                views.forEach(v => {
+                    const prev = prevSet[v] || [];
+                    const curr = currentSet[v] || [];
+                    const newTickers = curr.filter(t => !prev.includes(t));
+                    if (!newTickers.length) return;
+                    const rows = getBubbleViewRows(v);
+                    newTickers.forEach(ticker => {
+                        if (queuedNow.has(ticker)) return;
+                        const row = rows.find(r => (r?.ticker || '').toUpperCase() === ticker);
+                        const volume = row?.volume || row?.tape?.volume || 0;
+                        if (volume >= BUBBLE_FLAP_VOLUME_THRESHOLD) {
+                            window._bubbleFlapQueue.push({ ticker, view: v, label: BUBBLE_VIEW_LABELS[v] });
+                            queuedNow.add(ticker);
+                        }
+                    });
+                });
+                if (window._bubbleFlapQueue.length && !window._bubbleFlapCurrent) {
+                    runBubbleFlap();
+                }
+            }
+
+            function runBubbleFlap() {
+                if (!window._bubbleFlapQueue.length) {
+                    clearBubbleFlap();
+                    return;
+                }
+                const item = window._bubbleFlapQueue.shift();
+                window._bubbleFlapCurrent = item;
+                const flap = document.getElementById('bubble-ticker-flap');
+                const symEl = document.getElementById('bubble-ticker-sym');
+                const labelEl = document.getElementById('bubble-ticker-label');
+                if (flap && symEl && labelEl) {
+                    symEl.textContent = item.ticker.padEnd(7, ' ');
+                    labelEl.textContent = item.label;
+                    flap.classList.add('active', 'pulse');
+                }
+                window._bubbleFlapTimer = setTimeout(() => {
+                    const flap = document.getElementById('bubble-ticker-flap');
+                    if (flap) flap.classList.remove('active', 'pulse');
+                    window._bubbleFlapCurrent = null;
+                    runBubbleFlap();
+                }, BUBBLE_FLAP_DISPLAY_MS);
+            }
+
+            function clearBubbleFlap() {
+                window._bubbleFlapCurrent = null;
+                if (window._bubbleFlapTimer) { clearTimeout(window._bubbleFlapTimer); window._bubbleFlapTimer = null; }
+                const flap = document.getElementById('bubble-ticker-flap');
+                const symEl = document.getElementById('bubble-ticker-sym');
+                const labelEl = document.getElementById('bubble-ticker-label');
+                if (flap) flap.classList.remove('active', 'pulse');
+                if (symEl) symEl.textContent = 'WAIT';
+                if (labelEl) labelEl.textContent = '—';
             }
 
             function getTopN(list, field, n, absDesc) {
@@ -5116,6 +5250,10 @@
 </div>
 </div>
 <div style="display:flex;align-items:center;gap:0.5rem;">
+<div class="bubble-ticker-flap" id="bubble-ticker-flap">
+  <div class="bubble-ticker-label" id="bubble-ticker-label">—</div>
+  <div class="bubble-ticker-sym" id="bubble-ticker-sym">WAIT</div>
+</div>
 <button class="bubble-modal-refresh" id="bubble-modal-refresh" title="Refresh scanner data" type="button">🔄 Refresh</button>
 <button class="bubble-modal-close" id="bubble-modal-close" title="Close bubble view" type="button">×</button>
 </div>
