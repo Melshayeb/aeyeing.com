@@ -4198,6 +4198,8 @@
             window._bubbleFlapTimer = null;
             window._bubbleFlapCurrent = null;
             window._bubbleFlapSeen = new Map();
+            window._bubbleFlapPreviousTickers = {};
+            window._bubbleFlapPreviousInitialized = false;
 
             const BUBBLE_FLAP_VOLUME_THRESHOLD = 100000;
             const BUBBLE_FLAP_DISPLAY_MS = 5000;
@@ -4274,7 +4276,7 @@
 
             function detectNewBubbleFlapTickers(currentSet) {
                 const views = ['setup', 'gainers', 'bouncers', 'volume', 'gapers'];
-                const prevSet = window._bubbleViewPreviousTickers || {};
+                const prevSet = window._bubbleFlapPreviousTickers || {};
                 const queuedNow = new Set();
                 const now = Date.now();
                 views.forEach(v => {
@@ -4296,6 +4298,13 @@
                         }
                     });
                 });
+                // Update flap's own previous snapshot every refresh, independent of tab indicators.
+                if (!window._bubbleFlapPreviousInitialized) {
+                    window._bubbleFlapPreviousTickers = currentSet;
+                    window._bubbleFlapPreviousInitialized = true;
+                } else {
+                    views.forEach(v => window._bubbleFlapPreviousTickers[v] = currentSet[v]);
+                }
                 if (window._bubbleFlapQueue.length && !window._bubbleFlapCurrent) {
                     runBubbleFlap();
                 }
