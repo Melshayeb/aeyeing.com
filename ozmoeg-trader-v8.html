@@ -1475,11 +1475,18 @@
             box-shadow: 0 0 12px rgba(20,184,166,0.4), inset 0 0 14px rgba(20,184,166,0.1);
         }
         .bubble-ticker-flap.pulse .bubble-ticker-sym {
-            animation: flapPulse 0.4s ease-in-out 3;
+            animation: flapPulse 0.35s ease-in-out 4;
         }
         @keyframes flapPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.12); }
+        }
+        .bubble-ticker-flap.flash {
+            animation: flapFlash 0.5s ease-out;
+        }
+        @keyframes flapFlash {
+            0% { border-color: #fff; box-shadow: 0 0 20px rgba(20,184,166,0.7), inset 0 0 20px rgba(20,184,166,0.25); background: rgba(20,184,166,0.18); }
+            100% { border-color: var(--accent-teal); box-shadow: 0 0 12px rgba(20,184,166,0.4), inset 0 0 14px rgba(20,184,166,0.1); background: linear-gradient(180deg, #0f1720 0%, #0b1220 100%); }
         }
         @media (max-width: 720px) {
             .bubble-ticker-flap { min-width: 120px; padding: 0.25rem 0.5rem; height: 48px; }
@@ -4301,11 +4308,14 @@
                 if (flap && symEl && labelEl) {
                     symEl.textContent = item.ticker.padEnd(7, ' ');
                     labelEl.textContent = item.label;
-                    flap.classList.add('active', 'pulse');
+                    flap.classList.remove('flash');
+                    void flap.offsetWidth; // reflow to restart flash animation
+                    flap.classList.add('active', 'pulse', 'flash');
                 }
+                if (typeof playNewAlertSound === 'function') playNewAlertSound(1);
                 window._bubbleFlapTimer = setTimeout(() => {
                     const flap = document.getElementById('bubble-ticker-flap');
-                    if (flap) flap.classList.remove('active', 'pulse');
+                    if (flap) flap.classList.remove('active', 'pulse', 'flash');
                     window._bubbleFlapCurrent = null;
                     runBubbleFlap();
                 }, BUBBLE_FLAP_DISPLAY_MS);
@@ -4317,7 +4327,7 @@
                 const flap = document.getElementById('bubble-ticker-flap');
                 const symEl = document.getElementById('bubble-ticker-sym');
                 const labelEl = document.getElementById('bubble-ticker-label');
-                if (flap) flap.classList.remove('active', 'pulse');
+                if (flap) flap.classList.remove('active', 'pulse', 'flash');
                 if (symEl) symEl.textContent = 'WAIT';
                 if (labelEl) labelEl.textContent = '—';
             }
