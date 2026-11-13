@@ -4197,9 +4197,11 @@
             window._bubbleFlapQueue = [];
             window._bubbleFlapTimer = null;
             window._bubbleFlapCurrent = null;
+            window._bubbleFlapSeen = new Map();
 
             const BUBBLE_FLAP_VOLUME_THRESHOLD = 100000;
             const BUBBLE_FLAP_DISPLAY_MS = 5000;
+            const BUBBLE_FLAP_COOLDOWN_MS = 30 * 60 * 1000;
             const BUBBLE_VIEW_LABELS = {
                 setup: 'Alerts/Candidates',
                 gainers: 'Top 10 Gainers',
@@ -4274,6 +4276,7 @@
                 const views = ['setup', 'gainers', 'bouncers', 'volume', 'gapers'];
                 const prevSet = window._bubbleViewPreviousTickers || {};
                 const queuedNow = new Set();
+                const now = Date.now();
                 views.forEach(v => {
                     const prev = prevSet[v] || [];
                     const curr = currentSet[v] || [];
@@ -4282,11 +4285,14 @@
                     const rows = getBubbleViewRows(v);
                     newTickers.forEach(ticker => {
                         if (queuedNow.has(ticker)) return;
+                        const lastShown = window._bubbleFlapSeen.get(ticker);
+                        if (lastShown && (now - lastShown) < BUBBLE_FLAP_COOLDOWN_MS) return;
                         const row = rows.find(r => (r?.ticker || '').toUpperCase() === ticker);
                         const volume = row?.volume || row?.tape?.volume || 0;
                         if (volume >= BUBBLE_FLAP_VOLUME_THRESHOLD) {
                             window._bubbleFlapQueue.push({ ticker, view: v, label: BUBBLE_VIEW_LABELS[v] });
                             queuedNow.add(ticker);
+                            window._bubbleFlapSeen.set(ticker, now);
                         }
                     });
                 });
