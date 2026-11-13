@@ -1436,9 +1436,9 @@
             background: linear-gradient(180deg, #0f1720 0%, #0b1220 100%);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 0.25rem 0.6rem;
-            min-width: 118px;
-            height: 48px;
+            padding: 0.3rem 0.9rem;
+            min-width: 150px;
+            height: 52px;
             position: relative;
             overflow: hidden;
         }
@@ -1451,10 +1451,10 @@
             height: 1px;
             background: rgba(255,255,255,0.06);
         }
-        .bubble-ticker-flap::before { top: 24px; }
+        .bubble-ticker-flap::before { top: 26px; }
         .bubble-ticker-flap::after { display: none; }
         .bubble-ticker-label {
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1463,7 +1463,7 @@
         }
         .bubble-ticker-sym {
             font-family: 'Roboto Mono', monospace;
-            font-size: 1.1rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.12em;
@@ -1472,7 +1472,7 @@
         }
         .bubble-ticker-flap.active {
             border-color: var(--accent-teal);
-            box-shadow: 0 0 10px rgba(20,184,166,0.35), inset 0 0 12px rgba(20,184,166,0.08);
+            box-shadow: 0 0 12px rgba(20,184,166,0.4), inset 0 0 14px rgba(20,184,166,0.1);
         }
         .bubble-ticker-flap.pulse .bubble-ticker-sym {
             animation: flapPulse 0.4s ease-in-out 3;
@@ -1482,8 +1482,9 @@
             50% { opacity: 0.4; }
         }
         @media (max-width: 720px) {
-            .bubble-ticker-flap { min-width: 98px; padding: 0.2rem 0.4rem; }
-            .bubble-ticker-sym { font-size: 0.95rem; letter-spacing: 0.08em; }
+            .bubble-ticker-flap { min-width: 120px; padding: 0.25rem 0.5rem; height: 48px; }
+            .bubble-ticker-flap::before { top: 24px; }
+            .bubble-ticker-sym { font-size: 1.1rem; letter-spacing: 0.08em; }
         }
         .bubble-modal-body { flex: 1; padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
         .bubble-modal-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
