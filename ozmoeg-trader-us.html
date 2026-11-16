@@ -1466,16 +1466,416 @@
     </style>
 <!-- v=2026-08-25-1415 build-trigger -->
 <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-16T22:37:20.002264Z&quot;,
+  &quot;last_updated&quot;: &quot;2026-11-16T22:39:19.972705Z&quot;,
   &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 3.05,
+      &quot;change_pct&quot;: 23.48,
+      &quot;volume&quot;: 3133836,
+      &quot;market_cap&quot;: 51820466.62,
+      &quot;float_shares&quot;: 11937772,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+23.5% · Entry $3.05 · T1 $3.17 · T2 $3.23 · T3 $3.35&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;entry&quot;: 3.05,
+        &quot;stop&quot;: 2.989,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.172,
+          &quot;t2&quot;: 3.233,
+          &quot;t3&quot;: 3.355
+        },
+        &quot;risk_per_share&quot;: 0.061,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 98,
+        &quot;position_value&quot;: 298.9,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.989&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 12.23,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 3133836,
+        &quot;adv&quot;: 256245,
+        &quot;recent_pct_of_adv&quot;: 1222.98,
+        &quot;volume_acceleration&quot;: -0.895,
+        &quot;price_velocity_pct&quot;: 17.35,
+        &quot;buy_pressure_pct&quot;: 48.69,
+        &quot;large_bar_count&quot;: 85,
+        &quot;vwap_distance_pct&quot;: 0.277,
+        &quot;recent_volume&quot;: 3133836,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.011,
+        &quot;last_price&quot;: 2.47,
+        &quot;vwap&quot;: 2.476856635708492,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:39:00.638000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-17&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 3.03
+    },
+    {
+      &quot;ticker&quot;: &quot;LOOP&quot;,
+      &quot;name&quot;: &quot;Loop Industries&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.254,
+      &quot;change_pct&quot;: 13.29,
+      &quot;volume&quot;: 8156565,
+      &quot;market_cap&quot;: 10943779.09,
+      &quot;float_shares&quot;: 24602329,
+      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 13), 8-K (Oct 15), 8-K (Oct 01)&quot;,
+      &quot;result&quot;: &quot;+13.3% · Entry $0.25 · T1 $0.26 · T2 $0.27 · T3 $0.28&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;entry&quot;: 0.254,
+        &quot;stop&quot;: 0.2489,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.2642,
+          &quot;t2&quot;: 0.2693,
+          &quot;t3&quot;: 0.2795
+        },
+        &quot;risk_per_share&quot;: 0.0051,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 1181,
+        &quot;position_value&quot;: 299.97,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.2489&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 4.79,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 8156565,
+        &quot;adv&quot;: 1703903,
+        &quot;recent_pct_of_adv&quot;: 478.7,
+        &quot;volume_acceleration&quot;: -0.922,
+        &quot;price_velocity_pct&quot;: 10.677,
+        &quot;buy_pressure_pct&quot;: 52.38,
+        &quot;large_bar_count&quot;: 141,
+        &quot;vwap_distance_pct&quot;: 2.988,
+        &quot;recent_volume&quot;: 8156565,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0005,
+        &quot;last_price&quot;: 0.2242,
+        &quot;vwap&quot;: 0.21769516082570478,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:44.689000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 93
+      },
+      &quot;date&quot;: &quot;2026-11-17&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.253
+    },
     {
       &quot;ticker&quot;: &quot;AYTU&quot;,
       &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 2.61,
-      &quot;change_pct&quot;: 43.41,
-      &quot;volume&quot;: 1185804,
+      &quot;change_pct&quot;: 43.419999999999995,
+      &quot;volume&quot;: 1205714,
       &quot;market_cap&quot;: 19671456.48,
       &quot;float_shares&quot;: 9971007,
       &quot;country&quot;: &quot;United States&quot;,
@@ -1522,7 +1922,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;11m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 5,
@@ -1544,7 +1944,7 @@
           {
             &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;36m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1553,7 +1953,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;53m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1562,7 +1962,7 @@
           {
             &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;59m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1672,7 +2072,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;11m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 5,
@@ -1694,7 +2094,7 @@
           {
             &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;36m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1703,7 +2103,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;53m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1712,7 +2112,7 @@
           {
             &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;59m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -1832,63 +2232,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 41.16,
+        &quot;rvol&quot;: 41.85,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 1185804,
+        &quot;volume&quot;: 1205714,
         &quot;adv&quot;: 28813,
-        &quot;recent_pct_of_adv&quot;: 4115.52,
+        &quot;recent_pct_of_adv&quot;: 4184.62,
         &quot;volume_acceleration&quot;: -1.0,
         &quot;price_velocity_pct&quot;: 30.268,
-        &quot;buy_pressure_pct&quot;: 43.39,
+        &quot;buy_pressure_pct&quot;: 43.63,
         &quot;large_bar_count&quot;: 21,
         &quot;vwap_distance_pct&quot;: 0.541,
-        &quot;recent_volume&quot;: 1185804,
+        &quot;recent_volume&quot;: 1205714,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0098,
+        &quot;median_range&quot;: 0.0097,
         &quot;last_price&quot;: 1.82,
         &quot;vwap&quot;: 1.8101999144256202,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:01.455000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:38:55.038000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 23
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.611
+      &quot;previous_price&quot;: 2.61
     },
     {
-      &quot;ticker&quot;: &quot;SPAI&quot;,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;ticker&quot;: &quot;AQB&quot;,
+      &quot;name&quot;: &quot;Aquabounty Technologies Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 3.03,
-      &quot;change_pct&quot;: 22.67,
-      &quot;volume&quot;: 3127858,
-      &quot;market_cap&quot;: 51820466.62,
-      &quot;float_shares&quot;: 11937772,
+      &quot;price&quot;: 0.867,
+      &quot;change_pct&quot;: 10.47,
+      &quot;volume&quot;: 2831598,
+      &quot;market_cap&quot;: 10656158.72,
+      &quot;float_shares&quot;: 13265120,
       &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+22.7% · Entry $3.03 · T1 $3.15 · T2 $3.21 · T3 $3.33&quot;,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 02), 424B3 (Oct 23)&quot;,
+      &quot;result&quot;: &quot;+10.5% · Entry $0.87 · T1 $0.90 · T2 $0.92 · T3 $0.95&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;entry&quot;: 3.03,
-        &quot;stop&quot;: 2.9694,
+        &quot;ticker&quot;: &quot;AQB&quot;,
+        &quot;entry&quot;: 0.867,
+        &quot;stop&quot;: 0.8497,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 3.1512,
-          &quot;t2&quot;: 3.2118,
-          &quot;t3&quot;: 3.333
+          &quot;t1&quot;: 0.9016,
+          &quot;t2&quot;: 0.9189,
+          &quot;t3&quot;: 0.9535
         },
-        &quot;risk_per_share&quot;: 0.0606,
+        &quot;risk_per_share&quot;: 0.0173,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 99,
-        &quot;position_value&quot;: 299.97,
+        &quot;shares&quot;: 346,
+        &quot;position_value&quot;: 299.98,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -1896,7 +2296,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.9694&quot;
+          &quot;hard_stop&quot;: &quot;$0.8497&quot;
         }
       },
       &quot;ta&quot;: {
@@ -1904,95 +2304,23 @@
         &quot;error&quot;: &quot;No bar data&quot;
       },
       &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;ticker&quot;: &quot;AQB&quot;,
         &quot;total_items&quot;: 20,
         &quot;scored_items&quot;: [
           {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;title&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;time&quot;: &quot;19m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:20:10.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
           },
           {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;50m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;title&quot;: &quot;Weekly Report: what happened at AQB last week (1109-1113)?&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
             &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:24:36.585+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
@@ -2000,91 +2328,19 @@
         ],
         &quot;headlines&quot;: [
           {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;title&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;time&quot;: &quot;19m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:20:10.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
           },
           {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;50m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;title&quot;: &quot;Weekly Report: what happened at AQB last week (1109-1113)?&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
             &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:24:36.585+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
@@ -2095,47 +2351,47 @@
         &quot;avg_score&quot;: 0.0,
         &quot;catalyst_confirmed&quot;: false,
         &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+        &quot;top_headline&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
         &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
       },
       &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;ticker&quot;: &quot;AQB&quot;,
         &quot;valid&quot;: true,
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 12.21,
+        &quot;rvol&quot;: 8.62,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 3127858,
-        &quot;adv&quot;: 256245,
-        &quot;recent_pct_of_adv&quot;: 1220.65,
-        &quot;volume_acceleration&quot;: -0.838,
-        &quot;price_velocity_pct&quot;: 16.835,
-        &quot;buy_pressure_pct&quot;: 47.91,
-        &quot;large_bar_count&quot;: 84,
-        &quot;vwap_distance_pct&quot;: 0.277,
-        &quot;recent_volume&quot;: 3127858,
+        &quot;volume&quot;: 2831598,
+        &quot;adv&quot;: 328360,
+        &quot;recent_pct_of_adv&quot;: 862.35,
+        &quot;volume_acceleration&quot;: -1.0,
+        &quot;price_velocity_pct&quot;: 0.025,
+        &quot;buy_pressure_pct&quot;: 40.9,
+        &quot;large_bar_count&quot;: 38,
+        &quot;vwap_distance_pct&quot;: 0.134,
+        &quot;recent_volume&quot;: 2831598,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0122,
-        &quot;last_price&quot;: 2.47,
-        &quot;vwap&quot;: 2.476856635708492,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:59.153000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 110
+        &quot;median_range&quot;: 0.0018,
+        &quot;last_price&quot;: 0.8017,
+        &quot;vwap&quot;: 0.8027741392913847,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:38:59.897000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 30
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 3.01
+      &quot;previous_price&quot;: null
     },
     {
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 1.82,
-      &quot;change_pct&quot;: 29.060000000000002,
-      &quot;volume&quot;: 38831551,
+      &quot;price&quot;: 1.8,
+      &quot;change_pct&quot;: 28.79,
+      &quot;volume&quot;: 38854123,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;country&quot;: &quot;Canada&quot;,
@@ -2144,23 +2400,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+29.1% · Entry $1.82 · T1 $1.89 · T2 $1.93 · T3 $2.00&quot;,
+      &quot;result&quot;: &quot;+28.8% · Entry $1.80 · T1 $1.87 · T2 $1.91 · T3 $1.98&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GP&quot;,
-        &quot;entry&quot;: 1.82,
-        &quot;stop&quot;: 1.7836,
+        &quot;entry&quot;: 1.8,
+        &quot;stop&quot;: 1.764,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 1.8928,
-          &quot;t2&quot;: 1.9292,
-          &quot;t3&quot;: 2.002
+          &quot;t1&quot;: 1.872,
+          &quot;t2&quot;: 1.908,
+          &quot;t3&quot;: 1.98
         },
-        &quot;risk_per_share&quot;: 0.0364,
+        &quot;risk_per_share&quot;: 0.036,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 164,
-        &quot;position_value&quot;: 298.48,
+        &quot;shares&quot;: 166,
+        &quot;position_value&quot;: 298.8,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2168,7 +2424,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.7836&quot;
+          &quot;hard_stop&quot;: &quot;$1.764&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2360,438 +2616,438 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 13.01,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 38831551,
+        &quot;volume&quot;: 38854123,
         &quot;adv&quot;: 2985497,
-        &quot;recent_pct_of_adv&quot;: 1300.67,
-        &quot;volume_acceleration&quot;: -0.861,
+        &quot;recent_pct_of_adv&quot;: 1301.43,
+        &quot;volume_acceleration&quot;: -0.863,
         &quot;price_velocity_pct&quot;: 8.738,
-        &quot;buy_pressure_pct&quot;: 48.79,
+        &quot;buy_pressure_pct&quot;: 48.83,
         &quot;large_bar_count&quot;: 220,
         &quot;vwap_distance_pct&quot;: 10.477,
-        &quot;recent_volume&quot;: 38831551,
+        &quot;recent_volume&quot;: 38854123,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.02,
         &quot;last_price&quot;: 1.41,
         &quot;vwap&quot;: 1.5750139834263335,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:02.640000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:39:01.643000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 1.861
-    },
-    {
-      &quot;ticker&quot;: &quot;CRDF&quot;,
-      &quot;name&quot;: &quot;Cardiff Oncology Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.47,
-      &quot;volume&quot;: 25180002,
-      &quot;market_cap&quot;: 65947032.58,
-      &quot;float_shares&quot;: 72962653,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 12), 8-K (Oct 27), 8-K (Oct 22)&quot;,
-      &quot;result&quot;: &quot;+9.5% · Entry $0.93 · T1 $0.97 · T2 $0.98 · T3 $1.02&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;entry&quot;: 0.928,
-        &quot;stop&quot;: 0.9094,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.9652,
-          &quot;t2&quot;: 0.9838,
-          &quot;t3&quot;: 1.021
-        },
-        &quot;risk_per_share&quot;: 0.0186,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 323,
-        &quot;position_value&quot;: 299.74,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9094&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T15:30:59.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff: FDA Grants Fast Track Designation To Onvansertib&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;10h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T12:16:58.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CRDF last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:15:46.721+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology reports Q3 EPS (12c), consensus (13c)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:41:20.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology GAAP EPS of -$0.12 beats by $0.02, revenue of $0.17M beats by $0.08M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Rev $171,000 >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Loss/Shr 12c >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third Quarter 2026 Results and Provides Business Update&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology: Q3 Earnings Snapshot&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T06:21:30.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T15:30:59.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff: FDA Grants Fast Track Designation To Onvansertib&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;10h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T12:16:58.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CRDF last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:15:46.721+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology reports Q3 EPS (12c), consensus (13c)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:41:20.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology GAAP EPS of -$0.12 beats by $0.02, revenue of $0.17M beats by $0.08M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Rev $171,000 >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Loss/Shr 12c >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third Quarter 2026 Results and Provides Business Update&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology: Q3 Earnings Snapshot&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T06:21:30.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 26.06,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 25180002,
-        &quot;adv&quot;: 966244,
-        &quot;recent_pct_of_adv&quot;: 2605.97,
-        &quot;volume_acceleration&quot;: -0.872,
-        &quot;price_velocity_pct&quot;: 3.042,
-        &quot;buy_pressure_pct&quot;: 50.76,
-        &quot;large_bar_count&quot;: 179,
-        &quot;vwap_distance_pct&quot;: 0.45,
-        &quot;recent_volume&quot;: 25180002,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.006,
-        &quot;last_price&quot;: 0.8477,
-        &quot;vwap&quot;: 0.8438991724146001,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:08.881000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 69
-      },
-      &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.922
-    },
-    {
-      &quot;ticker&quot;: &quot;LOOP&quot;,
-      &quot;name&quot;: &quot;Loop Industries&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.253,
-      &quot;change_pct&quot;: 12.85,
-      &quot;volume&quot;: 8153357,
-      &quot;market_cap&quot;: 10943779.09,
-      &quot;float_shares&quot;: 24602329,
-      &quot;country&quot;: &quot;Canada&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 13), 8-K (Oct 15), 8-K (Oct 01)&quot;,
-      &quot;result&quot;: &quot;+12.8% · Entry $0.25 · T1 $0.26 · T2 $0.27 · T3 $0.28&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;entry&quot;: 0.253,
-        &quot;stop&quot;: 0.2479,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.2632,
-          &quot;t2&quot;: 0.2683,
-          &quot;t3&quot;: 0.2785
-        },
-        &quot;risk_per_share&quot;: 0.0051,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 1185,
-        &quot;position_value&quot;: 299.81,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.2479&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 4.79,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 8153357,
-        &quot;adv&quot;: 1703903,
-        &quot;recent_pct_of_adv&quot;: 478.51,
-        &quot;volume_acceleration&quot;: -0.922,
-        &quot;price_velocity_pct&quot;: 10.248,
-        &quot;buy_pressure_pct&quot;: 51.88,
-        &quot;large_bar_count&quot;: 140,
-        &quot;vwap_distance_pct&quot;: 2.988,
-        &quot;recent_volume&quot;: 8153357,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0005,
-        &quot;last_price&quot;: 0.2242,
-        &quot;vwap&quot;: 0.21769516082570478,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:37.625000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 41
-      },
-      &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: null
+      &quot;previous_price&quot;: 1.82
     }
   ],
   &quot;pre_market_results&quot;: [
     {
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 3.05,
+      &quot;change_pct&quot;: 23.48,
+      &quot;volume&quot;: 3133836,
+      &quot;market_cap&quot;: 51820466.62,
+      &quot;float_shares&quot;: 11937772,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+23.5% · Entry $3.05 · T1 $3.17 · T2 $3.23 · T3 $3.35&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;entry&quot;: 3.05,
+        &quot;stop&quot;: 2.989,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.172,
+          &quot;t2&quot;: 3.233,
+          &quot;t3&quot;: 3.355
+        },
+        &quot;risk_per_share&quot;: 0.061,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 98,
+        &quot;position_value&quot;: 298.9,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.989&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 12.23,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 3133836,
+        &quot;adv&quot;: 256245,
+        &quot;recent_pct_of_adv&quot;: 1222.98,
+        &quot;volume_acceleration&quot;: -0.895,
+        &quot;price_velocity_pct&quot;: 17.35,
+        &quot;buy_pressure_pct&quot;: 48.69,
+        &quot;large_bar_count&quot;: 85,
+        &quot;vwap_distance_pct&quot;: 0.277,
+        &quot;recent_volume&quot;: 3133836,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.011,
+        &quot;last_price&quot;: 2.47,
+        &quot;vwap&quot;: 2.476856635708492,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:39:00.638000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
+      },
+      &quot;date&quot;: &quot;2026-11-17&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 3.03
+    },
+    {
+      &quot;ticker&quot;: &quot;LOOP&quot;,
+      &quot;name&quot;: &quot;Loop Industries&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.254,
+      &quot;change_pct&quot;: 13.29,
+      &quot;volume&quot;: 8156565,
+      &quot;market_cap&quot;: 10943779.09,
+      &quot;float_shares&quot;: 24602329,
+      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 13), 8-K (Oct 15), 8-K (Oct 01)&quot;,
+      &quot;result&quot;: &quot;+13.3% · Entry $0.25 · T1 $0.26 · T2 $0.27 · T3 $0.28&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;entry&quot;: 0.254,
+        &quot;stop&quot;: 0.2489,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.2642,
+          &quot;t2&quot;: 0.2693,
+          &quot;t3&quot;: 0.2795
+        },
+        &quot;risk_per_share&quot;: 0.0051,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 1181,
+        &quot;position_value&quot;: 299.97,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.2489&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;LOOP&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 4.79,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 8156565,
+        &quot;adv&quot;: 1703903,
+        &quot;recent_pct_of_adv&quot;: 478.7,
+        &quot;volume_acceleration&quot;: -0.922,
+        &quot;price_velocity_pct&quot;: 10.677,
+        &quot;buy_pressure_pct&quot;: 52.38,
+        &quot;large_bar_count&quot;: 141,
+        &quot;vwap_distance_pct&quot;: 2.988,
+        &quot;recent_volume&quot;: 8156565,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0005,
+        &quot;last_price&quot;: 0.2242,
+        &quot;vwap&quot;: 0.21769516082570478,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:44.689000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 93
+      },
+      &quot;date&quot;: &quot;2026-11-17&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.253
+    },
+    {
       &quot;ticker&quot;: &quot;AYTU&quot;,
       &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 2.61,
-      &quot;change_pct&quot;: 43.41,
-      &quot;volume&quot;: 1185804,
+      &quot;change_pct&quot;: 43.419999999999995,
+      &quot;volume&quot;: 1205714,
       &quot;market_cap&quot;: 19671456.48,
       &quot;float_shares&quot;: 9971007,
       &quot;country&quot;: &quot;United States&quot;,
@@ -2838,7 +3094,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;11m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 5,
@@ -2860,7 +3116,7 @@
           {
             &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;36m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -2869,7 +3125,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;53m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -2878,7 +3134,7 @@
           {
             &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;59m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -2988,7 +3244,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;11m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 5,
@@ -3010,7 +3266,7 @@
           {
             &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;36m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3019,7 +3275,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;53m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3028,7 +3284,7 @@
           {
             &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
+            &quot;time&quot;: &quot;59m ago · 16 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3148,63 +3404,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 41.16,
+        &quot;rvol&quot;: 41.85,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 1185804,
+        &quot;volume&quot;: 1205714,
         &quot;adv&quot;: 28813,
-        &quot;recent_pct_of_adv&quot;: 4115.52,
+        &quot;recent_pct_of_adv&quot;: 4184.62,
         &quot;volume_acceleration&quot;: -1.0,
         &quot;price_velocity_pct&quot;: 30.268,
-        &quot;buy_pressure_pct&quot;: 43.39,
+        &quot;buy_pressure_pct&quot;: 43.63,
         &quot;large_bar_count&quot;: 21,
         &quot;vwap_distance_pct&quot;: 0.541,
-        &quot;recent_volume&quot;: 1185804,
+        &quot;recent_volume&quot;: 1205714,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0098,
+        &quot;median_range&quot;: 0.0097,
         &quot;last_price&quot;: 1.82,
         &quot;vwap&quot;: 1.8101999144256202,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:01.455000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:38:55.038000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 23
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.611
+      &quot;previous_price&quot;: 2.61
     },
     {
-      &quot;ticker&quot;: &quot;SPAI&quot;,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;ticker&quot;: &quot;AQB&quot;,
+      &quot;name&quot;: &quot;Aquabounty Technologies Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 3.03,
-      &quot;change_pct&quot;: 22.67,
-      &quot;volume&quot;: 3127858,
-      &quot;market_cap&quot;: 51820466.62,
-      &quot;float_shares&quot;: 11937772,
+      &quot;price&quot;: 0.867,
+      &quot;change_pct&quot;: 10.47,
+      &quot;volume&quot;: 2831598,
+      &quot;market_cap&quot;: 10656158.72,
+      &quot;float_shares&quot;: 13265120,
       &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+22.7% · Entry $3.03 · T1 $3.15 · T2 $3.21 · T3 $3.33&quot;,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 02), 424B3 (Oct 23)&quot;,
+      &quot;result&quot;: &quot;+10.5% · Entry $0.87 · T1 $0.90 · T2 $0.92 · T3 $0.95&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;entry&quot;: 3.03,
-        &quot;stop&quot;: 2.9694,
+        &quot;ticker&quot;: &quot;AQB&quot;,
+        &quot;entry&quot;: 0.867,
+        &quot;stop&quot;: 0.8497,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 3.1512,
-          &quot;t2&quot;: 3.2118,
-          &quot;t3&quot;: 3.333
+          &quot;t1&quot;: 0.9016,
+          &quot;t2&quot;: 0.9189,
+          &quot;t3&quot;: 0.9535
         },
-        &quot;risk_per_share&quot;: 0.0606,
+        &quot;risk_per_share&quot;: 0.0173,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 99,
-        &quot;position_value&quot;: 299.97,
+        &quot;shares&quot;: 346,
+        &quot;position_value&quot;: 299.98,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3212,7 +3468,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.9694&quot;
+          &quot;hard_stop&quot;: &quot;$0.8497&quot;
         }
       },
       &quot;ta&quot;: {
@@ -3220,95 +3476,23 @@
         &quot;error&quot;: &quot;No bar data&quot;
       },
       &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;ticker&quot;: &quot;AQB&quot;,
         &quot;total_items&quot;: 20,
         &quot;scored_items&quot;: [
           {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;title&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;time&quot;: &quot;19m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:20:10.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
           },
           {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;50m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;title&quot;: &quot;Weekly Report: what happened at AQB last week (1109-1113)?&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
             &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:24:36.585+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
@@ -3316,91 +3500,19 @@
         ],
         &quot;headlines&quot;: [
           {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;title&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;time&quot;: &quot;19m ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:20:10.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
           },
           {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;50m ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;title&quot;: &quot;Weekly Report: what happened at AQB last week (1109-1113)?&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
             &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:24:36.585+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
             &quot;keywords&quot;: []
@@ -3411,47 +3523,47 @@
         &quot;avg_score&quot;: 0.0,
         &quot;catalyst_confirmed&quot;: false,
         &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+        &quot;top_headline&quot;: &quot;AquaBounty Technologies Terminates Agreement Amid Proposed Univest Transaction&quot;,
         &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
       },
       &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;ticker&quot;: &quot;AQB&quot;,
         &quot;valid&quot;: true,
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 12.21,
+        &quot;rvol&quot;: 8.62,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 3127858,
-        &quot;adv&quot;: 256245,
-        &quot;recent_pct_of_adv&quot;: 1220.65,
-        &quot;volume_acceleration&quot;: -0.838,
-        &quot;price_velocity_pct&quot;: 16.835,
-        &quot;buy_pressure_pct&quot;: 47.91,
-        &quot;large_bar_count&quot;: 84,
-        &quot;vwap_distance_pct&quot;: 0.277,
-        &quot;recent_volume&quot;: 3127858,
+        &quot;volume&quot;: 2831598,
+        &quot;adv&quot;: 328360,
+        &quot;recent_pct_of_adv&quot;: 862.35,
+        &quot;volume_acceleration&quot;: -1.0,
+        &quot;price_velocity_pct&quot;: 0.025,
+        &quot;buy_pressure_pct&quot;: 40.9,
+        &quot;large_bar_count&quot;: 38,
+        &quot;vwap_distance_pct&quot;: 0.134,
+        &quot;recent_volume&quot;: 2831598,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0122,
-        &quot;last_price&quot;: 2.47,
-        &quot;vwap&quot;: 2.476856635708492,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:59.153000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 110
+        &quot;median_range&quot;: 0.0018,
+        &quot;last_price&quot;: 0.8017,
+        &quot;vwap&quot;: 0.8027741392913847,
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:38:59.897000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 30
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 3.01
+      &quot;previous_price&quot;: null
     },
     {
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 1.82,
-      &quot;change_pct&quot;: 29.060000000000002,
-      &quot;volume&quot;: 38831551,
+      &quot;price&quot;: 1.8,
+      &quot;change_pct&quot;: 28.79,
+      &quot;volume&quot;: 38854123,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;country&quot;: &quot;Canada&quot;,
@@ -3460,23 +3572,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+29.1% · Entry $1.82 · T1 $1.89 · T2 $1.93 · T3 $2.00&quot;,
+      &quot;result&quot;: &quot;+28.8% · Entry $1.80 · T1 $1.87 · T2 $1.91 · T3 $1.98&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GP&quot;,
-        &quot;entry&quot;: 1.82,
-        &quot;stop&quot;: 1.7836,
+        &quot;entry&quot;: 1.8,
+        &quot;stop&quot;: 1.764,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 1.8928,
-          &quot;t2&quot;: 1.9292,
-          &quot;t3&quot;: 2.002
+          &quot;t1&quot;: 1.872,
+          &quot;t2&quot;: 1.908,
+          &quot;t3&quot;: 1.98
         },
-        &quot;risk_per_share&quot;: 0.0364,
+        &quot;risk_per_share&quot;: 0.036,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 164,
-        &quot;position_value&quot;: 298.48,
+        &quot;shares&quot;: 166,
+        &quot;position_value&quot;: 298.8,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3484,7 +3596,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.7836&quot;
+          &quot;hard_stop&quot;: &quot;$1.764&quot;
         }
       },
       &quot;ta&quot;: {
@@ -3676,427 +3788,27 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 13.01,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 38831551,
+        &quot;volume&quot;: 38854123,
         &quot;adv&quot;: 2985497,
-        &quot;recent_pct_of_adv&quot;: 1300.67,
-        &quot;volume_acceleration&quot;: -0.861,
+        &quot;recent_pct_of_adv&quot;: 1301.43,
+        &quot;volume_acceleration&quot;: -0.863,
         &quot;price_velocity_pct&quot;: 8.738,
-        &quot;buy_pressure_pct&quot;: 48.79,
+        &quot;buy_pressure_pct&quot;: 48.83,
         &quot;large_bar_count&quot;: 220,
         &quot;vwap_distance_pct&quot;: 10.477,
-        &quot;recent_volume&quot;: 38831551,
+        &quot;recent_volume&quot;: 38854123,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.02,
         &quot;last_price&quot;: 1.41,
         &quot;vwap&quot;: 1.5750139834263335,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:02.640000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
+        &quot;last_trade_time&quot;: &quot;2026-11-16T22:39:01.643000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 17
       },
       &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
+      &quot;time&quot;: &quot;09:39:18&quot;,
       &quot;skip_news_check&quot;: true,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 1.861
-    },
-    {
-      &quot;ticker&quot;: &quot;CRDF&quot;,
-      &quot;name&quot;: &quot;Cardiff Oncology Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.47,
-      &quot;volume&quot;: 25180002,
-      &quot;market_cap&quot;: 65947032.58,
-      &quot;float_shares&quot;: 72962653,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 12), 8-K (Oct 27), 8-K (Oct 22)&quot;,
-      &quot;result&quot;: &quot;+9.5% · Entry $0.93 · T1 $0.97 · T2 $0.98 · T3 $1.02&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;entry&quot;: 0.928,
-        &quot;stop&quot;: 0.9094,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.9652,
-          &quot;t2&quot;: 0.9838,
-          &quot;t3&quot;: 1.021
-        },
-        &quot;risk_per_share&quot;: 0.0186,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 323,
-        &quot;position_value&quot;: 299.74,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.9094&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T15:30:59.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff: FDA Grants Fast Track Designation To Onvansertib&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;10h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T12:16:58.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CRDF last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:15:46.721+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology reports Q3 EPS (12c), consensus (13c)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:41:20.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology GAAP EPS of -$0.12 beats by $0.02, revenue of $0.17M beats by $0.08M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Rev $171,000 >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Loss/Shr 12c >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third Quarter 2026 Results and Provides Business Update&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology: Q3 Earnings Snapshot&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T06:21:30.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T15:30:59.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff: FDA Grants Fast Track Designation To Onvansertib&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;10h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T12:16:58.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at CRDF last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:15:46.721+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology reports Q3 EPS (12c), consensus (13c)&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:41:20.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology GAAP EPS of -$0.12 beats by $0.02, revenue of $0.17M beats by $0.08M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Rev $171,000 >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:10:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Cardiff Oncology 3Q Loss/Shr 12c >CRDF&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Cardiff Oncology Reports Third Quarter 2026 Results and Provides Business Update&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:00:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Cardiff Oncology: Q3 Earnings Snapshot&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T06:21:30.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Analysts Are Bullish on Top Healthcare Stocks: Cytokinetics (CYTK), Cardiff Oncology (CRDF)&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;CRDF&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 26.06,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 25180002,
-        &quot;adv&quot;: 966244,
-        &quot;recent_pct_of_adv&quot;: 2605.97,
-        &quot;volume_acceleration&quot;: -0.872,
-        &quot;price_velocity_pct&quot;: 3.042,
-        &quot;buy_pressure_pct&quot;: 50.76,
-        &quot;large_bar_count&quot;: 179,
-        &quot;vwap_distance_pct&quot;: 0.45,
-        &quot;recent_volume&quot;: 25180002,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.006,
-        &quot;last_price&quot;: 0.8477,
-        &quot;vwap&quot;: 0.8438991724146001,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:08.881000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 69
-      },
-      &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.922
-    },
-    {
-      &quot;ticker&quot;: &quot;LOOP&quot;,
-      &quot;name&quot;: &quot;Loop Industries&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.253,
-      &quot;change_pct&quot;: 12.85,
-      &quot;volume&quot;: 8153357,
-      &quot;market_cap&quot;: 10943779.09,
-      &quot;float_shares&quot;: 24602329,
-      &quot;country&quot;: &quot;Canada&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 13), 8-K (Oct 15), 8-K (Oct 01)&quot;,
-      &quot;result&quot;: &quot;+12.8% · Entry $0.25 · T1 $0.26 · T2 $0.27 · T3 $0.28&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;entry&quot;: 0.253,
-        &quot;stop&quot;: 0.2479,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.2632,
-          &quot;t2&quot;: 0.2683,
-          &quot;t3&quot;: 0.2785
-        },
-        &quot;risk_per_share&quot;: 0.0051,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 1185,
-        &quot;position_value&quot;: 299.81,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.2479&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;12h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:43:50.122+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Loop Industries Receives Nasdaq Market Value Compliance Notice&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T14:00:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Weekly Report: what happened at LOOP last week (1109-1113)?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;LOOP&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 4.79,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 8153357,
-        &quot;adv&quot;: 1703903,
-        &quot;recent_pct_of_adv&quot;: 478.51,
-        &quot;volume_acceleration&quot;: -0.922,
-        &quot;price_velocity_pct&quot;: 10.248,
-        &quot;buy_pressure_pct&quot;: 51.88,
-        &quot;large_bar_count&quot;: 140,
-        &quot;vwap_distance_pct&quot;: 2.988,
-        &quot;recent_volume&quot;: 8153357,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0005,
-        &quot;last_price&quot;: 0.2242,
-        &quot;vwap&quot;: 0.21769516082570478,
-        &quot;last_trade_time&quot;: &quot;2026-11-16T22:36:37.625000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 41
-      },
-      &quot;date&quot;: &quot;2026-11-17&quot;,
-      &quot;time&quot;: &quot;09:37:18&quot;,
-      &quot;skip_news_check&quot;: true,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: null
+      &quot;previous_price&quot;: 1.82
     }
   ],
   &quot;pre_market_watchlist&quot;: [],
@@ -4106,9 +3818,9 @@
       &quot;name&quot;: &quot;Golden Heaven Gr&quot;,
       &quot;status&quot;: &quot;BOUNCE&quot;,
       &quot;source&quot;: &quot;bounce&quot;,
-      &quot;price&quot;: 1.3,
-      &quot;change_pct&quot;: -17.09,
-      &quot;volume&quot;: 122567969,
+      &quot;price&quot;: 1.29,
+      &quot;change_pct&quot;: -18.310000000000002,
+      &quot;volume&quot;: 122583258,
       &quot;market_cap&quot;: 93995622.0,
       &quot;float_shares&quot;: 41818480,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
@@ -4142,38 +3854,38 @@
   ],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: {
-    &quot;ticker&quot;: &quot;AYTU&quot;,
-    &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
+    &quot;ticker&quot;: &quot;SPAI&quot;,
+    &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
     &quot;status&quot;: &quot;ALERT&quot;,
     &quot;source&quot;: &quot;regular&quot;,
-    &quot;price&quot;: 2.61,
-    &quot;change_pct&quot;: 43.41,
-    &quot;volume&quot;: 1185804,
-    &quot;market_cap&quot;: 19671456.48,
-    &quot;float_shares&quot;: 9971007,
+    &quot;price&quot;: 3.05,
+    &quot;change_pct&quot;: 23.48,
+    &quot;volume&quot;: 3133836,
+    &quot;market_cap&quot;: 51820466.62,
+    &quot;float_shares&quot;: 11937772,
     &quot;country&quot;: &quot;United States&quot;,
-    &quot;cap_size&quot;: &quot;nano-cap&quot;,
+    &quot;cap_size&quot;: &quot;micro-cap&quot;,
     &quot;is_penny_stock&quot;: false,
     &quot;scan_reason&quot;: &quot;Passed filters&quot;,
     &quot;scan_passed&quot;: true,
-    &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 16), 8-K (Sep 22)&quot;,
-    &quot;result&quot;: &quot;+43.4% · Entry $2.61 · T1 $2.71 · T2 $2.77 · T3 $2.87&quot;,
+    &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+    &quot;result&quot;: &quot;+23.5% · Entry $3.05 · T1 $3.17 · T2 $3.23 · T3 $3.35&quot;,
     &quot;plan&quot;: {
       &quot;valid&quot;: true,
-      &quot;ticker&quot;: &quot;AYTU&quot;,
-      &quot;entry&quot;: 2.61,
-      &quot;stop&quot;: 2.5578,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;entry&quot;: 3.05,
+      &quot;stop&quot;: 2.989,
       &quot;targets&quot;: {
-        &quot;t1&quot;: 2.7144,
-        &quot;t2&quot;: 2.7666,
-        &quot;t3&quot;: 2.871
+        &quot;t1&quot;: 3.172,
+        &quot;t2&quot;: 3.233,
+        &quot;t3&quot;: 3.355
       },
-      &quot;risk_per_share&quot;: 0.0522,
+      &quot;risk_per_share&quot;: 0.061,
       &quot;risk_amount&quot;: 20.0,
       &quot;daily_risk_budget&quot;: 60.0,
       &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-      &quot;shares&quot;: 114,
-      &quot;position_value&quot;: 297.54,
+      &quot;shares&quot;: 98,
+      &quot;position_value&quot;: 298.9,
       &quot;risk_reward&quot;: 2.0,
       &quot;confidence&quot;: &quot;MED&quot;,
       &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -4181,7 +3893,7 @@
         &quot;momentum_based&quot;: true,
         &quot;time_based&quot;: false,
         &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-        &quot;hard_stop&quot;: &quot;$2.5578&quot;
+        &quot;hard_stop&quot;: &quot;$2.989&quot;
       }
     },
     &quot;ta&quot;: {
@@ -4189,153 +3901,95 @@
       &quot;error&quot;: &quot;No bar data&quot;
     },
     &quot;news&quot;: {
-      &quot;ticker&quot;: &quot;AYTU&quot;,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;total_items&quot;: 20,
       &quot;scored_items&quot;: [
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
+          &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 5,
-          &quot;keywords&quot;: [
-            &quot;acquisition&quot;
-          ]
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share&quot;,
+          &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:36:29.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 5,
-          &quot;keywords&quot;: [
-            &quot;acquired by&quot;
-          ]
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont to acquire Aytu BioPharma for $2.70 per share&quot;,
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:22:22.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M&quot;,
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:20:58.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate&quot;,
+          &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:18:19.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:14:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AYTU BioPharma trading halted, news pending&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:05:42.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont Pharmaceuticals To Acquire Aytu Biopharma, Through Tender Offer For $2.70 Per Share&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:03:01.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Here are the major earnings after the close Monday&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T15:00:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at AYTU last week (1109-1113)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T09:27:38.552+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Q3 2027 Earnings Preview&quot;,
+          &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-13T22:35:36.000+0000&quot;,
+          &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Cerenome (CNSY) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-13T22:25:01.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Zealand Pharma A/S (ZLDPF) Reports Q3 Loss, Misses Revenue Estimates&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T11:10:02.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -4343,191 +3997,133 @@
       ],
       &quot;headlines&quot;: [
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;9m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T22:27:24.000+0000&quot;,
+          &quot;time&quot;: &quot;14m ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 5,
-          &quot;keywords&quot;: [
-            &quot;acquisition&quot;
-          ]
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share&quot;,
+          &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;52m ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:36:29.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 5,
-          &quot;keywords&quot;: [
-            &quot;acquired by&quot;
-          ]
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont Pharmaceuticals to Buy Aytu BioPharma&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;34m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T22:03:00.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma reports Q1 EPS (20c), consensus (18c)&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;51m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:45:27.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AYTU BioPharma trading resumes&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;57m ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:40:13.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont to acquire Aytu BioPharma for $2.70 per share&quot;,
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:22:22.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M&quot;,
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:20:58.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate&quot;,
+          &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:18:19.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:14:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;AYTU BioPharma trading halted, news pending&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:05:42.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Rosemont Pharmaceuticals To Acquire Aytu Biopharma, Through Tender Offer For $2.70 Per Share&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:03:01.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Here are the major earnings after the close Monday&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;7h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T15:00:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at AYTU last week (1109-1113)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;13h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T09:27:38.552+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Aytu BioPharma Q3 2027 Earnings Preview&quot;,
+          &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-13T22:35:36.000+0000&quot;,
+          &quot;time&quot;: &quot;5d ago · 11 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Cerenome (CNSY) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-13T22:25:01.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;Zealand Pharma A/S (ZLDPF) Reports Q3 Loss, Misses Revenue Estimates&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Awarded $2.5M U.S. Government Prime Contract For AI Threat Detection And Mapping Software To Power Anduril&#39;s Ghost-X Drone Platform&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T11:10:02.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T13:33:34.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         }
       ],
       &quot;red_flags&quot;: [],
-      &quot;max_score&quot;: 5,
-      &quot;avg_score&quot;: 0.6,
-      &quot;catalyst_confirmed&quot;: true,
-      &quot;high_impact_count&quot;: 2,
-      &quot;top_headline&quot;: &quot;Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals&quot;,
-      &quot;news_filter_reason&quot;: &quot;catalyst confirmed (2 items, score ≥3)&quot;
+      &quot;max_score&quot;: 0,
+      &quot;avg_score&quot;: 0.0,
+      &quot;catalyst_confirmed&quot;: false,
+      &quot;high_impact_count&quot;: 0,
+      &quot;top_headline&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+      &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
     },
     &quot;tape&quot;: {
-      &quot;ticker&quot;: &quot;AYTU&quot;,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;valid&quot;: true,
       &quot;stale&quot;: false,
       &quot;no_move&quot;: false,
       &quot;tape_score&quot;: 8.0,
-      &quot;rvol&quot;: 41.16,
+      &quot;rvol&quot;: 12.23,
       &quot;volume_indicator&quot;: &quot;high&quot;,
-      &quot;volume&quot;: 1185804,
-      &quot;adv&quot;: 28813,
-      &quot;recent_pct_of_adv&quot;: 4115.52,
-      &quot;volume_acceleration&quot;: -1.0,
-      &quot;price_velocity_pct&quot;: 30.268,
-      &quot;buy_pressure_pct&quot;: 43.39,
-      &quot;large_bar_count&quot;: 21,
-      &quot;vwap_distance_pct&quot;: 0.541,
-      &quot;recent_volume&quot;: 1185804,
+      &quot;volume&quot;: 3133836,
+      &quot;adv&quot;: 256245,
+      &quot;recent_pct_of_adv&quot;: 1222.98,
+      &quot;volume_acceleration&quot;: -0.895,
+      &quot;price_velocity_pct&quot;: 17.35,
+      &quot;buy_pressure_pct&quot;: 48.69,
+      &quot;large_bar_count&quot;: 85,
+      &quot;vwap_distance_pct&quot;: 0.277,
+      &quot;recent_volume&quot;: 3133836,
       &quot;prior_volume&quot;: 0,
-      &quot;median_range&quot;: 0.0098,
-      &quot;last_price&quot;: 1.82,
-      &quot;vwap&quot;: 1.8101999144256202,
-      &quot;last_trade_time&quot;: &quot;2026-11-16T22:37:01.455000+00:00&quot;,
-      &quot;stale_age_seconds&quot;: 23
+      &quot;median_range&quot;: 0.011,
+      &quot;last_price&quot;: 2.47,
+      &quot;vwap&quot;: 2.476856635708492,
+      &quot;last_trade_time&quot;: &quot;2026-11-16T22:39:00.638000+00:00&quot;,
+      &quot;stale_age_seconds&quot;: 17
     },
     &quot;date&quot;: &quot;2026-11-17&quot;,
-    &quot;time&quot;: &quot;09:37:18&quot;,
+    &quot;time&quot;: &quot;09:39:18&quot;,
     &quot;skip_news_check&quot;: true,
     &quot;red_flag&quot;: false,
-    &quot;previous_price&quot;: 2.611
+    &quot;previous_price&quot;: 3.03
   },
   &quot;total_candidates&quot;: 5,
   &quot;alerts_generated&quot;: 5,
@@ -4536,9 +4132,9 @@
       &quot;ticker&quot;: &quot;AYTU&quot;,
       &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
       &quot;price&quot;: 2.61,
-      &quot;change_pct&quot;: 43.41,
-      &quot;volume&quot;: 1185804,
-      &quot;rvol&quot;: 41.155173012182004,
+      &quot;change_pct&quot;: 43.419999999999995,
+      &quot;volume&quot;: 1205714,
+      &quot;rvol&quot;: 41.846180543504666,
       &quot;market_cap&quot;: 19671456.48,
       &quot;float_shares&quot;: 9971007,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4550,10 +4146,10 @@
     {
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
-      &quot;price&quot;: 1.82,
-      &quot;change_pct&quot;: 29.060000000000002,
-      &quot;volume&quot;: 38831551,
-      &quot;rvol&quot;: 1.3650697558640552,
+      &quot;price&quot;: 1.8,
+      &quot;change_pct&quot;: 28.79,
+      &quot;volume&quot;: 38854123,
+      &quot;rvol&quot;: 1.3658632434723499,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4563,12 +4159,27 @@
       &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
+      &quot;ticker&quot;: &quot;GLAS&quot;,
+      &quot;name&quot;: &quot;Glass House Brands Inc&quot;,
+      &quot;price&quot;: 1.62,
+      &quot;change_pct&quot;: 24.81,
+      &quot;volume&quot;: 4176993,
+      &quot;rvol&quot;: 1.2671885295734449,
+      &quot;market_cap&quot;: 120879438.39,
+      &quot;float_shares&quot;: 86790334,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.05x < 0.1x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;price&quot;: 3.03,
-      &quot;change_pct&quot;: 22.67,
-      &quot;volume&quot;: 3127858,
-      &quot;rvol&quot;: 7.100038361923181,
+      &quot;price&quot;: 3.05,
+      &quot;change_pct&quot;: 23.48,
+      &quot;volume&quot;: 3133836,
+      &quot;rvol&quot;: 7.113608041022289,
       &quot;market_cap&quot;: 51820466.62,
       &quot;float_shares&quot;: 11937772,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -4581,9 +4192,9 @@
       &quot;ticker&quot;: &quot;GIPR&quot;,
       &quot;name&quot;: &quot;Generation Incom&quot;,
       &quot;price&quot;: 0.319,
-      &quot;change_pct&quot;: 22.71,
-      &quot;volume&quot;: 87907573,
-      &quot;rvol&quot;: 4.351469494346869,
+      &quot;change_pct&quot;: 22.79,
+      &quot;volume&quot;: 87937637,
+      &quot;rvol&quot;: 4.35295767761042,
       &quot;market_cap&quot;: 789308.77,
       &quot;float_shares&quot;: 2794143,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4591,21 +4202,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: mktcap $0.8M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;GLAS&quot;,
-      &quot;name&quot;: &quot;Glass House Brands Inc&quot;,
-      &quot;price&quot;: 1.57,
-      &quot;change_pct&quot;: 20.979999999999997,
-      &quot;volume&quot;: 4105279,
-      &quot;rvol&quot;: 1.24543241022878,
-      &quot;market_cap&quot;: 120879438.39,
-      &quot;float_shares&quot;: 86790334,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.05x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;GANX&quot;,
@@ -4636,6 +4232,21 @@
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: price $0.170, tiny price $0.170, tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.00x, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;CSAI&quot;,
+      &quot;name&quot;: &quot;Cloudastructure Inc&quot;,
+      &quot;price&quot;: 1.49,
+      &quot;change_pct&quot;: 14.62,
+      &quot;volume&quot;: 90907,
+      &quot;rvol&quot;: 3.320561054900099,
+      &quot;market_cap&quot;: 1127713.6,
+      &quot;float_shares&quot;: 867281,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny avg $vol, tiny vol/float 0.10x, avg $vol $0.0M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;NGEN&quot;,
@@ -4683,27 +4294,12 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $0.9M, avg $vol $0.2M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;BTMD&quot;,
-      &quot;name&quot;: &quot;Biote&quot;,
-      &quot;price&quot;: 1.09,
-      &quot;change_pct&quot;: 13.51,
-      &quot;volume&quot;: 62783,
-      &quot;rvol&quot;: 0.5831870326505968,
-      &quot;market_cap&quot;: 34453132.52,
-      &quot;float_shares&quot;: 22932698,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;LOOP&quot;,
       &quot;name&quot;: &quot;Loop Industries&quot;,
-      &quot;price&quot;: 0.253,
-      &quot;change_pct&quot;: 12.85,
-      &quot;volume&quot;: 8153357,
-      &quot;rvol&quot;: 5.842819766254446,
+      &quot;price&quot;: 0.254,
+      &quot;change_pct&quot;: 13.29,
+      &quot;volume&quot;: 8156565,
+      &quot;rvol&quot;: 5.845118667898289,
       &quot;market_cap&quot;: 10943779.09,
       &quot;float_shares&quot;: 24602329,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4711,6 +4307,21 @@
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: true,
       &quot;reason&quot;: &quot;Passed filters&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;PWCM&quot;,
+      &quot;name&quot;: &quot;Powercompute Inc&quot;,
+      &quot;price&quot;: 0.488,
+      &quot;change_pct&quot;: 12.76,
+      &quot;volume&quot;: 23698,
+      &quot;rvol&quot;: 0.2790790790790791,
+      &quot;market_cap&quot;: 1096413.88,
+      &quot;float_shares&quot;: 2474462,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.488, tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.01x, vol 23,698, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;SRTM&quot;,
@@ -4788,21 +4399,6 @@
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.7x, tiny avg $vol, tiny vol/float 0.00x, vol 5,163, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;DVLT&quot;,
-      &quot;name&quot;: &quot;Datavault AI Inc&quot;,
-      &quot;price&quot;: 0.031,
-      &quot;change_pct&quot;: 11.43,
-      &quot;volume&quot;: 238640651,
-      &quot;rvol&quot;: 3.056423897993386,
-      &quot;market_cap&quot;: 26592400.94,
-      &quot;float_shares&quot;: 682550452,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.031, float 682.6M > 100M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;LUD&quot;,
       &quot;name&quot;: &quot;Luda Technology Group&quot;,
       &quot;price&quot;: 3.95,
@@ -4818,19 +4414,19 @@
       &quot;reason&quot;: &quot;Filtered: vol 3,126, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;CSAI&quot;,
-      &quot;name&quot;: &quot;Cloudastructure Inc&quot;,
-      &quot;price&quot;: 1.45,
-      &quot;change_pct&quot;: 11.540000000000001,
-      &quot;volume&quot;: 79915,
-      &quot;rvol&quot;: 2.9190561420170216,
-      &quot;market_cap&quot;: 1127713.6,
-      &quot;float_shares&quot;: 867281,
+      &quot;ticker&quot;: &quot;POLA&quot;,
+      &quot;name&quot;: &quot;Polar Pwr Inc&quot;,
+      &quot;price&quot;: 0.388,
+      &quot;change_pct&quot;: 11.44,
+      &quot;volume&quot;: 85564474,
+      &quot;rvol&quot;: 3.8034574981403773,
+      &quot;market_cap&quot;: 1499643.01,
+      &quot;float_shares&quot;: 1096923,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
+      &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny avg $vol, tiny vol/float 0.09x, vol/float 0.09x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.388&quot;
     },
     {
       &quot;ticker&quot;: &quot;BRFH&quot;,
@@ -4848,19 +4444,34 @@
       &quot;reason&quot;: &quot;Filtered: tiny price $0.554, tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.00x, vol 23,823, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;POLA&quot;,
-      &quot;name&quot;: &quot;Polar Pwr Inc&quot;,
-      &quot;price&quot;: 0.384,
-      &quot;change_pct&quot;: 10.459999999999999,
-      &quot;volume&quot;: 85543895,
-      &quot;rvol&quot;: 3.802542733540127,
-      &quot;market_cap&quot;: 1499643.01,
-      &quot;float_shares&quot;: 1096923,
+      &quot;ticker&quot;: &quot;PARA&quot;,
+      &quot;name&quot;: &quot;PARABOLIC TECHNOLOGIES INC&quot;,
+      &quot;price&quot;: 0.11,
+      &quot;change_pct&quot;: 10.27,
+      &quot;volume&quot;: 76225914,
+      &quot;rvol&quot;: 0.37581813604150677,
+      &quot;market_cap&quot;: 220689.58,
+      &quot;float_shares&quot;: 2065088,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.384&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.110, mktcap $0.2M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;DVLT&quot;,
+      &quot;name&quot;: &quot;Datavault AI Inc&quot;,
+      &quot;price&quot;: 0.031,
+      &quot;change_pct&quot;: 10.36,
+      &quot;volume&quot;: 238843138,
+      &quot;rvol&quot;: 3.0590172788915675,
+      &quot;market_cap&quot;: 26592400.94,
+      &quot;float_shares&quot;: 682550452,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.031, float 682.6M > 100M&quot;
     },
     {
       &quot;ticker&quot;: &quot;BIOT&quot;,
@@ -4923,34 +4534,19 @@
       &quot;reason&quot;: &quot;Filtered: tiny avg $vol, tiny vol/float 0.02x, move 2.9%, vol 11,001, vol/float 0.02x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;CRDF&quot;,
-      &quot;name&quot;: &quot;Cardiff Oncology Inc&quot;,
-      &quot;price&quot;: 0.928,
-      &quot;change_pct&quot;: 9.47,
-      &quot;volume&quot;: 25180002,
-      &quot;rvol&quot;: 5.751942365450703,
-      &quot;market_cap&quot;: 65947032.58,
-      &quot;float_shares&quot;: 72962653,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;WETH&quot;,
-      &quot;name&quot;: &quot;Wetouch Technology Inc&quot;,
-      &quot;price&quot;: 0.9,
+      &quot;ticker&quot;: &quot;JYD&quot;,
+      &quot;name&quot;: &quot;Jayud Global Logistics Limited&quot;,
+      &quot;price&quot;: 1.28,
       &quot;change_pct&quot;: 9.4,
-      &quot;volume&quot;: 56547,
-      &quot;rvol&quot;: 0.6768691197242106,
-      &quot;market_cap&quot;: 11008988.02,
-      &quot;float_shares&quot;: 12575115,
+      &quot;volume&quot;: 47443,
+      &quot;rvol&quot;: 0.44226000708466173,
+      &quot;market_cap&quot;: 9896913.0,
+      &quot;float_shares&quot;: 7958708,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
+      &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, vol 47,443, vol/float 0.01x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;DYAI&quot;,
@@ -4968,6 +4564,21 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;WETH&quot;,
+      &quot;name&quot;: &quot;Wetouch Technology Inc&quot;,
+      &quot;price&quot;: 0.899,
+      &quot;change_pct&quot;: 9.25,
+      &quot;volume&quot;: 57099,
+      &quot;rvol&quot;: 0.6834765746570587,
+      &quot;market_cap&quot;: 11008988.02,
+      &quot;float_shares&quot;: 12575115,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;ACXP&quot;,
       &quot;name&quot;: &quot;Acurx Pharmaceuticals Inc&quot;,
       &quot;price&quot;: 1.02,
@@ -4981,6 +4592,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;RNXT&quot;,
+      &quot;name&quot;: &quot;Renovorx Inc&quot;,
+      &quot;price&quot;: 1.04,
+      &quot;change_pct&quot;: 8.9,
+      &quot;volume&quot;: 824477,
+      &quot;rvol&quot;: 1.4293042413987982,
+      &quot;market_cap&quot;: 46074490.3,
+      &quot;float_shares&quot;: 43644938,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.02x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;RNAZ&quot;,
@@ -5013,21 +4639,6 @@
       &quot;reason&quot;: &quot;Filtered: float 142.0M > 100M, vol/float 0.01x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;PARA&quot;,
-      &quot;name&quot;: &quot;PARABOLIC TECHNOLOGIES INC&quot;,
-      &quot;price&quot;: 0.108,
-      &quot;change_pct&quot;: 8.76,
-      &quot;volume&quot;: 75724372,
-      &quot;rvol&quot;: 0.3733453735688058,
-      &quot;market_cap&quot;: 220689.58,
-      &quot;float_shares&quot;: 2065088,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.108, mktcap $0.2M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;CVU&quot;,
       &quot;name&quot;: &quot;Cpi Aerostruct&quot;,
       &quot;price&quot;: 4.61,
@@ -5047,8 +4658,8 @@
       &quot;name&quot;: &quot;StableCoinX Inc.&quot;,
       &quot;price&quot;: 4.38,
       &quot;change_pct&quot;: 8.68,
-      &quot;volume&quot;: 1593888,
-      &quot;rvol&quot;: 1.5306021912004355,
+      &quot;volume&quot;: 1593932,
+      &quot;rvol&quot;: 1.530644444167026,
       &quot;market_cap&quot;: 109564129.87,
       &quot;float_shares&quot;: 18247290,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5071,21 +4682,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 35,933, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;AQB&quot;,
-      &quot;name&quot;: &quot;Aquabounty Technologies Inc&quot;,
-      &quot;price&quot;: 0.87,
-      &quot;change_pct&quot;: 10.2,
-      &quot;volume&quot;: 2826508,
-      &quot;rvol&quot;: 8.607954683883543,
-      &quot;market_cap&quot;: 10656158.72,
-      &quot;float_shares&quot;: 13265120,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;CPHI&quot;,
@@ -5131,6 +4727,21 @@
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: float 118.0M > 100M, vol/float 0.00x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;AQB&quot;,
+      &quot;name&quot;: &quot;Aquabounty Technologies Inc&quot;,
+      &quot;price&quot;: 0.867,
+      &quot;change_pct&quot;: 10.47,
+      &quot;volume&quot;: 2831598,
+      &quot;rvol&quot;: 8.623455962967475,
+      &quot;market_cap&quot;: 10656158.72,
+      &quot;float_shares&quot;: 13265120,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;DFLI&quot;,
@@ -5193,6 +4804,21 @@
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.4x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.2M < $2.0M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;AMST&quot;,
+      &quot;name&quot;: &quot;Amesite Inc&quot;,
+      &quot;price&quot;: 0.59,
+      &quot;change_pct&quot;: 7.88,
+      &quot;volume&quot;: 17528707,
+      &quot;rvol&quot;: 7.472398258329589,
+      &quot;market_cap&quot;: 3581458.53,
+      &quot;float_shares&quot;: 4399791,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.590, tiny avg $vol, avg $vol $1.4M < $2.0M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;DARE&quot;,
       &quot;name&quot;: &quot;Dare Bioscience Inc&quot;,
       &quot;price&quot;: 0.63,
@@ -5208,6 +4834,21 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;AFJK&quot;,
+      &quot;name&quot;: &quot;Aimei Health Technology Co Ltd&quot;,
+      &quot;price&quot;: 13.05,
+      &quot;change_pct&quot;: 7.76,
+      &quot;volume&quot;: 28047,
+      &quot;rvol&quot;: 7.743511871893981,
+      &quot;market_cap&quot;: 38344280.52,
+      &quot;float_shares&quot;: 1109318,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 28,047, vol/float 0.03x < 0.1x, avg $vol $0.0M < $0.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;TOPS&quot;,
       &quot;name&quot;: &quot;Top Ships Inc&quot;,
       &quot;price&quot;: 2.55,
@@ -5221,91 +4862,46 @@
       &quot;country&quot;: &quot;International (region 68)&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.07x, vol 28,256, vol/float 0.07x < 0.1x, avg $vol $0.3M < $2.0M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;IMNN&quot;,
-      &quot;name&quot;: &quot;Imunon Inc&quot;,
-      &quot;price&quot;: 0.639,
-      &quot;change_pct&quot;: 7.5600000000000005,
-      &quot;volume&quot;: 132736,
-      &quot;rvol&quot;: 0.2703705740608342,
-      &quot;market_cap&quot;: 3853447.88,
-      &quot;float_shares&quot;: 6042653,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.639, tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.3M < $2.0M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;AFJK&quot;,
-      &quot;name&quot;: &quot;Aimei Health Technology Co Ltd&quot;,
-      &quot;price&quot;: 13.01,
-      &quot;change_pct&quot;: 7.430000000000001,
-      &quot;volume&quot;: 26159,
-      &quot;rvol&quot;: 7.222252898950856,
-      &quot;market_cap&quot;: 38344280.52,
-      &quot;float_shares&quot;: 1109318,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 26,159, vol/float 0.02x < 0.1x, avg $vol $0.0M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;ROLR&quot;,
-      &quot;name&quot;: &quot;High Roller Technologies, Inc.&quot;,
-      &quot;price&quot;: 2.75,
-      &quot;change_pct&quot;: 7.42,
-      &quot;volume&quot;: 74714,
-      &quot;rvol&quot;: 1.868036803680368,
-      &quot;market_cap&quot;: 28212807.68,
-      &quot;float_shares&quot;: 5147632,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     }
   ],
   &quot;all_losers&quot;: [
     {
       &quot;ticker&quot;: &quot;GMM&quot;,
       &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
-      &quot;price&quot;: 1.4,
-      &quot;change_pct&quot;: -30.81,
-      &quot;volume&quot;: 111962359,
-      &quot;rvol&quot;: 5.939672900468543,
+      &quot;price&quot;: 1.41,
+      &quot;change_pct&quot;: -30.85,
+      &quot;volume&quot;: 111982347,
+      &quot;rvol&quot;: 5.940733276321597,
       &quot;market_cap&quot;: 116079524.07,
       &quot;float_shares&quot;: 57696024,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move -30.8%, float 57.7M&quot;
+      &quot;reason&quot;: &quot;Filtered: move -30.9%, float 57.7M&quot;
     },
     {
       &quot;ticker&quot;: &quot;BAER&quot;,
       &quot;name&quot;: &quot;Bridger Aerospace Group Holdings, Inc.&quot;,
-      &quot;price&quot;: 0.188,
-      &quot;change_pct&quot;: -21.88,
-      &quot;volume&quot;: 1720554,
-      &quot;rvol&quot;: 0.7978777720223352,
+      &quot;price&quot;: 0.185,
+      &quot;change_pct&quot;: -23.04,
+      &quot;volume&quot;: 1722094,
+      &quot;rvol&quot;: 0.7985919209353681,
       &quot;market_cap&quot;: 14141804.06,
       &quot;float_shares&quot;: 46653293,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.188, rvol 0.8x, vol/float 0.04x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.185, rvol 0.8x, vol/float 0.04x&quot;
     },
     {
       &quot;ticker&quot;: &quot;STEM&quot;,
       &quot;name&quot;: &quot;Stem Inc&quot;,
-      &quot;price&quot;: 1.54,
-      &quot;change_pct&quot;: -21.84,
-      &quot;volume&quot;: 341285,
-      &quot;rvol&quot;: 1.7414721265467534,
+      &quot;price&quot;: 1.535,
+      &quot;change_pct&quot;: -22.1,
+      &quot;volume&quot;: 341883,
+      &quot;rvol&quot;: 1.7445235361653273,
       &quot;market_cap&quot;: 18964685.68,
       &quot;float_shares&quot;: 9125222,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5347,10 +4943,10 @@
     {
       &quot;ticker&quot;: &quot;GDHG&quot;,
       &quot;name&quot;: &quot;Golden Heaven Gr&quot;,
-      &quot;price&quot;: 1.3,
-      &quot;change_pct&quot;: -17.09,
-      &quot;volume&quot;: 122567969,
-      &quot;rvol&quot;: 6.094244172670892,
+      &quot;price&quot;: 1.29,
+      &quot;change_pct&quot;: -18.310000000000002,
+      &quot;volume&quot;: 122583258,
+      &quot;rvol&quot;: 6.095004362302132,
       &quot;market_cap&quot;: 93995622.0,
       &quot;float_shares&quot;: 41818480,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5394,8 +4990,8 @@
       &quot;name&quot;: &quot;Baird Medical&quot;,
       &quot;price&quot;: 0.093,
       &quot;change_pct&quot;: -13.15,
-      &quot;volume&quot;: 21157665,
-      &quot;rvol&quot;: 0.32603967628823577,
+      &quot;volume&quot;: 21161065,
+      &quot;rvol&quot;: 0.32609207029765885,
       &quot;market_cap&quot;: 3408252.41,
       &quot;float_shares&quot;: 4286285,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5422,17 +5018,32 @@
     {
       &quot;ticker&quot;: &quot;QCLS&quot;,
       &quot;name&quot;: &quot;Q/C Technologies Inc&quot;,
-      &quot;price&quot;: 0.281,
-      &quot;change_pct&quot;: -12.43,
-      &quot;volume&quot;: 3978526,
-      &quot;rvol&quot;: 4.894852103474664,
+      &quot;price&quot;: 0.28,
+      &quot;change_pct&quot;: -12.770000000000001,
+      &quot;volume&quot;: 3980731,
+      &quot;rvol&quot;: 4.897564954638176,
       &quot;market_cap&quot;: 2628938.0,
       &quot;float_shares&quot;: 7402922,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.281, mktcap $2.6M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.280, mktcap $2.6M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;IMDX&quot;,
+      &quot;name&quot;: &quot;Insight Molecular Diagnostics Inc.&quot;,
+      &quot;price&quot;: 1.64,
+      &quot;change_pct&quot;: -11.83,
+      &quot;volume&quot;: 170169,
+      &quot;rvol&quot;: 1.3290715111374927,
+      &quot;market_cap&quot;: 60867168.24,
+      &quot;float_shares&quot;: 25808167,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SEGG&quot;,
@@ -5450,21 +5061,6 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $3.8M, rvol 0.4x, vol/float 0.03x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;EOCN&quot;,
-      &quot;name&quot;: &quot;Eocene Ltd&quot;,
-      &quot;price&quot;: 2.24,
-      &quot;change_pct&quot;: -11.459999999999999,
-      &quot;volume&quot;: 7586,
-      &quot;rvol&quot;: 0.9090473337327741,
-      &quot;market_cap&quot;: 2635159.45,
-      &quot;float_shares&quot;: 1009911,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;International (region 83)&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $2.6M, rvol 0.9x, vol 7,586, vol/float 0.01x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;CNTB&quot;,
       &quot;name&quot;: &quot;Connect Biopharma Holdings Ltd&quot;,
       &quot;price&quot;: 0.57,
@@ -5475,21 +5071,6 @@
       &quot;float_shares&quot;: 43070575,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;IMDX&quot;,
-      &quot;name&quot;: &quot;Insight Molecular Diagnostics Inc.&quot;,
-      &quot;price&quot;: 1.65,
-      &quot;change_pct&quot;: -11.29,
-      &quot;volume&quot;: 168991,
-      &quot;rvol&quot;: 1.319870973788622,
-      &quot;market_cap&quot;: 60867168.24,
-      &quot;float_shares&quot;: 25808167,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x&quot;
@@ -5615,6 +5196,21 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.4x, vol 27,974, vol/float 0.01x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;CYAB&quot;,
+      &quot;name&quot;: &quot;CYABRA INC&quot;,
+      &quot;price&quot;: 0.124,
+      &quot;change_pct&quot;: -9.28,
+      &quot;volume&quot;: 851494803,
+      &quot;rvol&quot;: 5.991051593928477,
+      &quot;market_cap&quot;: 4553334.78,
+      &quot;float_shares&quot;: 23205941,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.124, mktcap $4.6M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;YAAS&quot;,
       &quot;name&quot;: &quot;Youxin Technology Ltd&quot;,
       &quot;price&quot;: 0.77,
@@ -5658,21 +5254,6 @@
       &quot;country&quot;: &quot;Australia&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: price $0.344, mktcap $1.3M, vol/float 0.12x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;CYAB&quot;,
-      &quot;name&quot;: &quot;CYABRA INC&quot;,
-      &quot;price&quot;: 0.125,
-      &quot;change_pct&quot;: -8.63,
-      &quot;volume&quot;: 851443869,
-      &quot;rvol&quot;: 5.990693226242838,
-      &quot;market_cap&quot;: 4553334.78,
-      &quot;float_shares&quot;: 23205941,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.125, mktcap $4.6M&quot;
     },
     {
       &quot;ticker&quot;: &quot;RADX&quot;,
@@ -5799,8 +5380,8 @@
       &quot;name&quot;: &quot;Zhibao Tech&quot;,
       &quot;price&quot;: 0.188,
       &quot;change_pct&quot;: -7.41,
-      &quot;volume&quot;: 6372177,
-      &quot;rvol&quot;: 0.16464649580907242,
+      &quot;volume&quot;: 6375302,
+      &quot;rvol&quot;: 0.1647272406313527,
       &quot;market_cap&quot;: 1819521.83,
       &quot;float_shares&quot;: 8809650,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5898,9 +5479,91 @@
       &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -7.0%, vol/float 0.05x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;TROO&quot;,
+      &quot;name&quot;: &quot;TROOPS INC&quot;,
+      &quot;price&quot;: 1.22,
+      &quot;change_pct&quot;: -6.87,
+      &quot;volume&quot;: 531041,
+      &quot;rvol&quot;: 0.8158101321633277,
+      &quot;market_cap&quot;: 160029817.46,
+      &quot;float_shares&quot;: 48824306,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: move -6.9%, rvol 0.8x, vol/float 0.01x&quot;
     }
   ],
   &quot;live_quotes&quot;: {
+    &quot;AYTU&quot;: {
+      &quot;price&quot;: 1.82,
+      &quot;open&quot;: 1.77,
+      &quot;high&quot;: 1.874,
+      &quot;low&quot;: 1.75,
+      &quot;close&quot;: 1.82,
+      &quot;preClose&quot;: 1.78,
+      &quot;volume&quot;: 1205714,
+      &quot;changeRatio&quot;: 0.0225,
+      &quot;marketValue&quot;: 19671456.48,
+      &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-16T22:39:19.696735Z&quot;
+    },
+    &quot;GP&quot;: {
+      &quot;price&quot;: 1.41,
+      &quot;open&quot;: 1.54,
+      &quot;high&quot;: 1.92,
+      &quot;low&quot;: 1.32,
+      &quot;close&quot;: 1.41,
+      &quot;preClose&quot;: 1.16,
+      &quot;volume&quot;: 38862431,
+      &quot;changeRatio&quot;: 0.2155,
+      &quot;marketValue&quot;: 2961999.69,
+      &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-16T22:39:19.696751Z&quot;
+    },
+    &quot;LOOP&quot;: {
+      &quot;price&quot;: 0.2242,
+      &quot;open&quot;: 0.2168,
+      &quot;high&quot;: 0.26,
+      &quot;low&quot;: 0.1806,
+      &quot;close&quot;: 0.2242,
+      &quot;preClose&quot;: 0.2201,
+      &quot;volume&quot;: 8156665,
+      &quot;changeRatio&quot;: 0.0186,
+      &quot;marketValue&quot;: 10943779.09,
+      &quot;name&quot;: &quot;Loop Industries&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-16T22:39:19.696757Z&quot;
+    },
+    &quot;SPAI&quot;: {
+      &quot;price&quot;: 2.47,
+      &quot;open&quot;: 2.75,
+      &quot;high&quot;: 2.75,
+      &quot;low&quot;: 2.32,
+      &quot;close&quot;: 2.47,
+      &quot;preClose&quot;: 2.77,
+      &quot;volume&quot;: 3134092,
+      &quot;changeRatio&quot;: -0.1083,
+      &quot;marketValue&quot;: 51820466.62,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-16T22:39:19.696761Z&quot;
+    },
+    &quot;AQB&quot;: {
+      &quot;price&quot;: 0.8017,
+      &quot;open&quot;: 0.8961,
+      &quot;high&quot;: 0.9196,
+      &quot;low&quot;: 0.8,
+      &quot;close&quot;: 0.8017,
+      &quot;preClose&quot;: 0.9,
+      &quot;volume&quot;: 2831612,
+      &quot;changeRatio&quot;: -0.1092,
+      &quot;marketValue&quot;: 10656158.72,
+      &quot;name&quot;: &quot;Aquabounty Technologies Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-16T22:39:19.696764Z&quot;
+    }
+  },
+  &quot;previous_live_quotes&quot;: {
     &quot;LOOP&quot;: {
       &quot;price&quot;: 0.2242,
       &quot;open&quot;: 0.2168,
@@ -5967,65 +5630,11 @@
       &quot;_timestamp&quot;: &quot;2026-11-16T22:37:19.729819Z&quot;
     }
   },
-  &quot;previous_live_quotes&quot;: {
-    &quot;AYTU&quot;: {
-      &quot;price&quot;: 1.82,
-      &quot;open&quot;: 1.77,
-      &quot;high&quot;: 1.874,
-      &quot;low&quot;: 1.75,
-      &quot;close&quot;: 1.82,
-      &quot;preClose&quot;: 1.78,
-      &quot;volume&quot;: 1174297,
-      &quot;changeRatio&quot;: 0.0225,
-      &quot;marketValue&quot;: 19671456.48,
-      &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-16T22:35:27.840190Z&quot;
-    },
-    &quot;CRDF&quot;: {
-      &quot;price&quot;: 0.8477,
-      &quot;open&quot;: 0.7951,
-      &quot;high&quot;: 0.9372,
-      &quot;low&quot;: 0.7951,
-      &quot;close&quot;: 0.8477,
-      &quot;preClose&quot;: 0.7261,
-      &quot;volume&quot;: 25163430,
-      &quot;changeRatio&quot;: 0.1675,
-      &quot;marketValue&quot;: 65947032.58,
-      &quot;name&quot;: &quot;Cardiff Oncology Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-16T22:35:27.840208Z&quot;
-    },
-    &quot;GP&quot;: {
-      &quot;price&quot;: 1.41,
-      &quot;open&quot;: 1.54,
-      &quot;high&quot;: 1.92,
-      &quot;low&quot;: 1.32,
-      &quot;close&quot;: 1.41,
-      &quot;preClose&quot;: 1.16,
-      &quot;volume&quot;: 38777903,
-      &quot;changeRatio&quot;: 0.2155,
-      &quot;marketValue&quot;: 2961999.69,
-      &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-16T22:35:27.840214Z&quot;
-    },
-    &quot;SPAI&quot;: {
-      &quot;price&quot;: 2.47,
-      &quot;open&quot;: 2.75,
-      &quot;high&quot;: 2.75,
-      &quot;low&quot;: 2.32,
-      &quot;close&quot;: 2.47,
-      &quot;preClose&quot;: 2.77,
-      &quot;volume&quot;: 3126872,
-      &quot;changeRatio&quot;: -0.1083,
-      &quot;marketValue&quot;: 51820466.62,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-16T22:35:27.840219Z&quot;
-    }
-  },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;AFTER-HOURS&quot;,
-    &quot;market_time&quot;: &quot;09:37 AM AEDT&quot;,
+    &quot;market_time&quot;: &quot;09:39 AM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
