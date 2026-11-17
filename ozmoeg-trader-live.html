@@ -1470,16 +1470,324 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-17T13:52:20.001215Z&quot;,
+  &quot;last_updated&quot;: &quot;2026-11-17T13:53:19.648978Z&quot;,
   &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 2.988,
+      &quot;change_pct&quot;: 20.96,
+      &quot;volume&quot;: 3242390,
+      &quot;market_cap&quot;: 51820466.62,
+      &quot;float_shares&quot;: 11937772,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+21.0% · Entry $2.99 · T1 $3.11 · T2 $3.17 · T3 $3.29&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;entry&quot;: 2.988,
+        &quot;stop&quot;: 2.9282,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.1076,
+          &quot;t2&quot;: 3.1674,
+          &quot;t3&quot;: 3.287
+        },
+        &quot;risk_per_share&quot;: 0.0598,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 100,
+        &quot;position_value&quot;: 298.8,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.9282&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 11.87,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 3242390,
+        &quot;adv&quot;: 273060,
+        &quot;recent_pct_of_adv&quot;: 1187.43,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 18.185,
+        &quot;buy_pressure_pct&quot;: 51.67,
+        &quot;large_bar_count&quot;: 88,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 3242390,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0107,
+        &quot;last_price&quot;: 2.47,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:03.955000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;00:53:17&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 2.98
+    },
     {
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 2.87,
-      &quot;change_pct&quot;: 103.55000000000001,
-      &quot;volume&quot;: 32274554,
+      &quot;change_pct&quot;: 102.84,
+      &quot;volume&quot;: 32340794,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;country&quot;: &quot;Canada&quot;,
@@ -1488,7 +1796,7 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+103.6% · Entry $2.87 · T1 $2.98 · T2 $3.04 · T3 $3.16&quot;,
+      &quot;result&quot;: &quot;+102.8% · Entry $2.87 · T1 $2.98 · T2 $3.04 · T3 $3.16&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GP&quot;,
@@ -1738,371 +2046,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 10.5,
+        &quot;rvol&quot;: 10.52,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 32274554,
+        &quot;volume&quot;: 32340794,
         &quot;adv&quot;: 3073709,
-        &quot;recent_pct_of_adv&quot;: 1050.02,
+        &quot;recent_pct_of_adv&quot;: 1052.17,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 52.843,
-        &quot;buy_pressure_pct&quot;: 48.82,
+        &quot;price_velocity_pct&quot;: 53.481,
+        &quot;buy_pressure_pct&quot;: 48.72,
         &quot;large_bar_count&quot;: 49,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 32274554,
+        &quot;recent_volume&quot;: 32340794,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.07,
         &quot;last_price&quot;: 1.41,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:03.956000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.408000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 13
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:17&quot;,
+      &quot;time&quot;: &quot;00:53:17&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.938
-    },
-    {
-      &quot;ticker&quot;: &quot;SPAI&quot;,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.98,
-      &quot;change_pct&quot;: 20.65,
-      &quot;volume&quot;: 3238390,
-      &quot;market_cap&quot;: 51820466.62,
-      &quot;float_shares&quot;: 11937772,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+20.6% · Entry $2.98 · T1 $3.10 · T2 $3.16 · T3 $3.28&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;entry&quot;: 2.98,
-        &quot;stop&quot;: 2.9204,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 3.0992,
-          &quot;t2&quot;: 3.1588,
-          &quot;t3&quot;: 3.278
-        },
-        &quot;risk_per_share&quot;: 0.0596,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 100,
-        &quot;position_value&quot;: 298.0,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.9204&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 11.86,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 3238390,
-        &quot;adv&quot;: 273060,
-        &quot;recent_pct_of_adv&quot;: 1185.96,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 17.937,
-        &quot;buy_pressure_pct&quot;: 51.48,
-        &quot;large_bar_count&quot;: 88,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 3238390,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0108,
-        &quot;last_price&quot;: 2.47,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:02.315000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
-      },
-      &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.978
+      &quot;previous_price&quot;: 2.87
     },
     {
       &quot;ticker&quot;: &quot;SLS&quot;,
       &quot;name&quot;: &quot;Sellas Life Sciences Group Inc&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 25.48,
-      &quot;change_pct&quot;: 239.85,
-      &quot;volume&quot;: 8218587,
+      &quot;price&quot;: 23.59,
+      &quot;change_pct&quot;: 217.53999999999996,
+      &quot;volume&quot;: 8383157,
       &quot;market_cap&quot;: 1522827857.97,
       &quot;float_shares&quot;: 200526122,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;cap_size&quot;: &quot;small-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (239.8%, rvol 1.2x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (217.5%, rvol 1.2x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +239.8%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +217.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;SLS&quot;,
-        &quot;entry&quot;: 25.48,
-        &quot;stop&quot;: 24.9704,
+        &quot;entry&quot;: 23.59,
+        &quot;stop&quot;: 23.1182,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 26.4992,
-          &quot;t2&quot;: 27.0088,
-          &quot;t3&quot;: 28.028
+          &quot;t1&quot;: 24.5336,
+          &quot;t2&quot;: 25.0054,
+          &quot;t3&quot;: 25.949
         },
-        &quot;risk_per_share&quot;: 0.5096,
+        &quot;risk_per_share&quot;: 0.4718,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 11,
-        &quot;position_value&quot;: 280.28,
+        &quot;shares&quot;: 12,
+        &quot;position_value&quot;: 283.08,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2110,7 +2110,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$24.9704&quot;
+          &quot;hard_stop&quot;: &quot;$23.1182&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2488,220 +2488,29 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 5.0,
-        &quot;rvol&quot;: 1.18,
+        &quot;rvol&quot;: 1.2,
         &quot;volume_indicator&quot;: &quot;moderate&quot;,
-        &quot;volume&quot;: 8218587,
+        &quot;volume&quot;: 8383157,
         &quot;adv&quot;: 6978319,
-        &quot;recent_pct_of_adv&quot;: 117.77,
+        &quot;recent_pct_of_adv&quot;: 120.13,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 73.835,
-        &quot;buy_pressure_pct&quot;: 51.23,
-        &quot;large_bar_count&quot;: 25,
+        &quot;price_velocity_pct&quot;: 72.547,
+        &quot;buy_pressure_pct&quot;: 50.15,
+        &quot;large_bar_count&quot;: 26,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 8218587,
+        &quot;recent_volume&quot;: 8383157,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.03,
         &quot;last_price&quot;: 7.47,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:04.574000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.505000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 12
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 25.09
-    },
-    {
-      &quot;ticker&quot;: &quot;FRTT&quot;,
-      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.62,
-      &quot;change_pct&quot;: 62.839999999999996,
-      &quot;volume&quot;: 78924303,
-      &quot;market_cap&quot;: 5765037.38,
-      &quot;float_shares&quot;: 4483431,
-      &quot;country&quot;: &quot;Canada&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (62.8%, rvol 2049.4x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +62.8%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;entry&quot;: 0.62,
-        &quot;stop&quot;: 0.6076,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.6448,
-          &quot;t2&quot;: 0.6572,
-          &quot;t3&quot;: 0.682
-        },
-        &quot;risk_per_share&quot;: 0.0124,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 483,
-        &quot;position_value&quot;: 299.46,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.6076&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [
-          {
-            &quot;title&quot;: &quot;Fort Technology Says The TSX Venture Exchange Has Approved Its Voluntary Delisting&quot;,
-            &quot;flag&quot;: &quot;delisting&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology approved for voluntary delisting of common shares from TSXV&quot;,
-            &quot;flag&quot;: &quot;delisting&quot;
-          }
-        ],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 2049.45,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 78924303,
-        &quot;adv&quot;: 38510,
-        &quot;recent_pct_of_adv&quot;: 204944.96,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 39.997,
-        &quot;buy_pressure_pct&quot;: 58.1,
-        &quot;large_bar_count&quot;: 8,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 78924303,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0307,
-        &quot;last_price&quot;: 0.38,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:04.586000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 0.598
+      &quot;previous_price&quot;: 25.48
     },
     {
       &quot;ticker&quot;: &quot;AYTU&quot;,
@@ -2709,8 +2518,8 @@
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
       &quot;price&quot;: 2.66,
-      &quot;change_pct&quot;: 46.129999999999995,
-      &quot;volume&quot;: 401894,
+      &quot;change_pct&quot;: 46.14,
+      &quot;volume&quot;: 402037,
       &quot;market_cap&quot;: 19780138.56,
       &quot;float_shares&quot;: 9971007,
       &quot;country&quot;: &quot;United States&quot;,
@@ -2812,7 +2621,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Cut to Hold From Buy by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -2821,7 +2630,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3004,7 +2813,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Cut to Hold From Buy by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3013,7 +2822,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -3153,38 +2962,537 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 7.09,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 401894,
+        &quot;volume&quot;: 402037,
         &quot;adv&quot;: 56711,
-        &quot;recent_pct_of_adv&quot;: 708.67,
+        &quot;recent_pct_of_adv&quot;: 708.92,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 31.323,
+        &quot;price_velocity_pct&quot;: 31.553,
         &quot;buy_pressure_pct&quot;: 55.89,
         &quot;large_bar_count&quot;: 86,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 401894,
+        &quot;recent_volume&quot;: 402037,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0,
         &quot;last_price&quot;: 1.82,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:51:49.224000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 103
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:43.314000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 33
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
       &quot;previous_price&quot;: 2.66
+    },
+    {
+      &quot;ticker&quot;: &quot;FRTT&quot;,
+      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.643,
+      &quot;change_pct&quot;: 69.26,
+      &quot;volume&quot;: 80095027,
+      &quot;market_cap&quot;: 5765037.38,
+      &quot;float_shares&quot;: 4483431,
+      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (69.3%, rvol 2079.8x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +69.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;entry&quot;: 0.643,
+        &quot;stop&quot;: 0.6301,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.6688,
+          &quot;t2&quot;: 0.6817,
+          &quot;t3&quot;: 0.7075
+        },
+        &quot;risk_per_share&quot;: 0.0129,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 466,
+        &quot;position_value&quot;: 299.64,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.6301&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;Fort Technology Says The TSX Venture Exchange Has Approved Its Voluntary Delisting&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology approved for voluntary delisting of common shares from TSXV&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2079.85,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 80095027,
+        &quot;adv&quot;: 38510,
+        &quot;recent_pct_of_adv&quot;: 207985.01,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 37.664,
+        &quot;buy_pressure_pct&quot;: 58.57,
+        &quot;large_bar_count&quot;: 8,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 80095027,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0314,
+        &quot;last_price&quot;: 0.38,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.518000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 12
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.62
     }
   ],
   &quot;pre_market_results&quot;: [
     {
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 2.988,
+      &quot;change_pct&quot;: 20.96,
+      &quot;volume&quot;: 3242390,
+      &quot;market_cap&quot;: 51820466.62,
+      &quot;float_shares&quot;: 11937772,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+      &quot;result&quot;: &quot;+21.0% · Entry $2.99 · T1 $3.11 · T2 $3.17 · T3 $3.29&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;entry&quot;: 2.988,
+        &quot;stop&quot;: 2.9282,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.1076,
+          &quot;t2&quot;: 3.1674,
+          &quot;t3&quot;: 3.287
+        },
+        &quot;risk_per_share&quot;: 0.0598,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 100,
+        &quot;position_value&quot;: 298.8,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$2.9282&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SPAI&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 11.87,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 3242390,
+        &quot;adv&quot;: 273060,
+        &quot;recent_pct_of_adv&quot;: 1187.43,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 18.185,
+        &quot;buy_pressure_pct&quot;: 51.67,
+        &quot;large_bar_count&quot;: 88,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 3242390,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0107,
+        &quot;last_price&quot;: 2.47,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:03.955000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 13
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;00:53:17&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 2.98
+    },
+    {
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 2.87,
-      &quot;change_pct&quot;: 103.55000000000001,
-      &quot;volume&quot;: 32274554,
+      &quot;change_pct&quot;: 102.84,
+      &quot;volume&quot;: 32340794,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;country&quot;: &quot;Canada&quot;,
@@ -3193,7 +3501,7 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+103.6% · Entry $2.87 · T1 $2.98 · T2 $3.04 · T3 $3.16&quot;,
+      &quot;result&quot;: &quot;+102.8% · Entry $2.87 · T1 $2.98 · T2 $3.04 · T3 $3.16&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GP&quot;,
@@ -3443,371 +3751,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 10.5,
+        &quot;rvol&quot;: 10.52,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 32274554,
+        &quot;volume&quot;: 32340794,
         &quot;adv&quot;: 3073709,
-        &quot;recent_pct_of_adv&quot;: 1050.02,
+        &quot;recent_pct_of_adv&quot;: 1052.17,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 52.843,
-        &quot;buy_pressure_pct&quot;: 48.82,
+        &quot;price_velocity_pct&quot;: 53.481,
+        &quot;buy_pressure_pct&quot;: 48.72,
         &quot;large_bar_count&quot;: 49,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 32274554,
+        &quot;recent_volume&quot;: 32340794,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.07,
         &quot;last_price&quot;: 1.41,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:03.956000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.408000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 13
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:17&quot;,
+      &quot;time&quot;: &quot;00:53:17&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.938
-    },
-    {
-      &quot;ticker&quot;: &quot;SPAI&quot;,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 2.98,
-      &quot;change_pct&quot;: 20.65,
-      &quot;volume&quot;: 3238390,
-      &quot;market_cap&quot;: 51820466.62,
-      &quot;float_shares&quot;: 11937772,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
-      &quot;result&quot;: &quot;+20.6% · Entry $2.98 · T1 $3.10 · T2 $3.16 · T3 $3.28&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;entry&quot;: 2.98,
-        &quot;stop&quot;: 2.9204,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 3.0992,
-          &quot;t2&quot;: 3.1588,
-          &quot;t3&quot;: 3.278
-        },
-        &quot;risk_per_share&quot;: 0.0596,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 100,
-        &quot;position_value&quot;: 298.0,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$2.9204&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;SPAI&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 11.86,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 3238390,
-        &quot;adv&quot;: 273060,
-        &quot;recent_pct_of_adv&quot;: 1185.96,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 17.937,
-        &quot;buy_pressure_pct&quot;: 51.48,
-        &quot;large_bar_count&quot;: 88,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 3238390,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0108,
-        &quot;last_price&quot;: 2.47,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:02.315000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 15
-      },
-      &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 2.978
+      &quot;previous_price&quot;: 2.87
     },
     {
       &quot;ticker&quot;: &quot;SLS&quot;,
       &quot;name&quot;: &quot;Sellas Life Sciences Group Inc&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 25.48,
-      &quot;change_pct&quot;: 239.85,
-      &quot;volume&quot;: 8218587,
+      &quot;price&quot;: 23.59,
+      &quot;change_pct&quot;: 217.53999999999996,
+      &quot;volume&quot;: 8383157,
       &quot;market_cap&quot;: 1522827857.97,
       &quot;float_shares&quot;: 200526122,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;cap_size&quot;: &quot;small-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (239.8%, rvol 1.2x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (217.5%, rvol 1.2x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +239.8%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +217.5%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;SLS&quot;,
-        &quot;entry&quot;: 25.48,
-        &quot;stop&quot;: 24.9704,
+        &quot;entry&quot;: 23.59,
+        &quot;stop&quot;: 23.1182,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 26.4992,
-          &quot;t2&quot;: 27.0088,
-          &quot;t3&quot;: 28.028
+          &quot;t1&quot;: 24.5336,
+          &quot;t2&quot;: 25.0054,
+          &quot;t3&quot;: 25.949
         },
-        &quot;risk_per_share&quot;: 0.5096,
+        &quot;risk_per_share&quot;: 0.4718,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 11,
-        &quot;position_value&quot;: 280.28,
+        &quot;shares&quot;: 12,
+        &quot;position_value&quot;: 283.08,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3815,7 +3815,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$24.9704&quot;
+          &quot;hard_stop&quot;: &quot;$23.1182&quot;
         }
       },
       &quot;ta&quot;: {
@@ -4193,220 +4193,29 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 5.0,
-        &quot;rvol&quot;: 1.18,
+        &quot;rvol&quot;: 1.2,
         &quot;volume_indicator&quot;: &quot;moderate&quot;,
-        &quot;volume&quot;: 8218587,
+        &quot;volume&quot;: 8383157,
         &quot;adv&quot;: 6978319,
-        &quot;recent_pct_of_adv&quot;: 117.77,
+        &quot;recent_pct_of_adv&quot;: 120.13,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 73.835,
-        &quot;buy_pressure_pct&quot;: 51.23,
-        &quot;large_bar_count&quot;: 25,
+        &quot;price_velocity_pct&quot;: 72.547,
+        &quot;buy_pressure_pct&quot;: 50.15,
+        &quot;large_bar_count&quot;: 26,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 8218587,
+        &quot;recent_volume&quot;: 8383157,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.03,
         &quot;last_price&quot;: 7.47,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:04.574000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.505000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 12
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 25.09
-    },
-    {
-      &quot;ticker&quot;: &quot;FRTT&quot;,
-      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.62,
-      &quot;change_pct&quot;: 62.839999999999996,
-      &quot;volume&quot;: 78924303,
-      &quot;market_cap&quot;: 5765037.38,
-      &quot;float_shares&quot;: 4483431,
-      &quot;country&quot;: &quot;Canada&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (62.8%, rvol 2049.4x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +62.8%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;entry&quot;: 0.62,
-        &quot;stop&quot;: 0.6076,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.6448,
-          &quot;t2&quot;: 0.6572,
-          &quot;t3&quot;: 0.682
-        },
-        &quot;risk_per_share&quot;: 0.0124,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 483,
-        &quot;position_value&quot;: 299.46,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.6076&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [
-          {
-            &quot;title&quot;: &quot;Fort Technology Says The TSX Venture Exchange Has Approved Its Voluntary Delisting&quot;,
-            &quot;flag&quot;: &quot;delisting&quot;
-          },
-          {
-            &quot;title&quot;: &quot;Fort Technology approved for voluntary delisting of common shares from TSXV&quot;,
-            &quot;flag&quot;: &quot;delisting&quot;
-          }
-        ],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
-        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;FRTT&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 2049.45,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 78924303,
-        &quot;adv&quot;: 38510,
-        &quot;recent_pct_of_adv&quot;: 204944.96,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 39.997,
-        &quot;buy_pressure_pct&quot;: 58.1,
-        &quot;large_bar_count&quot;: 8,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 78924303,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0307,
-        &quot;last_price&quot;: 0.38,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:04.586000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 0.598
+      &quot;previous_price&quot;: 25.48
     },
     {
       &quot;ticker&quot;: &quot;AYTU&quot;,
@@ -4414,8 +4223,8 @@
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
       &quot;price&quot;: 2.66,
-      &quot;change_pct&quot;: 46.129999999999995,
-      &quot;volume&quot;: 401894,
+      &quot;change_pct&quot;: 46.14,
+      &quot;volume&quot;: 402037,
       &quot;market_cap&quot;: 19780138.56,
       &quot;float_shares&quot;: 9971007,
       &quot;country&quot;: &quot;United States&quot;,
@@ -4517,7 +4326,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Cut to Hold From Buy by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -4526,7 +4335,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -4709,7 +4518,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Cut to Hold From Buy by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -4718,7 +4527,7 @@
           {
             &quot;title&quot;: &quot;Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street&quot;,
             &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;45m ago · 17 Nov&quot;,
+            &quot;time&quot;: &quot;46m ago · 17 Nov&quot;,
             &quot;raw_time&quot;: &quot;2026-11-17T13:07:00.000+0000&quot;,
             &quot;url&quot;: &quot;&quot;,
             &quot;score&quot;: 0,
@@ -4858,65 +4667,256 @@
         &quot;tape_score&quot;: 8.0,
         &quot;rvol&quot;: 7.09,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 401894,
+        &quot;volume&quot;: 402037,
         &quot;adv&quot;: 56711,
-        &quot;recent_pct_of_adv&quot;: 708.67,
+        &quot;recent_pct_of_adv&quot;: 708.92,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 31.323,
+        &quot;price_velocity_pct&quot;: 31.553,
         &quot;buy_pressure_pct&quot;: 55.89,
         &quot;large_bar_count&quot;: 86,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 401894,
+        &quot;recent_volume&quot;: 402037,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0,
         &quot;last_price&quot;: 1.82,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-17T13:51:49.224000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 103
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:43.314000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 33
       },
       &quot;date&quot;: &quot;2026-11-18&quot;,
-      &quot;time&quot;: &quot;00:52:18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
       &quot;previous_price&quot;: 2.66
+    },
+    {
+      &quot;ticker&quot;: &quot;FRTT&quot;,
+      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.643,
+      &quot;change_pct&quot;: 69.26,
+      &quot;volume&quot;: 80095027,
+      &quot;market_cap&quot;: 5765037.38,
+      &quot;float_shares&quot;: 4483431,
+      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (69.3%, rvol 2079.8x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +69.3%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;entry&quot;: 0.643,
+        &quot;stop&quot;: 0.6301,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.6688,
+          &quot;t2&quot;: 0.6817,
+          &quot;t3&quot;: 0.7075
+        },
+        &quot;risk_per_share&quot;: 0.0129,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 466,
+        &quot;position_value&quot;: 299.64,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.6301&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*Fort Technology 3Q Loss/Shr 3c >FRTT&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-17T12:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology Q3 EPS $(0.03) Up From $(0.48) YoY, Sales $4.625M Up From $3.127M YoY&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T22:42:24.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at FRTT last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:34:05.030+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology enters into credit facility agreements for up to $20M&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T12:55:22.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;Fort Technology Says The TSX Venture Exchange Has Approved Its Voluntary Delisting&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Fort Technology approved for voluntary delisting of common shares from TSXV&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;*Fort Technology 3Q Rev $4.6M >FRTT&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 0/5); red flags: delisting&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;FRTT&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 2079.85,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 80095027,
+        &quot;adv&quot;: 38510,
+        &quot;recent_pct_of_adv&quot;: 207985.01,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 37.664,
+        &quot;buy_pressure_pct&quot;: 58.57,
+        &quot;large_bar_count&quot;: 8,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 80095027,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0314,
+        &quot;last_price&quot;: 0.38,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:04.518000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 12
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;00:53:18&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: 0.62
     }
   ],
   &quot;pre_market_watchlist&quot;: [],
   &quot;bounce_results&quot;: [],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: {
-    &quot;ticker&quot;: &quot;GP&quot;,
-    &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
+    &quot;ticker&quot;: &quot;SPAI&quot;,
+    &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
     &quot;status&quot;: &quot;ALERT&quot;,
     &quot;source&quot;: &quot;regular&quot;,
-    &quot;price&quot;: 2.87,
-    &quot;change_pct&quot;: 103.55000000000001,
-    &quot;volume&quot;: 32274554,
-    &quot;market_cap&quot;: 2961999.69,
-    &quot;float_shares&quot;: 1297073,
-    &quot;country&quot;: &quot;Canada&quot;,
-    &quot;cap_size&quot;: &quot;nano-cap&quot;,
+    &quot;price&quot;: 2.988,
+    &quot;change_pct&quot;: 20.96,
+    &quot;volume&quot;: 3242390,
+    &quot;market_cap&quot;: 51820466.62,
+    &quot;float_shares&quot;: 11937772,
+    &quot;country&quot;: &quot;United States&quot;,
+    &quot;cap_size&quot;: &quot;micro-cap&quot;,
     &quot;is_penny_stock&quot;: false,
     &quot;scan_reason&quot;: &quot;Passed filters&quot;,
     &quot;scan_passed&quot;: true,
-    &quot;sec_filings&quot;: &quot;&quot;,
-    &quot;result&quot;: &quot;+103.6% · Entry $2.87 · T1 $2.98 · T2 $3.04 · T3 $3.16&quot;,
+    &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)&quot;,
+    &quot;result&quot;: &quot;+21.0% · Entry $2.99 · T1 $3.11 · T2 $3.17 · T3 $3.29&quot;,
     &quot;plan&quot;: {
       &quot;valid&quot;: true,
-      &quot;ticker&quot;: &quot;GP&quot;,
-      &quot;entry&quot;: 2.87,
-      &quot;stop&quot;: 2.8126,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
+      &quot;entry&quot;: 2.988,
+      &quot;stop&quot;: 2.9282,
       &quot;targets&quot;: {
-        &quot;t1&quot;: 2.9848,
-        &quot;t2&quot;: 3.0422,
-        &quot;t3&quot;: 3.157
+        &quot;t1&quot;: 3.1076,
+        &quot;t2&quot;: 3.1674,
+        &quot;t3&quot;: 3.287
       },
-      &quot;risk_per_share&quot;: 0.0574,
+      &quot;risk_per_share&quot;: 0.0598,
       &quot;risk_amount&quot;: 20.0,
       &quot;daily_risk_budget&quot;: 60.0,
       &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-      &quot;shares&quot;: 104,
-      &quot;position_value&quot;: 298.48,
+      &quot;shares&quot;: 100,
+      &quot;position_value&quot;: 298.8,
       &quot;risk_reward&quot;: 2.0,
       &quot;confidence&quot;: &quot;MED&quot;,
       &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -4924,7 +4924,7 @@
         &quot;momentum_based&quot;: true,
         &quot;time_based&quot;: false,
         &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-        &quot;hard_stop&quot;: &quot;$2.8126&quot;
+        &quot;hard_stop&quot;: &quot;$2.9282&quot;
       }
     },
     &quot;ta&quot;: {
@@ -4932,18 +4932,9 @@
       &quot;error&quot;: &quot;No bar data&quot;
     },
     &quot;news&quot;: {
-      &quot;ticker&quot;: &quot;GP&quot;,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;total_items&quot;: 20,
       &quot;scored_items&quot;: [
-        {
-          &quot;title&quot;: &quot;GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-17T12:26:55.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
         {
           &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
@@ -4954,82 +4945,100 @@
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M&quot;,
+          &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;19h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T18:29:59.000+0000&quot;,
+          &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;20h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor Files September 30 Interim Financial Statements&quot;,
+          &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:22:08.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+          &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:05:28.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T11:31:38.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at GP last week (1109-1113)?&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:26:30.213+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Thursday&#39;s After-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T21:05:45.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -5037,15 +5046,6 @@
       ],
       &quot;headlines&quot;: [
         {
-          &quot;title&quot;: &quot;GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-17T12:26:55.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
           &quot;title&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1h ago · 17 Nov&quot;,
@@ -5055,82 +5055,100 @@
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M&quot;,
+          &quot;title&quot;: &quot;Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;19h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T18:29:59.000+0000&quot;,
+          &quot;time&quot;: &quot;4h ago · 17 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-17T09:30:26.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s Intraday Session&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;20h ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;15h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T22:25:16.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor Files September 30 Interim Financial Statements&quot;,
+          &quot;title&quot;: &quot;Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:46:38.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:25:02.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s After-Market Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:44.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Loss/Shr 8c >SPAI&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;*Safe Pro Group 3Q Rev $2.68M >SPAI&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:05:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Press Release: Safe Pro Group Reports Record Q3 -2-&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;16h ago · 16 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T21:02:00.000+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;Weekly Report: what happened at SPAI last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:22:08.000+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:31:55.634+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
+          &quot;title&quot;: &quot;Safe Pro awarded contract by UDA under UNMAS Program&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:05:28.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-11T13:21:23.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
         },
         {
-          &quot;title&quot;: &quot;GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026&quot;,
+          &quot;title&quot;: &quot;Safe Pro Group Wins First U.S. Government Prime Contract&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T11:31:38.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at GP last week (1109-1113)?&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:26:30.213+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Thursday&#39;s After-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T21:05:45.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Industrials Stocks Moving In Thursday&#39;s Intraday Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;4d ago · 12 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-12T17:05:40.000+0000&quot;,
+          &quot;time&quot;: &quot;6d ago · 10 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-10T14:29:37.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -5141,38 +5159,38 @@
       &quot;avg_score&quot;: 0.0,
       &quot;catalyst_confirmed&quot;: false,
       &quot;high_impact_count&quot;: 0,
-      &quot;top_headline&quot;: &quot;GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY&quot;,
+      &quot;top_headline&quot;: &quot;12 Industrials Stocks Moving In Tuesday&#39;s Pre-Market Session&quot;,
       &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
     },
     &quot;tape&quot;: {
-      &quot;ticker&quot;: &quot;GP&quot;,
+      &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;valid&quot;: true,
       &quot;stale&quot;: false,
       &quot;no_move&quot;: false,
       &quot;tape_score&quot;: 8.0,
-      &quot;rvol&quot;: 10.5,
+      &quot;rvol&quot;: 11.87,
       &quot;volume_indicator&quot;: &quot;high&quot;,
-      &quot;volume&quot;: 32274554,
-      &quot;adv&quot;: 3073709,
-      &quot;recent_pct_of_adv&quot;: 1050.02,
+      &quot;volume&quot;: 3242390,
+      &quot;adv&quot;: 273060,
+      &quot;recent_pct_of_adv&quot;: 1187.43,
       &quot;volume_acceleration&quot;: 0.0,
-      &quot;price_velocity_pct&quot;: 52.843,
-      &quot;buy_pressure_pct&quot;: 48.82,
-      &quot;large_bar_count&quot;: 49,
+      &quot;price_velocity_pct&quot;: 18.185,
+      &quot;buy_pressure_pct&quot;: 51.67,
+      &quot;large_bar_count&quot;: 88,
       &quot;vwap_distance_pct&quot;: 0.0,
-      &quot;recent_volume&quot;: 32274554,
+      &quot;recent_volume&quot;: 3242390,
       &quot;prior_volume&quot;: 0,
-      &quot;median_range&quot;: 0.07,
-      &quot;last_price&quot;: 1.41,
+      &quot;median_range&quot;: 0.0107,
+      &quot;last_price&quot;: 2.47,
       &quot;vwap&quot;: null,
-      &quot;last_trade_time&quot;: &quot;2026-11-17T13:52:03.956000+00:00&quot;,
+      &quot;last_trade_time&quot;: &quot;2026-11-17T13:53:03.955000+00:00&quot;,
       &quot;stale_age_seconds&quot;: 13
     },
     &quot;date&quot;: &quot;2026-11-18&quot;,
-    &quot;time&quot;: &quot;00:52:17&quot;,
+    &quot;time&quot;: &quot;00:53:17&quot;,
     &quot;skip_news_check&quot;: false,
     &quot;red_flag&quot;: false,
-    &quot;previous_price&quot;: 2.938
+    &quot;previous_price&quot;: 2.98
   },
   &quot;total_candidates&quot;: 5,
   &quot;alerts_generated&quot;: 2,
@@ -5181,9 +5199,9 @@
       &quot;ticker&quot;: &quot;GP&quot;,
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;price&quot;: 2.87,
-      &quot;change_pct&quot;: 103.55000000000001,
-      &quot;volume&quot;: 32274554,
-      &quot;rvol&quot;: 1.1163449127658218,
+      &quot;change_pct&quot;: 102.84,
+      &quot;volume&quot;: 32340794,
+      &quot;rvol&quot;: 1.1186360888738358,
       &quot;market_cap&quot;: 2961999.69,
       &quot;float_shares&quot;: 1297073,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5195,25 +5213,25 @@
     {
       &quot;ticker&quot;: &quot;FRTT&quot;,
       &quot;name&quot;: &quot;Fort Technology Inc&quot;,
-      &quot;price&quot;: 0.62,
-      &quot;change_pct&quot;: 62.839999999999996,
-      &quot;volume&quot;: 78924303,
-      &quot;rvol&quot;: 2049.44957153986,
+      &quot;price&quot;: 0.643,
+      &quot;change_pct&quot;: 69.26,
+      &quot;volume&quot;: 80095027,
+      &quot;rvol&quot;: 2079.8500908854844,
       &quot;market_cap&quot;: 5765037.38,
       &quot;float_shares&quot;: 4483431,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.620&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.643&quot;
     },
     {
       &quot;ticker&quot;: &quot;AYTU&quot;,
       &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
       &quot;price&quot;: 2.66,
-      &quot;change_pct&quot;: 46.129999999999995,
-      &quot;volume&quot;: 401894,
-      &quot;rvol&quot;: 1.4893457749975911,
+      &quot;change_pct&quot;: 46.14,
+      &quot;volume&quot;: 402037,
+      &quot;rvol&quot;: 1.4898757068846675,
       &quot;market_cap&quot;: 19780138.56,
       &quot;float_shares&quot;: 9971007,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5223,12 +5241,27 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.04x < 0.1x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;BMGL&quot;,
+      &quot;name&quot;: &quot;Basel Medical Group Ltd&quot;,
+      &quot;price&quot;: 0.366,
+      &quot;change_pct&quot;: 21.01,
+      &quot;volume&quot;: 19402193,
+      &quot;rvol&quot;: 4.599719780708253,
+      &quot;market_cap&quot;: 4105872.16,
+      &quot;float_shares&quot;: 12731673,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.366, tiny avg $vol, avg $vol $1.5M < $2.0M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;SPAI&quot;,
       &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;price&quot;: 2.98,
-      &quot;change_pct&quot;: 20.65,
-      &quot;volume&quot;: 3238390,
-      &quot;rvol&quot;: 4.349079725764321,
+      &quot;price&quot;: 2.988,
+      &quot;change_pct&quot;: 20.96,
+      &quot;volume&quot;: 3242390,
+      &quot;rvol&quot;: 4.354451629365511,
       &quot;market_cap&quot;: 51820466.62,
       &quot;float_shares&quot;: 11937772,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5238,19 +5271,34 @@
       &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
-      &quot;ticker&quot;: &quot;BMGL&quot;,
-      &quot;name&quot;: &quot;Basel Medical Group Ltd&quot;,
-      &quot;price&quot;: 0.359,
-      &quot;change_pct&quot;: 19.09,
-      &quot;volume&quot;: 19391044,
-      &quot;rvol&quot;: 4.597076663209364,
-      &quot;market_cap&quot;: 4105872.16,
-      &quot;float_shares&quot;: 12731673,
+      &quot;ticker&quot;: &quot;GLAS&quot;,
+      &quot;name&quot;: &quot;Glass House Brands Inc&quot;,
+      &quot;price&quot;: 1.52,
+      &quot;change_pct&quot;: 18.6,
+      &quot;volume&quot;: 913223,
+      &quot;rvol&quot;: 0.2525579420862608,
+      &quot;market_cap&quot;: 120879438.39,
+      &quot;float_shares&quot;: 86790334,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;GIPR&quot;,
+      &quot;name&quot;: &quot;Generation Incom&quot;,
+      &quot;price&quot;: 0.304,
+      &quot;change_pct&quot;: 15.32,
+      &quot;volume&quot;: 9759256,
+      &quot;rvol&quot;: 0.455014919426147,
+      &quot;market_cap&quot;: 789308.77,
+      &quot;float_shares&quot;: 2794143,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.359, tiny avg $vol, avg $vol $1.5M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.8M&quot;
     },
     {
       &quot;ticker&quot;: &quot;FURY&quot;,
@@ -5268,21 +5316,6 @@
       &quot;reason&quot;: &quot;Filtered: vol 104, float 175.9M > 100M, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;USDE&quot;,
-      &quot;name&quot;: &quot;StableCoinX Inc.&quot;,
-      &quot;price&quot;: 4.7,
-      &quot;change_pct&quot;: 16.63,
-      &quot;volume&quot;: 95942,
-      &quot;rvol&quot;: 0.09144927978282917,
-      &quot;market_cap&quot;: 109564129.87,
-      &quot;float_shares&quot;: 18247290,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;SABS&quot;,
       &quot;name&quot;: &quot;SAB BIOTHERAPEUTICS INC&quot;,
       &quot;price&quot;: 3.49,
@@ -5296,21 +5329,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 3, vol/float 0.00x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;GLAS&quot;,
-      &quot;name&quot;: &quot;Glass House Brands Inc&quot;,
-      &quot;price&quot;: 1.5,
-      &quot;change_pct&quot;: 16.3,
-      &quot;volume&quot;: 905351,
-      &quot;rvol&quot;: 0.25038088771936134,
-      &quot;market_cap&quot;: 120879438.39,
-      &quot;float_shares&quot;: 86790334,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SCAG&quot;,
@@ -5328,19 +5346,19 @@
       &quot;reason&quot;: &quot;Filtered: tiny price $0.948, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1,865, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;CATO&quot;,
-      &quot;name&quot;: &quot;Cato Corp&quot;,
-      &quot;price&quot;: 2.559,
-      &quot;change_pct&quot;: 15.78,
-      &quot;volume&quot;: 1,
-      &quot;rvol&quot;: 1.3608219364496156e-05,
-      &quot;market_cap&quot;: 44005407.29,
-      &quot;float_shares&quot;: 15626189,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;ticker&quot;: &quot;USDE&quot;,
+      &quot;name&quot;: &quot;StableCoinX Inc.&quot;,
+      &quot;price&quot;: 4.64,
+      &quot;change_pct&quot;: 15.14,
+      &quot;volume&quot;: 96066,
+      &quot;rvol&quot;: 0.09156747317772473,
+      &quot;market_cap&quot;: 109564129.87,
+      &quot;float_shares&quot;: 18247290,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;NXTS&quot;,
@@ -5356,21 +5374,6 @@
       &quot;country&quot;: &quot;International (region 83)&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 74, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;LTRN&quot;,
-      &quot;name&quot;: &quot;Lantern Pharma Inc&quot;,
-      &quot;price&quot;: 0.447,
-      &quot;change_pct&quot;: 14.99,
-      &quot;volume&quot;: 1,
-      &quot;rvol&quot;: 5.84180394905947e-06,
-      &quot;market_cap&quot;: 5809939.06,
-      &quot;float_shares&quot;: 12854688,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.447, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;SVIA&quot;,
@@ -5406,9 +5409,9 @@
       &quot;ticker&quot;: &quot;BURU&quot;,
       &quot;name&quot;: &quot;Nuburu&quot;,
       &quot;price&quot;: 0.227,
-      &quot;change_pct&quot;: 13.700000000000001,
-      &quot;volume&quot;: 23078826,
-      &quot;rvol&quot;: 1.0542800488410484,
+      &quot;change_pct&quot;: 13.55,
+      &quot;volume&quot;: 23096480,
+      &quot;rvol&quot;: 1.055086513605861,
       &quot;market_cap&quot;: 2102979.6,
       &quot;float_shares&quot;: 8354006,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5418,19 +5421,19 @@
       &quot;reason&quot;: &quot;Filtered: tiny price $0.227, tiny rvol 1.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;GIPR&quot;,
-      &quot;name&quot;: &quot;Generation Incom&quot;,
-      &quot;price&quot;: 0.294,
-      &quot;change_pct&quot;: 13.55,
-      &quot;volume&quot;: 9678584,
-      &quot;rvol&quot;: 0.4512536733250153,
-      &quot;market_cap&quot;: 789308.77,
-      &quot;float_shares&quot;: 2794143,
+      &quot;ticker&quot;: &quot;CVM&quot;,
+      &quot;name&quot;: &quot;CEL-SCI Corp&quot;,
+      &quot;price&quot;: 1.88,
+      &quot;change_pct&quot;: 13.25,
+      &quot;volume&quot;: 97659,
+      &quot;rvol&quot;: 0.3377474511322921,
+      &quot;market_cap&quot;: 29197718.42,
+      &quot;float_shares&quot;: 16927869,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
+      &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.8M&quot;
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;NIPG&quot;,
@@ -5506,21 +5509,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 12,436, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;CVM&quot;,
-      &quot;name&quot;: &quot;CEL-SCI Corp&quot;,
-      &quot;price&quot;: 1.86,
-      &quot;change_pct&quot;: 12.049999999999999,
-      &quot;volume&quot;: 97658,
-      &quot;rvol&quot;: 0.3377439926957821,
-      &quot;market_cap&quot;: 29197718.42,
-      &quot;float_shares&quot;: 16927869,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;GTBP&quot;,
@@ -5733,6 +5721,21 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $1.0M, vol 2,731, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;AEON&quot;,
+      &quot;name&quot;: &quot;Aeon Biopharma&quot;,
+      &quot;price&quot;: 0.155,
+      &quot;change_pct&quot;: 10.45,
+      &quot;volume&quot;: 1828587,
+      &quot;rvol&quot;: 1.3273811511407603,
+      &quot;market_cap&quot;: 10062444.71,
+      &quot;float_shares&quot;: 36436845,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.155, vol/float 0.05x < 0.1x, avg $vol $0.2M < $0.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;PACK&quot;,
       &quot;name&quot;: &quot;Ranpak Holdings Corp&quot;,
       &quot;price&quot;: 3.4,
@@ -5746,21 +5749,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 14, vol/float 0.00x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;AEON&quot;,
-      &quot;name&quot;: &quot;Aeon Biopharma&quot;,
-      &quot;price&quot;: 0.155,
-      &quot;change_pct&quot;: 10.38,
-      &quot;volume&quot;: 1827276,
-      &quot;rvol&quot;: 1.3264294891803803,
-      &quot;market_cap&quot;: 10062444.71,
-      &quot;float_shares&quot;: 36436845,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.155, vol/float 0.05x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;CYCU&quot;,
@@ -5806,16 +5794,31 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 252, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;TWG&quot;,
+      &quot;name&quot;: &quot;Top Wealth Grp&quot;,
+      &quot;price&quot;: 2.474,
+      &quot;change_pct&quot;: 9.94,
+      &quot;volume&quot;: 334,
+      &quot;rvol&quot;: 0.005036264117372095,
+      &quot;market_cap&quot;: 1411794.0,
+      &quot;float_shares&quot;: 444087,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 334, vol/float 0.00x < 0.1x, avg $vol $0.2M < $2.0M&quot;
     }
   ],
   &quot;all_losers&quot;: [
     {
       &quot;ticker&quot;: &quot;GDHG&quot;,
       &quot;name&quot;: &quot;Golden Heaven Gr&quot;,
-      &quot;price&quot;: 1.12,
-      &quot;change_pct&quot;: -29.09,
-      &quot;volume&quot;: 4199862,
-      &quot;rvol&quot;: 0.20136691393578188,
+      &quot;price&quot;: 1.115,
+      &quot;change_pct&quot;: -29.7,
+      &quot;volume&quot;: 4206899,
+      &quot;rvol&quot;: 0.2017043104915178,
       &quot;market_cap&quot;: 93995622.0,
       &quot;float_shares&quot;: 41818480,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5827,25 +5830,25 @@
     {
       &quot;ticker&quot;: &quot;YFOR&quot;,
       &quot;name&quot;: &quot;Yyforce Inc&quot;,
-      &quot;price&quot;: 0.028,
-      &quot;change_pct&quot;: -27.79,
-      &quot;volume&quot;: 88519371,
-      &quot;rvol&quot;: 1.4246524500084181,
+      &quot;price&quot;: 0.027,
+      &quot;change_pct&quot;: -28.57,
+      &quot;volume&quot;: 89014761,
+      &quot;rvol&quot;: 1.4326253780719227,
       &quot;market_cap&quot;: 494214.26,
       &quot;float_shares&quot;: 3731890,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.028, mktcap $0.5M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.027, mktcap $0.5M&quot;
     },
     {
       &quot;ticker&quot;: &quot;CYAB&quot;,
       &quot;name&quot;: &quot;CYABRA INC&quot;,
       &quot;price&quot;: 0.099,
-      &quot;change_pct&quot;: -27.41,
-      &quot;volume&quot;: 4013676,
-      &quot;rvol&quot;: 0.02796287473363978,
+      &quot;change_pct&quot;: -27.49,
+      &quot;volume&quot;: 4019686,
+      &quot;rvol&quot;: 0.028004745795765666,
       &quot;market_cap&quot;: 4553334.78,
       &quot;float_shares&quot;: 23205941,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -5857,10 +5860,10 @@
     {
       &quot;ticker&quot;: &quot;GMM&quot;,
       &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
-      &quot;price&quot;: 1.462,
-      &quot;change_pct&quot;: -27.279999999999998,
-      &quot;volume&quot;: 1144181,
-      &quot;rvol&quot;: 0.05969437454391765,
+      &quot;price&quot;: 1.46,
+      &quot;change_pct&quot;: -26.369999999999997,
+      &quot;volume&quot;: 1144968,
+      &quot;rvol&quot;: 0.05973543402031698,
       &quot;market_cap&quot;: 116079524.07,
       &quot;float_shares&quot;: 57696024,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -5885,64 +5888,79 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 307, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;VIVK&quot;,
-      &quot;name&quot;: &quot;Vivakor&quot;,
-      &quot;price&quot;: 0.28,
-      &quot;change_pct&quot;: -26.0,
-      &quot;volume&quot;: 750879,
-      &quot;rvol&quot;: 0.03629692907500618,
-      &quot;market_cap&quot;: 226583.65,
-      &quot;float_shares&quot;: 595064,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.280, mktcap $0.2M, rvol 0.0x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;BAER&quot;,
       &quot;name&quot;: &quot;Bridger Aerospace Group Holdings, Inc.&quot;,
-      &quot;price&quot;: 0.18,
-      &quot;change_pct&quot;: -25.119999999999997,
-      &quot;volume&quot;: 416094,
-      &quot;rvol&quot;: 0.1817047214213785,
+      &quot;price&quot;: 0.179,
+      &quot;change_pct&quot;: -25.540000000000003,
+      &quot;volume&quot;: 423598,
+      &quot;rvol&quot;: 0.18498165458923485,
       &quot;market_cap&quot;: 14195643.08,
       &quot;float_shares&quot;: 46913461,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.180, rvol 0.2x, vol/float 0.01x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.179, rvol 0.2x, vol/float 0.01x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;VIVK&quot;,
+      &quot;name&quot;: &quot;Vivakor&quot;,
+      &quot;price&quot;: 0.284,
+      &quot;change_pct&quot;: -24.95,
+      &quot;volume&quot;: 751109,
+      &quot;rvol&quot;: 0.03630804710292713,
+      &quot;market_cap&quot;: 226583.65,
+      &quot;float_shares&quot;: 595064,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.284, mktcap $0.2M, rvol 0.0x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;PARA&quot;,
+      &quot;name&quot;: &quot;PARABOLIC TECHNOLOGIES INC&quot;,
+      &quot;price&quot;: 0.076,
+      &quot;change_pct&quot;: -23.77,
+      &quot;volume&quot;: 4466092,
+      &quot;rvol&quot;: 0.02148010186110427,
+      &quot;market_cap&quot;: 220689.58,
+      &quot;float_shares&quot;: 2065088,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.076, mktcap $0.2M, rvol 0.0x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SSII&quot;,
       &quot;name&quot;: &quot;SS Innovations&quot;,
-      &quot;price&quot;: 1.06,
+      &quot;price&quot;: 1.051,
       &quot;change_pct&quot;: -22.12,
-      &quot;volume&quot;: 41353,
-      &quot;rvol&quot;: 0.1513625299683388,
+      &quot;volume&quot;: 41368,
+      &quot;rvol&quot;: 0.15141743379513553,
       &quot;market_cap&quot;: 270780290.55,
       &quot;float_shares&quot;: 42045847,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $270.8M, rvol 0.2x, vol 41,353, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $270.8M, rvol 0.2x, vol 41,368, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;FGL&quot;,
       &quot;name&quot;: &quot;Founder Group Ltd&quot;,
-      &quot;price&quot;: 0.81,
-      &quot;change_pct&quot;: -20.59,
-      &quot;volume&quot;: 41202,
-      &quot;rvol&quot;: 0.00923570826710434,
+      &quot;price&quot;: 0.8,
+      &quot;change_pct&quot;: -21.57,
+      &quot;volume&quot;: 41277,
+      &quot;rvol&quot;: 0.009252520026728456,
       &quot;market_cap&quot;: 77069.16,
       &quot;float_shares&quot;: 72664,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Malaysia&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, rvol 0.0x, vol 41,202&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, rvol 0.0x, vol 41,277&quot;
     },
     {
       &quot;ticker&quot;: &quot;STEM&quot;,
@@ -5975,34 +5993,34 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 8, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;LGHL&quot;,
-      &quot;name&quot;: &quot;Lion Group Holding Ltd&quot;,
-      &quot;price&quot;: 1.31,
-      &quot;change_pct&quot;: -18.11,
-      &quot;volume&quot;: 17432,
-      &quot;rvol&quot;: 0.008834358315532344,
-      &quot;market_cap&quot;: 73830.4,
-      &quot;float_shares&quot;: 45870,
+      &quot;ticker&quot;: &quot;CSAI&quot;,
+      &quot;name&quot;: &quot;Cloudastructure Inc&quot;,
+      &quot;price&quot;: 1.07,
+      &quot;change_pct&quot;: -17.69,
+      &quot;volume&quot;: 4442061,
+      &quot;rvol&quot;: 3.324022655724432,
+      &quot;market_cap&quot;: 1127713.6,
+      &quot;float_shares&quot;: 867281,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, rvol 0.0x, vol 17,432&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $1.1M&quot;
     },
     {
       &quot;ticker&quot;: &quot;TRUG&quot;,
       &quot;name&quot;: &quot;TruGolf Holdings&quot;,
-      &quot;price&quot;: 0.388,
-      &quot;change_pct&quot;: -17.37,
-      &quot;volume&quot;: 93797,
-      &quot;rvol&quot;: 0.08100592191228453,
+      &quot;price&quot;: 0.39,
+      &quot;change_pct&quot;: -16.99,
+      &quot;volume&quot;: 94097,
+      &quot;rvol&quot;: 0.0812650109724217,
       &quot;market_cap&quot;: 1167065.42,
       &quot;float_shares&quot;: 2473607,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.388, mktcap $1.2M, rvol 0.1x, vol 93,797, vol/float 0.04x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.390, mktcap $1.2M, rvol 0.1x, vol 94,097, vol/float 0.04x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SNTI&quot;,
@@ -6020,49 +6038,34 @@
       &quot;reason&quot;: &quot;Filtered: price $0.113, mktcap $4.2M, rvol 0.3x, vol 82,785, vol/float 0.01x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;LGHL&quot;,
+      &quot;name&quot;: &quot;Lion Group Holding Ltd&quot;,
+      &quot;price&quot;: 1.33,
+      &quot;change_pct&quot;: -16.89,
+      &quot;volume&quot;: 17442,
+      &quot;rvol&quot;: 0.00883942621268444,
+      &quot;market_cap&quot;: 73830.4,
+      &quot;float_shares&quot;: 45870,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, rvol 0.0x, vol 17,442&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;BDMD&quot;,
       &quot;name&quot;: &quot;Baird Medical&quot;,
-      &quot;price&quot;: 0.089,
-      &quot;change_pct&quot;: -16.34,
-      &quot;volume&quot;: 407668,
-      &quot;rvol&quot;: 0.006246021717239232,
+      &quot;price&quot;: 0.09,
+      &quot;change_pct&quot;: -15.49,
+      &quot;volume&quot;: 413668,
+      &quot;rvol&quot;: 0.006337949781996425,
       &quot;market_cap&quot;: 3408252.41,
       &quot;float_shares&quot;: 4286285,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.089, mktcap $3.4M, rvol 0.0x, vol/float 0.10x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;PARA&quot;,
-      &quot;name&quot;: &quot;PARABOLIC TECHNOLOGIES INC&quot;,
-      &quot;price&quot;: 0.083,
-      &quot;change_pct&quot;: -16.21,
-      &quot;volume&quot;: 4314763,
-      &quot;rvol&quot;: 0.020752270384605566,
-      &quot;market_cap&quot;: 220689.58,
-      &quot;float_shares&quot;: 2065088,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.083, mktcap $0.2M, rvol 0.0x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;CSAI&quot;,
-      &quot;name&quot;: &quot;Cloudastructure Inc&quot;,
-      &quot;price&quot;: 1.09,
-      &quot;change_pct&quot;: -16.150000000000002,
-      &quot;volume&quot;: 4441666,
-      &quot;rvol&quot;: 3.3237270746981893,
-      &quot;market_cap&quot;: 1127713.6,
-      &quot;float_shares&quot;: 867281,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $1.1M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.090, mktcap $3.4M, rvol 0.0x, vol/float 0.10x&quot;
     },
     {
       &quot;ticker&quot;: &quot;AXNX&quot;,
@@ -6082,10 +6085,10 @@
     {
       &quot;ticker&quot;: &quot;OMH&quot;,
       &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;price&quot;: 3.369,
-      &quot;change_pct&quot;: -15.35,
-      &quot;volume&quot;: 165835,
-      &quot;rvol&quot;: 0.008300843989632841,
+      &quot;price&quot;: 3.37,
+      &quot;change_pct&quot;: -15.329999999999998,
+      &quot;volume&quot;: 166126,
+      &quot;rvol&quot;: 0.008315409947367838,
       &quot;market_cap&quot;: 8472321.52,
       &quot;float_shares&quot;: 2110107,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -6110,6 +6113,21 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1,550, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;LICN&quot;,
+      &quot;name&quot;: &quot;Lichen International&quot;,
+      &quot;price&quot;: 0.023,
+      &quot;change_pct&quot;: -14.069999999999999,
+      &quot;volume&quot;: 86734849,
+      &quot;rvol&quot;: 1.4994204570368053,
+      &quot;market_cap&quot;: 440824.28,
+      &quot;float_shares&quot;: 16169284,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.023, mktcap $0.4M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;IMRN&quot;,
       &quot;name&quot;: &quot;Immuron Ltd&quot;,
       &quot;price&quot;: 0.78,
@@ -6123,21 +6141,6 @@
       &quot;country&quot;: &quot;Australia&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;MDRN&quot;,
-      &quot;name&quot;: &quot;Modern Mng Technology Corp&quot;,
-      &quot;price&quot;: 3.32,
-      &quot;change_pct&quot;: -13.209999999999999,
-      &quot;volume&quot;: 23199,
-      &quot;rvol&quot;: 0.03874183797865767,
-      &quot;market_cap&quot;: 46439412.98,
-      &quot;float_shares&quot;: 12141023,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 23,199, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;CLLS&quot;,
@@ -6185,36 +6188,6 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.1x, vol 3,325, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;AKAN&quot;,
-      &quot;name&quot;: &quot;AKANDA CORP&quot;,
-      &quot;price&quot;: 1.92,
-      &quot;change_pct&quot;: -13.569999999999999,
-      &quot;volume&quot;: 5080962,
-      &quot;rvol&quot;: 0.16105418789664763,
-      &quot;market_cap&quot;: 1195258.61,
-      &quot;float_shares&quot;: 535696,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United Kingdom&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, rvol 0.2x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;LICN&quot;,
-      &quot;name&quot;: &quot;Lichen International&quot;,
-      &quot;price&quot;: 0.024,
-      &quot;change_pct&quot;: -12.959999999999999,
-      &quot;volume&quot;: 86668581,
-      &quot;rvol&quot;: 1.4982748552862688,
-      &quot;market_cap&quot;: 440824.28,
-      &quot;float_shares&quot;: 16169284,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.024, mktcap $0.4M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;MDRR&quot;,
       &quot;name&quot;: &quot;Medalist Diversified, Inc&quot;,
       &quot;price&quot;: 9.01,
@@ -6232,17 +6205,17 @@
     {
       &quot;ticker&quot;: &quot;CNTB&quot;,
       &quot;name&quot;: &quot;Connect Biopharma Holdings Ltd&quot;,
-      &quot;price&quot;: 0.561,
-      &quot;change_pct&quot;: -12.75,
-      &quot;volume&quot;: 34355,
-      &quot;rvol&quot;: 0.10338145062034888,
+      &quot;price&quot;: 0.56,
+      &quot;change_pct&quot;: -12.91,
+      &quot;volume&quot;: 34455,
+      &quot;rvol&quot;: 0.10368237173989582,
       &quot;market_cap&quot;: 40492480.69,
       &quot;float_shares&quot;: 43070575,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: rvol 0.1x, vol 34,355, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: rvol 0.1x, vol 34,455, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SFWL&quot;,
@@ -6290,6 +6263,36 @@
       &quot;reason&quot;: &quot;Filtered: price $0.122, mktcap $4.4M, vol/float 0.19x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;MDRN&quot;,
+      &quot;name&quot;: &quot;Modern Mng Technology Corp&quot;,
+      &quot;price&quot;: 3.37,
+      &quot;change_pct&quot;: -11.899999999999999,
+      &quot;volume&quot;: 23349,
+      &quot;rvol&quot;: 0.03899233479734807,
+      &quot;market_cap&quot;: 46439412.98,
+      &quot;float_shares&quot;: 12141023,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 23,349, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;AKAN&quot;,
+      &quot;name&quot;: &quot;AKANDA CORP&quot;,
+      &quot;price&quot;: 1.95,
+      &quot;change_pct&quot;: -11.33,
+      &quot;volume&quot;: 5091235,
+      &quot;rvol&quot;: 0.16137981711258395,
+      &quot;market_cap&quot;: 1195258.61,
+      &quot;float_shares&quot;: 535696,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United Kingdom&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $1.2M, rvol 0.2x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;BYAH&quot;,
       &quot;name&quot;: &quot;PARK HA BIOLOGICAL TECHNOLOGY&quot;,
       &quot;price&quot;: 1.311,
@@ -6320,12 +6323,27 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $3.2M, rvol 0.0x, vol 2,636, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;HBIO&quot;,
+      &quot;name&quot;: &quot;Harvard Biosci&quot;,
+      &quot;price&quot;: 7.9,
+      &quot;change_pct&quot;: -11.34,
+      &quot;volume&quot;: 1,
+      &quot;rvol&quot;: 2.024004695690894e-05,
+      &quot;market_cap&quot;: 40746142.8,
+      &quot;float_shares&quot;: 4133504,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1, vol/float 0.00x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;XXII&quot;,
       &quot;name&quot;: &quot;22Nd Century&quot;,
       &quot;price&quot;: 0.438,
-      &quot;change_pct&quot;: -11.15,
-      &quot;volume&quot;: 188107,
-      &quot;rvol&quot;: 0.030221710816142194,
+      &quot;change_pct&quot;: -11.17,
+      &quot;volume&quot;: 188457,
+      &quot;rvol&quot;: 0.03027794263519013,
       &quot;market_cap&quot;: 271683.17,
       &quot;float_shares&quot;: 547594,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -6423,24 +6441,76 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.4x, vol 55,956, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;QCLS&quot;,
-      &quot;name&quot;: &quot;Q/C Technologies Inc&quot;,
-      &quot;price&quot;: 0.29,
-      &quot;change_pct&quot;: -9.66,
-      &quot;volume&quot;: 154952,
-      &quot;rvol&quot;: 0.18669073112664805,
-      &quot;market_cap&quot;: 2628938.0,
-      &quot;float_shares&quot;: 7402922,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.290, mktcap $2.6M, rvol 0.2x, vol/float 0.02x&quot;
     }
   ],
   &quot;live_quotes&quot;: {
+    &quot;SPAI&quot;: {
+      &quot;price&quot;: 2.47,
+      &quot;open&quot;: 2.75,
+      &quot;high&quot;: 2.75,
+      &quot;low&quot;: 2.32,
+      &quot;close&quot;: 2.47,
+      &quot;preClose&quot;: 2.77,
+      &quot;volume&quot;: 3242637,
+      &quot;changeRatio&quot;: -0.1083,
+      &quot;marketValue&quot;: 51820466.62,
+      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T13:53:19.319253Z&quot;
+    },
+    &quot;SLS&quot;: {
+      &quot;price&quot;: 7.47,
+      &quot;open&quot;: 7.74,
+      &quot;high&quot;: 8.39,
+      &quot;low&quot;: 7.24,
+      &quot;close&quot;: 7.47,
+      &quot;preClose&quot;: 7.47,
+      &quot;volume&quot;: 8426506,
+      &quot;changeRatio&quot;: -0.0496,
+      &quot;marketValue&quot;: 1522827857.97,
+      &quot;name&quot;: &quot;Sellas Life Sciences Group Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T13:53:19.319270Z&quot;
+    },
+    &quot;AYTU&quot;: {
+      &quot;price&quot;: 1.82,
+      &quot;open&quot;: 1.77,
+      &quot;high&quot;: 1.874,
+      &quot;low&quot;: 1.75,
+      &quot;close&quot;: 1.82,
+      &quot;preClose&quot;: 1.78,
+      &quot;volume&quot;: 402537,
+      &quot;changeRatio&quot;: 0.0225,
+      &quot;marketValue&quot;: 19780138.56,
+      &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T13:53:19.319278Z&quot;
+    },
+    &quot;GP&quot;: {
+      &quot;price&quot;: 1.41,
+      &quot;open&quot;: 1.54,
+      &quot;high&quot;: 1.92,
+      &quot;low&quot;: 1.32,
+      &quot;close&quot;: 1.41,
+      &quot;preClose&quot;: 1.16,
+      &quot;volume&quot;: 32372457,
+      &quot;changeRatio&quot;: 0.2155,
+      &quot;marketValue&quot;: 2961999.69,
+      &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T13:53:19.319283Z&quot;
+    },
+    &quot;FRTT&quot;: {
+      &quot;price&quot;: 0.38,
+      &quot;open&quot;: 0.381,
+      &quot;high&quot;: 0.3921,
+      &quot;low&quot;: 0.375,
+      &quot;close&quot;: 0.38,
+      &quot;preClose&quot;: 0.3976,
+      &quot;volume&quot;: 80478569,
+      &quot;changeRatio&quot;: -0.0443,
+      &quot;marketValue&quot;: 5765037.38,
+      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T13:53:19.319288Z&quot;
+    }
+  },
+  &quot;previous_live_quotes&quot;: {
     &quot;SLS&quot;: {
       &quot;price&quot;: 7.47,
       &quot;open&quot;: 7.74,
@@ -6507,78 +6577,11 @@
       &quot;_timestamp&quot;: &quot;2026-11-17T13:52:19.661365Z&quot;
     }
   },
-  &quot;previous_live_quotes&quot;: {
-    &quot;FRTT&quot;: {
-      &quot;price&quot;: 0.38,
-      &quot;open&quot;: 0.381,
-      &quot;high&quot;: 0.3921,
-      &quot;low&quot;: 0.375,
-      &quot;close&quot;: 0.38,
-      &quot;preClose&quot;: 0.3976,
-      &quot;volume&quot;: 78212489,
-      &quot;changeRatio&quot;: -0.0443,
-      &quot;marketValue&quot;: 5765037.38,
-      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-17T13:51:20.333569Z&quot;
-    },
-    &quot;SPAI&quot;: {
-      &quot;price&quot;: 2.47,
-      &quot;open&quot;: 2.75,
-      &quot;high&quot;: 2.75,
-      &quot;low&quot;: 2.32,
-      &quot;close&quot;: 2.47,
-      &quot;preClose&quot;: 2.77,
-      &quot;volume&quot;: 3232181,
-      &quot;changeRatio&quot;: -0.1083,
-      &quot;marketValue&quot;: 51820466.62,
-      &quot;name&quot;: &quot;Safe Pro Group Inc.&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-17T13:51:20.333602Z&quot;
-    },
-    &quot;SLS&quot;: {
-      &quot;price&quot;: 7.47,
-      &quot;open&quot;: 7.74,
-      &quot;high&quot;: 8.39,
-      &quot;low&quot;: 7.24,
-      &quot;close&quot;: 7.47,
-      &quot;preClose&quot;: 7.47,
-      &quot;volume&quot;: 8008708,
-      &quot;changeRatio&quot;: -0.0496,
-      &quot;marketValue&quot;: 1522827857.97,
-      &quot;name&quot;: &quot;Sellas Life Sciences Group Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-17T13:51:20.333614Z&quot;
-    },
-    &quot;GP&quot;: {
-      &quot;price&quot;: 1.41,
-      &quot;open&quot;: 1.54,
-      &quot;high&quot;: 1.92,
-      &quot;low&quot;: 1.32,
-      &quot;close&quot;: 1.41,
-      &quot;preClose&quot;: 1.16,
-      &quot;volume&quot;: 32226420,
-      &quot;changeRatio&quot;: 0.2155,
-      &quot;marketValue&quot;: 2961999.69,
-      &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-17T13:51:20.333623Z&quot;
-    },
-    &quot;AYTU&quot;: {
-      &quot;price&quot;: 1.82,
-      &quot;open&quot;: 1.77,
-      &quot;high&quot;: 1.874,
-      &quot;low&quot;: 1.75,
-      &quot;close&quot;: 1.82,
-      &quot;preClose&quot;: 1.78,
-      &quot;volume&quot;: 401877,
-      &quot;changeRatio&quot;: 0.0225,
-      &quot;marketValue&quot;: 19780138.56,
-      &quot;name&quot;: &quot;Aytu Biopharma Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-17T13:51:20.333630Z&quot;
-    }
-  },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;PRE-MARKET&quot;,
-    &quot;market_time&quot;: &quot;12:52 AM AEDT&quot;,
+    &quot;market_time&quot;: &quot;12:53 AM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
