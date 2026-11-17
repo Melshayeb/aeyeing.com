@@ -1,39 +1,39 @@
 {
-  "last_updated": "2026-11-17T16:14:21.116758Z",
+  "last_updated": "2026-11-17T16:15:21.834144Z",
   "scan_results": [
     {
-      "ticker": "RAIN",
-      "name": "Rain Enhancement",
-      "status": "CANDIDATE",
+      "ticker": "MCRP",
+      "name": "Micropolis AI Robotics",
+      "status": "ALERT",
       "source": "regular",
-      "price": 1.0,
-      "change_pct": 17.810000000000002,
-      "volume": 688081,
-      "market_cap": 11791887.0,
-      "float_shares": 4572163,
-      "country": "United States",
+      "price": 0.372,
+      "change_pct": -0.08058017727639605,
+      "volume": 6607334,
+      "market_cap": 13273778.32,
+      "float_shares": 9171770,
+      "country": "International (region 181)",
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
+      "is_penny_stock": true,
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "News score 5 but no live price movement",
+      "result": "-0.1% \u00b7 Entry $0.37 \u00b7 T1 $0.39 \u00b7 T2 $0.39 \u00b7 T3 $0.41",
       "plan": {
         "valid": true,
-        "ticker": "RAIN",
-        "entry": 1.0,
-        "stop": 0.98,
+        "ticker": "MCRP",
+        "entry": 0.372,
+        "stop": 0.3646,
         "targets": {
-          "t1": 1.04,
-          "t2": 1.06,
-          "t3": 1.1
+          "t1": 0.3868,
+          "t2": 0.3942,
+          "t3": 0.409
         },
-        "risk_per_share": 0.02,
+        "risk_per_share": 0.0074,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 300,
-        "position_value": 300.0,
+        "shares": 806,
+        "position_value": 299.83,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +41,117 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.98"
+          "hard_stop": "$0.3646"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "MCRP",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T09:12:05.396+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T09:12:05.396+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at MCRP last week (1109-1113)?",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "MCRP",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 8.97,
+        "volume_indicator": "high",
+        "volume": 6607334,
+        "adv": 736875,
+        "recent_pct_of_adv": 896.67,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 16.307,
+        "buy_pressure_pct": 51.03,
+        "large_bar_count": 89,
+        "vwap_distance_pct": 25.441,
+        "recent_volume": 6607334,
+        "prior_volume": 0,
+        "median_range": 0.0026,
+        "last_price": 0.3723,
+        "vwap": 0.29679207825746756,
+        "last_trade_time": "2026-11-17T16:15:04.525000+00:00",
+        "stale_age_seconds": 19
+      },
+      "date": "2026-11-18",
+      "time": "03:15:19",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 0.368
+    },
+    {
+      "ticker": "RAIN",
+      "name": "Rain Enhancement",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 1.038,
+      "change_pct": 22.53,
+      "volume": 704254,
+      "market_cap": 12239978.71,
+      "float_shares": 4572163,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 13), 8-K (Nov 12), 8-K (Oct 28)",
+      "result": "+22.5% \u00b7 Entry $1.04 \u00b7 T1 $1.08 \u00b7 T2 $1.10 \u00b7 T3 $1.14",
+      "plan": {
+        "valid": true,
+        "ticker": "RAIN",
+        "entry": 1.038,
+        "stop": 1.0172,
+        "targets": {
+          "t1": 1.0796,
+          "t2": 1.1004,
+          "t3": 1.142
+        },
+        "risk_per_share": 0.0208,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 289,
+        "position_value": 299.98,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.0172"
         }
       },
       "ta": {
@@ -108,64 +218,64 @@
         "valid": true,
         "stale": false,
         "no_move": false,
-        "tape_score": 2.0,
-        "rvol": 0.21,
+        "tape_score": 4.0,
+        "rvol": 0.22,
         "volume_indicator": "low",
-        "volume": 688081,
+        "volume": 704254,
         "adv": 3247873,
-        "recent_pct_of_adv": 21.19,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 0.0,
-        "buy_pressure_pct": 0.0,
-        "large_bar_count": 0,
-        "vwap_distance_pct": 0.0,
-        "recent_volume": 688081,
+        "recent_pct_of_adv": 21.68,
+        "volume_acceleration": 0.11,
+        "price_velocity_pct": 9.436,
+        "buy_pressure_pct": 56.22,
+        "large_bar_count": 44,
+        "vwap_distance_pct": 9.858,
+        "recent_volume": 704254,
         "prior_volume": 0,
-        "median_range": 0.0,
-        "last_price": 1.0,
-        "vwap": null,
-        "last_trade_time": "2026-11-17T16:13:58.020000+00:00",
-        "stale_age_seconds": 20
+        "median_range": 0.0053,
+        "last_price": 1.038,
+        "vwap": 0.9448550543920304,
+        "last_trade_time": "2026-11-17T16:15:04.575000+00:00",
+        "stale_age_seconds": 19
       },
       "date": "2026-11-18",
-      "time": "03:14:18",
+      "time": "03:15:19",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.018
+      "previous_price": 1.0
     },
     {
-      "ticker": "SPAI",
-      "name": "Safe Pro Group Inc.",
+      "ticker": "GP",
+      "name": "GreenPower Mtr Co Inc",
       "status": "ALERT",
       "source": "regular",
-      "price": 3.0,
-      "change_pct": 21.46,
-      "volume": 10478515,
-      "market_cap": 62941935.99,
-      "float_shares": 11937772,
-      "country": "United States",
-      "cap_size": "micro-cap",
+      "price": 2.395,
+      "change_pct": 69.86,
+      "volume": 91012523,
+      "market_cap": 5031198.06,
+      "float_shares": 1297073,
+      "country": "Canada",
+      "cap_size": "nano-cap",
       "is_penny_stock": false,
       "scan_reason": "Passed filters",
       "scan_passed": true,
-      "sec_filings": "8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)",
-      "result": "+21.5% \u00b7 Entry $3.00 \u00b7 T1 $3.12 \u00b7 T2 $3.18 \u00b7 T3 $3.30",
+      "sec_filings": "",
+      "result": "+69.9% \u00b7 Entry $2.40 \u00b7 T1 $2.49 \u00b7 T2 $2.54 \u00b7 T3 $2.63",
       "plan": {
         "valid": true,
-        "ticker": "SPAI",
-        "entry": 3.0,
-        "stop": 2.94,
+        "ticker": "GP",
+        "entry": 2.395,
+        "stop": 2.3471,
         "targets": {
-          "t1": 3.12,
-          "t2": 3.18,
-          "t3": 3.3
+          "t1": 2.4908,
+          "t2": 2.5387,
+          "t3": 2.6345
         },
-        "risk_per_share": 0.06,
+        "risk_per_share": 0.0479,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 100,
-        "position_value": 300.0,
+        "shares": 125,
+        "position_value": 299.38,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -173,7 +283,769 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.94"
+          "hard_stop": "$2.3471"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "GP",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:26:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M",
+            "source": "Webull",
+            "time": "21h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T18:29:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "23h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor Files September 30 Interim Financial Statements",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T12:22:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T12:05:28.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T11:31:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:28:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GP last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:26:30.213+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T21:05:45.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:26:55.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M",
+            "source": "Webull",
+            "time": "21h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T18:29:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Monday's Intraday Session",
+            "source": "Webull",
+            "time": "23h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor Files September 30 Interim Financial Statements",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T12:22:08.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T12:05:28.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T11:31:38.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:28:20.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at GP last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:26:30.213+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T21:05:45.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T17:05:40.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "GP",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 29.61,
+        "volume_indicator": "high",
+        "volume": 91012523,
+        "adv": 3073709,
+        "recent_pct_of_adv": 2961.0,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 6.082,
+        "buy_pressure_pct": 49.1,
+        "large_bar_count": 73,
+        "vwap_distance_pct": 14.613,
+        "recent_volume": 91012523,
+        "prior_volume": 0,
+        "median_range": 0.0689,
+        "last_price": 2.395,
+        "vwap": 2.8048629271044563,
+        "last_trade_time": "2026-11-17T16:15:05.337000+00:00",
+        "stale_age_seconds": 19
+      },
+      "date": "2026-11-18",
+      "time": "03:15:19",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.405
+    },
+    {
+      "ticker": "AYTU",
+      "name": "Aytu Biopharma Inc",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.66,
+      "change_pct": 46.150000000000006,
+      "volume": 3084118,
+      "market_cap": 28909433.28,
+      "float_shares": 9971007,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 16), 8-K (Nov 16), 8-K (Sep 22)",
+      "result": "+46.2% \u00b7 Entry $2.66 \u00b7 T1 $2.77 \u00b7 T2 $2.82 \u00b7 T3 $2.93",
+      "plan": {
+        "valid": true,
+        "ticker": "AYTU",
+        "entry": 2.66,
+        "stop": 2.6068,
+        "targets": {
+          "t1": 2.7664,
+          "t2": 2.8196,
+          "t3": 2.926
+        },
+        "risk_per_share": 0.0532,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 112,
+        "position_value": 297.92,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.6068"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "AYTU",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
+            "source": "Webull",
+            "time": "5h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T11:06:22.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "buyout"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma To Be Acquired By Rosemont For $2.70/Shr In Cash; Stock Up",
+            "source": "Webull",
+            "time": "10h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T06:06:17.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquired by"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma, Inc. Reports Fiscal 2027 First Quarter Results and Pending Merger with Rosemont for $2.70 Per Share",
+            "source": "Webull",
+            "time": "10h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T05:38:36.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals",
+            "source": "Webull",
+            "time": "17h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T22:27:24.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:36:29.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquired by"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma downgraded to Hold from Buy at Maxim",
+            "source": "Webull",
+            "time": "30m ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T15:45:19.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Cut to Hold From Buy by Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:07:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:07:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma downgraded to Hold from Buy at Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:46:18.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T09:30:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Stock Climbs 44% After-Hours: Here's Why",
+            "source": "Webull",
+            "time": "9h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T06:28:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rosemont Pharmaceuticals to Buy Aytu BioPharma",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T22:03:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma reports Q1 EPS (20c), consensus (18c)",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:45:27.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma, Inc. (AYTU) Reports Q1 Loss, Beats Revenue Estimates",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:45:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "AYTU BioPharma trading resumes",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:40:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rosemont to acquire Aytu BioPharma for $2.70 per share",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:22:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:20:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:18:19.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr",
+            "source": "Webull",
+            "time": "19h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:14:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
+            "source": "Webull",
+            "time": "5h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T11:06:22.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "buyout"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma To Be Acquired By Rosemont For $2.70/Shr In Cash; Stock Up",
+            "source": "Webull",
+            "time": "10h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T06:06:17.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquired by"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma, Inc. Reports Fiscal 2027 First Quarter Results and Pending Merger with Rosemont for $2.70 Per Share",
+            "source": "Webull",
+            "time": "10h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T05:38:36.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals",
+            "source": "Webull",
+            "time": "17h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T22:27:24.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquisition"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:36:29.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "acquired by"
+            ]
+          },
+          {
+            "title": "Aytu BioPharma downgraded to Hold from Buy at Maxim",
+            "source": "Webull",
+            "time": "30m ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T15:45:19.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Cut to Hold From Buy by Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:07:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:07:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma downgraded to Hold from Buy at Lake Street",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:46:18.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
+            "source": "Webull",
+            "time": "6h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T09:30:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Stock Climbs 44% After-Hours: Here's Why",
+            "source": "Webull",
+            "time": "9h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T06:28:17.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rosemont Pharmaceuticals to Buy Aytu BioPharma",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T22:03:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma reports Q1 EPS (20c), consensus (18c)",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:45:27.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma, Inc. (AYTU) Reports Q1 Loss, Beats Revenue Estimates",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:45:02.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "AYTU BioPharma trading resumes",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:40:13.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Rosemont to acquire Aytu BioPharma for $2.70 per share",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:22:22.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:20:58.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate",
+            "source": "Webull",
+            "time": "18h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:18:19.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr",
+            "source": "Webull",
+            "time": "19h ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T21:14:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 1.2,
+        "catalyst_confirmed": true,
+        "high_impact_count": 5,
+        "top_headline": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
+        "news_filter_reason": "catalyst confirmed (5 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "AYTU",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 54.38,
+        "volume_indicator": "high",
+        "volume": 3084118,
+        "adv": 56711,
+        "recent_pct_of_adv": 5438.31,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 0.0,
+        "buy_pressure_pct": 52.16,
+        "large_bar_count": 150,
+        "vwap_distance_pct": 0.011,
+        "recent_volume": 3084118,
+        "prior_volume": 0,
+        "median_range": 0.001,
+        "last_price": 2.66,
+        "vwap": 2.6602996392037848,
+        "last_trade_time": "2026-11-17T16:14:32.987000+00:00",
+        "stale_age_seconds": 79
+      },
+      "date": "2026-11-18",
+      "time": "03:15:19",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 2.655
+    },
+    {
+      "ticker": "SPAI",
+      "name": "Safe Pro Group Inc.",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.995,
+      "change_pct": 21.46,
+      "volume": 10496656,
+      "market_cap": 62834938.27,
+      "float_shares": 11937772,
+      "country": "United States",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)",
+      "result": "+21.5% \u00b7 Entry $3.00 \u00b7 T1 $3.11 \u00b7 T2 $3.17 \u00b7 T3 $3.29",
+      "plan": {
+        "valid": true,
+        "ticker": "SPAI",
+        "entry": 2.995,
+        "stop": 2.9351,
+        "targets": {
+          "t1": 3.1148,
+          "t2": 3.1747,
+          "t3": 3.2945
+        },
+        "risk_per_share": 0.0599,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 100,
+        "position_value": 299.5,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.9351"
         }
       },
       "ta": {
@@ -417,1272 +1289,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 38.37,
+        "rvol": 38.44,
         "volume_indicator": "high",
-        "volume": 10478515,
+        "volume": 10496656,
         "adv": 273060,
-        "recent_pct_of_adv": 3837.44,
+        "recent_pct_of_adv": 3844.08,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 9.091,
-        "buy_pressure_pct": 48.64,
+        "price_velocity_pct": 9.242,
+        "buy_pressure_pct": 48.55,
         "large_bar_count": 105,
-        "vwap_distance_pct": 5.592,
-        "recent_volume": 10478515,
+        "vwap_distance_pct": 5.746,
+        "recent_volume": 10496656,
         "prior_volume": 0,
         "median_range": 0.0199,
-        "last_price": 3.0,
-        "vwap": 3.177708666971319,
-        "last_trade_time": "2026-11-17T16:13:50.903000+00:00",
-        "stale_age_seconds": 27
+        "last_price": 2.995,
+        "vwap": 3.1775941663814256,
+        "last_trade_time": "2026-11-17T16:15:04.896000+00:00",
+        "stale_age_seconds": 19
       },
       "date": "2026-11-18",
-      "time": "03:14:19",
+      "time": "03:15:20",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 3.005
-    },
-    {
-      "ticker": "MCRP",
-      "name": "Micropolis AI Robotics",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.368,
-      "change_pct": 23.74,
-      "volume": 6528398,
-      "market_cap": 13120468.5,
-      "float_shares": 9171770,
-      "country": "International (region 181)",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+23.7% \u00b7 Entry $0.37 \u00b7 T1 $0.38 \u00b7 T2 $0.39 \u00b7 T3 $0.41",
-      "plan": {
-        "valid": true,
-        "ticker": "MCRP",
-        "entry": 0.368,
-        "stop": 0.3606,
-        "targets": {
-          "t1": 0.3828,
-          "t2": 0.3902,
-          "t3": 0.405
-        },
-        "risk_per_share": 0.0074,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 815,
-        "position_value": 299.92,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.3606"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "MCRP",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T09:12:05.396+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T09:12:05.396+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at MCRP last week (1109-1113)?",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "MCRP",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 8.94,
-        "volume_indicator": "high",
-        "volume": 6528398,
-        "adv": 729862,
-        "recent_pct_of_adv": 894.47,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 14.964,
-        "buy_pressure_pct": 50.81,
-        "large_bar_count": 88,
-        "vwap_distance_pct": 24.292,
-        "recent_volume": 6528398,
-        "prior_volume": 0,
-        "median_range": 0.0026,
-        "last_price": 0.368,
-        "vwap": 0.29607644047812165,
-        "last_trade_time": "2026-11-17T16:13:55.351000+00:00",
-        "stale_age_seconds": 23
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": null
-    },
-    {
-      "ticker": "AYTU",
-      "name": "Aytu Biopharma Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.655,
-      "change_pct": 45.879999999999995,
-      "volume": 3075507,
-      "market_cap": 28855092.24,
-      "float_shares": 9971007,
-      "country": "United States",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Nov 16), 8-K (Nov 16), 8-K (Sep 22)",
-      "result": "+45.9% \u00b7 Entry $2.65 \u00b7 T1 $2.76 \u00b7 T2 $2.81 \u00b7 T3 $2.92",
-      "plan": {
-        "valid": true,
-        "ticker": "AYTU",
-        "entry": 2.655,
-        "stop": 2.6019,
-        "targets": {
-          "t1": 2.7612,
-          "t2": 2.8143,
-          "t3": 2.9205
-        },
-        "risk_per_share": 0.0531,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 112,
-        "position_value": 297.36,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.6019"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "AYTU",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
-            "source": "Webull",
-            "time": "5h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T11:06:22.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "buyout"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma To Be Acquired By Rosemont For $2.70/Shr In Cash; Stock Up",
-            "source": "Webull",
-            "time": "10h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T06:06:17.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquired by"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma, Inc. Reports Fiscal 2027 First Quarter Results and Pending Merger with Rosemont for $2.70 Per Share",
-            "source": "Webull",
-            "time": "10h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T05:38:36.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "merger"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals",
-            "source": "Webull",
-            "time": "17h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T22:27:24.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:36:29.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquired by"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma downgraded to Hold from Buy at Maxim",
-            "source": "Webull",
-            "time": "28m ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T15:45:19.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Cut to Hold From Buy by Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:07:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:07:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma downgraded to Hold from Buy at Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:46:18.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "4h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:05:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "6h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T09:30:26.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Stock Climbs 44% After-Hours: Here's Why",
-            "source": "Webull",
-            "time": "9h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T06:28:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rosemont Pharmaceuticals to Buy Aytu BioPharma",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T22:03:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma reports Q1 EPS (20c), consensus (18c)",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:45:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma, Inc. (AYTU) Reports Q1 Loss, Beats Revenue Estimates",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:45:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "AYTU BioPharma trading resumes",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:40:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rosemont to acquire Aytu BioPharma for $2.70 per share",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:22:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:20:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:18:19.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr",
-            "source": "Webull",
-            "time": "19h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:14:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
-            "source": "Webull",
-            "time": "5h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T11:06:22.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "buyout"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma To Be Acquired By Rosemont For $2.70/Shr In Cash; Stock Up",
-            "source": "Webull",
-            "time": "10h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T06:06:17.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquired by"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma, Inc. Reports Fiscal 2027 First Quarter Results and Pending Merger with Rosemont for $2.70 Per Share",
-            "source": "Webull",
-            "time": "10h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T05:38:36.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "merger"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma Agrees to Acquisition by Rosemont Pharmaceuticals",
-            "source": "Webull",
-            "time": "17h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T22:27:24.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquisition"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma to be acquired by Rosemont Pharmaceuticals for $2.70 per share",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:36:29.000+0000",
-            "url": "",
-            "score": 5,
-            "keywords": [
-              "acquired by"
-            ]
-          },
-          {
-            "title": "Aytu BioPharma downgraded to Hold from Buy at Maxim",
-            "source": "Webull",
-            "time": "28m ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T15:45:19.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Cut to Hold From Buy by Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:07:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Price Target Announced at $2.70/Share by Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:07:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma downgraded to Hold from Buy at Lake Street",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:46:18.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Health Care Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "4h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:05:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "6h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T09:30:26.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Stock Climbs 44% After-Hours: Here's Why",
-            "source": "Webull",
-            "time": "9h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T06:28:17.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rosemont Pharmaceuticals to Buy Aytu BioPharma",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T22:03:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma reports Q1 EPS (20c), consensus (18c)",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:45:27.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma, Inc. (AYTU) Reports Q1 Loss, Beats Revenue Estimates",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:45:02.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "AYTU BioPharma trading resumes",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:40:13.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Rosemont to acquire Aytu BioPharma for $2.70 per share",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:22:22.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma GAAP EPS of -$0.20 beats by $0.14, revenue of $14.84M beats by $1.57M",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:20:58.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Aytu BioPharma Q1 EPS $(0.20) Beats $(0.26) Estimate, Sales $14.842M Beat $13.271M Estimate",
-            "source": "Webull",
-            "time": "18h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:18:19.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Rosemont Pharmaceuticals: Agreement to Acquire Aytu BioPharma for All-Cash Consideration of $2.70 Per Aytu Shr",
-            "source": "Webull",
-            "time": "19h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T21:14:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 5,
-        "avg_score": 1.2,
-        "catalyst_confirmed": true,
-        "high_impact_count": 5,
-        "top_headline": "Aytu BioPharma Swings To Q1 Loss On Higher Costs; Agrees To $56 Mln Buyout By Rosemont; Stock Up",
-        "news_filter_reason": "catalyst confirmed (5 items, score \u22653)"
-      },
-      "tape": {
-        "ticker": "AYTU",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 54.23,
-        "volume_indicator": "high",
-        "volume": 3075507,
-        "adv": 56711,
-        "recent_pct_of_adv": 5423.12,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 0.375,
-        "buy_pressure_pct": 52.45,
-        "large_bar_count": 149,
-        "vwap_distance_pct": 0.199,
-        "recent_volume": 3075507,
-        "prior_volume": 0,
-        "median_range": 0.001,
-        "last_price": 2.655,
-        "vwap": 2.6603005336186185,
-        "last_trade_time": "2026-11-17T16:13:00.723000+00:00",
-        "stale_age_seconds": 138
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.655
-    },
-    {
-      "ticker": "GP",
-      "name": "GreenPower Mtr Co Inc",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.405,
-      "change_pct": 70.91,
-      "volume": 90988584,
-      "market_cap": 5052205.15,
-      "float_shares": 1297073,
-      "country": "Canada",
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+70.9% \u00b7 Entry $2.40 \u00b7 T1 $2.50 \u00b7 T2 $2.55 \u00b7 T3 $2.65",
-      "plan": {
-        "valid": true,
-        "ticker": "GP",
-        "entry": 2.405,
-        "stop": 2.3569,
-        "targets": {
-          "t1": 2.5012,
-          "t2": 2.5493,
-          "t3": 2.6455
-        },
-        "risk_per_share": 0.0481,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 124,
-        "position_value": 298.22,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.3569"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "GP",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:26:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "4h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:05:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M",
-            "source": "Webull",
-            "time": "21h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T18:29:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "23h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor Files September 30 Interim Financial Statements",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T12:22:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T12:05:28.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T11:31:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:28:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at GP last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:26:30.213+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T21:05:45.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:26:55.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
-            "source": "Webull",
-            "time": "4h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:05:44.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor GAAP EPS of -$1.64, revenue of $2.55M",
-            "source": "Webull",
-            "time": "21h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T18:29:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Intraday Session",
-            "source": "Webull",
-            "time": "23h ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor Files September 30 Interim Financial Statements",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T12:22:08.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Monday's Pre-Market Session",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T12:05:28.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "GreenPower Motor Company Inc. Reports Revenue of $2,554,937 for the Three Months Ended September 30, 2026",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T11:31:38.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:28:20.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at GP last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:26:30.213+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's After-Market Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T21:05:45.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "12 Industrials Stocks Moving In Thursday's Intraday Session",
-            "source": "Webull",
-            "time": "4d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T17:05:40.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "GreenPower Motor Co Q2 EPS $(1.64) Up From $(5.92) YoY, Sales $2.555M Up From $2.490M YoY",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "GP",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 29.6,
-        "volume_indicator": "high",
-        "volume": 90988584,
-        "adv": 3073709,
-        "recent_pct_of_adv": 2960.22,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 5.69,
-        "buy_pressure_pct": 49.21,
-        "large_bar_count": 73,
-        "vwap_distance_pct": 14.259,
-        "recent_volume": 90988584,
-        "prior_volume": 0,
-        "median_range": 0.069,
-        "last_price": 2.405,
-        "vwap": 2.8049641448372764,
-        "last_trade_time": "2026-11-17T16:14:04.138000+00:00",
-        "stale_age_seconds": 18
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 2.4
-    },
-    {
-      "ticker": "LVWR",
-      "name": "LIVEWIRE GROUP INC",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.358,
-      "change_pct": -0.08372871895060632,
-      "volume": 4088734,
-      "market_cap": 73599710.44,
-      "float_shares": 12249465,
-      "country": "United States",
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "8-K (Oct 29), 8-K (Oct 26), 8-K (Sep 03)",
-      "result": "-0.1% \u00b7 Entry $0.36 \u00b7 T1 $0.37 \u00b7 T2 $0.38 \u00b7 T3 $0.39",
-      "plan": {
-        "valid": true,
-        "ticker": "LVWR",
-        "entry": 0.358,
-        "stop": 0.3508,
-        "targets": {
-          "t1": 0.3724,
-          "t2": 0.3796,
-          "t3": 0.394
-        },
-        "risk_per_share": 0.0072,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 837,
-        "position_value": 299.65,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.3508"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "LVWR",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at LVWR last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:02:25.084+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T17:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at LVWR last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:02:25.084+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T17:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "LiveWire short circuits as bankruptcy rumors swirl",
-            "flag": "bankruptcy"
-          },
-          {
-            "title": "LiveWire Warns of Going Concern Doubt, Posts 3Q Loss",
-            "flag": "going concern"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at LVWR last week (1109-1113)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: bankruptcy, going concern"
-      },
-      "tape": {
-        "ticker": "LVWR",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 10.03,
-        "volume_indicator": "high",
-        "volume": 4088734,
-        "adv": 407515,
-        "recent_pct_of_adv": 1003.33,
-        "volume_acceleration": -0.812,
-        "price_velocity_pct": 3.675,
-        "buy_pressure_pct": 56.03,
-        "large_bar_count": 33,
-        "vwap_distance_pct": 0.51,
-        "recent_volume": 4088734,
-        "prior_volume": 0,
-        "median_range": 0.0054,
-        "last_price": 0.3583,
-        "vwap": 0.35648331829036134,
-        "last_trade_time": "2026-11-17T16:13:50.333000+00:00",
-        "stale_age_seconds": 28
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 0.359
-    },
-    {
-      "ticker": "LUCK",
-      "name": "Lucky Strike Entertainment Corp-A",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 4.178,
-      "change_pct": 25.83,
-      "volume": 2457514,
-      "market_cap": 569506857.11,
-      "float_shares": 74439314,
-      "country": "United States",
-      "cap_size": "small-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (25.8%, rvol 25.4x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +25.8%",
-      "plan": {
-        "valid": true,
-        "ticker": "LUCK",
-        "entry": 4.178,
-        "stop": 4.0944,
-        "targets": {
-          "t1": 4.3452,
-          "t2": 4.4288,
-          "t3": 4.596
-        },
-        "risk_per_share": 0.0836,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 71,
-        "position_value": 296.64,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$4.0944"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "LUCK",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
-            "source": "Webull",
-            "time": "2h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:36:15.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LUCK last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T09:40:45.290+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lucky Strike Earnings Call Highlights Growth and Deleveraging",
-            "source": "Webull",
-            "time": "2d ago \u00b7 15 Nov",
-            "raw_time": "2026-11-15T02:24:26.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T17:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "John Young Bought 17% More Shares In Lucky Strike Entertainment",
-            "source": "Webull",
-            "time": "4d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T10:26:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lucky Strike Stock Has Crashed 59%. Now Its Dividend Is Gone",
-            "source": "Webull",
-            "time": "5d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T13:17:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
-            "source": "Webull",
-            "time": "2h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:36:15.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at LUCK last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T09:40:45.290+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lucky Strike Earnings Call Highlights Growth and Deleveraging",
-            "source": "Webull",
-            "time": "2d ago \u00b7 15 Nov",
-            "raw_time": "2026-11-15T02:24:26.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
-            "source": "Webull",
-            "time": "3d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T17:05:35.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "John Young Bought 17% More Shares In Lucky Strike Entertainment",
-            "source": "Webull",
-            "time": "4d ago \u00b7 13 Nov",
-            "raw_time": "2026-11-13T10:26:32.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Lucky Strike Stock Has Crashed 59%. Now Its Dividend Is Gone",
-            "source": "Webull",
-            "time": "5d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T13:17:52.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "LUCK",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 25.38,
-        "volume_indicator": "high",
-        "volume": 2457514,
-        "adv": 96810,
-        "recent_pct_of_adv": 2538.49,
-        "volume_acceleration": -0.418,
-        "price_velocity_pct": 3.16,
-        "buy_pressure_pct": 52.55,
-        "large_bar_count": 51,
-        "vwap_distance_pct": 0.387,
-        "recent_volume": 2457514,
-        "prior_volume": 0,
-        "median_range": 0.0234,
-        "last_price": 4.178,
-        "vwap": 4.161912598117146,
-        "last_trade_time": "2026-11-17T16:13:59.718000+00:00",
-        "stale_age_seconds": 78
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 4.17
+      "previous_price": 3.0
     },
     {
       "ticker": "SLS",
       "name": "Sellas Life Sciences Group Inc",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 20.58,
-      "change_pct": 175.5,
-      "volume": 76255321,
-      "market_cap": 4195421327.58,
+      "price": 20.79,
+      "change_pct": 178.18,
+      "volume": 77195102,
+      "market_cap": 4236193157.78,
       "float_shares": 200526122,
       "country": "United States",
       "cap_size": "small-cap",
       "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (175.5%, rvol 10.9x)",
+      "scan_reason": "Top gainer tape exempt (178.2%, rvol 11.1x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +175.5%",
+      "result": "Top-10 gainer tape momentum \u00b7 +178.2%",
       "plan": {
         "valid": true,
         "ticker": "SLS",
-        "entry": 20.58,
-        "stop": 20.1684,
+        "entry": 20.79,
+        "stop": 20.3742,
         "targets": {
-          "t1": 21.4032,
-          "t2": 21.8148,
-          "t3": 22.638
+          "t1": 21.6216,
+          "t2": 22.0374,
+          "t3": 22.869
         },
-        "risk_per_share": 0.4116,
+        "risk_per_share": 0.4158,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
         "shares": 14,
-        "position_value": 288.12,
+        "position_value": 291.06,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1690,7 +1353,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$20.1684"
+          "hard_stop": "$20.3742"
         }
       },
       "ta": {
@@ -2086,319 +1749,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 10.93,
+        "rvol": 11.06,
         "volume_indicator": "high",
-        "volume": 76255321,
+        "volume": 77195102,
         "adv": 6978319,
-        "recent_pct_of_adv": 1092.75,
+        "recent_pct_of_adv": 1106.21,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 6.845,
-        "buy_pressure_pct": 48.75,
+        "price_velocity_pct": 7.936,
+        "buy_pressure_pct": 48.87,
         "large_bar_count": 43,
-        "vwap_distance_pct": 2.379,
-        "recent_volume": 76255321,
+        "vwap_distance_pct": 1.362,
+        "recent_volume": 77195102,
         "prior_volume": 0,
-        "median_range": 0.5,
-        "last_price": 20.58,
-        "vwap": 21.08162281322632,
-        "last_trade_time": "2026-11-17T16:14:03.662000+00:00",
+        "median_range": 0.495,
+        "last_price": 20.79,
+        "vwap": 21.077130365850266,
+        "last_trade_time": "2026-11-17T16:15:04.736000+00:00",
         "stale_age_seconds": 18
       },
       "date": "2026-11-18",
-      "time": "03:14:19",
+      "time": "03:15:20",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 20.45
-    },
-    {
-      "ticker": "TCX",
-      "name": "Tucows Inc",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 14.92,
-      "change_pct": 30.31,
-      "volume": 218040,
-      "market_cap": 167416111.48,
-      "float_shares": 8963350,
-      "country": "Canada",
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (30.3%, rvol 2.9x)",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +30.3%",
-      "plan": {
-        "valid": true,
-        "ticker": "TCX",
-        "entry": 14.92,
-        "stop": 14.6216,
-        "targets": {
-          "t1": 15.5168,
-          "t2": 15.8152,
-          "t3": 16.412
-        },
-        "risk_per_share": 0.2984,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 20,
-        "position_value": 298.4,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$14.6216"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "TCX",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
-            "source": "Webull",
-            "time": "1h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T14:21:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Sells Owned Fiber Markets in Deal to Remove About $300 Million in Securitized Debt",
-            "source": "Webull",
-            "time": "2h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Agrees to Sell Ting Fiber Business to Clearwave",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:59:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Says Deal Will Remove $301.5M of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: Tucows Agrees to Sell Ting's Owned -2-",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 M of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows to Sell Ting's Owned Fiber Markets to Clearwave >TC.T",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 Million of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at TCX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:04:08.276+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Gains 5% After Q3 Loss Narrows Y/Y on Improved Profitability",
-            "source": "Webull",
-            "time": "5d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T15:23:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
-            "source": "Webull",
-            "time": "1h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T14:21:59.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Sells Owned Fiber Markets in Deal to Remove About $300 Million in Securitized Debt",
-            "source": "Webull",
-            "time": "2h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T13:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Agrees to Sell Ting Fiber Business to Clearwave",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:59:48.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Says Deal Will Remove $301.5M of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:31:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: Tucows Agrees to Sell Ting's Owned -2-",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 M of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "*Tucows to Sell Ting's Owned Fiber Markets to Clearwave >TC.T",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Press Release: Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 Million of Securitized Debt at Closing",
-            "source": "Webull",
-            "time": "3h ago \u00b7 17 Nov",
-            "raw_time": "2026-11-17T12:30:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Weekly Report: what happened at TCX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "1d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:04:08.276+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          },
-          {
-            "title": "Tucows Gains 5% After Q3 Loss Narrows Y/Y on Improved Profitability",
-            "source": "Webull",
-            "time": "5d ago \u00b7 12 Nov",
-            "raw_time": "2026-11-12T15:23:00.000+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
-        "news_filter_reason": "low catalyst score (max 0/5)"
-      },
-      "tape": {
-        "ticker": "TCX",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.87,
-        "volume_indicator": "high",
-        "volume": 218040,
-        "adv": 75851,
-        "recent_pct_of_adv": 287.46,
-        "volume_acceleration": -0.486,
-        "price_velocity_pct": 5.442,
-        "buy_pressure_pct": 43.63,
-        "large_bar_count": 32,
-        "vwap_distance_pct": 6.043,
-        "recent_volume": 218040,
-        "prior_volume": 0,
-        "median_range": 0.0717,
-        "last_price": 14.92,
-        "vwap": 14.06982852238045,
-        "last_trade_time": "2026-11-17T16:13:36.536000+00:00",
-        "stale_age_seconds": 78
-      },
-      "date": "2026-11-18",
-      "time": "03:14:19",
-      "skip_news_check": true,
-      "red_flag": false,
-      "previous_price": 14.77
+      "previous_price": 20.58
     },
     {
       "ticker": "GLAS",
@@ -2407,7 +1780,7 @@
       "source": "top_gainer_exempt",
       "price": 1.655,
       "change_pct": 28.29,
-      "volume": 7229009,
+      "volume": 7233673,
       "market_cap": 155081760.11,
       "float_shares": 86790334,
       "country": "United States",
@@ -2668,61 +2041,61 @@
         "tape_score": 8.0,
         "rvol": 4.04,
         "volume_indicator": "high",
-        "volume": 7229009,
+        "volume": 7233673,
         "adv": 1788892,
-        "recent_pct_of_adv": 404.11,
+        "recent_pct_of_adv": 404.37,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 2.071,
-        "buy_pressure_pct": 50.12,
+        "price_velocity_pct": 3.841,
+        "buy_pressure_pct": 49.81,
         "large_bar_count": 95,
-        "vwap_distance_pct": 2.602,
-        "recent_volume": 7229009,
+        "vwap_distance_pct": 2.584,
+        "recent_volume": 7233673,
         "prior_volume": 0,
         "median_range": 0.0101,
         "last_price": 1.655,
-        "vwap": 1.6130274377257336,
-        "last_trade_time": "2026-11-17T16:13:58.655000+00:00",
-        "stale_age_seconds": 78
+        "vwap": 1.6133115099947084,
+        "last_trade_time": "2026-11-17T16:15:01.203000+00:00",
+        "stale_age_seconds": 18
       },
       "date": "2026-11-18",
-      "time": "03:14:19",
+      "time": "03:15:20",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.665
+      "previous_price": 1.655
     },
     {
-      "ticker": "MPU",
-      "name": "Mega Matrix Corp",
+      "ticker": "SMTK",
+      "name": "Smartkem",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 1.66,
-      "change_pct": 29.720000000000002,
-      "volume": 3809491,
-      "market_cap": 5679688.51,
-      "float_shares": 2974345,
-      "country": "Singapore",
+      "price": 0.286,
+      "change_pct": 74.25,
+      "volume": 126590443,
+      "market_cap": 1388321.72,
+      "float_shares": 4756733,
+      "country": "United Kingdom",
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Top gainer tape exempt (29.7%, rvol 9.8x)",
+      "is_penny_stock": true,
+      "scan_reason": "Top gainer tape exempt (74.2%, rvol 109.6x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +29.7%",
+      "result": "Top-10 gainer tape momentum \u00b7 +74.2%",
       "plan": {
         "valid": true,
-        "ticker": "MPU",
-        "entry": 1.66,
-        "stop": 1.6268,
+        "ticker": "SMTK",
+        "entry": 0.286,
+        "stop": 0.2803,
         "targets": {
-          "t1": 1.7264,
-          "t2": 1.7596,
-          "t3": 1.826
+          "t1": 0.2974,
+          "t2": 0.3031,
+          "t3": 0.3145
         },
-        "risk_per_share": 0.0332,
+        "risk_per_share": 0.0057,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 180,
-        "position_value": 298.8,
+        "shares": 1048,
+        "position_value": 299.73,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -2730,7 +2103,233 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.6268"
+          "hard_stop": "$0.2803"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "SMTK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Smartkem merger partner Ferrox activates Wogen market development terms",
+            "source": "Webull",
+            "time": "1h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T14:22:46.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Smartkem Proposed Merger Partner Ferrox Launches Joint Market Development Program With Wogen For Tivani Project Products",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:04:03.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SMTK last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:07:24.508+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T21:05:45.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T12:05:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 11 Nov",
+            "raw_time": "2026-11-11T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Smartkem merger partner Ferrox activates Wogen market development terms",
+            "source": "Webull",
+            "time": "1h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T14:22:46.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Smartkem Proposed Merger Partner Ferrox Launches Joint Market Development Program With Wogen For Tivani Project Products",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:04:03.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Tuesday's Pre-Market Session",
+            "source": "Webull",
+            "time": "4h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:05:44.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at SMTK last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:07:24.508+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Thursday's After-Market Session",
+            "source": "Webull",
+            "time": "4d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T21:05:45.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Thursday's Pre-Market Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T12:05:36.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "12 Information Technology Stocks Moving In Wednesday's Intraday Session",
+            "source": "Webull",
+            "time": "5d ago \u00b7 11 Nov",
+            "raw_time": "2026-11-11T17:05:37.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 1.4,
+        "catalyst_confirmed": true,
+        "high_impact_count": 2,
+        "top_headline": "Smartkem merger partner Ferrox activates Wogen market development terms",
+        "news_filter_reason": "catalyst confirmed (2 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "SMTK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 109.6,
+        "volume_indicator": "high",
+        "volume": 126590443,
+        "adv": 1154985,
+        "recent_pct_of_adv": 10960.35,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 27.394,
+        "buy_pressure_pct": 48.86,
+        "large_bar_count": 92,
+        "vwap_distance_pct": 20.579,
+        "recent_volume": 126590443,
+        "prior_volume": 0,
+        "median_range": 0.0025,
+        "last_price": 0.286,
+        "vwap": 0.23718875842379217,
+        "last_trade_time": "2026-11-17T16:15:05.364000+00:00",
+        "stale_age_seconds": 18
+      },
+      "date": "2026-11-18",
+      "time": "03:15:20",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": null
+    },
+    {
+      "ticker": "MPU",
+      "name": "Mega Matrix Corp",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 1.65,
+      "change_pct": 28.910000000000004,
+      "volume": 3833703,
+      "market_cap": 5645133.45,
+      "float_shares": 2974345,
+      "country": "Singapore",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (28.9%, rvol 9.8x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +28.9%",
+      "plan": {
+        "valid": true,
+        "ticker": "MPU",
+        "entry": 1.65,
+        "stop": 1.617,
+        "targets": {
+          "t1": 1.716,
+          "t2": 1.749,
+          "t3": 1.815
+        },
+        "risk_per_share": 0.033,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 181,
+        "position_value": 298.65,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$1.617"
         }
       },
       "ta": {
@@ -2778,27 +2377,517 @@
         "tape_score": 8.0,
         "rvol": 9.82,
         "volume_indicator": "high",
-        "volume": 3809491,
-        "adv": 387996,
-        "recent_pct_of_adv": 981.84,
-        "volume_acceleration": 0.35,
-        "price_velocity_pct": 8.287,
-        "buy_pressure_pct": 48.8,
+        "volume": 3833703,
+        "adv": 390417,
+        "recent_pct_of_adv": 981.95,
+        "volume_acceleration": 0.349,
+        "price_velocity_pct": 8.84,
+        "buy_pressure_pct": 48.59,
         "large_bar_count": 18,
-        "vwap_distance_pct": 3.544,
-        "recent_volume": 3809491,
+        "vwap_distance_pct": 4.101,
+        "recent_volume": 3833703,
         "prior_volume": 0,
-        "median_range": 0.0601,
-        "last_price": 1.66,
-        "vwap": 1.7209837353594086,
-        "last_trade_time": "2026-11-17T16:14:03.466000+00:00",
+        "median_range": 0.06,
+        "last_price": 1.65,
+        "vwap": 1.7205608987147571,
+        "last_trade_time": "2026-11-17T16:15:03.633000+00:00",
         "stale_age_seconds": 18
       },
       "date": "2026-11-18",
-      "time": "03:14:19",
+      "time": "03:15:20",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 1.692
+      "previous_price": 1.66
+    },
+    {
+      "ticker": "TCX",
+      "name": "Tucows Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 15.04,
+      "change_pct": 31.369999999999997,
+      "volume": 218623,
+      "market_cap": 169716399.88,
+      "float_shares": 8963350,
+      "country": "Canada",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (31.4%, rvol 2.9x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +31.4%",
+      "plan": {
+        "valid": true,
+        "ticker": "TCX",
+        "entry": 15.04,
+        "stop": 14.7392,
+        "targets": {
+          "t1": 15.6416,
+          "t2": 15.9424,
+          "t3": 16.544
+        },
+        "risk_per_share": 0.3008,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 19,
+        "position_value": 285.76,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$14.7392"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "TCX",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
+            "source": "Webull",
+            "time": "1h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T14:21:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Sells Owned Fiber Markets in Deal to Remove About $300 Million in Securitized Debt",
+            "source": "Webull",
+            "time": "2h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Agrees to Sell Ting Fiber Business to Clearwave",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:59:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Says Deal Will Remove $301.5M of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Press Release: Tucows Agrees to Sell Ting's Owned -2-",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 M of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows to Sell Ting's Owned Fiber Markets to Clearwave >TC.T",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Press Release: Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 Million of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at TCX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:04:08.276+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Gains 5% After Q3 Loss Narrows Y/Y on Improved Profitability",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T15:23:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
+            "source": "Webull",
+            "time": "1h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T14:21:59.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Sells Owned Fiber Markets in Deal to Remove About $300 Million in Securitized Debt",
+            "source": "Webull",
+            "time": "2h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Agrees to Sell Ting Fiber Business to Clearwave",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:59:48.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Says Deal Will Remove $301.5M of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:31:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Press Release: Tucows Agrees to Sell Ting's Owned -2-",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 M of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "*Tucows to Sell Ting's Owned Fiber Markets to Clearwave >TC.T",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Press Release: Tucows Agrees to Sell Ting's Owned Fiber Markets to Clearwave; Expected to Remove $301.5 Million of Securitized Debt at Closing",
+            "source": "Webull",
+            "time": "3h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T12:30:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at TCX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:04:08.276+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Tucows Gains 5% After Q3 Loss Narrows Y/Y on Improved Profitability",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T15:23:00.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Tucows Inc. to Sell Ting's Owned Fiber Markets for $1.00 and Transfer $301.5 Million of Securitized Debt",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "TCX",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.88,
+        "volume_indicator": "high",
+        "volume": 218623,
+        "adv": 75851,
+        "recent_pct_of_adv": 288.23,
+        "volume_acceleration": -0.53,
+        "price_velocity_pct": 4.155,
+        "buy_pressure_pct": 44.36,
+        "large_bar_count": 32,
+        "vwap_distance_pct": 6.849,
+        "recent_volume": 218623,
+        "prior_volume": 0,
+        "median_range": 0.0717,
+        "last_price": 15.04,
+        "vwap": 14.07589626974902,
+        "last_trade_time": "2026-11-17T16:14:39.370000+00:00",
+        "stale_age_seconds": 39
+      },
+      "date": "2026-11-18",
+      "time": "03:15:20",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 14.92
+    },
+    {
+      "ticker": "LUCK",
+      "name": "Lucky Strike Entertainment Corp-A",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 4.16,
+      "change_pct": 25.3,
+      "volume": 2459587,
+      "market_cap": 567121131.2,
+      "float_shares": 74439314,
+      "country": "United States",
+      "cap_size": "small-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (25.3%, rvol 25.4x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +25.3%",
+      "plan": {
+        "valid": true,
+        "ticker": "LUCK",
+        "entry": 4.16,
+        "stop": 4.0768,
+        "targets": {
+          "t1": 4.3264,
+          "t2": 4.4096,
+          "t3": 4.576
+        },
+        "risk_per_share": 0.0832,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 72,
+        "position_value": 299.52,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$4.0768"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "LUCK",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
+            "source": "Webull",
+            "time": "2h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:36:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LUCK last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T09:40:45.290+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lucky Strike Earnings Call Highlights Growth and Deleveraging",
+            "source": "Webull",
+            "time": "2d ago \u00b7 15 Nov",
+            "raw_time": "2026-11-15T02:24:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 13 Nov",
+            "raw_time": "2026-11-13T17:05:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "John Young Bought 17% More Shares In Lucky Strike Entertainment",
+            "source": "Webull",
+            "time": "4d ago \u00b7 13 Nov",
+            "raw_time": "2026-11-13T10:26:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lucky Strike Stock Has Crashed 59%. Now Its Dividend Is Gone",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T13:17:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
+            "source": "Webull",
+            "time": "2h ago \u00b7 17 Nov",
+            "raw_time": "2026-11-17T13:36:15.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Weekly Report: what happened at LUCK last week (1109-1113)?",
+            "source": "Webull",
+            "time": "1d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T09:40:45.290+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lucky Strike Earnings Call Highlights Growth and Deleveraging",
+            "source": "Webull",
+            "time": "2d ago \u00b7 15 Nov",
+            "raw_time": "2026-11-15T02:24:26.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "11 Consumer Discretionary Stocks Moving In Friday's Intraday Session",
+            "source": "Webull",
+            "time": "3d ago \u00b7 13 Nov",
+            "raw_time": "2026-11-13T17:05:35.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "John Young Bought 17% More Shares In Lucky Strike Entertainment",
+            "source": "Webull",
+            "time": "4d ago \u00b7 13 Nov",
+            "raw_time": "2026-11-13T10:26:32.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          },
+          {
+            "title": "Lucky Strike Stock Has Crashed 59%. Now Its Dividend Is Gone",
+            "source": "Webull",
+            "time": "5d ago \u00b7 12 Nov",
+            "raw_time": "2026-11-12T13:17:52.000+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Lucky Strike rises after CEO proposes to take company private at $4.35/share",
+        "news_filter_reason": "low catalyst score (max 0/5)"
+      },
+      "tape": {
+        "ticker": "LUCK",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 25.41,
+        "volume_indicator": "high",
+        "volume": 2459587,
+        "adv": 96810,
+        "recent_pct_of_adv": 2540.63,
+        "volume_acceleration": -0.433,
+        "price_velocity_pct": 2.211,
+        "buy_pressure_pct": 52.98,
+        "large_bar_count": 51,
+        "vwap_distance_pct": 0.046,
+        "recent_volume": 2459587,
+        "prior_volume": 0,
+        "median_range": 0.0241,
+        "last_price": 4.16,
+        "vwap": 4.161922443696657,
+        "last_trade_time": "2026-11-17T16:15:03.288000+00:00",
+        "stale_age_seconds": 18
+      },
+      "date": "2026-11-18",
+      "time": "03:15:20",
+      "skip_news_check": true,
+      "red_flag": false,
+      "previous_price": 4.178
     }
   ],
   "pre_market_results": [
@@ -4638,38 +4727,38 @@
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "SPAI",
-    "name": "Safe Pro Group Inc.",
+    "ticker": "MCRP",
+    "name": "Micropolis AI Robotics",
     "status": "ALERT",
     "source": "regular",
-    "price": 3.0,
-    "change_pct": 21.46,
-    "volume": 10478515,
-    "market_cap": 62941935.99,
-    "float_shares": 11937772,
-    "country": "United States",
-    "cap_size": "micro-cap",
-    "is_penny_stock": false,
+    "price": 0.372,
+    "change_pct": -0.08058017727639605,
+    "volume": 6607334,
+    "market_cap": 13273778.32,
+    "float_shares": 9171770,
+    "country": "International (region 181)",
+    "cap_size": "nano-cap",
+    "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "8-K (Nov 16), 8-K (Nov 10), 8-K (Oct 07)",
-    "result": "+21.5% \u00b7 Entry $3.00 \u00b7 T1 $3.12 \u00b7 T2 $3.18 \u00b7 T3 $3.30",
+    "sec_filings": "",
+    "result": "-0.1% \u00b7 Entry $0.37 \u00b7 T1 $0.39 \u00b7 T2 $0.39 \u00b7 T3 $0.41",
     "plan": {
       "valid": true,
-      "ticker": "SPAI",
-      "entry": 3.0,
-      "stop": 2.94,
+      "ticker": "MCRP",
+      "entry": 0.372,
+      "stop": 0.3646,
       "targets": {
-        "t1": 3.12,
-        "t2": 3.18,
-        "t3": 3.3
+        "t1": 0.3868,
+        "t2": 0.3942,
+        "t3": 0.409
       },
-      "risk_per_share": 0.06,
+      "risk_per_share": 0.0074,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 100,
-      "position_value": 300.0,
+      "shares": 806,
+      "position_value": 299.83,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -4677,7 +4766,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$2.94"
+        "hard_stop": "$0.3646"
       }
     },
     "ta": {
@@ -4685,113 +4774,14 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "SPAI",
+      "ticker": "MCRP",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Safe Pro Stock Soars As AI Revenue Explodes 2,000%, Gross Margins Hit 71%",
-          "source": "Webull",
-          "time": "1h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T15:03:03.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "4h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T12:05:44.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "6h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T09:30:26.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M",
-          "source": "Webull",
-          "time": "17h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T22:25:16.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year",
-          "source": "Webull",
-          "time": "18h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:46:38.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates",
-          "source": "Webull",
-          "time": "18h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:25:02.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:44.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Safe Pro Group 3Q Loss/Shr 8c >SPAI",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Safe Pro Group 3Q Rev $2.68M >SPAI",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Safe Pro Group Reports Record Q3 -2-",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:02:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at SPAI last week (1109-1113)?",
+          "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
           "source": "Webull",
           "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T09:31:55.634+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro awarded contract by UDA under UNMAS Program",
-          "source": "Webull",
-          "time": "6d ago \u00b7 11 Nov",
-          "raw_time": "2026-11-11T13:21:23.000+0000",
+          "raw_time": "2026-11-16T09:12:05.396+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -4799,109 +4789,10 @@
       ],
       "headlines": [
         {
-          "title": "Safe Pro Stock Soars As AI Revenue Explodes 2,000%, Gross Margins Hit 71%",
-          "source": "Webull",
-          "time": "1h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T15:03:03.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Tuesday's Pre-Market Session",
-          "source": "Webull",
-          "time": "4h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T12:05:44.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "6h ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T09:30:26.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro Group Non-GAAP EPS of -$0.02, revenue of $2.68M beats by $0.42M",
-          "source": "Webull",
-          "time": "17h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T22:25:16.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro reports Q3 adjusted EPS (2c) vs. (9c) last year",
-          "source": "Webull",
-          "time": "18h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:46:38.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro Group Inc. (SPAI) Reports Q3 Loss, Beats Revenue Estimates",
-          "source": "Webull",
-          "time": "18h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:25:02.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "12 Industrials Stocks Moving In Monday's After-Market Session",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:44.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Safe Pro Group 3Q Loss/Shr 8c >SPAI",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "*Safe Pro Group 3Q Rev $2.68M >SPAI",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:05:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Press Release: Safe Pro Group Reports Record Q3 -2-",
-          "source": "Webull",
-          "time": "19h ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T21:02:00.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at SPAI last week (1109-1113)?",
+          "title": "Weekly Report: what happened at MCRP last week (1109-1113)?",
           "source": "Webull",
           "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T09:31:55.634+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Safe Pro awarded contract by UDA under UNMAS Program",
-          "source": "Webull",
-          "time": "6d ago \u00b7 11 Nov",
-          "raw_time": "2026-11-11T13:21:23.000+0000",
+          "raw_time": "2026-11-16T09:12:05.396+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -4912,50 +4803,65 @@
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Safe Pro Stock Soars As AI Revenue Explodes 2,000%, Gross Margins Hit 71%",
+      "top_headline": "Weekly Report: what happened at MCRP last week (1109-1113)?",
       "news_filter_reason": "low catalyst score (max 0/5)"
     },
     "tape": {
-      "ticker": "SPAI",
+      "ticker": "MCRP",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 38.37,
+      "rvol": 8.97,
       "volume_indicator": "high",
-      "volume": 10478515,
-      "adv": 273060,
-      "recent_pct_of_adv": 3837.44,
+      "volume": 6607334,
+      "adv": 736875,
+      "recent_pct_of_adv": 896.67,
       "volume_acceleration": 0.0,
-      "price_velocity_pct": 9.091,
-      "buy_pressure_pct": 48.64,
-      "large_bar_count": 105,
-      "vwap_distance_pct": 5.592,
-      "recent_volume": 10478515,
+      "price_velocity_pct": 16.307,
+      "buy_pressure_pct": 51.03,
+      "large_bar_count": 89,
+      "vwap_distance_pct": 25.441,
+      "recent_volume": 6607334,
       "prior_volume": 0,
-      "median_range": 0.0199,
-      "last_price": 3.0,
-      "vwap": 3.177708666971319,
-      "last_trade_time": "2026-11-17T16:13:50.903000+00:00",
-      "stale_age_seconds": 27
+      "median_range": 0.0026,
+      "last_price": 0.3723,
+      "vwap": 0.29679207825746756,
+      "last_trade_time": "2026-11-17T16:15:04.525000+00:00",
+      "stale_age_seconds": 19
     },
     "date": "2026-11-18",
-    "time": "03:14:19",
+    "time": "03:15:19",
     "skip_news_check": true,
     "red_flag": false,
-    "previous_price": 3.005
+    "previous_price": 0.368
   },
   "total_candidates": 11,
   "alerts_generated": 5,
   "all_gainers": [
     {
+      "ticker": "SMTK",
+      "name": "Smartkem",
+      "price": 0.286,
+      "change_pct": 74.25,
+      "volume": 126590443,
+      "rvol": 21.353423991590233,
+      "market_cap": 1388321.72,
+      "float_shares": 4756733,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.286"
+    },
+    {
       "ticker": "GP",
       "name": "GreenPower Mtr Co Inc",
-      "price": 2.405,
-      "change_pct": 70.91,
-      "volume": 90988584,
-      "rvol": 3.1472051594629518,
-      "market_cap": 5052205.15,
+      "price": 2.395,
+      "change_pct": 69.86,
+      "volume": 91012523,
+      "rvol": 3.1480331858042825,
+      "market_cap": 5031198.06,
       "float_shares": 1297073,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -4964,13 +4870,28 @@
       "reason": "Passed filters"
     },
     {
+      "ticker": "FRTT",
+      "name": "Fort Technology Inc",
+      "price": 0.626,
+      "change_pct": 0.0799360511590817,
+      "volume": 323609400,
+      "rvol": 9.990476907001149,
+      "market_cap": 9536585.52,
+      "float_shares": 4483431,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Canada",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.626"
+    },
+    {
       "ticker": "AYTU",
       "name": "Aytu Biopharma Inc",
-      "price": 2.655,
-      "change_pct": 45.879999999999995,
-      "volume": 3075507,
-      "rvol": 11.397267330255035,
-      "market_cap": 28855092.24,
+      "price": 2.66,
+      "change_pct": 46.150000000000006,
+      "volume": 3084118,
+      "rvol": 11.42917812381877,
+      "market_cap": 28909433.28,
       "float_shares": 9971007,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -4981,11 +4902,11 @@
     {
       "ticker": "TCX",
       "name": "Tucows Inc",
-      "price": 14.92,
-      "change_pct": 30.31,
-      "volume": 218040,
-      "rvol": 3.6509770432511175,
-      "market_cap": 167416111.48,
+      "price": 15.04,
+      "change_pct": 31.369999999999997,
+      "volume": 218623,
+      "rvol": 3.660739103497932,
+      "market_cap": 169716399.88,
       "float_shares": 8963350,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -4996,11 +4917,11 @@
     {
       "ticker": "MPU",
       "name": "Mega Matrix Corp",
-      "price": 1.66,
-      "change_pct": 29.720000000000002,
-      "volume": 3809491,
-      "rvol": 9.818376993577253,
-      "market_cap": 5679688.51,
+      "price": 1.65,
+      "change_pct": 28.910000000000004,
+      "volume": 3833703,
+      "rvol": 9.819508371817825,
+      "market_cap": 5645133.45,
       "float_shares": 2974345,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
@@ -5013,8 +4934,8 @@
       "name": "Glass House Brands Inc",
       "price": 1.655,
       "change_pct": 28.29,
-      "volume": 7229009,
-      "rvol": 1.9992308958086449,
+      "volume": 7233673,
+      "rvol": 2.0005207562719605,
       "market_cap": 155081760.11,
       "float_shares": 86790334,
       "cap_size": "micro-cap",
@@ -5039,44 +4960,44 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "MCRP",
-      "name": "Micropolis AI Robotics",
-      "price": 0.368,
-      "change_pct": 23.74,
-      "volume": 6528398,
-      "rvol": 8.944701875149,
-      "market_cap": 13120468.5,
-      "float_shares": 9171770,
+      "ticker": "RAIN",
+      "name": "Rain Enhancement",
+      "price": 1.038,
+      "change_pct": 22.53,
+      "volume": 704254,
+      "rvol": 0.03261868897375541,
+      "market_cap": 12239978.71,
+      "float_shares": 4572163,
       "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "International (region 181)",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
+      "ticker": "SPAI",
+      "name": "Safe Pro Group Inc.",
+      "price": 2.995,
+      "change_pct": 21.46,
+      "volume": 10496656,
+      "rvol": 14.096756041712831,
+      "market_cap": 62834938.27,
+      "float_shares": 11937772,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
       "passed": true,
       "reason": "Passed filters"
     },
     {
       "ticker": "GLSI",
       "name": "Greenwich Lifesciences Inc",
-      "price": 16.73,
-      "change_pct": 21.58,
-      "volume": 763555,
-      "rvol": 5.749531260588992,
-      "market_cap": 245566419.84,
+      "price": 16.7,
+      "change_pct": 21.33,
+      "volume": 764325,
+      "rvol": 5.755329322379765,
+      "market_cap": 245052682.56,
       "float_shares": 7639064,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.10x < 0.1x"
-    },
-    {
-      "ticker": "SPAI",
-      "name": "Safe Pro Group Inc.",
-      "price": 3.0,
-      "change_pct": 21.46,
-      "volume": 10478515,
-      "rvol": 14.072393115905536,
-      "market_cap": 62941935.99,
-      "float_shares": 11937772,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
@@ -5086,11 +5007,11 @@
     {
       "ticker": "AIAI",
       "name": "AIAI Holdings Corporation",
-      "price": 1.211,
-      "change_pct": 21.08,
-      "volume": 181632,
-      "rvol": 0.4345190391548467,
-      "market_cap": 94982039.03,
+      "price": 1.21,
+      "change_pct": 21.0,
+      "volume": 186899,
+      "rvol": 0.4471193066144825,
+      "market_cap": 94919282.48,
       "float_shares": 60790435,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -5099,28 +5020,13 @@
       "reason": "Filtered: vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "TDTH",
-      "name": "Trident Digital Tech Holdings Ltd",
-      "price": 1.18,
-      "change_pct": 20.65,
-      "volume": 905937,
-      "rvol": 0.3656544276928628,
-      "market_cap": 69694135.86,
-      "float_shares": 58380044,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
       "ticker": "CING",
       "name": "Cingulate Inc",
-      "price": 4.5,
-      "change_pct": 20.0,
-      "volume": 871181,
-      "rvol": 4.61000867835069,
-      "market_cap": 67333860.0,
+      "price": 4.51,
+      "change_pct": 20.27,
+      "volume": 871542,
+      "rvol": 4.611918973837947,
+      "market_cap": 68082014.0,
       "float_shares": 10777897,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -5146,32 +5052,17 @@
     {
       "ticker": "AZI",
       "name": "Autozi Internet Technology (Global) Ltd.",
-      "price": 0.625,
-      "change_pct": 0.0640409862311809,
-      "volume": 5094177,
-      "rvol": 9.508372265784676,
-      "market_cap": 41442249.97,
+      "price": 0.623,
+      "change_pct": 0.04817729243615978,
+      "volume": 5098992,
+      "rvol": 9.508804842616819,
+      "market_cap": 41316184.85,
       "float_shares": 56227441,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: vol/float 0.09x < 0.1x"
-    },
-    {
-      "ticker": "ELA",
-      "name": "Envela",
-      "price": 11.72,
-      "change_pct": 19.05,
-      "volume": 81089,
-      "rvol": 0.8616955708577744,
-      "market_cap": 8206072.0,
-      "float_shares": 25963476,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.00x, vol/float 0.00x < 0.1x, avg $vol $1.1M < $2.0M"
     },
     {
       "ticker": "UCAR",
@@ -5189,6 +5080,21 @@
       "reason": "Filtered: tiny rvol 0.8x, tiny avg $vol, tiny vol/float 0.00x, vol 5,244, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "ONEW",
+      "name": "Onewater Marine Inc.",
+      "price": 10.76,
+      "change_pct": 18.19,
+      "volume": 159152,
+      "rvol": 1.3958130519816525,
+      "market_cap": 179238732.35,
+      "float_shares": 11984234,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.01x < 0.1x"
+    },
+    {
       "ticker": "CREX",
       "name": "Creative Realities Inc",
       "price": 2.08,
@@ -5204,34 +5110,49 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "CVM",
-      "name": "CEL-SCI Corp",
-      "price": 1.96,
-      "change_pct": 18.07,
-      "volume": 608164,
-      "rvol": 2.1032965816813536,
-      "market_cap": 34474414.52,
-      "float_shares": 16927869,
+      "ticker": "TDTH",
+      "name": "Trident Digital Tech Holdings Ltd",
+      "price": 1.155,
+      "change_pct": 18.099999999999998,
+      "volume": 908692,
+      "rvol": 0.3667664012056941,
+      "market_cap": 68217565.19,
+      "float_shares": 58380044,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
+    },
+    {
+      "ticker": "GANX",
+      "name": "Gain Therapeutics, Inc.",
+      "price": 1.11,
+      "change_pct": 18.05,
+      "volume": 770981,
+      "rvol": 2.070075528741465,
+      "market_cap": 49418682.64,
+      "float_shares": 43384214,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: vol/float 0.04x < 0.1x"
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
     },
     {
-      "ticker": "RAIN",
-      "name": "Rain Enhancement",
-      "price": 1.0,
-      "change_pct": 17.810000000000002,
-      "volume": 688081,
-      "rvol": 0.0318696097256822,
-      "market_cap": 11791887.0,
-      "float_shares": 4572163,
+      "ticker": "PMEC",
+      "name": "Primech Holdings Ltd.",
+      "price": 0.398,
+      "change_pct": 17.86,
+      "volume": 727795,
+      "rvol": 8.23399970584575,
+      "market_cap": 15399499.98,
+      "float_shares": 5544536,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Passed filters"
+      "is_penny_stock": true,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: avg $vol $0.0M < $0.2M"
     },
     {
       "ticker": "SYPR",
@@ -5249,27 +5170,12 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
-      "ticker": "ONEW",
-      "name": "Onewater Marine Inc.",
-      "price": 10.7,
-      "change_pct": 17.580000000000002,
-      "volume": 156552,
-      "rvol": 1.3730102349567186,
-      "market_cap": 178322123.3,
-      "float_shares": 11984234,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x"
-    },
-    {
       "ticker": "NFE",
       "name": "New Fortress Energy",
       "price": 3.58,
       "change_pct": 17.380000000000003,
-      "volume": 343654,
-      "rvol": 0.8105372149355045,
+      "volume": 344026,
+      "rvol": 0.8114146086045902,
       "market_cap": 20451440.94,
       "float_shares": 2142091,
       "cap_size": "nano-cap",
@@ -5279,49 +5185,34 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "BURU",
-      "name": "Nuburu",
-      "price": 0.233,
-      "change_pct": 17.2,
-      "volume": 54537782,
-      "rvol": 2.491378697973738,
-      "market_cap": 2478361.46,
-      "float_shares": 8354006,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.233"
-    },
-    {
-      "ticker": "GANX",
-      "name": "Gain Therapeutics, Inc.",
-      "price": 1.101,
-      "change_pct": 17.05,
-      "volume": 753547,
-      "rvol": 2.0232654299607185,
-      "market_cap": 49316274.34,
-      "float_shares": 43384214,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
       "ticker": "USDE",
       "name": "StableCoinX Inc.",
-      "price": 4.69,
-      "change_pct": 16.38,
-      "volume": 1004091,
-      "rvol": 0.9570719683394209,
-      "market_cap": 128045940.16,
+      "price": 4.715,
+      "change_pct": 17.0,
+      "volume": 1006733,
+      "rvol": 0.9595902501887281,
+      "market_cap": 128187313.24,
       "float_shares": 18247290,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol/float 0.06x < 0.1x"
+    },
+    {
+      "ticker": "CVM",
+      "name": "CEL-SCI Corp",
+      "price": 1.935,
+      "change_pct": 16.57,
+      "volume": 613726,
+      "rvol": 2.122532405550099,
+      "market_cap": 34034689.85,
+      "float_shares": 16927869,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.04x < 0.1x"
     },
     {
       "ticker": "ELWT",
@@ -5343,8 +5234,8 @@
       "name": "MAIA Biotechnology Inc.",
       "price": 1.17,
       "change_pct": 15.83,
-      "volume": 561106,
-      "rvol": 1.6799681435218174,
+      "volume": 563882,
+      "rvol": 1.6882795705363505,
       "market_cap": 72241685.33,
       "float_shares": 52744934,
       "cap_size": "micro-cap",
@@ -5354,27 +5245,12 @@
       "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
-      "ticker": "TLSA",
-      "name": "Tiziana Life Sciences Ltd Com",
-      "price": 0.661,
-      "change_pct": 0.030266343825662522,
-      "volume": 254220,
-      "rvol": 0.6970431463730286,
-      "market_cap": 84601314.74,
-      "float_shares": 67389480,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "United Kingdom",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
       "ticker": "ARBK",
       "name": "Argo Blockchain Plc",
       "price": 1.25,
       "change_pct": 14.680000000000001,
       "volume": 906492,
-      "rvol": 8.968863472212602,
+      "rvol": 8.967443884970372,
       "market_cap": 18293620.0,
       "float_shares": 14634549,
       "cap_size": "nano-cap",
@@ -5399,6 +5275,36 @@
       "reason": "Filtered: vol 21,966, vol/float 0.00x < 0.1x"
     },
     {
+      "ticker": "TLSA",
+      "name": "Tiziana Life Sciences Ltd Com",
+      "price": 0.66,
+      "change_pct": 0.04547521600728786,
+      "volume": 254941,
+      "rvol": 0.6990200486959574,
+      "market_cap": 84460483.25,
+      "float_shares": 67389480,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
+      "ticker": "VTSI",
+      "name": "Virtra Inc",
+      "price": 4.48,
+      "change_pct": 13.71,
+      "volume": 249649,
+      "rvol": 0.09865841407693056,
+      "market_cap": 50914236.8,
+      "float_shares": 10849551,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.02x < 0.1x"
+    },
+    {
       "ticker": "BRFH",
       "name": "Barfresh",
       "price": 0.57,
@@ -5412,21 +5318,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny price $0.570, tiny avg $vol, tiny vol/float 0.55x, avg $vol $0.2M < $2.0M"
-    },
-    {
-      "ticker": "VTSI",
-      "name": "Virtra Inc",
-      "price": 4.461,
-      "change_pct": 13.23,
-      "volume": 247474,
-      "rvol": 0.09779887908733587,
-      "market_cap": 50701715.32,
-      "float_shares": 10849551,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.02x < 0.1x"
     },
     {
       "ticker": "SFWL",
@@ -5504,45 +5395,30 @@
       "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "NXPL",
-      "name": "NextPlat",
-      "price": 7.77,
-      "change_pct": 11.89,
-      "volume": 6484,
-      "rvol": 0.28187627700734685,
-      "market_cap": 21031850.07,
-      "float_shares": 1489073,
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "price": 2.228,
+      "change_pct": 11.959999999999999,
+      "volume": 1666696,
+      "rvol": 0.4187944610549364,
+      "market_cap": 17865859.43,
+      "float_shares": 4558277,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 6,484, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
+      "passed": true,
+      "reason": "Passed filters"
     }
   ],
   "all_losers": [
     {
-      "ticker": "GDHG",
-      "name": "Golden Heaven Gr",
-      "price": 0.266,
-      "change_pct": -83.07,
-      "volume": 32736224,
-      "rvol": 1.5695735718912853,
-      "market_cap": 15616361.25,
-      "float_shares": 41818480,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.266, move -83.1%"
-    },
-    {
       "ticker": "BAER",
       "name": "Bridger Aerospace Group Holdings, Inc.",
       "price": 0.123,
-      "change_pct": -0.3241491085899494,
-      "volume": 6240906,
-      "rvol": 2.7253507287944783,
-      "market_cap": 7286781.85,
+      "change_pct": -0.08123476848091216,
+      "volume": 6250475,
+      "rvol": 2.7295294299516235,
+      "market_cap": 7269066.82,
       "float_shares": 46913461,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
@@ -5553,17 +5429,17 @@
     {
       "ticker": "MDRN",
       "name": "Modern Mng Technology Corp",
-      "price": 2.04,
-      "change_pct": -46.67,
-      "volume": 442276,
-      "rvol": 0.7385915398874434,
-      "market_cap": 24767686.92,
+      "price": 2.025,
+      "change_pct": -47.06,
+      "volume": 443933,
+      "rvol": 0.7413586947445767,
+      "market_cap": 24585571.58,
       "float_shares": 12141023,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: move -46.7%, rvol 0.7x, vol/float 0.04x"
+      "reason": "Filtered: move -47.1%, rvol 0.7x, vol/float 0.04x"
     },
     {
       "ticker": "SCLX",
@@ -5583,32 +5459,32 @@
     {
       "ticker": "CUE",
       "name": "Cue Biopharma Inc",
-      "price": 7.7,
-      "change_pct": -45.39,
-      "volume": 597377,
-      "rvol": 3.327968490601776,
-      "market_cap": 56081276.08,
+      "price": 7.86,
+      "change_pct": -44.26,
+      "volume": 614784,
+      "rvol": 3.424942340475315,
+      "market_cap": 57098294.04,
       "float_shares": 6041825,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: move -45.4%, vol/float 0.10x"
+      "reason": "Filtered: move -44.3%, vol/float 0.10x"
     },
     {
       "ticker": "STEM",
       "name": "Stem Inc",
-      "price": 1.17,
-      "change_pct": -40.6,
-      "volume": 831814,
-      "rvol": 3.843996802114671,
-      "market_cap": 11264253.15,
+      "price": 1.18,
+      "change_pct": -40.1,
+      "volume": 833374,
+      "rvol": 3.8512059077696597,
+      "market_cap": 11359557.92,
       "float_shares": 9125222,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: move -40.6%, vol/float 0.09x"
+      "reason": "Filtered: move -40.1%, vol/float 0.09x"
     },
     {
       "ticker": "CSAI",
@@ -5630,9 +5506,9 @@
       "name": "Global Mofy AI Ltd",
       "price": 1.27,
       "change_pct": -36.82,
-      "volume": 3996157,
-      "rvol": 0.20848807373509815,
-      "market_cap": 73424630.3,
+      "volume": 4003720,
+      "rvol": 0.2088826516512457,
+      "market_cap": 73343778.89,
       "float_shares": 57696024,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
@@ -5658,32 +5534,32 @@
     {
       "ticker": "TRUG",
       "name": "TruGolf Holdings",
-      "price": 0.318,
-      "change_pct": -0.12562814070352119,
-      "volume": 750956,
-      "rvol": 0.6485482808145414,
-      "market_cap": 790961.32,
+      "price": 0.326,
+      "change_pct": -0.12254901960784664,
+      "volume": 751625,
+      "rvol": 0.6491260494186474,
+      "market_cap": 810834.72,
       "float_shares": 2473607,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.318, mktcap $0.8M, move -32.2%, rvol 0.6x"
+      "reason": "Filtered: price $0.326, mktcap $0.8M, move -30.5%, rvol 0.6x"
     },
     {
       "ticker": "KYNB",
       "name": "KYNTRA BIO INC",
-      "price": 2.182,
-      "change_pct": -31.8,
-      "volume": 120026,
-      "rvol": 2.980087396960969,
+      "price": 2.25,
+      "change_pct": -29.69,
+      "volume": 120460,
+      "rvol": 2.990863044989572,
       "market_cap": 9110124.09,
       "float_shares": 3959611,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: move -31.8%, vol/float 0.03x"
+      "reason": "Filtered: vol/float 0.03x"
     },
     {
       "ticker": "WKHS",
@@ -5699,6 +5575,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol/float 0.09x"
+    },
+    {
+      "ticker": "PARA",
+      "name": "PARABOLIC TECHNOLOGIES INC",
+      "price": 0.071,
+      "change_pct": -28.499999999999996,
+      "volume": 30951364,
+      "rvol": 0.1488635817309889,
+      "market_cap": 158905.39,
+      "float_shares": 2065088,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.071, mktcap $0.2M, rvol 0.1x"
     },
     {
       "ticker": "DARE",
@@ -5721,7 +5612,7 @@
       "price": 0.102,
       "change_pct": -0.19569471624266707,
       "volume": 367425,
-      "rvol": 1.3007253687910874,
+      "rvol": 1.299271905598795,
       "market_cap": 3183058.86,
       "float_shares": 16237753,
       "cap_size": "nano-cap",
@@ -5751,7 +5642,7 @@
       "price": 0.28,
       "change_pct": -23.52,
       "volume": 517443,
-      "rvol": 2.476585907511463,
+      "rvol": 2.4758749054996794,
       "market_cap": 4933784.24,
       "float_shares": 4426658,
       "cap_size": "nano-cap",
@@ -5791,21 +5682,6 @@
       "reason": "Filtered: price $0.419, rvol 0.1x, vol 53,203, vol/float 0.00x"
     },
     {
-      "ticker": "DUOT",
-      "name": "Duos Technologies Group Inc",
-      "price": 3.745,
-      "change_pct": -19.81,
-      "volume": 1663109,
-      "rvol": 1.9493358275695145,
-      "market_cap": 128905828.4,
-      "float_shares": 31112043,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.05x"
-    },
-    {
       "ticker": "PRPL",
       "name": "Purple Innovatio",
       "price": 1.039,
@@ -5825,8 +5701,8 @@
       "name": "Co-Diagnostics Inc",
       "price": 0.18,
       "change_pct": -0.2217294900221793,
-      "volume": 575231,
-      "rvol": 0.032754013702078554,
+      "volume": 594774,
+      "rvol": 0.03386680437187855,
       "market_cap": 1896399.08,
       "float_shares": 9774138,
       "cap_size": "nano-cap",
@@ -5853,32 +5729,32 @@
     {
       "ticker": "FCUV",
       "name": "Focus Unvl Inc",
-      "price": 3.84,
-      "change_pct": -18.64,
-      "volume": 1325715,
-      "rvol": 0.06574965362420965,
-      "market_cap": 3770926.08,
+      "price": 3.81,
+      "change_pct": -19.27,
+      "volume": 1328487,
+      "rvol": 0.06588713267502094,
+      "market_cap": 3741760.32,
       "float_shares": 880612,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: mktcap $3.8M, rvol 0.1x"
+      "reason": "Filtered: mktcap $3.7M, rvol 0.1x"
     },
     {
-      "ticker": "AKAN",
-      "name": "AKANDA CORP",
-      "price": 1.8,
-      "change_pct": -18.56,
-      "volume": 14842770,
-      "rvol": 0.4704798556821965,
-      "market_cap": 973513.8,
-      "float_shares": 535696,
-      "cap_size": "nano-cap",
+      "ticker": "DUOT",
+      "name": "Duos Technologies Group Inc",
+      "price": 3.78,
+      "change_pct": -19.06,
+      "volume": 1665829,
+      "rvol": 1.9525239490041222,
+      "market_cap": 129591497.7,
+      "float_shares": 31112043,
+      "cap_size": "micro-cap",
       "is_penny_stock": false,
-      "country": "United Kingdom",
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: mktcap $1.0M, rvol 0.5x"
+      "reason": "Filtered: vol/float 0.05x"
     },
     {
       "ticker": "BNAI",
@@ -5896,6 +5772,21 @@
       "reason": "Filtered: vol/float 0.13x"
     },
     {
+      "ticker": "AKAN",
+      "name": "AKANDA CORP",
+      "price": 1.815,
+      "change_pct": -17.87,
+      "volume": 14852393,
+      "rvol": 0.47078488147261366,
+      "market_cap": 979300.8,
+      "float_shares": 535696,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: mktcap $1.0M, rvol 0.5x"
+    },
+    {
       "ticker": "MACI",
       "name": "Melar Acquisition Corp. I",
       "price": 8.25,
@@ -5909,6 +5800,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: rvol 0.8x, vol 19,825, vol/float 0.01x"
+    },
+    {
+      "ticker": "SHFS",
+      "name": "SHF Holdings Inc",
+      "price": 0.019,
+      "change_pct": -17.39,
+      "volume": 495414745,
+      "rvol": 0.6547045273924694,
+      "market_cap": 2841333.5,
+      "float_shares": 148663268,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.019, mktcap $2.8M, rvol 0.7x, float 148.7M"
     },
     {
       "ticker": "LZMH",
@@ -5930,8 +5836,8 @@
       "name": "Profusa Inc",
       "price": 0.337,
       "change_pct": -16.93,
-      "volume": 141696,
-      "rvol": 0.12952777247077774,
+      "volume": 142455,
+      "rvol": 0.13022159289835028,
       "market_cap": 1914816.14,
       "float_shares": 5379345,
       "cap_size": "nano-cap",
@@ -5971,21 +5877,6 @@
       "reason": "Filtered: mktcap $0.5M, vol 27,956, vol/float 0.04x"
     },
     {
-      "ticker": "SWMR",
-      "name": "SWARMER INC",
-      "price": 7.55,
-      "change_pct": -15.83,
-      "volume": 314172,
-      "rvol": 0.6274404857005912,
-      "market_cap": 125407493.2,
-      "float_shares": 6975850,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: rvol 0.6x, vol/float 0.05x"
-    },
-    {
       "ticker": "FKWL",
       "name": "Franklin Wireless Corp",
       "price": 1.62,
@@ -5999,9 +5890,169 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 91,529, vol/float 0.01x"
+    },
+    {
+      "ticker": "GRDX",
+      "name": "GridAI Tech",
+      "price": 2.79,
+      "change_pct": -15.45,
+      "volume": 194569,
+      "rvol": 0.9535172062297235,
+      "market_cap": 28639601.1,
+      "float_shares": 9011523,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: rvol 1.0x, vol/float 0.02x"
     }
   ],
   "live_quotes": {
+    "AYTU": {
+      "price": 2.66,
+      "open": 2.66,
+      "high": 2.67,
+      "low": 2.65,
+      "close": 2.66,
+      "preClose": 1.82,
+      "volume": 3084203,
+      "changeRatio": 0.4615,
+      "marketValue": 28909433.28,
+      "name": "Aytu Biopharma Inc",
+      "_timestamp": "2026-11-17T16:15:21.833927Z"
+    },
+    "LUCK": {
+      "price": 4.16,
+      "open": 4.03,
+      "high": 4.48,
+      "low": 3.94,
+      "close": 4.16,
+      "preClose": 3.32,
+      "volume": 2459611,
+      "changeRatio": 0.253,
+      "marketValue": 567121131.2,
+      "name": "Lucky Strike Entertainment Corp-A",
+      "_timestamp": "2026-11-17T16:15:21.833956Z"
+    },
+    "SLS": {
+      "price": 20.77,
+      "open": 24.0,
+      "high": 24.89,
+      "low": 16.72,
+      "close": 20.77,
+      "preClose": 7.47,
+      "volume": 77218853,
+      "changeRatio": 1.7798,
+      "marketValue": 4233135270.52,
+      "name": "Sellas Life Sciences Group Inc",
+      "_timestamp": "2026-11-17T16:15:21.833972Z"
+    },
+    "RAIN": {
+      "price": 1.035,
+      "open": 0.86,
+      "high": 1.04,
+      "low": 0.8294,
+      "close": 1.035,
+      "preClose": 0.8488,
+      "volume": 705347,
+      "changeRatio": 0.2194,
+      "marketValue": 12204603.05,
+      "name": "Rain Enhancement",
+      "_timestamp": "2026-11-17T16:15:21.833983Z"
+    },
+    "GP": {
+      "price": 2.401,
+      "open": 2.7,
+      "high": 3.39,
+      "low": 2.24,
+      "close": 2.401,
+      "preClose": 1.41,
+      "volume": 91037109,
+      "changeRatio": 0.7031,
+      "marketValue": 5044432.52,
+      "name": "GreenPower Mtr Co Inc",
+      "_timestamp": "2026-11-17T16:15:21.833994Z"
+    },
+    "MPU": {
+      "price": 1.64,
+      "open": 1.31,
+      "high": 2.05,
+      "low": 1.3,
+      "close": 1.64,
+      "preClose": 1.28,
+      "volume": 3833973,
+      "changeRatio": 0.2813,
+      "marketValue": 5610920.52,
+      "name": "Mega Matrix Corp",
+      "_timestamp": "2026-11-17T16:15:21.834006Z"
+    },
+    "SPAI": {
+      "price": 2.995,
+      "open": 3.0,
+      "high": 3.37,
+      "low": 2.9,
+      "close": 2.995,
+      "preClose": 2.47,
+      "volume": 10514506,
+      "changeRatio": 0.2126,
+      "marketValue": 62834938.27,
+      "name": "Safe Pro Group Inc.",
+      "_timestamp": "2026-11-17T16:15:21.834017Z"
+    },
+    "TCX": {
+      "price": 15.13,
+      "open": 14.54,
+      "high": 15.13,
+      "low": 13.07,
+      "close": 15.13,
+      "preClose": 11.45,
+      "volume": 221885,
+      "changeRatio": 0.321,
+      "marketValue": 169716399.88,
+      "name": "Tucows Inc",
+      "_timestamp": "2026-11-17T16:15:21.834026Z"
+    },
+    "GLAS": {
+      "price": 1.665,
+      "open": 1.5,
+      "high": 1.75,
+      "low": 1.46,
+      "close": 1.665,
+      "preClose": 1.29,
+      "volume": 7258070,
+      "changeRatio": 0.2907,
+      "marketValue": 156018810.02,
+      "name": "Glass House Brands Inc",
+      "_timestamp": "2026-11-17T16:15:21.834034Z"
+    },
+    "SMTK": {
+      "price": 0.2826,
+      "open": 0.1742,
+      "high": 0.3189,
+      "low": 0.172,
+      "close": 0.2826,
+      "preClose": 0.1639,
+      "volume": 126866766,
+      "changeRatio": 0.7242,
+      "marketValue": 1373257.68,
+      "name": "Smartkem",
+      "_timestamp": "2026-11-17T16:15:21.834043Z"
+    },
+    "MCRP": {
+      "price": 0.3698,
+      "open": 0.296,
+      "high": 0.3728,
+      "low": 0.2914,
+      "close": 0.3698,
+      "preClose": 0.2974,
+      "volume": 6618088,
+      "changeRatio": 0.2434,
+      "marketValue": 13184644.7,
+      "name": "Micropolis AI Robotics",
+      "_timestamp": "2026-11-17T16:15:21.834051Z"
+    }
+  },
+  "previous_live_quotes": {
     "AYTU": {
       "price": 2.655,
       "open": 2.66,
@@ -6146,143 +6197,11 @@
       "_timestamp": "2026-11-17T16:14:21.116693Z"
     }
   },
-  "previous_live_quotes": {
-    "LUCK": {
-      "price": 4.16,
-      "open": 4.03,
-      "high": 4.48,
-      "low": 3.94,
-      "close": 4.16,
-      "preClose": 3.32,
-      "volume": 2456360,
-      "changeRatio": 0.2529,
-      "marketValue": 567080233.04,
-      "name": "Lucky Strike Entertainment Corp-A",
-      "_timestamp": "2026-11-17T16:13:20.604922Z"
-    },
-    "MPU": {
-      "price": 1.684,
-      "open": 1.31,
-      "high": 2.05,
-      "low": 1.3,
-      "close": 1.684,
-      "preClose": 1.28,
-      "volume": 3796208,
-      "changeRatio": 0.3158,
-      "marketValue": 5762141.67,
-      "name": "Mega Matrix Corp",
-      "_timestamp": "2026-11-17T16:13:20.604953Z"
-    },
-    "SLS": {
-      "price": 20.6,
-      "open": 24.0,
-      "high": 24.89,
-      "low": 16.72,
-      "close": 20.6,
-      "preClose": 7.47,
-      "volume": 76172987,
-      "changeRatio": 1.757,
-      "marketValue": 4198479214.85,
-      "name": "Sellas Life Sciences Group Inc",
-      "_timestamp": "2026-11-17T16:13:20.604965Z"
-    },
-    "TCX": {
-      "price": 14.77,
-      "open": 14.54,
-      "high": 15.09,
-      "low": 13.07,
-      "close": 14.77,
-      "preClose": 11.45,
-      "volume": 217219,
-      "changeRatio": 0.29,
-      "marketValue": 165732973.63,
-      "name": "Tucows Inc",
-      "_timestamp": "2026-11-17T16:13:20.604974Z"
-    },
-    "SPAI": {
-      "price": 3.009,
-      "open": 3.0,
-      "high": 3.37,
-      "low": 2.9,
-      "close": 3.009,
-      "preClose": 2.47,
-      "volume": 10476684,
-      "changeRatio": 0.2181,
-      "marketValue": 63120265.54,
-      "name": "Safe Pro Group Inc.",
-      "_timestamp": "2026-11-17T16:13:20.604982Z"
-    },
-    "AYTU": {
-      "price": 2.655,
-      "open": 2.66,
-      "high": 2.67,
-      "low": 2.65,
-      "close": 2.655,
-      "preClose": 1.82,
-      "volume": 3075507,
-      "changeRatio": 0.4588,
-      "marketValue": 28855092.24,
-      "name": "Aytu Biopharma Inc",
-      "_timestamp": "2026-11-17T16:13:20.604990Z"
-    },
-    "RAIN": {
-      "price": 1.03,
-      "open": 0.86,
-      "high": 1.03,
-      "low": 0.8294,
-      "close": 1.03,
-      "preClose": 0.8488,
-      "volume": 670945,
-      "changeRatio": 0.2135,
-      "marketValue": 12145643.61,
-      "name": "Rain Enhancement",
-      "_timestamp": "2026-11-17T16:13:20.604998Z"
-    },
-    "LVWR": {
-      "price": 0.3598,
-      "open": 0.3479,
-      "high": 0.4397,
-      "low": 0.2723,
-      "close": 0.3598,
-      "preClose": 0.2934,
-      "volume": 4088348,
-      "changeRatio": 0.2263,
-      "marketValue": 73907830.91,
-      "name": "LIVEWIRE GROUP INC",
-      "_timestamp": "2026-11-17T16:13:20.605004Z"
-    },
-    "GP": {
-      "price": 2.395,
-      "open": 2.7,
-      "high": 3.39,
-      "low": 2.24,
-      "close": 2.395,
-      "preClose": 1.41,
-      "volume": 90961618,
-      "changeRatio": 0.6986,
-      "marketValue": 5031198.06,
-      "name": "GreenPower Mtr Co Inc",
-      "_timestamp": "2026-11-17T16:13:20.605011Z"
-    },
-    "GLAS": {
-      "price": 1.665,
-      "open": 1.5,
-      "high": 1.75,
-      "low": 1.46,
-      "close": 1.665,
-      "preClose": 1.29,
-      "volume": 7204807,
-      "changeRatio": 0.2907,
-      "marketValue": 156018810.02,
-      "name": "Glass House Brands Inc",
-      "_timestamp": "2026-11-17T16:13:20.605017Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "OPEN",
-    "market_time": "03:14 AM AEDT",
+    "market_time": "03:15 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
