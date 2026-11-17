@@ -1470,75 +1470,742 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-17T21:08:18.659091Z&quot;,
-  &quot;scan_results&quot;: [],
-  &quot;pre_market_results&quot;: [],
+  &quot;last_updated&quot;: &quot;2026-11-17T21:09:21.198721Z&quot;,
+  &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;SHFS&quot;,
+      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.019,
+      &quot;change_pct&quot;: 28.38,
+      &quot;volume&quot;: 649102134,
+      &quot;market_cap&quot;: 2201661.56,
+      &quot;float_shares&quot;: 148663268,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.4%, rvol 5.0x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.4%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;entry&quot;: 0.019,
+        &quot;stop&quot;: 0.0186,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0198,
+          &quot;t2&quot;: 0.0202,
+          &quot;t3&quot;: 0.021
+        },
+        &quot;risk_per_share&quot;: 0.0004,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 15789,
+        &quot;position_value&quot;: 299.99,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0186&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;considering&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:07:55.528+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Files Prospectus To Offer 115,705,691 Shares Of Class A Common Stock By Selling Stockholders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:35:08.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Intends to Complete Combination With Opifex Media&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Determines to Delist Shares Due to Low Price&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:33:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Notifies Company of Suspension at Opening of Business Nov. 18&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings registers to sell 115.71M shares of Class A common for holders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:30:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHFS Stock Declines Post Q3 Earnings Despite Loan and Deposit Growth&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T15:24:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Tetra Tech Shares Are Trading Higher By Over 8%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T09:56:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Fossil Group Shares Are Trading Higher By Over 26%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T11:42:30.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings (SHFS) Stock Surges Over 26% After Hours: What’s Driving the Surge&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T06:22:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;considering&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:07:55.528+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Files Prospectus To Offer 115,705,691 Shares Of Class A Common Stock By Selling Stockholders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:35:08.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Intends to Complete Combination With Opifex Media&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Determines to Delist Shares Due to Low Price&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:33:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Notifies Company of Suspension at Opening of Business Nov. 18&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings registers to sell 115.71M shares of Class A common for holders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:30:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHFS Stock Declines Post Q3 Earnings Despite Loan and Deposit Growth&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T15:24:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Tetra Tech Shares Are Trading Higher By Over 8%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T09:56:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Fossil Group Shares Are Trading Higher By Over 26%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T11:42:30.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings (SHFS) Stock Surges Over 26% After Hours: What’s Driving the Surge&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T06:22:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;SHF Holdings Faces Nasdaq Delisting Over Low Share Price&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings, Inc. Reports Q3 2026 Results, Details Proposed Opifex Transaction and Series B Dilution&quot;,
+            &quot;flag&quot;: &quot;dilution&quot;
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings&#39; Unaudited Fincl Statements Include Going Concern Disclosure Resulting From Recurring Operating Losses >SHFS&quot;,
+            &quot;flag&quot;: &quot;going concern&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.1,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: delisting, dilution, going concern&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 4.99,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 649102134,
+        &quot;adv&quot;: 129974362,
+        &quot;recent_pct_of_adv&quot;: 499.41,
+        &quot;volume_acceleration&quot;: -0.647,
+        &quot;price_velocity_pct&quot;: 15.909,
+        &quot;buy_pressure_pct&quot;: 55.97,
+        &quot;large_bar_count&quot;: 156,
+        &quot;vwap_distance_pct&quot;: 27.335,
+        &quot;recent_volume&quot;: 649102134,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0003,
+        &quot;last_price&quot;: 0.0148,
+        &quot;vwap&quot;: 0.020367391059956604,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T21:09:04.890000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;08:09:20&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: null
+    }
+  ],
+  &quot;pre_market_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;SHFS&quot;,
+      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
+      &quot;status&quot;: &quot;CANDIDATE&quot;,
+      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
+      &quot;price&quot;: 0.019,
+      &quot;change_pct&quot;: 28.38,
+      &quot;volume&quot;: 649102134,
+      &quot;market_cap&quot;: 2201661.56,
+      &quot;float_shares&quot;: 148663268,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.4%, rvol 5.0x)&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.4%&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;entry&quot;: 0.019,
+        &quot;stop&quot;: 0.0186,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.0198,
+          &quot;t2&quot;: 0.0202,
+          &quot;t3&quot;: 0.021
+        },
+        &quot;risk_per_share&quot;: 0.0004,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 15789,
+        &quot;position_value&quot;: 299.99,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.0186&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;considering&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:07:55.528+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Files Prospectus To Offer 115,705,691 Shares Of Class A Common Stock By Selling Stockholders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:35:08.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Intends to Complete Combination With Opifex Media&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Determines to Delist Shares Due to Low Price&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:33:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Notifies Company of Suspension at Opening of Business Nov. 18&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings registers to sell 115.71M shares of Class A common for holders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:30:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHFS Stock Declines Post Q3 Earnings Despite Loan and Deposit Growth&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T15:24:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Tetra Tech Shares Are Trading Higher By Over 8%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T09:56:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Fossil Group Shares Are Trading Higher By Over 26%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T11:42:30.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings (SHFS) Stock Surges Over 26% After Hours: What’s Driving the Surge&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T06:22:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 1,
+            &quot;keywords&quot;: [
+              &quot;considering&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Take-Two Interactive Software Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:28:20.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at SHFS last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:07:55.528+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings Files Prospectus To Offer 115,705,691 Shares Of Class A Common Stock By Selling Stockholders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:35:08.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings Intends to Complete Combination With Opifex Media&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:34:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Determines to Delist Shares Due to Low Price&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:33:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings: Nasdaq Notifies Company of Suspension at Opening of Business Nov. 18&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:32:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings registers to sell 115.71M shares of Class A common for holders&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T22:30:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHFS Stock Declines Post Q3 Earnings Despite Loan and Deposit Growth&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;4d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T15:24:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Tetra Tech Shares Are Trading Higher By Over 8%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 12 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-12T09:56:00.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Why Fossil Group Shares Are Trading Higher By Over 26%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T11:42:30.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings (SHFS) Stock Surges Over 26% After Hours: What’s Driving the Surge&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;6d ago · 11 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-11T06:22:39.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [
+          {
+            &quot;title&quot;: &quot;SHF Holdings Faces Nasdaq Delisting Over Low Share Price&quot;,
+            &quot;flag&quot;: &quot;delisting&quot;
+          },
+          {
+            &quot;title&quot;: &quot;SHF Holdings, Inc. Reports Q3 2026 Results, Details Proposed Opifex Transaction and Series B Dilution&quot;,
+            &quot;flag&quot;: &quot;dilution&quot;
+          },
+          {
+            &quot;title&quot;: &quot;*SHF Holdings&#39; Unaudited Fincl Statements Include Going Concern Disclosure Resulting From Recurring Operating Losses >SHFS&quot;,
+            &quot;flag&quot;: &quot;going concern&quot;
+          }
+        ],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.1,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;*SHF Holdings Considering Options Including Requesting a Hearing and Presenting a Plan to Regain Nasdaq Compliance&quot;,
+        &quot;news_filter_reason&quot;: &quot;news red flags; low catalyst score (max 1/5); red flags: delisting, dilution, going concern&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;SHFS&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 4.99,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 649102134,
+        &quot;adv&quot;: 129974362,
+        &quot;recent_pct_of_adv&quot;: 499.41,
+        &quot;volume_acceleration&quot;: -0.647,
+        &quot;price_velocity_pct&quot;: 15.909,
+        &quot;buy_pressure_pct&quot;: 55.97,
+        &quot;large_bar_count&quot;: 156,
+        &quot;vwap_distance_pct&quot;: 27.335,
+        &quot;recent_volume&quot;: 649102134,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0003,
+        &quot;last_price&quot;: 0.0148,
+        &quot;vwap&quot;: 0.020367391059956604,
+        &quot;last_trade_time&quot;: &quot;2026-11-17T21:09:04.890000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
+      },
+      &quot;date&quot;: &quot;2026-11-18&quot;,
+      &quot;time&quot;: &quot;08:09:20&quot;,
+      &quot;skip_news_check&quot;: true,
+      &quot;red_flag&quot;: true,
+      &quot;previous_price&quot;: null
+    }
+  ],
   &quot;pre_market_watchlist&quot;: [],
   &quot;bounce_results&quot;: [],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: null,
-  &quot;total_candidates&quot;: 0,
+  &quot;total_candidates&quot;: 1,
   &quot;alerts_generated&quot;: 0,
   &quot;all_gainers&quot;: [
     {
       &quot;ticker&quot;: &quot;SHFS&quot;,
       &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
-      &quot;price&quot;: 0.018,
-      &quot;change_pct&quot;: 22.3,
-      &quot;volume&quot;: 644458233,
-      &quot;rvol&quot;: 0.8516696911402001,
+      &quot;price&quot;: 0.019,
+      &quot;change_pct&quot;: 28.38,
+      &quot;volume&quot;: 649102134,
+      &quot;rvol&quot;: 0.8578067369995485,
       &quot;market_cap&quot;: 2201661.56,
       &quot;float_shares&quot;: 148663268,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.018, tiny price $0.018, tiny rvol 0.9x, float 148.7M > 100M&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.019, tiny price $0.019, float 148.7M > 100M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;DETX&quot;,
-      &quot;name&quot;: &quot;Liberty Defense&quot;,
-      &quot;price&quot;: 1.11,
-      &quot;change_pct&quot;: 12.06,
-      &quot;volume&quot;: 18318,
-      &quot;rvol&quot;: 0.8856120672983949,
-      &quot;market_cap&quot;: 5628004.16,
-      &quot;float_shares&quot;: 4911251,
+      &quot;ticker&quot;: &quot;VJET&quot;,
+      &quot;name&quot;: &quot;Flyte Aviation Inc&quot;,
+      &quot;price&quot;: 0.45,
+      &quot;change_pct&quot;: 12.7,
+      &quot;volume&quot;: 159218,
+      &quot;rvol&quot;: 0.4408871019103871,
+      &quot;market_cap&quot;: 838903.01,
+      &quot;float_shares&quot;: 1722087,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
+      &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.00x, vol 18,318, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.8M, vol/float 0.09x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;CMND&quot;,
       &quot;name&quot;: &quot;Clearmind Medici&quot;,
       &quot;price&quot;: 3.63,
       &quot;change_pct&quot;: 12.04,
-      &quot;volume&quot;: 12068,
-      &quot;rvol&quot;: 1.7406606086831098,
+      &quot;volume&quot;: 12106,
+      &quot;rvol&quot;: 1.7461416414250686,
       &quot;market_cap&quot;: 1643988.96,
       &quot;float_shares&quot;: 481932,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.03x, vol 12,068, vol/float 0.03x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.03x, vol 12,106, vol/float 0.03x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;SLNH&quot;,
-      &quot;name&quot;: &quot;SOLUNA HOLDINGS INC&quot;,
-      &quot;price&quot;: 0.454,
-      &quot;change_pct&quot;: 11.29,
-      &quot;volume&quot;: 7850759,
-      &quot;rvol&quot;: 1.2787612428487916,
-      &quot;market_cap&quot;: 100531084.15,
-      &quot;float_shares&quot;: 187122064,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
+      &quot;ticker&quot;: &quot;KMRK&quot;,
+      &quot;name&quot;: &quot;K-Tech Solutions Company Limited&quot;,
+      &quot;price&quot;: 1.381,
+      &quot;change_pct&quot;: 11.940000000000001,
+      &quot;volume&quot;: 41124,
+      &quot;rvol&quot;: 1.919529499626587,
+      &quot;market_cap&quot;: 26164000.0,
+      &quot;float_shares&quot;: 4600000,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Hong Kong&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 41,124, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;DETX&quot;,
+      &quot;name&quot;: &quot;Liberty Defense&quot;,
+      &quot;price&quot;: 1.09,
+      &quot;change_pct&quot;: 10.040000000000001,
+      &quot;volume&quot;: 18319,
+      &quot;rvol&quot;: 0.8856604138464513,
+      &quot;market_cap&quot;: 5628004.16,
+      &quot;float_shares&quot;: 4911251,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: float 187.1M > 100M, vol/float 0.04x < 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.00x, vol 18,319, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;GOAI&quot;,
@@ -1571,6 +2238,21 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;HUMA&quot;,
+      &quot;name&quot;: &quot;Humacyte Inc&quot;,
+      &quot;price&quot;: 0.55,
+      &quot;change_pct&quot;: 9.78,
+      &quot;volume&quot;: 3725540,
+      &quot;rvol&quot;: 0.5447807768954015,
+      &quot;market_cap&quot;: 139176850.61,
+      &quot;float_shares&quot;: 260391662,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: float 260.4M > 100M, vol/float 0.01x < 0.1x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;TRNR&quot;,
       &quot;name&quot;: &quot;Interactive Strength Inc.&quot;,
       &quot;price&quot;: 0.944,
@@ -1588,25 +2270,25 @@
     {
       &quot;ticker&quot;: &quot;ABTS&quot;,
       &quot;name&quot;: &quot;Abits Group Inc.&quot;,
-      &quot;price&quot;: 0.348,
-      &quot;change_pct&quot;: 9.2,
-      &quot;volume&quot;: 148553,
-      &quot;rvol&quot;: 0.5619472374164945,
+      &quot;price&quot;: 0.35,
+      &quot;change_pct&quot;: 9.86,
+      &quot;volume&quot;: 162211,
+      &quot;rvol&quot;: 0.6136128070693085,
       &quot;market_cap&quot;: 1132444.27,
       &quot;float_shares&quot;: 2696020,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Hong Kong&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny price $0.348, tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.06x, vol/float 0.06x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.350, tiny rvol 0.6x, tiny avg $vol, tiny vol/float 0.06x, vol/float 0.06x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;CXDO&quot;,
       &quot;name&quot;: &quot;Crexendo Inc&quot;,
       &quot;price&quot;: 5.01,
-      &quot;change_pct&quot;: 9.15,
-      &quot;volume&quot;: 234697,
-      &quot;rvol&quot;: 1.1394994295147234,
+      &quot;change_pct&quot;: 9.139999999999999,
+      &quot;volume&quot;: 234703,
+      &quot;rvol&quot;: 1.139528560677785,
       &quot;market_cap&quot;: 153193939.74,
       &quot;float_shares&quot;: 21803028,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -1614,36 +2296,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;KMRK&quot;,
-      &quot;name&quot;: &quot;K-Tech Solutions Company Limited&quot;,
-      &quot;price&quot;: 1.35,
-      &quot;change_pct&quot;: 8.870000000000001,
-      &quot;volume&quot;: 39116,
-      &quot;rvol&quot;: 1.8258028379387603,
-      &quot;market_cap&quot;: 26164000.0,
-      &quot;float_shares&quot;: 4600000,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 39,116, vol/float 0.01x < 0.1x, avg $vol $0.0M < $0.2M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;PRPL&quot;,
-      &quot;name&quot;: &quot;Purple Innovatio&quot;,
-      &quot;price&quot;: 1.08,
-      &quot;change_pct&quot;: 8.04,
-      &quot;volume&quot;: 103469,
-      &quot;rvol&quot;: 1.7642976503086314,
-      &quot;market_cap&quot;: 4357888.15,
-      &quot;float_shares&quot;: 4137940,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 1.8x, tiny avg $vol, tiny vol/float 0.03x, vol/float 0.03x < 0.1x, avg $vol $0.1M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;SRTM&quot;,
@@ -1661,19 +2313,19 @@
       &quot;reason&quot;: &quot;Filtered: price $0.135, mktcap $0.6M, vol/float 0.09x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;HUMA&quot;,
-      &quot;name&quot;: &quot;Humacyte Inc&quot;,
-      &quot;price&quot;: 0.54,
-      &quot;change_pct&quot;: 7.779999999999999,
-      &quot;volume&quot;: 3725040,
-      &quot;rvol&quot;: 0.5447076625580308,
-      &quot;market_cap&quot;: 139176850.61,
-      &quot;float_shares&quot;: 260391662,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
+      &quot;ticker&quot;: &quot;OMH&quot;,
+      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
+      &quot;price&quot;: 4.88,
+      &quot;change_pct&quot;: 7.720000000000001,
+      &quot;volume&quot;: 34963942,
+      &quot;rvol&quot;: 1.7501144378724112,
+      &quot;market_cap&quot;: 9643119.72,
+      &quot;float_shares&quot;: 2110107,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: float 260.4M > 100M, vol/float 0.01x < 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 1.8x&quot;
     },
     {
       &quot;ticker&quot;: &quot;CCHH&quot;,
@@ -1826,6 +2478,21 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;APVO&quot;,
+      &quot;name&quot;: &quot;Aptevo Therapeutics Inc&quot;,
+      &quot;price&quot;: 0.49,
+      &quot;change_pct&quot;: 6.29,
+      &quot;volume&quot;: 125309,
+      &quot;rvol&quot;: 0.8090924352385134,
+      &quot;market_cap&quot;: 834509.12,
+      &quot;float_shares&quot;: 1734406,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.8M, vol/float 0.07x < 0.1x, avg $vol $0.1M < $0.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;INEO&quot;,
       &quot;name&quot;: &quot;INNEOVA HOLD&quot;,
       &quot;price&quot;: 0.59,
@@ -1856,19 +2523,34 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;FFAI&quot;,
+      &quot;name&quot;: &quot;Faraday Future Physical AI Ecosystem Inc&quot;,
+      &quot;price&quot;: 0.16,
+      &quot;change_pct&quot;: 6.18,
+      &quot;volume&quot;: 6548816,
+      &quot;rvol&quot;: 1.6501689650158886,
+      &quot;market_cap&quot;: 1789389.59,
+      &quot;float_shares&quot;: 11844723,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.160, tiny price $0.160, tiny rvol 1.7x, tiny avg $vol, tiny vol/float 0.55x, avg $vol $0.6M < $2.0M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;MATH&quot;,
       &quot;name&quot;: &quot;Metalpha Tech&quot;,
       &quot;price&quot;: 0.998,
       &quot;change_pct&quot;: 6.170212765957453,
       &quot;volume&quot;: 954,
       &quot;rvol&quot;: 0.03681976071015052,
-      &quot;market_cap&quot;: 44286441.0,
+      &quot;market_cap&quot;: 3377250.0,
       &quot;float_shares&quot;: 47537986,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 954, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny price $0.998, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 954, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;GFAI&quot;,
@@ -1884,21 +2566,6 @@
       &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: price $0.130, tiny price $0.130, tiny avg $vol, tiny vol/float 0.47x, avg $vol $0.2M < $2.0M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;VJET&quot;,
-      &quot;name&quot;: &quot;Flyte Aviation Inc&quot;,
-      &quot;price&quot;: 0.424,
-      &quot;change_pct&quot;: 6.11,
-      &quot;volume&quot;: 159213,
-      &quot;rvol&quot;: 0.4408732565191025,
-      &quot;market_cap&quot;: 838903.01,
-      &quot;float_shares&quot;: 1722087,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.8M, vol/float 0.09x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
       &quot;ticker&quot;: &quot;LEXX&quot;,
@@ -1976,21 +2643,6 @@
       &quot;reason&quot;: &quot;Filtered: vol 15,066, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;OMH&quot;,
-      &quot;name&quot;: &quot;Ohmyhome Limited&quot;,
-      &quot;price&quot;: 4.785,
-      &quot;change_pct&quot;: 6.84,
-      &quot;volume&quot;: 34872028,
-      &quot;rvol&quot;: 1.7455136975313303,
-      &quot;market_cap&quot;: 9643119.72,
-      &quot;float_shares&quot;: 2110107,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 1.7x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;BLNE&quot;,
       &quot;name&quot;: &quot;Beeline Holdings, Inc&quot;,
       &quot;price&quot;: 0.44,
@@ -2006,27 +2658,12 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
-      &quot;ticker&quot;: &quot;MPU&quot;,
-      &quot;name&quot;: &quot;Mega Matrix Corp&quot;,
-      &quot;price&quot;: 2.0,
-      &quot;change_pct&quot;: 5.26,
-      &quot;volume&quot;: 7119340,
-      &quot;rvol&quot;: 9.962176601547359,
-      &quot;market_cap&quot;: 6500456.7,
-      &quot;float_shares&quot;: 2974345,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny avg $vol, avg $vol $1.4M < $2.0M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;XXII&quot;,
       &quot;name&quot;: &quot;22Nd Century&quot;,
       &quot;price&quot;: 0.46,
-      &quot;change_pct&quot;: 5.24,
-      &quot;volume&quot;: 1513202,
-      &quot;rvol&quot;: 0.2431145744199206,
+      &quot;change_pct&quot;: 5.26,
+      &quot;volume&quot;: 1513212,
+      &quot;rvol&quot;: 0.24311618104332194,
       &quot;market_cap&quot;: 240724.95,
       &quot;float_shares&quot;: 547594,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -2126,6 +2763,36 @@
       &quot;reason&quot;: &quot;Filtered: vol/float 0.01x < 0.1x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;AUID&quot;,
+      &quot;name&quot;: &quot;AUTHID INC&quot;,
+      &quot;price&quot;: 0.17,
+      &quot;change_pct&quot;: 4.9399999999999995,
+      &quot;volume&quot;: 1649305,
+      &quot;rvol&quot;: 3.6618509686901923,
+      &quot;market_cap&quot;: 2707022.88,
+      &quot;float_shares&quot;: 14877314,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.170, tiny price $0.170, tiny avg $vol, tiny vol/float 0.11x, move 4.9%, avg $vol $0.1M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;MAIA&quot;,
+      &quot;name&quot;: &quot;MAIA Biotechnology Inc.&quot;,
+      &quot;price&quot;: 1.3,
+      &quot;change_pct&quot;: 4.84,
+      &quot;volume&quot;: 1749517,
+      &quot;rvol&quot;: 5.238106216204887,
+      &quot;market_cap&quot;: 76570381.92,
+      &quot;float_shares&quot;: 52744934,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol/float 0.03x < 0.1x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;GDC&quot;,
       &quot;name&quot;: &quot;GD CULTURE GROUP LTD&quot;,
       &quot;price&quot;: 1.1,
@@ -2139,6 +2806,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 1.0x, tiny avg $vol, tiny vol/float 0.04x, move 4.8%, vol/float 0.04x < 0.1x, avg $vol $0.2M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;MPU&quot;,
+      &quot;name&quot;: &quot;Mega Matrix Corp&quot;,
+      &quot;price&quot;: 1.99,
+      &quot;change_pct&quot;: 5.26,
+      &quot;volume&quot;: 7133828,
+      &quot;rvol&quot;: 9.98244983117303,
+      &quot;market_cap&quot;: 6500456.7,
+      &quot;float_shares&quot;: 2974345,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: tiny avg $vol, avg $vol $1.4M < $2.0M&quot;
     },
     {
       &quot;ticker&quot;: &quot;ZTG&quot;,
@@ -2169,36 +2851,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move 4.7% / rvol 0.7, float 111.1M > 100M, vol/float 0.02x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;MI&quot;,
-      &quot;name&quot;: &quot;NFT LIMITED&quot;,
-      &quot;price&quot;: 0.351,
-      &quot;change_pct&quot;: 4.66,
-      &quot;volume&quot;: 1877966,
-      &quot;rvol&quot;: 0.024107163854558307,
-      &quot;market_cap&quot;: 28340074.25,
-      &quot;float_shares&quot;: 84562544,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Hong Kong&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move 4.7% / rvol 0.0, vol/float 0.02x < 0.1x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;AFJK&quot;,
-      &quot;name&quot;: &quot;Aimei Health Technology Co Ltd&quot;,
-      &quot;price&quot;: 12.39,
-      &quot;change_pct&quot;: 3.04,
-      &quot;volume&quot;: 31296,
-      &quot;rvol&quot;: 3.3311335816923897,
-      &quot;market_cap&quot;: 37489370.88,
-      &quot;float_shares&quot;: 1109318,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 31,296, vol/float 0.03x < 0.1x, avg $vol $0.1M < $0.2M&quot;
     }
   ],
   &quot;all_losers&quot;: [
@@ -2251,9 +2903,9 @@
       &quot;ticker&quot;: &quot;BAER&quot;,
       &quot;name&quot;: &quot;Bridger Aerospace Group Holdings, Inc.&quot;,
       &quot;price&quot;: 0.17,
-      &quot;change_pct&quot;: -10.530000000000001,
-      &quot;volume&quot;: 10415791,
-      &quot;rvol&quot;: 4.548487606257964,
+      &quot;change_pct&quot;: -10.47,
+      &quot;volume&quot;: 10423263,
+      &quot;rvol&quot;: 4.551750565297173,
       &quot;market_cap&quot;: 11219518.24,
       &quot;float_shares&quot;: 46913461,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -2278,36 +2930,6 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.3x, vol 36,929, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;JZXN&quot;,
-      &quot;name&quot;: &quot;Jiuzi Holdings Inc&quot;,
-      &quot;price&quot;: 0.98,
-      &quot;change_pct&quot;: -8.4,
-      &quot;volume&quot;: 154781,
-      &quot;rvol&quot;: 3.249721808142098,
-      &quot;market_cap&quot;: 55118652.13,
-      &quot;float_shares&quot;: 51512727,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: float 51.5M, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;POAS&quot;,
-      &quot;name&quot;: &quot;PHAOS TECHNOLOGY HLDGS (CAYMAN&quot;,
-      &quot;price&quot;: 2.09,
-      &quot;change_pct&quot;: -8.33,
-      &quot;volume&quot;: 238688,
-      &quot;rvol&quot;: 0.011131385729461643,
-      &quot;market_cap&quot;: 4798944.0,
-      &quot;float_shares&quot;: 219247,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $4.8M, rvol 0.0x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;INLX&quot;,
       &quot;name&quot;: &quot;Intellinetics&quot;,
       &quot;price&quot;: 3.68,
@@ -2321,6 +2943,51 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol 12,270, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;CIGL&quot;,
+      &quot;name&quot;: &quot;Concorde International Group Limited&quot;,
+      &quot;price&quot;: 0.21,
+      &quot;change_pct&quot;: -7.93,
+      &quot;volume&quot;: 4039953,
+      &quot;rvol&quot;: 1.2065273290578764,
+      &quot;market_cap&quot;: 56406209.3,
+      &quot;float_shares&quot;: 55075440,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.210, move -7.9%, float 55.1M, vol/float 0.07x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;GMM&quot;,
+      &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
+      &quot;price&quot;: 1.28,
+      &quot;change_pct&quot;: -7.91,
+      &quot;volume&quot;: 5131968,
+      &quot;rvol&quot;: 0.2677457674436125,
+      &quot;market_cap&quot;: 80273899.73,
+      &quot;float_shares&quot;: 57696024,
+      &quot;cap_size&quot;: &quot;micro-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: move -7.9%, rvol 0.3x, float 57.7M, vol/float 0.09x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;POAS&quot;,
+      &quot;name&quot;: &quot;PHAOS TECHNOLOGY HLDGS (CAYMAN&quot;,
+      &quot;price&quot;: 2.1,
+      &quot;change_pct&quot;: -7.89,
+      &quot;volume&quot;: 239140,
+      &quot;rvol&quot;: 0.011152465072996788,
+      &quot;market_cap&quot;: 4798944.0,
+      &quot;float_shares&quot;: 219247,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Singapore&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $4.8M, move -7.9%, rvol 0.0x&quot;
     },
     {
       &quot;ticker&quot;: &quot;DUO&quot;,
@@ -2356,7 +3023,7 @@
       &quot;ticker&quot;: &quot;FGL&quot;,
       &quot;name&quot;: &quot;Founder Group Ltd&quot;,
       &quot;price&quot;: 0.667,
-      &quot;change_pct&quot;: -7.180000000000001,
+      &quot;change_pct&quot;: -8.17,
       &quot;volume&quot;: 579631,
       &quot;rvol&quot;: 0.12992822723581274,
       &quot;market_cap&quot;: 77069.16,
@@ -2365,7 +3032,7 @@
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Malaysia&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, move -7.2%, rvol 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.1M, rvol 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;FUSE&quot;,
@@ -2381,21 +3048,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: price $0.279, move -7.1%, rvol 0.8x, vol 44,820, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;CIGL&quot;,
-      &quot;name&quot;: &quot;Concorde International Group Limited&quot;,
-      &quot;price&quot;: 0.213,
-      &quot;change_pct&quot;: -6.7,
-      &quot;volume&quot;: 4036751,
-      &quot;rvol&quot;: 1.205571055431019,
-      &quot;market_cap&quot;: 56406209.3,
-      &quot;float_shares&quot;: 55075440,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;Singapore&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.213, move -6.7%, float 55.1M, vol/float 0.07x&quot;
     },
     {
       &quot;ticker&quot;: &quot;SCLX&quot;,
@@ -2426,51 +3078,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -6.5%, rvol 0.4x, vol 29,172, vol/float 0.01x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;MKDW&quot;,
-      &quot;name&quot;: &quot;MKDWELL Tech Inc&quot;,
-      &quot;price&quot;: 0.072,
-      &quot;change_pct&quot;: -6.49,
-      &quot;volume&quot;: 1294863,
-      &quot;rvol&quot;: 0.1345857122618893,
-      &quot;market_cap&quot;: 2799288.03,
-      &quot;float_shares&quot;: 33725969,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;Taiwan&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.072, mktcap $2.8M, move -6.5%, rvol 0.1x, vol/float 0.04x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;GMM&quot;,
-      &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
-      &quot;price&quot;: 1.3,
-      &quot;change_pct&quot;: -7.91,
-      &quot;volume&quot;: 5130088,
-      &quot;rvol&quot;: 0.2676476838151109,
-      &quot;market_cap&quot;: 80273899.73,
-      &quot;float_shares&quot;: 57696024,
-      &quot;cap_size&quot;: &quot;micro-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: move -7.9%, rvol 0.3x, float 57.7M, vol/float 0.09x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;VWAV&quot;,
-      &quot;name&quot;: &quot;VisionWave Holdings, Inc&quot;,
-      &quot;price&quot;: 0.465,
-      &quot;change_pct&quot;: -6.4399999999999995,
-      &quot;volume&quot;: 2844354,
-      &quot;rvol&quot;: 0.4997738646582615,
-      &quot;market_cap&quot;: 1613417.59,
-      &quot;float_shares&quot;: 2470454,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.465, mktcap $1.6M, move -6.4%, rvol 0.5x&quot;
     },
     {
       &quot;ticker&quot;: &quot;ANGH&quot;,
@@ -2546,21 +3153,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -5.7%, rvol 1.0x, vol 21,190, vol/float 0.01x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;POLA&quot;,
-      &quot;name&quot;: &quot;Polar Pwr Inc&quot;,
-      &quot;price&quot;: 0.364,
-      &quot;change_pct&quot;: -0.29,
-      &quot;volume&quot;: 53238129,
-      &quot;rvol&quot;: 2.3414488527399016,
-      &quot;market_cap&quot;: 1661242.47,
-      &quot;float_shares&quot;: 1096923,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.364, mktcap $1.7M, move -0.3%&quot;
     },
     {
       &quot;ticker&quot;: &quot;SONM&quot;,
@@ -2653,19 +3245,19 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $1.8M, move -5.3%, rvol 0.4x, vol 15,183, vol/float 0.01x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;BDMD&quot;,
-      &quot;name&quot;: &quot;Baird Medical&quot;,
-      &quot;price&quot;: 0.087,
-      &quot;change_pct&quot;: -5.12,
-      &quot;volume&quot;: 4118332,
-      &quot;rvol&quot;: 0.06309838179793675,
-      &quot;market_cap&quot;: 2937817.57,
-      &quot;float_shares&quot;: 4286285,
+      &quot;ticker&quot;: &quot;YFOR&quot;,
+      &quot;name&quot;: &quot;Yyforce Inc&quot;,
+      &quot;price&quot;: 0.026,
+      &quot;change_pct&quot;: -5.2,
+      &quot;volume&quot;: 263210005,
+      &quot;rvol&quot;: 4.2361663244305925,
+      &quot;market_cap&quot;: 345308.14,
+      &quot;float_shares&quot;: 3731890,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.087, mktcap $2.9M, move -5.1%, rvol 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: price $0.026, mktcap $0.3M, move -5.2%&quot;
     },
     {
       &quot;ticker&quot;: &quot;DUKR&quot;,
@@ -2683,21 +3275,6 @@
       &quot;reason&quot;: &quot;Filtered: move -5.1%, vol 31,989, vol/float 0.01x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;VIVK&quot;,
-      &quot;name&quot;: &quot;Vivakor&quot;,
-      &quot;price&quot;: 0.227,
-      &quot;change_pct&quot;: -5.6899999999999995,
-      &quot;volume&quot;: 6045942,
-      &quot;rvol&quot;: 0.2922563128887624,
-      &quot;market_cap&quot;: 143231.52,
-      &quot;float_shares&quot;: 595064,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.227, mktcap $0.1M, move -5.7%, rvol 0.3x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;MDIA&quot;,
       &quot;name&quot;: &quot;Mediaco Hldg Inc&quot;,
       &quot;price&quot;: 0.95,
@@ -2711,21 +3288,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -5.0%, rvol 0.4x, vol 5,218, float 78.3M, vol/float 0.00x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;WHLR&quot;,
-      &quot;name&quot;: &quot;Wheeler Real Estate Invt Tr&quot;,
-      &quot;price&quot;: 0.418,
-      &quot;change_pct&quot;: -4.14,
-      &quot;volume&quot;: 20259745,
-      &quot;rvol&quot;: 1.645099567534745,
-      &quot;market_cap&quot;: 819678.64,
-      &quot;float_shares&quot;: 1862906,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.418, mktcap $0.8M, move -4.1%&quot;
     },
     {
       &quot;ticker&quot;: &quot;RDIB&quot;,
@@ -2803,6 +3365,21 @@
       &quot;reason&quot;: &quot;Filtered: move -4.7%, vol/float 0.03x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;FRTT&quot;,
+      &quot;name&quot;: &quot;Fort Technology Inc&quot;,
+      &quot;price&quot;: 0.644,
+      &quot;change_pct&quot;: -4.5,
+      &quot;volume&quot;: 401902008,
+      &quot;rvol&quot;: 10.063585517163048,
+      &quot;market_cap&quot;: 10246595.39,
+      &quot;float_shares&quot;: 4483431,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;Canada&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: move -4.5%&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;BKHA&quot;,
       &quot;name&quot;: &quot;Black Hawk Acquisition Corp&quot;,
       &quot;price&quot;: 8.25,
@@ -2861,15 +3438,74 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: move -4.5%, rvol 0.1x, vol 18, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;USEA&quot;,
+      &quot;name&quot;: &quot;United Maritime Corporation&quot;,
+      &quot;price&quot;: 3.0,
+      &quot;change_pct&quot;: -4.46,
+      &quot;volume&quot;: 402767,
+      &quot;rvol&quot;: 2.0107986939721023,
+      &quot;market_cap&quot;: 29965456.46,
+      &quot;float_shares&quot;: 7183129,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;International (region 68)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: move -4.5%, vol/float 0.06x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;CTNT&quot;,
+      &quot;name&quot;: &quot;Cheetah Net Supply Chain Service Inc.&quot;,
+      &quot;price&quot;: 1.73,
+      &quot;change_pct&quot;: -4.42,
+      &quot;volume&quot;: 85201,
+      &quot;rvol&quot;: 0.19680268683331562,
+      &quot;market_cap&quot;: 2594535.45,
+      &quot;float_shares&quot;: 1306043,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $2.6M, move -4.4%, rvol 0.2x, vol 85,201, vol/float 0.07x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;STKH&quot;,
+      &quot;name&quot;: &quot;STEAKHOLDER FOODS LTD&quot;,
+      &quot;price&quot;: 1.73,
+      &quot;change_pct&quot;: -4.3999999999999995,
+      &quot;volume&quot;: 33950,
+      &quot;rvol&quot;: 0.2739073959030876,
+      &quot;market_cap&quot;: 403134.06,
+      &quot;float_shares&quot;: 158315,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.4M, move -4.4%, rvol 0.3x, vol 33,950&quot;
     }
   ],
-  &quot;live_quotes&quot;: {},
+  &quot;live_quotes&quot;: {
+    &quot;SHFS&quot;: {
+      &quot;price&quot;: 0.0148,
+      &quot;open&quot;: 0.0222,
+      &quot;high&quot;: 0.0223,
+      &quot;low&quot;: 0.0141,
+      &quot;close&quot;: 0.0148,
+      &quot;preClose&quot;: 0.023,
+      &quot;volume&quot;: 650225902,
+      &quot;changeRatio&quot;: -0.3565,
+      &quot;marketValue&quot;: 2201661.56,
+      &quot;name&quot;: &quot;SHF Holdings Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-17T21:09:20.911804Z&quot;
+    }
+  },
   &quot;previous_live_quotes&quot;: {},
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;AFTER-HOURS&quot;,
-    &quot;market_time&quot;: &quot;08:08 AM AEDT&quot;,
+    &quot;market_time&quot;: &quot;08:09 AM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
