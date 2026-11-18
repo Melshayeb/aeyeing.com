@@ -1,14 +1,129 @@
 {
-  "last_updated": "2026-11-18T12:41:21.247992Z",
+  "last_updated": "2026-11-18T12:43:18.700203Z",
   "scan_results": [
+    {
+      "ticker": "BRNX",
+      "name": "Brenx Ltd",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.61,
+      "change_pct": 49.17,
+      "volume": 16910427,
+      "market_cap": 798258.52,
+      "float_shares": 1942631,
+      "country": "International (region 83)",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Oct 14)",
+      "result": "+49.2% \u00b7 Entry $0.61 \u00b7 T1 $0.63 \u00b7 T2 $0.65 \u00b7 T3 $0.67",
+      "plan": {
+        "valid": true,
+        "ticker": "BRNX",
+        "entry": 0.61,
+        "stop": 0.5978,
+        "targets": {
+          "t1": 0.6344,
+          "t2": 0.6466,
+          "t3": 0.671
+        },
+        "risk_per_share": 0.0122,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 491,
+        "position_value": 299.51,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.5978"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "BRNX",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:21:36.039+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:21:36.039+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "BrenX Sets Up New ATM Equity Offering With October Prospectus Supplement",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "BRNX",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 288.13,
+        "volume_indicator": "high",
+        "volume": 16910427,
+        "adv": 58690,
+        "recent_pct_of_adv": 28813.13,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 45.867,
+        "buy_pressure_pct": 59.59,
+        "large_bar_count": 3,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 16910427,
+        "prior_volume": 0,
+        "median_range": 0.0601,
+        "last_price": 0.41,
+        "vwap": null,
+        "last_trade_time": "2026-11-18T12:43:03.467000+00:00",
+        "stale_age_seconds": 12
+      },
+      "date": "2026-11-18",
+      "time": "23:43:16",
+      "skip_news_check": false,
+      "red_flag": true,
+      "previous_price": 0.641
+    },
     {
       "ticker": "GMM",
       "name": "Global Mofy AI Ltd",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.63,
-      "change_pct": 16.63,
-      "volume": 7561713,
+      "price": 1.68,
+      "change_pct": 20.77,
+      "volume": 7682064,
       "market_cap": 80273899.73,
       "float_shares": 57696024,
       "country": "China / Cayman-China",
@@ -17,23 +132,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "424B5 (Nov 02), 424B5 (Sep 01)",
-      "result": "+16.6% \u00b7 Entry $1.63 \u00b7 T1 $1.70 \u00b7 T2 $1.73 \u00b7 T3 $1.79",
+      "result": "+20.8% \u00b7 Entry $1.68 \u00b7 T1 $1.75 \u00b7 T2 $1.78 \u00b7 T3 $1.85",
       "plan": {
         "valid": true,
         "ticker": "GMM",
-        "entry": 1.63,
-        "stop": 1.5974,
+        "entry": 1.68,
+        "stop": 1.6464,
         "targets": {
-          "t1": 1.6952,
-          "t2": 1.7278,
-          "t3": 1.793
+          "t1": 1.7472,
+          "t2": 1.7808,
+          "t3": 1.848
         },
-        "risk_per_share": 0.0326,
+        "risk_per_share": 0.0336,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 184,
-        "position_value": 299.92,
+        "shares": 178,
+        "position_value": 299.04,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +156,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.5974"
+          "hard_stop": "$1.6464"
         }
       },
       "ta": {
@@ -222,178 +337,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.95,
+        "rvol": 4.01,
         "volume_indicator": "high",
-        "volume": 7561713,
+        "volume": 7682064,
         "adv": 1916579,
-        "recent_pct_of_adv": 394.54,
+        "recent_pct_of_adv": 400.82,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 16.766,
-        "buy_pressure_pct": 49.05,
-        "large_bar_count": 58,
+        "price_velocity_pct": 19.148,
+        "buy_pressure_pct": 49.76,
+        "large_bar_count": 59,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 7561713,
+        "recent_volume": 7682064,
         "prior_volume": 0,
         "median_range": 0.0189,
         "last_price": 1.39,
         "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:02.793000+00:00",
-        "stale_age_seconds": 15
+        "last_trade_time": "2026-11-18T12:43:03.700000+00:00",
+        "stale_age_seconds": 12
       },
       "date": "2026-11-18",
-      "time": "23:41:18",
+      "time": "23:43:16",
       "skip_news_check": false,
       "red_flag": true,
-      "previous_price": 1.621
-    },
-    {
-      "ticker": "BRNX",
-      "name": "Brenx Ltd",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.641,
-      "change_pct": 57.95,
-      "volume": 16126718,
-      "market_cap": 798258.52,
-      "float_shares": 1942631,
-      "country": "International (region 83)",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Oct 14)",
-      "result": "+58.0% \u00b7 Entry $0.64 \u00b7 T1 $0.67 \u00b7 T2 $0.68 \u00b7 T3 $0.70",
-      "plan": {
-        "valid": true,
-        "ticker": "BRNX",
-        "entry": 0.641,
-        "stop": 0.6282,
-        "targets": {
-          "t1": 0.6666,
-          "t2": 0.6794,
-          "t3": 0.705
-        },
-        "risk_per_share": 0.0128,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 468,
-        "position_value": 299.99,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6282"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "BRNX",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:21:36.039+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:21:36.039+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "BrenX Sets Up New ATM Equity Offering With October Prospectus Supplement",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "BRNX",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 274.78,
-        "volume_indicator": "high",
-        "volume": 16126718,
-        "adv": 58690,
-        "recent_pct_of_adv": 27477.8,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 43.836,
-        "buy_pressure_pct": 60.1,
-        "large_bar_count": 3,
-        "vwap_distance_pct": 0.0,
-        "recent_volume": 16126718,
-        "prior_volume": 0,
-        "median_range": 0.0608,
-        "last_price": 0.41,
-        "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:04.047000+00:00",
-        "stale_age_seconds": 14
-      },
-      "date": "2026-11-18",
-      "time": "23:41:18",
-      "skip_news_check": false,
-      "red_flag": true,
-      "previous_price": 0.7
+      "previous_price": 1.63
     },
     {
       "ticker": "SVRE",
       "name": "SAVERONE 2014 LTD",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 0.936,
-      "change_pct": 128.4,
-      "volume": 19580518,
+      "price": 0.958,
+      "change_pct": 133.72,
+      "volume": 20092447,
       "market_cap": 1024431.97,
       "float_shares": 2499834,
       "country": "International (region 83)",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (128.4%, rvol 249.3x)",
+      "scan_reason": "Top gainer tape exempt (133.7%, rvol 255.9x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +128.4%",
+      "result": "Top-10 gainer tape momentum \u00b7 +133.7%",
       "plan": {
         "valid": true,
         "ticker": "SVRE",
-        "entry": 0.936,
-        "stop": 0.9173,
+        "entry": 0.958,
+        "stop": 0.9388,
         "targets": {
-          "t1": 0.9734,
-          "t2": 0.9921,
-          "t3": 1.0295
+          "t1": 0.9964,
+          "t2": 1.0156,
+          "t3": 1.054
         },
-        "risk_per_share": 0.0187,
+        "risk_per_share": 0.0192,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 320,
-        "position_value": 299.52,
+        "shares": 313,
+        "position_value": 299.85,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -401,7 +401,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.9173"
+          "hard_stop": "$0.9388"
         }
       },
       "ta": {
@@ -519,40 +519,155 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 249.34,
+        "rvol": 255.86,
         "volume_indicator": "high",
-        "volume": 19580518,
+        "volume": 20092447,
         "adv": 78530,
-        "recent_pct_of_adv": 24933.81,
+        "recent_pct_of_adv": 25585.7,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 56.584,
-        "buy_pressure_pct": 46.42,
-        "large_bar_count": 56,
+        "price_velocity_pct": 58.594,
+        "buy_pressure_pct": 46.34,
+        "large_bar_count": 53,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 19580518,
+        "recent_volume": 20092447,
         "prior_volume": 0,
         "median_range": 0.03,
         "last_price": 0.4098,
         "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:04.011000+00:00",
-        "stale_age_seconds": 13
+        "last_trade_time": "2026-11-18T12:43:03.690000+00:00",
+        "stale_age_seconds": 12
       },
       "date": "2026-11-18",
-      "time": "23:41:19",
+      "time": "23:43:17",
       "skip_news_check": false,
       "red_flag": false,
-      "previous_price": 0.837
+      "previous_price": 0.936
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "BRNX",
+      "name": "Brenx Ltd",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.61,
+      "change_pct": 49.17,
+      "volume": 16910427,
+      "market_cap": 798258.52,
+      "float_shares": 1942631,
+      "country": "International (region 83)",
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "424B5 (Oct 14)",
+      "result": "+49.2% \u00b7 Entry $0.61 \u00b7 T1 $0.63 \u00b7 T2 $0.65 \u00b7 T3 $0.67",
+      "plan": {
+        "valid": true,
+        "ticker": "BRNX",
+        "entry": 0.61,
+        "stop": 0.5978,
+        "targets": {
+          "t1": 0.6344,
+          "t2": 0.6466,
+          "t3": 0.671
+        },
+        "risk_per_share": 0.0122,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 491,
+        "position_value": 299.51,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$0.5978"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "BRNX",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:21:36.039+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:21:36.039+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "BrenX Sets Up New ATM Equity Offering With October Prospectus Supplement",
+            "flag": "offering"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at BRNX last week (1109-1113)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
+      },
+      "tape": {
+        "ticker": "BRNX",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 288.13,
+        "volume_indicator": "high",
+        "volume": 16910427,
+        "adv": 58690,
+        "recent_pct_of_adv": 28813.13,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 45.867,
+        "buy_pressure_pct": 59.59,
+        "large_bar_count": 3,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 16910427,
+        "prior_volume": 0,
+        "median_range": 0.0601,
+        "last_price": 0.41,
+        "vwap": null,
+        "last_trade_time": "2026-11-18T12:43:03.467000+00:00",
+        "stale_age_seconds": 12
+      },
+      "date": "2026-11-18",
+      "time": "23:43:16",
+      "skip_news_check": false,
+      "red_flag": true,
+      "previous_price": 0.641
+    },
+    {
       "ticker": "GMM",
       "name": "Global Mofy AI Ltd",
       "status": "ALERT",
       "source": "regular",
-      "price": 1.63,
-      "change_pct": 16.63,
-      "volume": 7561713,
+      "price": 1.68,
+      "change_pct": 20.77,
+      "volume": 7682064,
       "market_cap": 80273899.73,
       "float_shares": 57696024,
       "country": "China / Cayman-China",
@@ -561,23 +676,23 @@
       "scan_reason": "Passed filters",
       "scan_passed": true,
       "sec_filings": "424B5 (Nov 02), 424B5 (Sep 01)",
-      "result": "+16.6% \u00b7 Entry $1.63 \u00b7 T1 $1.70 \u00b7 T2 $1.73 \u00b7 T3 $1.79",
+      "result": "+20.8% \u00b7 Entry $1.68 \u00b7 T1 $1.75 \u00b7 T2 $1.78 \u00b7 T3 $1.85",
       "plan": {
         "valid": true,
         "ticker": "GMM",
-        "entry": 1.63,
-        "stop": 1.5974,
+        "entry": 1.68,
+        "stop": 1.6464,
         "targets": {
-          "t1": 1.6952,
-          "t2": 1.7278,
-          "t3": 1.793
+          "t1": 1.7472,
+          "t2": 1.7808,
+          "t3": 1.848
         },
-        "risk_per_share": 0.0326,
+        "risk_per_share": 0.0336,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 184,
-        "position_value": 299.92,
+        "shares": 178,
+        "position_value": 299.04,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -585,7 +700,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$1.5974"
+          "hard_stop": "$1.6464"
         }
       },
       "ta": {
@@ -766,178 +881,63 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 3.95,
+        "rvol": 4.01,
         "volume_indicator": "high",
-        "volume": 7561713,
+        "volume": 7682064,
         "adv": 1916579,
-        "recent_pct_of_adv": 394.54,
+        "recent_pct_of_adv": 400.82,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 16.766,
-        "buy_pressure_pct": 49.05,
-        "large_bar_count": 58,
+        "price_velocity_pct": 19.148,
+        "buy_pressure_pct": 49.76,
+        "large_bar_count": 59,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 7561713,
+        "recent_volume": 7682064,
         "prior_volume": 0,
         "median_range": 0.0189,
         "last_price": 1.39,
         "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:02.793000+00:00",
-        "stale_age_seconds": 15
+        "last_trade_time": "2026-11-18T12:43:03.700000+00:00",
+        "stale_age_seconds": 12
       },
       "date": "2026-11-18",
-      "time": "23:41:18",
+      "time": "23:43:16",
       "skip_news_check": false,
       "red_flag": true,
-      "previous_price": 1.621
-    },
-    {
-      "ticker": "BRNX",
-      "name": "Brenx Ltd",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 0.641,
-      "change_pct": 57.95,
-      "volume": 16126718,
-      "market_cap": 798258.52,
-      "float_shares": 1942631,
-      "country": "International (region 83)",
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "424B5 (Oct 14)",
-      "result": "+58.0% \u00b7 Entry $0.64 \u00b7 T1 $0.67 \u00b7 T2 $0.68 \u00b7 T3 $0.70",
-      "plan": {
-        "valid": true,
-        "ticker": "BRNX",
-        "entry": 0.641,
-        "stop": 0.6282,
-        "targets": {
-          "t1": 0.6666,
-          "t2": 0.6794,
-          "t3": 0.705
-        },
-        "risk_per_share": 0.0128,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 468,
-        "position_value": 299.99,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6282"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "BRNX",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:21:36.039+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 16 Nov",
-            "raw_time": "2026-11-16T10:21:36.039+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "BrenX Sets Up New ATM Equity Offering With October Prospectus Supplement",
-            "flag": "offering"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at BRNX last week (1109-1113)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
-      },
-      "tape": {
-        "ticker": "BRNX",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 274.78,
-        "volume_indicator": "high",
-        "volume": 16126718,
-        "adv": 58690,
-        "recent_pct_of_adv": 27477.8,
-        "volume_acceleration": 0.0,
-        "price_velocity_pct": 43.836,
-        "buy_pressure_pct": 60.1,
-        "large_bar_count": 3,
-        "vwap_distance_pct": 0.0,
-        "recent_volume": 16126718,
-        "prior_volume": 0,
-        "median_range": 0.0608,
-        "last_price": 0.41,
-        "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:04.047000+00:00",
-        "stale_age_seconds": 14
-      },
-      "date": "2026-11-18",
-      "time": "23:41:18",
-      "skip_news_check": false,
-      "red_flag": true,
-      "previous_price": 0.7
+      "previous_price": 1.63
     },
     {
       "ticker": "SVRE",
       "name": "SAVERONE 2014 LTD",
       "status": "CANDIDATE",
       "source": "top_gainer_exempt",
-      "price": 0.936,
-      "change_pct": 128.4,
-      "volume": 19580518,
+      "price": 0.958,
+      "change_pct": 133.72,
+      "volume": 20092447,
       "market_cap": 1024431.97,
       "float_shares": 2499834,
       "country": "International (region 83)",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (128.4%, rvol 249.3x)",
+      "scan_reason": "Top gainer tape exempt (133.7%, rvol 255.9x)",
       "scan_passed": true,
       "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +128.4%",
+      "result": "Top-10 gainer tape momentum \u00b7 +133.7%",
       "plan": {
         "valid": true,
         "ticker": "SVRE",
-        "entry": 0.936,
-        "stop": 0.9173,
+        "entry": 0.958,
+        "stop": 0.9388,
         "targets": {
-          "t1": 0.9734,
-          "t2": 0.9921,
-          "t3": 1.0295
+          "t1": 0.9964,
+          "t2": 1.0156,
+          "t3": 1.054
         },
-        "risk_per_share": 0.0187,
+        "risk_per_share": 0.0192,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 320,
-        "position_value": 299.52,
+        "shares": 313,
+        "position_value": 299.85,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -945,7 +945,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.9173"
+          "hard_stop": "$0.9388"
         }
       },
       "ta": {
@@ -1063,67 +1063,67 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 249.34,
+        "rvol": 255.86,
         "volume_indicator": "high",
-        "volume": 19580518,
+        "volume": 20092447,
         "adv": 78530,
-        "recent_pct_of_adv": 24933.81,
+        "recent_pct_of_adv": 25585.7,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 56.584,
-        "buy_pressure_pct": 46.42,
-        "large_bar_count": 56,
+        "price_velocity_pct": 58.594,
+        "buy_pressure_pct": 46.34,
+        "large_bar_count": 53,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 19580518,
+        "recent_volume": 20092447,
         "prior_volume": 0,
         "median_range": 0.03,
         "last_price": 0.4098,
         "vwap": null,
-        "last_trade_time": "2026-11-18T12:41:04.011000+00:00",
-        "stale_age_seconds": 13
+        "last_trade_time": "2026-11-18T12:43:03.690000+00:00",
+        "stale_age_seconds": 12
       },
       "date": "2026-11-18",
-      "time": "23:41:19",
+      "time": "23:43:17",
       "skip_news_check": false,
       "red_flag": false,
-      "previous_price": 0.837
+      "previous_price": 0.936
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
   "active_plan": {
-    "ticker": "GMM",
-    "name": "Global Mofy AI Ltd",
+    "ticker": "BRNX",
+    "name": "Brenx Ltd",
     "status": "ALERT",
     "source": "regular",
-    "price": 1.63,
-    "change_pct": 16.63,
-    "volume": 7561713,
-    "market_cap": 80273899.73,
-    "float_shares": 57696024,
-    "country": "China / Cayman-China",
-    "cap_size": "micro-cap",
-    "is_penny_stock": false,
+    "price": 0.61,
+    "change_pct": 49.17,
+    "volume": 16910427,
+    "market_cap": 798258.52,
+    "float_shares": 1942631,
+    "country": "International (region 83)",
+    "cap_size": "nano-cap",
+    "is_penny_stock": true,
     "scan_reason": "Passed filters",
     "scan_passed": true,
-    "sec_filings": "424B5 (Nov 02), 424B5 (Sep 01)",
-    "result": "+16.6% \u00b7 Entry $1.63 \u00b7 T1 $1.70 \u00b7 T2 $1.73 \u00b7 T3 $1.79",
+    "sec_filings": "424B5 (Oct 14)",
+    "result": "+49.2% \u00b7 Entry $0.61 \u00b7 T1 $0.63 \u00b7 T2 $0.65 \u00b7 T3 $0.67",
     "plan": {
       "valid": true,
-      "ticker": "GMM",
-      "entry": 1.63,
-      "stop": 1.5974,
+      "ticker": "BRNX",
+      "entry": 0.61,
+      "stop": 0.5978,
       "targets": {
-        "t1": 1.6952,
-        "t2": 1.7278,
-        "t3": 1.793
+        "t1": 0.6344,
+        "t2": 0.6466,
+        "t3": 0.671
       },
-      "risk_per_share": 0.0326,
+      "risk_per_share": 0.0122,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 184,
-      "position_value": 299.92,
+      "shares": 491,
+      "position_value": 299.51,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -1131,7 +1131,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$1.5974"
+        "hard_stop": "$0.5978"
       }
     },
     "ta": {
@@ -1139,77 +1139,14 @@
       "error": "No bar data"
     },
     "news": {
-      "ticker": "GMM",
+      "ticker": "BRNX",
       "total_items": 20,
       "scored_items": [
         {
-          "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "1d ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T09:30:26.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Is Penny Stock Global Mofy (GMM) Up 65% Today?",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T18:55:58.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy Stock Nearly Triples as Investors Eye Its Latest AI Investment",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T17:10:15.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Nasdaq Down Over 1%; Tyson Foods Earnings Top Views",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T15:17:19.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy announces indirect investment in Anthropic",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T14:07:14.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy Announces Indirect Investment Exposure To Anthropic Through Fund Investment, Expanding Strategic Positioning In AI Sector",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T13:34:22.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy AI Announces It Made An Indirect Investment In Anthropic In September 2026",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T13:32:21.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at GMM last week (1109-1113)?",
+          "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
           "source": "Webull",
           "time": "2d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T09:32:51.189+0000",
+          "raw_time": "2026-11-16T10:21:36.039+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1217,73 +1154,10 @@
       ],
       "headlines": [
         {
-          "title": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
-          "source": "Webull",
-          "time": "1d ago \u00b7 17 Nov",
-          "raw_time": "2026-11-17T09:30:26.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Why Is Penny Stock Global Mofy (GMM) Up 65% Today?",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T18:55:58.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy Stock Nearly Triples as Investors Eye Its Latest AI Investment",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T17:10:15.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Nasdaq Down Over 1%; Tyson Foods Earnings Top Views",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T15:17:19.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy announces indirect investment in Anthropic",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T14:07:14.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy Announces Indirect Investment Exposure To Anthropic Through Fund Investment, Expanding Strategic Positioning In AI Sector",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T13:34:22.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Global Mofy AI Announces It Made An Indirect Investment In Anthropic In September 2026",
-          "source": "Webull",
-          "time": "1d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T13:32:21.000+0000",
-          "url": "",
-          "score": 0,
-          "keywords": []
-        },
-        {
-          "title": "Weekly Report: what happened at GMM last week (1109-1113)?",
+          "title": "Weekly Report: what happened at BRNX last week (1109-1113)?",
           "source": "Webull",
           "time": "2d ago \u00b7 16 Nov",
-          "raw_time": "2026-11-16T09:32:51.189+0000",
+          "raw_time": "2026-11-16T10:21:36.039+0000",
           "url": "",
           "score": 0,
           "keywords": []
@@ -1291,11 +1165,7 @@
       ],
       "red_flags": [
         {
-          "title": "Global Mofy AI Limited Completes $9.9 Million Share Offering",
-          "flag": "offering"
-        },
-        {
-          "title": "Global Mofy AI Enters Agreement for $9.9 Million Share Offering",
+          "title": "BrenX Sets Up New ATM Equity Offering With October Prospectus Supplement",
           "flag": "offering"
         }
       ],
@@ -1303,38 +1173,38 @@
       "avg_score": 0.0,
       "catalyst_confirmed": false,
       "high_impact_count": 0,
-      "top_headline": "Why Aytu Biopharma Shares Are Trading Higher By 43%; Here Are 20 Stocks Moving Premarket",
+      "top_headline": "Weekly Report: what happened at BRNX last week (1109-1113)?",
       "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: offering"
     },
     "tape": {
-      "ticker": "GMM",
+      "ticker": "BRNX",
       "valid": true,
       "stale": false,
       "no_move": false,
       "tape_score": 8.0,
-      "rvol": 3.95,
+      "rvol": 288.13,
       "volume_indicator": "high",
-      "volume": 7561713,
-      "adv": 1916579,
-      "recent_pct_of_adv": 394.54,
+      "volume": 16910427,
+      "adv": 58690,
+      "recent_pct_of_adv": 28813.13,
       "volume_acceleration": 0.0,
-      "price_velocity_pct": 16.766,
-      "buy_pressure_pct": 49.05,
-      "large_bar_count": 58,
+      "price_velocity_pct": 45.867,
+      "buy_pressure_pct": 59.59,
+      "large_bar_count": 3,
       "vwap_distance_pct": 0.0,
-      "recent_volume": 7561713,
+      "recent_volume": 16910427,
       "prior_volume": 0,
-      "median_range": 0.0189,
-      "last_price": 1.39,
+      "median_range": 0.0601,
+      "last_price": 0.41,
       "vwap": null,
-      "last_trade_time": "2026-11-18T12:41:02.793000+00:00",
-      "stale_age_seconds": 15
+      "last_trade_time": "2026-11-18T12:43:03.467000+00:00",
+      "stale_age_seconds": 12
     },
     "date": "2026-11-18",
-    "time": "23:41:18",
+    "time": "23:43:16",
     "skip_news_check": false,
     "red_flag": true,
-    "previous_price": 1.621
+    "previous_price": 0.641
   },
   "total_candidates": 3,
   "alerts_generated": 2,
@@ -1342,25 +1212,25 @@
     {
       "ticker": "SVRE",
       "name": "SAVERONE 2014 LTD",
-      "price": 0.936,
-      "change_pct": 128.4,
-      "volume": 19580518,
-      "rvol": 249.33806188717688,
+      "price": 0.958,
+      "change_pct": 133.72,
+      "volume": 20092447,
+      "rvol": 255.8569591239017,
       "market_cap": 1024431.97,
       "float_shares": 2499834,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "International (region 83)",
       "passed": false,
-      "reason": "Filtered: tiny price $0.936"
+      "reason": "Filtered: tiny price $0.958"
     },
     {
       "ticker": "BRNX",
       "name": "Brenx Ltd",
-      "price": 0.641,
-      "change_pct": 57.95,
-      "volume": 16126718,
-      "rvol": 274.7779519509286,
+      "price": 0.61,
+      "change_pct": 49.17,
+      "volume": 16910427,
+      "rvol": 288.1313170897938,
       "market_cap": 798258.52,
       "float_shares": 1942631,
       "cap_size": "nano-cap",
@@ -1370,42 +1240,12 @@
       "reason": "Passed filters"
     },
     {
-      "ticker": "GP",
-      "name": "GreenPower Mtr Co Inc",
-      "price": 3.23,
-      "change_pct": 22.52,
-      "volume": 3600491,
-      "rvol": 0.09103780448782985,
-      "market_cap": 5503860.2,
-      "float_shares": 1297074,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.1x"
-    },
-    {
-      "ticker": "AZI",
-      "name": "Autozi Internet Technology (Global) Ltd.",
-      "price": 0.861,
-      "change_pct": 17.86,
-      "volume": 5486626,
-      "rvol": 0.9827280973001167,
-      "market_cap": 48442181.73,
-      "float_shares": 56227442,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.10x < 0.1x"
-    },
-    {
       "ticker": "GMM",
       "name": "Global Mofy AI Ltd",
-      "price": 1.63,
-      "change_pct": 16.63,
-      "volume": 7561713,
-      "rvol": 0.43760305720334874,
+      "price": 1.68,
+      "change_pct": 20.77,
+      "volume": 7682064,
+      "rvol": 0.4445678766215785,
       "market_cap": 80273899.73,
       "float_shares": 57696024,
       "cap_size": "micro-cap",
@@ -1413,6 +1253,21 @@
       "country": "China / Cayman-China",
       "passed": true,
       "reason": "Passed filters"
+    },
+    {
+      "ticker": "GP",
+      "name": "GreenPower Mtr Co Inc",
+      "price": 3.16,
+      "change_pct": 20.630000000000003,
+      "volume": 3644997,
+      "rvol": 0.0921631311520363,
+      "market_cap": 5503860.2,
+      "float_shares": 1297074,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "Canada",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.1x"
     },
     {
       "ticker": "FEDU",
@@ -1430,19 +1285,19 @@
       "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
-      "ticker": "HIHO",
-      "name": "Highway Hldgs Ltd",
-      "price": 1.43,
-      "change_pct": 16.259999999999998,
-      "volume": 3255863,
-      "rvol": 0.2054772207304442,
-      "market_cap": 5690811.48,
-      "float_shares": 2959609,
+      "ticker": "MMA",
+      "name": "Mixed Martial",
+      "price": 0.33,
+      "change_pct": 15.790000000000001,
+      "volume": 108,
+      "rvol": 0.00014846585285384361,
+      "market_cap": 10847998.61,
+      "float_shares": 28962293,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Hong Kong",
+      "is_penny_stock": true,
+      "country": "Australia",
       "passed": false,
-      "reason": "Filtered: tiny rvol 0.2x"
+      "reason": "Filtered: vol 108, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
       "ticker": "REVB",
@@ -1458,21 +1313,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 205, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "CUE",
-      "name": "Cue Biopharma Inc",
-      "price": 3.259,
-      "change_pct": 15.160000000000002,
-      "volume": 178853,
-      "rvol": 0.23593203793844897,
-      "market_cap": 20558291.62,
-      "float_shares": 6151958,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "GNPX",
@@ -1505,6 +1345,21 @@
       "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "AZI",
+      "name": "Autozi Internet Technology (Global) Ltd.",
+      "price": 0.853,
+      "change_pct": 16.78,
+      "volume": 5499677,
+      "rvol": 0.9850657059502896,
+      "market_cap": 48442181.73,
+      "float_shares": 56227442,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.10x < 0.1x"
+    },
+    {
       "ticker": "NA",
       "name": "Nano Labs Ltd",
       "price": 1.25,
@@ -1518,6 +1373,21 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: vol 1,050, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "CUE",
+      "name": "Cue Biopharma Inc",
+      "price": 3.24,
+      "change_pct": 14.49,
+      "volume": 181158,
+      "rvol": 0.2389726542403736,
+      "market_cap": 20558291.62,
+      "float_shares": 6151958,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "ZEPP",
@@ -1563,6 +1433,36 @@
       "country": "China / Hong Kong",
       "passed": false,
       "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
+      "ticker": "NUR",
+      "name": "Nuran Wireless",
+      "price": 0.424,
+      "change_pct": 13.350000000000001,
+      "volume": 159238,
+      "rvol": 0.5169511058880055,
+      "market_cap": 4932178.49,
+      "float_shares": 7893033,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "Canada",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.424, tiny rvol 0.5x, tiny avg $vol, tiny vol/float 0.02x, vol/float 0.02x < 0.1x, avg $vol $0.1M < $2.0M"
+    },
+    {
+      "ticker": "HIHO",
+      "name": "Highway Hldgs Ltd",
+      "price": 1.4,
+      "change_pct": 13.03,
+      "volume": 3302332,
+      "rvol": 0.20840987513578096,
+      "market_cap": 5690811.48,
+      "float_shares": 2959609,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.2x"
     },
     {
       "ticker": "TPST",
@@ -1625,21 +1525,6 @@
       "reason": "Filtered: vol 47, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "CNTN",
-      "name": "Canton Strategic Holdings",
-      "price": 1.59,
-      "change_pct": 11.97,
-      "volume": 402,
-      "rvol": 0.0005430355688297583,
-      "market_cap": 113147532.62,
-      "float_shares": 70542040,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 402, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "REA",
       "name": "Rare Earths Americas, Inc.",
       "price": 4.93,
@@ -1670,21 +1555,6 @@
       "reason": "Filtered: tiny price $0.684, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 7,952, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
-      "ticker": "NUR",
-      "name": "Nuran Wireless",
-      "price": 0.417,
-      "change_pct": 11.61,
-      "volume": 27009,
-      "rvol": 0.08768216392399515,
-      "market_cap": 4932178.49,
-      "float_shares": 7893033,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.417, tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 27,009, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
       "ticker": "LNSR",
       "name": "Lensar Inc",
       "price": 5.45,
@@ -1698,6 +1568,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 5, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "IMCC",
+      "name": "Im Cannabis Corp",
+      "price": 0.548,
+      "change_pct": 10.92,
+      "volume": 35681,
+      "rvol": 0.48126517399514435,
+      "market_cap": 910462.78,
+      "float_shares": 1277487,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "International (region 83)",
+      "passed": false,
+      "reason": "Filtered: mktcap $0.9M, vol 35,681, vol/float 0.03x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
       "ticker": "EIKN",
@@ -1745,36 +1630,6 @@
       "reason": "Filtered: vol 33, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "SRTS",
-      "name": "Sensus Healthcare Inc",
-      "price": 2.493,
-      "change_pct": 10.31,
-      "volume": 10,
-      "rvol": 7.095016460438189e-05,
-      "market_cap": 37204253.34,
-      "float_shares": 13389288,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 10, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "AKAN",
-      "name": "AKANDA CORP",
-      "price": 2.26,
-      "change_pct": 9.77,
-      "volume": 1346152,
-      "rvol": 0.04466734894476677,
-      "market_cap": 1108724.05,
-      "float_shares": 537667,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United Kingdom",
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.0x"
-    },
-    {
       "ticker": "BGM",
       "name": "BGM Group",
       "price": 8.96,
@@ -1788,6 +1643,36 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: vol 20, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "SRTS",
+      "name": "Sensus Healthcare Inc",
+      "price": 2.49,
+      "change_pct": 10.18,
+      "volume": 15,
+      "rvol": 0.00010642524690657282,
+      "market_cap": 37204253.34,
+      "float_shares": 13389288,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 15, vol/float 0.00x < 0.1x"
+    },
+    {
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "price": 2.61,
+      "change_pct": 10.13,
+      "volume": 59776,
+      "rvol": 0.013582852194454563,
+      "market_cap": 19003674.36,
+      "float_shares": 4558277,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.01x < 0.1x"
     },
     {
       "ticker": "LINK",
@@ -1809,8 +1694,8 @@
       "name": "Wing Yip Food Holdings Group Ltd.",
       "price": 2.98,
       "change_pct": 9.959999999999999,
-      "volume": 100136,
-      "rvol": 1.618228829993536,
+      "volume": 100145,
+      "rvol": 1.6183742727860375,
       "market_cap": 34094959.86,
       "float_shares": 12581166,
       "cap_size": "nano-cap",
@@ -1910,34 +1795,19 @@
       "reason": "Filtered: vol 3, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "CHSN",
-      "name": "CHANSON INTL HLDG",
-      "price": 0.514,
-      "change_pct": 9.19,
-      "volume": 11321066,
-      "rvol": 1.3011710011004893,
-      "market_cap": 1091523.77,
-      "float_shares": 2096288,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.514, tiny rvol 1.3x"
-    },
-    {
-      "ticker": "NCPL",
-      "name": "Netcapital Inc",
-      "price": 2.59,
-      "change_pct": 9.700000000000001,
-      "volume": 52571,
-      "rvol": 0.011945665864471875,
-      "market_cap": 19003674.36,
-      "float_shares": 4558277,
+      "ticker": "AKAN",
+      "name": "AKANDA CORP",
+      "price": 2.24,
+      "change_pct": 9.27,
+      "volume": 1349360,
+      "rvol": 0.044773795211915504,
+      "market_cap": 1108724.05,
+      "float_shares": 537667,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "country": "United States",
+      "country": "United Kingdom",
       "passed": false,
-      "reason": "Filtered: vol/float 0.01x < 0.1x"
+      "reason": "Filtered: tiny rvol 0.0x"
     }
   ],
   "all_losers": [
@@ -1959,32 +1829,17 @@
     {
       "ticker": "ZNB",
       "name": "Zeta Network Group",
-      "price": 0.433,
-      "change_pct": -29.14,
-      "volume": 7559382,
-      "rvol": 24.61377311799948,
+      "price": 0.44,
+      "change_pct": -28.610000000000003,
+      "volume": 7615303,
+      "rvol": 24.7958550403751,
       "market_cap": 3055763.34,
       "float_shares": 5001100,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.433, mktcap $3.1M"
-    },
-    {
-      "ticker": "TCRT",
-      "name": "Alaunos Therapeutics, Inc",
-      "price": 1.212,
-      "change_pct": -26.99,
-      "volume": 34,
-      "rvol": 0.000385312783318223,
-      "market_cap": 6000773.84,
-      "float_shares": 3166354,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 34, vol/float 0.00x"
+      "reason": "Filtered: price $0.440, mktcap $3.1M"
     },
     {
       "ticker": "RFL",
@@ -2065,9 +1920,9 @@
       "ticker": "GDHG",
       "name": "Golden Heaven Gr",
       "price": 0.239,
-      "change_pct": -18.060000000000002,
-      "volume": 2341432,
-      "rvol": 0.09103107004172427,
+      "change_pct": -18.029999999999998,
+      "volume": 2344052,
+      "rvol": 0.09113293138277936,
       "market_cap": 17323750.08,
       "float_shares": 41818480,
       "cap_size": "nano-cap",
@@ -2095,9 +1950,9 @@
       "ticker": "LICN",
       "name": "Lichen International",
       "price": 0.018,
-      "change_pct": -17.27,
-      "volume": 106793080,
-      "rvol": 1.2491373317348018,
+      "change_pct": -16.82,
+      "volume": 106987730,
+      "rvol": 1.2514141139160273,
       "market_cap": 359190.15,
       "float_shares": 16215300,
       "cap_size": "nano-cap",
@@ -2124,10 +1979,10 @@
     {
       "ticker": "SDEV",
       "name": "Stablecoin Development Corporation",
-      "price": 0.586,
-      "change_pct": -15.920000000000002,
-      "volume": 656028,
-      "rvol": 0.29975202975094684,
+      "price": 0.583,
+      "change_pct": -16.29,
+      "volume": 657684,
+      "rvol": 0.3005086885540278,
       "market_cap": 50933313.35,
       "float_shares": 26483679,
       "cap_size": "micro-cap",
@@ -2165,21 +2020,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: rvol 0.0x, vol 10,562, vol/float 0.00x"
-    },
-    {
-      "ticker": "ZBAO",
-      "name": "Zhibao Tech",
-      "price": 0.156,
-      "change_pct": -14.879999999999999,
-      "volume": 7745898,
-      "rvol": 0.2308407479159911,
-      "market_cap": 1813582.02,
-      "float_shares": 9744584,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.156, mktcap $1.8M, rvol 0.2x"
     },
     {
       "ticker": "CSAI",
@@ -2230,9 +2070,9 @@
       "ticker": "YFOR",
       "name": "Yyforce Inc",
       "price": 0.023,
-      "change_pct": -13.750000000000002,
-      "volume": 9984242,
-      "rvol": 0.10810239656034827,
+      "change_pct": -13.38,
+      "volume": 9986441,
+      "rvol": 0.10812620579594534,
       "market_cap": 345308.14,
       "float_shares": 3731890,
       "cap_size": "nano-cap",
@@ -2240,6 +2080,21 @@
       "country": "Singapore",
       "passed": false,
       "reason": "Filtered: price $0.023, mktcap $0.3M, rvol 0.1x"
+    },
+    {
+      "ticker": "PARA",
+      "name": "PARABOLIC TECHNOLOGIES INC",
+      "price": 0.063,
+      "change_pct": -13.209999999999999,
+      "volume": 3539353,
+      "rvol": 0.019103085746321847,
+      "market_cap": 4944968.36,
+      "float_shares": 67996295,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.063, mktcap $4.9M, rvol 0.0x, float 68.0M, vol/float 0.05x"
     },
     {
       "ticker": "IPHA",
@@ -2257,21 +2112,6 @@
       "reason": "Filtered: vol 39,283, float 110.1M, vol/float 0.00x"
     },
     {
-      "ticker": "SMTK",
-      "name": "Smartkem",
-      "price": 0.237,
-      "change_pct": -12.97,
-      "volume": 569262,
-      "rvol": 0.01457803676896464,
-      "market_cap": 1322234.3,
-      "float_shares": 4756733,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United Kingdom",
-      "passed": false,
-      "reason": "Filtered: price $0.237, mktcap $1.3M, rvol 0.0x, vol/float 0.12x"
-    },
-    {
       "ticker": "RNTX",
       "name": "Rein Therapeutics, Inc.",
       "price": 0.312,
@@ -2285,21 +2125,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.312, rvol 0.0x, vol 2, float 81.9M, vol/float 0.00x"
-    },
-    {
-      "ticker": "PARA",
-      "name": "PARABOLIC TECHNOLOGIES INC",
-      "price": 0.064,
-      "change_pct": -12.1,
-      "volume": 3537803,
-      "rvol": 0.01909471987185078,
-      "market_cap": 4944968.36,
-      "float_shares": 67996295,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.064, mktcap $4.9M, rvol 0.0x, float 68.0M, vol/float 0.05x"
     },
     {
       "ticker": "INTJ",
@@ -2317,19 +2142,34 @@
       "reason": "Filtered: rvol 0.0x, vol 1, vol/float 0.00x"
     },
     {
-      "ticker": "CYAB",
-      "name": "CYABRA INC",
-      "price": 0.088,
-      "change_pct": -10.92,
-      "volume": 237789,
-      "rvol": 0.0018779411761337826,
-      "market_cap": 3321804.18,
-      "float_shares": 23205941,
+      "ticker": "SMTK",
+      "name": "Smartkem",
+      "price": 0.24,
+      "change_pct": -11.799999999999999,
+      "volume": 569541,
+      "rvol": 0.014585181584987035,
+      "market_cap": 1322234.3,
+      "float_shares": 4756733,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
+      "country": "United Kingdom",
+      "passed": false,
+      "reason": "Filtered: price $0.240, mktcap $1.3M, rvol 0.0x, vol/float 0.12x"
+    },
+    {
+      "ticker": "TCRT",
+      "name": "Alaunos Therapeutics, Inc",
+      "price": 1.465,
+      "change_pct": -11.72,
+      "volume": 166,
+      "rvol": 0.0018812330009066183,
+      "market_cap": 6000773.84,
+      "float_shares": 3166354,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.088, mktcap $3.3M, rvol 0.0x, vol/float 0.01x"
+      "reason": "Filtered: rvol 0.0x, vol 166, vol/float 0.00x"
     },
     {
       "ticker": "PODC",
@@ -2360,6 +2200,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: mktcap $4.8M, rvol 0.0x, vol 136, vol/float 0.00x"
+    },
+    {
+      "ticker": "CYAB",
+      "name": "CYABRA INC",
+      "price": 0.089,
+      "change_pct": -10.92,
+      "volume": 237889,
+      "rvol": 0.0018787309272055874,
+      "market_cap": 3321804.18,
+      "float_shares": 23205941,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.089, mktcap $3.3M, rvol 0.0x, vol/float 0.01x"
     },
     {
       "ticker": "LNKS",
@@ -2405,6 +2260,21 @@
       "country": "Singapore",
       "passed": false,
       "reason": "Filtered: mktcap $0.0M, rvol 0.0x, vol 3,116, vol/float 0.07x"
+    },
+    {
+      "ticker": "ZBAO",
+      "name": "Zhibao Tech",
+      "price": 0.164,
+      "change_pct": -10.56,
+      "volume": 7756110,
+      "rvol": 0.23114508263841038,
+      "market_cap": 1813582.02,
+      "float_shares": 9744584,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: price $0.164, mktcap $1.8M, rvol 0.2x"
     },
     {
       "ticker": "BAER",
@@ -2516,18 +2386,59 @@
       "name": "Onfolio Holdings",
       "price": 0.6,
       "change_pct": -9.91,
-      "volume": 18119,
-      "rvol": 0.0005738609458820845,
+      "volume": 18120,
+      "rvol": 0.0005738926176601011,
       "market_cap": 1664499.17,
       "float_shares": 2466998,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: mktcap $1.7M, rvol 0.0x, vol 18,119, vol/float 0.01x"
+      "reason": "Filtered: mktcap $1.7M, rvol 0.0x, vol 18,120, vol/float 0.01x"
     }
   ],
   "live_quotes": {
+    "SVRE": {
+      "price": 0.4098,
+      "open": 0.43,
+      "high": 0.479,
+      "low": 0.38,
+      "close": 0.4098,
+      "preClose": 0.4315,
+      "volume": 20138592,
+      "changeRatio": -0.0503,
+      "marketValue": 1024431.97,
+      "name": "SAVERONE 2014 LTD",
+      "_timestamp": "2026-11-18T12:43:18.143187Z"
+    },
+    "BRNX": {
+      "price": 0.41,
+      "open": 0.43,
+      "high": 0.4301,
+      "low": 0.4014,
+      "close": 0.41,
+      "preClose": 0.416,
+      "volume": 16940903,
+      "changeRatio": -0.0144,
+      "marketValue": 798258.52,
+      "name": "Brenx Ltd",
+      "_timestamp": "2026-11-18T12:43:18.143205Z"
+    },
+    "GMM": {
+      "price": 1.39,
+      "open": 1.39,
+      "high": 1.5,
+      "low": 1.16,
+      "close": 1.39,
+      "preClose": 2.01,
+      "volume": 7709117,
+      "changeRatio": -0.3085,
+      "marketValue": 80273899.73,
+      "name": "Global Mofy AI Ltd",
+      "_timestamp": "2026-11-18T12:43:18.143210Z"
+    }
+  },
+  "previous_live_quotes": {
     "SVRE": {
       "price": 0.4098,
       "open": 0.43,
@@ -2568,52 +2479,11 @@
       "_timestamp": "2026-11-18T12:41:20.722735Z"
     }
   },
-  "previous_live_quotes": {
-    "GMM": {
-      "price": 1.39,
-      "open": 1.39,
-      "high": 1.5,
-      "low": 1.16,
-      "close": 1.39,
-      "preClose": 2.01,
-      "volume": 7539662,
-      "changeRatio": -0.3085,
-      "marketValue": 80273899.73,
-      "name": "Global Mofy AI Ltd",
-      "_timestamp": "2026-11-18T12:39:29.524167Z"
-    },
-    "SVRE": {
-      "price": 0.4098,
-      "open": 0.43,
-      "high": 0.479,
-      "low": 0.38,
-      "close": 0.4098,
-      "preClose": 0.4315,
-      "volume": 19305548,
-      "changeRatio": -0.0503,
-      "marketValue": 1024431.97,
-      "name": "SAVERONE 2014 LTD",
-      "_timestamp": "2026-11-18T12:39:29.524191Z"
-    },
-    "BRNX": {
-      "price": 0.41,
-      "open": 0.43,
-      "high": 0.4301,
-      "low": 0.4014,
-      "close": 0.41,
-      "preClose": 0.416,
-      "volume": 15212541,
-      "changeRatio": -0.0144,
-      "marketValue": 798258.52,
-      "name": "Brenx Ltd",
-      "_timestamp": "2026-11-18T12:39:29.524199Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "PRE-MARKET",
-    "market_time": "11:41 PM AEDT",
+    "market_time": "11:43 PM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
