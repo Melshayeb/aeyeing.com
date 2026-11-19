@@ -1466,16 +1466,338 @@
     </style>
 <!-- v=2026-08-25-1415 build-trigger -->
 <script id="ozmoeg-embedded-data" type="application/json" data-us='{
-  &quot;last_updated&quot;: &quot;2026-11-19T11:09:20.498746Z&quot;,
+  &quot;last_updated&quot;: &quot;2026-11-19T11:10:23.906416Z&quot;,
   &quot;scan_results&quot;: [
+    {
+      &quot;ticker&quot;: &quot;GMEX&quot;,
+      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.463,
+      &quot;change_pct&quot;: 51.39,
+      &quot;volume&quot;: 5861197,
+      &quot;market_cap&quot;: 483389.6,
+      &quot;float_shares&quot;: 1580221,
+      &quot;country&quot;: &quot;Australia&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;+51.4% · Entry $0.46 · T1 $0.48 · T2 $0.49 · T3 $0.51&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;entry&quot;: 0.463,
+        &quot;stop&quot;: 0.4537,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.4816,
+          &quot;t2&quot;: 0.4909,
+          &quot;t3&quot;: 0.5095
+        },
+        &quot;risk_per_share&quot;: 0.0093,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 647,
+        &quot;position_value&quot;: 299.56,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.4537&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 8.13,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 5861197,
+        &quot;adv&quot;: 720711,
+        &quot;recent_pct_of_adv&quot;: 813.25,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 2.611,
+        &quot;buy_pressure_pct&quot;: 43.49,
+        &quot;large_bar_count&quot;: 23,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 5861197,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0099,
+        &quot;last_price&quot;: 0.3059,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:06.245000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
+      },
+      &quot;date&quot;: &quot;2026-11-19&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.444
+    },
+    {
+      &quot;ticker&quot;: &quot;INHD&quot;,
+      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 3.123,
+      &quot;change_pct&quot;: 35.77,
+      &quot;volume&quot;: 2545348,
+      &quot;market_cap&quot;: 5797336.3,
+      &quot;float_shares&quot;: 2489630,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 18), 8-K (Aug 31)&quot;,
+      &quot;result&quot;: &quot;+35.8% · Entry $3.12 · T1 $3.25 · T2 $3.31 · T3 $3.44&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;entry&quot;: 3.123,
+        &quot;stop&quot;: 3.0605,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.248,
+          &quot;t2&quot;: 3.3105,
+          &quot;t3&quot;: 3.4355
+        },
+        &quot;risk_per_share&quot;: 0.0625,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 96,
+        &quot;position_value&quot;: 299.81,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$3.0605&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 5,
+        &quot;avg_score&quot;: 3.0,
+        &quot;catalyst_confirmed&quot;: true,
+        &quot;high_impact_count&quot;: 3,
+        &quot;top_headline&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+        &quot;news_filter_reason&quot;: &quot;catalyst confirmed (3 items, score ≥3)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 6.07,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 2545348,
+        &quot;adv&quot;: 419640,
+        &quot;recent_pct_of_adv&quot;: 606.56,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 26.984,
+        &quot;buy_pressure_pct&quot;: 42.83,
+        &quot;large_bar_count&quot;: 20,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 2545348,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0647,
+        &quot;last_price&quot;: 2.3,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:03.877000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-19&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 3.133
+    },
     {
       &quot;ticker&quot;: &quot;GNLN&quot;,
       &quot;name&quot;: &quot;Greenlane Holdings&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.69,
-      &quot;change_pct&quot;: 14.84,
-      &quot;volume&quot;: 5332508,
+      &quot;price&quot;: 0.693,
+      &quot;change_pct&quot;: 15.260000000000002,
+      &quot;volume&quot;: 5339330,
       &quot;market_cap&quot;: 417420.94,
       &quot;float_shares&quot;: 660877,
       &quot;country&quot;: &quot;United States&quot;,
@@ -1484,23 +1806,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)&quot;,
-      &quot;result&quot;: &quot;+14.8% · Entry $0.69 · T1 $0.72 · T2 $0.73 · T3 $0.76&quot;,
+      &quot;result&quot;: &quot;+15.3% · Entry $0.69 · T1 $0.72 · T2 $0.73 · T3 $0.76&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GNLN&quot;,
-        &quot;entry&quot;: 0.69,
-        &quot;stop&quot;: 0.6762,
+        &quot;entry&quot;: 0.693,
+        &quot;stop&quot;: 0.6791,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.7176,
-          &quot;t2&quot;: 0.7314,
-          &quot;t3&quot;: 0.759
+          &quot;t1&quot;: 0.7208,
+          &quot;t2&quot;: 0.7347,
+          &quot;t3&quot;: 0.7625
         },
-        &quot;risk_per_share&quot;: 0.0138,
+        &quot;risk_per_share&quot;: 0.0139,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 434,
-        &quot;position_value&quot;: 299.46,
+        &quot;shares&quot;: 432,
+        &quot;position_value&quot;: 299.38,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -1508,7 +1830,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.6762&quot;
+          &quot;hard_stop&quot;: &quot;$0.6791&quot;
         }
       },
       &quot;ta&quot;: {
@@ -1644,223 +1966,29 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 216.33,
+        &quot;rvol&quot;: 216.61,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 5332508,
+        &quot;volume&quot;: 5339330,
         &quot;adv&quot;: 24650,
-        &quot;recent_pct_of_adv&quot;: 21632.89,
+        &quot;recent_pct_of_adv&quot;: 21660.57,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 19.199,
-        &quot;buy_pressure_pct&quot;: 48.1,
+        &quot;price_velocity_pct&quot;: 18.398,
+        &quot;buy_pressure_pct&quot;: 47.35,
         &quot;large_bar_count&quot;: 28,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 5332508,
+        &quot;recent_volume&quot;: 5339330,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0221,
         &quot;last_price&quot;: 0.601,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:08:56.589000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 29
-      },
-      &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.714
-    },
-    {
-      &quot;ticker&quot;: &quot;INHD&quot;,
-      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 3.133,
-      &quot;change_pct&quot;: 36.199999999999996,
-      &quot;volume&quot;: 2543211,
-      &quot;market_cap&quot;: 5797336.3,
-      &quot;float_shares&quot;: 2489630,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 18), 8-K (Aug 31)&quot;,
-      &quot;result&quot;: &quot;+36.2% · Entry $3.13 · T1 $3.26 · T2 $3.32 · T3 $3.45&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;entry&quot;: 3.133,
-        &quot;stop&quot;: 3.0703,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 3.2584,
-          &quot;t2&quot;: 3.3211,
-          &quot;t3&quot;: 3.4465
-        },
-        &quot;risk_per_share&quot;: 0.0627,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 95,
-        &quot;position_value&quot;: 297.63,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$3.0703&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 5,
-        &quot;avg_score&quot;: 3.0,
-        &quot;catalyst_confirmed&quot;: true,
-        &quot;high_impact_count&quot;: 3,
-        &quot;top_headline&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-        &quot;news_filter_reason&quot;: &quot;catalyst confirmed (3 items, score ≥3)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 6.06,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 2543211,
-        &quot;adv&quot;: 419640,
-        &quot;recent_pct_of_adv&quot;: 606.05,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 27.82,
-        &quot;buy_pressure_pct&quot;: 43.16,
-        &quot;large_bar_count&quot;: 19,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 2543211,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0652,
-        &quot;last_price&quot;: 2.3,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:02.852000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:05.945000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 14
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 3.14
+      &quot;previous_price&quot;: 0.69
     },
     {
       &quot;ticker&quot;: &quot;SPRC&quot;,
@@ -1868,8 +1996,8 @@
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 0.432,
-      &quot;change_pct&quot;: 59.940000000000005,
-      &quot;volume&quot;: 15796686,
+      &quot;change_pct&quot;: 60.160000000000004,
+      &quot;volume&quot;: 15830255,
       &quot;market_cap&quot;: 555789.9,
       &quot;float_shares&quot;: 2057719,
       &quot;country&quot;: &quot;International (region 83)&quot;,
@@ -1878,7 +2006,7 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+59.9% · Entry $0.43 · T1 $0.45 · T2 $0.46 · T3 $0.47&quot;,
+      &quot;result&quot;: &quot;+60.2% · Entry $0.43 · T1 $0.45 · T2 $0.46 · T3 $0.47&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;SPRC&quot;,
@@ -1984,63 +2112,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 9.78,
+        &quot;rvol&quot;: 9.8,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 15796686,
+        &quot;volume&quot;: 15830255,
         &quot;adv&quot;: 1615338,
-        &quot;recent_pct_of_adv&quot;: 977.92,
+        &quot;recent_pct_of_adv&quot;: 980.0,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 43.729,
-        &quot;buy_pressure_pct&quot;: 46.12,
+        &quot;price_velocity_pct&quot;: 40.923,
+        &quot;buy_pressure_pct&quot;: 46.07,
         &quot;large_bar_count&quot;: 30,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 15796686,
+        &quot;recent_volume&quot;: 15830255,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0192,
+        &quot;median_range&quot;: 0.0191,
         &quot;last_price&quot;: 0.2701,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:03.748000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 14
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:04.943000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 15
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.427
+      &quot;previous_price&quot;: 0.432
     },
     {
       &quot;ticker&quot;: &quot;GMM&quot;,
       &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 2.0,
-      &quot;change_pct&quot;: 28.95,
-      &quot;volume&quot;: 4085064,
+      &quot;price&quot;: 1.981,
+      &quot;change_pct&quot;: 28.389999999999997,
+      &quot;volume&quot;: 4093434,
       &quot;market_cap&quot;: 89514060.85,
       &quot;float_shares&quot;: 57696024,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.9%, rvol 1.6x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.4%, rvol 1.6x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.9%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.4%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GMM&quot;,
-        &quot;entry&quot;: 2.0,
-        &quot;stop&quot;: 1.96,
+        &quot;entry&quot;: 1.981,
+        &quot;stop&quot;: 1.9414,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 2.08,
-          &quot;t2&quot;: 2.12,
-          &quot;t3&quot;: 2.2
+          &quot;t1&quot;: 2.0602,
+          &quot;t2&quot;: 2.0998,
+          &quot;t3&quot;: 2.179
         },
-        &quot;risk_per_share&quot;: 0.04,
+        &quot;risk_per_share&quot;: 0.0396,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 150,
-        &quot;position_value&quot;: 300.0,
+        &quot;shares&quot;: 151,
+        &quot;position_value&quot;: 299.13,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2048,7 +2176,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.96&quot;
+          &quot;hard_stop&quot;: &quot;$1.9414&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2285,166 +2413,360 @@
         &quot;tape_score&quot;: 5.0,
         &quot;rvol&quot;: 1.61,
         &quot;volume_indicator&quot;: &quot;moderate&quot;,
-        &quot;volume&quot;: 4085064,
+        &quot;volume&quot;: 4093434,
         &quot;adv&quot;: 2539907,
-        &quot;recent_pct_of_adv&quot;: 160.84,
+        &quot;recent_pct_of_adv&quot;: 161.16,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 23.267,
-        &quot;buy_pressure_pct&quot;: 49.92,
+        &quot;price_velocity_pct&quot;: 25.103,
+        &quot;buy_pressure_pct&quot;: 49.58,
         &quot;large_bar_count&quot;: 18,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 4085064,
+        &quot;recent_volume&quot;: 4093434,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0298,
         &quot;last_price&quot;: 1.55,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:04.526000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:05.149000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:19&quot;,
+      &quot;time&quot;: &quot;22:10:21&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 1.98
-    },
-    {
-      &quot;ticker&quot;: &quot;GMEX&quot;,
-      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.444,
-      &quot;change_pct&quot;: 51.88,
-      &quot;volume&quot;: 5627376,
-      &quot;market_cap&quot;: 483389.6,
-      &quot;float_shares&quot;: 1580221,
-      &quot;country&quot;: &quot;Australia&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (51.9%, rvol 7.8x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +51.9%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;entry&quot;: 0.444,
-        &quot;stop&quot;: 0.4351,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.4618,
-          &quot;t2&quot;: 0.4707,
-          &quot;t3&quot;: 0.4885
-        },
-        &quot;risk_per_share&quot;: 0.0089,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 675,
-        &quot;position_value&quot;: 299.7,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.4351&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 7.81,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 5627376,
-        &quot;adv&quot;: 720711,
-        &quot;recent_pct_of_adv&quot;: 780.81,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 2.611,
-        &quot;buy_pressure_pct&quot;: 43.06,
-        &quot;large_bar_count&quot;: 23,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 5627376,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0094,
-        &quot;last_price&quot;: 0.3059,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:04.861000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:19&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.394
+      &quot;previous_price&quot;: 2.0
     }
   ],
   &quot;pre_market_results&quot;: [
     {
+      &quot;ticker&quot;: &quot;GMEX&quot;,
+      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 0.463,
+      &quot;change_pct&quot;: 51.39,
+      &quot;volume&quot;: 5861197,
+      &quot;market_cap&quot;: 483389.6,
+      &quot;float_shares&quot;: 1580221,
+      &quot;country&quot;: &quot;Australia&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;&quot;,
+      &quot;result&quot;: &quot;+51.4% · Entry $0.46 · T1 $0.48 · T2 $0.49 · T3 $0.51&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;entry&quot;: 0.463,
+        &quot;stop&quot;: 0.4537,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 0.4816,
+          &quot;t2&quot;: 0.4909,
+          &quot;t3&quot;: 0.5095
+        },
+        &quot;risk_per_share&quot;: 0.0093,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 647,
+        &quot;position_value&quot;: 299.56,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$0.4537&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 0,
+        &quot;avg_score&quot;: 0.0,
+        &quot;catalyst_confirmed&quot;: false,
+        &quot;high_impact_count&quot;: 0,
+        &quot;top_headline&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
+        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;GMEX&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 8.13,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 5861197,
+        &quot;adv&quot;: 720711,
+        &quot;recent_pct_of_adv&quot;: 813.25,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 2.611,
+        &quot;buy_pressure_pct&quot;: 43.49,
+        &quot;large_bar_count&quot;: 23,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 5861197,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0099,
+        &quot;last_price&quot;: 0.3059,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:06.245000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
+      },
+      &quot;date&quot;: &quot;2026-11-19&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 0.444
+    },
+    {
+      &quot;ticker&quot;: &quot;INHD&quot;,
+      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
+      &quot;status&quot;: &quot;ALERT&quot;,
+      &quot;source&quot;: &quot;regular&quot;,
+      &quot;price&quot;: 3.123,
+      &quot;change_pct&quot;: 35.77,
+      &quot;volume&quot;: 2545348,
+      &quot;market_cap&quot;: 5797336.3,
+      &quot;float_shares&quot;: 2489630,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
+      &quot;scan_passed&quot;: true,
+      &quot;sec_filings&quot;: &quot;8-K (Nov 18), 8-K (Aug 31)&quot;,
+      &quot;result&quot;: &quot;+35.8% · Entry $3.12 · T1 $3.25 · T2 $3.31 · T3 $3.44&quot;,
+      &quot;plan&quot;: {
+        &quot;valid&quot;: true,
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;entry&quot;: 3.123,
+        &quot;stop&quot;: 3.0605,
+        &quot;targets&quot;: {
+          &quot;t1&quot;: 3.248,
+          &quot;t2&quot;: 3.3105,
+          &quot;t3&quot;: 3.4355
+        },
+        &quot;risk_per_share&quot;: 0.0625,
+        &quot;risk_amount&quot;: 20.0,
+        &quot;daily_risk_budget&quot;: 60.0,
+        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
+        &quot;shares&quot;: 96,
+        &quot;position_value&quot;: 299.81,
+        &quot;risk_reward&quot;: 2.0,
+        &quot;confidence&quot;: &quot;MED&quot;,
+        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
+        &quot;exit_rules&quot;: {
+          &quot;momentum_based&quot;: true,
+          &quot;time_based&quot;: false,
+          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
+          &quot;hard_stop&quot;: &quot;$3.0605&quot;
+        }
+      },
+      &quot;ta&quot;: {
+        &quot;valid&quot;: false,
+        &quot;error&quot;: &quot;No bar data&quot;
+      },
+      &quot;news&quot;: {
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;total_items&quot;: 20,
+        &quot;scored_items&quot;: [
+          {
+            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;headlines&quot;: [
+          {
+            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 5,
+            &quot;keywords&quot;: [
+              &quot;merger&quot;
+            ]
+          },
+          {
+            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          },
+          {
+            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
+            &quot;source&quot;: &quot;Webull&quot;,
+            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
+            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
+            &quot;url&quot;: &quot;&quot;,
+            &quot;score&quot;: 0,
+            &quot;keywords&quot;: []
+          }
+        ],
+        &quot;red_flags&quot;: [],
+        &quot;max_score&quot;: 5,
+        &quot;avg_score&quot;: 3.0,
+        &quot;catalyst_confirmed&quot;: true,
+        &quot;high_impact_count&quot;: 3,
+        &quot;top_headline&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
+        &quot;news_filter_reason&quot;: &quot;catalyst confirmed (3 items, score ≥3)&quot;
+      },
+      &quot;tape&quot;: {
+        &quot;ticker&quot;: &quot;INHD&quot;,
+        &quot;valid&quot;: true,
+        &quot;stale&quot;: false,
+        &quot;no_move&quot;: false,
+        &quot;tape_score&quot;: 8.0,
+        &quot;rvol&quot;: 6.07,
+        &quot;volume_indicator&quot;: &quot;high&quot;,
+        &quot;volume&quot;: 2545348,
+        &quot;adv&quot;: 419640,
+        &quot;recent_pct_of_adv&quot;: 606.56,
+        &quot;volume_acceleration&quot;: 0.0,
+        &quot;price_velocity_pct&quot;: 26.984,
+        &quot;buy_pressure_pct&quot;: 42.83,
+        &quot;large_bar_count&quot;: 20,
+        &quot;vwap_distance_pct&quot;: 0.0,
+        &quot;recent_volume&quot;: 2545348,
+        &quot;prior_volume&quot;: 0,
+        &quot;median_range&quot;: 0.0647,
+        &quot;last_price&quot;: 2.3,
+        &quot;vwap&quot;: null,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:03.877000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 16
+      },
+      &quot;date&quot;: &quot;2026-11-19&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
+      &quot;skip_news_check&quot;: false,
+      &quot;red_flag&quot;: false,
+      &quot;previous_price&quot;: 3.133
+    },
+    {
       &quot;ticker&quot;: &quot;GNLN&quot;,
       &quot;name&quot;: &quot;Greenlane Holdings&quot;,
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 0.69,
-      &quot;change_pct&quot;: 14.84,
-      &quot;volume&quot;: 5332508,
+      &quot;price&quot;: 0.693,
+      &quot;change_pct&quot;: 15.260000000000002,
+      &quot;volume&quot;: 5339330,
       &quot;market_cap&quot;: 417420.94,
       &quot;float_shares&quot;: 660877,
       &quot;country&quot;: &quot;United States&quot;,
@@ -2453,23 +2775,23 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)&quot;,
-      &quot;result&quot;: &quot;+14.8% · Entry $0.69 · T1 $0.72 · T2 $0.73 · T3 $0.76&quot;,
+      &quot;result&quot;: &quot;+15.3% · Entry $0.69 · T1 $0.72 · T2 $0.73 · T3 $0.76&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GNLN&quot;,
-        &quot;entry&quot;: 0.69,
-        &quot;stop&quot;: 0.6762,
+        &quot;entry&quot;: 0.693,
+        &quot;stop&quot;: 0.6791,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 0.7176,
-          &quot;t2&quot;: 0.7314,
-          &quot;t3&quot;: 0.759
+          &quot;t1&quot;: 0.7208,
+          &quot;t2&quot;: 0.7347,
+          &quot;t3&quot;: 0.7625
         },
-        &quot;risk_per_share&quot;: 0.0138,
+        &quot;risk_per_share&quot;: 0.0139,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 434,
-        &quot;position_value&quot;: 299.46,
+        &quot;shares&quot;: 432,
+        &quot;position_value&quot;: 299.38,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -2477,7 +2799,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.6762&quot;
+          &quot;hard_stop&quot;: &quot;$0.6791&quot;
         }
       },
       &quot;ta&quot;: {
@@ -2613,223 +2935,29 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 216.33,
+        &quot;rvol&quot;: 216.61,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 5332508,
+        &quot;volume&quot;: 5339330,
         &quot;adv&quot;: 24650,
-        &quot;recent_pct_of_adv&quot;: 21632.89,
+        &quot;recent_pct_of_adv&quot;: 21660.57,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 19.199,
-        &quot;buy_pressure_pct&quot;: 48.1,
+        &quot;price_velocity_pct&quot;: 18.398,
+        &quot;buy_pressure_pct&quot;: 47.35,
         &quot;large_bar_count&quot;: 28,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 5332508,
+        &quot;recent_volume&quot;: 5339330,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0221,
         &quot;last_price&quot;: 0.601,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:08:56.589000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 29
-      },
-      &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.714
-    },
-    {
-      &quot;ticker&quot;: &quot;INHD&quot;,
-      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
-      &quot;status&quot;: &quot;ALERT&quot;,
-      &quot;source&quot;: &quot;regular&quot;,
-      &quot;price&quot;: 3.133,
-      &quot;change_pct&quot;: 36.199999999999996,
-      &quot;volume&quot;: 2543211,
-      &quot;market_cap&quot;: 5797336.3,
-      &quot;float_shares&quot;: 2489630,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Passed filters&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;8-K (Nov 18), 8-K (Aug 31)&quot;,
-      &quot;result&quot;: &quot;+36.2% · Entry $3.13 · T1 $3.26 · T2 $3.32 · T3 $3.45&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;entry&quot;: 3.133,
-        &quot;stop&quot;: 3.0703,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 3.2584,
-          &quot;t2&quot;: 3.3211,
-          &quot;t3&quot;: 3.4465
-        },
-        &quot;risk_per_share&quot;: 0.0627,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 95,
-        &quot;position_value&quot;: 297.63,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$3.0703&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:51:48.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T05:26:19.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Inno Holdings Announces Proposed Merger and Reincorporation&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;13h ago · 18 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-18T21:31:07.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 5,
-            &quot;keywords&quot;: [
-              &quot;merger&quot;
-            ]
-          },
-          {
-            &quot;title&quot;: &quot;Why Palo Alto Shares Are Trading Higher By Over 9%; Here Are 20 Stocks Moving Premarket&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;1h ago · 19 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-19T09:23:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at INHD last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T10:13:01.409+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 5,
-        &quot;avg_score&quot;: 3.0,
-        &quot;catalyst_confirmed&quot;: true,
-        &quot;high_impact_count&quot;: 3,
-        &quot;top_headline&quot;: &quot;Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands&quot;,
-        &quot;news_filter_reason&quot;: &quot;catalyst confirmed (3 items, score ≥3)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;INHD&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 6.06,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 2543211,
-        &quot;adv&quot;: 419640,
-        &quot;recent_pct_of_adv&quot;: 606.05,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 27.82,
-        &quot;buy_pressure_pct&quot;: 43.16,
-        &quot;large_bar_count&quot;: 19,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 2543211,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0652,
-        &quot;last_price&quot;: 2.3,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:02.852000+00:00&quot;,
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:05.945000+00:00&quot;,
         &quot;stale_age_seconds&quot;: 14
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 3.14
+      &quot;previous_price&quot;: 0.69
     },
     {
       &quot;ticker&quot;: &quot;SPRC&quot;,
@@ -2837,8 +2965,8 @@
       &quot;status&quot;: &quot;ALERT&quot;,
       &quot;source&quot;: &quot;regular&quot;,
       &quot;price&quot;: 0.432,
-      &quot;change_pct&quot;: 59.940000000000005,
-      &quot;volume&quot;: 15796686,
+      &quot;change_pct&quot;: 60.160000000000004,
+      &quot;volume&quot;: 15830255,
       &quot;market_cap&quot;: 555789.9,
       &quot;float_shares&quot;: 2057719,
       &quot;country&quot;: &quot;International (region 83)&quot;,
@@ -2847,7 +2975,7 @@
       &quot;scan_reason&quot;: &quot;Passed filters&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;+59.9% · Entry $0.43 · T1 $0.45 · T2 $0.46 · T3 $0.47&quot;,
+      &quot;result&quot;: &quot;+60.2% · Entry $0.43 · T1 $0.45 · T2 $0.46 · T3 $0.47&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;SPRC&quot;,
@@ -2953,63 +3081,63 @@
         &quot;stale&quot;: false,
         &quot;no_move&quot;: false,
         &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 9.78,
+        &quot;rvol&quot;: 9.8,
         &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 15796686,
+        &quot;volume&quot;: 15830255,
         &quot;adv&quot;: 1615338,
-        &quot;recent_pct_of_adv&quot;: 977.92,
+        &quot;recent_pct_of_adv&quot;: 980.0,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 43.729,
-        &quot;buy_pressure_pct&quot;: 46.12,
+        &quot;price_velocity_pct&quot;: 40.923,
+        &quot;buy_pressure_pct&quot;: 46.07,
         &quot;large_bar_count&quot;: 30,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 15796686,
+        &quot;recent_volume&quot;: 15830255,
         &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0192,
+        &quot;median_range&quot;: 0.0191,
         &quot;last_price&quot;: 0.2701,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:03.748000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 14
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:04.943000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 15
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:18&quot;,
+      &quot;time&quot;: &quot;22:10:20&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.427
+      &quot;previous_price&quot;: 0.432
     },
     {
       &quot;ticker&quot;: &quot;GMM&quot;,
       &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
       &quot;status&quot;: &quot;CANDIDATE&quot;,
       &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 2.0,
-      &quot;change_pct&quot;: 28.95,
-      &quot;volume&quot;: 4085064,
+      &quot;price&quot;: 1.981,
+      &quot;change_pct&quot;: 28.389999999999997,
+      &quot;volume&quot;: 4093434,
       &quot;market_cap&quot;: 89514060.85,
       &quot;float_shares&quot;: 57696024,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: false,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.9%, rvol 1.6x)&quot;,
+      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (28.4%, rvol 1.6x)&quot;,
       &quot;scan_passed&quot;: true,
       &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.9%&quot;,
+      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +28.4%&quot;,
       &quot;plan&quot;: {
         &quot;valid&quot;: true,
         &quot;ticker&quot;: &quot;GMM&quot;,
-        &quot;entry&quot;: 2.0,
-        &quot;stop&quot;: 1.96,
+        &quot;entry&quot;: 1.981,
+        &quot;stop&quot;: 1.9414,
         &quot;targets&quot;: {
-          &quot;t1&quot;: 2.08,
-          &quot;t2&quot;: 2.12,
-          &quot;t3&quot;: 2.2
+          &quot;t1&quot;: 2.0602,
+          &quot;t2&quot;: 2.0998,
+          &quot;t3&quot;: 2.179
         },
-        &quot;risk_per_share&quot;: 0.04,
+        &quot;risk_per_share&quot;: 0.0396,
         &quot;risk_amount&quot;: 20.0,
         &quot;daily_risk_budget&quot;: 60.0,
         &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 150,
-        &quot;position_value&quot;: 300.0,
+        &quot;shares&quot;: 151,
+        &quot;position_value&quot;: 299.13,
         &quot;risk_reward&quot;: 2.0,
         &quot;confidence&quot;: &quot;MED&quot;,
         &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3017,7 +3145,7 @@
           &quot;momentum_based&quot;: true,
           &quot;time_based&quot;: false,
           &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$1.96&quot;
+          &quot;hard_stop&quot;: &quot;$1.9414&quot;
         }
       },
       &quot;ta&quot;: {
@@ -3254,193 +3382,65 @@
         &quot;tape_score&quot;: 5.0,
         &quot;rvol&quot;: 1.61,
         &quot;volume_indicator&quot;: &quot;moderate&quot;,
-        &quot;volume&quot;: 4085064,
+        &quot;volume&quot;: 4093434,
         &quot;adv&quot;: 2539907,
-        &quot;recent_pct_of_adv&quot;: 160.84,
+        &quot;recent_pct_of_adv&quot;: 161.16,
         &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 23.267,
-        &quot;buy_pressure_pct&quot;: 49.92,
+        &quot;price_velocity_pct&quot;: 25.103,
+        &quot;buy_pressure_pct&quot;: 49.58,
         &quot;large_bar_count&quot;: 18,
         &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 4085064,
+        &quot;recent_volume&quot;: 4093434,
         &quot;prior_volume&quot;: 0,
         &quot;median_range&quot;: 0.0298,
         &quot;last_price&quot;: 1.55,
         &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:04.526000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
+        &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:05.149000+00:00&quot;,
+        &quot;stale_age_seconds&quot;: 14
       },
       &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:19&quot;,
+      &quot;time&quot;: &quot;22:10:21&quot;,
       &quot;skip_news_check&quot;: false,
       &quot;red_flag&quot;: true,
-      &quot;previous_price&quot;: 1.98
-    },
-    {
-      &quot;ticker&quot;: &quot;GMEX&quot;,
-      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
-      &quot;status&quot;: &quot;CANDIDATE&quot;,
-      &quot;source&quot;: &quot;top_gainer_exempt&quot;,
-      &quot;price&quot;: 0.444,
-      &quot;change_pct&quot;: 51.88,
-      &quot;volume&quot;: 5627376,
-      &quot;market_cap&quot;: 483389.6,
-      &quot;float_shares&quot;: 1580221,
-      &quot;country&quot;: &quot;Australia&quot;,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;scan_reason&quot;: &quot;Top gainer tape exempt (51.9%, rvol 7.8x)&quot;,
-      &quot;scan_passed&quot;: true,
-      &quot;sec_filings&quot;: &quot;&quot;,
-      &quot;result&quot;: &quot;Top-10 gainer tape momentum · +51.9%&quot;,
-      &quot;plan&quot;: {
-        &quot;valid&quot;: true,
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;entry&quot;: 0.444,
-        &quot;stop&quot;: 0.4351,
-        &quot;targets&quot;: {
-          &quot;t1&quot;: 0.4618,
-          &quot;t2&quot;: 0.4707,
-          &quot;t3&quot;: 0.4885
-        },
-        &quot;risk_per_share&quot;: 0.0089,
-        &quot;risk_amount&quot;: 20.0,
-        &quot;daily_risk_budget&quot;: 60.0,
-        &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-        &quot;shares&quot;: 675,
-        &quot;position_value&quot;: 299.7,
-        &quot;risk_reward&quot;: 2.0,
-        &quot;confidence&quot;: &quot;MED&quot;,
-        &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
-        &quot;exit_rules&quot;: {
-          &quot;momentum_based&quot;: true,
-          &quot;time_based&quot;: false,
-          &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-          &quot;hard_stop&quot;: &quot;$0.4351&quot;
-        }
-      },
-      &quot;ta&quot;: {
-        &quot;valid&quot;: false,
-        &quot;error&quot;: &quot;No bar data&quot;
-      },
-      &quot;news&quot;: {
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;total_items&quot;: 20,
-        &quot;scored_items&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;headlines&quot;: [
-          {
-            &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          },
-          {
-            &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
-            &quot;source&quot;: &quot;Webull&quot;,
-            &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
-            &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
-            &quot;url&quot;: &quot;&quot;,
-            &quot;score&quot;: 0,
-            &quot;keywords&quot;: []
-          }
-        ],
-        &quot;red_flags&quot;: [],
-        &quot;max_score&quot;: 0,
-        &quot;avg_score&quot;: 0.0,
-        &quot;catalyst_confirmed&quot;: false,
-        &quot;high_impact_count&quot;: 0,
-        &quot;top_headline&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
-        &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
-      },
-      &quot;tape&quot;: {
-        &quot;ticker&quot;: &quot;GMEX&quot;,
-        &quot;valid&quot;: true,
-        &quot;stale&quot;: false,
-        &quot;no_move&quot;: false,
-        &quot;tape_score&quot;: 8.0,
-        &quot;rvol&quot;: 7.81,
-        &quot;volume_indicator&quot;: &quot;high&quot;,
-        &quot;volume&quot;: 5627376,
-        &quot;adv&quot;: 720711,
-        &quot;recent_pct_of_adv&quot;: 780.81,
-        &quot;volume_acceleration&quot;: 0.0,
-        &quot;price_velocity_pct&quot;: 2.611,
-        &quot;buy_pressure_pct&quot;: 43.06,
-        &quot;large_bar_count&quot;: 23,
-        &quot;vwap_distance_pct&quot;: 0.0,
-        &quot;recent_volume&quot;: 5627376,
-        &quot;prior_volume&quot;: 0,
-        &quot;median_range&quot;: 0.0094,
-        &quot;last_price&quot;: 0.3059,
-        &quot;vwap&quot;: null,
-        &quot;last_trade_time&quot;: &quot;2026-11-19T11:09:04.861000+00:00&quot;,
-        &quot;stale_age_seconds&quot;: 12
-      },
-      &quot;date&quot;: &quot;2026-11-19&quot;,
-      &quot;time&quot;: &quot;22:09:19&quot;,
-      &quot;skip_news_check&quot;: false,
-      &quot;red_flag&quot;: false,
-      &quot;previous_price&quot;: 0.394
+      &quot;previous_price&quot;: 2.0
     }
   ],
   &quot;pre_market_watchlist&quot;: [],
   &quot;bounce_results&quot;: [],
   &quot;losers_scanned&quot;: 50,
   &quot;active_plan&quot;: {
-    &quot;ticker&quot;: &quot;GNLN&quot;,
-    &quot;name&quot;: &quot;Greenlane Holdings&quot;,
+    &quot;ticker&quot;: &quot;GMEX&quot;,
+    &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
     &quot;status&quot;: &quot;ALERT&quot;,
     &quot;source&quot;: &quot;regular&quot;,
-    &quot;price&quot;: 0.69,
-    &quot;change_pct&quot;: 14.84,
-    &quot;volume&quot;: 5332508,
-    &quot;market_cap&quot;: 417420.94,
-    &quot;float_shares&quot;: 660877,
-    &quot;country&quot;: &quot;United States&quot;,
+    &quot;price&quot;: 0.463,
+    &quot;change_pct&quot;: 51.39,
+    &quot;volume&quot;: 5861197,
+    &quot;market_cap&quot;: 483389.6,
+    &quot;float_shares&quot;: 1580221,
+    &quot;country&quot;: &quot;Australia&quot;,
     &quot;cap_size&quot;: &quot;nano-cap&quot;,
     &quot;is_penny_stock&quot;: true,
     &quot;scan_reason&quot;: &quot;Passed filters&quot;,
     &quot;scan_passed&quot;: true,
-    &quot;sec_filings&quot;: &quot;8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)&quot;,
-    &quot;result&quot;: &quot;+14.8% · Entry $0.69 · T1 $0.72 · T2 $0.73 · T3 $0.76&quot;,
+    &quot;sec_filings&quot;: &quot;&quot;,
+    &quot;result&quot;: &quot;+51.4% · Entry $0.46 · T1 $0.48 · T2 $0.49 · T3 $0.51&quot;,
     &quot;plan&quot;: {
       &quot;valid&quot;: true,
-      &quot;ticker&quot;: &quot;GNLN&quot;,
-      &quot;entry&quot;: 0.69,
-      &quot;stop&quot;: 0.6762,
+      &quot;ticker&quot;: &quot;GMEX&quot;,
+      &quot;entry&quot;: 0.463,
+      &quot;stop&quot;: 0.4537,
       &quot;targets&quot;: {
-        &quot;t1&quot;: 0.7176,
-        &quot;t2&quot;: 0.7314,
-        &quot;t3&quot;: 0.759
+        &quot;t1&quot;: 0.4816,
+        &quot;t2&quot;: 0.4909,
+        &quot;t3&quot;: 0.5095
       },
-      &quot;risk_per_share&quot;: 0.0138,
+      &quot;risk_per_share&quot;: 0.0093,
       &quot;risk_amount&quot;: 20.0,
       &quot;daily_risk_budget&quot;: 60.0,
       &quot;risk_unit_label&quot;: &quot;R = $20.0 (3% daily ÷ 3 trades)&quot;,
-      &quot;shares&quot;: 434,
-      &quot;position_value&quot;: 299.46,
+      &quot;shares&quot;: 647,
+      &quot;position_value&quot;: 299.56,
       &quot;risk_reward&quot;: 2.0,
       &quot;confidence&quot;: &quot;MED&quot;,
       &quot;strategy&quot;: &quot;Demand zone + candlestick confirmation scalp&quot;,
@@ -3448,7 +3448,7 @@
         &quot;momentum_based&quot;: true,
         &quot;time_based&quot;: false,
         &quot;trail_breakeven_at&quot;: &quot;+1%&quot;,
-        &quot;hard_stop&quot;: &quot;$0.6762&quot;
+        &quot;hard_stop&quot;: &quot;$0.4537&quot;
       }
     },
     &quot;ta&quot;: {
@@ -3456,59 +3456,23 @@
       &quot;error&quot;: &quot;No bar data&quot;
     },
     &quot;news&quot;: {
-      &quot;ticker&quot;: &quot;GNLN&quot;,
+      &quot;ticker&quot;: &quot;GMEX&quot;,
       &quot;total_items&quot;: 20,
       &quot;scored_items&quot;: [
         {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 17 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-17T17:05:48.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Greenlane Holdings GAAP EPS of $1.00, revenue of $0.07M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:57:07.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*Greenlane Holdings 3Q EPS $1.00 >GNLN&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:20:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Greenlane: Q3 Earnings Snapshot&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T16:40:12.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:05:28.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at GNLN last week (1109-1113)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:15:22.533+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -3516,55 +3480,19 @@
       ],
       &quot;headlines&quot;: [
         {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;1d ago · 17 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-17T17:05:48.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Greenlane Holdings GAAP EPS of $1.00, revenue of $0.07M&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:57:07.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;*Greenlane Holdings 3Q EPS $1.00 >GNLN&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T21:20:00.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Greenlane: Q3 Earnings Snapshot&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T16:40:12.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Monday&#39;s Pre-Market Session&quot;,
-          &quot;source&quot;: &quot;Webull&quot;,
-          &quot;time&quot;: &quot;2d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T12:05:28.000+0000&quot;,
-          &quot;url&quot;: &quot;&quot;,
-          &quot;score&quot;: 0,
-          &quot;keywords&quot;: []
-        },
-        {
-          &quot;title&quot;: &quot;Weekly Report: what happened at GNLN last week (1109-1113)?&quot;,
+          &quot;title&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
           &quot;source&quot;: &quot;Webull&quot;,
           &quot;time&quot;: &quot;3d ago · 16 Nov&quot;,
-          &quot;raw_time&quot;: &quot;2026-11-16T10:15:22.533+0000&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-16T09:34:16.941+0000&quot;,
+          &quot;url&quot;: &quot;&quot;,
+          &quot;score&quot;: 0,
+          &quot;keywords&quot;: []
+        },
+        {
+          &quot;title&quot;: &quot;12 Consumer Discretionary Stocks Moving In Friday&#39;s After-Market Session&quot;,
+          &quot;source&quot;: &quot;Webull&quot;,
+          &quot;time&quot;: &quot;5d ago · 13 Nov&quot;,
+          &quot;raw_time&quot;: &quot;2026-11-13T21:05:45.000+0000&quot;,
           &quot;url&quot;: &quot;&quot;,
           &quot;score&quot;: 0,
           &quot;keywords&quot;: []
@@ -3575,49 +3503,49 @@
       &quot;avg_score&quot;: 0.0,
       &quot;catalyst_confirmed&quot;: false,
       &quot;high_impact_count&quot;: 0,
-      &quot;top_headline&quot;: &quot;12 Consumer Discretionary Stocks Moving In Tuesday&#39;s Intraday Session&quot;,
+      &quot;top_headline&quot;: &quot;Weekly Report: what happened at GMEX last week (1109-1113)?&quot;,
       &quot;news_filter_reason&quot;: &quot;low catalyst score (max 0/5)&quot;
     },
     &quot;tape&quot;: {
-      &quot;ticker&quot;: &quot;GNLN&quot;,
+      &quot;ticker&quot;: &quot;GMEX&quot;,
       &quot;valid&quot;: true,
       &quot;stale&quot;: false,
       &quot;no_move&quot;: false,
       &quot;tape_score&quot;: 8.0,
-      &quot;rvol&quot;: 216.33,
+      &quot;rvol&quot;: 8.13,
       &quot;volume_indicator&quot;: &quot;high&quot;,
-      &quot;volume&quot;: 5332508,
-      &quot;adv&quot;: 24650,
-      &quot;recent_pct_of_adv&quot;: 21632.89,
+      &quot;volume&quot;: 5861197,
+      &quot;adv&quot;: 720711,
+      &quot;recent_pct_of_adv&quot;: 813.25,
       &quot;volume_acceleration&quot;: 0.0,
-      &quot;price_velocity_pct&quot;: 19.199,
-      &quot;buy_pressure_pct&quot;: 48.1,
-      &quot;large_bar_count&quot;: 28,
+      &quot;price_velocity_pct&quot;: 2.611,
+      &quot;buy_pressure_pct&quot;: 43.49,
+      &quot;large_bar_count&quot;: 23,
       &quot;vwap_distance_pct&quot;: 0.0,
-      &quot;recent_volume&quot;: 5332508,
+      &quot;recent_volume&quot;: 5861197,
       &quot;prior_volume&quot;: 0,
-      &quot;median_range&quot;: 0.0221,
-      &quot;last_price&quot;: 0.601,
+      &quot;median_range&quot;: 0.0099,
+      &quot;last_price&quot;: 0.3059,
       &quot;vwap&quot;: null,
-      &quot;last_trade_time&quot;: &quot;2026-11-19T11:08:56.589000+00:00&quot;,
-      &quot;stale_age_seconds&quot;: 29
+      &quot;last_trade_time&quot;: &quot;2026-11-19T11:10:06.245000+00:00&quot;,
+      &quot;stale_age_seconds&quot;: 14
     },
     &quot;date&quot;: &quot;2026-11-19&quot;,
-    &quot;time&quot;: &quot;22:09:18&quot;,
+    &quot;time&quot;: &quot;22:10:20&quot;,
     &quot;skip_news_check&quot;: false,
     &quot;red_flag&quot;: false,
-    &quot;previous_price&quot;: 0.714
+    &quot;previous_price&quot;: 0.444
   },
   &quot;total_candidates&quot;: 5,
-  &quot;alerts_generated&quot;: 3,
+  &quot;alerts_generated&quot;: 4,
   &quot;all_gainers&quot;: [
     {
       &quot;ticker&quot;: &quot;SPRC&quot;,
       &quot;name&quot;: &quot;Scisparc&quot;,
       &quot;price&quot;: 0.432,
-      &quot;change_pct&quot;: 59.940000000000005,
-      &quot;volume&quot;: 15796686,
-      &quot;rvol&quot;: 6.3522677326774915,
+      &quot;change_pct&quot;: 60.160000000000004,
+      &quot;volume&quot;: 15830255,
+      &quot;rvol&quot;: 6.365766720725887,
       &quot;market_cap&quot;: 555789.9,
       &quot;float_shares&quot;: 2057719,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3629,25 +3557,25 @@
     {
       &quot;ticker&quot;: &quot;GMEX&quot;,
       &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
-      &quot;price&quot;: 0.444,
-      &quot;change_pct&quot;: 51.88,
-      &quot;volume&quot;: 5627376,
-      &quot;rvol&quot;: 4.8077753115404525,
+      &quot;price&quot;: 0.463,
+      &quot;change_pct&quot;: 51.39,
+      &quot;volume&quot;: 5861197,
+      &quot;rvol&quot;: 5.007541389214968,
       &quot;market_cap&quot;: 483389.6,
       &quot;float_shares&quot;: 1580221,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;Australia&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $0.5M&quot;
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;INHD&quot;,
       &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
-      &quot;price&quot;: 3.133,
-      &quot;change_pct&quot;: 36.199999999999996,
-      &quot;volume&quot;: 2543211,
-      &quot;rvol&quot;: 2.453539054631334,
+      &quot;price&quot;: 3.123,
+      &quot;change_pct&quot;: 35.77,
+      &quot;volume&quot;: 2545348,
+      &quot;rvol&quot;: 2.4556007054183695,
       &quot;market_cap&quot;: 5797336.3,
       &quot;float_shares&quot;: 2489630,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3659,10 +3587,10 @@
     {
       &quot;ticker&quot;: &quot;GMM&quot;,
       &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
-      &quot;price&quot;: 2.0,
-      &quot;change_pct&quot;: 28.95,
-      &quot;volume&quot;: 4085064,
-      &quot;rvol&quot;: 0.17776754270531764,
+      &quot;price&quot;: 1.981,
+      &quot;change_pct&quot;: 28.389999999999997,
+      &quot;volume&quot;: 4093434,
+      &quot;rvol&quot;: 0.1781317755135291,
       &quot;market_cap&quot;: 89514060.85,
       &quot;float_shares&quot;: 57696024,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
@@ -3674,10 +3602,10 @@
     {
       &quot;ticker&quot;: &quot;LGHL&quot;,
       &quot;name&quot;: &quot;Lion Group Holding Ltd&quot;,
-      &quot;price&quot;: 1.049,
-      &quot;change_pct&quot;: 21.97,
-      &quot;volume&quot;: 1985466,
-      &quot;rvol&quot;: 1.1519918398938909,
+      &quot;price&quot;: 1.059,
+      &quot;change_pct&quot;: 23.24,
+      &quot;volume&quot;: 1986316,
+      &quot;rvol&quot;: 1.1524850203683537,
       &quot;market_cap&quot;: 39688.45,
       &quot;float_shares&quot;: 45870,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3704,10 +3632,10 @@
     {
       &quot;ticker&quot;: &quot;NCPL&quot;,
       &quot;name&quot;: &quot;Netcapital Inc&quot;,
-      &quot;price&quot;: 3.363,
-      &quot;change_pct&quot;: 16.36,
-      &quot;volume&quot;: 181031,
-      &quot;rvol&quot;: 0.04566424166322562,
+      &quot;price&quot;: 3.34,
+      &quot;change_pct&quot;: 15.58,
+      &quot;volume&quot;: 182151,
+      &quot;rvol&quot;: 0.04594675654003021,
       &quot;market_cap&quot;: 23173256.92,
       &quot;float_shares&quot;: 4558277,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -3715,6 +3643,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: vol/float 0.04x < 0.1x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;GNLN&quot;,
+      &quot;name&quot;: &quot;Greenlane Holdings&quot;,
+      &quot;price&quot;: 0.693,
+      &quot;change_pct&quot;: 15.260000000000002,
+      &quot;volume&quot;: 5339330,
+      &quot;rvol&quot;: 216.60567951318458,
+      &quot;market_cap&quot;: 417420.94,
+      &quot;float_shares&quot;: 660877,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: true,
+      &quot;reason&quot;: &quot;Passed filters&quot;
     },
     {
       &quot;ticker&quot;: &quot;PMN&quot;,
@@ -3732,21 +3675,6 @@
       &quot;reason&quot;: &quot;Filtered: vol 360, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;GNLN&quot;,
-      &quot;name&quot;: &quot;Greenlane Holdings&quot;,
-      &quot;price&quot;: 0.69,
-      &quot;change_pct&quot;: 14.84,
-      &quot;volume&quot;: 5332508,
-      &quot;rvol&quot;: 216.32892494929007,
-      &quot;market_cap&quot;: 417420.94,
-      &quot;float_shares&quot;: 660877,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: true,
-      &quot;reason&quot;: &quot;Passed filters&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;ASTC&quot;,
       &quot;name&quot;: &quot;Astrotech Corp&quot;,
       &quot;price&quot;: 4.466,
@@ -3760,21 +3688,6 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;ZBAO&quot;,
-      &quot;name&quot;: &quot;Zhibao Tech&quot;,
-      &quot;price&quot;: 0.153,
-      &quot;change_pct&quot;: 13.850000000000001,
-      &quot;volume&quot;: 466662,
-      &quot;rvol&quot;: 0.01284698457930738,
-      &quot;market_cap&quot;: 1332407.36,
-      &quot;float_shares&quot;: 9744584,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.153, tiny price $0.153, tiny rvol 0.0x, tiny vol/float 0.05x, vol/float 0.05x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;PULM&quot;,
@@ -3927,21 +3840,6 @@
       &quot;reason&quot;: &quot;Filtered: vol 81, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;COSM&quot;,
-      &quot;name&quot;: &quot;Cosmos Health Inc.&quot;,
-      &quot;price&quot;: 3.3,
-      &quot;change_pct&quot;: 11.86,
-      &quot;volume&quot;: 55,
-      &quot;rvol&quot;: 0.00020812284545554307,
-      &quot;market_cap&quot;: 14843482.55,
-      &quot;float_shares&quot;: 3830708,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;International (region 68)&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 55, vol/float 0.00x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;BMEA&quot;,
       &quot;name&quot;: &quot;Biomea Fusion, Inc.&quot;,
       &quot;price&quot;: 0.592,
@@ -4021,15 +3919,15 @@
       &quot;name&quot;: &quot;Mega Matrix Corp&quot;,
       &quot;price&quot;: 3.151,
       &quot;change_pct&quot;: 10.94,
-      &quot;volume&quot;: 38304,
-      &quot;rvol&quot;: 0.026752769460607343,
+      &quot;volume&quot;: 38336,
+      &quot;rvol&quot;: 0.026775119309780784,
       &quot;market_cap&quot;: 9716472.12,
       &quot;float_shares&quot;: 2974345,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;Singapore&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny vol/float 0.01x, vol 38,304, vol/float 0.01x < 0.1x&quot;
+      &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny vol/float 0.01x, vol 38,336, vol/float 0.01x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;RADX&quot;,
@@ -4107,6 +4005,21 @@
       &quot;reason&quot;: &quot;Filtered: vol 406, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M&quot;
     },
     {
+      &quot;ticker&quot;: &quot;RAYA&quot;,
+      &quot;name&quot;: &quot;Erayak Power Sol&quot;,
+      &quot;price&quot;: 0.413,
+      &quot;change_pct&quot;: 9.9,
+      &quot;volume&quot;: 4122939,
+      &quot;rvol&quot;: 8.70255318071099,
+      &quot;market_cap&quot;: 402336.85,
+      &quot;float_shares&quot;: 971737,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $0.4M, avg $vol $0.2M < $0.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;GLE&quot;,
       &quot;name&quot;: &quot;Global Engine Group Holding Limited&quot;,
       &quot;price&quot;: 2.05,
@@ -4120,6 +4033,21 @@
       &quot;country&quot;: &quot;China / Hong Kong&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 22, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;ZBAO&quot;,
+      &quot;name&quot;: &quot;Zhibao Tech&quot;,
+      &quot;price&quot;: 0.148,
+      &quot;change_pct&quot;: 6.18,
+      &quot;volume&quot;: 523801,
+      &quot;rvol&quot;: 0.014419994277712317,
+      &quot;market_cap&quot;: 1332407.36,
+      &quot;float_shares&quot;: 9744584,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.148, tiny price $0.148, tiny rvol 0.0x, tiny vol/float 0.05x, vol/float 0.05x < 0.1x&quot;
     },
     {
       &quot;ticker&quot;: &quot;MTEK&quot;,
@@ -4152,21 +4080,6 @@
       &quot;reason&quot;: &quot;Filtered: price $0.134, vol 660, float 130.6M > 100M, vol/float 0.00x < 0.1x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;BNAI&quot;,
-      &quot;name&quot;: &quot;Brand Engagement&quot;,
-      &quot;price&quot;: 3.1,
-      &quot;change_pct&quot;: 9.93,
-      &quot;volume&quot;: 14421,
-      &quot;rvol&quot;: 0.05443037019143668,
-      &quot;market_cap&quot;: 21116289.72,
-      &quot;float_shares&quot;: 6177733,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: false,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: vol 14,421, vol/float 0.00x < 0.1x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;KITT&quot;,
       &quot;name&quot;: &quot;Nauticus Robotic&quot;,
       &quot;price&quot;: 0.977,
@@ -4180,6 +4093,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: tiny price $0.977, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 51, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;IXHL&quot;,
+      &quot;name&quot;: &quot;Incannex Healthcare Ltd&quot;,
+      &quot;price&quot;: 1.92,
+      &quot;change_pct&quot;: 9.71,
+      &quot;volume&quot;: 393,
+      &quot;rvol&quot;: 0.0028266873813222854,
+      &quot;market_cap&quot;: 21955552.5,
+      &quot;float_shares&quot;: 11401954,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Australia&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: vol 393, vol/float 0.00x < 0.1x&quot;
     }
   ],
   &quot;all_losers&quot;: [
@@ -4214,21 +4142,6 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 1, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;JDZG&quot;,
-      &quot;name&quot;: &quot;Jiade Limited&quot;,
-      &quot;price&quot;: 0.09,
-      &quot;change_pct&quot;: -25.080000000000002,
-      &quot;volume&quot;: 414253,
-      &quot;rvol&quot;: 0.095664539854009,
-      &quot;market_cap&quot;: 717781.44,
-      &quot;float_shares&quot;: 5682411,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;China / Cayman-China&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.090, mktcap $0.7M, rvol 0.1x, vol/float 0.07x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;OPHI&quot;,
       &quot;name&quot;: &quot;Collplant Biotechnologies Ltd&quot;,
       &quot;price&quot;: 2.57,
@@ -4242,6 +4155,36 @@
       &quot;country&quot;: &quot;International (region 83)&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 10, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;INVZ&quot;,
+      &quot;name&quot;: &quot;Innoviz Technologies Ltd&quot;,
+      &quot;price&quot;: 0.111,
+      &quot;change_pct&quot;: -23.29,
+      &quot;volume&quot;: 106080,
+      &quot;rvol&quot;: 0.020122125061814645,
+      &quot;market_cap&quot;: 43218146.18,
+      &quot;float_shares&quot;: 293745784,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;International (region 83)&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.111, rvol 0.0x, float 293.7M, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;JDZG&quot;,
+      &quot;name&quot;: &quot;Jiade Limited&quot;,
+      &quot;price&quot;: 0.093,
+      &quot;change_pct&quot;: -22.67,
+      &quot;volume&quot;: 414273,
+      &quot;rvol&quot;: 0.0956691585068542,
+      &quot;market_cap&quot;: 717781.44,
+      &quot;float_shares&quot;: 5682411,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;China / Cayman-China&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.093, mktcap $0.7M, rvol 0.1x, vol/float 0.07x&quot;
     },
     {
       &quot;ticker&quot;: &quot;ZNB&quot;,
@@ -4261,17 +4204,17 @@
     {
       &quot;ticker&quot;: &quot;AZI&quot;,
       &quot;name&quot;: &quot;Autozi Internet Technology (Global) Ltd.&quot;,
-      &quot;price&quot;: 0.839,
+      &quot;price&quot;: 0.849,
       &quot;change_pct&quot;: -18.37,
-      &quot;volume&quot;: 89752,
-      &quot;rvol&quot;: 0.00968569199948373,
+      &quot;volume&quot;: 89901,
+      &quot;rvol&quot;: 0.009701771508663725,
       &quot;market_cap&quot;: 69004066.56,
       &quot;float_shares&quot;: 56227442,
       &quot;cap_size&quot;: &quot;micro-cap&quot;,
       &quot;is_penny_stock&quot;: true,
       &quot;country&quot;: &quot;China / Cayman-China&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 89,752, float 56.2M, vol/float 0.00x&quot;
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 89,901, float 56.2M, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;RRGB&quot;,
@@ -4292,9 +4235,9 @@
       &quot;ticker&quot;: &quot;ABTS&quot;,
       &quot;name&quot;: &quot;Abits Group Inc.&quot;,
       &quot;price&quot;: 0.25,
-      &quot;change_pct&quot;: -18.029999999999998,
-      &quot;volume&quot;: 128763,
-      &quot;rvol&quot;: 0.01335804036013583,
+      &quot;change_pct&quot;: -17.97,
+      &quot;volume&quot;: 128848,
+      &quot;rvol&quot;: 0.013366858370205584,
       &quot;market_cap&quot;: 1084103.9,
       &quot;float_shares&quot;: 2696020,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4397,9 +4340,9 @@
       &quot;ticker&quot;: &quot;GDHG&quot;,
       &quot;name&quot;: &quot;Golden Heaven Gr&quot;,
       &quot;price&quot;: 0.132,
-      &quot;change_pct&quot;: -14.66,
-      &quot;volume&quot;: 774461,
-      &quot;rvol&quot;: 0.025617880983949497,
+      &quot;change_pct&quot;: -14.729999999999999,
+      &quot;volume&quot;: 776787,
+      &quot;rvol&quot;: 0.025694821192906007,
       &quot;market_cap&quot;: 9209191.32,
       &quot;float_shares&quot;: 41818480,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4439,27 +4382,12 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 2, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;INVZ&quot;,
-      &quot;name&quot;: &quot;Innoviz Technologies Ltd&quot;,
-      &quot;price&quot;: 0.126,
-      &quot;change_pct&quot;: -13.270000000000001,
-      &quot;volume&quot;: 97775,
-      &quot;rvol&quot;: 0.01854676449772744,
-      &quot;market_cap&quot;: 43218146.18,
-      &quot;float_shares&quot;: 293745784,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;International (region 83)&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.126, rvol 0.0x, vol 97,775, float 293.7M, vol/float 0.00x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;CDT&quot;,
       &quot;name&quot;: &quot;CDT Equity&quot;,
       &quot;price&quot;: 0.299,
-      &quot;change_pct&quot;: -12.94,
-      &quot;volume&quot;: 592789,
-      &quot;rvol&quot;: 0.914994111391178,
+      &quot;change_pct&quot;: -12.540000000000001,
+      &quot;volume&quot;: 597105,
+      &quot;rvol&quot;: 0.921656034241913,
       &quot;market_cap&quot;: 651749.39,
       &quot;float_shares&quot;: 1721917,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4499,6 +4427,21 @@
       &quot;reason&quot;: &quot;Filtered: price $0.230, mktcap $2.1M, rvol 0.2x, vol 11,029, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;XXII&quot;,
+      &quot;name&quot;: &quot;22Nd Century&quot;,
+      &quot;price&quot;: 0.322,
+      &quot;change_pct&quot;: -12.86,
+      &quot;volume&quot;: 6241774,
+      &quot;rvol&quot;: 1.1138118924513403,
+      &quot;market_cap&quot;: 1187776.59,
+      &quot;float_shares&quot;: 3207232,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: price $0.322, mktcap $1.2M&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;CRIS&quot;,
       &quot;name&quot;: &quot;Curis&quot;,
       &quot;price&quot;: 0.536,
@@ -4518,8 +4461,8 @@
       &quot;name&quot;: &quot;CHANSON INTL HLDG&quot;,
       &quot;price&quot;: 0.089,
       &quot;change_pct&quot;: -12.75,
-      &quot;volume&quot;: 3971090,
-      &quot;rvol&quot;: 0.09387588282049525,
+      &quot;volume&quot;: 3973911,
+      &quot;rvol&quot;: 0.09394257077403864,
       &quot;market_cap&quot;: 236883.88,
       &quot;float_shares&quot;: 2096288,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4544,21 +4487,6 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $1.8M, rvol 0.0x, vol 70, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;XXII&quot;,
-      &quot;name&quot;: &quot;22Nd Century&quot;,
-      &quot;price&quot;: 0.324,
-      &quot;change_pct&quot;: -12.620000000000001,
-      &quot;volume&quot;: 6241461,
-      &quot;rvol&quot;: 1.1137560392400037,
-      &quot;market_cap&quot;: 1187776.59,
-      &quot;float_shares&quot;: 3207232,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.324, mktcap $1.2M&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;MBAI&quot;,
       &quot;name&quot;: &quot;Mbody AI Ltd&quot;,
       &quot;price&quot;: 1.851,
@@ -4578,8 +4506,8 @@
       &quot;name&quot;: &quot;Lichen International&quot;,
       &quot;price&quot;: 0.014,
       &quot;change_pct&quot;: -12.26,
-      &quot;volume&quot;: 12762961,
-      &quot;rvol&quot;: 0.09380716678801317,
+      &quot;volume&quot;: 12775735,
+      &quot;rvol&quot;: 0.0939010550909352,
       &quot;market_cap&quot;: 253065.79,
       &quot;float_shares&quot;: 16215300,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4604,6 +4532,21 @@
       &quot;reason&quot;: &quot;Filtered: mktcap $1.9M, rvol 0.0x, vol 3, vol/float 0.00x&quot;
     },
     {
+      &quot;ticker&quot;: &quot;VWAV&quot;,
+      &quot;name&quot;: &quot;VisionWave Holdings, Inc&quot;,
+      &quot;price&quot;: 0.69,
+      &quot;change_pct&quot;: -11.67,
+      &quot;volume&quot;: 48138,
+      &quot;rvol&quot;: 0.005226815088033799,
+      &quot;market_cap&quot;: 2534211.33,
+      &quot;float_shares&quot;: 2470454,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: true,
+      &quot;country&quot;: &quot;United States&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $2.5M, rvol 0.0x, vol 48,138, vol/float 0.02x&quot;
+    },
+    {
       &quot;ticker&quot;: &quot;TCRT&quot;,
       &quot;name&quot;: &quot;Alaunos Therapeutics, Inc&quot;,
       &quot;price&quot;: 1.52,
@@ -4617,6 +4560,21 @@
       &quot;country&quot;: &quot;United States&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 41, vol/float 0.00x&quot;
+    },
+    {
+      &quot;ticker&quot;: &quot;MKDW&quot;,
+      &quot;name&quot;: &quot;MKDWELL Tech Inc&quot;,
+      &quot;price&quot;: 1.53,
+      &quot;change_pct&quot;: -11.559999999999999,
+      &quot;volume&quot;: 624,
+      &quot;rvol&quot;: 0.0034504877131671494,
+      &quot;market_cap&quot;: 3144655.6,
+      &quot;float_shares&quot;: 1686299,
+      &quot;cap_size&quot;: &quot;nano-cap&quot;,
+      &quot;is_penny_stock&quot;: false,
+      &quot;country&quot;: &quot;Taiwan&quot;,
+      &quot;passed&quot;: false,
+      &quot;reason&quot;: &quot;Filtered: mktcap $3.1M, rvol 0.0x, vol 624, vol/float 0.00x&quot;
     },
     {
       &quot;ticker&quot;: &quot;BEEM&quot;,
@@ -4679,27 +4637,12 @@
       &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 3, vol/float 0.00x&quot;
     },
     {
-      &quot;ticker&quot;: &quot;VWAV&quot;,
-      &quot;name&quot;: &quot;VisionWave Holdings, Inc&quot;,
-      &quot;price&quot;: 0.7,
-      &quot;change_pct&quot;: -11.67,
-      &quot;volume&quot;: 47168,
-      &quot;rvol&quot;: 0.0051214926684195064,
-      &quot;market_cap&quot;: 2534211.33,
-      &quot;float_shares&quot;: 2470454,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: mktcap $2.5M, rvol 0.0x, vol 47,168, vol/float 0.02x&quot;
-    },
-    {
       &quot;ticker&quot;: &quot;AKAN&quot;,
       &quot;name&quot;: &quot;AKANDA CORP&quot;,
-      &quot;price&quot;: 3.621,
+      &quot;price&quot;: 3.62,
       &quot;change_pct&quot;: -10.17,
-      &quot;volume&quot;: 258320,
-      &quot;rvol&quot;: 0.005654728189636537,
+      &quot;volume&quot;: 258990,
+      &quot;rvol&quot;: 0.005669394757796403,
       &quot;market_cap&quot;: 2179589.23,
       &quot;float_shares&quot;: 537667,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
@@ -4707,21 +4650,6 @@
       &quot;country&quot;: &quot;United Kingdom&quot;,
       &quot;passed&quot;: false,
       &quot;reason&quot;: &quot;Filtered: mktcap $2.2M, rvol 0.0x&quot;
-    },
-    {
-      &quot;ticker&quot;: &quot;LABT&quot;,
-      &quot;name&quot;: &quot;Lakewood-Amedex&quot;,
-      &quot;price&quot;: 0.216,
-      &quot;change_pct&quot;: -10.0,
-      &quot;volume&quot;: 47045,
-      &quot;rvol&quot;: 0.017918839787023095,
-      &quot;market_cap&quot;: 2148021.12,
-      &quot;float_shares&quot;: 8170207,
-      &quot;cap_size&quot;: &quot;nano-cap&quot;,
-      &quot;is_penny_stock&quot;: true,
-      &quot;country&quot;: &quot;United States&quot;,
-      &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: price $0.216, mktcap $2.1M, rvol 0.0x, vol 47,045, vol/float 0.01x&quot;
     },
     {
       &quot;ticker&quot;: &quot;HTLM&quot;,
@@ -4803,15 +4731,15 @@
       &quot;name&quot;: &quot;GreenPower Mtr Co Inc&quot;,
       &quot;price&quot;: 2.603,
       &quot;change_pct&quot;: -9.3,
-      &quot;volume&quot;: 43375,
-      &quot;rvol&quot;: 0.0010458695603058274,
+      &quot;volume&quot;: 43443,
+      &quot;rvol&quot;: 0.0010475091944291887,
       &quot;market_cap&quot;: 6029037.7,
       &quot;float_shares&quot;: 1297074,
       &quot;cap_size&quot;: &quot;nano-cap&quot;,
       &quot;is_penny_stock&quot;: false,
       &quot;country&quot;: &quot;Canada&quot;,
       &quot;passed&quot;: false,
-      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 43,375, vol/float 0.03x&quot;
+      &quot;reason&quot;: &quot;Filtered: rvol 0.0x, vol 43,443, vol/float 0.03x&quot;
     },
     {
       &quot;ticker&quot;: &quot;MAMO&quot;,
@@ -4830,6 +4758,73 @@
     }
   ],
   &quot;live_quotes&quot;: {
+    &quot;GMM&quot;: {
+      &quot;price&quot;: 1.55,
+      &quot;open&quot;: 1.71,
+      &quot;high&quot;: 2.1,
+      &quot;low&quot;: 1.31,
+      &quot;close&quot;: 1.55,
+      &quot;preClose&quot;: 1.39,
+      &quot;volume&quot;: 4094595,
+      &quot;changeRatio&quot;: 0.1151,
+      &quot;marketValue&quot;: 89514060.85,
+      &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-19T11:10:23.325353Z&quot;
+    },
+    &quot;SPRC&quot;: {
+      &quot;price&quot;: 0.2701,
+      &quot;open&quot;: 0.3583,
+      &quot;high&quot;: 0.3693,
+      &quot;low&quot;: 0.2277,
+      &quot;close&quot;: 0.2701,
+      &quot;preClose&quot;: 0.3297,
+      &quot;volume&quot;: 15832822,
+      &quot;changeRatio&quot;: -0.1808,
+      &quot;marketValue&quot;: 555789.9,
+      &quot;name&quot;: &quot;Scisparc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-19T11:10:23.325373Z&quot;
+    },
+    &quot;INHD&quot;: {
+      &quot;price&quot;: 2.3,
+      &quot;open&quot;: 2.355,
+      &quot;high&quot;: 2.4,
+      &quot;low&quot;: 2.14,
+      &quot;close&quot;: 2.3,
+      &quot;preClose&quot;: 2.35,
+      &quot;volume&quot;: 2546557,
+      &quot;changeRatio&quot;: -0.0213,
+      &quot;marketValue&quot;: 5797336.3,
+      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-19T11:10:23.325381Z&quot;
+    },
+    &quot;GMEX&quot;: {
+      &quot;price&quot;: 0.3059,
+      &quot;open&quot;: 0.37,
+      &quot;high&quot;: 0.3727,
+      &quot;low&quot;: 0.3,
+      &quot;close&quot;: 0.3059,
+      &quot;preClose&quot;: 0.3615,
+      &quot;volume&quot;: 5968575,
+      &quot;changeRatio&quot;: -0.1538,
+      &quot;marketValue&quot;: 483389.6,
+      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-19T11:10:23.325386Z&quot;
+    },
+    &quot;GNLN&quot;: {
+      &quot;price&quot;: 0.601,
+      &quot;open&quot;: 0.66,
+      &quot;high&quot;: 0.661,
+      &quot;low&quot;: 0.6,
+      &quot;close&quot;: 0.601,
+      &quot;preClose&quot;: 0.6893,
+      &quot;volume&quot;: 5341807,
+      &quot;changeRatio&quot;: -0.1281,
+      &quot;marketValue&quot;: 417420.94,
+      &quot;name&quot;: &quot;Greenlane Holdings&quot;,
+      &quot;_timestamp&quot;: &quot;2026-11-19T11:10:23.325390Z&quot;
+    }
+  },
+  &quot;previous_live_quotes&quot;: {
     &quot;GMM&quot;: {
       &quot;price&quot;: 1.55,
       &quot;open&quot;: 1.71,
@@ -4896,78 +4891,11 @@
       &quot;_timestamp&quot;: &quot;2026-11-19T11:09:20.192582Z&quot;
     }
   },
-  &quot;previous_live_quotes&quot;: {
-    &quot;GNLN&quot;: {
-      &quot;price&quot;: 0.601,
-      &quot;open&quot;: 0.66,
-      &quot;high&quot;: 0.661,
-      &quot;low&quot;: 0.6,
-      &quot;close&quot;: 0.601,
-      &quot;preClose&quot;: 0.6893,
-      &quot;volume&quot;: 5323307,
-      &quot;changeRatio&quot;: -0.1281,
-      &quot;marketValue&quot;: 417420.94,
-      &quot;name&quot;: &quot;Greenlane Holdings&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-19T11:08:20.057119Z&quot;
-    },
-    &quot;SPRC&quot;: {
-      &quot;price&quot;: 0.2701,
-      &quot;open&quot;: 0.3583,
-      &quot;high&quot;: 0.3693,
-      &quot;low&quot;: 0.2277,
-      &quot;close&quot;: 0.2701,
-      &quot;preClose&quot;: 0.3297,
-      &quot;volume&quot;: 15769598,
-      &quot;changeRatio&quot;: -0.1808,
-      &quot;marketValue&quot;: 555789.9,
-      &quot;name&quot;: &quot;Scisparc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-19T11:08:20.057147Z&quot;
-    },
-    &quot;INHD&quot;: {
-      &quot;price&quot;: 2.3,
-      &quot;open&quot;: 2.355,
-      &quot;high&quot;: 2.4,
-      &quot;low&quot;: 2.14,
-      &quot;close&quot;: 2.3,
-      &quot;preClose&quot;: 2.35,
-      &quot;volume&quot;: 2538966,
-      &quot;changeRatio&quot;: -0.0213,
-      &quot;marketValue&quot;: 5797336.3,
-      &quot;name&quot;: &quot;Inno Holdings Inc&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-19T11:08:20.057158Z&quot;
-    },
-    &quot;GMM&quot;: {
-      &quot;price&quot;: 1.55,
-      &quot;open&quot;: 1.71,
-      &quot;high&quot;: 2.1,
-      &quot;low&quot;: 1.31,
-      &quot;close&quot;: 1.55,
-      &quot;preClose&quot;: 1.39,
-      &quot;volume&quot;: 4071332,
-      &quot;changeRatio&quot;: 0.1151,
-      &quot;marketValue&quot;: 89514060.85,
-      &quot;name&quot;: &quot;Global Mofy AI Ltd&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-19T11:08:20.057167Z&quot;
-    },
-    &quot;GMEX&quot;: {
-      &quot;price&quot;: 0.3059,
-      &quot;open&quot;: 0.37,
-      &quot;high&quot;: 0.3727,
-      &quot;low&quot;: 0.3,
-      &quot;close&quot;: 0.3059,
-      &quot;preClose&quot;: 0.3615,
-      &quot;volume&quot;: 5243703,
-      &quot;changeRatio&quot;: -0.1538,
-      &quot;marketValue&quot;: 483389.6,
-      &quot;name&quot;: &quot;GMEX ROBOTICS&quot;,
-      &quot;_timestamp&quot;: &quot;2026-11-19T11:08:20.057174Z&quot;
-    }
-  },
   &quot;scan_stats&quot;: {
     &quot;gainers_scanned&quot;: 50,
     &quot;losers_scanned&quot;: 50,
     &quot;market_status&quot;: &quot;PRE-MARKET&quot;,
-    &quot;market_time&quot;: &quot;10:09 PM AEDT&quot;,
+    &quot;market_time&quot;: &quot;10:10 PM AEDT&quot;,
     &quot;market&quot;: &quot;us&quot;,
     &quot;au_filters&quot;: {},
     &quot;us_filters&quot;: {}
