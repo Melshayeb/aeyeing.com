@@ -1,39 +1,39 @@
 {
-  "last_updated": "2026-11-19T09:12:18.386547Z",
+  "last_updated": "2026-11-19T09:24:21.520428Z",
   "scan_results": [
     {
       "ticker": "GNLN",
       "name": "Greenlane Holdings",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.787,
-      "change_pct": 31.06,
-      "volume": 1589884,
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.915,
+      "change_pct": 52.5,
+      "volume": 2646576,
       "market_cap": 417420.94,
       "float_shares": 660877,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (31.1%, rvol 64.5x)",
+      "scan_reason": "Passed filters",
       "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +31.1%",
+      "sec_filings": "8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)",
+      "result": "+52.5% \u00b7 Entry $0.92 \u00b7 T1 $0.95 \u00b7 T2 $0.97 \u00b7 T3 $1.01",
       "plan": {
         "valid": true,
         "ticker": "GNLN",
-        "entry": 0.787,
-        "stop": 0.7713,
+        "entry": 0.915,
+        "stop": 0.8967,
         "targets": {
-          "t1": 0.8184,
-          "t2": 0.8341,
-          "t3": 0.8655
+          "t1": 0.9516,
+          "t2": 0.9699,
+          "t3": 1.0065
         },
-        "risk_per_share": 0.0157,
+        "risk_per_share": 0.0183,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 381,
-        "position_value": 299.85,
+        "shares": 327,
+        "position_value": 299.2,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +41,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7713"
+          "hard_stop": "$0.8967"
         }
       },
       "ta": {
@@ -177,65 +177,241 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 64.5,
+        "rvol": 107.37,
         "volume_indicator": "high",
-        "volume": 1589884,
+        "volume": 2646576,
         "adv": 24650,
-        "recent_pct_of_adv": 6449.83,
+        "recent_pct_of_adv": 10736.62,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 23.469,
-        "buy_pressure_pct": 45.4,
+        "price_velocity_pct": 20.796,
+        "buy_pressure_pct": 49.23,
         "large_bar_count": 3,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 1589884,
+        "recent_volume": 2646576,
         "prior_volume": 0,
-        "median_range": 0.08,
+        "median_range": 0.0619,
         "last_price": 0.601,
         "vwap": null,
-        "last_trade_time": "2026-11-19T09:12:05.457000+00:00",
-        "stale_age_seconds": 11
+        "last_trade_time": "2026-11-19T09:24:05.314000+00:00",
+        "stale_age_seconds": 13
       },
       "date": "2026-11-19",
-      "time": "20:12:17",
+      "time": "20:24:19",
       "skip_news_check": false,
       "red_flag": false,
-      "previous_price": 0.8
+      "previous_price": 0.915
+    },
+    {
+      "ticker": "INHD",
+      "name": "Inno Holdings Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 3.539,
+      "change_pct": 53.910000000000004,
+      "volume": 1102132,
+      "market_cap": 5797336.3,
+      "float_shares": 2489630,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (53.9%, rvol 2.6x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +53.9%",
+      "plan": {
+        "valid": true,
+        "ticker": "INHD",
+        "entry": 3.539,
+        "stop": 3.4682,
+        "targets": {
+          "t1": 3.6806,
+          "t2": 3.7514,
+          "t3": 3.893
+        },
+        "risk_per_share": 0.0708,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 84,
+        "position_value": 297.28,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.4682"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "INHD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:51:48.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:26:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings Announces Proposed Merger and Reincorporation",
+            "source": "Webull",
+            "time": "11h ago \u00b7 18 Nov",
+            "raw_time": "2026-11-18T21:31:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at INHD last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:13:01.409+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:51:48.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:26:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings Announces Proposed Merger and Reincorporation",
+            "source": "Webull",
+            "time": "11h ago \u00b7 18 Nov",
+            "raw_time": "2026-11-18T21:31:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at INHD last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:13:01.409+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 3.8,
+        "catalyst_confirmed": true,
+        "high_impact_count": 3,
+        "top_headline": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+        "news_filter_reason": "catalyst confirmed (3 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "INHD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.63,
+        "volume_indicator": "high",
+        "volume": 1102132,
+        "adv": 419640,
+        "recent_pct_of_adv": 262.64,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 37.873,
+        "buy_pressure_pct": 35.82,
+        "large_bar_count": 5,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 1102132,
+        "prior_volume": 0,
+        "median_range": 0.1593,
+        "last_price": 2.3,
+        "vwap": null,
+        "last_trade_time": "2026-11-19T09:24:05.538000+00:00",
+        "stale_age_seconds": 13
+      },
+      "date": "2026-11-19",
+      "time": "20:24:20",
+      "skip_news_check": false,
+      "red_flag": false,
+      "previous_price": 3.5
     }
   ],
   "pre_market_results": [
     {
       "ticker": "GNLN",
       "name": "Greenlane Holdings",
-      "status": "CANDIDATE",
-      "source": "top_gainer_exempt",
-      "price": 0.787,
-      "change_pct": 31.06,
-      "volume": 1589884,
+      "status": "ALERT",
+      "source": "regular",
+      "price": 0.915,
+      "change_pct": 52.5,
+      "volume": 2646576,
       "market_cap": 417420.94,
       "float_shares": 660877,
       "country": "United States",
       "cap_size": "nano-cap",
       "is_penny_stock": true,
-      "scan_reason": "Top gainer tape exempt (31.1%, rvol 64.5x)",
+      "scan_reason": "Passed filters",
       "scan_passed": true,
-      "sec_filings": "",
-      "result": "Top-10 gainer tape momentum \u00b7 +31.1%",
+      "sec_filings": "8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)",
+      "result": "+52.5% \u00b7 Entry $0.92 \u00b7 T1 $0.95 \u00b7 T2 $0.97 \u00b7 T3 $1.01",
       "plan": {
         "valid": true,
         "ticker": "GNLN",
-        "entry": 0.787,
-        "stop": 0.7713,
+        "entry": 0.915,
+        "stop": 0.8967,
         "targets": {
-          "t1": 0.8184,
-          "t2": 0.8341,
-          "t3": 0.8655
+          "t1": 0.9516,
+          "t2": 0.9699,
+          "t3": 1.0065
         },
-        "risk_per_share": 0.0157,
+        "risk_per_share": 0.0183,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 381,
-        "position_value": 299.85,
+        "shares": 327,
+        "position_value": 299.2,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -243,7 +419,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.7713"
+          "hard_stop": "$0.8967"
         }
       },
       "ta": {
@@ -379,45 +555,420 @@
         "stale": false,
         "no_move": false,
         "tape_score": 8.0,
-        "rvol": 64.5,
+        "rvol": 107.37,
         "volume_indicator": "high",
-        "volume": 1589884,
+        "volume": 2646576,
         "adv": 24650,
-        "recent_pct_of_adv": 6449.83,
+        "recent_pct_of_adv": 10736.62,
         "volume_acceleration": 0.0,
-        "price_velocity_pct": 23.469,
-        "buy_pressure_pct": 45.4,
+        "price_velocity_pct": 20.796,
+        "buy_pressure_pct": 49.23,
         "large_bar_count": 3,
         "vwap_distance_pct": 0.0,
-        "recent_volume": 1589884,
+        "recent_volume": 2646576,
         "prior_volume": 0,
-        "median_range": 0.08,
+        "median_range": 0.0619,
         "last_price": 0.601,
         "vwap": null,
-        "last_trade_time": "2026-11-19T09:12:05.457000+00:00",
-        "stale_age_seconds": 11
+        "last_trade_time": "2026-11-19T09:24:05.314000+00:00",
+        "stale_age_seconds": 13
       },
       "date": "2026-11-19",
-      "time": "20:12:17",
+      "time": "20:24:19",
       "skip_news_check": false,
       "red_flag": false,
-      "previous_price": 0.8
+      "previous_price": 0.915
+    },
+    {
+      "ticker": "INHD",
+      "name": "Inno Holdings Inc",
+      "status": "CANDIDATE",
+      "source": "top_gainer_exempt",
+      "price": 3.539,
+      "change_pct": 53.910000000000004,
+      "volume": 1102132,
+      "market_cap": 5797336.3,
+      "float_shares": 2489630,
+      "country": "United States",
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Top gainer tape exempt (53.9%, rvol 2.6x)",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "Top-10 gainer tape momentum \u00b7 +53.9%",
+      "plan": {
+        "valid": true,
+        "ticker": "INHD",
+        "entry": 3.539,
+        "stop": 3.4682,
+        "targets": {
+          "t1": 3.6806,
+          "t2": 3.7514,
+          "t3": 3.893
+        },
+        "risk_per_share": 0.0708,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 84,
+        "position_value": 297.28,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$3.4682"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "INHD",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:51:48.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:26:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings Announces Proposed Merger and Reincorporation",
+            "source": "Webull",
+            "time": "11h ago \u00b7 18 Nov",
+            "raw_time": "2026-11-18T21:31:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at INHD last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:13:01.409+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:51:48.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings (INHD) Stock Soars Over 75% After Hours on Merger Agreement Announcement",
+            "source": "Webull",
+            "time": "3h ago \u00b7 19 Nov",
+            "raw_time": "2026-11-19T05:26:19.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Inno Holdings Announces Proposed Merger and Reincorporation",
+            "source": "Webull",
+            "time": "11h ago \u00b7 18 Nov",
+            "raw_time": "2026-11-18T21:31:07.000+0000",
+            "url": "",
+            "score": 5,
+            "keywords": [
+              "merger"
+            ]
+          },
+          {
+            "title": "Weekly Report: what happened at INHD last week (1109-1113)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 16 Nov",
+            "raw_time": "2026-11-16T10:13:01.409+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [],
+        "max_score": 5,
+        "avg_score": 3.8,
+        "catalyst_confirmed": true,
+        "high_impact_count": 3,
+        "top_headline": "Inno Holdings Inc. Enters Merger Agreement on November 13, 2026 to Redomicile to the British Virgin Islands",
+        "news_filter_reason": "catalyst confirmed (3 items, score \u22653)"
+      },
+      "tape": {
+        "ticker": "INHD",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.63,
+        "volume_indicator": "high",
+        "volume": 1102132,
+        "adv": 419640,
+        "recent_pct_of_adv": 262.64,
+        "volume_acceleration": 0.0,
+        "price_velocity_pct": 37.873,
+        "buy_pressure_pct": 35.82,
+        "large_bar_count": 5,
+        "vwap_distance_pct": 0.0,
+        "recent_volume": 1102132,
+        "prior_volume": 0,
+        "median_range": 0.1593,
+        "last_price": 2.3,
+        "vwap": null,
+        "last_trade_time": "2026-11-19T09:24:05.538000+00:00",
+        "stale_age_seconds": 13
+      },
+      "date": "2026-11-19",
+      "time": "20:24:20",
+      "skip_news_check": false,
+      "red_flag": false,
+      "previous_price": 3.5
     }
   ],
   "pre_market_watchlist": [],
   "bounce_results": [],
   "losers_scanned": 50,
-  "active_plan": null,
-  "total_candidates": 1,
-  "alerts_generated": 0,
+  "active_plan": {
+    "ticker": "GNLN",
+    "name": "Greenlane Holdings",
+    "status": "ALERT",
+    "source": "regular",
+    "price": 0.915,
+    "change_pct": 52.5,
+    "volume": 2646576,
+    "market_cap": 417420.94,
+    "float_shares": 660877,
+    "country": "United States",
+    "cap_size": "nano-cap",
+    "is_penny_stock": true,
+    "scan_reason": "Passed filters",
+    "scan_passed": true,
+    "sec_filings": "8-K (Nov 16), 8-K (Nov 02), 8-K (Oct 15)",
+    "result": "+52.5% \u00b7 Entry $0.92 \u00b7 T1 $0.95 \u00b7 T2 $0.97 \u00b7 T3 $1.01",
+    "plan": {
+      "valid": true,
+      "ticker": "GNLN",
+      "entry": 0.915,
+      "stop": 0.8967,
+      "targets": {
+        "t1": 0.9516,
+        "t2": 0.9699,
+        "t3": 1.0065
+      },
+      "risk_per_share": 0.0183,
+      "risk_amount": 20.0,
+      "daily_risk_budget": 60.0,
+      "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+      "shares": 327,
+      "position_value": 299.2,
+      "risk_reward": 2.0,
+      "confidence": "MED",
+      "strategy": "Demand zone + candlestick confirmation scalp",
+      "exit_rules": {
+        "momentum_based": true,
+        "time_based": false,
+        "trail_breakeven_at": "+1%",
+        "hard_stop": "$0.8967"
+      }
+    },
+    "ta": {
+      "valid": false,
+      "error": "No bar data"
+    },
+    "news": {
+      "ticker": "GNLN",
+      "total_items": 20,
+      "scored_items": [
+        {
+          "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Intraday Session",
+          "source": "Webull",
+          "time": "1d ago \u00b7 17 Nov",
+          "raw_time": "2026-11-17T17:05:48.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Greenlane Holdings GAAP EPS of $1.00, revenue of $0.07M",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T21:57:07.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "*Greenlane Holdings 3Q EPS $1.00 >GNLN",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T21:20:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Greenlane: Q3 Earnings Snapshot",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T16:40:12.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "12 Consumer Discretionary Stocks Moving In Monday's Pre-Market Session",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T12:05:28.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at GNLN last week (1109-1113)?",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T10:15:22.533+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "headlines": [
+        {
+          "title": "12 Consumer Discretionary Stocks Moving In Tuesday's Intraday Session",
+          "source": "Webull",
+          "time": "1d ago \u00b7 17 Nov",
+          "raw_time": "2026-11-17T17:05:48.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Greenlane Holdings GAAP EPS of $1.00, revenue of $0.07M",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T21:57:07.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "*Greenlane Holdings 3Q EPS $1.00 >GNLN",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T21:20:00.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Greenlane: Q3 Earnings Snapshot",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T16:40:12.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "12 Consumer Discretionary Stocks Moving In Monday's Pre-Market Session",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T12:05:28.000+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        },
+        {
+          "title": "Weekly Report: what happened at GNLN last week (1109-1113)?",
+          "source": "Webull",
+          "time": "2d ago \u00b7 16 Nov",
+          "raw_time": "2026-11-16T10:15:22.533+0000",
+          "url": "",
+          "score": 0,
+          "keywords": []
+        }
+      ],
+      "red_flags": [],
+      "max_score": 0,
+      "avg_score": 0.0,
+      "catalyst_confirmed": false,
+      "high_impact_count": 0,
+      "top_headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Intraday Session",
+      "news_filter_reason": "low catalyst score (max 0/5)"
+    },
+    "tape": {
+      "ticker": "GNLN",
+      "valid": true,
+      "stale": false,
+      "no_move": false,
+      "tape_score": 8.0,
+      "rvol": 107.37,
+      "volume_indicator": "high",
+      "volume": 2646576,
+      "adv": 24650,
+      "recent_pct_of_adv": 10736.62,
+      "volume_acceleration": 0.0,
+      "price_velocity_pct": 20.796,
+      "buy_pressure_pct": 49.23,
+      "large_bar_count": 3,
+      "vwap_distance_pct": 0.0,
+      "recent_volume": 2646576,
+      "prior_volume": 0,
+      "median_range": 0.0619,
+      "last_price": 0.601,
+      "vwap": null,
+      "last_trade_time": "2026-11-19T09:24:05.314000+00:00",
+      "stale_age_seconds": 13
+    },
+    "date": "2026-11-19",
+    "time": "20:24:19",
+    "skip_news_check": false,
+    "red_flag": false,
+    "previous_price": 0.915
+  },
+  "total_candidates": 2,
+  "alerts_generated": 1,
   "all_gainers": [
     {
       "ticker": "LGHL",
       "name": "Lion Group Holding Ltd",
-      "price": 1.99,
-      "change_pct": 131.28,
-      "volume": 411582,
-      "rvol": 0.2388049482827746,
+      "price": 1.55,
+      "change_pct": 80.21000000000001,
+      "volume": 866462,
+      "rvol": 0.5027319297223626,
       "market_cap": 39688.45,
       "float_shares": 45870,
       "cap_size": "nano-cap",
@@ -429,40 +980,40 @@
     {
       "ticker": "INHD",
       "name": "Inno Holdings Inc",
-      "price": 3.477,
-      "change_pct": 51.68000000000001,
-      "volume": 794589,
-      "rvol": 0.7665723150302736,
+      "price": 3.539,
+      "change_pct": 53.910000000000004,
+      "volume": 1102132,
+      "rvol": 1.0632715513415683,
       "market_cap": 5797336.3,
       "float_shares": 2489630,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: tiny vol/float 0.32x"
+      "reason": "Filtered: tiny vol/float 0.44x"
     },
     {
       "ticker": "GNLN",
       "name": "Greenlane Holdings",
-      "price": 0.787,
-      "change_pct": 31.06,
-      "volume": 1589884,
-      "rvol": 64.49833671399594,
+      "price": 0.915,
+      "change_pct": 52.5,
+      "volume": 2646576,
+      "rvol": 107.3661663286004,
       "market_cap": 417420.94,
       "float_shares": 660877,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
-      "passed": false,
-      "reason": "Filtered: mktcap $0.4M"
+      "passed": true,
+      "reason": "Passed filters"
     },
     {
       "ticker": "SPRC",
       "name": "Scisparc",
-      "price": 0.336,
-      "change_pct": 24.44,
-      "volume": 939998,
-      "rvol": 0.3779982057110825,
+      "price": 0.356,
+      "change_pct": 31.840000000000003,
+      "volume": 1422879,
+      "rvol": 0.57217750350956,
       "market_cap": 555789.9,
       "float_shares": 2057719,
       "cap_size": "nano-cap",
@@ -472,12 +1023,42 @@
       "reason": "Filtered: mktcap $0.6M"
     },
     {
+      "ticker": "FLD",
+      "name": "Fold Holdings, Inc",
+      "price": 0.295,
+      "change_pct": 29.299999999999997,
+      "volume": 1070,
+      "rvol": 0.01036520391359101,
+      "market_cap": 12554240.42,
+      "float_shares": 24243235,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 1,070, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
+      "ticker": "JUNS",
+      "name": "JUPITER NEUROSCIENCES, INC.",
+      "price": 1.84,
+      "change_pct": 21.05,
+      "volume": 2,
+      "rvol": 0.00011918951132300358,
+      "market_cap": 2004151.92,
+      "float_shares": 925859,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 2, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
       "ticker": "GMM",
       "name": "Global Mofy AI Ltd",
-      "price": 1.86,
-      "change_pct": 19.35,
-      "volume": 1463573,
-      "rvol": 0.06368952255823895,
+      "price": 1.849,
+      "change_pct": 19.27,
+      "volume": 1817723,
+      "rvol": 0.07910087847557298,
       "market_cap": 89514060.85,
       "float_shares": 57696024,
       "cap_size": "micro-cap",
@@ -487,34 +1068,19 @@
       "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
-      "ticker": "GLE",
-      "name": "Global Engine Group Holding Limited",
-      "price": 2.25,
-      "change_pct": 20.97,
-      "volume": 1,
-      "rvol": 7.283321194464675e-05,
-      "market_cap": 3850200.0,
-      "float_shares": 1022000,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Hong Kong",
-      "passed": false,
-      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
       "ticker": "JYD",
       "name": "Jayud Global Logistics Limited",
       "price": 1.0,
       "change_pct": 18.37,
-      "volume": 38,
-      "rvol": 0.00035507381797794804,
+      "volume": 46,
+      "rvol": 0.0004298262007101476,
       "market_cap": 7146078.72,
       "float_shares": 7958708,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 38, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
+      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 46, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
     },
     {
       "ticker": "SNWV",
@@ -530,6 +1096,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 25, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
+      "ticker": "API",
+      "name": "Agora, Inc.",
+      "price": 3.845,
+      "change_pct": 17.22,
+      "volume": 2,
+      "rvol": 1.2710194847287009e-05,
+      "market_cap": 274782000.0,
+      "float_shares": 81817394,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "BZFD",
@@ -562,21 +1143,6 @@
       "reason": "Filtered: vol 125, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "MVIS",
-      "name": "Microvision",
-      "price": 1.01,
-      "change_pct": 15.950000000000001,
-      "volume": 2,
-      "rvol": 2.0592465834525123e-06,
-      "market_cap": 29658941.02,
-      "float_shares": 31199724,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "LINK",
       "name": "Interlink Electrs Inc",
       "price": 3.0,
@@ -607,34 +1173,19 @@
       "reason": "Filtered: tiny rvol 0.0x, tiny vol/float 0.00x, vol 36, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "FMFC",
-      "name": "Kandal M Venture Limited",
-      "price": 1.644,
-      "change_pct": 15.190000000000001,
-      "volume": 1,
-      "rvol": 1.135989276261232e-05,
-      "market_cap": 702666.94,
-      "float_shares": 242953,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "International (region 88)",
-      "passed": false,
-      "reason": "Filtered: mktcap $0.7M, vol 1, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "QUCY",
-      "name": "Quantum Cyber N.V.",
-      "price": 0.672,
-      "change_pct": 14.979999999999999,
-      "volume": 19,
-      "rvol": 4.997041225590111e-05,
-      "market_cap": 50949173.24,
-      "float_shares": 27958048,
+      "ticker": "USBC",
+      "name": "USBC INC.",
+      "price": 0.38,
+      "change_pct": 15.15,
+      "volume": 2,
+      "rvol": 1.407756739635391e-05,
+      "market_cap": 128096035.98,
+      "float_shares": 18567166,
       "cap_size": "micro-cap",
       "is_penny_stock": true,
-      "country": "Germany",
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: vol 19, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
     },
     {
       "ticker": "MDXH",
@@ -682,21 +1233,6 @@
       "reason": "Filtered: vol 2, vol/float 0.00x < 0.1x"
     },
     {
-      "ticker": "ARBE",
-      "name": "Arbe Robotics",
-      "price": 0.453,
-      "change_pct": 14.530000000000001,
-      "volume": 6754,
-      "rvol": 0.008878571015422474,
-      "market_cap": 50704671.94,
-      "float_shares": 116662486,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "International (region 83)",
-      "passed": false,
-      "reason": "Filtered: vol 6,754, float 116.7M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
       "ticker": "STKH",
       "name": "STEAKHOLDER FOODS LTD",
       "price": 1.67,
@@ -729,10 +1265,10 @@
     {
       "ticker": "INLF",
       "name": "INLIF",
-      "price": 0.259,
-      "change_pct": 15.440000000000001,
-      "volume": 595180,
-      "rvol": 0.00810308725881903,
+      "price": 0.258,
+      "change_pct": 13.51,
+      "volume": 1409327,
+      "rvol": 0.019187304104992857,
       "market_cap": 346700.24,
       "float_shares": 1278632,
       "cap_size": "nano-cap",
@@ -740,21 +1276,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: mktcap $0.3M"
-    },
-    {
-      "ticker": "AREC",
-      "name": "American Res Corp",
-      "price": 0.97,
-      "change_pct": 13.530000000000001,
-      "volume": 9061,
-      "rvol": 0.003978979605369185,
-      "market_cap": 91396254.8,
-      "float_shares": 86386107,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 9,061, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "FXHO",
@@ -802,6 +1323,36 @@
       "reason": "Filtered: vol 1, vol/float 0.00x < 0.1x"
     },
     {
+      "ticker": "GLE",
+      "name": "Global Engine Group Holding Limited",
+      "price": 2.1,
+      "change_pct": 12.9,
+      "volume": 3,
+      "rvol": 0.00021849963583394028,
+      "market_cap": 3850200.0,
+      "float_shares": 1022000,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 3, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
+    },
+    {
+      "ticker": "CLIR",
+      "name": "Clearsign Technologies Corp",
+      "price": 2.021,
+      "change_pct": 12.879999999999999,
+      "volume": 1808,
+      "rvol": 0.10826347305389221,
+      "market_cap": 12186015.7,
+      "float_shares": 5146115,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 1,808, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
+    },
+    {
       "ticker": "UONEK",
       "name": "Urban One Inc",
       "price": 2.33,
@@ -847,6 +1398,21 @@
       "reason": "Filtered: vol 300, vol/float 0.00x < 0.1x"
     },
     {
+      "ticker": "MPU",
+      "name": "Mega Matrix Corp",
+      "price": 3.195,
+      "change_pct": 10.73,
+      "volume": 8103,
+      "rvol": 0.005659400870386939,
+      "market_cap": 9716472.12,
+      "float_shares": 2974345,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.0x, tiny vol/float 0.00x, vol 8,103, vol/float 0.00x < 0.1x"
+    },
+    {
       "ticker": "MCRB",
       "name": "Seres Therapeutics Inc",
       "price": 1.62,
@@ -890,21 +1456,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 979, float 201.1M > 100M, vol/float 0.00x < 0.1x"
-    },
-    {
-      "ticker": "YXT",
-      "name": "YXT.COM GROUP HOLDING LIMITED",
-      "price": 0.998,
-      "change_pct": 12.29,
-      "volume": 4,
-      "rvol": 0.0002642007926023778,
-      "market_cap": 5873221.34,
-      "float_shares": 3061009,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.998, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 4, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
       "ticker": "FRMM",
@@ -967,19 +1518,34 @@
       "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 41, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
-      "ticker": "NCT",
-      "name": "Intercont Limited",
-      "price": 7.35,
-      "change_pct": 11.03,
-      "volume": 127,
-      "rvol": 5.759470019917789e-05,
-      "market_cap": 25602611.68,
-      "float_shares": 2032225,
+      "ticker": "EZGO",
+      "name": "Ezgo Technologies Ltd",
+      "price": 1.751,
+      "change_pct": 11.53,
+      "volume": 7217,
+      "rvol": 0.10266002844950213,
+      "market_cap": 2776780.5,
+      "float_shares": 1768650,
       "cap_size": "nano-cap",
       "is_penny_stock": false,
-      "country": "China / Hong Kong",
+      "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: vol 127, vol/float 0.00x < 0.1x"
+      "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 7,217, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
+    },
+    {
+      "ticker": "ARBE",
+      "name": "Arbe Robotics",
+      "price": 0.44,
+      "change_pct": 11.17,
+      "volume": 8081,
+      "rvol": 0.0106229985750117,
+      "market_cap": 50704671.94,
+      "float_shares": 116662486,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "country": "International (region 83)",
+      "passed": false,
+      "reason": "Filtered: vol 8,081, float 116.7M > 100M, vol/float 0.00x < 0.1x"
     },
     {
       "ticker": "VTIX",
@@ -995,6 +1561,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: vol 4, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
+      "ticker": "DFNS",
+      "name": "T3 Defense Inc",
+      "price": 1.598,
+      "change_pct": 10.94,
+      "volume": 1853,
+      "rvol": 0.002215500131519166,
+      "market_cap": 6624531.36,
+      "float_shares": 3896668,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 1,853, vol/float 0.00x < 0.1x, avg $vol $1.3M < $2.0M"
     },
     {
       "ticker": "RADX",
@@ -1029,47 +1610,17 @@
     {
       "ticker": "SOS",
       "name": "Sos Limited",
-      "price": 0.237,
-      "change_pct": 10.489999999999998,
-      "volume": 2501,
-      "rvol": 0.030928472497032053,
+      "price": 0.238,
+      "change_pct": 10.77,
+      "volume": 3078,
+      "rvol": 0.03806390977443609,
       "market_cap": 8550924.95,
       "float_shares": 33100441,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: tiny price $0.237, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 2,501, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
-    },
-    {
-      "ticker": "VRCA",
-      "name": "Verrica Pharmaceuticals",
-      "price": 3.15,
-      "change_pct": 10.33,
-      "volume": 406,
-      "rvol": 0.007256478999106345,
-      "market_cap": 49045434.03,
-      "float_shares": 8761760,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 406, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
-    },
-    {
-      "ticker": "DRIO",
-      "name": "Dariohealth Corp",
-      "price": 1.61,
-      "change_pct": 10.27,
-      "volume": 61,
-      "rvol": 0.0006621510138508966,
-      "market_cap": 16479052.12,
-      "float_shares": 8935926,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol 61, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
+      "reason": "Filtered: tiny price $0.238, tiny rvol 0.0x, tiny avg $vol, tiny vol/float 0.00x, vol 3,078, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     }
   ],
   "all_losers": [
@@ -1106,17 +1657,17 @@
     {
       "ticker": "FCHL",
       "name": "FITNESS CHAMPS HLDGS LTD",
-      "price": 0.38,
-      "change_pct": -32.769999999999996,
-      "volume": 50897,
-      "rvol": 0.055930953618528415,
+      "price": 0.373,
+      "change_pct": -34.050000000000004,
+      "volume": 57897,
+      "rvol": 0.06362328667017583,
       "market_cap": 745221.1,
       "float_shares": 1299391,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: price $0.380, mktcap $0.7M, move -32.8%, rvol 0.1x, vol 50,897, vol/float 0.04x"
+      "reason": "Filtered: price $0.373, mktcap $0.7M, move -34.1%, rvol 0.1x, vol 57,897, vol/float 0.04x"
     },
     {
       "ticker": "IRIX",
@@ -1149,19 +1700,19 @@
       "reason": "Filtered: rvol 0.0x, vol 1, vol/float 0.00x"
     },
     {
-      "ticker": "CSAI",
-      "name": "Cloudastructure Inc",
-      "price": 0.585,
-      "change_pct": -21.11,
-      "volume": 7472,
-      "rvol": 0.002322231356028338,
-      "market_cap": 643577.48,
-      "float_shares": 867282,
+      "ticker": "OPHI",
+      "name": "Collplant Biotechnologies Ltd",
+      "price": 2.57,
+      "change_pct": -24.41,
+      "volume": 10,
+      "rvol": 7.000056000448004e-05,
+      "market_cap": 10456907.4,
+      "float_shares": 2434397,
       "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
+      "is_penny_stock": false,
+      "country": "International (region 83)",
       "passed": false,
-      "reason": "Filtered: mktcap $0.6M, rvol 0.0x, vol 7,472, vol/float 0.01x"
+      "reason": "Filtered: rvol 0.0x, vol 10, vol/float 0.00x"
     },
     {
       "ticker": "III",
@@ -1181,32 +1732,32 @@
     {
       "ticker": "RRGB",
       "name": "Red Robin Gourmet Burgers Inc",
-      "price": 6.33,
-      "change_pct": -20.380000000000003,
-      "volume": 2044,
-      "rvol": 0.008174920910439821,
+      "price": 6.43,
+      "change_pct": -19.12,
+      "volume": 2827,
+      "rvol": 0.011306507541004587,
       "market_cap": 150284828.4,
       "float_shares": 17033058,
       "cap_size": "micro-cap",
       "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 2,044, vol/float 0.00x"
+      "reason": "Filtered: rvol 0.0x, vol 2,827, vol/float 0.00x"
     },
     {
-      "ticker": "FCDH",
-      "name": "Forcendra Hldg Ltd",
-      "price": 2.0,
-      "change_pct": -19.03,
-      "volume": 3,
-      "rvol": 2.9283148524129316e-05,
-      "market_cap": 2260998.48,
-      "float_shares": 908397,
+      "ticker": "CSAI",
+      "name": "Cloudastructure Inc",
+      "price": 0.61,
+      "change_pct": -17.79,
+      "volume": 12681,
+      "rvol": 0.003941142374972612,
+      "market_cap": 643577.48,
+      "float_shares": 867282,
       "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "Singapore",
+      "is_penny_stock": true,
+      "country": "United States",
       "passed": false,
-      "reason": "Filtered: mktcap $2.3M, rvol 0.0x, vol 3, vol/float 0.00x"
+      "reason": "Filtered: mktcap $0.6M, rvol 0.0x, vol 12,681, vol/float 0.01x"
     },
     {
       "ticker": "MRM",
@@ -1239,21 +1790,6 @@
       "reason": "Filtered: move -4.2%, rvol 0.2x, vol 688, vol/float 0.00x"
     },
     {
-      "ticker": "ZNB",
-      "name": "Zeta Network Group",
-      "price": 0.383,
-      "change_pct": -16.669999999999998,
-      "volume": 11413,
-      "rvol": 0.002845375423515421,
-      "market_cap": 2300951.28,
-      "float_shares": 5001100,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.383, mktcap $2.3M, rvol 0.0x, vol 11,413, vol/float 0.00x"
-    },
-    {
       "ticker": "UCAR",
       "name": "U Power Limited",
       "price": 2.5,
@@ -1267,6 +1803,66 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: rvol 0.4x, vol 2,948, vol/float 0.00x"
+    },
+    {
+      "ticker": "CYAB",
+      "name": "CYABRA INC",
+      "price": 0.07,
+      "change_pct": -16.650000000000002,
+      "volume": 479681,
+      "rvol": 0.0037586923595467284,
+      "market_cap": 2799235.79,
+      "float_shares": 23205941,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.070, mktcap $2.8M, rvol 0.0x, vol/float 0.02x"
+    },
+    {
+      "ticker": "FCDH",
+      "name": "Forcendra Hldg Ltd",
+      "price": 2.059,
+      "change_pct": -16.64,
+      "volume": 43,
+      "rvol": 0.0004197251288458535,
+      "market_cap": 2260998.48,
+      "float_shares": 908397,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: mktcap $2.3M, rvol 0.0x, vol 43, vol/float 0.00x"
+    },
+    {
+      "ticker": "ZNB",
+      "name": "Zeta Network Group",
+      "price": 0.384,
+      "change_pct": -17.169999999999998,
+      "volume": 15255,
+      "rvol": 0.003803224575985959,
+      "market_cap": 2300951.28,
+      "float_shares": 5001100,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.384, mktcap $2.3M, rvol 0.0x, vol 15,255, vol/float 0.00x"
+    },
+    {
+      "ticker": "RYET",
+      "name": "RUANYUN EDAI TECHNOLOGY INC",
+      "price": 0.445,
+      "change_pct": -15.879999999999999,
+      "volume": 52,
+      "rvol": 0.00178755586112066,
+      "market_cap": 19709938.11,
+      "float_shares": 18895718,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: price $0.445, rvol 0.0x, vol 52, vol/float 0.00x"
     },
     {
       "ticker": "LSF",
@@ -1284,12 +1880,27 @@
       "reason": "Filtered: rvol 0.8x, vol 76,347, vol/float 0.01x"
     },
     {
+      "ticker": "AZI",
+      "name": "Autozi Internet Technology (Global) Ltd.",
+      "price": 0.88,
+      "change_pct": -15.39,
+      "volume": 43717,
+      "rvol": 0.0047177711598786675,
+      "market_cap": 69004066.56,
+      "float_shares": 56227442,
+      "cap_size": "micro-cap",
+      "is_penny_stock": true,
+      "country": "China / Cayman-China",
+      "passed": false,
+      "reason": "Filtered: rvol 0.0x, vol 43,717, float 56.2M, vol/float 0.00x"
+    },
+    {
       "ticker": "CHSN",
       "name": "CHANSON INTL HLDG",
       "price": 0.086,
-      "change_pct": -15.690000000000001,
-      "volume": 1700456,
-      "rvol": 0.040198486611335446,
+      "change_pct": -15.290000000000001,
+      "volume": 1903811,
+      "rvol": 0.04500576374455625,
       "market_cap": 236883.88,
       "float_shares": 2096288,
       "cap_size": "nano-cap",
@@ -1297,21 +1908,6 @@
       "country": "China / Cayman-China",
       "passed": false,
       "reason": "Filtered: price $0.086, mktcap $0.2M, rvol 0.0x"
-    },
-    {
-      "ticker": "CYAB",
-      "name": "CYABRA INC",
-      "price": 0.071,
-      "change_pct": -15.7,
-      "volume": 475447,
-      "rvol": 0.0037255155119119026,
-      "market_cap": 2799235.79,
-      "float_shares": 23205941,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.071, mktcap $2.8M, rvol 0.0x, vol/float 0.02x"
     },
     {
       "ticker": "OESX",
@@ -1344,51 +1940,6 @@
       "reason": "Filtered: price $0.145, mktcap $2.9M, rvol 0.0x, vol 5,138, vol/float 0.00x"
     },
     {
-      "ticker": "VWAV",
-      "name": "VisionWave Holdings, Inc",
-      "price": 0.67,
-      "change_pct": -14.19,
-      "volume": 17852,
-      "rvol": 0.0019383668401591128,
-      "market_cap": 2534211.33,
-      "float_shares": 2470454,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: mktcap $2.5M, rvol 0.0x, vol 17,852, vol/float 0.01x"
-    },
-    {
-      "ticker": "AZI",
-      "name": "Autozi Internet Technology (Global) Ltd.",
-      "price": 0.893,
-      "change_pct": -14.180000000000001,
-      "volume": 40642,
-      "rvol": 0.0043859289402243705,
-      "market_cap": 69004066.56,
-      "float_shares": 56227442,
-      "cap_size": "micro-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 40,642, float 56.2M, vol/float 0.00x"
-    },
-    {
-      "ticker": "ONFO",
-      "name": "Onfolio Holdings",
-      "price": 0.46,
-      "change_pct": -14.14,
-      "volume": 424,
-      "rvol": 1.3387625628184337e-05,
-      "market_cap": 1339596.93,
-      "float_shares": 2466998,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.460, mktcap $1.3M, rvol 0.0x, vol 424, vol/float 0.00x"
-    },
-    {
       "ticker": "SINT",
       "name": "Sintx Technologies Inc",
       "price": 1.039,
@@ -1402,21 +1953,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: rvol 0.0x, vol 2, vol/float 0.00x"
-    },
-    {
-      "ticker": "MGN",
-      "name": "MEGAN HLDGS LTD",
-      "price": 3.2,
-      "change_pct": -13.51,
-      "volume": 4,
-      "rvol": 1.8231374372157046e-05,
-      "market_cap": 60063457.9,
-      "float_shares": 871867,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "Malaysia",
-      "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 4, vol/float 0.00x"
     },
     {
       "ticker": "INVZ",
@@ -1449,21 +1985,6 @@
       "reason": "Filtered: rvol 0.0x, vol 1, vol/float 0.00x"
     },
     {
-      "ticker": "ANPA",
-      "name": "Rich Sparkle Holdings Limited",
-      "price": 1.222,
-      "change_pct": -12.709999999999999,
-      "volume": 971,
-      "rvol": 0.002198488906800825,
-      "market_cap": 21142457.0,
-      "float_shares": 4391755,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "China / Hong Kong",
-      "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 971, vol/float 0.00x"
-    },
-    {
       "ticker": "TOPS",
       "name": "Top Ships Inc",
       "price": 2.07,
@@ -1477,21 +1998,6 @@
       "country": "International (region 68)",
       "passed": false,
       "reason": "Filtered: mktcap $1.8M, rvol 0.0x, vol 70, vol/float 0.00x"
-    },
-    {
-      "ticker": "GDHG",
-      "name": "Golden Heaven Gr",
-      "price": 0.135,
-      "change_pct": -12.6,
-      "volume": 250388,
-      "rvol": 0.00828241833198721,
-      "market_cap": 9209191.32,
-      "float_shares": 41818480,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.135, rvol 0.0x, vol/float 0.01x"
     },
     {
       "ticker": "INEO",
@@ -1524,34 +2030,19 @@
       "reason": "Filtered: rvol 0.0x, vol 8, vol/float 0.00x"
     },
     {
-      "ticker": "JDZG",
-      "name": "Jiade Limited",
-      "price": 0.105,
-      "change_pct": -12.5,
-      "volume": 106568,
-      "rvol": 0.024610029820332096,
-      "market_cap": 717781.44,
-      "float_shares": 5682411,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "China / Cayman-China",
-      "passed": false,
-      "reason": "Filtered: price $0.105, mktcap $0.7M, rvol 0.0x, vol/float 0.02x"
-    },
-    {
       "ticker": "TDTH",
       "name": "Trident Digital Tech Holdings Ltd",
       "price": 0.64,
       "change_pct": -12.33,
-      "volume": 5155,
-      "rvol": 0.00193539642963473,
+      "volume": 5474,
+      "rvol": 0.002055161989489915,
       "market_cap": 43115863.71,
       "float_shares": 58380044,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "Singapore",
       "passed": false,
-      "reason": "Filtered: rvol 0.0x, vol 5,155, float 58.4M, vol/float 0.00x"
+      "reason": "Filtered: rvol 0.0x, vol 5,474, float 58.4M, vol/float 0.00x"
     },
     {
       "ticker": "SFWL",
@@ -1644,6 +2135,21 @@
       "reason": "Filtered: mktcap $1.3M, rvol 0.0x, vol 1, vol/float 0.00x"
     },
     {
+      "ticker": "VWAV",
+      "name": "VisionWave Holdings, Inc",
+      "price": 0.69,
+      "change_pct": -11.68,
+      "volume": 20675,
+      "rvol": 0.002244887655180913,
+      "market_cap": 2534211.33,
+      "float_shares": 2470454,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: mktcap $2.5M, rvol 0.0x, vol 20,675, vol/float 0.01x"
+    },
+    {
       "ticker": "PODC",
       "name": "PodcastOne Inc",
       "price": 1.82,
@@ -1674,22 +2180,65 @@
       "reason": "Filtered: rvol 0.4x, vol 18,914, vol/float 0.00x"
     },
     {
-      "ticker": "VJET",
-      "name": "Flyte Aviation Inc",
-      "price": 0.37,
-      "change_pct": -11.33,
-      "volume": 10,
-      "rvol": 3.108582797102801e-05,
-      "market_cap": 1418169.09,
-      "float_shares": 3018101,
+      "ticker": "HTOO",
+      "name": "Fusion Fuel Green Plc",
+      "price": 0.8,
+      "change_pct": -11.12,
+      "volume": 2,
+      "rvol": 0.00011305822498586772,
+      "market_cap": 6764633.1,
+      "float_shares": 6932882,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
+      "country": "China",
+      "passed": false,
+      "reason": "Filtered: rvol 0.0x, vol 2, vol/float 0.00x"
+    },
+    {
+      "ticker": "ABTS",
+      "name": "Abits Group Inc.",
+      "price": 0.272,
+      "change_pct": -10.979999999999999,
+      "volume": 29470,
+      "rvol": 0.003057255961830673,
+      "market_cap": 1084103.9,
+      "float_shares": 2696020,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "China / Hong Kong",
+      "passed": false,
+      "reason": "Filtered: price $0.272, mktcap $1.1M, rvol 0.0x, vol 29,470, vol/float 0.01x"
+    },
+    {
+      "ticker": "AZR",
+      "name": "Azora Therapeutics Inc",
+      "price": 3.39,
+      "change_pct": -10.79,
+      "volume": 170,
+      "rvol": 0.002768955126638977,
+      "market_cap": 9978382.0,
+      "float_shares": 2509690,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.370, mktcap $1.4M, rvol 0.0x, vol 10, vol/float 0.00x"
+      "reason": "Filtered: rvol 0.0x, vol 170, vol/float 0.00x"
     }
   ],
   "live_quotes": {
+    "INHD": {
+      "price": 2.3,
+      "open": 2.355,
+      "high": 2.4,
+      "low": 2.14,
+      "close": 2.3,
+      "preClose": 2.35,
+      "volume": 1103431,
+      "changeRatio": -0.0213,
+      "marketValue": 5797336.3,
+      "name": "Inno Holdings Inc",
+      "_timestamp": "2026-11-19T09:24:21.168921Z"
+    },
     "GNLN": {
       "price": 0.601,
       "open": 0.66,
@@ -1697,11 +2246,11 @@
       "low": 0.6,
       "close": 0.601,
       "preClose": 0.6893,
-      "volume": 1616811,
+      "volume": 2680700,
       "changeRatio": -0.1281,
       "marketValue": 417420.94,
       "name": "Greenlane Holdings",
-      "_timestamp": "2026-11-19T09:12:18.034845Z"
+      "_timestamp": "2026-11-19T09:24:21.168940Z"
     }
   },
   "previous_live_quotes": {
@@ -1712,18 +2261,31 @@
       "low": 0.6,
       "close": 0.601,
       "preClose": 0.6893,
-      "volume": 1562588,
+      "volume": 2494641,
       "changeRatio": -0.1281,
       "marketValue": 417420.94,
       "name": "Greenlane Holdings",
-      "_timestamp": "2026-11-19T09:11:19.406047Z"
+      "_timestamp": "2026-11-19T09:23:21.221996Z"
+    },
+    "INHD": {
+      "price": 2.3,
+      "open": 2.355,
+      "high": 2.4,
+      "low": 2.14,
+      "close": 2.3,
+      "preClose": 2.35,
+      "volume": 1096644,
+      "changeRatio": -0.0213,
+      "marketValue": 5797336.3,
+      "name": "Inno Holdings Inc",
+      "_timestamp": "2026-11-19T09:23:21.222015Z"
     }
   },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "PRE-MARKET",
-    "market_time": "08:12 PM AEDT",
+    "market_time": "08:24 PM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
