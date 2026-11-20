@@ -2456,8 +2456,8 @@
         // the manifest points to a snapshot we have not loaded yet. This avoids the stale-data
         // race where the frontend refreshes on a wall-clock boundary before the backend scan
         // has finished writing the new snapshot, and it eliminates the 0:00 countdown stall.
-        const MANIFEST_POLL_INTERVAL_MS = 15000; // 15 seconds
-        const MANIFEST_POLL_OFFSET_MS = 1000;    // poll shortly after each 15s boundary
+        const MANIFEST_POLL_INTERVAL_MS = 12000; // 12 seconds
+        const MANIFEST_POLL_OFFSET_MS = 1000;    // poll shortly after each 12s boundary
         let refreshTimerId = null;
         let nextPollAt = computeNextPollAt();
 
