@@ -4264,10 +4264,11 @@
                     window._bubbleViewPreviousTickers = currentSet;
                     window._bubbleViewPreviousTickersInitialized = true;
                 }
-                // Keep an independent snapshot for the flap so tab clicks do not reset it.
+                // Detect new tickers against the previous snapshot first, then update
+                // the snapshot so the next refresh can spot newly appearing tickers.
+                detectNewBubbleFlapTickers(currentSet);
                 window._bubbleFlapPreviousTickers = currentSet;
                 window._bubbleFlapPreviousTickersInitialized = true;
-                detectNewBubbleFlapTickers(currentSet);
             }
 
             function detectNewBubbleFlapTickers(currentSet) {
