@@ -4233,7 +4233,9 @@
             }
 
             function getBubbleViewTickers(viewMode) {
-                return getBubbleViewRows(viewMode).map(r => (r?.ticker || '').toUpperCase()).filter(Boolean).sort();
+                // Return an unordered Set-like array; order changes in sorted lists must not
+                // trigger false "new ticker" detections in the flap.
+                return [...new Set(getBubbleViewRows(viewMode).map(r => (r?.ticker || '').toUpperCase()).filter(Boolean))];
             }
 
             function updateBubbleTabIndicators() {
@@ -4247,7 +4249,7 @@
                     const prev = window._bubbleViewPreviousTickers?.[v] || [];
                     const curr = currentSet[v] || [];
                     const hasPrev = Array.isArray(window._bubbleViewPreviousTickers?.[v]);
-                    const changed = JSON.stringify(prev) !== JSON.stringify(curr);
+                    const changed = JSON.stringify(prev.sort()) !== JSON.stringify(curr.sort());
                     const wasClicked = lastClicked[v];
                     if (hasPrev && changed && !wasClicked) {
                         tab.classList.add('has-changes');
