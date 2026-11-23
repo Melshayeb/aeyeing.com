@@ -4268,20 +4268,31 @@
                 }
                 // Detect new tickers against the previous snapshot first, then update
                 // the snapshot so the next refresh can spot newly appearing tickers.
-                detectNewBubbleFlapTickers(currentSet);
+                // Skip flap detection if the underlying bubble data has not changed since the
+                // last poll; this stops the 12-second poll from re-evaluating the same view.
+                const dataSignature = JSON.stringify(views.map(v => (currentSet[v] || []).sort().join('|')));
+                if (window._bubbleFlapDataSignature !== dataSignature) {
+                    window._bubbleFlapDataSignature = dataSignature;
+                    detectNewBubbleFlapTickers(currentSet);
+                }
                 window._bubbleFlapPreviousTickers = currentSet;
                 window._bubbleFlapPreviousTickersInitialized = true;
             }
 
             function detectNewBubbleFlapTickers(currentSet) {
+                // Only run the flap when the bubble modal is open.
+                const modal = document.getElementById('bubble-modal');
+                if (modal && modal.classList.contains('hidden')) return;
+
                 const views = ['setup', 'gainers', 'bouncers', 'volume', 'gapers'];
                 const prevSet = window._bubbleFlapPreviousTickers || {};
                 const queuedNow = new Set();
                 const now = Date.now();
                 views.forEach(v => {
-                    const prev = prevSet[v] || [];
-                    const curr = currentSet[v] || [];
-                    const newTickers = curr.filter(t => !prev.includes(t));
+                    const prev = new Set(prevSet[v] || []);
+                    const curr = new Set(currentSet[v] || []);
+                    // New tickers are those present now that were not present before.
+                    const newTickers = [...curr].filter(t => !prev.has(t));
                     if (!newTickers.length) return;
                     const rows = getBubbleViewRows(v);
                     newTickers.forEach(ticker => {
