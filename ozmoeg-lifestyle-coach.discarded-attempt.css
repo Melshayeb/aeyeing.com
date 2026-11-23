@@ -1,0 +1,207 @@
+
+/* ============================
+   OzMoEg Lifestyle Coach Styles
+   ============================ */
+.lifestyle-page { background: #F9FAFB; min-height: calc(100vh - 60px); padding: 2rem 1rem 4rem; }
+
+.lifestyle-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.lifestyle-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #14532d 60%, #10b981 100%);
+    color: #FFFFFF;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+}
+
+.lifestyle-hero h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
+.lifestyle-hero .tagline { font-size: 1rem; opacity: 0.9; margin-bottom: 1.25rem; }
+
+.connection-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+.connection-status.checking { background: rgba(255,255,255,0.15); }
+.connection-status.ok { background: rgba(34,197,94,0.25); color: #dcfce7; }
+.connection-status.error { background: rgba(239,68,68,0.25); color: #fee2e2; }
+
+.limits-box {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    margin-top: 0.5rem;
+}
+
+.lifestyle-form { padding: 2rem; }
+
+.form-section { margin-bottom: 2.5rem; }
+.form-section h2 {
+    font-size: 1.25rem;
+    color: #1E3A8A;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+.metrics-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+
+.field { display: flex; flex-direction: column; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 0.85rem; font-weight: 500; color: #374151; margin-bottom: 0.4rem; }
+.field .val { color: #14B8A6; font-weight: 700; }
+.field small { color: #6B7280; font-size: 0.75rem; margin-top: 0.25rem; }
+
+input[type="range"] {
+    width: 100%;
+    accent-color: #14B8A6;
+    cursor: pointer;
+}
+
+textarea, .text-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font: inherit;
+    color: #111827;
+    background: #FFFFFF;
+}
+textarea { min-height: 80px; resize: vertical; }
+textarea:focus, .text-input:focus { outline: none; border-color: #14B8A6; box-shadow: 0 0 0 3px rgba(20,184,166,0.15); }
+
+.btn-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.btn-group.wrap { flex-wrap: wrap; }
+
+.choice {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.choice:hover { border-color: #14B8A6; color: #14B8A6; }
+.choice.active {
+    background: #14B8A6;
+    border-color: #14B8A6;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 1rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+.primary-btn, .secondary-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.primary-btn { background: #14B8A6; color: #FFFFFF; }
+.primary-btn:hover { background: #0f766e; }
+.primary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.secondary-btn { background: #FFFFFF; color: #14B8A6; border: 2px solid #14B8A6; }
+.secondary-btn:hover { background: #f0fdfa; }
+
+.loading {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #374151;
+}
+.loading.hidden, .result.hidden { display: none; }
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #E5E7EB;
+    border-top-color: #14B8A6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading .small { font-size: 0.8rem; color: #6B7280; }
+
+.result {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+.result-header { margin-bottom: 1rem; }
+.result-header h2 { color: #1E3A8A; margin-bottom: 0.75rem; }
+
+.budget-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.budget-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+}
+.budget-card .num { font-size: 1.25rem; font-weight: 700; color: #14B8A6; }
+.budget-card .lbl { font-size: 0.75rem; color: #6B7280; }
+
+.plan-text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: #1F2937;
+    font-size: 0.95rem;
+}
+
+.result-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.email-status { font-size: 0.85rem; margin-top: 0.5rem; color: #374151; }
+
+.lifestyle-footer {
+    background: #0f172a;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .lifestyle-hero h1 { font-size: 1.5rem; }
+    .lifestyle-form { padding: 1.25rem; }
+    .metrics-grid, .metrics-grid.two-col { grid-template-columns: 1fr; }
+    .btn-group { flex-wrap: wrap; }
+}
