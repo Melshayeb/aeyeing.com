@@ -4194,7 +4194,7 @@
             window._bubbleFlapPreviousTickersInitialized = false;
             window._bubbleFlapSeen = new Map();
 
-            const BUBBLE_FLAP_VOLUME_THRESHOLD = 100000;
+            const BUBBLE_FLAP_VOLUME_THRESHOLD = 300000;
             const BUBBLE_FLAP_COOLDOWN_MS = 10 * 60 * 1000;
             const BUBBLE_FLAP_DISPLAY_MS = 5000;
             const BUBBLE_VIEW_LABELS = {
@@ -4302,7 +4302,8 @@
                         if (lastSeen && (now - lastSeen) < BUBBLE_FLAP_COOLDOWN_MS) return;
                         const row = rows.find(r => (r?.ticker || '').toUpperCase() === ticker);
                         const volume = row?.volume || row?.tape?.volume || 0;
-                        if (volume >= BUBBLE_FLAP_VOLUME_THRESHOLD) {
+                        const price = row?.price || row?.tape?.last_price || 0;
+                        if (volume >= BUBBLE_FLAP_VOLUME_THRESHOLD && price > 0.9) {
                             window._bubbleFlapQueue.push({ ticker, view: v, label: BUBBLE_VIEW_LABELS[v] });
                             queuedNow.add(ticker);
                             window._bubbleFlapSeen.set(ticker, now);
