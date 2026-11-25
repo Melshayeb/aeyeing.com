@@ -33,21 +33,14 @@ class WebsiteUpdater:
         self.config = config
         self.is_au = str(config.get('market', 'us')).lower() == 'au'
         self.repo_path = config.get('website_repo_path', str(Path.home() / "Desktop/aeyeing.com"))
-        # AU writes into a dedicated subfolder so its pushes do not collide with US Pages deploys.
-        self.subdir = Path("au") if self.is_au else Path(".")
-        self.html_file = Path(self.repo_path) / self.subdir / ("ozmoeg-trader-au.html" if self.is_au else "ozmoeg-trader.html")
-        self.scan_results_file = Path(self.repo_path) / self.subdir / ("ozmoeg-latest-au.json" if self.is_au else "ozmoeg-latest.json")
+        self.html_file = Path(self.repo_path) / "ozmoeg-trader.html"
+        self.scan_results_file = Path(self.repo_path) / ("ozmoeg-latest-au.json" if self.is_au else "ozmoeg-latest.json")
         self.wb = webull_client
 
     def update(self, scan_results: list, active_plan: dict = None, scan_stats: dict = None, ticker_ids: Dict[str, int] = None):
         is_au = str((scan_stats or {}).get('market', self.config.get('market', 'us'))).lower() == 'au'
-        self.is_au = is_au
-        self.subdir = Path("au") if is_au else Path(".")
-        self.scan_results_file = Path(self.repo_path) / self.subdir / ('ozmoeg-latest-au.json' if is_au else 'ozmoeg-latest.json')
-        self.html_file = Path(self.repo_path) / self.subdir / ('ozmoeg-trader-au.html' if is_au else 'ozmoeg-trader.html')
+        self.scan_results_file = Path(self.repo_path) / ('ozmoeg-latest-au.json' if is_au else 'ozmoeg-latest.json')
         if not self.scan_results_file.parent.exists():
-            self.scan_results_file.parent.mkdir(parents=True, exist_ok=True)
-        if not self.repo_path:
             logger.warning("Website repo not found at %s — skipping update", self.repo_path)
             return False
 
@@ -306,23 +299,23 @@ class WebsiteUpdater:
         return
 
     def _update_embedded_snapshot(self, data: dict) -> bool:
-        """Refresh the embedded JSON fallback inside the relevant trader HTML page(s).
+        """Refresh the embedded JSON fallback inside every trader HTML page that
+        contains the <script id="ozmoeg-embedded-data"> block.
 
-        US updates only the US-facing pages. AU updates only its dedicated AU page
-        in the au/ subfolder, so the two markets no longer collide on Pages deploys.
+        The live site now serves ozmoeg-trader-live.html (and v8 / us variants);
+        v7 is no longer the canonical page. Keeping the embedded snapshot fresh
+        in all active pages prevents the bubble chart and first paint from
+        showing stale or negative change_pct values while the live XHR is in
+        flight.
         """
+        html_files = [
+            Path(self.repo_path) / "ozmoeg-trader-live.html",
+            Path(self.repo_path) / "ozmoeg-trader-v8.html",
+            Path(self.repo_path) / "ozmoeg-trader-us.html",
+            Path(self.repo_path) / "ozmoeg-trader-v7.html",
+        ]
         market = str(data.get("scan_stats", {}).get("market", "us")).lower()
-        is_au = market == 'au'
-        if is_au:
-            html_files = [Path(self.repo_path) / "au" / "ozmoeg-trader-au.html"]
-        else:
-            html_files = [
-                Path(self.repo_path) / "ozmoeg-trader-live.html",
-                Path(self.repo_path) / "ozmoeg-trader-v8.html",
-                Path(self.repo_path) / "ozmoeg-trader-us.html",
-                Path(self.repo_path) / "ozmoeg-trader-v7.html",
-            ]
-        attr = "data-au" if is_au else "data-us"
+        attr = "data-au" if market == "au" else "data-us"
         json_str = json.dumps(data, indent=2, ensure_ascii=False)
         # Escape for safe HTML attribute content (same style the hand-edited file uses)
         json_str = json_str.replace("&", "&amp;").replace("'", "&#39;").replace('"', "&quot;")
@@ -410,7 +403,7 @@ class WebsiteUpdater:
                 cutoff = datetime.now(timezone.utc) - timedelta(minutes=15)
                 # US:  ozmoeg-latest_20260825_093337.json
                 # AUS: ozmoeg-latest-au_20260825_093337.json
-                for pattern in ['ozmoeg-latest_*.json', 'ozmoeg-latest-au_*.json', 'au/ozmoeg-latest-au_*.json']:
+                for pattern in ['ozmoeg-latest_*.json', 'ozmoeg-latest-au_*.json']:
                     for snap in repo_root.glob(pattern):
                         try:
                             ts_str = snap.name.replace('ozmoeg-latest', '').replace('-au', '').replace('_', '', 1).replace('.json', '')

@@ -45,14 +45,12 @@ def _load_last_snapshot(market: str = 'us') -> Dict[str, Any]:
 
 def _write_fast_feed(data: Dict[str, Any], market: str = 'us') -> None:
     suffix = '-au' if market == 'au' else ''
-    subdir = 'au' if market == 'au' else '.'
     paths = [
-        SCRIPT_DIR.parent.parent / subdir / f'ozmoeg-fast{suffix}.json',
-        SCRIPT_DIR / subdir / f'ozmoeg-fast{suffix}.json',
+        SCRIPT_DIR.parent.parent / f'ozmoeg-fast{suffix}.json',
+        SCRIPT_DIR / f'ozmoeg-fast{suffix}.json',
     ]
     for p in paths:
         try:
-            p.parent.mkdir(parents=True, exist_ok=True)
             p.write_text(json.dumps(data, indent=2), encoding='utf-8')
         except Exception as e:
             logger.warning("Failed to write %s: %s", p, e)
