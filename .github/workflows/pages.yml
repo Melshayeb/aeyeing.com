@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -15,20 +16,43 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-24.04
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Upload artifact
+        id: upload
         uses: actions/upload-pages-artifact@v5
         with:
           path: '.'
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Wait for artifact metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          api="${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?name=github-pages"
+          for attempt in $(seq 1 30); do
+            count=$(curl -sS --fail-with-body -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" "$api" | jq -r '.total_count // 0' 2>/dev/null || echo 0)
+            if [ "${count:-0}" -gt 0 ]; then
+              echo "github-pages artifact is listed (probe ${attempt})."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::warning::github-pages artifact not listed after 60s; proceeding with deploy anyway."
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
