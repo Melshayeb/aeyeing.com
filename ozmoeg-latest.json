@@ -1,14 +1,129 @@
 {
-  "last_updated": "2026-11-26T00:25:48.425423Z",
+  "last_updated": "2026-11-26T00:26:46.947337Z",
   "scan_results": [
+    {
+      "ticker": "POM",
+      "name": "POMDOCTOR LTD",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.57,
+      "change_pct": 59.63,
+      "volume": 4595059,
+      "market_cap": 57905480.57,
+      "float_shares": 35761933,
+      "country": "China / Cayman-China",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+59.6% \u00b7 Entry $2.57 \u00b7 T1 $2.67 \u00b7 T2 $2.72 \u00b7 T3 $2.83",
+      "plan": {
+        "valid": true,
+        "ticker": "POM",
+        "entry": 2.57,
+        "stop": 2.5186,
+        "targets": {
+          "t1": 2.6728,
+          "t2": 2.7242,
+          "t3": 2.827
+        },
+        "risk_per_share": 0.0514,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 116,
+        "position_value": 298.12,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.5186"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "POM",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 23 Nov",
+            "raw_time": "2026-11-23T10:34:27.763+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 23 Nov",
+            "raw_time": "2026-11-23T10:34:27.763+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Pomdoctor Regains Nasdaq Compliance, Delisting Hearing Cancelled",
+            "flag": "delisting"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at POM last week (1116-1120)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
+      },
+      "tape": {
+        "ticker": "POM",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.22,
+        "volume_indicator": "high",
+        "volume": 4595059,
+        "adv": 2065447,
+        "recent_pct_of_adv": 222.47,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 36.614,
+        "buy_pressure_pct": 51.04,
+        "large_bar_count": 41,
+        "vwap_distance_pct": 0.004,
+        "recent_volume": 4595059,
+        "prior_volume": 0,
+        "median_range": 0.0496,
+        "last_price": 1.61,
+        "vwap": 1.6100640260337402,
+        "last_trade_time": "2026-11-26T00:26:30.268000+00:00",
+        "stale_age_seconds": 15
+      },
+      "date": "2026-11-26",
+      "time": "11:26:46",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 2.52
+    },
     {
       "ticker": "MNDR",
       "name": "Mobile-health Network Solutions",
       "status": "CANDIDATE",
       "source": "regular",
-      "price": 0.635,
-      "change_pct": 25.83,
-      "volume": 2940635,
+      "price": 0.63,
+      "change_pct": 24.82,
+      "volume": 2953648,
       "market_cap": 699408.48,
       "float_shares": 975675,
       "country": "Singapore",
@@ -21,19 +136,19 @@
       "plan": {
         "valid": true,
         "ticker": "MNDR",
-        "entry": 0.635,
-        "stop": 0.6223,
+        "entry": 0.63,
+        "stop": 0.6174,
         "targets": {
-          "t1": 0.6604,
-          "t2": 0.6731,
-          "t3": 0.6985
+          "t1": 0.6552,
+          "t2": 0.6678,
+          "t3": 0.693
         },
-        "risk_per_share": 0.0127,
+        "risk_per_share": 0.0126,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 472,
-        "position_value": 299.72,
+        "shares": 476,
+        "position_value": 299.88,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -41,7 +156,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6223"
+          "hard_stop": "$0.6174"
         }
       },
       "ta": {
@@ -141,155 +256,155 @@
         "stale": false,
         "no_move": false,
         "tape_score": 4.0,
-        "rvol": 0.85,
+        "rvol": 0.86,
         "volume_indicator": "low",
-        "volume": 2940635,
+        "volume": 2953648,
         "adv": 3451811,
-        "recent_pct_of_adv": 85.19,
+        "recent_pct_of_adv": 85.57,
         "volume_acceleration": -0.491,
         "price_velocity_pct": 4.755,
-        "buy_pressure_pct": 45.62,
-        "large_bar_count": 92,
+        "buy_pressure_pct": 45.48,
+        "large_bar_count": 93,
         "vwap_distance_pct": 11.471,
-        "recent_volume": 2940635,
+        "recent_volume": 2953648,
         "prior_volume": 0,
         "median_range": 0.0,
         "last_price": 0.5048,
         "vwap": 0.5702075974630492,
-        "last_trade_time": "2026-11-26T00:25:27.799000+00:00",
-        "stale_age_seconds": 22
+        "last_trade_time": "2026-11-26T00:26:22.288000+00:00",
+        "stale_age_seconds": 23
       },
       "date": "2026-11-26",
-      "time": "11:25:46",
+      "time": "11:26:46",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 0.631
-    },
-    {
-      "ticker": "POM",
-      "name": "POMDOCTOR LTD",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.52,
-      "change_pct": 57.120000000000005,
-      "volume": 4590021,
-      "market_cap": 57905480.57,
-      "float_shares": 35761933,
-      "country": "China / Cayman-China",
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+57.1% \u00b7 Entry $2.52 \u00b7 T1 $2.62 \u00b7 T2 $2.67 \u00b7 T3 $2.77",
-      "plan": {
-        "valid": true,
-        "ticker": "POM",
-        "entry": 2.52,
-        "stop": 2.4696,
-        "targets": {
-          "t1": 2.6208,
-          "t2": 2.6712,
-          "t3": 2.772
-        },
-        "risk_per_share": 0.0504,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 119,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.4696"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "POM",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 23 Nov",
-            "raw_time": "2026-11-23T10:34:27.763+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 23 Nov",
-            "raw_time": "2026-11-23T10:34:27.763+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Pomdoctor Regains Nasdaq Compliance, Delisting Hearing Cancelled",
-            "flag": "delisting"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at POM last week (1116-1120)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
-      },
-      "tape": {
-        "ticker": "POM",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.22,
-        "volume_indicator": "high",
-        "volume": 4590021,
-        "adv": 2065447,
-        "recent_pct_of_adv": 222.23,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 36.614,
-        "buy_pressure_pct": 50.79,
-        "large_bar_count": 40,
-        "vwap_distance_pct": 0.004,
-        "recent_volume": 4590021,
-        "prior_volume": 0,
-        "median_range": 0.0499,
-        "last_price": 1.61,
-        "vwap": 1.6100640260337402,
-        "last_trade_time": "2026-11-26T00:25:16.533000+00:00",
-        "stale_age_seconds": 30
-      },
-      "date": "2026-11-26",
-      "time": "11:25:47",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 2.53
+      "previous_price": 0.635
     }
   ],
   "pre_market_results": [
     {
+      "ticker": "POM",
+      "name": "POMDOCTOR LTD",
+      "status": "ALERT",
+      "source": "regular",
+      "price": 2.57,
+      "change_pct": 59.63,
+      "volume": 4595059,
+      "market_cap": 57905480.57,
+      "float_shares": 35761933,
+      "country": "China / Cayman-China",
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "scan_reason": "Passed filters",
+      "scan_passed": true,
+      "sec_filings": "",
+      "result": "+59.6% \u00b7 Entry $2.57 \u00b7 T1 $2.67 \u00b7 T2 $2.72 \u00b7 T3 $2.83",
+      "plan": {
+        "valid": true,
+        "ticker": "POM",
+        "entry": 2.57,
+        "stop": 2.5186,
+        "targets": {
+          "t1": 2.6728,
+          "t2": 2.7242,
+          "t3": 2.827
+        },
+        "risk_per_share": 0.0514,
+        "risk_amount": 20.0,
+        "daily_risk_budget": 60.0,
+        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
+        "shares": 116,
+        "position_value": 298.12,
+        "risk_reward": 2.0,
+        "confidence": "MED",
+        "strategy": "Demand zone + candlestick confirmation scalp",
+        "exit_rules": {
+          "momentum_based": true,
+          "time_based": false,
+          "trail_breakeven_at": "+1%",
+          "hard_stop": "$2.5186"
+        }
+      },
+      "ta": {
+        "valid": false,
+        "error": "No bar data"
+      },
+      "news": {
+        "ticker": "POM",
+        "total_items": 20,
+        "scored_items": [
+          {
+            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 23 Nov",
+            "raw_time": "2026-11-23T10:34:27.763+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "headlines": [
+          {
+            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
+            "source": "Webull",
+            "time": "2d ago \u00b7 23 Nov",
+            "raw_time": "2026-11-23T10:34:27.763+0000",
+            "url": "",
+            "score": 0,
+            "keywords": []
+          }
+        ],
+        "red_flags": [
+          {
+            "title": "Pomdoctor Regains Nasdaq Compliance, Delisting Hearing Cancelled",
+            "flag": "delisting"
+          }
+        ],
+        "max_score": 0,
+        "avg_score": 0.0,
+        "catalyst_confirmed": false,
+        "high_impact_count": 0,
+        "top_headline": "Weekly Report: what happened at POM last week (1116-1120)?",
+        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
+      },
+      "tape": {
+        "ticker": "POM",
+        "valid": true,
+        "stale": false,
+        "no_move": false,
+        "tape_score": 8.0,
+        "rvol": 2.22,
+        "volume_indicator": "high",
+        "volume": 4595059,
+        "adv": 2065447,
+        "recent_pct_of_adv": 222.47,
+        "volume_acceleration": -1.0,
+        "price_velocity_pct": 36.614,
+        "buy_pressure_pct": 51.04,
+        "large_bar_count": 41,
+        "vwap_distance_pct": 0.004,
+        "recent_volume": 4595059,
+        "prior_volume": 0,
+        "median_range": 0.0496,
+        "last_price": 1.61,
+        "vwap": 1.6100640260337402,
+        "last_trade_time": "2026-11-26T00:26:30.268000+00:00",
+        "stale_age_seconds": 15
+      },
+      "date": "2026-11-26",
+      "time": "11:26:46",
+      "skip_news_check": true,
+      "red_flag": true,
+      "previous_price": 2.52
+    },
+    {
       "ticker": "MNDR",
       "name": "Mobile-health Network Solutions",
       "status": "CANDIDATE",
       "source": "regular",
-      "price": 0.635,
-      "change_pct": 25.83,
-      "volume": 2940635,
+      "price": 0.63,
+      "change_pct": 24.82,
+      "volume": 2953648,
       "market_cap": 699408.48,
       "float_shares": 975675,
       "country": "Singapore",
@@ -302,19 +417,19 @@
       "plan": {
         "valid": true,
         "ticker": "MNDR",
-        "entry": 0.635,
-        "stop": 0.6223,
+        "entry": 0.63,
+        "stop": 0.6174,
         "targets": {
-          "t1": 0.6604,
-          "t2": 0.6731,
-          "t3": 0.6985
+          "t1": 0.6552,
+          "t2": 0.6678,
+          "t3": 0.693
         },
-        "risk_per_share": 0.0127,
+        "risk_per_share": 0.0126,
         "risk_amount": 20.0,
         "daily_risk_budget": 60.0,
         "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 472,
-        "position_value": 299.72,
+        "shares": 476,
+        "position_value": 299.88,
         "risk_reward": 2.0,
         "confidence": "MED",
         "strategy": "Demand zone + candlestick confirmation scalp",
@@ -322,7 +437,7 @@
           "momentum_based": true,
           "time_based": false,
           "trail_breakeven_at": "+1%",
-          "hard_stop": "$0.6223"
+          "hard_stop": "$0.6174"
         }
       },
       "ta": {
@@ -422,144 +537,29 @@
         "stale": false,
         "no_move": false,
         "tape_score": 4.0,
-        "rvol": 0.85,
+        "rvol": 0.86,
         "volume_indicator": "low",
-        "volume": 2940635,
+        "volume": 2953648,
         "adv": 3451811,
-        "recent_pct_of_adv": 85.19,
+        "recent_pct_of_adv": 85.57,
         "volume_acceleration": -0.491,
         "price_velocity_pct": 4.755,
-        "buy_pressure_pct": 45.62,
-        "large_bar_count": 92,
+        "buy_pressure_pct": 45.48,
+        "large_bar_count": 93,
         "vwap_distance_pct": 11.471,
-        "recent_volume": 2940635,
+        "recent_volume": 2953648,
         "prior_volume": 0,
         "median_range": 0.0,
         "last_price": 0.5048,
         "vwap": 0.5702075974630492,
-        "last_trade_time": "2026-11-26T00:25:27.799000+00:00",
-        "stale_age_seconds": 22
+        "last_trade_time": "2026-11-26T00:26:22.288000+00:00",
+        "stale_age_seconds": 23
       },
       "date": "2026-11-26",
-      "time": "11:25:46",
+      "time": "11:26:46",
       "skip_news_check": true,
       "red_flag": false,
-      "previous_price": 0.631
-    },
-    {
-      "ticker": "POM",
-      "name": "POMDOCTOR LTD",
-      "status": "ALERT",
-      "source": "regular",
-      "price": 2.52,
-      "change_pct": 57.120000000000005,
-      "volume": 4590021,
-      "market_cap": 57905480.57,
-      "float_shares": 35761933,
-      "country": "China / Cayman-China",
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "scan_reason": "Passed filters",
-      "scan_passed": true,
-      "sec_filings": "",
-      "result": "+57.1% \u00b7 Entry $2.52 \u00b7 T1 $2.62 \u00b7 T2 $2.67 \u00b7 T3 $2.77",
-      "plan": {
-        "valid": true,
-        "ticker": "POM",
-        "entry": 2.52,
-        "stop": 2.4696,
-        "targets": {
-          "t1": 2.6208,
-          "t2": 2.6712,
-          "t3": 2.772
-        },
-        "risk_per_share": 0.0504,
-        "risk_amount": 20.0,
-        "daily_risk_budget": 60.0,
-        "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-        "shares": 119,
-        "position_value": 299.88,
-        "risk_reward": 2.0,
-        "confidence": "MED",
-        "strategy": "Demand zone + candlestick confirmation scalp",
-        "exit_rules": {
-          "momentum_based": true,
-          "time_based": false,
-          "trail_breakeven_at": "+1%",
-          "hard_stop": "$2.4696"
-        }
-      },
-      "ta": {
-        "valid": false,
-        "error": "No bar data"
-      },
-      "news": {
-        "ticker": "POM",
-        "total_items": 20,
-        "scored_items": [
-          {
-            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 23 Nov",
-            "raw_time": "2026-11-23T10:34:27.763+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "headlines": [
-          {
-            "title": "Weekly Report: what happened at POM last week (1116-1120)?",
-            "source": "Webull",
-            "time": "2d ago \u00b7 23 Nov",
-            "raw_time": "2026-11-23T10:34:27.763+0000",
-            "url": "",
-            "score": 0,
-            "keywords": []
-          }
-        ],
-        "red_flags": [
-          {
-            "title": "Pomdoctor Regains Nasdaq Compliance, Delisting Hearing Cancelled",
-            "flag": "delisting"
-          }
-        ],
-        "max_score": 0,
-        "avg_score": 0.0,
-        "catalyst_confirmed": false,
-        "high_impact_count": 0,
-        "top_headline": "Weekly Report: what happened at POM last week (1116-1120)?",
-        "news_filter_reason": "news red flags; low catalyst score (max 0/5); red flags: delisting"
-      },
-      "tape": {
-        "ticker": "POM",
-        "valid": true,
-        "stale": false,
-        "no_move": false,
-        "tape_score": 8.0,
-        "rvol": 2.22,
-        "volume_indicator": "high",
-        "volume": 4590021,
-        "adv": 2065447,
-        "recent_pct_of_adv": 222.23,
-        "volume_acceleration": -1.0,
-        "price_velocity_pct": 36.614,
-        "buy_pressure_pct": 50.79,
-        "large_bar_count": 40,
-        "vwap_distance_pct": 0.004,
-        "recent_volume": 4590021,
-        "prior_volume": 0,
-        "median_range": 0.0499,
-        "last_price": 1.61,
-        "vwap": 1.6100640260337402,
-        "last_trade_time": "2026-11-26T00:25:16.533000+00:00",
-        "stale_age_seconds": 30
-      },
-      "date": "2026-11-26",
-      "time": "11:25:47",
-      "skip_news_check": true,
-      "red_flag": true,
-      "previous_price": 2.53
+      "previous_price": 0.635
     }
   ],
   "pre_market_watchlist": [],
@@ -569,9 +569,9 @@
       "name": "STAK inc.",
       "status": "BOUNCE",
       "source": "bounce",
-      "price": 2.17,
-      "change_pct": -20.8,
-      "volume": 6784029,
+      "price": 2.151,
+      "change_pct": -21.5,
+      "volume": 6786396,
       "market_cap": 52636356.26,
       "float_shares": 10010349,
       "country": "China / Cayman-China",
@@ -590,9 +590,9 @@
     "name": "POMDOCTOR LTD",
     "status": "ALERT",
     "source": "regular",
-    "price": 2.52,
-    "change_pct": 57.120000000000005,
-    "volume": 4590021,
+    "price": 2.57,
+    "change_pct": 59.63,
+    "volume": 4595059,
     "market_cap": 57905480.57,
     "float_shares": 35761933,
     "country": "China / Cayman-China",
@@ -601,23 +601,23 @@
     "scan_reason": "Passed filters",
     "scan_passed": true,
     "sec_filings": "",
-    "result": "+57.1% \u00b7 Entry $2.52 \u00b7 T1 $2.62 \u00b7 T2 $2.67 \u00b7 T3 $2.77",
+    "result": "+59.6% \u00b7 Entry $2.57 \u00b7 T1 $2.67 \u00b7 T2 $2.72 \u00b7 T3 $2.83",
     "plan": {
       "valid": true,
       "ticker": "POM",
-      "entry": 2.52,
-      "stop": 2.4696,
+      "entry": 2.57,
+      "stop": 2.5186,
       "targets": {
-        "t1": 2.6208,
-        "t2": 2.6712,
-        "t3": 2.772
+        "t1": 2.6728,
+        "t2": 2.7242,
+        "t3": 2.827
       },
-      "risk_per_share": 0.0504,
+      "risk_per_share": 0.0514,
       "risk_amount": 20.0,
       "daily_risk_budget": 60.0,
       "risk_unit_label": "R = $20.0 (3% daily \u00f7 3 trades)",
-      "shares": 119,
-      "position_value": 299.88,
+      "shares": 116,
+      "position_value": 298.12,
       "risk_reward": 2.0,
       "confidence": "MED",
       "strategy": "Demand zone + candlestick confirmation scalp",
@@ -625,7 +625,7 @@
         "momentum_based": true,
         "time_based": false,
         "trail_breakeven_at": "+1%",
-        "hard_stop": "$2.4696"
+        "hard_stop": "$2.5186"
       }
     },
     "ta": {
@@ -678,27 +678,27 @@
       "tape_score": 8.0,
       "rvol": 2.22,
       "volume_indicator": "high",
-      "volume": 4590021,
+      "volume": 4595059,
       "adv": 2065447,
-      "recent_pct_of_adv": 222.23,
+      "recent_pct_of_adv": 222.47,
       "volume_acceleration": -1.0,
       "price_velocity_pct": 36.614,
-      "buy_pressure_pct": 50.79,
-      "large_bar_count": 40,
+      "buy_pressure_pct": 51.04,
+      "large_bar_count": 41,
       "vwap_distance_pct": 0.004,
-      "recent_volume": 4590021,
+      "recent_volume": 4595059,
       "prior_volume": 0,
-      "median_range": 0.0499,
+      "median_range": 0.0496,
       "last_price": 1.61,
       "vwap": 1.6100640260337402,
-      "last_trade_time": "2026-11-26T00:25:16.533000+00:00",
-      "stale_age_seconds": 30
+      "last_trade_time": "2026-11-26T00:26:30.268000+00:00",
+      "stale_age_seconds": 15
     },
     "date": "2026-11-26",
-    "time": "11:25:47",
+    "time": "11:26:46",
     "skip_news_check": true,
     "red_flag": true,
-    "previous_price": 2.53
+    "previous_price": 2.52
   },
   "total_candidates": 2,
   "alerts_generated": 1,
@@ -706,10 +706,10 @@
     {
       "ticker": "POM",
       "name": "POMDOCTOR LTD",
-      "price": 2.52,
-      "change_pct": 57.120000000000005,
-      "volume": 4590021,
-      "rvol": 9.170449709603755,
+      "price": 2.57,
+      "change_pct": 59.63,
+      "volume": 4595059,
+      "rvol": 9.180515181120548,
       "market_cap": 57905480.57,
       "float_shares": 35761933,
       "cap_size": "micro-cap",
@@ -721,10 +721,10 @@
     {
       "ticker": "TRUG",
       "name": "TruGolf Holdings",
-      "price": 0.373,
-      "change_pct": 44.09,
-      "volume": 3137539,
-      "rvol": 1.0825531859101114,
+      "price": 0.376,
+      "change_pct": 42.27,
+      "volume": 3197505,
+      "rvol": 1.1032434097914037,
       "market_cap": 656349.94,
       "float_shares": 2474353,
       "cap_size": "nano-cap",
@@ -751,10 +751,10 @@
     {
       "ticker": "MNDR",
       "name": "Mobile-health Network Solutions",
-      "price": 0.635,
-      "change_pct": 25.83,
-      "volume": 2940635,
-      "rvol": 12.74154971381033,
+      "price": 0.63,
+      "change_pct": 24.82,
+      "volume": 2953648,
+      "rvol": 12.797934061553526,
       "market_cap": 699408.48,
       "float_shares": 975675,
       "cap_size": "nano-cap",
@@ -766,32 +766,32 @@
     {
       "ticker": "DOGZ",
       "name": "Dogness International Corp",
-      "price": 0.285,
-      "change_pct": 24.93,
-      "volume": 31092316,
-      "rvol": 10.900539026386875,
+      "price": 0.282,
+      "change_pct": 23.580000000000002,
+      "volume": 31099585,
+      "rvol": 10.903087437968143,
       "market_cap": 4021034.16,
       "float_shares": 4426658,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: tiny price $0.285"
+      "reason": "Filtered: tiny price $0.282"
     },
     {
       "ticker": "NXAT",
       "name": "Nexus Advanced Technologies",
-      "price": 0.781,
-      "change_pct": 21.12,
-      "volume": 132280094,
-      "rvol": 2.1140664283373303,
+      "price": 0.77,
+      "change_pct": 19.45,
+      "volume": 132304755,
+      "rvol": 2.1144605540943715,
       "market_cap": 2086938.4,
       "float_shares": 2604189,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "International (region 39)",
       "passed": false,
-      "reason": "Filtered: tiny price $0.781"
+      "reason": "Filtered: tiny price $0.770"
     },
     {
       "ticker": "SNSC",
@@ -807,6 +807,21 @@
       "country": "International (region 124)",
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x, avg $vol $0.2M < $0.2M"
+    },
+    {
+      "ticker": "NHTC",
+      "name": "Natural Health Trends Corp",
+      "price": 0.698,
+      "change_pct": 15.989999999999998,
+      "volume": 69271,
+      "rvol": 1.2472721379956067,
+      "market_cap": 5110820.8,
+      "float_shares": 7386466,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: tiny price $0.698, tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.01x, vol/float 0.01x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
       "ticker": "MGIH",
@@ -869,6 +884,21 @@
       "reason": "Filtered: vol 28,492, vol/float 0.00x < 0.1x, avg $vol $0.0M < $0.2M"
     },
     {
+      "ticker": "SHPH",
+      "name": "Shuttle Pharmaceuticals Holdings, Inc.",
+      "price": 4.54,
+      "change_pct": 13.530000000000001,
+      "volume": 33373,
+      "rvol": 1.1463263834026036,
+      "market_cap": 19053542.83,
+      "float_shares": 4760299,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol 33,373, vol/float 0.01x < 0.1x, avg $vol $0.1M < $0.2M"
+    },
+    {
       "ticker": "GRAN",
       "name": "Grande Group Limited",
       "price": 1.43,
@@ -912,21 +942,6 @@
       "country": "Singapore",
       "passed": false,
       "reason": "Filtered: vol 39,927, vol/float 0.00x < 0.1x, avg $vol $0.1M < $0.2M"
-    },
-    {
-      "ticker": "NCPL",
-      "name": "Netcapital Inc",
-      "price": 2.108,
-      "change_pct": 12.75,
-      "volume": 1306512,
-      "rvol": 0.2798889280684564,
-      "market_cap": 14994460.36,
-      "float_shares": 4558277,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": true,
-      "reason": "Passed filters"
     },
     {
       "ticker": "XRTX",
@@ -974,6 +989,21 @@
       "reason": "Filtered: vol 11,983, vol/float 0.00x < 0.1x, avg $vol $0.2M < $0.2M"
     },
     {
+      "ticker": "NCPL",
+      "name": "Netcapital Inc",
+      "price": 2.098,
+      "change_pct": 12.21,
+      "volume": 1307547,
+      "rvol": 0.2801106520484511,
+      "market_cap": 14994460.36,
+      "float_shares": 4558277,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": true,
+      "reason": "Passed filters"
+    },
+    {
       "ticker": "OPNW",
       "name": "Openworld Inc",
       "price": 0.55,
@@ -1008,8 +1038,8 @@
       "name": "Foxx Development Holdings Inc.",
       "price": 1.7,
       "change_pct": 11.48,
-      "volume": 50422,
-      "rvol": 0.45982818684224924,
+      "volume": 50451,
+      "rvol": 0.4600926550787021,
       "market_cap": 10827428.33,
       "float_shares": 1206699,
       "cap_size": "nano-cap",
@@ -1051,10 +1081,10 @@
     {
       "ticker": "RAYA",
       "name": "Erayak Power Sol",
-      "price": 0.725,
-      "change_pct": 10.639999999999999,
-      "volume": 98282019,
-      "rvol": 3.8952367322314387,
+      "price": 0.724,
+      "change_pct": 10.58,
+      "volume": 98288997,
+      "rvol": 3.89551329311403,
       "market_cap": 704250.76,
       "float_shares": 1025737,
       "cap_size": "nano-cap",
@@ -1092,21 +1122,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny rvol 0.1x, tiny avg $vol, tiny vol/float 0.00x, vol 6,060, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "BGDE",
-      "name": "Big Digital Energy Inc",
-      "price": 2.6,
-      "change_pct": 10.17,
-      "volume": 100521,
-      "rvol": 1.0097538925163234,
-      "market_cap": 15149411.12,
-      "float_shares": 3771318,
-      "cap_size": "nano-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.03x < 0.1x"
     },
     {
       "ticker": "SPRO",
@@ -1154,6 +1169,21 @@
       "reason": "Filtered: tiny rvol 1.2x, tiny avg $vol, tiny vol/float 0.00x, vol 4,326, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     },
     {
+      "ticker": "SLSN",
+      "name": "Solesence",
+      "price": 2.48,
+      "change_pct": 9.73,
+      "volume": 1628505,
+      "rvol": 1.840287077122313,
+      "market_cap": 159662321.7,
+      "float_shares": 19157650,
+      "cap_size": "micro-cap",
+      "is_penny_stock": false,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: vol/float 0.09x < 0.1x"
+    },
+    {
       "ticker": "IRIX",
       "name": "Iridex",
       "price": 0.484,
@@ -1167,21 +1197,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: tiny price $0.484, tiny rvol 0.3x, tiny avg $vol, tiny vol/float 0.00x, vol 29,238, vol/float 0.00x < 0.1x, avg $vol $0.1M < $2.0M"
-    },
-    {
-      "ticker": "SLSN",
-      "name": "Solesence",
-      "price": 2.47,
-      "change_pct": 9.29,
-      "volume": 1628471,
-      "rvol": 1.840248655526664,
-      "market_cap": 159662321.7,
-      "float_shares": 19157650,
-      "cap_size": "micro-cap",
-      "is_penny_stock": false,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: vol/float 0.09x < 0.1x"
     },
     {
       "ticker": "NEOV",
@@ -1362,46 +1377,31 @@
       "country": "Germany",
       "passed": false,
       "reason": "Filtered: vol/float 0.02x < 0.1x"
-    },
-    {
-      "ticker": "GDTC",
-      "name": "CytoMed Therapeutics Ltd",
-      "price": 0.85,
-      "change_pct": 8.28,
-      "volume": 9274,
-      "rvol": 0.8836588851834207,
-      "market_cap": 9367709.29,
-      "float_shares": 3522154,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Singapore",
-      "passed": false,
-      "reason": "Filtered: tiny price $0.850, tiny rvol 0.9x, tiny avg $vol, tiny vol/float 0.00x, vol 9,274, vol/float 0.00x < 0.1x, avg $vol $0.0M < $2.0M"
     }
   ],
   "all_losers": [
     {
       "ticker": "VVOS",
       "name": "Vivos Therapeutics Inc",
-      "price": 0.03,
-      "change_pct": -35.43,
-      "volume": 4697977,
-      "rvol": 2.3109548058060443,
+      "price": 0.032,
+      "change_pct": -30.65,
+      "volume": 4727877,
+      "rvol": 2.3256627425825758,
       "market_cap": 1555755.33,
       "float_shares": 29924639,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "United States",
       "passed": false,
-      "reason": "Filtered: price $0.030, mktcap $1.6M, move -35.4%, vol/float 0.16x"
+      "reason": "Filtered: price $0.032, mktcap $1.6M, move -30.6%, vol/float 0.16x"
     },
     {
       "ticker": "VIVK",
       "name": "Vivakor",
       "price": 0.096,
-      "change_pct": -29.93,
-      "volume": 85348346,
-      "rvol": 3.812493087349282,
+      "change_pct": -29.849999999999998,
+      "volume": 85355674,
+      "rvol": 3.812820427604289,
       "market_cap": 1374142.61,
       "float_shares": 10026707,
       "cap_size": "nano-cap",
@@ -1413,17 +1413,17 @@
     {
       "ticker": "JDZG",
       "name": "Jiade Limited",
-      "price": 0.079,
+      "price": 0.081,
       "change_pct": -26.06,
-      "volume": 8745073,
-      "rvol": 2.1512401445365477,
+      "volume": 8750405,
+      "rvol": 2.1525517873839735,
       "market_cap": 651984.81,
       "float_shares": 5682411,
       "cap_size": "nano-cap",
       "is_penny_stock": true,
       "country": "China / Cayman-China",
       "passed": false,
-      "reason": "Filtered: price $0.079, mktcap $0.7M"
+      "reason": "Filtered: price $0.081, mktcap $0.7M"
     },
     {
       "ticker": "EDTK",
@@ -1443,10 +1443,10 @@
     {
       "ticker": "STAK",
       "name": "STAK inc.",
-      "price": 2.17,
-      "change_pct": -20.8,
-      "volume": 6784029,
-      "rvol": 2.9341683394036275,
+      "price": 2.151,
+      "change_pct": -21.5,
+      "volume": 6786396,
+      "rvol": 2.9351920933497513,
       "market_cap": 52636356.26,
       "float_shares": 10010349,
       "cap_size": "micro-cap",
@@ -1469,6 +1469,21 @@
       "country": "Singapore",
       "passed": false,
       "reason": "Filtered: rvol 0.1x, vol 214, vol/float 0.00x"
+    },
+    {
+      "ticker": "HCTI",
+      "name": "Healthcare Triangle Inc",
+      "price": 0.386,
+      "change_pct": -16.59,
+      "volume": 2791189,
+      "rvol": 7.973572724286184,
+      "market_cap": 423183.39,
+      "float_shares": 288228,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.386, mktcap $0.4M"
     },
     {
       "ticker": "PLUT",
@@ -1516,27 +1531,12 @@
       "reason": "Filtered: mktcap $1.3M, vol/float 0.07x"
     },
     {
-      "ticker": "HCTI",
-      "name": "Healthcare Triangle Inc",
-      "price": 0.393,
-      "change_pct": -15.120000000000001,
-      "volume": 2790378,
-      "rvol": 7.9712559454942795,
-      "market_cap": 423183.39,
-      "float_shares": 288228,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.393, mktcap $0.4M"
-    },
-    {
       "ticker": "GMEX",
       "name": "GMEX ROBOTICS",
       "price": 0.119,
-      "change_pct": -14.96,
-      "volume": 4676564,
-      "rvol": 0.15551939991915695,
+      "change_pct": -14.89,
+      "volume": 4676566,
+      "rvol": 0.1555194664292699,
       "market_cap": 220756.87,
       "float_shares": 1580221,
       "cap_size": "nano-cap",
@@ -1651,25 +1651,10 @@
       "reason": "Filtered: price $0.235, mktcap $4.1M"
     },
     {
-      "ticker": "CDT",
-      "name": "CDT Equity",
-      "price": 0.194,
-      "change_pct": -11.68,
-      "volume": 6094519,
-      "rvol": 2.105316629030514,
-      "market_cap": 416511.56,
-      "float_shares": 1721917,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.194, mktcap $0.4M"
-    },
-    {
       "ticker": "FTHM",
       "name": "Fathom Holdings Inc",
       "price": 0.073,
-      "change_pct": -11.57,
+      "change_pct": -9.87,
       "volume": 23521396,
       "rvol": 6.083013726829929,
       "market_cap": 2839967.4,
@@ -1679,21 +1664,6 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.073, mktcap $2.8M"
-    },
-    {
-      "ticker": "LOOP",
-      "name": "Loop Industries",
-      "price": 0.135,
-      "change_pct": -10.459999999999999,
-      "volume": 99900067,
-      "rvol": 7.702109065800331,
-      "market_cap": 7468323.82,
-      "float_shares": 24642346,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "Canada",
-      "passed": false,
-      "reason": "Filtered: price $0.135"
     },
     {
       "ticker": "FUSE",
@@ -1739,6 +1709,21 @@
       "country": "International (region 39)",
       "passed": false,
       "reason": "Filtered: price $0.083, mktcap $4.2M"
+    },
+    {
+      "ticker": "ZNB",
+      "name": "Zeta Network Group",
+      "price": 0.254,
+      "change_pct": -10.86,
+      "volume": 42651754,
+      "rvol": 2.9753959869453506,
+      "market_cap": 1427590.21,
+      "float_shares": 5001100,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.254, mktcap $1.4M"
     },
     {
       "ticker": "TNMG",
@@ -1816,21 +1801,6 @@
       "reason": "Filtered: rvol 0.4x, vol 8,510, vol/float 0.00x"
     },
     {
-      "ticker": "VWAV",
-      "name": "VisionWave Holdings, Inc",
-      "price": 0.041,
-      "change_pct": -9.98,
-      "volume": 72126795,
-      "rvol": 1.8957414414430753,
-      "market_cap": 146379.27,
-      "float_shares": 2470454,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.041, mktcap $0.1M"
-    },
-    {
       "ticker": "CRMT",
       "name": "Amer Carmart",
       "price": 0.313,
@@ -1844,6 +1814,21 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: price $0.313, mktcap $2.9M, rvol 0.8x, vol/float 0.16x"
+    },
+    {
+      "ticker": "VWAV",
+      "name": "VisionWave Holdings, Inc",
+      "price": 0.041,
+      "change_pct": -9.76,
+      "volume": 72137777,
+      "rvol": 1.8960300863566601,
+      "market_cap": 146379.27,
+      "float_shares": 2470454,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.041, mktcap $0.1M"
     },
     {
       "ticker": "HPAI",
@@ -1861,21 +1846,6 @@
       "reason": "Filtered: price $0.210, vol/float 0.03x"
     },
     {
-      "ticker": "ZNB",
-      "name": "Zeta Network Group",
-      "price": 0.258,
-      "change_pct": -9.6,
-      "volume": 42651143,
-      "rvol": 2.9753533634474274,
-      "market_cap": 1427590.21,
-      "float_shares": 5001100,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.258, mktcap $1.4M"
-    },
-    {
       "ticker": "FMFC",
       "name": "Kandal M Venture Limited",
       "price": 1.14,
@@ -1889,21 +1859,6 @@
       "country": "International (region 88)",
       "passed": false,
       "reason": "Filtered: mktcap $0.6M"
-    },
-    {
-      "ticker": "LTRN",
-      "name": "Lantern Pharma Inc",
-      "price": 0.275,
-      "change_pct": -9.11,
-      "volume": 587532,
-      "rvol": 2.6304497712192982,
-      "market_cap": 4813632.53,
-      "float_shares": 13924604,
-      "cap_size": "nano-cap",
-      "is_penny_stock": true,
-      "country": "United States",
-      "passed": false,
-      "reason": "Filtered: price $0.275, mktcap $4.8M, vol/float 0.04x"
     },
     {
       "ticker": "ALP",
@@ -1984,9 +1939,9 @@
       "ticker": "FCHL",
       "name": "FITNESS CHAMPS HLDGS LTD",
       "price": 0.01,
-      "change_pct": -8.41,
-      "volume": 849985184,
-      "rvol": 3.6237994079341855,
+      "change_pct": -9.35,
+      "volume": 850102781,
+      "rvol": 3.624300767189613,
       "market_cap": 14110.54,
       "float_shares": 1299391,
       "cap_size": "nano-cap",
@@ -2090,8 +2045,8 @@
       "name": "Toppoint Holdings Inc.",
       "price": 0.521,
       "change_pct": -7.7700000000000005,
-      "volume": 139408310,
-      "rvol": 3.0055144237120865,
+      "volume": 139413174,
+      "rvol": 3.0056192870603113,
       "market_cap": 2791100.0,
       "float_shares": 2300000,
       "cap_size": "nano-cap",
@@ -2099,9 +2054,67 @@
       "country": "United States",
       "passed": false,
       "reason": "Filtered: mktcap $2.8M, move -7.8%"
+    },
+    {
+      "ticker": "INTZ",
+      "name": "Intrusion",
+      "price": 0.231,
+      "change_pct": -7.6,
+      "volume": 193344,
+      "rvol": 1.1538516626483015,
+      "market_cap": 6899856.25,
+      "float_shares": 20566388,
+      "cap_size": "nano-cap",
+      "is_penny_stock": true,
+      "country": "United States",
+      "passed": false,
+      "reason": "Filtered: price $0.231, move -7.6%, vol/float 0.01x"
+    },
+    {
+      "ticker": "SGRX",
+      "name": "Sangrix Inc",
+      "price": 2.2,
+      "change_pct": -7.5600000000000005,
+      "volume": 8718,
+      "rvol": 0.07511502472816253,
+      "market_cap": 1229043.9,
+      "float_shares": 504399,
+      "cap_size": "nano-cap",
+      "is_penny_stock": false,
+      "country": "Singapore",
+      "passed": false,
+      "reason": "Filtered: mktcap $1.2M, move -7.6%, rvol 0.1x, vol 8,718, vol/float 0.02x"
     }
   ],
   "live_quotes": {
+    "MNDR": {
+      "price": 0.5048,
+      "open": 0.6275,
+      "high": 0.649,
+      "low": 0.4999,
+      "close": 0.5048,
+      "preClose": 0.6276,
+      "volume": 2957928,
+      "changeRatio": -0.1957,
+      "marketValue": 699408.48,
+      "name": "Mobile-health Network Solutions",
+      "_timestamp": "2026-11-26T00:26:46.676939Z"
+    },
+    "POM": {
+      "price": 1.61,
+      "open": 1.621,
+      "high": 1.65,
+      "low": 1.6,
+      "close": 1.61,
+      "preClose": 1.65,
+      "volume": 4601209,
+      "changeRatio": -0.0242,
+      "marketValue": 57905480.57,
+      "name": "POMDOCTOR LTD",
+      "_timestamp": "2026-11-26T00:26:46.676964Z"
+    }
+  },
+  "previous_live_quotes": {
     "MNDR": {
       "price": 0.5048,
       "open": 0.6275,
@@ -2129,52 +2142,11 @@
       "_timestamp": "2026-11-26T00:25:48.138089Z"
     }
   },
-  "previous_live_quotes": {
-    "DOGZ": {
-      "price": 0.2282,
-      "open": 0.2299,
-      "high": 0.3958,
-      "low": 0.1729,
-      "close": 0.2282,
-      "preClose": 0.23,
-      "volume": 31090641,
-      "changeRatio": -0.0078,
-      "marketValue": 4021034.16,
-      "name": "Dogness International Corp",
-      "_timestamp": "2026-11-26T00:24:48.076069Z"
-    },
-    "MNDR": {
-      "price": 0.5048,
-      "open": 0.6275,
-      "high": 0.649,
-      "low": 0.4999,
-      "close": 0.5048,
-      "preClose": 0.6276,
-      "volume": 2936292,
-      "changeRatio": -0.1957,
-      "marketValue": 699408.48,
-      "name": "Mobile-health Network Solutions",
-      "_timestamp": "2026-11-26T00:24:48.076094Z"
-    },
-    "POM": {
-      "price": 1.61,
-      "open": 1.621,
-      "high": 1.65,
-      "low": 1.6,
-      "close": 1.61,
-      "preClose": 1.65,
-      "volume": 4589319,
-      "changeRatio": -0.0242,
-      "marketValue": 57905480.57,
-      "name": "POMDOCTOR LTD",
-      "_timestamp": "2026-11-26T00:24:48.076105Z"
-    }
-  },
   "scan_stats": {
     "gainers_scanned": 50,
     "losers_scanned": 50,
     "market_status": "AFTER-HOURS",
-    "market_time": "11:25 AM AEDT",
+    "market_time": "11:26 AM AEDT",
     "market": "us",
     "au_filters": {},
     "us_filters": {}
